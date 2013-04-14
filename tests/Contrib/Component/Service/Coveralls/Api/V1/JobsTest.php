@@ -13,9 +13,16 @@ class JobsTest extends \PHPUnit_Framework_TestCase
         $this->url      = 'https://coveralls.io/api/v1/jobs';
         $this->path     = __DIR__ . '/coveralls.json';
         $this->filename = 'json_file';
-        $this->post = array(
-            $this->filename => '@' . $this->path,
-        );
+
+        if (class_exists('CurlFile')) {
+            $this->post = array(
+                $this->filename => new \CurlFile($this->path),
+            );
+        } else {
+            $this->post = array(
+                $this->filename => '@' . $this->path,
+            );
+        }
     }
 
     protected function tearDown()

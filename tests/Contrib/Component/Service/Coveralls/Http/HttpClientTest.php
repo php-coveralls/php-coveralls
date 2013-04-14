@@ -8,9 +8,16 @@ class HttpClientTest extends \PHPUnit_Framework_TestCase
         $this->url      = 'http://test-api';
         $this->path     = '/path/to/test.json';
         $this->filename = 'test.json';
-        $this->post = array(
+
+        if (class_exists('CurlFile')) {
+            $this->post = array(
+                $this->filename => new \CurlFile($this->path),
+            );
+        } else {
+            $this->post = array(
                 $this->filename => '@' . $this->path,
-        );
+            );
+        }
 
         $this->adapter = $this->createAdapterMock($this->url, $this->post);
         $this->object = new HttpClient($this->adapter);
