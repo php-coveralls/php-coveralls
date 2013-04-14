@@ -37,4 +37,4 @@ $jsonFile  = $collector->collect($xml, $srcDir);
 $client = new HttpClient(new CurlAdapter());
 $api    = new Jobs($client);
 
-//$api->send($jsonFile, $jsonPath);
+$api->send($jsonFile, $jsonPath);
