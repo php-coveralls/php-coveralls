@@ -1,10 +1,10 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
+use Contrib\Component\Http\HttpClient;
+use Contrib\Component\Http\Adapter\CurlAdapter;
 use Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector;
-use Contrib\Component\Service\Coveralls\Http\HttpClient;
-use Contrib\Component\Service\Coveralls\Http\Adapter\CurlAdapter;
 use Contrib\Component\Service\Coveralls\Api\V1\Jobs;
 
 //TODO Configurator
@@ -37,4 +37,4 @@ $jsonFile  = $collector->collect($xml, $srcDir);
 $client = new HttpClient(new CurlAdapter());
 $api    = new Jobs($client);
 
-$api->send($jsonFile, $jsonPath);
+//$api->send($jsonFile, $jsonPath);
