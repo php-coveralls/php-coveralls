@@ -26,4 +26,5 @@ after_script:
     - php travis/checkstyle.php
     - php travis/pmd.php
     - php travis/junit.php
+    - php bin/coveralls.php
 
