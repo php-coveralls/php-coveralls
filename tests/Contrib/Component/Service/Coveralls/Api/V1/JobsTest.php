@@ -156,7 +156,7 @@ XML;
 
         unset($_SERVER['COVERALLS_TOKEN']);
         unset($_SERVER['GIT_COMMIT']);
-        $_SERVER['TRAVIS_BUILD_ID'] = '123456';
+        $_SERVER['TRAVIS_JOB_ID'] = '123456';
 
         $jsonFile = $this->collectJsonFile();
 
@@ -172,7 +172,7 @@ XML;
 
         unset($_SERVER['COVERALLS_TOKEN']);
         unset($_SERVER['GIT_COMMIT']);
-        $_SERVER['TRAVIS_BUILD_ID'] = '123456';
+        $_SERVER['TRAVIS_JOB_ID'] = '123456';
 
         $jsonFile = $this->collectJsonFile()
         ->setServiceName('travis-pro');
@@ -187,7 +187,7 @@ XML;
     {
         $this->object = $this->createJobsWith();
 
-        unset($_SERVER['TRAVIS_BUILD_ID']);
+        unset($_SERVER['TRAVIS_JOB_ID']);
         unset($_SERVER['GIT_COMMIT']);
         $_SERVER['COVERALLS_TOKEN'] = 'token';
 
@@ -203,7 +203,7 @@ XML;
     {
         $this->object = $this->createJobsWith();
 
-        unset($_SERVER['TRAVIS_BUILD_ID']);
+        unset($_SERVER['TRAVIS_JOB_ID']);
         $_SERVER['COVERALLS_TOKEN'] = 'token';
         $_SERVER['GIT_COMMIT'] = 'abc123';
 
@@ -221,7 +221,7 @@ XML;
         $this->object = $this->createJobsNeverSend();
 
         unset($_SERVER['COVERALLS_TOKEN']);
-        unset($_SERVER['TRAVIS_BUILD_ID']);
+        unset($_SERVER['TRAVIS_JOB_ID']);
         unset($_SERVER['GIT_COMMIT']);
 
         $jsonFile = $this->collectJsonFile();
@@ -237,7 +237,7 @@ XML;
     {
         $this->object = $this->createJobsNeverSend();
 
-        $_SERVER['TRAVIS_BUILD_ID'] = '123456';
+        $_SERVER['TRAVIS_JOB_ID'] = '123456';
         $_SERVER['COVERALLS_TOKEN'] = 'token';
         $_SERVER['GIT_COMMIT'] = 'abc123';
 

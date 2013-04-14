@@ -149,15 +149,15 @@ class JsonFile extends Coveralls
     /**
      * Fill Travis CI environment variables.
      *
-     * "TRAVIS_BUILD_ID" must be set.
+     * "TRAVIS_JOB_ID" must be set.
      *
      * @param array $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
      */
     protected function fillTravis(array $env)
     {
-        if (isset($env['TRAVIS_BUILD_ID'])) {
-            $this->setServiceJobId($env['TRAVIS_BUILD_ID']);
+        if (isset($env['TRAVIS_JOB_ID'])) {
+            $this->setServiceJobId($env['TRAVIS_JOB_ID']);
 
             if (!isset($this->serviceName)) {
                 $this->setServiceName('travis-ci');

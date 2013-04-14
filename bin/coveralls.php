@@ -37,10 +37,4 @@ $jsonFile  = $collector->collect($xml, $srcDir);
 $client = new HttpClient(new CurlAdapter());
 $api    = new Jobs($client);
 
-try {
-    $api->send($jsonFile, $jsonPath);
-} catch (\RuntimeException $e) {
-    echo $e->__toString(), PHP_EOL;
-}
-
-echo $jsonFile, PHP_EOL;
+$api->send($jsonFile, $jsonPath);
