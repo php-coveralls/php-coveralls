@@ -2,6 +2,7 @@ php-coveralls
 =============
 
 [![Build Status](https://travis-ci.org/satooshi/php-coveralls.png?branch=master)](https://travis-ci.org/satooshi/php-coveralls)
+[![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
 
 PHP library for [Coveralls](https://coveralls.io).
 
