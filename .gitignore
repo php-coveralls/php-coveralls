@@ -1,13 +1,16 @@
-# Bootstrap
-app/bootstrap*
+# eclipse
+.buildpath
+.project
+.settings/
 
-# Symfony directories
-vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
+# PHP prj
+build/
+cache.properties
 
-# Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+# composer
+vendor/
+composer.lock
+
+# travis
+travis/
+

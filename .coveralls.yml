@@ -1,0 +1,4 @@
+
+clover_xml: clover.xml
+collector: Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector
+

@@ -1,0 +1,33 @@
+{
+    "name": "satooshi/php-coveralls",
+    "description": "PHP Coveralls",
+    "keywords": ["coverage", "github", "test", "ci"],
+    "homepage": "https://github.com/satooshi/php-coveralls",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Kitamura Satoshi",
+            "email": "with.no.parachute@gmail.com",
+            "homepage": "https://www.facebook.com/satooshi.jp"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.17"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*@dev",
+        "phpunit/php-invoker": ">=1.1.0,<1.2.0",
+        "pdepend/pdepend": "dev-master",
+        "phpmd/phpmd": "dev-master",
+        "squizlabs/php_codesniffer": "1.4.*"
+    },
+    "suggest": {
+        "cypresslab/gitelephant": "Allows git repository access"
+    },
+    "autoload": {
+        "psr-0": { "Contrib\\Component": "src/" }
+    },
+    "bin": ["bin/php-coveralls.php"]
+}
