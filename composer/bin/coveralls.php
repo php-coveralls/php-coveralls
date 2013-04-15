@@ -33,7 +33,8 @@ use Contrib\Component\Service\Coveralls\Collector\V1\GitInfoCollector;
 //TODO Configurator
 // configure
 $xmlFilename   = 'clover.xml';
-$rootDir       = realpath(__DIR__ . '/../..');
+$loaderPath    = realpath(PHP_COVERALLS_COMPOSER_INSTALL);
+$rootDir       = realpath(dirname($loaderPath) . '/..');
 $logsDir       = realpath("$rootDir/build/logs");
 
 if ($logsDir === false || !is_dir($logsDir)) {
