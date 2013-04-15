@@ -5,8 +5,6 @@ namespace Contrib\Component\Service\Coveralls\Entity\V1;
  * Data represents "json_file" of Coveralls API.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
- * @SuppressWarnings(PHPMD.TooManyMethods)
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class JsonFile extends Coveralls
 {
