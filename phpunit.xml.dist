@@ -18,12 +18,12 @@
 
     <filter>
         <whitelist>
-            <directory>./</directory>
+            <directory>./src</directory>
             <exclude>
                 <directory>./vendor</directory>
                 <directory>./tests</directory>
                 <directory>./travis</directory>
-                <directory>./bin</directory>
+                <directory>./composer</directory>
             </exclude>
         </whitelist>
     </filter>
