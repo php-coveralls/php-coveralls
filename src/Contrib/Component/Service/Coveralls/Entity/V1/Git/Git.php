@@ -49,6 +49,13 @@ class Git extends Coveralls
      */
     protected $remotes;
 
+    /**
+     * Constructor.
+     *
+     * @param string $branch  Branch name.
+     * @param Commit $head    HEAD commit.
+     * @param array  $remotes Remote repositories.
+     */
     public function __construct($branch, Commit $head, array $remotes)
     {
         $this->branch  = $branch;
@@ -61,7 +68,7 @@ class Git extends Coveralls
     /**
      * {@inheritdoc}
      *
-     * @see \Contrib\Component\Service\Coveralls\Entity\V1\Coveralls::toArray()
+     * @see \Contrib\Component\Service\Coveralls\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
     {
@@ -80,16 +87,31 @@ class Git extends Coveralls
 
     // accessor
 
+    /**
+     * Return branch name.
+     *
+     * @return string
+     */
     public function getBranch()
     {
         return $this->branch;
     }
 
+    /**
+     * Return HEAD commit.
+     *
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function getHead()
     {
         return $this->head;
     }
 
+    /**
+     * Return remote repositories.
+     *
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote[]
+     */
     public function getRemotes()
     {
         return $this->remotes;

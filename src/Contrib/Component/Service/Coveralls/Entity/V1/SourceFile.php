@@ -64,7 +64,7 @@ class SourceFile extends Coveralls
     /**
      * {@inheritdoc}
      *
-     * @see \Contrib\Component\Service\Coveralls\Entity\V1\Coveralls::toArray()
+     * @see \Contrib\Component\Service\Coveralls\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
     {

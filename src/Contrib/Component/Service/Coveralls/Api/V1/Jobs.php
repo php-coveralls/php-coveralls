@@ -38,6 +38,7 @@ class Jobs extends CoverallsApi
     public function send(JsonFile $jsonFile, $jsonPath)
     {
         $jsonFile->fillJobs($_SERVER);
+
         file_put_contents($jsonPath, $jsonFile);
 
         return $this->client->upload(static::URL, $jsonPath, static::FILENAME);

@@ -6,6 +6,8 @@ use Contrib\Component\Http\HttpClient;
 use Contrib\Component\Http\Adapter\CurlAdapter;
 use Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector;
 use Contrib\Component\Service\Coveralls\Api\V1\Jobs;
+use Contrib\Component\System\Git\GitCommand;
+use Contrib\Component\Service\Coveralls\Collector\V1\GitInfoCollector;
 
 //TODO Configurator
 // configure
@@ -29,9 +31,14 @@ $srcDir   = realpath("$rootDir/src");
 $jsonPath = "$logsDir/coveralls.json";
 
 // collect coverage
-$xml       = simplexml_load_file($cloverXmlPath);
-$collector = new CloverXmlCoverageCollector();
-$jsonFile  = $collector->collect($xml, $srcDir);
+$xml          = simplexml_load_file($cloverXmlPath);
+$xmlCollector = new CloverXmlCoverageCollector();
+$jsonFile     = $xmlCollector->collect($xml, $srcDir);
+
+// collect git
+$gitCollector = new GitInfoCollector(new GitCommand());
+
+$jsonFile->setGit($gitCollector->collect()->toArray());
 
 // run
 $client = new HttpClient(new CurlAdapter());

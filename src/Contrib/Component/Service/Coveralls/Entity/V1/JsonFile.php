@@ -71,7 +71,7 @@ class JsonFile extends Coveralls
     /**
      * {@inheritdoc}
      *
-     * @see \Contrib\Component\Service\Coveralls\Entity\V1\Coveralls::toArray()
+     * @see \Contrib\Component\Service\Coveralls\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
     {
@@ -140,7 +140,6 @@ class JsonFile extends Coveralls
         ->fillJenkins($env)
         ->fillLocal($env)
         ->fillRepoToken($env)
-        ->fillGit($env)
         ->ensureJobs();
     }
 
@@ -275,23 +274,6 @@ class JsonFile extends Coveralls
             $this->repoToken = $env['COVERALLS_REPO_TOKEN'];
         }
 
-        return $this;
-    }
-
-    /**
-     * Fill git repository info.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillGit(array $env)
-    {
-        if (isset($this->repoToken) && isset($env['GIT_COMMIT'])) {
-            //TODO fill git repository info
-            return $this;
-        }
-
-        // git info is not required for supported CI service
         return $this;
     }
 

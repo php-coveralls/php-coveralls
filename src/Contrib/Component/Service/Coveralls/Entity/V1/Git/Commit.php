@@ -3,6 +3,11 @@ namespace Contrib\Component\Service\Coveralls\Entity\V1\Git;
 
 use Contrib\Component\Service\Coveralls\Entity\V1\Coveralls;
 
+/**
+ * Commit info.
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class Commit extends Coveralls
 {
     /**
@@ -52,7 +57,7 @@ class Commit extends Coveralls
     /**
      * {@inheritdoc}
      *
-     * @see \Contrib\Component\Service\Coveralls\Entity\V1\Coveralls::toArray()
+     * @see \Contrib\Component\Service\Coveralls\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
     {
@@ -68,6 +73,12 @@ class Commit extends Coveralls
 
     // accessor
 
+    /**
+     * Set commit ID.
+     *
+     * @param string $id
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -75,6 +86,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return commit ID.
+     *
+     * @return string|null
+     */
     public function getId()
     {
         if (isset($this->id)) {
@@ -84,6 +100,12 @@ class Commit extends Coveralls
         return null;
     }
 
+    /**
+     * Set author name.
+     *
+     * @param string $authorName
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setAuthorName($authorName)
     {
         $this->authorName = $authorName;
@@ -91,6 +113,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return author name.
+     *
+     * @return string|null
+     */
     public function getAuthorName()
     {
         if (isset($this->authorName)) {
@@ -100,6 +127,12 @@ class Commit extends Coveralls
         return null;
     }
 
+    /**
+     * Set author email.
+     *
+     * @param string $authorEmail
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setAuthorEmail($authorEmail)
     {
         $this->authorEmail = $authorEmail;
@@ -107,6 +140,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return author email.
+     *
+     * @return string|null
+     */
     public function getAuthorEmail()
     {
         if (isset($this->authorEmail)) {
@@ -116,6 +154,12 @@ class Commit extends Coveralls
         return null;
     }
 
+    /**
+     * Set committer name.
+     *
+     * @param string $committerName
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setCommitterName($committerName)
     {
         $this->committerName = $committerName;
@@ -123,6 +167,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return committer name.
+     *
+     * @return string|null
+     */
     public function getCommitterName()
     {
         if (isset($this->committerName)) {
@@ -132,6 +181,12 @@ class Commit extends Coveralls
         return null;
     }
 
+    /**
+     * Set committer email.
+     *
+     * @param string $committerEmail
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setCommitterEmail($committerEmail)
     {
         $this->committerEmail = $committerEmail;
@@ -139,6 +194,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return committer email.
+     *
+     * @return string|null
+     */
     public function getCommitterEmail()
     {
         if (isset($this->committerEmail)) {
@@ -148,6 +208,12 @@ class Commit extends Coveralls
         return null;
     }
 
+    /**
+     * Set commit message.
+     *
+     * @param string $message
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
+     */
     public function setMessage($message)
     {
         $this->message = $message;
@@ -155,6 +221,11 @@ class Commit extends Coveralls
         return $this;
     }
 
+    /**
+     * Return commit message.
+     *
+     * @return string|null
+     */
     public function getMessage()
     {
         if (isset($this->message)) {

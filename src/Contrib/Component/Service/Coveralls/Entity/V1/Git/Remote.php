@@ -24,7 +24,7 @@ class Remote extends Coveralls
     /**
      * {@inheritdoc}
      *
-     * @see \Contrib\Component\Service\Coveralls\Entity\V1\Coveralls::toArray()
+     * @see \Contrib\Component\Service\Coveralls\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
     {
@@ -40,7 +40,7 @@ class Remote extends Coveralls
      * Set remote name.
      *
      * @param string $name Remote name.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Remote
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote
      */
     public function setName($name)
     {
@@ -67,7 +67,7 @@ class Remote extends Coveralls
      * Set remote URL.
      *
      * @param string $url Remote URL.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Remote
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote
      */
     public function setUrl($url)
     {
