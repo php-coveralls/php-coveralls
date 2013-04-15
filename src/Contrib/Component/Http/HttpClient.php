@@ -40,17 +40,12 @@ class HttpClient
      */
     public function upload($url, $path, $filename)
     {
-        if (class_exists('CurlFile')) {
-            // since PHP 5.5
-            $post = array(
-                $filename => new \CurlFile($path),
-            );
-        } else {
-            // until PHP 5.4
-            $post = array(
-                $filename => '@' . $path,
-            );
-        }
+        // since PHP 5.5 CurlFile
+        // until PHP 5.4 @path
+        $file = class_exists('CurlFile') ? new \CurlFile($path) : '@' . $path;
+        $post = array(
+            $filename => $file,
+        );
 
         return $this->adapter->send(
             array(
