@@ -23,6 +23,20 @@ class JsonFile extends Coveralls
     protected $serviceJobId;
 
     /**
+     * Service number (not documented).
+     *
+     * @var string
+     */
+    protected $serviceNumber;
+
+    /**
+     * Service event type (not documented).
+     *
+     * @var string
+     */
+    protected $serviceEventType;
+
+    /**
      * Repository token.
      *
      * @var string
@@ -67,27 +81,28 @@ class JsonFile extends Coveralls
             $files[] = $file->toArray();
         }
 
-        $data = array(
+        $jsonArray = array(
             'source_files' => $files,
         );
 
-        if (isset($this->serviceName)) {
-            $data['service_name'] = $this->serviceName;
-        }
-        if (isset($this->serviceJobId)) {
-            $data['service_job_id'] = $this->serviceJobId;
-        }
-        if (isset($this->repoToken)) {
-            $data['repo_token'] = $this->repoToken;
-        }
-        if (isset($this->git)) {
-            $data['git'] = $this->git;
-        }
-        if (isset($this->runAt)) {
-            $data['run_at'] = $this->runAt;
+        $jsonArrayMap = array(
+            // json key => property name
+            'service_name'       => 'serviceName',
+            'service_job_id'     => 'serviceJobId',
+            'service_number'     => 'serviceNumber',
+            'service_event_type' => 'serviceEventType',
+            'repo_token'         => 'repoToken',
+            'git'                => 'git',
+            'run_at'             => 'runAt',
+        );
+
+        foreach ($jsonArrayMap as $jsonKey => $propName) {
+            if (isset($this->$propName)) {
+                $jsonArray[$jsonKey] = $this->$propName;
+            }
         }
 
-        return $data;
+        return $jsonArray;
     }
 
     /**
@@ -110,10 +125,20 @@ class JsonFile extends Coveralls
         return count($this->sourceFiles) > 0;
     }
 
+    /**
+     * Fill environment variables.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
+     * @throws \RuntimeException
+     */
     public function fillJobs(array $env)
     {
         return $this
-        ->fillTravis($env)
+        ->fillTravisCi($env)
+        ->fillCircleCi($env)
+        ->fillJenkins($env)
+        ->fillLocal($env)
         ->fillRepoToken($env)
         ->fillGit($env)
         ->ensureJobs();
@@ -133,11 +158,19 @@ class JsonFile extends Coveralls
             throw new \RuntimeException('source_files must be set');
         }
 
-        if (isset($this->serviceName) && isset($this->serviceJobId)) {
+        if ($this->requireServiceJobId()) {
             return $this;
         }
 
-        if (isset($this->repoToken)) {
+        if ($this->requireServiceNumber()) {
+            return $this;
+        }
+
+        if ($this->requireServiceEventType()) {
+            return $this;
+        }
+
+        if ($this->isUnsupportedServiceJob()) {
             return $this;
         }
 
@@ -154,14 +187,75 @@ class JsonFile extends Coveralls
      * @param array $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
      */
-    protected function fillTravis(array $env)
+    protected function fillTravisCi(array $env)
     {
-        if (isset($env['TRAVIS_JOB_ID'])) {
-            $this->setServiceJobId($env['TRAVIS_JOB_ID']);
+        if (isset($env['TRAVIS']) && $env['TRAVIS'] && isset($env['TRAVIS_JOB_ID'])) {
+            $this->serviceJobId = $env['TRAVIS_JOB_ID'];
 
             if (!isset($this->serviceName)) {
-                $this->setServiceName('travis-ci');
+                $this->serviceName = 'travis-ci';
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill CircleCI environment variables.
+     *
+     * "CIRCLE_BUILD_NUM" must be set.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
+     */
+    protected function fillCircleCi(array $env)
+    {
+        if (isset($env['CIRCLECI']) && $env['CIRCLECI'] && isset($env['CIRCLE_BUILD_NUM'])) {
+            $this->serviceNumber = $env['CIRCLE_BUILD_NUM'];
+
+            if (!isset($this->serviceName)) {
+                $this->serviceName = 'circleci';
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill Jenkins environment variables.
+     *
+     * "BUILD_NUMBER" must be set.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
+     */
+    protected function fillJenkins(array $env)
+    {
+        if (isset($env['JENKINS_URL']) && isset($env['BUILD_NUMBER'])) {
+            $this->serviceNumber = $env['BUILD_NUMBER'];
+
+            if (!isset($this->serviceName)) {
+                $this->serviceName = 'jenkins';
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill local environment variables.
+     *
+     * "COVERALLS_RUN_LOCALLY" must be set.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
+     */
+    protected function fillLocal(array $env)
+    {
+        if (isset($env['COVERALLS_RUN_LOCALLY']) && $env['COVERALLS_RUN_LOCALLY']) {
+            $this->serviceJobId     = null;
+            $this->serviceName      = 'php-coveralls';
+            $this->serviceEventType = 'manual';
         }
 
         return $this;
@@ -170,15 +264,15 @@ class JsonFile extends Coveralls
     /**
      * Fill repo_token for unsupported CI service.
      *
-     * "COVERALLS_TOKEN" must be set.
+     * "COVERALLS_REPO_TOKEN" must be set.
      *
      * @param array $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
      */
     protected function fillRepoToken(array $env)
     {
-        if (isset($env['COVERALLS_TOKEN'])) {
-            return $this->setRepoToken($env['COVERALLS_TOKEN']);
+        if (isset($env['COVERALLS_REPO_TOKEN'])) {
+            $this->repoToken = $env['COVERALLS_REPO_TOKEN'];
         }
 
         return $this;
@@ -199,6 +293,46 @@ class JsonFile extends Coveralls
 
         // git info is not required for supported CI service
         return $this;
+    }
+
+    /**
+     * Return whether the job requires "service_job_id" (for Travis CI).
+     *
+     * @return boolean
+     */
+    protected function requireServiceJobId()
+    {
+        return isset($this->serviceName) && isset($this->serviceJobId) && !isset($this->repoToken);
+    }
+
+    /**
+     * Return whether the job requires "service_number" (for CircleCI, Jenkins).
+     *
+     * @return boolean
+     */
+    protected function requireServiceNumber()
+    {
+        return isset($this->serviceName) && isset($this->serviceNumber) && !isset($this->repoToken);
+    }
+
+    /**
+     * Return whether the job requires "service_event_type" (for local environment).
+     *
+     * @return boolean
+     */
+    protected function requireServiceEventType()
+    {
+        return isset($this->serviceName) && isset($this->serviceEventType) && !isset($this->repoToken);
+    }
+
+    /**
+     * Return whether the job is running on unsupported service.
+     *
+     * @return boolean
+     */
+    protected function isUnsupportedServiceJob()
+    {
+        return !isset($this->serviceJobId) && !isset($this->serviceNumber) && !isset($this->serviceEventType) && isset($this->repoToken);
     }
 
     // accessor
