@@ -23,11 +23,8 @@
         "phpmd/phpmd": "dev-master",
         "squizlabs/php_codesniffer": "1.4.*"
     },
-    "suggest": {
-        "cypresslab/gitelephant": "Allows git repository access"
-    },
     "autoload": {
         "psr-0": { "Contrib\\Component": "src/" }
     },
-    "bin": ["bin/php-coveralls.php"]
+    "bin": ["bin/coveralls.php"]
 }
