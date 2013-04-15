@@ -26,5 +26,5 @@
     "autoload": {
         "psr-0": { "Contrib\\Component": "src/" }
     },
-    "bin": ["bin/coveralls.php"]
+    "bin": ["composer/bin/coveralls.php"]
 }

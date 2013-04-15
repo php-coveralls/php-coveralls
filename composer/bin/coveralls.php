@@ -1,6 +1,27 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$files = array(
+    __DIR__ . '/../../vendor/autoload.php',
+    __DIR__ . '/../../../../autoload.php'
+);
+
+foreach ($files as $file) {
+    if (file_exists($file)) {
+        include_once $file;
+
+        define('PHP_COVERALLS_COMPOSER_INSTALL', $file);
+
+        break;
+    }
+}
+
+if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
+    die(
+        'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+        'curl -s http://getcomposer.org/installer | php' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+}
 
 use Contrib\Component\Http\HttpClient;
 use Contrib\Component\Http\Adapter\CurlAdapter;
@@ -12,7 +33,7 @@ use Contrib\Component\Service\Coveralls\Collector\V1\GitInfoCollector;
 //TODO Configurator
 // configure
 $xmlFilename   = 'clover.xml';
-$rootDir       = realpath(__DIR__ . '/..');
+$rootDir       = realpath(__DIR__ . '/../..');
 $logsDir       = realpath("$rootDir/build/logs");
 
 if ($logsDir === false || !is_dir($logsDir)) {
