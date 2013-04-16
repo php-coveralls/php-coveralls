@@ -4,6 +4,10 @@ php-coveralls
 [![Build Status](https://travis-ci.org/satooshi/php-coveralls.png?branch=master)](https://travis-ci.org/satooshi/php-coveralls)
 [![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
 
+Retina badge is small…
+<img src="https://travis-ci.org/satooshi/php-coveralls.png?branch=master" height="10">
+<img src="https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master" height="10">
+
 PHP library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
