@@ -18,10 +18,11 @@
         "ext-json": "*",
         "ext-curl": "*",
         "ext-simplexml": "*",
-        "symfony/yaml": "2.2.*@dev,<2.3.0"
+        "symfony/yaml": "2.2.*@stable,<2.3.0",
+        "symfony/console": "2.2.*@stable,<2.3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*@dev",
+        "phpunit/phpunit": "3.7.*@stable",
         "phpunit/php-invoker": ">=1.1.0,<1.2.0",
         "pdepend/pdepend": "dev-master",
         "phpmd/phpmd": "dev-master",
