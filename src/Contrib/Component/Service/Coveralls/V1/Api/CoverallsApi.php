@@ -1,5 +1,5 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Api\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Api;
 
 use Contrib\Component\Http\HttpClient;
 

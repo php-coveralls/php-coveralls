@@ -1,7 +1,7 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Entity\V1\Git;
+namespace Contrib\Component\Service\Coveralls\V1\Entity\Git;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\Coveralls;
+use Contrib\Component\Service\Coveralls\V1\Entity\Coveralls;
 
 /**
  * Data represents "git" of Coveralls API.

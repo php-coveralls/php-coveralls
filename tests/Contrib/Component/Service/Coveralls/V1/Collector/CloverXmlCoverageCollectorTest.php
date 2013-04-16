@@ -1,15 +1,15 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Collector\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Collector;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\JsonFile;
-use Contrib\Component\Service\Coveralls\Entity\V1\SourceFile;
+use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
+use Contrib\Component\Service\Coveralls\V1\Entity\SourceFile;
 
 class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
         $this->dir  = realpath(__DIR__ . '/../../');
-        $this->root = $this->dir . '/Entity/V1/files/';
+        $this->root = $this->dir . '/V1/Entity/files/';
 
         $this->object = new CloverXmlCoverageCollector();
     }
@@ -20,7 +20,7 @@ class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
-    <file name="%s/Entity/V1/files/test.php">
+    <file name="%s/V1/Entity/files/test.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
@@ -35,7 +35,7 @@ class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
       <line num="7" type="stmt" count="0"/>
     </file>
     <package name="Hoge">
-      <file name="%s/Entity/V1/files/test2.php">
+      <file name="%s/V1/Entity/files/test2.php">
         <class name="TestFile" namespace="Hoge">
           <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
@@ -123,7 +123,7 @@ XML;
     protected function assertSourceFileTest1(SourceFile $sourceFile)
     {
         $name1        = 'test.php';
-        $path1        = $this->dir . '/Entity/V1/files/' . $name1;
+        $path1        = $this->dir . '/V1/Entity/files/' . $name1;
         $fileLines1   = 10;
         $coverage1    = array_fill(0, $fileLines1, null);
         $coverage1[6] = 0;
@@ -135,7 +135,7 @@ XML;
     protected function assertSourceFileTest2(SourceFile $sourceFile)
     {
         $name2        = 'test2.php';
-        $path2        = $this->dir . '/Entity/V1/files/' . $name2;
+        $path2        = $this->dir . '/V1/Entity/files/' . $name2;
         $fileLines2   = 11;
         $coverage2    = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;

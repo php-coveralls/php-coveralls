@@ -1,8 +1,8 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Collector\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Collector;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\JsonFile;
-use Contrib\Component\Service\Coveralls\Entity\V1\SourceFile;
+use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
+use Contrib\Component\Service\Coveralls\V1\Entity\SourceFile;
 
 /**
  * Coverage collector for clover.xml.

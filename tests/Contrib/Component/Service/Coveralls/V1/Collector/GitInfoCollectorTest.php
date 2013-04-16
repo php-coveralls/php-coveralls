@@ -1,9 +1,9 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Collector\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Collector;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Git;
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit;
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Git;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Commit;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote;
 
 class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 {
@@ -115,7 +115,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $git = $object->collect();
 
-        $gitClass = 'Contrib\Component\Service\Coveralls\Entity\V1\Git\Git';
+        $gitClass = 'Contrib\Component\Service\Coveralls\V1\Entity\Git\Git';
         $this->assertTrue($git instanceof $gitClass);
         $this->assertGit($git);
     }
@@ -126,14 +126,14 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $commit = $git->getHead();
 
-        $commitClass = 'Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit';
+        $commitClass = 'Contrib\Component\Service\Coveralls\V1\Entity\Git\Commit';
         $this->assertTrue($commit instanceof $commitClass);
         $this->assertCommit($commit);
 
         $remotes = $git->getRemotes();
         $this->assertCount(1, $remotes);
 
-        $remoteClass = 'Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote';
+        $remoteClass = 'Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote';
         $this->assertTrue($remotes[0] instanceof $remoteClass);
         $this->assertRemote($remotes[0]);
     }

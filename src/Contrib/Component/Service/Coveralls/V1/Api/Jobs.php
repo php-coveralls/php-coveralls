@@ -1,8 +1,8 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Api\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Api;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\JsonFile;
-use Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector;
+use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
+use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 
 /**
  * Jobs API.

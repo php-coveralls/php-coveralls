@@ -1,5 +1,5 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Entity\V1\Git;
+namespace Contrib\Component\Service\Coveralls\V1\Entity\Git;
 
 class RemoteTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Entity\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Entity;
 
-use Contrib\Component\Service\Coveralls\Entity\ArrayConvertable;
+use Contrib\Component\Entity\ArrayConvertable;
 
 /**
  * Data for Coveralls API.

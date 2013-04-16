@@ -1,5 +1,5 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Entity\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Entity;
 
 /**
  * Data represents "json_file" of Coveralls API.

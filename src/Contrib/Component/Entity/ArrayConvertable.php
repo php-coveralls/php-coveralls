@@ -1,5 +1,5 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Entity;
+namespace Contrib\Component\Entity;
 
 interface ArrayConvertable
 {

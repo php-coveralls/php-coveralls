@@ -1,15 +1,15 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Api\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Api;
 
 use Contrib\Component\Http\HttpClient;
-use Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector;
+use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 
 class JobsTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
         $this->dir      = realpath(__DIR__ . '/../../');
-        $this->root     = $this->dir . '/Entity/V1/files/';
+        $this->root     = $this->dir . '/Entity/files/';
         $this->url      = 'https://coveralls.io/api/v1/jobs';
         $this->path     = __DIR__ . '/coveralls.json';
         $this->filename = 'json_file';
@@ -86,7 +86,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
-    <file name="%s/Entity/V1/files/test.php">
+    <file name="%s/V1/Entity/files/test.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
@@ -101,7 +101,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
       <line num="7" type="stmt" count="0"/>
     </file>
     <package name="Hoge">
-      <file name="%s/Entity/V1/files/test2.php">
+      <file name="%s/V1/Entity/files/test2.php">
         <class name="TestFile" namespace="Hoge">
           <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>

@@ -1,9 +1,9 @@
 <?php
-namespace Contrib\Component\Service\Coveralls\Collector\V1;
+namespace Contrib\Component\Service\Coveralls\V1\Collector;
 
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Remote;
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit;
-use Contrib\Component\Service\Coveralls\Entity\V1\Git\Git;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Commit;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Git;
 use Contrib\Component\System\Git\GitCommand;
 
 /**

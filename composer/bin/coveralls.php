@@ -25,11 +25,13 @@ if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
 
 use Contrib\Component\Http\HttpClient;
 use Contrib\Component\Http\Adapter\CurlAdapter;
-use Contrib\Component\Service\Coveralls\Collector\V1\CloverXmlCoverageCollector;
-use Contrib\Component\Service\Coveralls\Api\V1\Jobs;
 use Contrib\Component\System\Git\GitCommand;
-use Contrib\Component\Service\Coveralls\Collector\V1\GitInfoCollector;
+use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
+use Contrib\Component\Service\Coveralls\V1\Api\Jobs;
+use Contrib\Component\Service\Coveralls\V1\Collector\GitInfoCollector;
 
+//TODO .coveralls.yml
+//TODO command
 //TODO Configurator
 // configure
 $xmlFilename   = 'clover.xml';
