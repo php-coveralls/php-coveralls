@@ -3,6 +3,11 @@ namespace Contrib\Component\Service\Coveralls\V1\Entity\Git;
 
 use Contrib\Component\Service\Coveralls\V1\Entity\Coveralls;
 
+/**
+ * Remote info.
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class Remote extends Coveralls
 {
     /**
