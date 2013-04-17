@@ -1,6 +1,11 @@
 <?php
 namespace Contrib\Component\Http;
 
+/**
+ * @covers Contrib\Component\Http\HttpClient
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class HttpClientTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()

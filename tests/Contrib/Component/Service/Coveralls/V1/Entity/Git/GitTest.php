@@ -1,6 +1,11 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Entity\Git;
 
+/**
+ * @covers Contrib\Component\Service\Coveralls\V1\Entity\Git\Git
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class GitTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()

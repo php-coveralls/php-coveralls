@@ -4,6 +4,11 @@ namespace Contrib\Component\Service\Coveralls\V1\Collector;
 use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
 use Contrib\Component\Service\Coveralls\V1\Entity\SourceFile;
 
+/**
+ * @covers Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()

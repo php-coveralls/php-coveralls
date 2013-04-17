@@ -1,6 +1,12 @@
 <?php
 namespace Contrib\Component\System\Git;
 
+/**
+ * @covers Contrib\Component\System\Git\GitCommand
+ * @covers Contrib\Component\System\SystemCommand
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
     protected function createGitCommandMock($params)

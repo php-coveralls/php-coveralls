@@ -1,6 +1,11 @@
 <?php
 namespace Contrib\Component\Http\Adapter;
 
+/**
+ * @covers Contrib\Component\Http\Adapter\CurlAdapter
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class CurlAdapterTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
