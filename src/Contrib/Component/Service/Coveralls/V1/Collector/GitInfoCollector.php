@@ -136,4 +136,16 @@ class GitInfoCollector
 
         return $remotes;
     }
+
+    // accessor
+
+    /**
+     * Return git command.
+     *
+     * @return \Contrib\Component\System\Git\GitCommand
+     */
+    public function getCommand()
+    {
+        return $this->command;
+    }
 }

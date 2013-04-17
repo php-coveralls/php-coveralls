@@ -1,10 +1,17 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Collector;
 
+use Contrib\Component\System\Git\GitCommand;
+
 use Contrib\Component\Service\Coveralls\V1\Entity\Git\Git;
 use Contrib\Component\Service\Coveralls\V1\Entity\Git\Commit;
 use Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote;
 
+/**
+ * @covers Contrib\Component\Service\Coveralls\V1\Collector\GitInfoCollector
+ *
+ * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ */
 class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
@@ -101,6 +108,19 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
         $stub->expects($this->never())
         ->method('getRemotes')
         ->will($this->returnValue($getRemotesValue));
+    }
+
+    // getCommand()
+
+    /**
+     * @test
+     */
+    public function getCommand()
+    {
+        $command = new GitCommand();
+        $object = new GitInfoCollector($command);
+
+        $this->assertSame($command, $object->getCommand());
     }
 
     // collect()
