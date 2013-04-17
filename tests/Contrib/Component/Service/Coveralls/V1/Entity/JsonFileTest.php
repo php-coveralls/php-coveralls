@@ -1,6 +1,9 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Entity;
 
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Commit;
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Git;
 use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 
 /**
@@ -252,11 +255,13 @@ XML;
      */
     public function setGit()
     {
-        $expected = array('git');
+        $remotes = array(new Remote());
+        $head    = new Commit();
+        $git     = new Git('master', $head, $remotes);
 
-        $obj = $this->object->setGit($expected);
+        $obj = $this->object->setGit($git);
 
-        $this->assertEquals($expected, $this->object->getGit());
+        $this->assertSame($git, $this->object->getGit());
         $this->assertSame($obj, $this->object);
 
         return $this->object;
@@ -349,8 +354,8 @@ XML;
         $item = 'travis-ci';
 
         $expected = array(
-            'source_files' => array(),
             'service_name' => $item,
+            'source_files' => array(),
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -368,8 +373,8 @@ XML;
         $item = 'job_id';
 
         $expected = array(
-            'source_files' => array(),
             'service_job_id' => $item,
+            'source_files'   => array(),
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -387,8 +392,8 @@ XML;
         $item = 'token';
 
         $expected = array(
+            'repo_token'   => $item,
             'source_files' => array(),
-            'repo_token' => $item,
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -403,14 +408,16 @@ XML;
      */
     public function toArrayWithGit($object)
     {
-        $item = array('git');
+        $remotes = array(new Remote());
+        $head    = new Commit();
+        $git     = new Git('master', $head, $remotes);
 
         $expected = array(
+            'git'          => $git->toArray(),
             'source_files' => array(),
-            'git' => $item,
         );
 
-        $this->assertEquals($expected, $object->toArray());
+        $this->assertSame($expected, $object->toArray());
         $this->assertEquals(json_encode($expected), (string)$object);
     }
 
@@ -425,8 +432,8 @@ XML;
         $item = '2013-04-04 11:22:33 +0900';
 
         $expected = array(
+            'run_at'       => $item,
             'source_files' => array(),
-            'run_at' => $item,
         );
 
         $this->assertEquals($expected, $object->toArray());

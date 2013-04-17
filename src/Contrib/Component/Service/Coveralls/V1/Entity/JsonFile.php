@@ -1,6 +1,8 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Entity;
 
+use Contrib\Component\Service\Coveralls\V1\Entity\Git\Git;
+
 /**
  * Data represents "json_file" of Coveralls API.
  *
@@ -75,17 +77,9 @@ class JsonFile extends Coveralls
      */
     public function toArray()
     {
-        $files = array();
+        $array = array();
 
-        foreach ($this->sourceFiles as $file) {
-            $files[] = $file->toArray();
-        }
-
-        $jsonArray = array(
-            'source_files' => $files,
-        );
-
-        $jsonArrayMap = array(
+        $arrayMap = array(
             // json key => property name
             'service_name'       => 'serviceName',
             'service_job_id'     => 'serviceJobId',
@@ -94,15 +88,16 @@ class JsonFile extends Coveralls
             'repo_token'         => 'repoToken',
             'git'                => 'git',
             'run_at'             => 'runAt',
+            'source_files'       => 'sourceFiles',
         );
 
-        foreach ($jsonArrayMap as $jsonKey => $propName) {
+        foreach ($arrayMap as $jsonKey => $propName) {
             if (isset($this->$propName)) {
-                $jsonArray[$jsonKey] = $this->$propName;
+                $array[$jsonKey] = $this->toJsonProperty($this->$propName);
             }
         }
 
-        return $jsonArray;
+        return $array;
     }
 
     /**
@@ -144,6 +139,40 @@ class JsonFile extends Coveralls
     }
 
     // internal method
+
+    /**
+     * Convert to json property.
+     *
+     * @param mixed $prop
+     * @return mixed
+     */
+    protected function toJsonProperty($prop)
+    {
+        if ($prop instanceof Coveralls) {
+            return $prop->toArray();
+        } else if (is_array($prop)) {
+            return $this->toJsonPropertyArray($prop);
+        }
+
+        return $prop;
+    }
+
+    /**
+     * Convert to array as json property.
+     *
+     * @param array $propArray
+     * @return array
+     */
+    protected function toJsonPropertyArray(array $propArray)
+    {
+        $array = array();
+
+        foreach ($propArray as $prop) {
+            $array[] = $this->toJsonProperty($prop);
+        }
+
+        return $array;
+    }
 
     /**
      * Ensure data consistency for jobs API.
@@ -436,7 +465,7 @@ class JsonFile extends Coveralls
      * @param array $git Git data.
      * @return Coveralls
      */
-    public function setGit(array $git)
+    public function setGit(Git $git)
     {
         $this->git = $git;
 
