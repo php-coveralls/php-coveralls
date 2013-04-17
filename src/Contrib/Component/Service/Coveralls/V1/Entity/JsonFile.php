@@ -411,6 +411,26 @@ class JsonFile extends Coveralls
     }
 
     /**
+     * Return service number.
+     *
+     * @return string
+     */
+    public function getServiceNumber()
+    {
+        return $this->serviceNumber;
+    }
+
+    /**
+     * Return service event type.
+     *
+     * @return string
+     */
+    public function getServiceEventType()
+    {
+        return $this->serviceEventType;
+    }
+
+    /**
      * Set git data.
      *
      * @param array $git Git data.
