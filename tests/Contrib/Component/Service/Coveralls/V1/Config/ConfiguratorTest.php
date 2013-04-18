@@ -11,8 +11,14 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->rootDir       = realpath(__DIR__ . '/root');
+        $this->rootDir       = __DIR__ . '/root';
+
+        if (!is_dir($this->rootDir)) {
+            mkdir($this->rootDir, 0777, true);
+        }
+
         $this->srcDir        = $this->rootDir . '/src';
+        $this->buildDir      = $this->rootDir . '/build';
         $this->logsDir       = $this->rootDir . '/build/logs';
         $this->cloverXmlPath = $this->logsDir . '/clover.xml';
         $this->jsonPath      = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
@@ -26,6 +32,8 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->rmFile($this->jsonPath);
         $this->rmDir($this->srcDir);
         $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
+        $this->rmDir($this->rootDir);
     }
 
     protected function rmFile($file)
