@@ -31,7 +31,7 @@ use Contrib\Component\Service\Coveralls\V1\Config\Configurator;
 
 //TODO implement command
 // php app/console coveralls::v1::jobs --config=.coveralls.yml --dry-run
-// --config -c: default=.coveralls.yml
+// --config -c = .coveralls.yml
 
 // config
 $rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
@@ -42,7 +42,8 @@ $coverallsYmlPath = "$rootDir/.coveralls.yml";
 // load .coveralls.yml
 $configurator = new Configurator();
 $config       = $configurator->load($coverallsYmlPath, $rootDir);
-var_dump($config);
+
+$config->setDryRun(false);
 
 // run
 $client = new HttpClient(new CurlAdapter());
