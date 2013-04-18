@@ -111,3 +111,22 @@ script:
 after_script:
     - php vendor/bin/coveralls.php
 ```
+
+## Planned features
+
+- Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
+- Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
+
+## Versions
+
+### 0.2.0
+
+- Support .coveralls.yml
+
+### 0.1.0
+
+- First release
+- Support Travis CI (tested)
+- Implement CircleCI, Jenkins, local environment (but not tested on these CI environments)
+- Collect coverage information from clover.xml
+- Collect git repository information
