@@ -1,6 +1,6 @@
 {
     "name": "satooshi/php-coveralls",
-    "description": "PHP Coveralls",
+    "description": "PHP client library for Coveralls API",
     "keywords": ["coverage", "github", "test", "ci"],
     "homepage": "https://github.com/satooshi/php-coveralls",
     "type": "library",
