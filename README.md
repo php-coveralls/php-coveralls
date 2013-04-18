@@ -84,7 +84,7 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 
 ## Travis CI
 
-Add `php vendor/bin/coveralls.php` to your `.travis.yml` at `after_script`.
+Add `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
 
 *Please note that `--dev` must be set to `composer install` option.*
 
@@ -109,7 +109,7 @@ script:
     - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
-    - php vendor/bin/coveralls.php
+    - php vendor/bin/coveralls
 ```
 
 ## Planned features
