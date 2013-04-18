@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 $files = array(
@@ -25,47 +26,28 @@ if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
 
 use Contrib\Component\Http\HttpClient;
 use Contrib\Component\Http\Adapter\CurlAdapter;
-use Contrib\Component\System\Git\GitCommand;
-use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 use Contrib\Component\Service\Coveralls\V1\Api\Jobs;
-use Contrib\Component\Service\Coveralls\V1\Collector\GitInfoCollector;
+use Contrib\Component\Service\Coveralls\V1\Config\Configurator;
 
-//TODO .coveralls.yml
-//TODO command
-//TODO Configurator
-// configure
-$xmlFilename   = 'clover.xml';
-$loaderPath    = realpath(PHP_COVERALLS_COMPOSER_INSTALL);
-$rootDir       = realpath(dirname($loaderPath) . '/..');
-$logsDir       = realpath("$rootDir/build/logs");
+//TODO implement command
+// php app/console coveralls::v1::jobs --config=.coveralls.yml --dry-run
+// --config -c: default=.coveralls.yml
 
-if ($logsDir === false || !is_dir($logsDir)) {
-    throw new \RuntimeException('build/logs directory does not exist');
-}
+// config
+$rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
 
-$cloverXmlPath = realpath("$logsDir/$xmlFilename");
+// from CLI option
+$coverallsYmlPath = "$rootDir/.coveralls.yml";
 
-if ($cloverXmlPath === false || !file_exists($cloverXmlPath)) {
-    $message = sprintf('Not found %s', $xmlFilename);
-
-    throw new \RuntimeException($message);
-}
-
-$srcDir   = realpath("$rootDir/src");
-$jsonPath = "$logsDir/coveralls.json";
-
-// collect coverage
-$xml          = simplexml_load_file($cloverXmlPath);
-$xmlCollector = new CloverXmlCoverageCollector();
-$jsonFile     = $xmlCollector->collect($xml, $srcDir);
-
-// collect git
-$gitCollector = new GitInfoCollector(new GitCommand());
-
-$jsonFile->setGit($gitCollector->collect()->toArray());
+// load .coveralls.yml
+$configurator = new Configurator();
+$config       = $configurator->load($coverallsYmlPath, $rootDir);
+var_dump($config);
 
 // run
 $client = new HttpClient(new CurlAdapter());
-$api    = new Jobs($client);
+$api    = new Jobs($config, $client);
 
-$api->send($jsonFile, $jsonPath);
+$api->collectCloverXml()
+->collectGitInfo()
+->send();
