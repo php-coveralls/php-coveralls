@@ -114,7 +114,12 @@ after_script:
 
 ## Planned features
 
+### 0.3.0
+
 - Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
+
+### 0.4.0
+
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
 
 ## Versions
