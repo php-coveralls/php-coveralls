@@ -69,7 +69,8 @@ class Configurator
     /**
      * Create coveralls configuration.
      *
-     * @param array $options Processed configuration.
+     * @param array  $options Processed configuration.
+     * @param string $rootDir Path to project root directory.
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     protected function createConfiguration(array $options, $rootDir)
@@ -88,6 +89,14 @@ class Configurator
         ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir));
     }
 
+    /**
+     * Ensure src_dir is valid.
+     *
+     * @param string $option  src_dir option.
+     * @param string $rootDir Path to project root directory.
+     * @return string Valid src_dir.
+     * @throws InvalidConfigurationException
+     */
     protected function ensureSrcDir($option, $rootDir)
     {
         $file = new Path();
@@ -103,6 +112,14 @@ class Configurator
         return $realpath;
     }
 
+    /**
+     * Ensure coverage_clover is valid.
+     *
+     * @param string $option  coverage_clover option.
+     * @param string $rootDir Path to project root directory.
+     * @return string Valid coverage_clover.
+     * @throws InvalidConfigurationException
+     */
     protected function ensureCloverXmlPath($option, $rootDir)
     {
         $file = new Path();
@@ -118,6 +135,14 @@ class Configurator
         return $realpath;
     }
 
+    /**
+     * Ensure json_path is valid.
+     *
+     * @param string $option  json_path option.
+     * @param string $rootDir Path to project root directory.
+     * @return string Valid json_path.
+     * @throws InvalidConfigurationException
+     */
     protected function ensureJsonPath($option, $rootDir)
     {
         $file = new Path();
