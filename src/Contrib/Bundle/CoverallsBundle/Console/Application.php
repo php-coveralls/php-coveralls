@@ -22,15 +22,15 @@ class Application extends BaseApplication
     /**
      * Constructor.
      *
+     * @param string $rootDir Path to project root directory.
      * @param string $name    The name of the application
      * @param string $version The version of the application
-     * @param string $rootDir Path to project root directory.
      */
-    public function __construct($name, $version, $rootDir)
+    public function __construct($rootDir, $name = 'UNKNOWN', $version = 'UNKNOWN')
     {
-        parent::__construct($name, $version);
-
         $this->rootDir = $rootDir;
+
+        parent::__construct($name, $version);
     }
 
     // internal method
