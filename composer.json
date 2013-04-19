@@ -33,5 +33,5 @@
     "autoload": {
         "psr-0": { "Contrib\\Component": "src/", "Contrib\\Bundle": "src/" }
     },
-    "bin": ["composer/bin/coveralls.php"]
+    "bin": ["composer/bin/coveralls"]
 }
