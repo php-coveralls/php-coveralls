@@ -11,12 +11,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->rootDir       = __DIR__ . '/root';
-
-        if (!is_dir($this->rootDir)) {
-            mkdir($this->rootDir, 0777, true);
-        }
-
+        $this->rootDir       = realpath(__DIR__ . '/../../../../../../prj');
         $this->srcDir        = $this->rootDir . '/src';
         $this->buildDir      = $this->rootDir . '/build';
         $this->logsDir       = $this->rootDir . '/build/logs';
@@ -33,13 +28,11 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->rmDir($this->srcDir);
         $this->rmDir($this->logsDir);
         $this->rmDir($this->buildDir);
-        $this->rmDir($this->rootDir);
     }
 
     protected function rmFile($file)
     {
         if (is_file($file)) {
-            //chmod($file, 0777);
             chmod(dirname($file), 0777);
             unlink($file);
         }
