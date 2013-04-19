@@ -112,24 +112,50 @@ after_script:
     - php vendor/bin/coveralls
 ```
 
-## Planned features
+## .coveralls.yml
 
-### 0.4.0
+php-coveralls can use optional `.coveralls.yml` file to configure options. This configuration file is usually at the root level of your repository, but you can specify other path by `--config (or -c)` CLI option. Following options are the same as Ruby library ([see reference on coveralls.io](https://coveralls.io/docs/ruby)).
+
+- `repo_token`: Used to specify which project on Coveralls your project maps to. This is only needed for repos not using CI and should be kept secret
+- `service_name`: Allows you to specify where Coveralls should look to find additional information about your builds. This can be any string, but using `travis-ci` or `travis-pro` will allow Coveralls to fetch branch data, comment on pull requests, and more.
+
+Following options can be used for php-coveralls.
+
+- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`. 
+- `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
+- `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
+
+```yml
+# .coveralls.yml example configuration
+
+# same as Ruby lib
+repo_token: your_token # should be kept secret!
+service_name: travis-pro # travis-ci or travis-pro
+
+# for php-coveralls
+src_dir: src
+coverage_clover: build/logs/clover.xml
+json_path: build/logs/coveralls-upload.json
+```
+
+# Planned features
+
+## 0.4
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
 
-## Versions
+# Versions
 
-### 0.3.0
+## 0.3
 
 - Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
 - Support `--dry-run`, `---config (-c)` CLI option
 
-### 0.2.0
+## 0.2
 
 - Support .coveralls.yml
 
-### 0.1.0
+## 0.1
 
 - First release
 - Support Travis CI (tested)
