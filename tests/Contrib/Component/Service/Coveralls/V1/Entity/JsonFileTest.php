@@ -8,6 +8,7 @@ use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 
 /**
  * @covers Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+ * @covers Contrib\Component\Service\Coveralls\V1\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -15,14 +16,13 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->dir      = realpath(__DIR__ . '/../../');
-        $this->rootDir  = $this->dir . '/V1/Entity/files/';
-        $this->path     = __DIR__ . '/files/test.php';
+        $this->dir      = realpath(__DIR__ . '/../../../../../../');
+        $this->rootDir  = realpath($this->dir . '/prj/files');
         $this->filename = 'test.php';
+        $this->path     = $this->rootDir . DIRECTORY_SEPARATOR . $this->filename;
 
         $this->object = new JsonFile();
     }
-
 
 
     protected function createSourceFile()
@@ -36,7 +36,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
-    <file name="%s/V1/Entity/files/test.php">
+    <file name="%s/test.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
@@ -51,7 +51,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
       <line num="7" type="stmt" count="0"/>
     </file>
     <package name="Hoge">
-      <file name="%s/V1/Entity/files/test2.php">
+      <file name="%s/test2.php">
         <class name="TestFile" namespace="Hoge">
           <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
@@ -62,7 +62,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->dir, $this->dir);
+        return sprintf($xml, $this->rootDir, $this->rootDir);
     }
 
     protected function createCloverXml()

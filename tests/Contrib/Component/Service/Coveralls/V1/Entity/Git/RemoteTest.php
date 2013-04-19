@@ -3,6 +3,7 @@ namespace Contrib\Component\Service\Coveralls\V1\Entity\Git;
 
 /**
  * @covers Contrib\Component\Service\Coveralls\V1\Entity\Git\Remote
+ * @covers Contrib\Component\Service\Coveralls\V1\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
