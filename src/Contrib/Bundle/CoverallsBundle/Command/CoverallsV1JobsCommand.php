@@ -76,10 +76,11 @@ class CoverallsV1JobsCommand extends Command
         $coverallsYmlPath = $input->getOption('config');
         $isDryRun         = $input->getOption('dry-run');
 
+        $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
-        ->load($coverallsYmlPath, $rootDir)
+        ->load($ymlPath, $rootDir)
         ->setDryRun($isDryRun);
     }
 
