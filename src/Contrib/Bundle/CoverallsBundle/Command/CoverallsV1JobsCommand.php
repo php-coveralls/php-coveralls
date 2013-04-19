@@ -48,7 +48,7 @@ class CoverallsV1JobsCommand extends Command
             'dry-run',
             null,
             InputOption::VALUE_NONE,
-            'not to send json_file'
+            'Do not send json_file to Jobs API'
         );
     }
 
