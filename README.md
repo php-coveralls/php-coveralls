@@ -4,11 +4,11 @@ php-coveralls
 [![Build Status](https://travis-ci.org/satooshi/php-coveralls.png?branch=master)](https://travis-ci.org/satooshi/php-coveralls)
 [![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
 
-Retina badge is small…
+Retina-ready badge is small…
 <img src="https://travis-ci.org/satooshi/php-coveralls.png?branch=master" height="10">
 <img src="https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master" height="10">
 
-PHP library for [Coveralls](https://coveralls.io).
+PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
@@ -114,15 +114,16 @@ after_script:
 
 ## Planned features
 
-### 0.3.0
-
-- Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
-
 ### 0.4.0
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
 
 ## Versions
+
+### 0.3.0
+
+- Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
+- Support `--dry-run`, `---config (-c)` CLI option
 
 ### 0.2.0
 
