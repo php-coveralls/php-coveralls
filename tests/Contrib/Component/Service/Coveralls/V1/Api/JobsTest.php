@@ -411,7 +411,10 @@ XML;
      */
     public function sendTravisProJob()
     {
+        $serviceName = 'travis-pro';
+
         $object = $this->createJobsWith();
+        $object->getConfiguration()->setServiceName($serviceName);
 
         unset($_SERVER['COVERALLS_REPO_TOKEN']);
         unset($_SERVER['GIT_COMMIT']);
@@ -423,11 +426,12 @@ XML;
         $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = '1.1';
 
-        $jsonFile = $this->collectJsonFile()
-        ->setServiceName('travis-pro');
+        $jsonFile = $this->collectJsonFile();
 
         $object->setJsonFile($jsonFile);
         $object->send();
+
+        $this->assertEquals($serviceName, $jsonFile->getServiceName());
     }
 
     /**

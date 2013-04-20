@@ -82,6 +82,10 @@ class Jobs extends CoverallsApi
             $this->jsonFile->setRepoToken($this->config->getRepoToken());
         }
 
+        if ($this->config->hasServiceName()) {
+            $this->jsonFile->setServiceName($this->config->getServiceName());
+        }
+
         $this->jsonFile->fillJobs($_SERVER);
 
         file_put_contents($jsonPath, $this->jsonFile);
