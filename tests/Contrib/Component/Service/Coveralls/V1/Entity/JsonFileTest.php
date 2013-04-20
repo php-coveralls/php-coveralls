@@ -539,7 +539,7 @@ XML;
 
         $env = array();
         $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['COVERALLS_RUN_LOCALLY'] = true;
+        $env['COVERALLS_RUN_LOCALLY'] = '1';
 
         $object = $this->collectJsonFile();
 

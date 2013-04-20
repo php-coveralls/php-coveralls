@@ -388,6 +388,9 @@ XML;
      */
     public function sendTravisCiJob()
     {
+        $serviceName  = 'travis-ci';
+        $serviceJobId = '1.1';
+
         $object = $this->createJobsWith();
 
         unset($_SERVER['COVERALLS_REPO_TOKEN']);
@@ -397,13 +400,16 @@ XML;
         unset($_SERVER['JENKINS_URL']);
         unset($_SERVER['BUILD_NUMBER']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['TRAVIS'] = true;
-        $_SERVER['TRAVIS_JOB_ID'] = '1.1';
+        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS_JOB_ID'] = $serviceJobId;
 
         $jsonFile = $this->collectJsonFile();
 
         $object->setJsonFile($jsonFile);
         $object->send();
+
+        $this->assertEquals($serviceName, $jsonFile->getServiceName());
+        $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
     }
 
     /**
@@ -411,7 +417,8 @@ XML;
      */
     public function sendTravisProJob()
     {
-        $serviceName = 'travis-pro';
+        $serviceName  = 'travis-pro';
+        $serviceJobId = '1.1';
 
         $object = $this->createJobsWith();
         $object->getConfiguration()->setServiceName($serviceName);
@@ -423,8 +430,8 @@ XML;
         unset($_SERVER['JENKINS_URL']);
         unset($_SERVER['BUILD_NUMBER']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['TRAVIS'] = true;
-        $_SERVER['TRAVIS_JOB_ID'] = '1.1';
+        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS_JOB_ID'] = $serviceJobId;
 
         $jsonFile = $this->collectJsonFile();
 
@@ -432,6 +439,7 @@ XML;
         $object->send();
 
         $this->assertEquals($serviceName, $jsonFile->getServiceName());
+        $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
     }
 
     /**
@@ -439,6 +447,9 @@ XML;
      */
     public function sendCircleCiJob()
     {
+        $serviceName   = 'circleci';
+        $serviceNumber = '123';
+
         $object = $this->createJobsWith();
 
         unset($_SERVER['COVERALLS_REPO_TOKEN']);
@@ -448,13 +459,16 @@ XML;
         unset($_SERVER['JENKINS_URL']);
         unset($_SERVER['BUILD_NUMBER']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['CIRCLECI'] = true;
-        $_SERVER['CIRCLE_BUILD_NUM'] = '123';
+        $_SERVER['CIRCLECI']         = true;
+        $_SERVER['CIRCLE_BUILD_NUM'] = $serviceNumber;
 
         $jsonFile = $this->collectJsonFile();
 
         $object->setJsonFile($jsonFile);
         $object->send();
+
+        $this->assertEquals($serviceName, $jsonFile->getServiceName());
+        $this->assertEquals($serviceNumber, $jsonFile->getServiceNumber());
     }
 
     /**
@@ -462,6 +476,9 @@ XML;
      */
     public function sendJenkinsJob()
     {
+        $serviceName   = 'jenkins';
+        $serviceNumber = '123';
+
         $object = $this->createJobsWith();
 
         unset($_SERVER['COVERALLS_REPO_TOKEN']);
@@ -471,13 +488,16 @@ XML;
         unset($_SERVER['CIRCLECI']);
         unset($_SERVER['CIRCLE_BUILD_NUM']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['JENKINS_URL'] = 'http://localhost:8080';
-        $_SERVER['BUILD_NUMBER'] = '123';
+        $_SERVER['JENKINS_URL']  = 'http://localhost:8080';
+        $_SERVER['BUILD_NUMBER'] = $serviceNumber;
 
         $jsonFile = $this->collectJsonFile();
 
         $object->setJsonFile($jsonFile);
         $object->send();
+
+        $this->assertEquals($serviceName, $jsonFile->getServiceName());
+        $this->assertEquals($serviceNumber, $jsonFile->getServiceNumber());
     }
 
     /**
@@ -485,6 +505,9 @@ XML;
      */
     public function sendLocalJob()
     {
+        $serviceName      = 'php-coveralls';
+        $serviceEventType = 'manual';
+
         $object = $this->createJobsWith();
         $object->getConfiguration()->setRepoToken('token');
 
@@ -496,12 +519,16 @@ XML;
         unset($_SERVER['CIRCLE_BUILD_NUM']);
         unset($_SERVER['JENKINS_URL']);
         unset($_SERVER['BUILD_NUMBER']);
-        $_SERVER['COVERALLS_RUN_LOCALLY'] = true;
+        $_SERVER['COVERALLS_RUN_LOCALLY'] = '1';
 
         $jsonFile = $this->collectJsonFile();
 
         $object->setJsonFile($jsonFile);
         $object->send();
+
+        $this->assertNull($jsonFile->getServiceJobId());
+        $this->assertEquals($serviceName, $jsonFile->getServiceName());
+        $this->assertEquals($serviceEventType, $jsonFile->getServiceEventType());
     }
 
     /**
