@@ -112,6 +112,26 @@ after_script:
     - php vendor/bin/coveralls
 ```
 
+## From local environment
+
+If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` envrionment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
+
+```sh
+$ export COVERALLS_RUN_LOCALLY=1
+
+# either env var
+$ export COVERALLS_REPO_TOKEN=your_token
+
+# or .coveralls.yml configuration
+$ vi .coveralls.yml
+repo_token: your_token # should be kept secret!
+```
+
+php-coveralls set the following properties to `json_file` which is sent to Coveralls API (same behaviour as the Ruby library will do except for the service name).
+
+- service_name: php-coveralls
+- service_event_type: manual
+
 ## .coveralls.yml
 
 php-coveralls can use optional `.coveralls.yml` file to configure options. This configuration file is usually at the root level of your repository, but you can specify other path by `--config (or -c)` CLI option. Following options are the same as Ruby library ([see reference on coveralls.io](https://coveralls.io/docs/ruby)).
@@ -143,13 +163,14 @@ json_path: build/logs/coveralls-upload.json
 ## 0.4
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
+- Experimental implementation for supporting [CODESHIP](https://www.codeship.io/)
 
 # Versions
 
 ## 0.3
 
 - Better CLI implementation by using [symfony/Console](https://github.com/symfony/Console) component
-- Support `--dry-run`, `---config (-c)` CLI option
+- Support `--dry-run`, `--config (-c)` CLI option
 
 ## 0.2
 
