@@ -538,6 +538,7 @@ XML;
         $serviceEventType = 'manual';
 
         $env = array();
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
         $env['COVERALLS_RUN_LOCALLY'] = true;
 
         $object = $this->collectJsonFile();

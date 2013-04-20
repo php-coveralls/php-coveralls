@@ -39,6 +39,16 @@ abstract class CoverallsApi
     // accessor
 
     /**
+     * Return configuration.
+     *
+     * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->config;
+    }
+
+    /**
      * Set HTTP client.
      *
      * @param HttpClient $client

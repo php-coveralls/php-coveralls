@@ -237,6 +237,20 @@ XML;
         $this->assertSame($jsonFile, $object->getJsonFile());
     }
 
+    // getConfiguration()
+
+    /**
+     * @test
+     */
+    public function getConfiguration()
+    {
+        $config = $this->createConfiguration();
+
+        $object = new Jobs($config);
+
+        $this->assertSame($config, $object->getConfiguration());
+    }
+
     // getHttpClient()
 
     /**
@@ -468,6 +482,7 @@ XML;
     public function sendLocalJob()
     {
         $object = $this->createJobsWith();
+        $object->getConfiguration()->setRepoToken('token');
 
         unset($_SERVER['COVERALLS_REPO_TOKEN']);
         unset($_SERVER['GIT_COMMIT']);

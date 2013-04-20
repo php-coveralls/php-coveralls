@@ -333,7 +333,7 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceEventType()
     {
-        return isset($this->serviceName) && isset($this->serviceEventType) && !isset($this->repoToken);
+        return isset($this->serviceName) && isset($this->serviceEventType) && isset($this->repoToken);
     }
 
     /**
