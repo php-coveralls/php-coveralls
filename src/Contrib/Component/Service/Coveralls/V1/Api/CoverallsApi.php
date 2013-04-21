@@ -1,7 +1,7 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Api;
 
-use Contrib\Component\Http\HttpClient;
+use Guzzle\Http\Client;
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
 
 /**
@@ -19,18 +19,19 @@ abstract class CoverallsApi
     protected $config;
 
     /**
-     * HttpClient.
+     * HTTP client.
      *
-     * @var Contrib\Component\Http\HttpClient
+     * @var \Guzzle\Http\Client
      */
     protected $client;
 
     /**
      * Constructor.
      *
-     * @param HttpClient $client
+     * @param Configuration      $config Configuration.
+     * @param \Guzzle\Http\Client $client HTTP client.
      */
-    public function __construct(Configuration $config, HttpClient $client = null)
+    public function __construct(Configuration $config, Client $client = null)
     {
         $this->config = $config;
         $this->client = $client;
@@ -51,10 +52,10 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param HttpClient $client
+     * @param \Guzzle\Http\Client $client HTTP client.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\CoverallsApi
      */
-    public function setHttpClient(HttpClient $client)
+    public function setHttpClient(Client $client)
     {
         $this->client = $client;
 
@@ -64,7 +65,7 @@ abstract class CoverallsApi
     /**
      * Return HTTP client.
      *
-     * @return \Contrib\Component\Http\HttpClient
+     * @return \Guzzle\Http\Client
      */
     public function getHttpClient()
     {

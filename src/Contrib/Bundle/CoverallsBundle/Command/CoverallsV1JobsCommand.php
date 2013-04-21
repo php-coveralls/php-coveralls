@@ -1,11 +1,10 @@
 <?php
 namespace Contrib\Bundle\CoverallsBundle\Command;
 
-use Contrib\Component\Http\HttpClient;
-use Contrib\Component\Http\Adapter\CurlAdapter;
 use Contrib\Component\Service\Coveralls\V1\Api\Jobs;
 use Contrib\Component\Service\Coveralls\V1\Config\Configurator;
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
+use Guzzle\Http\Client;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -92,7 +91,7 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function runApi(Configuration $config)
     {
-        $client = new HttpClient(new CurlAdapter());
+        $client = new Client();
         $api    = new Jobs($config, $client);
 
         return $api
