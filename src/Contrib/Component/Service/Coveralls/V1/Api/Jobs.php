@@ -94,7 +94,24 @@ class Jobs extends CoverallsApi
             return;
         }
 
-        return $this->client->upload(static::URL, $jsonPath, static::FILENAME);
+        return $this->upload(static::URL, $jsonPath, static::FILENAME);
+    }
+
+    // internal method
+
+    /**
+     * Upload a file.
+     *
+     * @param string $url      URL to upload.
+     * @param string $path     File path.
+     * @param string $filename Filename.
+     */
+    protected function upload($url, $path, $filename)
+    {
+        return $this->client
+        ->post($url)
+        ->addPostFiles(array($filename => $path))
+        ->send();
     }
 
     // accessor
