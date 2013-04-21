@@ -496,8 +496,9 @@ XML;
         $serviceNumber = '123';
 
         $env = array();
-        $env['CIRCLECI']         = true;
-        $env['CIRCLE_BUILD_NUM'] = $serviceNumber;
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['CIRCLECI']             = 'true';
+        $env['CIRCLE_BUILD_NUM']     = $serviceNumber;
 
         $object = $this->collectJsonFile();
 
@@ -517,8 +518,9 @@ XML;
         $serviceNumber = '123';
 
         $env = array();
-        $env['JENKINS_URL']  = 'http://localhost:8080';
-        $env['BUILD_NUMBER'] = $serviceNumber;
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['JENKINS_URL']          = 'http://localhost:8080';
+        $env['BUILD_NUMBER']         = $serviceNumber;
 
         $object = $this->collectJsonFile();
 
