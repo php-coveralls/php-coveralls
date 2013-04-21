@@ -133,6 +133,7 @@ class JsonFile extends Coveralls
         ->fillTravisCi($env)
         ->fillCircleCi($env)
         ->fillJenkins($env)
+        //->fillCodeship($env)
         ->fillLocal($env)
         ->fillRepoToken($env)
         ->ensureJobs();
@@ -202,7 +203,7 @@ class JsonFile extends Coveralls
             return $this;
         }
 
-        $message = 'service_name and service_job_id are required for supported service, or repo_token is required for unsupported service';
+        $message = 'requirements are not satisfied.';
 
         throw new \RuntimeException($message);
     }
@@ -240,10 +241,7 @@ class JsonFile extends Coveralls
     {
         if (isset($env['CIRCLECI']) && $env['CIRCLECI'] && isset($env['CIRCLE_BUILD_NUM'])) {
             $this->serviceNumber = $env['CIRCLE_BUILD_NUM'];
-
-            if (!isset($this->serviceName)) {
-                $this->serviceName = 'circleci';
-            }
+            $this->serviceName   = 'circleci';
         }
 
         return $this;
@@ -261,10 +259,29 @@ class JsonFile extends Coveralls
     {
         if (isset($env['JENKINS_URL']) && isset($env['BUILD_NUMBER'])) {
             $this->serviceNumber = $env['BUILD_NUMBER'];
+            $this->serviceName   = 'jenkins';
+        }
 
-            if (!isset($this->serviceName)) {
-                $this->serviceName = 'jenkins';
-            }
+        return $this;
+    }
+
+    /**
+     * Fill Codeship environment variables.
+     *
+     * "CODESHIP" must be set.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+     * @codeCoverageIgnore
+     */
+    protected function fillCodeship(array $env)
+    {
+        if (isset($env['CODESHIP']) && $env['CODESHIP']) {
+            $this->serviceName = 'codeship';
+
+            // Coveralls needs some kind of build number as its service number
+            // but Codeship currently does not have correspondance env var.
+            //$this->serviceNumber = $env['BUILD_NUMBER'];
         }
 
         return $this;
@@ -317,13 +334,13 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Return whether the job requires "service_number" (for CircleCI, Jenkins).
+     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship).
      *
      * @return boolean
      */
     protected function requireServiceNumber()
     {
-        return isset($this->serviceName) && isset($this->serviceNumber) && !isset($this->repoToken);
+        return isset($this->serviceName) && isset($this->serviceNumber) && isset($this->repoToken);
     }
 
     /**
