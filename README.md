@@ -169,14 +169,17 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
-# Planned features
+# Planned
+
+- `environment` in `json_file` (not documented but implemented in ruby lib)
+- Refactor test cases
 
 # Versions
 
 ## 0.4
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
-- Experimental implementation for supporting [CODESHIP](https://www.codeship.io/)
+- Change: `repo_token` is required on CircleCI, Jenkins
 
 ## 0.3
 
