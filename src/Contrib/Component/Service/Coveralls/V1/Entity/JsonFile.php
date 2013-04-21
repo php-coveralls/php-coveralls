@@ -202,7 +202,7 @@ class JsonFile extends Coveralls
             return $this;
         }
 
-        $message = 'service_name and service_job_id are required for supported service, or repo_token is required for unsupported service';
+        $message = 'requirements are not satisfied.';
 
         throw new \RuntimeException($message);
     }
@@ -317,13 +317,12 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Return whether the job requires "service_number" (for CircleCI, Jenkins).
      *
      * @return boolean
      */
     protected function requireServiceNumber()
     {
-        return isset($this->serviceName) && isset($this->serviceNumber) && !isset($this->repoToken);
+        return isset($this->serviceName) && isset($this->serviceNumber) && isset($this->repoToken);
     }
 
     /**

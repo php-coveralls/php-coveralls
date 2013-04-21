@@ -454,8 +454,9 @@ XML;
         unset($_SERVER['JENKINS_URL']);
         unset($_SERVER['BUILD_NUMBER']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['CIRCLECI']         = true;
-        $_SERVER['CIRCLE_BUILD_NUM'] = $serviceNumber;
+        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
+        $_SERVER['CIRCLECI']             = 'true';
+        $_SERVER['CIRCLE_BUILD_NUM']     = $serviceNumber;
 
         $jsonFile = $this->collectJsonFile();
 
@@ -483,8 +484,9 @@ XML;
         unset($_SERVER['CIRCLECI']);
         unset($_SERVER['CIRCLE_BUILD_NUM']);
         unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['JENKINS_URL']  = 'http://localhost:8080';
-        $_SERVER['BUILD_NUMBER'] = $serviceNumber;
+        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
+        $_SERVER['JENKINS_URL']          = 'http://localhost:8080';
+        $_SERVER['BUILD_NUMBER']         = $serviceNumber;
 
         $jsonFile = $this->collectJsonFile();
 
