@@ -133,6 +133,7 @@ class JsonFile extends Coveralls
         ->fillTravisCi($env)
         ->fillCircleCi($env)
         ->fillJenkins($env)
+        //->fillCodeship($env)
         ->fillLocal($env)
         ->fillRepoToken($env)
         ->ensureJobs();
@@ -271,6 +272,28 @@ class JsonFile extends Coveralls
     }
 
     /**
+     * Fill Codeship environment variables.
+     *
+     * "CODESHIP" must be set.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+     * @codeCoverageIgnore
+     */
+    protected function fillCodeship(array $env)
+    {
+        if (isset($env['CODESHIP']) && $env['CODESHIP']) {
+            $this->serviceName = 'codeship';
+
+            // Coveralls needs some kind of build number as its service number
+            // but Codeship currently does not have correspondance env var.
+            //$this->serviceNumber = $env['BUILD_NUMBER'];
+        }
+
+        return $this;
+    }
+
+    /**
      * Fill local environment variables.
      *
      * "COVERALLS_RUN_LOCALLY" must be set.
@@ -317,6 +340,7 @@ class JsonFile extends Coveralls
     }
 
     /**
+     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship).
      *
      * @return boolean
      */
