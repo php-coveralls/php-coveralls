@@ -241,10 +241,7 @@ class JsonFile extends Coveralls
     {
         if (isset($env['CIRCLECI']) && $env['CIRCLECI'] && isset($env['CIRCLE_BUILD_NUM'])) {
             $this->serviceNumber = $env['CIRCLE_BUILD_NUM'];
-
-            if (!isset($this->serviceName)) {
-                $this->serviceName = 'circleci';
-            }
+            $this->serviceName   = 'circleci';
         }
 
         return $this;
@@ -262,10 +259,7 @@ class JsonFile extends Coveralls
     {
         if (isset($env['JENKINS_URL']) && isset($env['BUILD_NUMBER'])) {
             $this->serviceNumber = $env['BUILD_NUMBER'];
-
-            if (!isset($this->serviceName)) {
-                $this->serviceName = 'jenkins';
-            }
+            $this->serviceName   = 'jenkins';
         }
 
         return $this;
