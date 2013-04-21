@@ -2,12 +2,7 @@
 namespace Contrib\Component\Service\Coveralls\V1\Api;
 
 use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
-
-use Contrib\Component\Http\Adapter\CurlAdapter;
-
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
-
-use Contrib\Component\Http\HttpClient;
 use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
 
 /**
@@ -27,10 +22,6 @@ class JobsTest extends \PHPUnit_Framework_TestCase
         $this->jsonPath      = __DIR__ . '/coveralls.json';
         $this->filename      = 'json_file';
         $this->cloverXmlPath = $this->rootDir . 'clover.xml';
-
-        $this->post = array(
-            $this->filename => class_exists('CurlFile') ? new \CurlFile($this->jsonPath) : '@' . $this->jsonPath,
-        );
     }
 
     protected function tearDown()
@@ -54,8 +45,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
         ->setJsonPath($this->jsonPath)
         ->setDryRun(false);
 
-        $this->adapter = $this->createAdapterMockWith($this->url, $this->post);
-        $this->client = new HttpClient($this->adapter);
+        $this->client = $this->createAdapterMockWith($this->url, $this->filename, $this->jsonPath);
 
         return new Jobs($this->config, $this->client);
     }
@@ -67,8 +57,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
         ->setJsonPath($this->jsonPath)
         ->setDryRun(false);
 
-        $this->adapter = $this->createAdapterMockNeverCalled();
-        $this->client = new HttpClient($this->adapter);
+        $this->client = $this->createAdapterMockNeverCalled();
 
         return new Jobs($this->config, $this->client);
     }
@@ -80,8 +69,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
         ->setJsonPath($this->jsonPath)
         ->setDryRun(true);
 
-        $this->adapter = $this->createAdapterMockNeverCalled();
-        $this->client = new HttpClient($this->adapter);
+        $this->client = $this->createAdapterMockNeverCalled();
 
         return new Jobs($this->config, $this->client);
     }
@@ -89,34 +77,41 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $adapter = $this->getMock('Contrib\Component\Http\Adapter\CurlAdapter', array('send'));
+        $client = $this->getMock('Guzzle\Http\Client', array('send'));
 
-        $adapter
+        $client
         ->expects($this->never())
         ->method('send');
 
-        return $adapter;
+        return $client;
     }
 
-    protected function createAdapterMockWith($url, $post)
+    protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $adapter = $this->getMock('Contrib\Component\Http\Adapter\CurlAdapter', array('send'));
+        $client = $this->getMock('Guzzle\Http\Client', array('post', 'addPostFiles'));
+        $request = $this->getMockBuilder('Guzzle\Http\Message\EntityEnclosingRequest')
+        ->disableOriginalConstructor()
+        ->getMock();
 
-        // expected parameters
-        $params = array(
-            CURLOPT_URL            => $url,
-            CURLOPT_POST           => true,
-            CURLOPT_POSTFIELDS     => $post,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-        );
+        $client
+        ->expects($this->once())
+        ->method('post')
+        ->with($this->equalTo($url))
+        ->will($this->returnSelf());
 
-        $adapter
+        $client
+        ->expects($this->once())
+        ->method('addPostFiles')
+        ->with($this->equalTo(array($filename => $jsonPath)))
+        ->will($this->returnValue($request));
+
+        $request
         ->expects($this->once())
         ->method('send')
-        ->with($this->equalTo($params));
+        ->with()
+        ;
 
-        return $adapter;
+        return $client;
     }
 
     protected function createConfiguration()
@@ -271,7 +266,7 @@ XML;
     public function shouldHaveHttpClientOnConstructionWithHttpClient()
     {
         $config = $this->createConfiguration();
-        $client = new HttpClient(new CurlAdapter());
+        $client = $this->createAdapterMockNeverCalled();
 
         $object = new Jobs($config, $client);
 
@@ -286,7 +281,7 @@ XML;
     public function setHttpClient()
     {
         $config = $this->createConfiguration();
-        $client = new HttpClient(new CurlAdapter());
+        $client = $this->createAdapterMockNeverCalled();
 
         $object = new Jobs($config);
         $object->setHttpClient($client);
