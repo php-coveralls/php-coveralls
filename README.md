@@ -171,12 +171,12 @@ json_path: build/logs/coveralls-upload.json
 
 # Planned features
 
+# Versions
+
 ## 0.4
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
 - Experimental implementation for supporting [CODESHIP](https://www.codeship.io/)
-
-# Versions
 
 ## 0.3
 
