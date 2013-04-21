@@ -82,6 +82,17 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 </phpunit>
 ```
 
+### clover.xml
+
+php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if its `type` attribute equals to `stmt`. When `type` attribute equals to `method`, php-coveralls excludes its `count` attribute from coverage collection because abstract method in an abstract class is never counted though subclasses implement that method which is executed in test cases.
+
+```xml
+<!-- this one is counted as code coverage -->
+<line num="37" type="stmt" count="1"/>
+<!-- this one is not counted -->
+<line num="43" type="method" name="getCommandName" crap="1" count="1"/>
+```
+
 ## Travis CI
 
 Add `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
@@ -158,14 +169,17 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
-# Planned features
+# Planned
+
+- `environment` in `json_file` (not documented but implemented in ruby lib)
+- Refactor test cases
+
+# Versions
 
 ## 0.4
 
 - Replace REST client implementation by [guzzle/guzzle](https://github.com/guzzle/guzzle)
-- Experimental implementation for supporting [CODESHIP](https://www.codeship.io/)
-
-# Versions
+- Change: `repo_token` is required on CircleCI, Jenkins
 
 ## 0.3
 
