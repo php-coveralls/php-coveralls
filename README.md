@@ -82,6 +82,17 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 </phpunit>
 ```
 
+### clover.xml
+
+php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if its `type` attribute equals to `stmt`. When `type` attribute equals to `method`, php-coveralls excludes its `count` attribute from coverage collection because abstract method in an abstract class is never counted though subclasses implement that method which is executed in test cases.
+
+```xml
+<!-- this one is counted as code coverage -->
+<line num="37" type="stmt" count="1"/>
+<!-- this one is not counted -->
+<line num="43" type="method" name="getCommandName" crap="1" count="1"/>
+```
+
 ## Travis CI
 
 Add `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
