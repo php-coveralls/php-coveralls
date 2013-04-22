@@ -9,7 +9,7 @@
 
     <target name="analysis" depends="prepare,lint,phpcs,phpmd,phpcpd"/>
 
-    <target name="build-doc" depends="prepare,lint,apigen"/>
+    <target name="doc" depends="prepare,lint,apigen"/>
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/api"/>
@@ -29,6 +29,7 @@
 
     <target name="lint" description="Perform syntax check of sourcecode files">
         <apply executable="${phphome}/bin/php" failonerror="true">
+            <arg value="-n"/>
             <arg value="-l"/>
 
             <fileset dir="${basedir}/src">
@@ -44,7 +45,9 @@
     </target>
 
     <target name="apigen" description="Generate API documentation using apigen">
-        <exec executable="${basedir}/vendor/bin/apigen.php">
+        <exec executable="${phphome}/bin/php">
+            <arg value="-n"/>
+            <arg path="${basedir}/vendor/bin/apigen.php"/>
             <arg value="-c"/>
             <arg path="${basedir}/build/config/apigen.neon"/>
             <arg value="-d"/>
@@ -106,8 +109,6 @@
             <arg path="${basedir}/src"/>
             <arg value="xml"/>
             <arg value="${basedir}/build/config/phpmd.xml"/>
-            <arg value="--exclude"/>
-            <arg value="${basedir}/src/Contrib/Component/Annotation,${basedir}/src/Contrib/Component/Command"/>
             <arg value="--reportfile"/>
             <arg value="${basedir}/build/logs/pmd.xml"/>
         </exec>
@@ -132,7 +133,10 @@
     </target>
 
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="false">
+        <exec executable="${phphome}/bin/php" failonerror="false">
+            <arg value="-d"/>
+            <arg value="zend_extension=${phphome}/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so"/>
+            <arg path="${basedir}/vendor/bin/phpunit"/>
             <arg value="--configuration"/>
             <arg path="${basedir}/phpunit.xml.dist"/>
         </exec>
@@ -150,18 +154,21 @@
 
     <target name="junit-cli" description="Show elapsed time of PHPUnit tests">
         <exec executable="${phphome}/bin/php">
+            <arg value="-n"/>
             <arg path="${basedir}/travis/junit.php"/>
         </exec>
     </target>
 
     <target name="pmd-cli" description="Show violations by PHPMD">
         <exec executable="${phphome}/bin/php">
+            <arg value="-n"/>
             <arg path="${basedir}/travis/pmd.php"/>
         </exec>
     </target>
 
-    <target name="checkstyle-cli" description="Show violations by PHP_CodeSniffer">
+    <target name="checkstyle-cli" description="Show violations by PHP_CodeSniffer and apigen">
         <exec executable="${phphome}/bin/php">
+            <arg value="-n"/>
             <arg path="${basedir}/travis/checkstyle.php"/>
         </exec>
     </target>
