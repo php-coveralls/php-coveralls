@@ -29,7 +29,8 @@
         "pdepend/pdepend": "dev-master",
         "phpmd/phpmd": "dev-master",
         "sebastian/phpcpd": "1.4.*@stable",
-        "squizlabs/php_codesniffer": "1.4.*"
+        "squizlabs/php_codesniffer": "1.4.*",
+        "apigen/apigen": "2.8.0"
     },
     "autoload": {
         "psr-0": { "Contrib\\Component": "src/", "Contrib\\Bundle": "src/" }

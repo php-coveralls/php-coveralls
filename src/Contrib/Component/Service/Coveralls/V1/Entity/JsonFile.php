@@ -64,7 +64,7 @@ class JsonFile extends Coveralls
      *
      * "2013-02-18 00:52:48 -0800"
      *
-     * @var string.
+     * @var string
      */
     protected $runAt;
 
@@ -381,7 +381,7 @@ class JsonFile extends Coveralls
     /**
      * Return service name.
      *
-     * @return string.
+     * @return string
      */
     public function getServiceName()
     {
@@ -445,7 +445,7 @@ class JsonFile extends Coveralls
     /**
      * Return service job id.
      *
-     * @return string.
+     * @return string
      */
     public function getServiceJobId()
     {
