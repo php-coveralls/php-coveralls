@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="PHP Coveralls" default="build" basedir=".">
-    <target name="build-ci" depends="prepare,lint,phpdox,phploc,phpcb,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend"/>
+    <target name="build-ci" depends="prepare,lint,apigen,phploc,phpcb,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend"/>
 
-    <target name="build" depends="prepare,lint,phpdox,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
+    <target name="build" depends="prepare,lint,apigen,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
 
     <target name="test" depends="prepare,lint,phpunit,pdepend"/>
 
     <target name="analysis" depends="prepare,lint,phpcs,phpmd,phpcpd"/>
 
-    <target name="build-doc" depends="prepare,lint,phpdox"/>
+    <target name="build-doc" depends="prepare,lint,apigen"/>
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/api"/>
-        <delete dir="${basedir}/build/code-browser"/>
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
         <delete dir="${basedir}/build/pdepend"/>
-        <delete dir="${basedir}/build/phpdox"/>
     </target>
 
     <target name="prepare" depends="clean" description="Prepare for build">
         <mkdir dir="${basedir}/build/api"/>
-        <mkdir dir="${basedir}/build/code-browser"/>
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <mkdir dir="${basedir}/build/pdepend"/>
-        <mkdir dir="${basedir}/build/phpdox"/>
     </target>
 
     <property name="phphome" value="/usr/local/php/versions/5.4.11"/>
@@ -47,10 +43,24 @@
         </apply>
     </target>
 
-    <target name="phpdox" description="Generate API documentation using phpDox">
-        <exec executable="${phphome}/bin/phpdox">
-            <arg value="-f"/>
-            <arg path="${basedir}/build/config/phpdox.xml"/>
+    <target name="apigen" description="Generate API documentation using apigen">
+        <exec executable="${basedir}/vendor/bin/apigen.php">
+            <arg value="-c"/>
+            <arg path="${basedir}/build/config/apigen.neon"/>
+            <arg value="-d"/>
+            <arg path="${basedir}/build/api"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/src"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/symfony"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/guzzle/guzzle/src"/>
+            <arg value="--report"/>
+            <arg path="${basedir}/build/logs/checkstyle-apigen.xml"/>
+            <arg value="--exclude"/>
+            <arg value="*Test.php"/>
+            <arg value="--exclude"/>
+            <arg value="*/Tests/*"/>
         </exec>
     </target>
 
