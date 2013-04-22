@@ -123,6 +123,38 @@ after_script:
     - php vendor/bin/coveralls
 ```
 
+## CircleCI
+
+Add `pecl install xdebug` to your `circle.yml` at `dependencies` section since currently Xdebug extension is not pre-installed. `composer` and `phpunit` are pre-installed but you can install them manually in this dependencies section. The following sample uses default ones.
+
+```yml
+machine:
+  php:
+    version: 5.4.10
+
+## Customize dependencies
+dependencies:
+  override:
+    - mkdir -p build/logs
+    - composer install --dev --no-interaction
+    - pecl install xdebug
+    - cat ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini | sed -e "s/;//" > xdebug.ini
+    - mv xdebug.ini ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini
+
+## Customize test commands
+test:
+  override:
+    - phpunit -c phpunit.xml.dist
+```
+
+Add `php vendor/bin/coveralls` Test commands textarea on Web UI (Edit settings > Tests > Test commands textarea).
+
+```sh
+COVERALLS_REPO_TOKEN=your_token php vendor/bin/coveralls
+```
+
+*Please note that `COVERALLS_REPO_TOKEN` should be set in the same line before coveralls command execution. You can not export this variable before coveralls command execution in other command since each command runs in its own shell and does not share environment variables ([see reference on CircleCI](https://circleci.com/docs/environment-variables)).*
+
 ## From local environment
 
 If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` envrionment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
