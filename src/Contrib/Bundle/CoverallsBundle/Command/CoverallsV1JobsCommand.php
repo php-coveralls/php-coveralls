@@ -61,6 +61,8 @@ class CoverallsV1JobsCommand extends Command
         $config = $this->loadConfiguration($input, $this->rootDir);
 
         $this->runApi($config);
+
+        return 0;
     }
 
     /**

@@ -105,6 +105,7 @@ class Jobs extends CoverallsApi
      * @param string $url      URL to upload.
      * @param string $path     File path.
      * @param string $filename Filename.
+     * @return array Returns the response(s)
      */
     protected function upload($url, $path, $filename)
     {
