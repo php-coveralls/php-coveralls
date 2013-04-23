@@ -205,6 +205,11 @@ json_path: build/logs/coveralls-upload.json
 
 - `environment` in `json_file` (not documented but implemented in ruby lib)
 - Refactor test cases
+- Support commands
+    - `push` to run locally
+    - `open` to open "https://coveralls.io/repos/${token}"
+    - `service` to open "https://coveralls.io/repos/${token}/service"
+    - `last` to open "https://coveralls.io/repos/${token}/last_build"
 
 # Versions
 
