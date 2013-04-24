@@ -1,1 +1,295 @@
-My GitHub Page
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="php-coveralls : PHP client library for Coveralls API." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>php-coveralls</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/satooshi/php-coveralls">View on GitHub</a>
+
+          <h1 id="project_title">php-coveralls</h1>
+          <h2 id="project_tagline">PHP client library for Coveralls API.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/satooshi/php-coveralls/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/satooshi/php-coveralls/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>php-coveralls</h1>
+
+<p>PHP client library for <a href="https://coveralls.io">Coveralls</a>.</p>
+
+<h1>Prerequisites</h1>
+
+<ul>
+<li>PHP 5.3 or later</li>
+<li>On <a href="https://github.com/">GitHub</a>
+</li>
+<li>Building on <a href="http://travis-ci.org/">Travis CI</a>, <a href="https://circleci.com/">CircleCI</a> or <a href="http://jenkins-ci.org/">Jenkins</a>
+</li>
+<li>Testing by <a href="https://github.com/sebastianbergmann/phpunit/">PHPUnit</a> or other testing framework that can generate clover style coverage report</li>
+</ul><h1>Installation</h1>
+
+<p>To install php-coveralls with Composer, just add the following to your composer.json file:</p>
+
+<div class="highlight"><pre><span class="c1">// composer.json</span>
+<span class="p">{</span>
+    <span class="s2">"require-dev"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"satooshi/php-coveralls"</span><span class="o">:</span> <span class="s2">"dev-master"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Then, you can install the new dependencies by running Composer’s update command from the directory where your <code>composer.json</code> file is located:</p>
+
+<div class="highlight"><pre><span class="c"># install</span>
+<span class="nv">$ </span>php composer.phar install --dev
+<span class="c"># update</span>
+<span class="nv">$ </span>php composer.phar update satooshi/php-coveralls --dev
+
+<span class="c"># or you can simply execute composer command if you set it to</span>
+<span class="c"># your PATH environment variable</span>
+<span class="nv">$ </span>composer install --dev
+<span class="nv">$ </span>composer update satooshi/php-coveralls --dev
+</pre></div>
+
+<p>You can see this library on <a href="https://packagist.org/packages/satooshi/php-coveralls">Packagist</a>.</p>
+
+<p>Composer installs autoloader at <code>./vendor/autoloader.php</code>. If you use php-coveralls in your php script, add:</p>
+
+<div class="highlight"><pre><span class="k">require_once</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+</pre></div>
+
+<p>If you use Symfony2, autoloader has to be detected automatically.</p>
+
+<p>Or you can use git clone command:</p>
+
+<div class="highlight"><pre><span class="c"># HTTP</span>
+<span class="nv">$ </span>git clone https://github.com/satooshi/php-coveralls.git
+<span class="c"># SSH</span>
+<span class="nv">$ </span>git clone git@github.com:satooshi/php-coveralls.git
+</pre></div>
+
+<h1>Configuration</h1>
+
+<p>Currently support clover style coverage report. php-coveralls collect coverage information from <code>clover.xml</code>.</p>
+
+<h2>PHPUnit</h2>
+
+<p>Make sure that <code>phpunit.xml.dist</code> is configured to generate "coverage-clover" type log named <code>clover.xml</code> like the following configuration:</p>
+
+<div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;phpunit</span> <span class="err">...</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;logging&gt;</span>
+        ...
+        <span class="nt">&lt;log</span> <span class="na">type=</span><span class="s">"coverage-clover"</span> <span class="na">target=</span><span class="s">"build/logs/clover.xml"</span><span class="nt">/&gt;</span>
+        ...
+    <span class="nt">&lt;/logging&gt;</span>
+<span class="nt">&lt;/phpunit&gt;</span>
+</pre></div>
+
+<h3>clover.xml</h3>
+
+<p>php-coveralls collects <code>count</code> attribute in a <code>line</code> tag from <code>clover.xml</code> if its <code>type</code> attribute equals to <code>stmt</code>. When <code>type</code> attribute equals to <code>method</code>, php-coveralls excludes its <code>count</code> attribute from coverage collection because abstract method in an abstract class is never counted though subclasses implement that method which is executed in test cases.</p>
+
+<div class="highlight"><pre><span class="c">&lt;!-- this one is counted as code coverage --&gt;</span>
+<span class="nt">&lt;line</span> <span class="na">num=</span><span class="s">"37"</span> <span class="na">type=</span><span class="s">"stmt"</span> <span class="na">count=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!-- this one is not counted --&gt;</span>
+<span class="nt">&lt;line</span> <span class="na">num=</span><span class="s">"43"</span> <span class="na">type=</span><span class="s">"method"</span> <span class="na">name=</span><span class="s">"getCommandName"</span> <span class="na">crap=</span><span class="s">"1"</span> <span class="na">count=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+</pre></div>
+
+<h2>Travis CI</h2>
+
+<p>Add <code>php vendor/bin/coveralls</code> to your <code>.travis.yml</code> at <code>after_script</code>.</p>
+
+<p><em>Please note that <code>--dev</code> must be set to <code>composer install</code> option.</em></p>
+
+<div class="highlight"><pre><span class="c1"># .travis.yml</span>
+<span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">php</span>
+<span class="l-Scalar-Plain">php</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">5.5</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">5.4</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">5.3</span>
+
+<span class="l-Scalar-Plain">matrix</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">allow_failures</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">5.5</span>
+
+<span class="l-Scalar-Plain">before_script</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">curl -s http://getcomposer.org/installer | php</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php composer.phar install --dev --no-interaction</span>
+
+<span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mkdir -p build/logs</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php vendor/bin/phpunit -c phpunit.xml.dist</span>
+
+<span class="l-Scalar-Plain">after_script</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php vendor/bin/coveralls</span>
+</pre></div>
+
+<h2>CircleCI</h2>
+
+<p>Add <code>pecl install xdebug</code> to your <code>circle.yml</code> at <code>dependencies</code> section since currently Xdebug extension is not pre-installed. <code>composer</code> and <code>phpunit</code> are pre-installed but you can install them manually in this dependencies section. The following sample uses default ones.</p>
+
+<div class="highlight"><pre><span class="l-Scalar-Plain">machine</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">php</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">5.4.10</span>
+
+<span class="c1">## Customize dependencies</span>
+<span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">override</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mkdir -p build/logs</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">composer install --dev --no-interaction</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">pecl install xdebug</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cat ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini | sed -e "s/;//" &gt; xdebug.ini</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mv xdebug.ini ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini</span>
+
+<span class="c1">## Customize test commands</span>
+<span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">override</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">phpunit -c phpunit.xml.dist</span>
+</pre></div>
+
+<p>Add <code>php vendor/bin/coveralls</code> Test commands textarea on Web UI (Edit settings &gt; Tests &gt; Test commands textarea).</p>
+
+<div class="highlight"><pre><span class="nv">COVERALLS_REPO_TOKEN</span><span class="o">=</span>your_token php vendor/bin/coveralls
+</pre></div>
+
+<p><em>Please note that <code>COVERALLS_REPO_TOKEN</code> should be set in the same line before coveralls command execution. You can not export this variable before coveralls command execution in other command since each command runs in its own shell and does not share environment variables (<a href="https://circleci.com/docs/environment-variables">see reference on CircleCI</a>).</em></p>
+
+<h2>From local environment</h2>
+
+<p>If you would like to call Coveralls API from your local environment, you can set <code>COVERALLS_RUN_LOCALLY</code> envrionment variable. This configuration requires <code>repo_token</code> to specify which project on Coveralls your project maps to. This can be done by configuring <code>.coveralls.yml</code> or <code>COVERALLS_REPO_TOKEN</code> environment variable.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">COVERALLS_RUN_LOCALLY</span><span class="o">=</span>1
+
+<span class="c"># either env var</span>
+<span class="nv">$ </span><span class="nb">export </span><span class="nv">COVERALLS_REPO_TOKEN</span><span class="o">=</span>your_token
+
+<span class="c"># or .coveralls.yml configuration</span>
+<span class="nv">$ </span>vi .coveralls.yml
+repo_token: your_token <span class="c"># should be kept secret!</span>
+</pre></div>
+
+<p>php-coveralls set the following properties to <code>json_file</code> which is sent to Coveralls API (same behaviour as the Ruby library will do except for the service name).</p>
+
+<ul>
+<li>service_name: php-coveralls</li>
+<li>service_event_type: manual</li>
+</ul><h2>.coveralls.yml</h2>
+
+<p>php-coveralls can use optional <code>.coveralls.yml</code> file to configure options. This configuration file is usually at the root level of your repository, but you can specify other path by <code>--config (or -c)</code> CLI option. Following options are the same as Ruby library (<a href="https://coveralls.io/docs/ruby">see reference on coveralls.io</a>).</p>
+
+<ul>
+<li>
+<code>repo_token</code>: Used to specify which project on Coveralls your project maps to. This is only needed for repos not using CI and should be kept secret</li>
+<li>
+<code>service_name</code>: Allows you to specify where Coveralls should look to find additional information about your builds. This can be any string, but using <code>travis-ci</code> or <code>travis-pro</code> will allow Coveralls to fetch branch data, comment on pull requests, and more.</li>
+</ul><p>Following options can be used for php-coveralls.</p>
+
+<ul>
+<li>
+<code>src_dir</code>: Used to specify where the root level of your source files directory is. Default is <code>src</code>. </li>
+<li>
+<code>coverage_clover</code>: Used to specify the path to <code>clover.xml</code>. Default is <code>build/logs/clover.xml</code>
+</li>
+<li>
+<code>json_path</code>: Used to specify where to output <code>json_file</code> that will be uploaded to Coveralls API. Default is <code>build/logs/coveralls-upload.json</code>.</li>
+</ul><div class="highlight"><pre><span class="c1"># .coveralls.yml example configuration</span>
+
+<span class="c1"># same as Ruby lib</span>
+<span class="l-Scalar-Plain">repo_token</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">your_token</span> <span class="c1"># should be kept secret!</span>
+<span class="l-Scalar-Plain">service_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">travis-pro</span> <span class="c1"># travis-ci or travis-pro</span>
+
+<span class="c1"># for php-coveralls</span>
+<span class="l-Scalar-Plain">src_dir</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">src</span>
+<span class="l-Scalar-Plain">coverage_clover</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">build/logs/clover.xml</span>
+<span class="l-Scalar-Plain">json_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">build/logs/coveralls-upload.json</span>
+</pre></div>
+
+<h1>Planned</h1>
+
+<ul>
+<li>
+<code>environment</code> in <code>json_file</code> (not documented but implemented in ruby lib)</li>
+<li>Refactor test cases</li>
+<li>Support commands
+
+<ul>
+<li>
+<code>push</code> to run locally</li>
+<li>
+<code>open</code> to open "<a href="https://coveralls.io/repos/%24%7Btoken%7D">https://coveralls.io/repos/${token}</a>"</li>
+<li>
+<code>service</code> to open "<a href="https://coveralls.io/repos/%24%7Btoken%7D/service">https://coveralls.io/repos/${token}/service</a>"</li>
+<li>
+<code>last</code> to open "<a href="https://coveralls.io/repos/%24%7Btoken%7D/last_build">https://coveralls.io/repos/${token}/last_build</a>"</li>
+</ul>
+</li>
+</ul><h1>Versions</h1>
+
+<h2>0.4</h2>
+
+<ul>
+<li>Replace REST client implementation by <a href="https://github.com/guzzle/guzzle">guzzle/guzzle</a>
+</li>
+<li>Change: <code>repo_token</code> is required on CircleCI, Jenkins</li>
+</ul><h2>0.3</h2>
+
+<ul>
+<li>Better CLI implementation by using <a href="https://github.com/symfony/Console">symfony/Console</a> component</li>
+<li>Support <code>--dry-run</code>, <code>--config (-c)</code> CLI option</li>
+</ul><h2>0.2</h2>
+
+<ul>
+<li>Support .coveralls.yml</li>
+</ul><h2>0.1</h2>
+
+<ul>
+<li>First release</li>
+<li>Support Travis CI (tested)</li>
+<li>Implement CircleCI, Jenkins, local environment (but not tested on these CI environments)</li>
+<li>Collect coverage information from clover.xml</li>
+<li>Collect git repository information</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">php-coveralls maintained by <a href="https://github.com/satooshi">satooshi</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-40398434-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
