@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Stream\PhpStreamRequestFactory | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Stream.PhpStreamRequestFactory.html">PhpStreamRequestFactory</a></li>
+				<li><a href="class-Guzzle.Stream.Stream.html">Stream</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Stream.StreamInterface.html">StreamInterface</a></li>
+				<li><a href="class-Guzzle.Stream.StreamRequestFactoryInterface.html">StreamRequestFactoryInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Stream.html" title="Summary of Guzzle\Stream"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class PhpStreamRequestFactory</h1>
+
+
+	<div class="description">
+	
+<p>Factory used to create fopen streams using PHP's http and https stream
+wrappers</p>
+
+<p>Note: PHP's http stream wrapper only supports streaming downloads. It does
+not support streaming uploads.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Stream\PhpStreamRequestFactory</span></b>			
+			 implements 
+				<a href="class-Guzzle.Stream.StreamRequestFactoryInterface.html"><span>Guzzle\Stream\StreamRequestFactoryInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Stream.html">Stream</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#11-259" title="Go to source code">Guzzle/Stream/PhpStreamRequestFactory.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="fromRequest" id="_fromRequest">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromRequest">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#38-73" title="Go to source code">fromRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>array|resource <var>$context</var> = <span class="php-keyword1">array</span>()</span>, <span>array <var>$params</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			
+<p>Create a stream based on a request object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a stream based on a request object</p>
+
+<p>The $params array can contain the following custom keys specific to the
+PhpStreamRequestFactory:</p>
+
+<ul>
+	<li>stream_class: The name of a class to create instead of a
+	Guzzle\Stream\Stream object</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Base the stream on a request</dd>
+					<dt><var>$context</var></dt>
+					<dd><code>array|resource</code><br>$context A stream_context_options resource or array of parameters used to create
+a stream context.</dd>
+					<dt><var>$params</var></dt>
+					<dd><code>array</code><br>$params Optional array of parameters specific to the factory</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br>Returns a stream object<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>if the stream cannot be opened or an error occurs<br />
+				</div>
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Stream.StreamRequestFactoryInterface.html#_fromRequest">Guzzle\Stream\StreamRequestFactoryInterface::fromRequest()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setContextValue" id="_setContextValue">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setContextValue">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#75-92" title="Go to source code">setContextValue</a>( <span>string <var>$wrapper</var></span>, <span>string <var>$name</var></span>, <span>mixed <var>$value</var></span>, <span>boolean <var>$overwrite</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set an option on the context and the internal options array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set an option on the context and the internal options array</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$wrapper</var></dt>
+					<dd><code>string</code><br>$wrapper Stream wrapper name of http</dd>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name Context name</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Context value</dd>
+					<dt><var>$overwrite</var></dt>
+					<dd><code>boolean</code><br>$overwrite Set to true to overwrite an existing value</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createContext" id="_createContext">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createContext">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#94-105" title="Go to source code">createContext</a>( <span>array <var>$params</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a stream context</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a stream context</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd><code>array</code><br>$params Parameter array</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLastResponseHeaders" id="_getLastResponseHeaders">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLastResponseHeaders">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#107-115" title="Go to source code">getLastResponseHeaders</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the last response headers received by the HTTP request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the last response headers received by the HTTP request</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addDefaultContextOptions" id="_addDefaultContextOptions">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addDefaultContextOptions">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#117-129" title="Go to source code">addDefaultContextOptions</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Adds the default context options to the stream context options</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Adds the default context options to the stream context options</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUrl" id="_setUrl">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUrl">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#131-149" title="Go to source code">setUrl</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the URL to use with the factory</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the URL to use with the factory</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request that owns the URL</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addSslOptions" id="_addSslOptions">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addSslOptions">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#151-166" title="Go to source code">addSslOptions</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add SSL options to the stream context</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add SSL options to the stream context</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addBodyOptions" id="_addBodyOptions">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addBodyOptions">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#168-192" title="Go to source code">addBodyOptions</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add body (content) specific options to the context options</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add body (content) specific options to the context options</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addProxyOptions" id="_addProxyOptions">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addProxyOptions">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#194-204" title="Go to source code">addProxyOptions</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add proxy parameters to the context if needed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add proxy parameters to the context if needed</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createStream" id="_createStream">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createStream">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#206-231" title="Go to source code">createStream</a>( <span>array <var>$params</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create the stream for the request with the context options</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create the stream for the request with the context options</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$params</var></dt>
+					<dd><code>array</code><br>$params Parameters of the stream</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createResource" id="_createResource">
+
+		<td class="attributes"><code>
+			 protected 
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createResource">#</a>
+		<code><a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#233-258" title="Go to source code">createResource</a>( <span>callable <var>$callback</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a resource and check to ensure it was created successfully</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a resource and check to ensure it was created successfully</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callback</var></dt>
+					<dd><code>callable</code><br>$callback Closure to invoke that must return a valid resource</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>resource</code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>on error<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="context" id="$context">
+		<td class="attributes"><code>
+			protected  
+			resource
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#18-21" title="Go to source code"><var>$context</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$context" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Stream context options</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Stream context options</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="contextOptions" id="$contextOptions">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#23-26" title="Go to source code"><var>$contextOptions</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$contextOptions" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Stream context</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Stream context</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="url" id="$url">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Http.Url.html">Guzzle\Http\Url</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#28-31" title="Go to source code"><var>$url</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$url" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Stream URL</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Stream URL</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="lastResponseHeaders" id="$lastResponseHeaders">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Stream.PhpStreamRequestFactory.html#33-36" title="Go to source code"><var>$lastResponseHeaders</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$lastResponseHeaders" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Last response headers received by the HTTP request</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Last response headers received by the HTTP request</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

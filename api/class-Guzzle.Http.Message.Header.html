@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Http\Message\Header | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.Message.AbstractMessage.html">AbstractMessage</a></li>
+				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequest.html">EntityEnclosingRequest</a></li>
+				<li class="active"><a href="class-Guzzle.Http.Message.Header.html">Header</a></li>
+				<li><a href="class-Guzzle.Http.Message.HeaderComparison.html">HeaderComparison</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFile.html">PostFile</a></li>
+				<li><a href="class-Guzzle.Http.Message.Request.html">Request</a></li>
+				<li><a href="class-Guzzle.Http.Message.RequestFactory.html">RequestFactory</a></li>
+				<li><a href="class-Guzzle.Http.Message.Response.html">Response</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">EntityEnclosingRequestInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.MessageInterface.html">MessageInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.PostFileInterface.html">PostFileInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">RequestFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Http.Message.RequestInterface.html">RequestInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Http.Message.html" title="Summary of Guzzle\Http\Message"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Header</h1>
+
+
+	<div class="description">
+	
+<p>Represents a header and all of the values stored by that header</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Http\Message\Header</span></b>			
+			 implements 
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a>\<a href="namespace-Guzzle.Http.Message.html">Message</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Http.Message.Header.html#7-255" title="Go to source code">Guzzle/Http/Message/Header.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#18-44" title="Go to source code">__construct</a>( <span>string <var>$header</var></span>, <span>array <var>$values</var> = <span class="php-keyword1">array</span>()</span>, <span>string <var>$glue</var> = <span class="php-quote">', '</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Construct a new header object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Construct a new header object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$header</var></dt>
+					<dd><code>string</code><br>$header Name of the header</dd>
+					<dt><var>$values</var></dt>
+					<dd><code>array</code><br>$values Values of the header</dd>
+					<dt><var>$glue</var></dt>
+					<dd><code>string</code><br>$glue Glue used to combine multiple values into a string</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#46-58" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<p>Convert the header to a string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Convert the header to a string</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="add" id="_add">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_add">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#60-84" title="Go to source code">add</a>( <span>string <var>$value</var></span>, <span>string <var>$header</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Add a value to the list of header values</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add a value to the list of header values</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$value</var></dt>
+					<dd><code>string</code><br>$value Value to add</dd>
+					<dt><var>$header</var></dt>
+					<dd><code>string</code><br>$header The exact header casing to add with. Defaults to the name of the header.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#86-94" title="Go to source code">getName</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the name of the header</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the name of the header</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setGlue" id="_setGlue">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setGlue">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#96-109" title="Go to source code">setGlue</a>( <span>string <var>$glue</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Change the glue used to implode the values</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Change the glue used to implode the values</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$glue</var></dt>
+					<dd><code>string</code><br>$glue Glue used to implode multiple values</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getGlue" id="_getGlue">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getGlue">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#111-119" title="Go to source code">getGlue</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the glue used to implode multiple values into a string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the glue used to implode multiple values into a string</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="normalize" id="_normalize">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_normalize">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#121-149" title="Go to source code">normalize</a>( <span>boolean <var>$explodeOnGlue</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Normalize the header to be a single header with an array of values</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Normalize the header to be a single header with an array of values</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$explodeOnGlue</var></dt>
+					<dd><code>boolean</code><br>$explodeOnGlue Set to true to explode each header value on the glue of the
+header</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasExactHeader" id="_hasExactHeader">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasExactHeader">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#151-164" title="Go to source code">hasExactHeader</a>( <span>string <var>$header</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if a particular case variation is present in the header Example: A
+header exists on a message for 'Foo', and 'foo'. The Header object will contain
+all of the values of 'Foo' and all of the values of 'foo'. You can use this
+method to check to see if a header was set using 'foo' (true), 'Foo' (true),
+'FOO' (false), etc.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if a particular case variation is present in the header Example: A
+header exists on a message for 'Foo', and 'foo'. The Header object will contain
+all of the values of 'Foo' and all of the values of 'foo'. You can use this
+method to check to see if a header was set using 'foo' (true), 'Foo' (true),
+'FOO' (false), etc.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$header</var></dt>
+					<dd><code>string</code><br>$header Exact header to check for</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasValue" id="_hasValue">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasValue">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#166-185" title="Go to source code">hasValue</a>( <span>string <var>$searchValue</var></span>, <span>boolean <var>$caseInsensitive</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if the collection of headers has a particular value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the collection of headers has a particular value</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$searchValue</var></dt>
+					<dd><code>string</code><br>$searchValue Value to search for</dd>
+					<dt><var>$caseInsensitive</var></dt>
+					<dd><code>boolean</code><br>$caseInsensitive Set to TRUE to use a case insensitive search</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeValue" id="_removeValue">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeValue">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#187-207" title="Go to source code">removeValue</a>( <span>string <var>$searchValue</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove a specific value from the header</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove a specific value from the header</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$searchValue</var></dt>
+					<dd><code>string</code><br>$searchValue Value to remove</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.Header.html">Guzzle\Http\Message\Header</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#209-223" title="Go to source code">toArray</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get all of the header values as a flat array Get the array representation of
+an object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all of the header values as a flat array Get the array representation of
+an object</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">Guzzle\Common\ToArrayInterface::toArray()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="raw" id="_raw">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_raw">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#225-234" title="Go to source code">raw</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the raw data array of the headers. This array is represented as an
+associative array of the various cases that might be stored in the header and an
+array of values associated with each case variation.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the raw data array of the headers. This array is represented as an
+associative array of the various cases that might be stored in the header and an
+array of values associated with each case variation.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#236-244" title="Go to source code">count</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns the total number of header values</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the total number of header values</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Countable.html#_count">Countable::count()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIterator" id="_getIterator">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-ArrayIterator.html">ArrayIterator</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIterator">#</a>
+		<code><a href="source-class-Guzzle.Http.Message.Header.html#246-254" title="Go to source code">getIterator</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get an iterator that can be used to easily iterate over each header value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get an iterator that can be used to easily iterate over each header value</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-ArrayIterator.html">ArrayIterator</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="values" id="$values">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.Header.html#12" title="Go to source code"><var>$values</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$values" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="header" id="$header">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.Header.html#13" title="Go to source code"><var>$header</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$header" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="glue" id="$glue">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.Header.html#14" title="Go to source code"><var>$glue</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$glue" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="stringCache" id="$stringCache">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.Header.html#15" title="Go to source code"><var>$stringCache</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$stringCache" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="arrayCache" id="$arrayCache">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.Message.Header.html#16" title="Go to source code"><var>$arrayCache</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$arrayCache" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

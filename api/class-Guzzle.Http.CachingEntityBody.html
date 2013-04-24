@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Http\CachingEntityBody | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
+				<li class="active"><a href="class-Guzzle.Http.CachingEntityBody.html">CachingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
+				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
+				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
+				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
+				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Http.html" title="Summary of Guzzle\Http"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CachingEntityBody</h1>
+
+
+	<div class="description">
+	
+<p>EntityBody decorator that can cache previously read bytes from a sequentially
+read tstream</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html"><span>Guzzle\Http\AbstractEntityBodyDecorator</span></a>
+			
+			 implements 
+				<a href="class-Guzzle.Http.EntityBodyInterface.html"><span>Guzzle\Http\EntityBodyInterface</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Guzzle\Http\CachingEntityBody</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Http.CachingEntityBody.html#7-277" title="Go to source code">Guzzle/Http/CachingEntityBody.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#22-30" title="Go to source code">__construct</a>( <span><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var></span> )</code>
+
+		<div class="description short">
+			
+<p>We will treat the buffer object as the body of the entity body Wrap an entity
+body</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>We will treat the buffer object as the body of the entity body Wrap an entity
+body</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$body</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Entity body to decorate</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___construct">Guzzle\Http\AbstractEntityBodyDecorator::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#32-52" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<p>Will give the contents of the buffer followed by the exhausted remote
+stream.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Will give the contents of the buffer followed by the exhausted remote
+stream.</p>
+
+<p>Warning: Loads the entire stream into memory</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___toString">Guzzle\Http\AbstractEntityBodyDecorator::__toString()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSize" id="_getSize">
+
+		<td class="attributes"><code>
+			 public 
+			integer|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSize">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#54-60" title="Go to source code">getSize</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the size of the stream if able</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the size of the stream if able</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer|boolean</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getSize">Guzzle\Http\AbstractEntityBodyDecorator::getSize()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="seek" id="_seek">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_seek">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#62-84" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
+
+		<div class="description short">
+			
+<p>Seek to a position in the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seek to a position in the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>integer</code><br>$offset Stream offset</dd>
+					<dt><var>$whence</var></dt>
+					<dd><code>integer</code><br>$whence Where the offset is applied</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns TRUE on success or FALSE on failure<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br>When seeking with SEEK_END or when seeking past the total size of the buffer
+stream<br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_seek">Guzzle\Http\AbstractEntityBodyDecorator::seek()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewind" id="_rewind">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rewind">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#86-92" title="Go to source code">rewind</a>( )</code>
+
+		<div class="description short">
+			
+<p>Rewind to the beginning of the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Rewind to the beginning of the stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns true on success or false on failure<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_rewind">Guzzle\Http\AbstractEntityBodyDecorator::rewind()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRewindFunction" id="_setRewindFunction">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRewindFunction">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#94-102" title="Go to source code">setRewindFunction</a>( <span>mixed <var>$callable</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Does not support custom rewind functions</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Does not support custom rewind functions</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$callable</var></dt>
+					<dd><code>mixed</code><br>$callable Callable to invoke to rewind a non-seekable stream. The callback must
+accept an EntityBodyInterface object, perform the rewind if possible, and return
+a boolean representing whether or not the rewind was successful.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.RuntimeException.html">Guzzle\Common\Exception\RuntimeException</a></code></code><br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setRewindFunction">Guzzle\Http\AbstractEntityBodyDecorator::setRewindFunction()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="read" id="_read">
+
+		<td class="attributes"><code>
+			 public 
+			string|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_read">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#104-131" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Read data from the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Read data from the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$length</var></dt>
+					<dd><code>integer</code><br>$length Up to length number of bytes read.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|boolean</code><br>Returns the data read from the stream or FALSE on failure or EOF<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_read">Guzzle\Http\AbstractEntityBodyDecorator::read()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="write" id="_write">
+
+		<td class="attributes"><code>
+			 public 
+			integer|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_write">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#133-146" title="Go to source code">write</a>( <span>string <var>$string</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Write data to the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Write data to the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$string</var></dt>
+					<dd><code>string</code><br>$string The string that is to be written.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer|boolean</code><br>Returns the number of bytes written to the stream on success or FALSE on
+failure.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_write">Guzzle\Http\AbstractEntityBodyDecorator::write()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readLine" id="_readLine">
+
+		<td class="attributes"><code>
+			 public 
+			string|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readLine">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#148-166" title="Go to source code">readLine</a>( <span>integer <var>$maxLength</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$maxLength</var></dt>
+					<dd><code>integer</code><br>$maxLength Maximum buffer length</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|boolean</code><br />
+				</div>
+
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://php.net/manual/en/function.fgets.php">http://php.net/manual/en/function.fgets.php</a><br />
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_readLine">Guzzle\Http\AbstractEntityBodyDecorator::readLine()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isConsumed" id="_isConsumed">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isConsumed">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#168-174" title="Go to source code">isConsumed</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the stream has been consumed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the stream has been consumed</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isConsumed">Guzzle\Http\AbstractEntityBodyDecorator::isConsumed()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="close" id="_close">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_close">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#176-182" title="Go to source code">close</a>( )</code>
+
+		<div class="description short">
+			
+<p>Close both the remote stream and buffer stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Close both the remote stream and buffer stream</p>
+
+
+
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_close">Guzzle\Http\AbstractEntityBodyDecorator::close()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setStream" id="_setStream">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setStream">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#184-190" title="Go to source code">setStream</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-num">0</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the stream that is wrapped by the object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the stream that is wrapped by the object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$stream</var></dt>
+					<dd><code>resource</code><br>$stream Stream resource to wrap</dd>
+					<dt><var>$size</var></dt>
+					<dd><code>integer</code><br>$size Size of the stream in bytes. Only pass if the size cannot be obtained from
+the stream.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code></code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setStream">Guzzle\Http\AbstractEntityBodyDecorator::setStream()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getContentType" id="_getContentType">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getContentType">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#192-198" title="Go to source code">getContentType</a>( )</code>
+
+		<div class="description short">
+			
+<p>Guess the Content-Type of a local stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Guess the Content-Type of a local stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentType">Guzzle\Http\AbstractEntityBodyDecorator::getContentType()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getContentEncoding" id="_getContentEncoding">
+
+		<td class="attributes"><code>
+			 public 
+			boolean|string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getContentEncoding">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#200-206" title="Go to source code">getContentEncoding</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the Content-Encoding of the EntityBody</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the Content-Encoding of the EntityBody</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean|string</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentEncoding">Guzzle\Http\AbstractEntityBodyDecorator::getContentEncoding()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMetaData" id="_getMetaData">
+
+		<td class="attributes"><code>
+			 public 
+			array|mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMetaData">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#208-214" title="Go to source code">getMetaData</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get stream metadata</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get stream metadata</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Specific metadata to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array|mixed|null</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getMetaData">Guzzle\Http\AbstractEntityBodyDecorator::getMetaData()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStream" id="_getStream">
+
+		<td class="attributes"><code>
+			 public 
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStream">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#216-222" title="Go to source code">getStream</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the stream resource</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the stream resource</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>resource</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getStream">Guzzle\Http\AbstractEntityBodyDecorator::getStream()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWrapper" id="_getWrapper">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWrapper">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#224-230" title="Go to source code">getWrapper</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the stream wrapper type</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the stream wrapper type</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getWrapper">Guzzle\Http\AbstractEntityBodyDecorator::getWrapper()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWrapperData" id="_getWrapperData">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWrapperData">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#232-238" title="Go to source code">getWrapperData</a>( )</code>
+
+		<div class="description short">
+			
+<p>Wrapper specific data attached to this stream.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Wrapper specific data attached to this stream.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getWrapperData">Guzzle\Http\AbstractEntityBodyDecorator::getWrapperData()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStreamType" id="_getStreamType">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStreamType">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#240-246" title="Go to source code">getStreamType</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get a label describing the underlying implementation of the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a label describing the underlying implementation of the stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getStreamType">Guzzle\Http\AbstractEntityBodyDecorator::getStreamType()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUri" id="_getUri">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUri">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#248-254" title="Go to source code">getUri</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the URI/filename associated with this stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the URI/filename associated with this stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getUri">Guzzle\Http\AbstractEntityBodyDecorator::getUri()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCustomData" id="_getCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			null|mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCustomData">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#256-264" title="Go to source code">getCustomData</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Always retrieve custom data from the remote stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Always retrieve custom data from the remote stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null|mixed</code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getCustomData">Guzzle\Http\AbstractEntityBodyDecorator::getCustomData()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCustomData" id="_setCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCustomData">#</a>
+		<code><a href="source-class-Guzzle.Http.CachingEntityBody.html#266-276" title="Go to source code">setCustomData</a>( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Always set custom data on the remote stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Always set custom data on the remote stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Value to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a></code></code><br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setCustomData">Guzzle\Http\AbstractEntityBodyDecorator::setCustomData()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#methods">Guzzle\Http\AbstractEntityBodyDecorator</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#___call">__call()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_compress">compress()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_feof">feof()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_ftell">ftell()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentLength">getContentLength()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_getContentMd5">getContentMd5()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isLocal">isLocal()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isReadable">isReadable()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isSeekable">isSeekable()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_isWritable">isWritable()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_setSize">setSize()</a>, 
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#_uncompress">uncompress()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="remoteStream" id="$remoteStream">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.CachingEntityBody.html#12-15" title="Go to source code"><var>$remoteStream</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$remoteStream" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Remote stream used to actually pull data onto the buffer</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Remote stream used to actually pull data onto the buffer</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="skipReadBytes" id="$skipReadBytes">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Http.CachingEntityBody.html#17-20" title="Go to source code"><var>$skipReadBytes</var></a>
+		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$skipReadBytes" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>The number of bytes to skip reading due to a write on the temporary
+buffer</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>The number of bytes to skip reading due to a write on the temporary
+buffer</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#properties">Guzzle\Http\AbstractEntityBodyDecorator</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html#$body"><var>$body</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

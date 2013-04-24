@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Service\Command\ClosureCommand | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Command.AbstractCommand.html">AbstractCommand</a></li>
+				<li class="active"><a href="class-Guzzle.Service.Command.ClosureCommand.html">ClosureCommand</a></li>
+				<li><a href="class-Guzzle.Service.Command.DefaultRequestSerializer.html">DefaultRequestSerializer</a></li>
+				<li><a href="class-Guzzle.Service.Command.DefaultResponseParser.html">DefaultResponseParser</a></li>
+				<li><a href="class-Guzzle.Service.Command.OperationCommand.html">OperationCommand</a></li>
+				<li><a href="class-Guzzle.Service.Command.OperationResponseParser.html">OperationResponseParser</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Command.CommandInterface.html">CommandInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.RequestSerializerInterface.html">RequestSerializerInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.ResponseClassInterface.html">ResponseClassInterface</a></li>
+				<li><a href="class-Guzzle.Service.Command.ResponseParserInterface.html">ResponseParserInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Service.Command.html" title="Summary of Guzzle\Service\Command"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ClosureCommand</h1>
+
+
+	<div class="description">
+	
+<p>A ClosureCommand is a command that allows dynamic commands to be created at
+runtime using a closure to prepare the request. A closure key and \Closure value
+must be passed to the command in the constructor. The closure must accept the
+command object as an argument.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Guzzle.Common.Collection.html"><span>Guzzle\Common\Collection</span></a>
+			
+			 implements 
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>, 
+			
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html"><span>Guzzle\Service\Command\AbstractCommand</span></a>
+			
+			 implements 
+				<a href="class-Guzzle.Service.Command.CommandInterface.html"><span>Guzzle\Service\Command\CommandInterface</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Guzzle\Service\Command\ClosureCommand</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Command.html">Command</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Service.Command.ClosureCommand.html#9-41" title="Go to source code">Guzzle/Service/Command/ClosureCommand.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="init" id="_init">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_init">#</a>
+		<code><a href="source-class-Guzzle.Service.Command.ClosureCommand.html#16-25" title="Go to source code">init</a>( )</code>
+
+		<div class="description short">
+			
+<p>Initialize the command (hook that can be implemented in subclasses)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Initialize the command (hook that can be implemented in subclasses)</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if a closure was not passed<br />
+				</div>
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Command.AbstractCommand.html#_init">Guzzle\Service\Command\AbstractCommand::init()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="build" id="_build">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_build">#</a>
+		<code><a href="source-class-Guzzle.Service.Command.ClosureCommand.html#27-40" title="Go to source code">build</a>( )</code>
+
+		<div class="description short">
+			
+<p>Create the request object that will carry out the command</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create the request object that will carry out the command</p>
+
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.UnexpectedValueException.html">Guzzle\Common\Exception\UnexpectedValueException</a></code></code><br>If the closure does not return a request<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Service.Command.AbstractCommand.html#methods">Guzzle\Service\Command\AbstractCommand</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#___clone">__clone()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#___construct">__construct()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#___invoke">__invoke()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_createOperation">createOperation()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_execute">execute()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getClient">getClient()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getName">getName()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getOperation">getOperation()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getRequest">getRequest()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getRequestHeaders">getRequestHeaders()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getResponse">getResponse()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getResult">getResult()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_getValidator">getValidator()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_isExecuted">isExecuted()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_isPrepared">isPrepared()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_prepare">prepare()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_process">process()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_setClient">setClient()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_setOnComplete">setOnComplete()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_setResult">setResult()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_setValidator">setValidator()</a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#_validate">validate()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.Collection.html#methods">Guzzle\Common\Collection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.Collection.html#_add">add()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_clear">clear()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_count">count()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_filter">filter()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_fromConfig">fromConfig()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_get">get()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_getAll">getAll()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_getIterator">getIterator()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_getKeys">getKeys()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_getPath">getPath()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_hasKey">hasKey()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_hasValue">hasValue()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_inject">inject()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_keySearch">keySearch()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_map">map()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_merge">merge()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_offsetGet">offsetGet()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_offsetUnset">offsetUnset()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_overwriteWith">overwriteWith()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_remove">remove()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_replace">replace()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_set">set()</a>, 
+			<a href="class-Guzzle.Common.Collection.html#_toArray">toArray()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Guzzle.Service.Command.AbstractCommand.html#constants">Guzzle\Service\Command\AbstractCommand</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#DISABLE_VALIDATION"><b>DISABLE_VALIDATION</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#HEADERS_OPTION"><b>HEADERS_OPTION</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#ON_COMPLETE"><b>ON_COMPLETE</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#RESPONSE_BODY"><b>RESPONSE_BODY</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#RESPONSE_PROCESSING"><b>RESPONSE_PROCESSING</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#TYPE_MODEL"><b>TYPE_MODEL</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#TYPE_NO_TRANSLATION"><b>TYPE_NO_TRANSLATION</b></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#TYPE_RAW"><b>TYPE_RAW</b></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Service.Command.AbstractCommand.html#properties">Guzzle\Service\Command\AbstractCommand</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$client"><var>$client</var></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$onComplete"><var>$onComplete</var></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$operation"><var>$operation</var></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$request"><var>$request</var></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$result"><var>$result</var></a>, 
+			<a href="class-Guzzle.Service.Command.AbstractCommand.html#$validator"><var>$validator</var></a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Guzzle.Common.Collection.html#properties">Guzzle\Common\Collection</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.Collection.html#$data"><var>$data</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

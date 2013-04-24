@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+	<meta name="robots" content="noindex" />
+
+	<title>File Guzzle/Http/Curl/CurlMulti.php | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.Curl.CurlHandle.html">CurlHandle</a></li>
+				<li class="active"><a href="class-Guzzle.Http.Curl.CurlMulti.html">CurlMulti</a></li>
+				<li><a href="class-Guzzle.Http.Curl.CurlMultiProxy.html">CurlMultiProxy</a></li>
+				<li><a href="class-Guzzle.Http.Curl.CurlVersion.html">CurlVersion</a></li>
+				<li><a href="class-Guzzle.Http.Curl.RequestMediator.html">RequestMediator</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">CurlMultiInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Http.Curl.html" title="Summary of Guzzle\Http\Curl"><span>Namespace</span></a>
+			</li>
+			<li>
+				<a href="class-Guzzle.Http.Curl.CurlMulti.html" title="Summary of Guzzle\Http\Curl\CurlMulti"><span>Class</span></a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<pre><code><span id="1" class="l"><a class="l" href="#1">  1: </a><span class="xlang">&lt;?php</span>
+</span><span id="2" class="l"><a class="l" href="#2">  2: </a>
+</span><span id="3" class="l"><a class="l" href="#3">  3: </a><span class="php-keyword1">namespace</span> Guzzle\Http\Curl;
+</span><span id="4" class="l"><a class="l" href="#4">  4: </a>
+</span><span id="5" class="l"><a class="l" href="#5">  5: </a><span class="php-keyword1">use</span> Guzzle\Common\AbstractHasDispatcher;
+</span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-keyword1">use</span> Guzzle\Http\Exception\MultiTransferException;
+</span><span id="7" class="l"><a class="l" href="#7">  7: </a><span class="php-keyword1">use</span> Guzzle\Http\Exception\CurlException;
+</span><span id="8" class="l"><a class="l" href="#8">  8: </a><span class="php-keyword1">use</span> Guzzle\Http\Message\RequestInterface;
+</span><span id="9" class="l"><a class="l" href="#9">  9: </a>
+</span><span id="10" class="l"><a class="l" href="#10"> 10: </a><span class="php-comment">/**
+</span></span><span id="11" class="l"><a class="l" href="#11"> 11: </a><span class="php-comment"> * Send {@see RequestInterface} objects in parallel using curl_multi
+</span></span><span id="12" class="l"><a class="l" href="#12"> 12: </a><span class="php-comment"> */</span>
+</span><span id="13" class="l"><a class="l" href="#13"> 13: </a><span class="php-keyword1">class</span> <a id="CurlMulti" href="#CurlMulti">CurlMulti</a> <span class="php-keyword1">extends</span> AbstractHasDispatcher <span class="php-keyword1">implements</span> CurlMultiInterface
+</span><span id="14" class="l"><a class="l" href="#14"> 14: </a>{
+</span><span id="15" class="l"><a class="l" href="#15"> 15: </a>    <span class="php-comment">/**
+</span></span><span id="16" class="l"><a class="l" href="#16"> 16: </a><span class="php-comment">     * @var resource cURL multi handle.
+</span></span><span id="17" class="l"><a class="l" href="#17"> 17: </a><span class="php-comment">     */</span>
+</span><span id="18" class="l"><a class="l" href="#18"> 18: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$multiHandle" href="#$multiHandle">$multiHandle</a></span>;
+</span><span id="19" class="l"><a class="l" href="#19"> 19: </a>
+</span><span id="20" class="l"><a class="l" href="#20"> 20: </a>    <span class="php-comment">/**
+</span></span><span id="21" class="l"><a class="l" href="#21"> 21: </a><span class="php-comment">     * @var array Attached {@see RequestInterface} objects.
+</span></span><span id="22" class="l"><a class="l" href="#22"> 22: </a><span class="php-comment">     */</span>
+</span><span id="23" class="l"><a class="l" href="#23"> 23: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$requests" href="#$requests">$requests</a></span>;
+</span><span id="24" class="l"><a class="l" href="#24"> 24: </a>
+</span><span id="25" class="l"><a class="l" href="#25"> 25: </a>    <span class="php-comment">/**
+</span></span><span id="26" class="l"><a class="l" href="#26"> 26: </a><span class="php-comment">     * @var \SplObjectStorage RequestInterface to CurlHandle hash
+</span></span><span id="27" class="l"><a class="l" href="#27"> 27: </a><span class="php-comment">     */</span>
+</span><span id="28" class="l"><a class="l" href="#28"> 28: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$handles" href="#$handles">$handles</a></span>;
+</span><span id="29" class="l"><a class="l" href="#29"> 29: </a>
+</span><span id="30" class="l"><a class="l" href="#30"> 30: </a>    <span class="php-comment">/**
+</span></span><span id="31" class="l"><a class="l" href="#31"> 31: </a><span class="php-comment">     * @var array Hash mapping curl handle resource IDs to request objects
+</span></span><span id="32" class="l"><a class="l" href="#32"> 32: </a><span class="php-comment">     */</span>
+</span><span id="33" class="l"><a class="l" href="#33"> 33: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$resourceHash" href="#$resourceHash">$resourceHash</a></span>;
+</span><span id="34" class="l"><a class="l" href="#34"> 34: </a>
+</span><span id="35" class="l"><a class="l" href="#35"> 35: </a>    <span class="php-comment">/**
+</span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment">     * @var array Queued exceptions
+</span></span><span id="37" class="l"><a class="l" href="#37"> 37: </a><span class="php-comment">     */</span>
+</span><span id="38" class="l"><a class="l" href="#38"> 38: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$exceptions" href="#$exceptions">$exceptions</a></span> = <span class="php-keyword1">array</span>();
+</span><span id="39" class="l"><a class="l" href="#39"> 39: </a>
+</span><span id="40" class="l"><a class="l" href="#40"> 40: </a>    <span class="php-comment">/**
+</span></span><span id="41" class="l"><a class="l" href="#41"> 41: </a><span class="php-comment">     * @var array Requests that succeeded
+</span></span><span id="42" class="l"><a class="l" href="#42"> 42: </a><span class="php-comment">     */</span>
+</span><span id="43" class="l"><a class="l" href="#43"> 43: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$successful" href="#$successful">$successful</a></span> = <span class="php-keyword1">array</span>();
+</span><span id="44" class="l"><a class="l" href="#44"> 44: </a>
+</span><span id="45" class="l"><a class="l" href="#45"> 45: </a>    <span class="php-comment">/**
+</span></span><span id="46" class="l"><a class="l" href="#46"> 46: </a><span class="php-comment">     * @var array cURL multi error values and codes
+</span></span><span id="47" class="l"><a class="l" href="#47"> 47: </a><span class="php-comment">     */</span>
+</span><span id="48" class="l"><a class="l" href="#48"> 48: </a>    <span class="php-keyword1">protected</span> <span class="php-var"><a id="$multiErrors" href="#$multiErrors">$multiErrors</a></span> = <span class="php-keyword1">array</span>(
+</span><span id="49" class="l"><a class="l" href="#49"> 49: </a>        CURLM_BAD_HANDLE      =&gt; <span class="php-keyword1">array</span>(<span class="php-quote">'CURLM_BAD_HANDLE'</span>, <span class="php-quote">'The passed-in handle is not a valid CURLM handle.'</span>),
+</span><span id="50" class="l"><a class="l" href="#50"> 50: </a>        CURLM_BAD_EASY_HANDLE =&gt; <span class="php-keyword1">array</span>(<span class="php-quote">'CURLM_BAD_EASY_HANDLE'</span>, <span class="php-quote">&quot;An easy handle was not good/valid. It could mean that it isn't an easy handle at all, or possibly that the handle already is in used by this or another multi handle.&quot;</span>),
+</span><span id="51" class="l"><a class="l" href="#51"> 51: </a>        CURLM_OUT_OF_MEMORY   =&gt; <span class="php-keyword1">array</span>(<span class="php-quote">'CURLM_OUT_OF_MEMORY'</span>, <span class="php-quote">'You are doomed.'</span>),
+</span><span id="52" class="l"><a class="l" href="#52"> 52: </a>        CURLM_INTERNAL_ERROR  =&gt; <span class="php-keyword1">array</span>(<span class="php-quote">'CURLM_INTERNAL_ERROR'</span>, <span class="php-quote">'This can only be returned if libcurl bugs. Please report it to us!'</span>)
+</span><span id="53" class="l"><a class="l" href="#53"> 53: </a>    );
+</span><span id="54" class="l"><a class="l" href="#54"> 54: </a>
+</span><span id="55" class="l"><a class="l" href="#55"> 55: </a>    <span class="php-comment">/**
+</span></span><span id="56" class="l"><a class="l" href="#56"> 56: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="57" class="l"><a class="l" href="#57"> 57: </a><span class="php-comment">     */</span>
+</span><span id="58" class="l"><a class="l" href="#58"> 58: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>()
+</span><span id="59" class="l"><a class="l" href="#59"> 59: </a>    {
+</span><span id="60" class="l"><a class="l" href="#60"> 60: </a>        <span class="php-var">$this</span>-&gt;multiHandle = <span class="php-keyword2">curl_multi_init</span>();
+</span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        <span class="php-comment">// @codeCoverageIgnoreStart</span>
+</span><span id="62" class="l"><a class="l" href="#62"> 62: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;multiHandle === <span class="php-keyword1">false</span>) {
+</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-quote">'Unable to create multi handle'</span>);
+</span><span id="64" class="l"><a class="l" href="#64"> 64: </a>        }
+</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>        <span class="php-comment">// @codeCoverageIgnoreEnd</span>
+</span><span id="66" class="l"><a class="l" href="#66"> 66: </a>        <span class="php-var">$this</span>-&gt;<span class="php-keyword2">reset</span>();
+</span><span id="67" class="l"><a class="l" href="#67"> 67: </a>    }
+</span><span id="68" class="l"><a class="l" href="#68"> 68: </a>
+</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>    <span class="php-comment">/**
+</span></span><span id="70" class="l"><a class="l" href="#70"> 70: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment">     */</span>
+</span><span id="72" class="l"><a class="l" href="#72"> 72: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___destruct" href="#___destruct">__destruct</a>()
+</span><span id="73" class="l"><a class="l" href="#73"> 73: </a>    {
+</span><span id="74" class="l"><a class="l" href="#74"> 74: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword2">is_resource</span>(<span class="php-var">$this</span>-&gt;multiHandle)) {
+</span><span id="75" class="l"><a class="l" href="#75"> 75: </a>            <span class="php-keyword2">curl_multi_close</span>(<span class="php-var">$this</span>-&gt;multiHandle);
+</span><span id="76" class="l"><a class="l" href="#76"> 76: </a>        }
+</span><span id="77" class="l"><a class="l" href="#77"> 77: </a>    }
+</span><span id="78" class="l"><a class="l" href="#78"> 78: </a>
+</span><span id="79" class="l"><a class="l" href="#79"> 79: </a>    <span class="php-comment">/**
+</span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="81" class="l"><a class="l" href="#81"> 81: </a><span class="php-comment">     */</span>
+</span><span id="82" class="l"><a class="l" href="#82"> 82: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_add" href="#_add">add</a>(RequestInterface <span class="php-var">$request</span>)
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>    {
+</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>        <span class="php-var">$this</span>-&gt;requests[] = <span class="php-var">$request</span>;
+</span><span id="85" class="l"><a class="l" href="#85"> 85: </a>        <span class="php-comment">// If requests are currently transferring and this is async, then the</span>
+</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>        <span class="php-comment">// request must be prepared now as the send() method is not called.</span>
+</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>        <span class="php-var">$this</span>-&gt;beforeSend(<span class="php-var">$request</span>);
+</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>        <span class="php-var">$this</span>-&gt;dispatch(self::ADD_REQUEST, <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-var">$request</span>));
+</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>
+</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="91" class="l"><a class="l" href="#91"> 91: </a>    }
+</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>
+</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>    <span class="php-comment">/**
+</span></span><span id="94" class="l"><a class="l" href="#94"> 94: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-comment">     */</span>
+</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_all" href="#_all">all</a>()
+</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>    {
+</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;requests;
+</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>    }
+</span><span id="100" class="l"><a class="l" href="#100">100: </a>
+</span><span id="101" class="l"><a class="l" href="#101">101: </a>    <span class="php-comment">/**
+</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">     */</span>
+</span><span id="104" class="l"><a class="l" href="#104">104: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_remove" href="#_remove">remove</a>(RequestInterface <span class="php-var">$request</span>)
+</span><span id="105" class="l"><a class="l" href="#105">105: </a>    {
+</span><span id="106" class="l"><a class="l" href="#106">106: </a>        <span class="php-var">$this</span>-&gt;removeHandle(<span class="php-var">$request</span>);
+</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;requests <span class="php-keyword1">as</span> <span class="php-var">$i</span> =&gt; <span class="php-var">$r</span>) {
+</span><span id="108" class="l"><a class="l" href="#108">108: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$request</span> === <span class="php-var">$r</span>) {
+</span><span id="109" class="l"><a class="l" href="#109">109: </a>                <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;requests[<span class="php-var">$i</span>]);
+</span><span id="110" class="l"><a class="l" href="#110">110: </a>                <span class="php-var">$this</span>-&gt;requests = <span class="php-keyword2">array_values</span>(<span class="php-var">$this</span>-&gt;requests);
+</span><span id="111" class="l"><a class="l" href="#111">111: </a>                <span class="php-var">$this</span>-&gt;dispatch(self::REMOVE_REQUEST, <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-var">$request</span>));
+</span><span id="112" class="l"><a class="l" href="#112">112: </a>                <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+</span><span id="113" class="l"><a class="l" href="#113">113: </a>            }
+</span><span id="114" class="l"><a class="l" href="#114">114: </a>        }
+</span><span id="115" class="l"><a class="l" href="#115">115: </a>
+</span><span id="116" class="l"><a class="l" href="#116">116: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
+</span><span id="117" class="l"><a class="l" href="#117">117: </a>    }
+</span><span id="118" class="l"><a class="l" href="#118">118: </a>
+</span><span id="119" class="l"><a class="l" href="#119">119: </a>    <span class="php-comment">/**
+</span></span><span id="120" class="l"><a class="l" href="#120">120: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="121" class="l"><a class="l" href="#121">121: </a><span class="php-comment">     */</span>
+</span><span id="122" class="l"><a class="l" href="#122">122: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <span class="php-keyword2">reset</span>(<span class="php-var">$hard</span> = <span class="php-keyword1">false</span>)
+</span><span id="123" class="l"><a class="l" href="#123">123: </a>    {
+</span><span id="124" class="l"><a class="l" href="#124">124: </a>        <span class="php-comment">// Remove each request</span>
+</span><span id="125" class="l"><a class="l" href="#125">125: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;requests) {
+</span><span id="126" class="l"><a class="l" href="#126">126: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;requests <span class="php-keyword1">as</span> <span class="php-var">$request</span>) {
+</span><span id="127" class="l"><a class="l" href="#127">127: </a>                <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="128" class="l"><a class="l" href="#128">128: </a>            }
+</span><span id="129" class="l"><a class="l" href="#129">129: </a>        }
+</span><span id="130" class="l"><a class="l" href="#130">130: </a>
+</span><span id="131" class="l"><a class="l" href="#131">131: </a>        <span class="php-var">$this</span>-&gt;handles = <span class="php-keyword1">new</span> \SplObjectStorage();
+</span><span id="132" class="l"><a class="l" href="#132">132: </a>        <span class="php-var">$this</span>-&gt;requests = <span class="php-var">$this</span>-&gt;resourceHash = <span class="php-var">$this</span>-&gt;exceptions = <span class="php-var">$this</span>-&gt;successful = <span class="php-keyword1">array</span>();
+</span><span id="133" class="l"><a class="l" href="#133">133: </a>    }
+</span><span id="134" class="l"><a class="l" href="#134">134: </a>
+</span><span id="135" class="l"><a class="l" href="#135">135: </a>    <span class="php-comment">/**
+</span></span><span id="136" class="l"><a class="l" href="#136">136: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="137" class="l"><a class="l" href="#137">137: </a><span class="php-comment">     */</span>
+</span><span id="138" class="l"><a class="l" href="#138">138: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_send" href="#_send">send</a>()
+</span><span id="139" class="l"><a class="l" href="#139">139: </a>    {
+</span><span id="140" class="l"><a class="l" href="#140">140: </a>        <span class="php-var">$this</span>-&gt;perform();
+</span><span id="141" class="l"><a class="l" href="#141">141: </a>        <span class="php-var">$exceptions</span> = <span class="php-var">$this</span>-&gt;exceptions;
+</span><span id="142" class="l"><a class="l" href="#142">142: </a>        <span class="php-var">$successful</span> = <span class="php-var">$this</span>-&gt;successful;
+</span><span id="143" class="l"><a class="l" href="#143">143: </a>        <span class="php-var">$this</span>-&gt;<span class="php-keyword2">reset</span>();
+</span><span id="144" class="l"><a class="l" href="#144">144: </a>
+</span><span id="145" class="l"><a class="l" href="#145">145: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$exceptions</span>) {
+</span><span id="146" class="l"><a class="l" href="#146">146: </a>            <span class="php-var">$this</span>-&gt;throwMultiException(<span class="php-var">$exceptions</span>, <span class="php-var">$successful</span>);
+</span><span id="147" class="l"><a class="l" href="#147">147: </a>        }
+</span><span id="148" class="l"><a class="l" href="#148">148: </a>    }
+</span><span id="149" class="l"><a class="l" href="#149">149: </a>
+</span><span id="150" class="l"><a class="l" href="#150">150: </a>    <span class="php-comment">/**
+</span></span><span id="151" class="l"><a class="l" href="#151">151: </a><span class="php-comment">     * {@inheritdoc}
+</span></span><span id="152" class="l"><a class="l" href="#152">152: </a><span class="php-comment">     */</span>
+</span><span id="153" class="l"><a class="l" href="#153">153: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <span class="php-keyword2">count</span>()
+</span><span id="154" class="l"><a class="l" href="#154">154: </a>    {
+</span><span id="155" class="l"><a class="l" href="#155">155: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">count</span>(<span class="php-var">$this</span>-&gt;requests);
+</span><span id="156" class="l"><a class="l" href="#156">156: </a>    }
+</span><span id="157" class="l"><a class="l" href="#157">157: </a>
+</span><span id="158" class="l"><a class="l" href="#158">158: </a>    <span class="php-comment">/**
+</span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     * Build and throw a MultiTransferException
+</span></span><span id="160" class="l"><a class="l" href="#160">160: </a><span class="php-comment">     *
+</span></span><span id="161" class="l"><a class="l" href="#161">161: </a><span class="php-comment">     * @param array $exceptions Exceptions encountered
+</span></span><span id="162" class="l"><a class="l" href="#162">162: </a><span class="php-comment">     * @param array $successful Successful requests
+</span></span><span id="163" class="l"><a class="l" href="#163">163: </a><span class="php-comment">     * @throws MultiTransferException
+</span></span><span id="164" class="l"><a class="l" href="#164">164: </a><span class="php-comment">     */</span>
+</span><span id="165" class="l"><a class="l" href="#165">165: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_throwMultiException" href="#_throwMultiException">throwMultiException</a>(<span class="php-keyword1">array</span> <span class="php-var">$exceptions</span>, <span class="php-keyword1">array</span> <span class="php-var">$successful</span>)
+</span><span id="166" class="l"><a class="l" href="#166">166: </a>    {
+</span><span id="167" class="l"><a class="l" href="#167">167: </a>        <span class="php-var">$multiException</span> = <span class="php-keyword1">new</span> MultiTransferException(<span class="php-quote">'Errors during multi transfer'</span>);
+</span><span id="168" class="l"><a class="l" href="#168">168: </a>
+</span><span id="169" class="l"><a class="l" href="#169">169: </a>        <span class="php-keyword1">while</span> (<span class="php-var">$e</span> = <span class="php-keyword2">array_shift</span>(<span class="php-var">$exceptions</span>)) {
+</span><span id="170" class="l"><a class="l" href="#170">170: </a>            <span class="php-var">$multiException</span>-&gt;add(<span class="php-var">$e</span>[<span class="php-quote">'exception'</span>]);
+</span><span id="171" class="l"><a class="l" href="#171">171: </a>            <span class="php-var">$multiException</span>-&gt;addFailedRequest(<span class="php-var">$e</span>[<span class="php-quote">'request'</span>]);
+</span><span id="172" class="l"><a class="l" href="#172">172: </a>        }
+</span><span id="173" class="l"><a class="l" href="#173">173: </a>
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>        <span class="php-comment">// Add successful requests</span>
+</span><span id="175" class="l"><a class="l" href="#175">175: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$successful</span> <span class="php-keyword1">as</span> <span class="php-var">$request</span>) {
+</span><span id="176" class="l"><a class="l" href="#176">176: </a>            <span class="php-keyword1">if</span> (!<span class="php-var">$multiException</span>-&gt;containsRequest(<span class="php-var">$request</span>)) {
+</span><span id="177" class="l"><a class="l" href="#177">177: </a>                <span class="php-var">$multiException</span>-&gt;addSuccessfulRequest(<span class="php-var">$request</span>);
+</span><span id="178" class="l"><a class="l" href="#178">178: </a>            }
+</span><span id="179" class="l"><a class="l" href="#179">179: </a>        }
+</span><span id="180" class="l"><a class="l" href="#180">180: </a>
+</span><span id="181" class="l"><a class="l" href="#181">181: </a>        <span class="php-keyword1">throw</span> <span class="php-var">$multiException</span>;
+</span><span id="182" class="l"><a class="l" href="#182">182: </a>    }
+</span><span id="183" class="l"><a class="l" href="#183">183: </a>
+</span><span id="184" class="l"><a class="l" href="#184">184: </a>    <span class="php-comment">/**
+</span></span><span id="185" class="l"><a class="l" href="#185">185: </a><span class="php-comment">     * Prepare for sending
+</span></span><span id="186" class="l"><a class="l" href="#186">186: </a><span class="php-comment">     *
+</span></span><span id="187" class="l"><a class="l" href="#187">187: </a><span class="php-comment">     * @param RequestInterface $request Request to prepare
+</span></span><span id="188" class="l"><a class="l" href="#188">188: </a><span class="php-comment">     * @throws \Exception on error preparing the request
+</span></span><span id="189" class="l"><a class="l" href="#189">189: </a><span class="php-comment">     */</span>
+</span><span id="190" class="l"><a class="l" href="#190">190: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_beforeSend" href="#_beforeSend">beforeSend</a>(RequestInterface <span class="php-var">$request</span>)
+</span><span id="191" class="l"><a class="l" href="#191">191: </a>    {
+</span><span id="192" class="l"><a class="l" href="#192">192: </a>        <span class="php-keyword1">try</span> {
+</span><span id="193" class="l"><a class="l" href="#193">193: </a>            <span class="php-var">$request</span>-&gt;setState(RequestInterface::STATE_TRANSFER);
+</span><span id="194" class="l"><a class="l" href="#194">194: </a>            <span class="php-var">$request</span>-&gt;dispatch(<span class="php-quote">'request.before_send'</span>, <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-var">$request</span>));
+</span><span id="195" class="l"><a class="l" href="#195">195: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$request</span>-&gt;getState() != RequestInterface::STATE_TRANSFER) {
+</span><span id="196" class="l"><a class="l" href="#196">196: </a>                <span class="php-comment">// Requests might decide they don't need to be sent just before transfer (e.g. CachePlugin)</span>
+</span><span id="197" class="l"><a class="l" href="#197">197: </a>                <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="198" class="l"><a class="l" href="#198">198: </a>            } <span class="php-keyword1">elseif</span> (<span class="php-var">$request</span>-&gt;getParams()-&gt;get(<span class="php-quote">'queued_response'</span>)) {
+</span><span id="199" class="l"><a class="l" href="#199">199: </a>                <span class="php-comment">// Queued responses do not need to be sent using curl</span>
+</span><span id="200" class="l"><a class="l" href="#200">200: </a>                <span class="php-var">$request</span>-&gt;setState(RequestInterface::STATE_COMPLETE);
+</span><span id="201" class="l"><a class="l" href="#201">201: </a>                <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="202" class="l"><a class="l" href="#202">202: </a>                <span class="php-var">$this</span>-&gt;successful[] = <span class="php-var">$request</span>;
+</span><span id="203" class="l"><a class="l" href="#203">203: </a>            } <span class="php-keyword1">else</span> {
+</span><span id="204" class="l"><a class="l" href="#204">204: </a>                <span class="php-comment">// Add the request curl handle to the multi handle</span>
+</span><span id="205" class="l"><a class="l" href="#205">205: </a>                <span class="php-var">$this</span>-&gt;checkCurlResult(<span class="php-keyword2">curl_multi_add_handle</span>(<span class="php-var">$this</span>-&gt;multiHandle, <span class="php-var">$this</span>-&gt;createCurlHandle(<span class="php-var">$request</span>)-&gt;getHandle()));
+</span><span id="206" class="l"><a class="l" href="#206">206: </a>            }
+</span><span id="207" class="l"><a class="l" href="#207">207: </a>        } <span class="php-keyword1">catch</span> (\Exception <span class="php-var">$e</span>) {
+</span><span id="208" class="l"><a class="l" href="#208">208: </a>            <span class="php-comment">// Queue the exception to be thrown when sent</span>
+</span><span id="209" class="l"><a class="l" href="#209">209: </a>            <span class="php-var">$this</span>-&gt;removeErroredRequest(<span class="php-var">$request</span>, <span class="php-var">$e</span>);
+</span><span id="210" class="l"><a class="l" href="#210">210: </a>        }
+</span><span id="211" class="l"><a class="l" href="#211">211: </a>    }
+</span><span id="212" class="l"><a class="l" href="#212">212: </a>
+</span><span id="213" class="l"><a class="l" href="#213">213: </a>    <span class="php-comment">/**
+</span></span><span id="214" class="l"><a class="l" href="#214">214: </a><span class="php-comment">     * Create a curl handle for a request
+</span></span><span id="215" class="l"><a class="l" href="#215">215: </a><span class="php-comment">     *
+</span></span><span id="216" class="l"><a class="l" href="#216">216: </a><span class="php-comment">     * @param RequestInterface $request Request
+</span></span><span id="217" class="l"><a class="l" href="#217">217: </a><span class="php-comment">     *
+</span></span><span id="218" class="l"><a class="l" href="#218">218: </a><span class="php-comment">     * @return CurlHandle
+</span></span><span id="219" class="l"><a class="l" href="#219">219: </a><span class="php-comment">     */</span>
+</span><span id="220" class="l"><a class="l" href="#220">220: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_createCurlHandle" href="#_createCurlHandle">createCurlHandle</a>(RequestInterface <span class="php-var">$request</span>)
+</span><span id="221" class="l"><a class="l" href="#221">221: </a>    {
+</span><span id="222" class="l"><a class="l" href="#222">222: </a>        <span class="php-var">$wrapper</span> = CurlHandle::factory(<span class="php-var">$request</span>);
+</span><span id="223" class="l"><a class="l" href="#223">223: </a>        <span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>] = <span class="php-var">$wrapper</span>;
+</span><span id="224" class="l"><a class="l" href="#224">224: </a>        <span class="php-var">$this</span>-&gt;resourceHash[(int) <span class="php-var">$wrapper</span>-&gt;getHandle()] = <span class="php-var">$request</span>;
+</span><span id="225" class="l"><a class="l" href="#225">225: </a>
+</span><span id="226" class="l"><a class="l" href="#226">226: </a>        <span class="php-keyword1">return</span> <span class="php-var">$wrapper</span>;
+</span><span id="227" class="l"><a class="l" href="#227">227: </a>    }
+</span><span id="228" class="l"><a class="l" href="#228">228: </a>
+</span><span id="229" class="l"><a class="l" href="#229">229: </a>    <span class="php-comment">/**
+</span></span><span id="230" class="l"><a class="l" href="#230">230: </a><span class="php-comment">     * Get the data from the multi handle
+</span></span><span id="231" class="l"><a class="l" href="#231">231: </a><span class="php-comment">     */</span>
+</span><span id="232" class="l"><a class="l" href="#232">232: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_perform" href="#_perform">perform</a>()
+</span><span id="233" class="l"><a class="l" href="#233">233: </a>    {
+</span><span id="234" class="l"><a class="l" href="#234">234: </a>        <span class="php-keyword1">if</span> (!<span class="php-var">$this</span>-&gt;requests) {
+</span><span id="235" class="l"><a class="l" href="#235">235: </a>            <span class="php-keyword1">return</span>;
+</span><span id="236" class="l"><a class="l" href="#236">236: </a>        }
+</span><span id="237" class="l"><a class="l" href="#237">237: </a>
+</span><span id="238" class="l"><a class="l" href="#238">238: </a>        <span class="php-comment">// Initialize the handles with a very quick select timeout</span>
+</span><span id="239" class="l"><a class="l" href="#239">239: </a>        <span class="php-var">$active</span> = <span class="php-var">$mrc</span> = <span class="php-keyword1">null</span>;
+</span><span id="240" class="l"><a class="l" href="#240">240: </a>        <span class="php-var">$this</span>-&gt;executeHandles(<span class="php-var">$active</span>, <span class="php-var">$mrc</span>, <span class="php-num">0.001</span>);
+</span><span id="241" class="l"><a class="l" href="#241">241: </a>        <span class="php-var">$event</span> = <span class="php-keyword1">array</span>(<span class="php-quote">'curl_multi'</span> =&gt; <span class="php-var">$this</span>);
+</span><span id="242" class="l"><a class="l" href="#242">242: </a>
+</span><span id="243" class="l"><a class="l" href="#243">243: </a>        <span class="php-keyword1">while</span> (<span class="php-num">1</span>) {
+</span><span id="244" class="l"><a class="l" href="#244">244: </a>
+</span><span id="245" class="l"><a class="l" href="#245">245: </a>            <span class="php-var">$this</span>-&gt;processMessages();
+</span><span id="246" class="l"><a class="l" href="#246">246: </a>
+</span><span id="247" class="l"><a class="l" href="#247">247: </a>            <span class="php-comment">// Exit the function if there are no more requests to send</span>
+</span><span id="248" class="l"><a class="l" href="#248">248: </a>            <span class="php-keyword1">if</span> (!<span class="php-var">$this</span>-&gt;requests) {
+</span><span id="249" class="l"><a class="l" href="#249">249: </a>                <span class="php-keyword1">break</span>;
+</span><span id="250" class="l"><a class="l" href="#250">250: </a>            }
+</span><span id="251" class="l"><a class="l" href="#251">251: </a>
+</span><span id="252" class="l"><a class="l" href="#252">252: </a>            <span class="php-comment">// Notify each request as polling</span>
+</span><span id="253" class="l"><a class="l" href="#253">253: </a>            <span class="php-var">$blocking</span> = <span class="php-var">$total</span> = <span class="php-num">0</span>;
+</span><span id="254" class="l"><a class="l" href="#254">254: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;requests <span class="php-keyword1">as</span> <span class="php-var">$request</span>) {
+</span><span id="255" class="l"><a class="l" href="#255">255: </a>                <span class="php-var">$event</span>[<span class="php-quote">'request'</span>] = <span class="php-var">$request</span>;
+</span><span id="256" class="l"><a class="l" href="#256">256: </a>                <span class="php-var">$request</span>-&gt;dispatch(self::POLLING_REQUEST, <span class="php-var">$event</span>);
+</span><span id="257" class="l"><a class="l" href="#257">257: </a>                ++<span class="php-var">$total</span>;
+</span><span id="258" class="l"><a class="l" href="#258">258: </a>                <span class="php-comment">// The blocking variable just has to be non-falsey to block the loop</span>
+</span><span id="259" class="l"><a class="l" href="#259">259: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$request</span>-&gt;getParams()-&gt;hasKey(self::BLOCKING)) {
+</span><span id="260" class="l"><a class="l" href="#260">260: </a>                    ++<span class="php-var">$blocking</span>;
+</span><span id="261" class="l"><a class="l" href="#261">261: </a>                }
+</span><span id="262" class="l"><a class="l" href="#262">262: </a>            }
+</span><span id="263" class="l"><a class="l" href="#263">263: </a>
+</span><span id="264" class="l"><a class="l" href="#264">264: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$blocking</span> == <span class="php-var">$total</span>) {
+</span><span id="265" class="l"><a class="l" href="#265">265: </a>                <span class="php-comment">// Sleep to prevent eating CPU because no requests are actually pending a select call</span>
+</span><span id="266" class="l"><a class="l" href="#266">266: </a>                <span class="php-keyword2">usleep</span>(<span class="php-num">500</span>);
+</span><span id="267" class="l"><a class="l" href="#267">267: </a>            } <span class="php-keyword1">else</span> {
+</span><span id="268" class="l"><a class="l" href="#268">268: </a>                <span class="php-keyword1">do</span> {
+</span><span id="269" class="l"><a class="l" href="#269">269: </a>                    <span class="php-var">$this</span>-&gt;executeHandles(<span class="php-var">$active</span>, <span class="php-var">$mrc</span>, <span class="php-num">1</span>);
+</span><span id="270" class="l"><a class="l" href="#270">270: </a>                } <span class="php-keyword1">while</span> (<span class="php-var">$active</span>);
+</span><span id="271" class="l"><a class="l" href="#271">271: </a>            }
+</span><span id="272" class="l"><a class="l" href="#272">272: </a>        }
+</span><span id="273" class="l"><a class="l" href="#273">273: </a>    }
+</span><span id="274" class="l"><a class="l" href="#274">274: </a>
+</span><span id="275" class="l"><a class="l" href="#275">275: </a>    <span class="php-comment">/**
+</span></span><span id="276" class="l"><a class="l" href="#276">276: </a><span class="php-comment">     * Process any received curl multi messages
+</span></span><span id="277" class="l"><a class="l" href="#277">277: </a><span class="php-comment">     */</span>
+</span><span id="278" class="l"><a class="l" href="#278">278: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> <a id="_processMessages" href="#_processMessages">processMessages</a>()
+</span><span id="279" class="l"><a class="l" href="#279">279: </a>    {
+</span><span id="280" class="l"><a class="l" href="#280">280: </a>        <span class="php-comment">// Get messages from curl handles</span>
+</span><span id="281" class="l"><a class="l" href="#281">281: </a>        <span class="php-keyword1">while</span> (<span class="php-var">$done</span> = <span class="php-keyword2">curl_multi_info_read</span>(<span class="php-var">$this</span>-&gt;multiHandle)) {
+</span><span id="282" class="l"><a class="l" href="#282">282: </a>            <span class="php-keyword1">try</span> {
+</span><span id="283" class="l"><a class="l" href="#283">283: </a>                <span class="php-var">$request</span> = <span class="php-var">$this</span>-&gt;resourceHash[(int) <span class="php-var">$done</span>[<span class="php-quote">'handle'</span>]];
+</span><span id="284" class="l"><a class="l" href="#284">284: </a>                <span class="php-var">$this</span>-&gt;processResponse(<span class="php-var">$request</span>, <span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>], <span class="php-var">$done</span>);
+</span><span id="285" class="l"><a class="l" href="#285">285: </a>                <span class="php-var">$this</span>-&gt;successful[] = <span class="php-var">$request</span>;
+</span><span id="286" class="l"><a class="l" href="#286">286: </a>            } <span class="php-keyword1">catch</span> (MultiTransferException <span class="php-var">$e</span>) {
+</span><span id="287" class="l"><a class="l" href="#287">287: </a>                <span class="php-var">$this</span>-&gt;removeErroredRequest(<span class="php-var">$request</span>, <span class="php-var">$e</span>, <span class="php-keyword1">false</span>);
+</span><span id="288" class="l"><a class="l" href="#288">288: </a>                <span class="php-keyword1">throw</span> <span class="php-var">$e</span>;
+</span><span id="289" class="l"><a class="l" href="#289">289: </a>            } <span class="php-keyword1">catch</span> (\Exception <span class="php-var">$e</span>) {
+</span><span id="290" class="l"><a class="l" href="#290">290: </a>                <span class="php-var">$this</span>-&gt;removeErroredRequest(<span class="php-var">$request</span>, <span class="php-var">$e</span>);
+</span><span id="291" class="l"><a class="l" href="#291">291: </a>            }
+</span><span id="292" class="l"><a class="l" href="#292">292: </a>        }
+</span><span id="293" class="l"><a class="l" href="#293">293: </a>    }
+</span><span id="294" class="l"><a class="l" href="#294">294: </a>
+</span><span id="295" class="l"><a class="l" href="#295">295: </a>    <span class="php-comment">/**
+</span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     * Execute and select curl handles until there is activity
+</span></span><span id="297" class="l"><a class="l" href="#297">297: </a><span class="php-comment">     *
+</span></span><span id="298" class="l"><a class="l" href="#298">298: </a><span class="php-comment">     * @param int $active  Active value to update
+</span></span><span id="299" class="l"><a class="l" href="#299">299: </a><span class="php-comment">     * @param int $mrc     Multi result value to update
+</span></span><span id="300" class="l"><a class="l" href="#300">300: </a><span class="php-comment">     * @param int $timeout Select timeout in seconds
+</span></span><span id="301" class="l"><a class="l" href="#301">301: </a><span class="php-comment">     */</span>
+</span><span id="302" class="l"><a class="l" href="#302">302: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> <a id="_executeHandles" href="#_executeHandles">executeHandles</a>(&amp;<span class="php-var">$active</span>, &amp;<span class="php-var">$mrc</span>, <span class="php-var">$timeout</span> = <span class="php-num">1</span>)
+</span><span id="303" class="l"><a class="l" href="#303">303: </a>    {
+</span><span id="304" class="l"><a class="l" href="#304">304: </a>        <span class="php-keyword1">do</span> {
+</span><span id="305" class="l"><a class="l" href="#305">305: </a>            <span class="php-var">$mrc</span> = <span class="php-keyword2">curl_multi_exec</span>(<span class="php-var">$this</span>-&gt;multiHandle, <span class="php-var">$active</span>);
+</span><span id="306" class="l"><a class="l" href="#306">306: </a>        } <span class="php-keyword1">while</span> (<span class="php-var">$mrc</span> == CURLM_CALL_MULTI_PERFORM &amp;&amp; <span class="php-var">$active</span>);
+</span><span id="307" class="l"><a class="l" href="#307">307: </a>        <span class="php-var">$this</span>-&gt;checkCurlResult(<span class="php-var">$mrc</span>);
+</span><span id="308" class="l"><a class="l" href="#308">308: </a>
+</span><span id="309" class="l"><a class="l" href="#309">309: </a>        <span class="php-comment">// @codeCoverageIgnoreStart</span>
+</span><span id="310" class="l"><a class="l" href="#310">310: </a>        <span class="php-comment">// Select the curl handles until there is any activity on any of the open file descriptors</span>
+</span><span id="311" class="l"><a class="l" href="#311">311: </a>        <span class="php-comment">// See https://github.com/php/php-src/blob/master/ext/curl/multi.c#L170</span>
+</span><span id="312" class="l"><a class="l" href="#312">312: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$active</span> &amp;&amp; <span class="php-var">$mrc</span> == CURLM_OK &amp;&amp; <span class="php-keyword2">curl_multi_select</span>(<span class="php-var">$this</span>-&gt;multiHandle, <span class="php-var">$timeout</span>) == -<span class="php-num">1</span>) {
+</span><span id="313" class="l"><a class="l" href="#313">313: </a>            <span class="php-comment">// Perform a usleep if a previously executed select returned -1</span>
+</span><span id="314" class="l"><a class="l" href="#314">314: </a>            <span class="php-comment">// @see https://bugs.php.net/bug.php?id=61141</span>
+</span><span id="315" class="l"><a class="l" href="#315">315: </a>            <span class="php-keyword2">usleep</span>(<span class="php-num">100</span>);
+</span><span id="316" class="l"><a class="l" href="#316">316: </a>        }
+</span><span id="317" class="l"><a class="l" href="#317">317: </a>        <span class="php-comment">// @codeCoverageIgnoreEnd</span>
+</span><span id="318" class="l"><a class="l" href="#318">318: </a>    }
+</span><span id="319" class="l"><a class="l" href="#319">319: </a>
+</span><span id="320" class="l"><a class="l" href="#320">320: </a>    <span class="php-comment">/**
+</span></span><span id="321" class="l"><a class="l" href="#321">321: </a><span class="php-comment">     * Remove a request that encountered an exception
+</span></span><span id="322" class="l"><a class="l" href="#322">322: </a><span class="php-comment">     *
+</span></span><span id="323" class="l"><a class="l" href="#323">323: </a><span class="php-comment">     * @param RequestInterface $request Request to remove
+</span></span><span id="324" class="l"><a class="l" href="#324">324: </a><span class="php-comment">     * @param \Exception       $e       Exception encountered
+</span></span><span id="325" class="l"><a class="l" href="#325">325: </a><span class="php-comment">     * @param bool             $buffer  Set to false to not buffer the exception
+</span></span><span id="326" class="l"><a class="l" href="#326">326: </a><span class="php-comment">     */</span>
+</span><span id="327" class="l"><a class="l" href="#327">327: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_removeErroredRequest" href="#_removeErroredRequest">removeErroredRequest</a>(RequestInterface <span class="php-var">$request</span>, \Exception <span class="php-var">$e</span> = <span class="php-keyword1">null</span>, <span class="php-var">$buffer</span> = <span class="php-keyword1">true</span>)
+</span><span id="328" class="l"><a class="l" href="#328">328: </a>    {
+</span><span id="329" class="l"><a class="l" href="#329">329: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$buffer</span>) {
+</span><span id="330" class="l"><a class="l" href="#330">330: </a>            <span class="php-var">$this</span>-&gt;exceptions[] = <span class="php-keyword1">array</span>(<span class="php-quote">'request'</span> =&gt; <span class="php-var">$request</span>, <span class="php-quote">'exception'</span> =&gt; <span class="php-var">$e</span>);
+</span><span id="331" class="l"><a class="l" href="#331">331: </a>        }
+</span><span id="332" class="l"><a class="l" href="#332">332: </a>
+</span><span id="333" class="l"><a class="l" href="#333">333: </a>        <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="334" class="l"><a class="l" href="#334">334: </a>        <span class="php-var">$request</span>-&gt;setState(RequestInterface::STATE_ERROR);
+</span><span id="335" class="l"><a class="l" href="#335">335: </a>        <span class="php-var">$this</span>-&gt;dispatch(self::MULTI_EXCEPTION, <span class="php-keyword1">array</span>(<span class="php-quote">'exception'</span> =&gt; <span class="php-var">$e</span>, <span class="php-quote">'all_exceptions'</span> =&gt; <span class="php-var">$this</span>-&gt;exceptions));
+</span><span id="336" class="l"><a class="l" href="#336">336: </a>    }
+</span><span id="337" class="l"><a class="l" href="#337">337: </a>
+</span><span id="338" class="l"><a class="l" href="#338">338: </a>    <span class="php-comment">/**
+</span></span><span id="339" class="l"><a class="l" href="#339">339: </a><span class="php-comment">     * Check for errors and fix headers of a request based on a curl response
+</span></span><span id="340" class="l"><a class="l" href="#340">340: </a><span class="php-comment">     *
+</span></span><span id="341" class="l"><a class="l" href="#341">341: </a><span class="php-comment">     * @param RequestInterface $request Request to process
+</span></span><span id="342" class="l"><a class="l" href="#342">342: </a><span class="php-comment">     * @param CurlHandle       $handle  Curl handle object
+</span></span><span id="343" class="l"><a class="l" href="#343">343: </a><span class="php-comment">     * @param array            $curl    Array returned from curl_multi_info_read
+</span></span><span id="344" class="l"><a class="l" href="#344">344: </a><span class="php-comment">     *
+</span></span><span id="345" class="l"><a class="l" href="#345">345: </a><span class="php-comment">     * @throws CurlException on Curl error
+</span></span><span id="346" class="l"><a class="l" href="#346">346: </a><span class="php-comment">     */</span>
+</span><span id="347" class="l"><a class="l" href="#347">347: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_processResponse" href="#_processResponse">processResponse</a>(RequestInterface <span class="php-var">$request</span>, CurlHandle <span class="php-var">$handle</span>, <span class="php-keyword1">array</span> <span class="php-var">$curl</span>)
+</span><span id="348" class="l"><a class="l" href="#348">348: </a>    {
+</span><span id="349" class="l"><a class="l" href="#349">349: </a>        <span class="php-comment">// Set the transfer stats on the response</span>
+</span><span id="350" class="l"><a class="l" href="#350">350: </a>        <span class="php-var">$handle</span>-&gt;updateRequestFromTransfer(<span class="php-var">$request</span>);
+</span><span id="351" class="l"><a class="l" href="#351">351: </a>        <span class="php-comment">// Check if a cURL exception occurred, and if so, notify things</span>
+</span><span id="352" class="l"><a class="l" href="#352">352: </a>        <span class="php-var">$curlException</span> = <span class="php-var">$this</span>-&gt;isCurlException(<span class="php-var">$request</span>, <span class="php-var">$handle</span>, <span class="php-var">$curl</span>);
+</span><span id="353" class="l"><a class="l" href="#353">353: </a>
+</span><span id="354" class="l"><a class="l" href="#354">354: </a>        <span class="php-comment">// Always remove completed curl handles.  They can be added back again</span>
+</span><span id="355" class="l"><a class="l" href="#355">355: </a>        <span class="php-comment">// via events if needed (e.g. ExponentialBackoffPlugin)</span>
+</span><span id="356" class="l"><a class="l" href="#356">356: </a>        <span class="php-var">$this</span>-&gt;removeHandle(<span class="php-var">$request</span>);
+</span><span id="357" class="l"><a class="l" href="#357">357: </a>
+</span><span id="358" class="l"><a class="l" href="#358">358: </a>        <span class="php-keyword1">if</span> (!<span class="php-var">$curlException</span>) {
+</span><span id="359" class="l"><a class="l" href="#359">359: </a>            <span class="php-var">$request</span>-&gt;setState(RequestInterface::STATE_COMPLETE, <span class="php-keyword1">array</span>(<span class="php-quote">'handle'</span> =&gt; <span class="php-var">$handle</span>));
+</span><span id="360" class="l"><a class="l" href="#360">360: </a>            <span class="php-comment">// Only remove the request if it wasn't resent as a result of the state change</span>
+</span><span id="361" class="l"><a class="l" href="#361">361: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$request</span>-&gt;getState() != RequestInterface::STATE_TRANSFER) {
+</span><span id="362" class="l"><a class="l" href="#362">362: </a>                <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="363" class="l"><a class="l" href="#363">363: </a>            }
+</span><span id="364" class="l"><a class="l" href="#364">364: </a>        } <span class="php-keyword1">else</span> {
+</span><span id="365" class="l"><a class="l" href="#365">365: </a>            <span class="php-comment">// Set the state of the request to an error</span>
+</span><span id="366" class="l"><a class="l" href="#366">366: </a>            <span class="php-var">$request</span>-&gt;setState(RequestInterface::STATE_ERROR);
+</span><span id="367" class="l"><a class="l" href="#367">367: </a>            <span class="php-comment">// Notify things that listen to the request of the failure</span>
+</span><span id="368" class="l"><a class="l" href="#368">368: </a>            <span class="php-var">$request</span>-&gt;dispatch(<span class="php-quote">'request.exception'</span>, <span class="php-keyword1">array</span>(
+</span><span id="369" class="l"><a class="l" href="#369">369: </a>                <span class="php-quote">'request'</span>   =&gt; <span class="php-var">$this</span>,
+</span><span id="370" class="l"><a class="l" href="#370">370: </a>                <span class="php-quote">'exception'</span> =&gt; <span class="php-var">$curlException</span>
+</span><span id="371" class="l"><a class="l" href="#371">371: </a>            ));
+</span><span id="372" class="l"><a class="l" href="#372">372: </a>
+</span><span id="373" class="l"><a class="l" href="#373">373: </a>            <span class="php-comment">// Allow things to ignore the error if possible</span>
+</span><span id="374" class="l"><a class="l" href="#374">374: </a>            <span class="php-var">$state</span> = <span class="php-var">$request</span>-&gt;getState();
+</span><span id="375" class="l"><a class="l" href="#375">375: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$state</span> != RequestInterface::STATE_TRANSFER) {
+</span><span id="376" class="l"><a class="l" href="#376">376: </a>                <span class="php-var">$this</span>-&gt;remove(<span class="php-var">$request</span>);
+</span><span id="377" class="l"><a class="l" href="#377">377: </a>            }
+</span><span id="378" class="l"><a class="l" href="#378">378: </a>            <span class="php-comment">// The error was not handled, so fail</span>
+</span><span id="379" class="l"><a class="l" href="#379">379: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$state</span> == RequestInterface::STATE_ERROR) {
+</span><span id="380" class="l"><a class="l" href="#380">380: </a>                <span class="php-comment">/** @var CurlException $curlException */</span>
+</span><span id="381" class="l"><a class="l" href="#381">381: </a>                <span class="php-keyword1">throw</span> <span class="php-var">$curlException</span>;
+</span><span id="382" class="l"><a class="l" href="#382">382: </a>            }
+</span><span id="383" class="l"><a class="l" href="#383">383: </a>        }
+</span><span id="384" class="l"><a class="l" href="#384">384: </a>    }
+</span><span id="385" class="l"><a class="l" href="#385">385: </a>
+</span><span id="386" class="l"><a class="l" href="#386">386: </a>    <span class="php-comment">/**
+</span></span><span id="387" class="l"><a class="l" href="#387">387: </a><span class="php-comment">     * Remove a curl handle from the curl multi object
+</span></span><span id="388" class="l"><a class="l" href="#388">388: </a><span class="php-comment">     *
+</span></span><span id="389" class="l"><a class="l" href="#389">389: </a><span class="php-comment">     * @param RequestInterface $request Request that owns the handle
+</span></span><span id="390" class="l"><a class="l" href="#390">390: </a><span class="php-comment">     */</span>
+</span><span id="391" class="l"><a class="l" href="#391">391: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_removeHandle" href="#_removeHandle">removeHandle</a>(RequestInterface <span class="php-var">$request</span>)
+</span><span id="392" class="l"><a class="l" href="#392">392: </a>    {
+</span><span id="393" class="l"><a class="l" href="#393">393: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>])) {
+</span><span id="394" class="l"><a class="l" href="#394">394: </a>            <span class="php-var">$handle</span> = <span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>];
+</span><span id="395" class="l"><a class="l" href="#395">395: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;handles[<span class="php-var">$request</span>]);
+</span><span id="396" class="l"><a class="l" href="#396">396: </a>            <span class="php-keyword1">unset</span>(<span class="php-var">$this</span>-&gt;resourceHash[(int) <span class="php-var">$handle</span>-&gt;getHandle()]);
+</span><span id="397" class="l"><a class="l" href="#397">397: </a>            <span class="php-keyword2">curl_multi_remove_handle</span>(<span class="php-var">$this</span>-&gt;multiHandle, <span class="php-var">$handle</span>-&gt;getHandle());
+</span><span id="398" class="l"><a class="l" href="#398">398: </a>            <span class="php-var">$handle</span>-&gt;close();
+</span><span id="399" class="l"><a class="l" href="#399">399: </a>        }
+</span><span id="400" class="l"><a class="l" href="#400">400: </a>    }
+</span><span id="401" class="l"><a class="l" href="#401">401: </a>
+</span><span id="402" class="l"><a class="l" href="#402">402: </a>    <span class="php-comment">/**
+</span></span><span id="403" class="l"><a class="l" href="#403">403: </a><span class="php-comment">     * Check if a cURL transfer resulted in what should be an exception
+</span></span><span id="404" class="l"><a class="l" href="#404">404: </a><span class="php-comment">     *
+</span></span><span id="405" class="l"><a class="l" href="#405">405: </a><span class="php-comment">     * @param RequestInterface $request Request to check
+</span></span><span id="406" class="l"><a class="l" href="#406">406: </a><span class="php-comment">     * @param CurlHandle       $handle  Curl handle object
+</span></span><span id="407" class="l"><a class="l" href="#407">407: </a><span class="php-comment">     * @param array            $curl    Array returned from curl_multi_info_read
+</span></span><span id="408" class="l"><a class="l" href="#408">408: </a><span class="php-comment">     *
+</span></span><span id="409" class="l"><a class="l" href="#409">409: </a><span class="php-comment">     * @return CurlException|bool
+</span></span><span id="410" class="l"><a class="l" href="#410">410: </a><span class="php-comment">     */</span>
+</span><span id="411" class="l"><a class="l" href="#411">411: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> <a id="_isCurlException" href="#_isCurlException">isCurlException</a>(RequestInterface <span class="php-var">$request</span>, CurlHandle <span class="php-var">$handle</span>, <span class="php-keyword1">array</span> <span class="php-var">$curl</span>)
+</span><span id="412" class="l"><a class="l" href="#412">412: </a>    {
+</span><span id="413" class="l"><a class="l" href="#413">413: </a>        <span class="php-keyword1">if</span> (CURLM_OK == <span class="php-var">$curl</span>[<span class="php-quote">'result'</span>] || CURLM_CALL_MULTI_PERFORM == <span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]) {
+</span><span id="414" class="l"><a class="l" href="#414">414: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
+</span><span id="415" class="l"><a class="l" href="#415">415: </a>        }
+</span><span id="416" class="l"><a class="l" href="#416">416: </a>
+</span><span id="417" class="l"><a class="l" href="#417">417: </a>        <span class="php-var">$handle</span>-&gt;setErrorNo(<span class="php-var">$curl</span>[<span class="php-quote">'result'</span>]);
+</span><span id="418" class="l"><a class="l" href="#418">418: </a>        <span class="php-var">$e</span> = <span class="php-keyword1">new</span> CurlException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'[curl] %s: %s [url] %s'</span>,
+</span><span id="419" class="l"><a class="l" href="#419">419: </a>            <span class="php-var">$handle</span>-&gt;getErrorNo(), <span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getUrl()));
+</span><span id="420" class="l"><a class="l" href="#420">420: </a>        <span class="php-var">$e</span>-&gt;setCurlHandle(<span class="php-var">$handle</span>)
+</span><span id="421" class="l"><a class="l" href="#421">421: </a>            -&gt;setRequest(<span class="php-var">$request</span>)
+</span><span id="422" class="l"><a class="l" href="#422">422: </a>            -&gt;setCurlInfo(<span class="php-var">$handle</span>-&gt;getInfo())
+</span><span id="423" class="l"><a class="l" href="#423">423: </a>            -&gt;setError(<span class="php-var">$handle</span>-&gt;getError(), <span class="php-var">$handle</span>-&gt;getErrorNo());
+</span><span id="424" class="l"><a class="l" href="#424">424: </a>
+</span><span id="425" class="l"><a class="l" href="#425">425: </a>        <span class="php-keyword1">return</span> <span class="php-var">$e</span>;
+</span><span id="426" class="l"><a class="l" href="#426">426: </a>    }
+</span><span id="427" class="l"><a class="l" href="#427">427: </a>
+</span><span id="428" class="l"><a class="l" href="#428">428: </a>    <span class="php-comment">/**
+</span></span><span id="429" class="l"><a class="l" href="#429">429: </a><span class="php-comment">     * Throw an exception for a cURL multi response if needed
+</span></span><span id="430" class="l"><a class="l" href="#430">430: </a><span class="php-comment">     *
+</span></span><span id="431" class="l"><a class="l" href="#431">431: </a><span class="php-comment">     * @param int $code Curl response code
+</span></span><span id="432" class="l"><a class="l" href="#432">432: </a><span class="php-comment">     * @throws CurlException
+</span></span><span id="433" class="l"><a class="l" href="#433">433: </a><span class="php-comment">     */</span>
+</span><span id="434" class="l"><a class="l" href="#434">434: </a>    <span class="php-keyword1">private</span> <span class="php-keyword1">function</span> <a id="_checkCurlResult" href="#_checkCurlResult">checkCurlResult</a>(<span class="php-var">$code</span>)
+</span><span id="435" class="l"><a class="l" href="#435">435: </a>    {
+</span><span id="436" class="l"><a class="l" href="#436">436: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$code</span> != CURLM_OK &amp;&amp; <span class="php-var">$code</span> != CURLM_CALL_MULTI_PERFORM) {
+</span><span id="437" class="l"><a class="l" href="#437">437: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> CurlException(<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;multiErrors[<span class="php-var">$code</span>])
+</span><span id="438" class="l"><a class="l" href="#438">438: </a>                ? <span class="php-quote">&quot;cURL error: </span><span class="php-var">{$code}</span><span class="php-quote"> (</span><span class="php-var">{$this-&gt;multiErrors[$code][0]}</span><span class="php-quote">): cURL message: </span><span class="php-var">{$this-&gt;multiErrors[$code][1]}</span><span class="php-quote">&quot;</span>
+</span><span id="439" class="l"><a class="l" href="#439">439: </a>                : <span class="php-quote">'Unexpected cURL error: '</span> . <span class="php-var">$code</span>
+</span><span id="440" class="l"><a class="l" href="#440">440: </a>            );
+</span><span id="441" class="l"><a class="l" href="#441">441: </a>        }
+</span><span id="442" class="l"><a class="l" href="#442">442: </a>    }
+</span><span id="443" class="l"><a class="l" href="#443">443: </a>}
+</span><span id="444" class="l"><a class="l" href="#444">444: </a></span></code></pre>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

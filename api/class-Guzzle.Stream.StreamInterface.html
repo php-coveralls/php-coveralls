@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Guzzle\Stream\StreamInterface | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Stream.PhpStreamRequestFactory.html">PhpStreamRequestFactory</a></li>
+				<li><a href="class-Guzzle.Stream.Stream.html">Stream</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Stream.StreamInterface.html">StreamInterface</a></li>
+				<li><a href="class-Guzzle.Stream.StreamRequestFactoryInterface.html">StreamRequestFactoryInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Stream.html" title="Summary of Guzzle\Stream"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface StreamInterface</h1>
+
+
+	<div class="description">
+	
+<p>OO interface to PHP streams</p>
+
+	</div>
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a>, 
+			<a href="class-Guzzle.Stream.Stream.html">Guzzle\Stream\Stream</a>
+	</div>
+
+	<div>
+		<h4>Indirect known implementers</h4>
+			<a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">Guzzle\Http\AbstractEntityBodyDecorator</a>, 
+			<a href="class-Guzzle.Http.CachingEntityBody.html">Guzzle\Http\CachingEntityBody</a>, 
+			<a href="class-Guzzle.Http.EntityBody.html">Guzzle\Http\EntityBody</a>, 
+			<a href="class-Guzzle.Http.IoEmittingEntityBody.html">Guzzle\Http\IoEmittingEntityBody</a>, 
+			<a href="class-Guzzle.Http.ReadLimitEntityBody.html">Guzzle\Http\ReadLimitEntityBody</a>
+	</div>
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Stream.html">Stream</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Stream.StreamInterface.html#5-204" title="Go to source code">Guzzle/Stream/StreamInterface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#10-15" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			
+<p>Convert the stream to a string if the stream is readable and the stream is
+seekable.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Convert the stream to a string if the stream is readable and the stream is
+seekable.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="close" id="_close">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_close">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#17-20" title="Go to source code">close</a>( )</code>
+
+		<div class="description short">
+			
+<p>Close the underlying stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Close the underlying stream</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMetaData" id="_getMetaData">
+
+		<td class="attributes"><code>
+			 public 
+			array|mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMetaData">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#22-29" title="Go to source code">getMetaData</a>( <span>string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get stream metadata</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get stream metadata</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Specific metadata to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array|mixed|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStream" id="_getStream">
+
+		<td class="attributes"><code>
+			 public 
+			resource
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStream">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#31-36" title="Go to source code">getStream</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the stream resource</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the stream resource</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>resource</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setStream" id="_setStream">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setStream">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#38-46" title="Go to source code">setStream</a>( <span>resource <var>$stream</var></span>, <span>integer <var>$size</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the stream that is wrapped by the object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the stream that is wrapped by the object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$stream</var></dt>
+					<dd><code>resource</code><br>$stream Stream resource to wrap</dd>
+					<dt><var>$size</var></dt>
+					<dd><code>integer</code><br>$size Size of the stream in bytes. Only pass if the size cannot be obtained from
+the stream.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWrapper" id="_getWrapper">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWrapper">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#48-53" title="Go to source code">getWrapper</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the stream wrapper type</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the stream wrapper type</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWrapperData" id="_getWrapperData">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWrapperData">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#55-60" title="Go to source code">getWrapperData</a>( )</code>
+
+		<div class="description short">
+			
+<p>Wrapper specific data attached to this stream.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Wrapper specific data attached to this stream.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStreamType" id="_getStreamType">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStreamType">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#62-67" title="Go to source code">getStreamType</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get a label describing the underlying implementation of the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a label describing the underlying implementation of the stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUri" id="_getUri">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUri">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#69-74" title="Go to source code">getUri</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the URI/filename associated with this stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the URI/filename associated with this stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSize" id="_getSize">
+
+		<td class="attributes"><code>
+			 public 
+			integer|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSize">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#76-81" title="Go to source code">getSize</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the size of the stream if able</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the size of the stream if able</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer|boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isReadable" id="_isReadable">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isReadable">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#83-88" title="Go to source code">isReadable</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the stream is readable</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the stream is readable</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isWritable" id="_isWritable">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isWritable">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#90-95" title="Go to source code">isWritable</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the stream is writable</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the stream is writable</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isConsumed" id="_isConsumed">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isConsumed">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#97-102" title="Go to source code">isConsumed</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the stream has been consumed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the stream has been consumed</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="feof" id="_feof">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_feof">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#104-109" title="Go to source code">feof</a>( )</code>
+
+		<div class="description short">
+			
+<p>Alias of isConsumed</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Alias of isConsumed</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isLocal" id="_isLocal">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isLocal">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#111-116" title="Go to source code">isLocal</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the stream is a local stream vs a remote stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the stream is a local stream vs a remote stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isSeekable" id="_isSeekable">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isSeekable">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#118-123" title="Go to source code">isSeekable</a>( )</code>
+
+		<div class="description short">
+			
+<p>Check if the string is repeatable</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the string is repeatable</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSize" id="_setSize">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSize">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#125-132" title="Go to source code">setSize</a>( <span>integer <var>$size</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Specify the size of the stream in bytes</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Specify the size of the stream in bytes</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$size</var></dt>
+					<dd><code>integer</code><br>$size Size of the stream contents in bytes</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="seek" id="_seek">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_seek">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#134-143" title="Go to source code">seek</a>( <span>integer <var>$offset</var></span>, <span>integer <var>$whence</var> = SEEK_SET</span> )</code>
+
+		<div class="description short">
+			
+<p>Seek to a position in the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seek to a position in the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>integer</code><br>$offset Stream offset</dd>
+					<dt><var>$whence</var></dt>
+					<dd><code>integer</code><br>$whence Where the offset is applied</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns TRUE on success or FALSE on failure<br />
+				</div>
+
+
+				<h4>Link</h4>
+				<div class="list">
+						<a href="http://www.php.net/manual/en/function.fseek.php">http://www.php.net/manual/en/function.fseek.php</a><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="read" id="_read">
+
+		<td class="attributes"><code>
+			 public 
+			string|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_read">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#145-152" title="Go to source code">read</a>( <span>integer <var>$length</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Read data from the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Read data from the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$length</var></dt>
+					<dd><code>integer</code><br>$length Up to length number of bytes read.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|boolean</code><br>Returns the data read from the stream or FALSE on failure or EOF<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="write" id="_write">
+
+		<td class="attributes"><code>
+			 public 
+			integer|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_write">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#154-161" title="Go to source code">write</a>( <span>string <var>$string</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Write data to the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Write data to the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$string</var></dt>
+					<dd><code>string</code><br>$string The string that is to be written.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer|boolean</code><br>Returns the number of bytes written to the stream on success or FALSE on
+failure.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ftell" id="_ftell">
+
+		<td class="attributes"><code>
+			 public 
+			integer|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ftell">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#163-168" title="Go to source code">ftell</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns the current position of the file read/write pointer</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns the current position of the file read/write pointer</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer|boolean</code><br>Returns the position of the file pointer or false on error<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewind" id="_rewind">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rewind">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#170-175" title="Go to source code">rewind</a>( )</code>
+
+		<div class="description short">
+			
+<p>Rewind to the beginning of the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Rewind to the beginning of the stream</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Returns true on success or false on failure<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="readLine" id="_readLine">
+
+		<td class="attributes"><code>
+			 public 
+			string|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_readLine">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#177-184" title="Go to source code">readLine</a>( <span>integer <var>$maxLength</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Read a line from the stream up to the maximum allowed buffer length</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$maxLength</var></dt>
+					<dd><code>integer</code><br>$maxLength Maximum buffer length</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCustomData" id="_setCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCustomData">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#186-194" title="Go to source code">setCustomData</a>( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set custom data on the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set custom data on the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to set</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>mixed</code><br>$value Value to set</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Stream.StreamInterface.html">Guzzle\Stream\StreamInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCustomData" id="_getCustomData">
+
+		<td class="attributes"><code>
+			 public 
+			null|mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCustomData">#</a>
+		<code><a href="source-class-Guzzle.Stream.StreamInterface.html#196-203" title="Go to source code">getCustomData</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get custom data from the stream</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get custom data from the stream</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>string</code><br>$key Key to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null|mixed</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

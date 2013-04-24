@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Guzzle\Service\Description\OperationInterface | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Description.Operation.html">Operation</a></li>
+				<li><a href="class-Guzzle.Service.Description.Parameter.html">Parameter</a></li>
+				<li><a href="class-Guzzle.Service.Description.SchemaFormatter.html">SchemaFormatter</a></li>
+				<li><a href="class-Guzzle.Service.Description.SchemaValidator.html">SchemaValidator</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescription.html">ServiceDescription</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionLoader.html">ServiceDescriptionLoader</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Service.Description.OperationInterface.html">OperationInterface</a></li>
+				<li><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">ServiceDescriptionInterface</a></li>
+				<li><a href="class-Guzzle.Service.Description.ValidatorInterface.html">ValidatorInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Service.Description.html" title="Summary of Guzzle\Service\Description"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface OperationInterface</h1>
+
+
+	<div class="description">
+	
+<p>Interface defining data objects that hold the information of an API
+operation</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Service\Description\OperationInterface</span></b>			
+			 implements 
+				<a href="class-Guzzle.Common.ToArrayInterface.html"><span>Guzzle\Common\ToArrayInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Guzzle.Service.Description.Operation.html">Guzzle\Service\Description\Operation</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Description.html">Description</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Service.Description.OperationInterface.html#7-159" title="Go to source code">Guzzle/Service/Description/OperationInterface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getServiceDescription" id="_getServiceDescription">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">Guzzle\Service\Description\ServiceDescriptionInterface</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getServiceDescription">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#17-22" title="Go to source code">getServiceDescription</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the service description that the operation belongs to</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the service description that the operation belongs to</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">Guzzle\Service\Description\ServiceDescriptionInterface</a></code>|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setServiceDescription" id="_setServiceDescription">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Description.OperationInterface.html">Guzzle\Service\Description\OperationInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setServiceDescription">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#24-31" title="Go to source code">setServiceDescription</a>( <span><code><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">Guzzle\Service\Description\ServiceDescriptionInterface</a></code> <var>$description</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the service description that the operation belongs to</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the service description that the operation belongs to</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$description</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Description.ServiceDescriptionInterface.html">Guzzle\Service\Description\ServiceDescriptionInterface</a></code></code><br>$description Service description</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Description.OperationInterface.html">Guzzle\Service\Description\OperationInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParams" id="_getParams">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParams">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#33-38" title="Go to source code">getParams</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the params of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the params of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParamNames" id="_getParamNames">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParamNames">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#40-45" title="Go to source code">getParamNames</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns an array of parameter names</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns an array of parameter names</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasParam" id="_hasParam">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasParam">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#47-54" title="Go to source code">hasParam</a>( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if the operation has a specific parameter by name</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the operation has a specific parameter by name</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name Name of the param</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParam" id="_getParam">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParam">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#56-63" title="Go to source code">getParam</a>( <span>string <var>$param</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get a single parameter of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a single parameter of the operation</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$param</var></dt>
+					<dd><code>string</code><br>$param Parameter to retrieve by name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Description.Parameter.html">Guzzle\Service\Description\Parameter</a></code>|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHttpMethod" id="_getHttpMethod">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHttpMethod">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#65-70" title="Go to source code">getHttpMethod</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the HTTP method of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the HTTP method of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getClass" id="_getClass">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getClass">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#72-77" title="Go to source code">getClass</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the concrete operation class that implements this operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the concrete operation class that implements this operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#79-84" title="Go to source code">getName</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the name of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the name of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSummary" id="_getSummary">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSummary">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#86-91" title="Go to source code">getSummary</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get a short summary of what the operation does</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a short summary of what the operation does</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getNotes" id="_getNotes">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNotes">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#93-98" title="Go to source code">getNotes</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get a longer text field to explain the behavior of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a longer text field to explain the behavior of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDocumentationUrl" id="_getDocumentationUrl">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDocumentationUrl">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#100-105" title="Go to source code">getDocumentationUrl</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the documentation URL of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the documentation URL of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResponseClass" id="_getResponseClass">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResponseClass">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#107-114" title="Go to source code">getResponseClass</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get what is returned from the method. Can be a primitive, class name, or
+model. For example, the responseClass could be 'array', which would inherently
+use a responseType of 'primitive'. Using a class name would set a responseType
+of 'class'. Specifying a model by ID will use a responseType of 'model'.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get what is returned from the method. Can be a primitive, class name, or
+model. For example, the responseClass could be 'array', which would inherently
+use a responseType of 'primitive'. Using a class name would set a responseType
+of 'class'. Specifying a model by ID will use a responseType of 'model'.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResponseType" id="_getResponseType">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResponseType">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#116-121" title="Go to source code">getResponseType</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get information about how the response is unmarshalled: One of 'primitive',
+'class', 'model', or 'documentation'</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get information about how the response is unmarshalled: One of 'primitive',
+'class', 'model', or 'documentation'</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResponseNotes" id="_getResponseNotes">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResponseNotes">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#123-128" title="Go to source code">getResponseNotes</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get notes about the response of the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get notes about the response of the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDeprecated" id="_getDeprecated">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDeprecated">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#130-135" title="Go to source code">getDeprecated</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get whether or not the operation is deprecated</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get whether or not the operation is deprecated</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUri" id="_getUri">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUri">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#137-142" title="Go to source code">getUri</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the URI that will be merged into the generated request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the URI that will be merged into the generated request</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getErrorResponses" id="_getErrorResponses">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getErrorResponses">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#144-149" title="Go to source code">getErrorResponses</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the errors that could be encountered when executing the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the errors that could be encountered when executing the operation</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getData" id="_getData">
+
+		<td class="attributes"><code>
+			 public 
+			mixed|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getData">#</a>
+		<code><a href="source-class-Guzzle.Service.Description.OperationInterface.html#151-158" title="Go to source code">getData</a>( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get extra data from the operation</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get extra data from the operation</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name Name of the data point to retrieve</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.ToArrayInterface.html#methods">Guzzle\Common\ToArrayInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.ToArrayInterface.html#_toArray">toArray()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="TYPE_PRIMITIVE" id="TYPE_PRIMITIVE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Service.Description.OperationInterface.html#12" title="Go to source code"><b>TYPE_PRIMITIVE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'primitive'</span></code></td>
+		<td class="description"><div>
+			<a href="#TYPE_PRIMITIVE" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="TYPE_CLASS" id="TYPE_CLASS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Service.Description.OperationInterface.html#13" title="Go to source code"><b>TYPE_CLASS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'class'</span></code></td>
+		<td class="description"><div>
+			<a href="#TYPE_CLASS" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="TYPE_DOCUMENTATION" id="TYPE_DOCUMENTATION">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Service.Description.OperationInterface.html#14" title="Go to source code"><b>TYPE_DOCUMENTATION</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'documentation'</span></code></td>
+		<td class="description"><div>
+			<a href="#TYPE_DOCUMENTATION" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="TYPE_MODEL" id="TYPE_MODEL">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Service.Description.OperationInterface.html#15" title="Go to source code"><b>TYPE_MODEL</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'model'</span></code></td>
+		<td class="description"><div>
+			<a href="#TYPE_MODEL" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

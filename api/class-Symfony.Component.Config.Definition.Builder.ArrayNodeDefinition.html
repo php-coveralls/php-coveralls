@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li class="active"><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">ArrayNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.BooleanNodeDefinition.html">BooleanNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.EnumNodeDefinition.html">EnumNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.ExprBuilder.html">ExprBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.FloatNodeDefinition.html">FloatNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.IntegerNodeDefinition.html">IntegerNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.MergeBuilder.html">MergeBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">NodeBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html">NodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.NormalizationBuilder.html">NormalizationBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.NumericNodeDefinition.html">NumericNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.ScalarNodeDefinition.html">ScalarNodeDefinition</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.TreeBuilder.html">TreeBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.ValidationBuilder.html">ValidationBuilder</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.VariableNodeDefinition.html">VariableNodeDefinition</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.NodeParentInterface.html">NodeParentInterface</a></li>
+				<li><a href="class-Symfony.Component.Config.Definition.Builder.ParentNodeDefinitionInterface.html">ParentNodeDefinitionInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Symfony.Component.Config.Definition.Builder.html" title="Summary of Symfony\Component\Config\Definition\Builder"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ArrayNodeDefinition</h1>
+
+
+	<div class="description">
+	
+<p>This class provides a fluent interface for defining an array node.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html"><span>Symfony\Component\Config\Definition\Builder\NodeDefinition</span></a>
+			
+			 implements 
+				<a href="class-Symfony.Component.Config.Definition.Builder.NodeParentInterface.html"><span>Symfony\Component\Config\Definition\Builder\NodeParentInterface</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</span></b>			
+			 implements 
+				<a href="class-Symfony.Component.Config.Definition.Builder.ParentNodeDefinitionInterface.html"><span>Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Symfony.html">Symfony</a>\<a href="namespace-Symfony.Component.html">Component</a>\<a href="namespace-Symfony.Component.Config.html">Config</a>\<a href="namespace-Symfony.Component.Config.Definition.html">Definition</a>\<a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a><br />
+		
+
+				<b>Author:</b>
+				Johannes M. Schmitt &lt;<a
+href="mailto:schmittjoh&#64;gmail.com">schmittjoh&#64;<!---->gmail.com</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#18-496" title="Go to source code">config/Symfony/Component/Config/Definition/Builder/ArrayNodeDefinition.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#38-55" title="Go to source code">__construct</a>( <span>string <var>$name</var></span>, <span><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeParentInterface.html">Symfony\Component\Config\Definition\Builder\NodeParentInterface</a></code> <var>$parent</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Constructor</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name The name of the node</dd>
+					<dt><var>$parent</var></dt>
+					<dd><code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeParentInterface.html">Symfony\Component\Config\Definition\Builder\NodeParentInterface</a></code></code><br>$parent The parent</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#___construct">Symfony\Component\Config\Definition\Builder\NodeDefinition::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setBuilder" id="_setBuilder">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setBuilder">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#57-65" title="Go to source code">setBuilder</a>( <span><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code> <var>$builder</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets a custom children builder.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets a custom children builder.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$builder</var></dt>
+					<dd><code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code></code><br>$builder A custom NodeBuilder</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Config.Definition.Builder.ParentNodeDefinitionInterface.html#_setBuilder">Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface::setBuilder()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="children" id="_children">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_children">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#67-75" title="Go to source code">children</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns a builder to add children nodes.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns a builder to add children nodes.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Config.Definition.Builder.ParentNodeDefinitionInterface.html#_children">Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface::children()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="prototype" id="_prototype">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_prototype">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#77-87" title="Go to source code">prototype</a>( <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets a prototype for child nodes.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets a prototype for child nodes.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd><code>string</code><br>$type the type of node</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addDefaultsIfNotSet" id="_addDefaultsIfNotSet">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addDefaultsIfNotSet">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#89-103" title="Go to source code">addDefaultsIfNotSet</a>( )</code>
+
+		<div class="description short">
+			
+<p>Adds the default value if the node is not set in the configuration.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Adds the default value if the node is not set in the configuration.</p>
+
+<p>This method is applicable to concrete nodes only (not to prototype nodes). If
+this function has been called and the node is not set during the finalization
+phase, it's default value will be derived from its children default values.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addDefaultChildrenIfNoneSet" id="_addDefaultChildrenIfNoneSet">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addDefaultChildrenIfNoneSet">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#105-119" title="Go to source code">addDefaultChildrenIfNoneSet</a>( <span>integer|string|array|null <var>$children</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Adds children with a default value when none are defined.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Adds children with a default value when none are defined.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$children</var></dt>
+					<dd><code>integer|string|array|null</code><br>$children The number of children|The child name|The children names to be added
+This method is applicable to prototype nodes only.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="requiresAtLeastOneElement" id="_requiresAtLeastOneElement">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_requiresAtLeastOneElement">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#121-133" title="Go to source code">requiresAtLeastOneElement</a>( )</code>
+
+		<div class="description short">
+			
+<p>Requires the node to have at least one element.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Requires the node to have at least one element.</p>
+
+<p>This method is applicable to prototype nodes only.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="disallowNewKeysInSubsequentConfigs" id="_disallowNewKeysInSubsequentConfigs">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_disallowNewKeysInSubsequentConfigs">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#135-147" title="Go to source code">disallowNewKeysInSubsequentConfigs</a>( )</code>
+
+		<div class="description short">
+			
+<p>Disallows adding news keys in a subsequent configuration.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Disallows adding news keys in a subsequent configuration.</p>
+
+<p>If used all keys have to be defined in the same configuration file.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fixXmlConfig" id="_fixXmlConfig">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fixXmlConfig">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#149-162" title="Go to source code">fixXmlConfig</a>( <span>string <var>$singular</var></span>, <span>string <var>$plural</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets a normalization rule for XML configurations.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets a normalization rule for XML configurations.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$singular</var></dt>
+					<dd><code>string</code><br>$singular The key to remap</dd>
+					<dt><var>$plural</var></dt>
+					<dd><code>string</code><br>$plural The plural of the key for irregular plurals</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="useAttributeAsKey" id="_useAttributeAsKey">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_useAttributeAsKey">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#164-198" title="Go to source code">useAttributeAsKey</a>( <span>string <var>$name</var></span>, <span>Boolean <var>$removeKeyItem</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets the attribute which value is to be used as key.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets the attribute which value is to be used as key.</p>
+
+<p>This is useful when you have an indexed array that should be an associative
+array. You can select an item from within the array to be the key of the
+particular item. For example, if "id" is the "key", then:<br>
+array( array('id' =&gt; 'my_name', 'foo' =&gt; 'bar'), );<br>
+becomes<br>
+array( 'my_name' =&gt; array('foo' =&gt; 'bar'), );</p>
+
+<p>If you'd like "'id' =&gt; 'my_name'" to still be present in the resulting
+array, then you can set the second argument of this method to false.</p>
+
+<p>This method is applicable to prototype nodes only.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name The name of the key</dd>
+					<dt><var>$removeKeyItem</var></dt>
+					<dd><code>Boolean</code><br>$removeKeyItem Whether or not the key item should be removed.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canBeUnset" id="_canBeUnset">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canBeUnset">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#200-212" title="Go to source code">canBeUnset</a>( <span>Boolean <var>$allow</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets whether the node can be unset.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets whether the node can be unset.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$allow</var></dt>
+					<dd><code>Boolean</code><br>$allow</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canBeEnabled" id="_canBeEnabled">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canBeEnabled">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#214-250" title="Go to source code">canBeEnabled</a>( )</code>
+
+		<div class="description short">
+			
+<p>Adds an "enabled" boolean to enable the current section.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Adds an "enabled" boolean to enable the current section.</p>
+
+<p>By default, the section is disabled. If any configuration is specified then
+the node will be automatically enabled:</p>
+
+<p>enableableArrayNode: {enabled: true, ...} # The config is enabled &amp;
+default values get overridden enableableArrayNode: ~ # The config is enabled
+&amp; use the default values enableableArrayNode: true # The config is enabled
+&amp; use the default values enableableArrayNode: {other: value, ...} # The
+config is enabled &amp; default values get overridden enableableArrayNode:
+{enabled: false, ...} # The config is disabled enableableArrayNode: false # The
+config is disabled</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canBeDisabled" id="_canBeDisabled">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canBeDisabled">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#252-272" title="Go to source code">canBeDisabled</a>( )</code>
+
+		<div class="description short">
+			
+<p>Adds an "enabled" boolean to enable the current section.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Adds an "enabled" boolean to enable the current section.</p>
+
+<p>By default, the section is enabled.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="performNoDeepMerging" id="_performNoDeepMerging">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_performNoDeepMerging">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#274-284" title="Go to source code">performNoDeepMerging</a>( )</code>
+
+		<div class="description short">
+			
+<p>Disables the deep merging of the node.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Disables the deep merging of the node.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ignoreExtraKeys" id="_ignoreExtraKeys">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ignoreExtraKeys">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#286-301" title="Go to source code">ignoreExtraKeys</a>( )</code>
+
+		<div class="description short">
+			
+<p>Allows extra config keys to be specified under an array without throwing an
+exception.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Allows extra config keys to be specified under an array without throwing an
+exception.</p>
+
+<p>Those config values are simply ignored. This should be used only in special
+cases where you want to send an entire configuration array through a special
+tree that processes only part of the array.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="normalizeKeys" id="_normalizeKeys">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_normalizeKeys">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#303-315" title="Go to source code">normalizeKeys</a>( <span>Boolean <var>$bool</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sets key normalization.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sets key normalization.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$bool</var></dt>
+					<dd><code>Boolean</code><br>$bool Whether to enable key normalization</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="append" id="_append">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_append">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#317-337" title="Go to source code">append</a>( <span><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></code> <var>$node</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Appends a node definition.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Appends a node definition.</p>
+
+<p>$node = new ArrayNodeDefinition() -&gt;children()
+-&gt;scalarNode('foo')-&gt;end() -&gt;scalarNode('baz')-&gt;end() -&gt;end()
+-&gt;append($this-&gt;getBarNodeDefinition()) ;</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$node</var></dt>
+					<dd><code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></code></code><br>$node A NodeDefinition instance</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html">Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition</a></code></code><br>This node<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Config.Definition.Builder.ParentNodeDefinitionInterface.html#_append">Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface::append()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getNodeBuilder" id="_getNodeBuilder">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNodeBuilder">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#339-351" title="Go to source code">getNodeBuilder</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns a node builder to be used to add children and prototype</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns a node builder to be used to add children and prototype</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Builder.NodeBuilder.html">Symfony\Component\Config\Definition\Builder\NodeBuilder</a></code></code><br>The node builder<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createNode" id="_createNode">
+
+		<td class="attributes"><code>
+			 protected 
+			NodeInterface
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createNode">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#353-421" title="Go to source code">createNode</a>( )</code>
+
+		<div class="description short">
+			
+<p>Instantiate and configure the node according to this definition</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Instantiate and configure the node according to this definition</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>NodeInterface</code><br>$node The node instance<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Exception.InvalidDefinitionException.html">Symfony\Component\Config\Definition\Exception\InvalidDefinitionException</a></code></code><br>When the definition is invalid<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validateConcreteNode" id="_validateConcreteNode">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validateConcreteNode">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#423-457" title="Go to source code">validateConcreteNode</a>( <span><code><a href="class-Symfony.Component.Config.Definition.ArrayNode.html">Symfony\Component\Config\Definition\ArrayNode</a></code> <var>$node</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Validate the configuration of a concrete node.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate the configuration of a concrete node.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$node</var></dt>
+					<dd><code><code><a href="class-Symfony.Component.Config.Definition.ArrayNode.html">Symfony\Component\Config\Definition\ArrayNode</a></code></code><br>$node The related node</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Exception.InvalidDefinitionException.html">Symfony\Component\Config\Definition\Exception\InvalidDefinitionException</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="validatePrototypeNode" id="_validatePrototypeNode">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_validatePrototypeNode">#</a>
+		<code><a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#459-495" title="Go to source code">validatePrototypeNode</a>( <span><code><a href="class-Symfony.Component.Config.Definition.PrototypedArrayNode.html">Symfony\Component\Config\Definition\PrototypedArrayNode</a></code> <var>$node</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Validate the configuration of a prototype node.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Validate the configuration of a prototype node.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$node</var></dt>
+					<dd><code><code><a href="class-Symfony.Component.Config.Definition.PrototypedArrayNode.html">Symfony\Component\Config\Definition\PrototypedArrayNode</a></code></code><br>$node The related node</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Config.Definition.Exception.InvalidDefinitionException.html">Symfony\Component\Config\Definition\Exception\InvalidDefinitionException</a></code></code><br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#methods">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_attribute">attribute()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_beforeNormalization">beforeNormalization()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_cannotBeEmpty">cannotBeEmpty()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_cannotBeOverwritten">cannotBeOverwritten()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_defaultFalse">defaultFalse()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_defaultNull">defaultNull()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_defaultTrue">defaultTrue()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_defaultValue">defaultValue()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_end">end()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_example">example()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_getNode">getNode()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_info">info()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_isRequired">isRequired()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_merge">merge()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_normalization">normalization()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_setParent">setParent()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_treatFalseLike">treatFalseLike()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_treatNullLike">treatNullLike()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_treatTrueLike">treatTrueLike()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_validate">validate()</a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#_validation">validation()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="performDeepMerging" id="$performDeepMerging">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#25" title="Go to source code"><var>$performDeepMerging</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$performDeepMerging" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="ignoreExtraKeys" id="$ignoreExtraKeys">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#26" title="Go to source code"><var>$ignoreExtraKeys</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$ignoreExtraKeys" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="children" id="$children">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#27" title="Go to source code"><var>$children</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$children" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="prototype" id="$prototype">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#28" title="Go to source code"><var>$prototype</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$prototype" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="atLeastOne" id="$atLeastOne">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#29" title="Go to source code"><var>$atLeastOne</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$atLeastOne" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="allowNewKeys" id="$allowNewKeys">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#30" title="Go to source code"><var>$allowNewKeys</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$allowNewKeys" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="key" id="$key">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#31" title="Go to source code"><var>$key</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$key" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeKeyItem" id="$removeKeyItem">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#32" title="Go to source code"><var>$removeKeyItem</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$removeKeyItem" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="addDefaults" id="$addDefaults">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#33" title="Go to source code"><var>$addDefaults</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$addDefaults" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="addDefaultChildren" id="$addDefaultChildren">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#34" title="Go to source code"><var>$addDefaultChildren</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$addDefaultChildren" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="nodeBuilder" id="$nodeBuilder">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#35" title="Go to source code"><var>$nodeBuilder</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$nodeBuilder" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="normalizeKeys" id="$normalizeKeys">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Config.Definition.Builder.ArrayNodeDefinition.html#36" title="Go to source code"><var>$normalizeKeys</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$normalizeKeys" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#properties">Symfony\Component\Config\Definition\Builder\NodeDefinition</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$allowEmptyValue"><var>$allowEmptyValue</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$attributes"><var>$attributes</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$default"><var>$default</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$defaultValue"><var>$defaultValue</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$falseEquivalent"><var>$falseEquivalent</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$merge"><var>$merge</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$name"><var>$name</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$normalization"><var>$normalization</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$nullEquivalent"><var>$nullEquivalent</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$parent"><var>$parent</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$required"><var>$required</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$trueEquivalent"><var>$trueEquivalent</var></a>, 
+			<a href="class-Symfony.Component.Config.Definition.Builder.NodeDefinition.html#$validation"><var>$validation</var></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

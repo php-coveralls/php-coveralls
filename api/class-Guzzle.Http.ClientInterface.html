@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Guzzle\Http\ClientInterface | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Http.AbstractEntityBodyDecorator.html">AbstractEntityBodyDecorator</a></li>
+				<li><a href="class-Guzzle.Http.CachingEntityBody.html">CachingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Client.html">Client</a></li>
+				<li><a href="class-Guzzle.Http.EntityBody.html">EntityBody</a></li>
+				<li><a href="class-Guzzle.Http.IoEmittingEntityBody.html">IoEmittingEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.Mimetypes.html">Mimetypes</a></li>
+				<li><a href="class-Guzzle.Http.QueryString.html">QueryString</a></li>
+				<li><a href="class-Guzzle.Http.ReadLimitEntityBody.html">ReadLimitEntityBody</a></li>
+				<li><a href="class-Guzzle.Http.RedirectPlugin.html">RedirectPlugin</a></li>
+				<li><a href="class-Guzzle.Http.Url.html">Url</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Http.ClientInterface.html">ClientInterface</a></li>
+				<li><a href="class-Guzzle.Http.EntityBodyInterface.html">EntityBodyInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Http.html" title="Summary of Guzzle\Http"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface ClientInterface</h1>
+
+
+	<div class="description">
+	
+<p>Client interface for send HTTP requests</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Http\ClientInterface</span></b>			
+			 implements 
+				<a href="class-Guzzle.Common.HasDispatcherInterface.html"><span>Guzzle\Common\HasDispatcherInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Guzzle.Http.Client.html">Guzzle\Http\Client</a>, 
+			<a href="class-Guzzle.Service.ClientInterface.html">Guzzle\Service\ClientInterface</a>
+	</div>
+
+	<div>
+		<h4>Indirect known implementers</h4>
+			<a href="class-Guzzle.Service.Client.html">Guzzle\Service\Client</a>
+	</div>
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Http.html">Http</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Http.ClientInterface.html#14-272" title="Go to source code">Guzzle/Http/ClientInterface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="setConfig" id="_setConfig">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setConfig">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#26-33" title="Go to source code">setConfig</a>( <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string <var>$config</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the configuration object to use with the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the configuration object to use with the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$config</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string</code><br>$config Parameters that define how the client behaves and connects to a
+webservice. Pass an array or a Collection object.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getConfig" id="_getConfig">
+
+		<td class="attributes"><code>
+			 public 
+			mixed|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getConfig">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#35-42" title="Go to source code">getConfig</a>( <span>boolean|string <var>$key</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get a configuration setting or all of the configuration settings</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get a configuration setting or all of the configuration settings</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>boolean|string</code><br>$key Configuration value to retrieve. Set to FALSE to retrieve all values of the
+client. The object return can be modified, and modifications will affect the
+client's config.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSslVerification" id="_setSslVerification">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSslVerification">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#44-66" title="Go to source code">setSslVerification</a>( <span>string|boolean <var>$certificateAuthority</var> = <span class="php-keyword1">true</span></span>, <span>boolean <var>$verifyPeer</var> = <span class="php-keyword1">true</span></span>, <span>integer <var>$verifyHost</var> = <span class="php-num">2</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set SSL verification options.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set SSL verification options.</p>
+
+<p>Setting $certificateAuthority to TRUE will result in the bundled cacert.pem
+being used to verify against the remote host.</p>
+
+<p>Alternate certificates to verify against can be specified with the
+$certificateAuthority option set to a certificate file location to be used with
+CURLOPT_CAINFO, or a certificate directory path to be used with the
+CURLOPT_CAPATH option.</p>
+
+<p>Setting $certificateAuthority to FALSE will turn off peer verification, unset
+the bundled cacert.pem, and disable host verification. Please don't do this
+unless you really know what you're doing, and why you're doing it.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$certificateAuthority</var></dt>
+					<dd><code>string|boolean</code><br>$certificateAuthority bool, file path, or directory path</dd>
+					<dt><var>$verifyPeer</var></dt>
+					<dd><code>boolean</code><br>$verifyPeer FALSE to stop cURL from verifying the peer's certificate.</dd>
+					<dt><var>$verifyHost</var></dt>
+					<dd><code>integer</code><br>$verifyHost Set the cURL handle's CURLOPT_SSL_VERIFYHOST option</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDefaultHeaders" id="_getDefaultHeaders">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDefaultHeaders">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#68-73" title="Go to source code">getDefaultHeaders</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the default HTTP headers to add to each request created by the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the default HTTP headers to add to each request created by the client</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDefaultHeaders" id="_setDefaultHeaders">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDefaultHeaders">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#75-82" title="Go to source code">setDefaultHeaders</a>( <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the default HTTP headers to add to each request created by the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the default HTTP headers to add to each request created by the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers Default HTTP headers</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUriTemplate" id="_setUriTemplate">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUriTemplate">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#84-91" title="Go to source code">setUriTemplate</a>( <span><code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code> <var>$uriTemplate</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the URI template expander to use with the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the URI template expander to use with the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uriTemplate</var></dt>
+					<dd><code><code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code></code><br>$uriTemplate URI template expander</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUriTemplate" id="_getUriTemplate">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUriTemplate">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#93-98" title="Go to source code">getUriTemplate</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the URI template expander used by the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the URI template expander used by the client</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Parser.UriTemplate.UriTemplateInterface.html">Guzzle\Parser\UriTemplate\UriTemplateInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="expandTemplate" id="_expandTemplate">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_expandTemplate">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#100-108" title="Go to source code">expandTemplate</a>( <span>string <var>$template</var></span>, <span>array <var>$variables</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Expand a URI template using client configuration data</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Expand a URI template using client configuration data</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$template</var></dt>
+					<dd><code>string</code><br>$template URI template to expand</dd>
+					<dt><var>$variables</var></dt>
+					<dd><code>array</code><br>$variables Additional variables to use in the expansion</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="createRequest" id="_createRequest">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createRequest">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#110-126" title="Go to source code">createRequest</a>( <span>string <var>$method</var> = Guzzle\Http\RequestInterface::GET</span>, <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create and return a new <code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> configured for the
+client.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create and return a new <code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> configured for the
+client.</p>
+
+<p>Use an absolute path to override the base path of the client, or a relative
+path to append to the base path of the client. The URI can contain the query
+string as well. Use an array to provide a URI template and additional variables
+to use in the URI template expansion.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$method</var></dt>
+					<dd><code>string</code><br>$method HTTP method. Defaults to GET</dd>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI.</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$body</var></dt>
+					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Entity body of request (POST/PUT) or response (GET)</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if a URI array is passed that does not contain exactly two elements: the URI
+followed by template variables<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBaseUrl" id="_getBaseUrl">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBaseUrl">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#128-135" title="Go to source code">getBaseUrl</a>( <span>boolean <var>$expand</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get the client's base URL as either an expanded or raw URI template</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the client's base URL as either an expanded or raw URI template</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$expand</var></dt>
+					<dd><code>boolean</code><br>$expand Set to FALSE to get the raw base URL without URI template expansion</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setBaseUrl" id="_setBaseUrl">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setBaseUrl">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#137-144" title="Go to source code">setBaseUrl</a>( <span>string <var>$url</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the base URL of the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the base URL of the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$url</var></dt>
+					<dd><code>string</code><br>$url The base service endpoint URL of the webservice</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUserAgent" id="_setUserAgent">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUserAgent">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#146-154" title="Go to source code">setUserAgent</a>( <span>string <var>$userAgent</var></span>, <span>boolean <var>$includeDefault</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the User-Agent header to be used on all requests from the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the User-Agent header to be used on all requests from the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$userAgent</var></dt>
+					<dd><code>string</code><br>$userAgent User agent string</dd>
+					<dt><var>$includeDefault</var></dt>
+					<dd><code>boolean</code><br>$includeDefault Set to true to prepend the value to Guzzle's default user agent
+string</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#156-166" title="Go to source code">get</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a GET request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a GET request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$body</var></dt>
+					<dd><code>string|resource|array|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Where to store the response entity body</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="head" id="_head">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_head">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#168-177" title="Go to source code">head</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a HEAD request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a HEAD request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#179-189" title="Go to source code">delete</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a DELETE request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a DELETE request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$body</var></dt>
+					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to send in the request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="put" id="_put">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_put">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#191-201" title="Go to source code">put</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a PUT request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a PUT request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$body</var></dt>
+					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to send in the request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="patch" id="_patch">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_patch">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#203-213" title="Go to source code">patch</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$body</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a PATCH request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a PATCH request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$body</var></dt>
+					<dd><code>string|resource|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$body Body to send in the request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="post" id="_post">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_post">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#215-227" title="Go to source code">post</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code> <var>$headers</var> = <span class="php-keyword1">null</span></span>, <span>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code> <var>$postBody</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a POST request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a POST request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+					<dt><var>$headers</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code></code><br>$headers HTTP headers</dd>
+					<dt><var>$postBody</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>|string|<code><a href="class-Guzzle.Http.EntityBodyInterface.html">Guzzle\Http\EntityBodyInterface</a></code></code><br>$postBody POST body. Can be a string, EntityBody, or associative array of POST
+fields to send in the body of the request. Prefix a value in the array with the
+@ symbol to reference a file.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.EntityEnclosingRequestInterface.html">Guzzle\Http\Message\EntityEnclosingRequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="options" id="_options">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_options">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#229-237" title="Go to source code">options</a>( <span>string|array <var>$uri</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Create an OPTIONS request for the client</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create an OPTIONS request for the client</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$uri</var></dt>
+					<dd><code>string|array</code><br>$uri Resource URI</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Guzzle.Http.ClientInterface.html#_createRequest">Guzzle\Http\ClientInterface::createRequest()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="send" id="_send">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_send">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#239-246" title="Go to source code">send</a>( <span>array <var>$requests</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Sends a single request or an array of requests in parallel</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Sends a single request or an array of requests in parallel</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$requests</var></dt>
+					<dd><code>array</code><br>$requests Request(s) to send</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Returns the response(s)<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCurlMulti" id="_setCurlMulti">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCurlMulti">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#248-255" title="Go to source code">setCurlMulti</a>( <span><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code> <var>$curlMulti</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set a curl multi object to be used internally by the client for transferring
+requests.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set a curl multi object to be used internally by the client for transferring
+requests.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$curlMulti</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code></code><br>$curlMulti Multi object</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurlMulti" id="_getCurlMulti">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurlMulti">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#257-262" title="Go to source code">getCurlMulti</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get the curl multi object to be used internally by the client for
+transferring requests.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the curl multi object to be used internally by the client for
+transferring requests.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.Curl.CurlMultiInterface.html">Guzzle\Http\Curl\CurlMultiInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRequestFactory" id="_setRequestFactory">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRequestFactory">#</a>
+		<code><a href="source-class-Guzzle.Http.ClientInterface.html#264-271" title="Go to source code">setRequestFactory</a>( <span><code><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">Guzzle\Http\Message\RequestFactoryInterface</a></code> <var>$factory</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the request factory to use with the client when creating requests</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the request factory to use with the client when creating requests</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$factory</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestFactoryInterface.html">Guzzle\Http\Message\RequestFactoryInterface</a></code></code><br>$factory Request factory</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Http.ClientInterface.html">Guzzle\Http\ClientInterface</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Guzzle.Common.HasDispatcherInterface.html#methods">Guzzle\Common\HasDispatcherInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_addSubscriber">addSubscriber()</a>, 
+			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_dispatch">dispatch()</a>, 
+			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_getAllEvents">getAllEvents()</a>, 
+			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_getEventDispatcher">getEventDispatcher()</a>, 
+			<a href="class-Guzzle.Common.HasDispatcherInterface.html#_setEventDispatcher">setEventDispatcher()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="CREATE_REQUEST" id="CREATE_REQUEST">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Http.ClientInterface.html#19" title="Go to source code"><b>CREATE_REQUEST</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'client.create_request'</span></code></td>
+		<td class="description"><div>
+			<a href="#CREATE_REQUEST" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="HTTP_DATE" id="HTTP_DATE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Guzzle.Http.ClientInterface.html#21-24" title="Go to source code"><b>HTTP_DATE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'D, d M Y H:i:s \G\M\T'</span></code></td>
+		<td class="description"><div>
+			<a href="#HTTP_DATE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>RFC 1123 HTTP-Date</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>RFC 1123 HTTP-Date</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

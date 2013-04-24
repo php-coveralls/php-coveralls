@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Plugin\Cache\CachePlugin | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Plugin.Cache.CachePlugin.html">CachePlugin</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.CallbackCacheKeyProvider.html">CallbackCacheKeyProvider</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.CallbackCanCacheStrategy.html">CallbackCanCacheStrategy</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheKeyProvider.html">DefaultCacheKeyProvider</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.DefaultCacheStorage.html">DefaultCacheStorage</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.DefaultCanCacheStrategy.html">DefaultCanCacheStrategy</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.DefaultRevalidation.html">DefaultRevalidation</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.DenyRevalidation.html">DenyRevalidation</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.SkipRevalidation.html">SkipRevalidation</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">CacheKeyProviderInterface</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">CacheStorageInterface</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">CanCacheStrategyInterface</a></li>
+				<li><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">RevalidationInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Plugin.Cache.html" title="Summary of Guzzle\Plugin\Cache"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CachePlugin</h1>
+
+
+	<div class="description">
+	
+<p>Plugin to enable the caching of GET and HEAD requests. Caching can be done on
+all requests passing through this plugin or only after retrieving resources with
+cacheable response headers.</p>
+
+<p>This is a simple implementation of RFC 2616 and should be considered a
+private transparent proxy cache, meaning authorization and private data can be
+cached.</p>
+
+<p>It also implements RFC 5861's <code>stale-if-error</code> Cache-Control
+extension, allowing stale cache responses to be used when an error is
+encountered (such as a <code>500 Internal Server Error</code> or DNS
+failure).</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Plugin\Cache\CachePlugin</span></b>			
+			 implements 
+				<a href="class-Symfony.Component.EventDispatcher.EventSubscriberInterface.html"><span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Plugin.html">Plugin</a>\<a href="namespace-Guzzle.Plugin.Cache.html">Cache</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#17-429" title="Go to source code">Guzzle/Plugin/Cache/CachePlugin.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#54-130" title="Go to source code">__construct</a>( <span>array|<code><a href="class-Guzzle.Cache.CacheAdapterInterface.html">Guzzle\Cache\CacheAdapterInterface</a></code>|<code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code> <var>$options</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Construct a new CachePlugin. Cache options include the following:</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Construct a new CachePlugin. Cache options include the following:</p>
+
+<ul>
+	<li>CacheKeyProviderInterface key_provider: (optional) Cache key provider</li>
+
+	<li>CacheAdapterInterface adapter: (optional) Adapter used to cache objects.
+	Pass this or a cache_storage</li>
+
+	<li>CacheStorageInterface storage: (optional) Adapter used to cache
+	responses</li>
+
+	<li>RevalidationInterface revalidation: (optional) Cache revalidation
+	strategy</li>
+
+	<li>CanCacheInterface can_cache: (optional) Object used to determine if a
+	request can be cached</li>
+
+	<li>int default_ttl: (optional) Default TTL to use when caching if no
+	cache_storage was set must set to 0 or it will assume the default of 3600
+	secs.</li>
+
+	<li>bool debug_headers: (optional) Add debug headers to the response (default
+	true)</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$options</var></dt>
+					<dd><code>array|<code><a href="class-Guzzle.Cache.CacheAdapterInterface.html">Guzzle\Cache\CacheAdapterInterface</a></code>|<code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code></code><br>$options Array of options for the cache plugin, cache adapter, or cache storage
+object.</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Common.Exception.InvalidArgumentException.html">Guzzle\Common\Exception\InvalidArgumentException</a></code></code><br>if no cache is provided and Doctrine cache is not installed<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSubscribedEvents" id="_getSubscribedEvents">
+
+		<td class="attributes"><code>
+			 public static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSubscribedEvents">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#132-143" title="Go to source code">getSubscribedEvents</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns an array of event names this subscriber wants to listen to.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns an array of event names this subscriber wants to listen to.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The event names to listen to<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.EventDispatcher.EventSubscriberInterface.html#_getSubscribedEvents">Symfony\Component\EventDispatcher\EventSubscriberInterface::getSubscribedEvents()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestBeforeSend" id="_onRequestBeforeSend">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestBeforeSend">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#145-182" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if a response in cache will satisfy the request before sending</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if a response in cache will satisfy the request before sending</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestSent" id="_onRequestSent">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestSent">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#184-204" title="Go to source code">onRequestSent</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>If possible, store a response in cache after sending</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>If possible, store a response in cache after sending</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestError" id="_onRequestError">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestError">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#206-237" title="Go to source code">onRequestError</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>If possible, return a cache response on an error</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>If possible, return a cache response on an error</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestException" id="_onRequestException">
+
+		<td class="attributes"><code>
+			 public 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestException">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#239-274" title="Go to source code">onRequestException</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>If possible, set a cache response on a cURL exception</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>If possible, set a cache response on a cURL exception</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canResponseSatisfyRequest" id="_canResponseSatisfyRequest">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canResponseSatisfyRequest">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#276-336" title="Go to source code">canResponseSatisfyRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if a cache response satisfies a request's caching constraints</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if a cache response satisfies a request's caching constraints</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to validate</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to validate</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canResponseSatisfyFailedRequest" id="_canResponseSatisfyFailedRequest">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canResponseSatisfyFailedRequest">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#338-370" title="Go to source code">canResponseSatisfyFailedRequest</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if a cache response satisfies a failed request's caching
+constraints</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if a cache response satisfies a failed request's caching
+constraints</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to validate</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to validate</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="purge" id="_purge">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_purge">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#372-387" title="Go to source code">purge</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Purge a request from the cache storage</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Purge a request from the cache storage</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to purge</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addResponseHeaders" id="_addResponseHeaders">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addResponseHeaders">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#389-428" title="Go to source code">addResponseHeaders</a>( <span>string <var>$cacheKey</var></span>, <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code> <var>$response</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add the plugin's headers to a response</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add the plugin's headers to a response</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$cacheKey</var></dt>
+					<dd><code>string</code><br>$cacheKey Cache key</dd>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request</dd>
+					<dt><var>$response</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.Response.html">Guzzle\Http\Message\Response</a></code></code><br>$response Response to add headers to</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="keyProvider" id="$keyProvider">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Plugin.Cache.CacheKeyProviderInterface.html">Guzzle\Plugin\Cache\CacheKeyProviderInterface</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#29-32" title="Go to source code"><var>$keyProvider</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$keyProvider" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cache key provider</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Cache key provider</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="revalidation" id="$revalidation">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Plugin.Cache.RevalidationInterface.html">Guzzle\Plugin\Cache\RevalidationInterface</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#34-37" title="Go to source code"><var>$revalidation</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$revalidation" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Cache revalidation strategy</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Cache revalidation strategy</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="canCache" id="$canCache">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Plugin.Cache.CanCacheStrategyInterface.html">Guzzle\Plugin\Cache\CanCacheStrategyInterface</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#39-42" title="Go to source code"><var>$canCache</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$canCache" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Object used to determine if a request can be cached</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Object used to determine if a request can be cached</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="storage" id="$storage">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Plugin.Cache.CacheStorageInterface.html">Guzzle\Plugin\Cache\CacheStorageInterface</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#44-47" title="Go to source code"><var>$storage</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$storage" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>$cache Object used to cache responses</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>$cache Object used to cache responses</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="debugHeaders" id="$debugHeaders">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Cache.CachePlugin.html#49-52" title="Go to source code"><var>$debugHeaders</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$debugHeaders" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Whether to add debug headers to the response</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Whether to add debug headers to the response</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

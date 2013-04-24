@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Symfony\Component\Finder\Adapter\AbstractAdapter | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li class="active"><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Symfony.Component.Finder.Adapter.AbstractAdapter.html">AbstractAdapter</a></li>
+				<li><a href="class-Symfony.Component.Finder.Adapter.AbstractFindAdapter.html">AbstractFindAdapter</a></li>
+				<li><a href="class-Symfony.Component.Finder.Adapter.BsdFindAdapter.html">BsdFindAdapter</a></li>
+				<li><a href="class-Symfony.Component.Finder.Adapter.GnuFindAdapter.html">GnuFindAdapter</a></li>
+				<li><a href="class-Symfony.Component.Finder.Adapter.PhpAdapter.html">PhpAdapter</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">AdapterInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Symfony.Component.Finder.Adapter.html" title="Summary of Symfony\Component\Finder\Adapter"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class AbstractAdapter</h1>
+
+
+	<div class="description">
+	
+<p>Interface for finder engine implementations.</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Symfony\Component\Finder\Adapter\AbstractAdapter</span></b>			
+			 implements 
+				<a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html"><span>Symfony\Component\Finder\Adapter\AdapterInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Symfony.Component.Finder.Adapter.AbstractFindAdapter.html">Symfony\Component\Finder\Adapter\AbstractFindAdapter</a>, 
+			<a href="class-Symfony.Component.Finder.Adapter.PhpAdapter.html">Symfony\Component\Finder\Adapter\PhpAdapter</a>
+	</div>
+
+	<div>
+		<h4>Indirect known subclasses</h4>
+			<a href="class-Symfony.Component.Finder.Adapter.BsdFindAdapter.html">Symfony\Component\Finder\Adapter\BsdFindAdapter</a>, 
+			<a href="class-Symfony.Component.Finder.Adapter.GnuFindAdapter.html">Symfony\Component\Finder\Adapter\GnuFindAdapter</a>
+	</div>
+
+
+
+
+
+	<div class="info">
+		<b>Abstract</b><br />
+		
+		<b>Namespace:</b> <a href="namespace-Symfony.html">Symfony</a>\<a href="namespace-Symfony.Component.html">Component</a>\<a href="namespace-Symfony.Component.Finder.html">Finder</a>\<a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a><br />
+		
+
+				<b>Author:</b>
+				Jean-François Simon &lt;<a
+href="mailto:contact&#64;jfsimon.fr">contact&#64;<!---->jfsimon.fr</a>&gt;<br />
+		<b>Located at</b> <a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#14-225" title="Go to source code">finder/Symfony/Component/Finder/Adapter/AbstractAdapter.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="isSupported" id="_isSupported">
+
+		<td class="attributes"><code>
+			 public 
+			Boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isSupported">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#39-51" title="Go to source code">isSupported</a>( )</code>
+
+		<div class="description short">
+			
+<p>Tests adapter support for current platform.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Tests adapter support for current platform.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Boolean</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_isSupported">Symfony\Component\Finder\Adapter\AdapterInterface::isSupported()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFollowLinks" id="_setFollowLinks">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFollowLinks">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#53-61" title="Go to source code">setFollowLinks</a>( <span>Boolean <var>$followLinks</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$followLinks</var></dt>
+					<dd><code>Boolean</code><br>$followLinks</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setFollowLinks">Symfony\Component\Finder\Adapter\AdapterInterface::setFollowLinks()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setMode" id="_setMode">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setMode">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#63-71" title="Go to source code">setMode</a>( <span>integer <var>$mode</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$mode</var></dt>
+					<dd><code>integer</code><br>$mode</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setMode">Symfony\Component\Finder\Adapter\AdapterInterface::setMode()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDepths" id="_setDepths">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDepths">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#73-101" title="Go to source code">setDepths</a>( <span>array <var>$depths</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$depths</var></dt>
+					<dd><code>array</code><br>$depths</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setDepths">Symfony\Component\Finder\Adapter\AdapterInterface::setDepths()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setExclude" id="_setExclude">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setExclude">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#103-111" title="Go to source code">setExclude</a>( <span>array <var>$exclude</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$exclude</var></dt>
+					<dd><code>array</code><br>$exclude</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setExclude">Symfony\Component\Finder\Adapter\AdapterInterface::setExclude()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNames" id="_setNames">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setNames">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#113-121" title="Go to source code">setNames</a>( <span>array <var>$names</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$names</var></dt>
+					<dd><code>array</code><br>$names</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setNames">Symfony\Component\Finder\Adapter\AdapterInterface::setNames()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNotNames" id="_setNotNames">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setNotNames">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#123-131" title="Go to source code">setNotNames</a>( <span>array <var>$notNames</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$notNames</var></dt>
+					<dd><code>array</code><br>$notNames</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setNotNames">Symfony\Component\Finder\Adapter\AdapterInterface::setNotNames()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setContains" id="_setContains">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setContains">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#133-141" title="Go to source code">setContains</a>( <span>array <var>$contains</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$contains</var></dt>
+					<dd><code>array</code><br>$contains</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setContains">Symfony\Component\Finder\Adapter\AdapterInterface::setContains()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNotContains" id="_setNotContains">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setNotContains">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#143-151" title="Go to source code">setNotContains</a>( <span>array <var>$notContains</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$notContains</var></dt>
+					<dd><code>array</code><br>$notContains</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setNotContains">Symfony\Component\Finder\Adapter\AdapterInterface::setNotContains()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSizes" id="_setSizes">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSizes">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#153-161" title="Go to source code">setSizes</a>( <span>array <var>$sizes</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sizes</var></dt>
+					<dd><code>array</code><br>$sizes</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setSizes">Symfony\Component\Finder\Adapter\AdapterInterface::setSizes()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDates" id="_setDates">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDates">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#163-171" title="Go to source code">setDates</a>( <span>array <var>$dates</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$dates</var></dt>
+					<dd><code>array</code><br>$dates</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setDates">Symfony\Component\Finder\Adapter\AdapterInterface::setDates()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setFilters" id="_setFilters">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setFilters">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#173-181" title="Go to source code">setFilters</a>( <span>array <var>$filters</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$filters</var></dt>
+					<dd><code>array</code><br>$filters</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setFilters">Symfony\Component\Finder\Adapter\AdapterInterface::setFilters()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSort" id="_setSort">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSort">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#183-191" title="Go to source code">setSort</a>( <span><code><a href="class-Closure.html">Closure</a></code>|integer <var>$sort</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sort</var></dt>
+					<dd><code><code><a href="class-Closure.html">Closure</a></code>|integer</code><br>$sort</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setSort">Symfony\Component\Finder\Adapter\AdapterInterface::setSort()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPath" id="_setPath">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPath">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#193-201" title="Go to source code">setPath</a>( <span>array <var>$paths</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$paths</var></dt>
+					<dd><code>array</code><br>$paths</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setPath">Symfony\Component\Finder\Adapter\AdapterInterface::setPath()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNotPath" id="_setNotPath">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setNotPath">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#203-211" title="Go to source code">setNotPath</a>( <span>array <var>$notPaths</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$notPaths</var></dt>
+					<dd><code>array</code><br>$notPaths</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html">Symfony\Component\Finder\Adapter\AdapterInterface</a></code></code><br>Current instance<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_setNotPath">Symfony\Component\Finder\Adapter\AdapterInterface::setNotPath()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canBeUsed" id="_canBeUsed">
+
+		<td class="attributes"><code>
+			abstract protected 
+			Boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canBeUsed">#</a>
+		<code><a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#213-224" title="Go to source code">canBeUsed</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns whether the adapter is supported in the current environment.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns whether the adapter is supported in the current environment.</p>
+
+<p>This method should be implemented in all adapters. Do not implement
+isSupported in the adapters as the generic implementation provides a cache
+layer.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Boolean</code><br>Whether the adapter is supported<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#_isSupported">Symfony\Component\Finder\Adapter\AbstractAdapter::isSupported()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#methods">Symfony\Component\Finder\Adapter\AdapterInterface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_getName">getName()</a>, 
+			<a href="class-Symfony.Component.Finder.Adapter.AdapterInterface.html#_searchInDirectory">searchInDirectory()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="followLinks" id="$followLinks">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#21" title="Go to source code"><var>$followLinks</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">false</span></code></td>
+		<td class="description"><div>
+			<a href="#$followLinks" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="mode" id="$mode">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#22" title="Go to source code"><var>$mode</var></a>
+		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$mode" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="minDepth" id="$minDepth">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#23" title="Go to source code"><var>$minDepth</var></a>
+		</td>
+		<td class="value"><code><span class="php-num">0</span></code></td>
+		<td class="description"><div>
+			<a href="#$minDepth" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="maxDepth" id="$maxDepth">
+		<td class="attributes"><code>
+			protected  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#24" title="Go to source code"><var>$maxDepth</var></a>
+		</td>
+		<td class="value"><code>PHP_INT_MAX</code></td>
+		<td class="description"><div>
+			<a href="#$maxDepth" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="exclude" id="$exclude">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#25" title="Go to source code"><var>$exclude</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$exclude" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="names" id="$names">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#26" title="Go to source code"><var>$names</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$names" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="notNames" id="$notNames">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#27" title="Go to source code"><var>$notNames</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$notNames" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="contains" id="$contains">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#28" title="Go to source code"><var>$contains</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$contains" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="notContains" id="$notContains">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#29" title="Go to source code"><var>$notContains</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$notContains" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="sizes" id="$sizes">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#30" title="Go to source code"><var>$sizes</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$sizes" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="dates" id="$dates">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#31" title="Go to source code"><var>$dates</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$dates" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="filters" id="$filters">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#32" title="Go to source code"><var>$filters</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$filters" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="sort" id="$sort">
+		<td class="attributes"><code>
+			protected  
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#33" title="Go to source code"><var>$sort</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">false</span></code></td>
+		<td class="description"><div>
+			<a href="#$sort" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="paths" id="$paths">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#34" title="Go to source code"><var>$paths</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$paths" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="notPaths" id="$notPaths">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Symfony.Component.Finder.Adapter.AbstractAdapter.html#35" title="Go to source code"><var>$notPaths</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$notPaths" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

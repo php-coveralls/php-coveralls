@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Service\Resource\CompositeResourceIteratorFactory | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Resource.AbstractResourceIteratorFactory.html">AbstractResourceIteratorFactory</a></li>
+				<li class="active"><a href="class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html">CompositeResourceIteratorFactory</a></li>
+				<li><a href="class-Guzzle.Service.Resource.MapResourceIteratorFactory.html">MapResourceIteratorFactory</a></li>
+				<li><a href="class-Guzzle.Service.Resource.Model.html">Model</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIterator.html">ResourceIterator</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorApplyBatched.html">ResourceIteratorApplyBatched</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorClassFactory.html">ResourceIteratorClassFactory</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">ResourceIteratorFactoryInterface</a></li>
+				<li><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">ResourceIteratorInterface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Service.Resource.html" title="Summary of Guzzle\Service\Resource"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class CompositeResourceIteratorFactory</h1>
+
+
+	<div class="description">
+	
+<p>Factory that utilizes multiple factories for creating iterators</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Service\Resource\CompositeResourceIteratorFactory</span></b>			
+			 implements 
+				<a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html"><span>Guzzle\Service\Resource\ResourceIteratorFactoryInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Service.html">Service</a>\<a href="namespace-Guzzle.Service.Resource.html">Resource</a><br />
+		
+
+		<b>Located at</b> <a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#8-77" title="Go to source code">Guzzle/Service/Resource/CompositeResourceIteratorFactory.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#18-24" title="Go to source code">__construct</a>( <span>array <var>$factories</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$factories</var></dt>
+					<dd><code>array</code><br>$factories Array of factories used to instantiate iterators</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="build" id="_build">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_build">#</a>
+		<code><a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#26-36" title="Go to source code">build</a>( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span>, <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			
+<p>Create a resource iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a resource iterator</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command to create an iterator for</dd>
+					<dt><var>$options</var></dt>
+					<dd><code>array</code><br>$options Iterator options that are exposed as data.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorInterface.html">Guzzle\Service\Resource\ResourceIteratorInterface</a></code></code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html#_build">Guzzle\Service\Resource\ResourceIteratorFactoryInterface::build()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="canBuild" id="_canBuild">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_canBuild">#</a>
+		<code><a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#38-44" title="Go to source code">canBuild</a>( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Check if the factory can create an iterator</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Check if the factory can create an iterator</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command to create an iterator for</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html#_canBuild">Guzzle\Service\Resource\ResourceIteratorFactoryInterface::canBuild()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addFactory" id="_addFactory">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html">Guzzle\Service\Resource\CompositeResourceIteratorFactory</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addFactory">#</a>
+		<code><a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#46-58" title="Go to source code">addFactory</a>( <span><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code> <var>$factory</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add a factory to the composite factory</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add a factory to the composite factory</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$factory</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code></code><br>$factory Factory to add</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html">Guzzle\Service\Resource\CompositeResourceIteratorFactory</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getFactory" id="_getFactory">
+
+		<td class="attributes"><code>
+			 protected 
+			<code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code>|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getFactory">#</a>
+		<code><a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#60-76" title="Go to source code">getFactory</a>( <span><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code> <var>$command</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Get the factory that matches the command object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get the factory that matches the command object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$command</var></dt>
+					<dd><code><code><a href="class-Guzzle.Service.Command.CommandInterface.html">Guzzle\Service\Command\CommandInterface</a></code></code><br>$command Command retrieving the iterator for</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Guzzle.Service.Resource.ResourceIteratorFactoryInterface.html">Guzzle\Service\Resource\ResourceIteratorFactoryInterface</a></code>|boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="factories" id="$factories">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Service.Resource.CompositeResourceIteratorFactory.html#13-16" title="Go to source code"><var>$factories</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$factories" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Array of factories</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Array of factories</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

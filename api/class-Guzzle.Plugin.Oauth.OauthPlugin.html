@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Guzzle\Plugin\Oauth\OauthPlugin | php-coveralls</title>
+
+	<script type="text/javascript" src="resources/combined.js?344576979"></script>
+	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="main"><a href="namespace-Contrib.html">Contrib<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.html">Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+				<li class="active"><a href="namespace-Guzzle.html">Guzzle<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.html">Batch<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Batch.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Common.html">Common<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Common.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Http.html">Http<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Http.Curl.html">Curl</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Http.QueryAggregator.html">QueryAggregator</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Inflection.html">Inflection</a>
+						</li>
+				<li><a href="namespace-Guzzle.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Guzzle.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.html">Parser<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Parser.Cookie.html">Cookie</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Message.html">Message</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.UriTemplate.html">UriTemplate</a>
+						</li>
+				<li><a href="namespace-Guzzle.Parser.Url.html">Url</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="namespace-Guzzle.Plugin.html">Plugin<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Async.html">Async</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Backoff.html">Backoff</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cache.html">Cache</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.html">Cookie<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.CookieJar.html">CookieJar</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Cookie.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.CurlAuth.html">CurlAuth</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.html">ErrorResponse<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Plugin.ErrorResponse.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Plugin.History.html">History</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Log.html">Log</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Md5.html">Md5</a>
+						</li>
+				<li><a href="namespace-Guzzle.Plugin.Mock.html">Mock</a>
+						</li>
+				<li class="active"><a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Service.html">Service<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.html">Command<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.Factory.html">Factory</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.html">LocationVisitor<span></span></a>
+						<ul>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Request.html">Request</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Command.LocationVisitor.Response.html">Response</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Guzzle.Service.Description.html">Description</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Guzzle.Service.Resource.html">Resource</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Guzzle.Stream.html">Stream</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.html">Config<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.html">Definition<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Builder.html">Builder</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Definition.Exception.html">Exception</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Config.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Loader.html">Loader</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Resource.html">Resource</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Config.Util.html">Util</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Console.html">Console<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Console.Command.html">Command</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Formatter.html">Formatter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Helper.html">Helper</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Input.html">Input</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Output.html">Output</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Console.Tester.html">Tester</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.html">EventDispatcher<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.EventDispatcher.Debug.html">Debug</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Finder.html">Finder<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Finder.Adapter.html">Adapter</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Comparator.html">Comparator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Exception.html">Exception</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Expression.html">Expression</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Iterator.html">Iterator</a>
+						</li>
+				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
+						<ul>
+				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Guzzle.Plugin.Oauth.OauthPlugin.html">OauthPlugin</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Guzzle.Plugin.Oauth.html" title="Summary of Guzzle\Plugin\Oauth"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class OauthPlugin</h1>
+
+
+	<div class="description">
+	
+<p>OAuth signing plugin</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Guzzle\Plugin\Oauth\OauthPlugin</span></b>			
+			 implements 
+				<a href="class-Symfony.Component.EventDispatcher.EventSubscriberInterface.html"><span>Symfony\Component\EventDispatcher\EventSubscriberInterface</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Guzzle.html">Guzzle</a>\<a href="namespace-Guzzle.Plugin.html">Plugin</a>\<a href="namespace-Guzzle.Plugin.Oauth.html">Oauth</a><br />
+		
+
+				<b>Link:</b>
+				<a href="http://oauth.net/core/1.0/#rfc.section.9.1.1">http://oauth.net/core/1.0/#rfc.section.9.1.1</a><br />
+		<b>Located at</b> <a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#13-270" title="Go to source code">Guzzle/Plugin/Oauth/OauthPlugin.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#24-53" title="Go to source code">__construct</a>( <span>array <var>$config</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Create a new OAuth 1.0 plugin</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Create a new OAuth 1.0 plugin</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$config</var></dt>
+					<dd><code>array</code><br>$config Configuration array containing these parameters: - string 'callback'
+OAuth callback - string 'consumer_key' Consumer key - string 'consumer_secret'
+Consumer secret - string 'token' Token - string 'token_secret' Token secret -
+string 'verifier' OAuth verifier. - string 'version' OAuth version. Defaults to
+1.0 - string 'signature_method' Custom signature method - bool
+'disable_post_params' Set to true to prevent POST parameters from being signed -
+array|Closure 'signature_callback' Custom signature callback that accepts a
+string to sign and a signing key</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSubscribedEvents" id="_getSubscribedEvents">
+
+		<td class="attributes"><code>
+			 public static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSubscribedEvents">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#55-63" title="Go to source code">getSubscribedEvents</a>( )</code>
+
+		<div class="description short">
+			
+<p>Returns an array of event names this subscriber wants to listen to.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns an array of event names this subscriber wants to listen to.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>The event names to listen to<br />
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Symfony.Component.EventDispatcher.EventSubscriberInterface.html#_getSubscribedEvents">Symfony\Component\EventDispatcher\EventSubscriberInterface::getSubscribedEvents()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="onRequestBeforeSend" id="_onRequestBeforeSend">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_onRequestBeforeSend">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#65-95" title="Go to source code">onRequestBeforeSend</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Request before-send event handler</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Request before-send event handler</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event Event received</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSignature" id="_getSignature">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSignature">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#116-131" title="Go to source code">getSignature</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span>, <span>string <var>$nonce</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Calculate signature for request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Calculate signature for request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to generate a signature for</dd>
+					<dt><var>$timestamp</var></dt>
+					<dd><code>integer</code><br>$timestamp Timestamp to use for nonce</dd>
+					<dt><var>$nonce</var></dt>
+					<dd><code>string</code><br>$nonce</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStringToSign" id="_getStringToSign">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStringToSign">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#133-157" title="Go to source code">getStringToSign</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span>, <span>string <var>$nonce</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Calculate string to sign</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Calculate string to sign</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to generate a signature for</dd>
+					<dt><var>$timestamp</var></dt>
+					<dd><code>integer</code><br>$timestamp Timestamp to use for nonce</dd>
+					<dt><var>$nonce</var></dt>
+					<dd><code>string</code><br>$nonce</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParamsToSign" id="_getParamsToSign">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParamsToSign">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#159-195" title="Go to source code">getParamsToSign</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span>, <span>integer <var>$timestamp</var></span>, <span>string <var>$nonce</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Parameters sorted and filtered in order to properly sign a request</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Parameters sorted and filtered in order to properly sign a request</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to generate a signature for</dd>
+					<dt><var>$timestamp</var></dt>
+					<dd><code>integer</code><br>$timestamp Timestamp to use for nonce</dd>
+					<dt><var>$nonce</var></dt>
+					<dd><code>string</code><br>$nonce</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="shouldPostFieldsBeSigned" id="_shouldPostFieldsBeSigned">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_shouldPostFieldsBeSigned">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#197-216" title="Go to source code">shouldPostFieldsBeSigned</a>( <span>mixed <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Decide whether the post fields should be added to the base string that Oauth
+signs. This implementation is correct. Non-conformant APIs may require that this
+method be overwritten e.g. the Flickr API incorrectly adds the post fields when
+the Content-Type is 'application/x-www-form-urlencoded'</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Decide whether the post fields should be added to the base string that Oauth
+signs. This implementation is correct. Non-conformant APIs may require that this
+method be overwritten e.g. the Flickr API incorrectly adds the post fields when
+the Content-Type is 'application/x-www-form-urlencoded'</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code>mixed</code><br>$request</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Whether the post fields should be signed or not<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="generateNonce" id="_generateNonce">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_generateNonce">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#219-230" title="Go to source code">generateNonce</a>( <span><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code> <var>$request</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Returns a Nonce Based on the unique id and URL. This will allow for multiple
+requests in parallel with the same exact timestamp to use separate nonce's.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns a Nonce Based on the unique id and URL. This will allow for multiple
+requests in parallel with the same exact timestamp to use separate nonce's.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$request</var></dt>
+					<dd><code><code><a href="class-Guzzle.Http.Message.RequestInterface.html">Guzzle\Http\Message\RequestInterface</a></code></code><br>$request Request to generate a nonce for</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTimestamp" id="_getTimestamp">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTimestamp">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#232-242" title="Go to source code">getTimestamp</a>( <span><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code> <var>$event</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Gets timestamp from event or create new timestamp</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Gets timestamp from event or create new timestamp</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$event</var></dt>
+					<dd><code><code><a href="class-Guzzle.Common.Event.html">Guzzle\Common\Event</a></code></code><br>$event Event containing contextual information</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="prepareParameters" id="_prepareParameters">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_prepareParameters">#</a>
+		<code><a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#244-269" title="Go to source code">prepareParameters</a>( <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Convert booleans to strings, removed unset parameters, and sorts the
+array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Convert booleans to strings, removed unset parameters, and sorts the
+array</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array</code><br>$data Data array</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="config" id="$config">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Guzzle.Common.Collection.html">Guzzle\Common\Collection</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Guzzle.Plugin.Oauth.OauthPlugin.html#19-22" title="Go to source code"><var>$config</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$config" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Configuration settings</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Configuration settings</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
