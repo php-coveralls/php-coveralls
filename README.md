@@ -202,8 +202,11 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
-# Planned
+# Plan
 
+- CI support
+    - [Codeship](https://www.codeship.io)
+    - [Bamboo](http://www.atlassian.com/en/software/bamboo)
 - `environment` in `json_file` (not documented but implemented in ruby lib)
 - Refactor test cases
 - Support commands
