@@ -64,6 +64,8 @@
             <arg value="*Test.php"/>
             <arg value="--exclude"/>
             <arg value="*/Tests/*"/>
+            <arg value="--google-analytics"/>
+            <arg value="UA-40398434-1"/>
         </exec>
     </target>
 
