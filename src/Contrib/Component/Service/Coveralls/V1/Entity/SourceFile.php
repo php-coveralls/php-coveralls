@@ -86,7 +86,9 @@ class SourceFile extends Coveralls
      */
     public function addCoverage($lineNum, $count)
     {
-        $this->coverage[$lineNum] = $count;
+        if (array_key_exists($lineNum, $this->coverage)) {
+            $this->coverage[$lineNum] = $count;
+        }
     }
 
     // accessor

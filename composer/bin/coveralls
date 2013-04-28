@@ -28,5 +28,5 @@ use Contrib\Bundle\CoverallsBundle\Console\Application;
 
 $rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
 
-$app = new Application($rootDir, 'Coveralls API client for PHP', '0.4.0');
+$app = new Application($rootDir, 'Coveralls API client for PHP', '0.5.0');
 $app->run();
