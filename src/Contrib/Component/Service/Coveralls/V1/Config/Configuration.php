@@ -56,6 +56,13 @@ class Configuration
      */
     protected $dryRun = true;
 
+    /**
+     * Whether to show log.
+     *
+     * @var boolean
+     */
+    protected $verbose = false;
+
     // accessor
 
     /**
@@ -215,5 +222,28 @@ class Configuration
     public function isDryRun()
     {
         return $this->dryRun;
+    }
+
+    /**
+     * Set whether to show log.
+     *
+     * @param boolean $verbose
+     * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
+     */
+    public function setVerbose($verbose)
+    {
+        $this->verbose = $verbose;
+
+        return $this;
+    }
+
+    /**
+     * Return whether to show log.
+     *
+     * @return boolean
+     */
+    public function isVerbose()
+    {
+        return $this->verbose;
     }
 }

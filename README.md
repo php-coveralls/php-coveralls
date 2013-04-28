@@ -122,6 +122,8 @@ script:
 
 after_script:
     - php vendor/bin/coveralls
+    # or enable logging
+    - php vendor/bin/coveralls -v
 ```
 
 ## CircleCI
@@ -216,6 +218,11 @@ json_path: build/logs/coveralls-upload.json
     - `last` to open "https://coveralls.io/repos/${token}/last_build"
 
 # Versions
+
+## 0.5
+
+- `--verbose (-v)` CLI option enables logging
+- Fix: only existing file lines should be included in coverage data
 
 ## 0.4
 

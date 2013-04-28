@@ -46,9 +46,19 @@ class Jobs extends CoverallsApi
         $srcDir         = $this->config->getSrcDir();
         $cloverXmlPath  = $this->config->getCloverXmlPath();
 
+        $this->log("Load coverage clover log: $cloverXmlPath");
+
         $xml            = simplexml_load_file($cloverXmlPath);
         $xmlCollector   = new CloverXmlCoverageCollector();
         $this->jsonFile = $xmlCollector->collect($xml, $srcDir);
+
+        if ($this->jsonFile->hasSourceFiles()) {
+            $this->log("Found source file: ");
+
+            foreach ($this->jsonFile->getSourceFiles() as $sourceFile) {
+                $this->log(sprintf('  - %s', $sourceFile->getName()));
+            }
+        }
 
         return $this;
     }
@@ -87,12 +97,17 @@ class Jobs extends CoverallsApi
         }
 
         $this->jsonFile->fillJobs($_SERVER);
+        $this->log("Dump uploading json file: $jsonPath");
 
         file_put_contents($jsonPath, $this->jsonFile);
 
         if ($this->config->isDryRun()) {
+            $this->log("Finish dry run");
+
             return;
         }
+
+        $this->log(sprintf('Upload json file to %s', static::URL));
 
         return $this->upload(static::URL, $jsonPath, static::FILENAME);
     }
@@ -113,6 +128,19 @@ class Jobs extends CoverallsApi
         ->post($url)
         ->addPostFiles(array($filename => $path))
         ->send();
+    }
+
+    /**
+     * Log a message.
+     *
+     * @param string $message Log message.
+     * @return void
+     */
+    protected function log($message)
+    {
+        if ($this->config->isVerbose()) {
+            echo $message, PHP_EOL;
+        }
     }
 
     // accessor
