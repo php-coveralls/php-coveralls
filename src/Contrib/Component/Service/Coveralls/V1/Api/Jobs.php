@@ -130,6 +130,12 @@ class Jobs extends CoverallsApi
         ->send();
     }
 
+    /**
+     * Log a message.
+     *
+     * @param string $message Log message.
+     * @return void
+     */
     protected function log($message)
     {
         if ($this->config->isVerbose()) {
