@@ -8,7 +8,7 @@
 	<title>File console/Symfony/Component/Console/Application.php | php-coveralls</title>
 
 	<script type="text/javascript" src="resources/combined.js?344576979"></script>
-	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<script type="text/javascript" src="elementlist.js?1939296801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -49,6 +49,8 @@
 				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Log.html">Log</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
 						<ul>
@@ -174,6 +176,11 @@
 							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
+				<li><a href="namespace-Psr.html">Psr<span></span></a>
+						<ul>
+				<li><a href="namespace-Psr.Log.html">Log</a>
+						</li>
+							</ul></li>
 				<li class="active"><a href="namespace-Symfony.html">Symfony<span></span></a>
 						<ul>
 				<li class="active"><a href="namespace-Symfony.Component.html">Component<span></span></a>
@@ -786,178 +793,178 @@
 </span></span><span id="492" class="l"><a class="l" href="#492"> 492: </a><span class="php-comment">     */</span>
 </span><span id="493" class="l"><a class="l" href="#493"> 493: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_findNamespace" href="#_findNamespace">findNamespace</a>(<span class="php-var">$namespace</span>)
 </span><span id="494" class="l"><a class="l" href="#494"> 494: </a>    {
-</span><span id="495" class="l"><a class="l" href="#495"> 495: </a>        <span class="php-var">$allNamespaces</span> = <span class="php-var">$this</span>-&gt;getNamespaces();
-</span><span id="496" class="l"><a class="l" href="#496"> 496: </a>        <span class="php-var">$found</span> = <span class="php-quote">''</span>;
-</span><span id="497" class="l"><a class="l" href="#497"> 497: </a>        <span class="php-keyword1">foreach</span> (<span class="php-keyword2">explode</span>(<span class="php-quote">':'</span>, <span class="php-var">$namespace</span>) <span class="php-keyword1">as</span> <span class="php-var">$i</span> =&gt; <span class="php-var">$part</span>) {
-</span><span id="498" class="l"><a class="l" href="#498"> 498: </a>            <span class="php-comment">// select sub-namespaces matching the current namespace we found</span>
-</span><span id="499" class="l"><a class="l" href="#499"> 499: </a>            <span class="php-var">$namespaces</span> = <span class="php-keyword1">array</span>();
-</span><span id="500" class="l"><a class="l" href="#500"> 500: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$allNamespaces</span> <span class="php-keyword1">as</span> <span class="php-var">$n</span>) {
-</span><span id="501" class="l"><a class="l" href="#501"> 501: </a>                <span class="php-keyword1">if</span> (<span class="php-quote">''</span> === <span class="php-var">$found</span> || <span class="php-num">0</span> === <span class="php-keyword2">strpos</span>(<span class="php-var">$n</span>, <span class="php-var">$found</span>)) {
-</span><span id="502" class="l"><a class="l" href="#502"> 502: </a>                    <span class="php-var">$namespaces</span>[<span class="php-var">$n</span>] = <span class="php-keyword2">explode</span>(<span class="php-quote">':'</span>, <span class="php-var">$n</span>);
-</span><span id="503" class="l"><a class="l" href="#503"> 503: </a>                }
-</span><span id="504" class="l"><a class="l" href="#504"> 504: </a>            }
-</span><span id="505" class="l"><a class="l" href="#505"> 505: </a>
-</span><span id="506" class="l"><a class="l" href="#506"> 506: </a>            <span class="php-var">$abbrevs</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-keyword2">array_values</span>(<span class="php-keyword2">array_filter</span>(<span class="php-keyword2">array_map</span>(<span class="php-keyword1">function</span> (<span class="php-var">$p</span>) <span class="php-keyword1">use</span> (<span class="php-var">$i</span>) { <span class="php-keyword1">return</span> <span class="php-keyword1">isset</span>(<span class="php-var">$p</span>[<span class="php-var">$i</span>]) ? <span class="php-var">$p</span>[<span class="php-var">$i</span>] : <span class="php-quote">''</span>; }, <span class="php-var">$namespaces</span>)))));
-</span><span id="507" class="l"><a class="l" href="#507"> 507: </a>
-</span><span id="508" class="l"><a class="l" href="#508"> 508: </a>            <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>])) {
-</span><span id="509" class="l"><a class="l" href="#509"> 509: </a>                <span class="php-var">$message</span> = <span class="php-keyword2">sprintf</span>(<span class="php-quote">'There are no commands defined in the &quot;%s&quot; namespace.'</span>, <span class="php-var">$namespace</span>);
+</span><span id="495" class="l"><a class="l" href="#495"> 495: </a>        <span class="php-var">$allNamespaces</span> = <span class="php-keyword1">array</span>();
+</span><span id="496" class="l"><a class="l" href="#496"> 496: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;getNamespaces() <span class="php-keyword1">as</span> <span class="php-var">$n</span>) {
+</span><span id="497" class="l"><a class="l" href="#497"> 497: </a>            <span class="php-var">$allNamespaces</span>[<span class="php-var">$n</span>] = <span class="php-keyword2">explode</span>(<span class="php-quote">':'</span>, <span class="php-var">$n</span>);
+</span><span id="498" class="l"><a class="l" href="#498"> 498: </a>        }
+</span><span id="499" class="l"><a class="l" href="#499"> 499: </a>
+</span><span id="500" class="l"><a class="l" href="#500"> 500: </a>        <span class="php-var">$found</span> = <span class="php-keyword1">array</span>();
+</span><span id="501" class="l"><a class="l" href="#501"> 501: </a>        <span class="php-keyword1">foreach</span> (<span class="php-keyword2">explode</span>(<span class="php-quote">':'</span>, <span class="php-var">$namespace</span>) <span class="php-keyword1">as</span> <span class="php-var">$i</span> =&gt; <span class="php-var">$part</span>) {
+</span><span id="502" class="l"><a class="l" href="#502"> 502: </a>            <span class="php-var">$abbrevs</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-keyword2">array_values</span>(<span class="php-keyword2">array_filter</span>(<span class="php-keyword2">array_map</span>(<span class="php-keyword1">function</span> (<span class="php-var">$p</span>) <span class="php-keyword1">use</span> (<span class="php-var">$i</span>) { <span class="php-keyword1">return</span> <span class="php-keyword1">isset</span>(<span class="php-var">$p</span>[<span class="php-var">$i</span>]) ? <span class="php-var">$p</span>[<span class="php-var">$i</span>] : <span class="php-quote">''</span>; }, <span class="php-var">$allNamespaces</span>)))));
+</span><span id="503" class="l"><a class="l" href="#503"> 503: </a>
+</span><span id="504" class="l"><a class="l" href="#504"> 504: </a>            <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>])) {
+</span><span id="505" class="l"><a class="l" href="#505"> 505: </a>                <span class="php-var">$message</span> = <span class="php-keyword2">sprintf</span>(<span class="php-quote">'There are no commands defined in the &quot;%s&quot; namespace.'</span>, <span class="php-var">$namespace</span>);
+</span><span id="506" class="l"><a class="l" href="#506"> 506: </a>
+</span><span id="507" class="l"><a class="l" href="#507"> 507: </a>                <span class="php-keyword1">if</span> (<span class="php-num">1</span> &lt;= <span class="php-var">$i</span>) {
+</span><span id="508" class="l"><a class="l" href="#508"> 508: </a>                    <span class="php-var">$part</span> = <span class="php-keyword2">implode</span>(<span class="php-quote">':'</span>, <span class="php-var">$found</span>).<span class="php-quote">':'</span>.<span class="php-var">$part</span>;
+</span><span id="509" class="l"><a class="l" href="#509"> 509: </a>                }
 </span><span id="510" class="l"><a class="l" href="#510"> 510: </a>
-</span><span id="511" class="l"><a class="l" href="#511"> 511: </a>                <span class="php-keyword1">if</span> (<span class="php-num">1</span> &lt;= <span class="php-var">$i</span>) {
-</span><span id="512" class="l"><a class="l" href="#512"> 512: </a>                    <span class="php-var">$part</span> = <span class="php-var">$found</span>.<span class="php-quote">':'</span>.<span class="php-var">$part</span>;
-</span><span id="513" class="l"><a class="l" href="#513"> 513: </a>                }
-</span><span id="514" class="l"><a class="l" href="#514"> 514: </a>
-</span><span id="515" class="l"><a class="l" href="#515"> 515: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$alternatives</span> = <span class="php-var">$this</span>-&gt;findAlternativeNamespace(<span class="php-var">$part</span>, <span class="php-var">$abbrevs</span>)) {
-</span><span id="516" class="l"><a class="l" href="#516"> 516: </a>                    <span class="php-keyword1">if</span> (<span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$alternatives</span>)) {
-</span><span id="517" class="l"><a class="l" href="#517"> 517: </a>                        <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean this?\n    &quot;</span>;
-</span><span id="518" class="l"><a class="l" href="#518"> 518: </a>                    } <span class="php-keyword1">else</span> {
-</span><span id="519" class="l"><a class="l" href="#519"> 519: </a>                        <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean one of these?\n    &quot;</span>;
-</span><span id="520" class="l"><a class="l" href="#520"> 520: </a>                    }
-</span><span id="521" class="l"><a class="l" href="#521"> 521: </a>
-</span><span id="522" class="l"><a class="l" href="#522"> 522: </a>                    <span class="php-var">$message</span> .= <span class="php-keyword2">implode</span>(<span class="php-quote">&quot;\n    &quot;</span>, <span class="php-var">$alternatives</span>);
-</span><span id="523" class="l"><a class="l" href="#523"> 523: </a>                }
-</span><span id="524" class="l"><a class="l" href="#524"> 524: </a>
-</span><span id="525" class="l"><a class="l" href="#525"> 525: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-var">$message</span>);
+</span><span id="511" class="l"><a class="l" href="#511"> 511: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$alternatives</span> = <span class="php-var">$this</span>-&gt;findAlternativeNamespace(<span class="php-var">$part</span>, <span class="php-var">$abbrevs</span>)) {
+</span><span id="512" class="l"><a class="l" href="#512"> 512: </a>                    <span class="php-keyword1">if</span> (<span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$alternatives</span>)) {
+</span><span id="513" class="l"><a class="l" href="#513"> 513: </a>                        <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean this?\n    &quot;</span>;
+</span><span id="514" class="l"><a class="l" href="#514"> 514: </a>                    } <span class="php-keyword1">else</span> {
+</span><span id="515" class="l"><a class="l" href="#515"> 515: </a>                        <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean one of these?\n    &quot;</span>;
+</span><span id="516" class="l"><a class="l" href="#516"> 516: </a>                    }
+</span><span id="517" class="l"><a class="l" href="#517"> 517: </a>
+</span><span id="518" class="l"><a class="l" href="#518"> 518: </a>                    <span class="php-var">$message</span> .= <span class="php-keyword2">implode</span>(<span class="php-quote">&quot;\n    &quot;</span>, <span class="php-var">$alternatives</span>);
+</span><span id="519" class="l"><a class="l" href="#519"> 519: </a>                }
+</span><span id="520" class="l"><a class="l" href="#520"> 520: </a>
+</span><span id="521" class="l"><a class="l" href="#521"> 521: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-var">$message</span>);
+</span><span id="522" class="l"><a class="l" href="#522"> 522: </a>            }
+</span><span id="523" class="l"><a class="l" href="#523"> 523: </a>
+</span><span id="524" class="l"><a class="l" href="#524"> 524: </a>            <span class="php-keyword1">if</span> (<span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>]) &gt; <span class="php-num">1</span>) {
+</span><span id="525" class="l"><a class="l" href="#525"> 525: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'The namespace &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$namespace</span>, <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>])));
 </span><span id="526" class="l"><a class="l" href="#526"> 526: </a>            }
 </span><span id="527" class="l"><a class="l" href="#527"> 527: </a>
-</span><span id="528" class="l"><a class="l" href="#528"> 528: </a>            <span class="php-comment">// there are multiple matches, but $part is an exact match of one of them so we select it</span>
-</span><span id="529" class="l"><a class="l" href="#529"> 529: </a>            <span class="php-keyword1">if</span> (<span class="php-keyword2">in_array</span>(<span class="php-var">$part</span>, <span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>])) {
-</span><span id="530" class="l"><a class="l" href="#530"> 530: </a>                <span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>] = <span class="php-keyword1">array</span>(<span class="php-var">$part</span>);
-</span><span id="531" class="l"><a class="l" href="#531"> 531: </a>            }
-</span><span id="532" class="l"><a class="l" href="#532"> 532: </a>
-</span><span id="533" class="l"><a class="l" href="#533"> 533: </a>            <span class="php-keyword1">if</span> (<span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>]) &gt; <span class="php-num">1</span>) {
-</span><span id="534" class="l"><a class="l" href="#534"> 534: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'The namespace &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$namespace</span>, <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>])));
-</span><span id="535" class="l"><a class="l" href="#535"> 535: </a>            }
-</span><span id="536" class="l"><a class="l" href="#536"> 536: </a>
-</span><span id="537" class="l"><a class="l" href="#537"> 537: </a>            <span class="php-var">$found</span> .= <span class="php-var">$found</span> ? <span class="php-quote">':'</span> . <span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>][<span class="php-num">0</span>] : <span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>][<span class="php-num">0</span>];
-</span><span id="538" class="l"><a class="l" href="#538"> 538: </a>        }
-</span><span id="539" class="l"><a class="l" href="#539"> 539: </a>
-</span><span id="540" class="l"><a class="l" href="#540"> 540: </a>        <span class="php-keyword1">return</span> <span class="php-var">$found</span>;
-</span><span id="541" class="l"><a class="l" href="#541"> 541: </a>    }
-</span><span id="542" class="l"><a class="l" href="#542"> 542: </a>
-</span><span id="543" class="l"><a class="l" href="#543"> 543: </a>    <span class="php-comment">/**
-</span></span><span id="544" class="l"><a class="l" href="#544"> 544: </a><span class="php-comment">     * Finds a command by name or alias.
+</span><span id="528" class="l"><a class="l" href="#528"> 528: </a>            <span class="php-var">$found</span>[] = <span class="php-var">$abbrevs</span>[<span class="php-var">$part</span>][<span class="php-num">0</span>];
+</span><span id="529" class="l"><a class="l" href="#529"> 529: </a>        }
+</span><span id="530" class="l"><a class="l" href="#530"> 530: </a>
+</span><span id="531" class="l"><a class="l" href="#531"> 531: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">implode</span>(<span class="php-quote">':'</span>, <span class="php-var">$found</span>);
+</span><span id="532" class="l"><a class="l" href="#532"> 532: </a>    }
+</span><span id="533" class="l"><a class="l" href="#533"> 533: </a>
+</span><span id="534" class="l"><a class="l" href="#534"> 534: </a>    <span class="php-comment">/**
+</span></span><span id="535" class="l"><a class="l" href="#535"> 535: </a><span class="php-comment">     * Finds a command by name or alias.
+</span></span><span id="536" class="l"><a class="l" href="#536"> 536: </a><span class="php-comment">     *
+</span></span><span id="537" class="l"><a class="l" href="#537"> 537: </a><span class="php-comment">     * Contrary to get, this command tries to find the best
+</span></span><span id="538" class="l"><a class="l" href="#538"> 538: </a><span class="php-comment">     * match if you give it an abbreviation of a name or alias.
+</span></span><span id="539" class="l"><a class="l" href="#539"> 539: </a><span class="php-comment">     *
+</span></span><span id="540" class="l"><a class="l" href="#540"> 540: </a><span class="php-comment">     * @param string $name A command name or a command alias
+</span></span><span id="541" class="l"><a class="l" href="#541"> 541: </a><span class="php-comment">     *
+</span></span><span id="542" class="l"><a class="l" href="#542"> 542: </a><span class="php-comment">     * @return Command A Command instance
+</span></span><span id="543" class="l"><a class="l" href="#543"> 543: </a><span class="php-comment">     *
+</span></span><span id="544" class="l"><a class="l" href="#544"> 544: </a><span class="php-comment">     * @throws \InvalidArgumentException When command name is incorrect or ambiguous
 </span></span><span id="545" class="l"><a class="l" href="#545"> 545: </a><span class="php-comment">     *
-</span></span><span id="546" class="l"><a class="l" href="#546"> 546: </a><span class="php-comment">     * Contrary to get, this command tries to find the best
-</span></span><span id="547" class="l"><a class="l" href="#547"> 547: </a><span class="php-comment">     * match if you give it an abbreviation of a name or alias.
-</span></span><span id="548" class="l"><a class="l" href="#548"> 548: </a><span class="php-comment">     *
-</span></span><span id="549" class="l"><a class="l" href="#549"> 549: </a><span class="php-comment">     * @param string $name A command name or a command alias
-</span></span><span id="550" class="l"><a class="l" href="#550"> 550: </a><span class="php-comment">     *
-</span></span><span id="551" class="l"><a class="l" href="#551"> 551: </a><span class="php-comment">     * @return Command A Command instance
-</span></span><span id="552" class="l"><a class="l" href="#552"> 552: </a><span class="php-comment">     *
-</span></span><span id="553" class="l"><a class="l" href="#553"> 553: </a><span class="php-comment">     * @throws \InvalidArgumentException When command name is incorrect or ambiguous
-</span></span><span id="554" class="l"><a class="l" href="#554"> 554: </a><span class="php-comment">     *
-</span></span><span id="555" class="l"><a class="l" href="#555"> 555: </a><span class="php-comment">     * @api
-</span></span><span id="556" class="l"><a class="l" href="#556"> 556: </a><span class="php-comment">     */</span>
-</span><span id="557" class="l"><a class="l" href="#557"> 557: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_find" href="#_find">find</a>(<span class="php-var">$name</span>)
-</span><span id="558" class="l"><a class="l" href="#558"> 558: </a>    {
-</span><span id="559" class="l"><a class="l" href="#559"> 559: </a>        <span class="php-comment">// namespace</span>
-</span><span id="560" class="l"><a class="l" href="#560"> 560: </a>        <span class="php-var">$namespace</span> = <span class="php-quote">''</span>;
-</span><span id="561" class="l"><a class="l" href="#561"> 561: </a>        <span class="php-var">$searchName</span> = <span class="php-var">$name</span>;
-</span><span id="562" class="l"><a class="l" href="#562"> 562: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">false</span> !== <span class="php-var">$pos</span> = <span class="php-keyword2">strrpos</span>(<span class="php-var">$name</span>, <span class="php-quote">':'</span>)) {
-</span><span id="563" class="l"><a class="l" href="#563"> 563: </a>            <span class="php-var">$namespace</span> = <span class="php-var">$this</span>-&gt;findNamespace(<span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-num">0</span>, <span class="php-var">$pos</span>));
-</span><span id="564" class="l"><a class="l" href="#564"> 564: </a>            <span class="php-var">$searchName</span> = <span class="php-var">$namespace</span>.<span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-var">$pos</span>);
-</span><span id="565" class="l"><a class="l" href="#565"> 565: </a>        }
-</span><span id="566" class="l"><a class="l" href="#566"> 566: </a>
-</span><span id="567" class="l"><a class="l" href="#567"> 567: </a>        <span class="php-comment">// name</span>
-</span><span id="568" class="l"><a class="l" href="#568"> 568: </a>        <span class="php-var">$commands</span> = <span class="php-keyword1">array</span>();
-</span><span id="569" class="l"><a class="l" href="#569"> 569: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$command</span>) {
-</span><span id="570" class="l"><a class="l" href="#570"> 570: </a>            <span class="php-var">$extractedNamespace</span> = <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$command</span>-&gt;getName());
-</span><span id="571" class="l"><a class="l" href="#571"> 571: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$extractedNamespace</span> === <span class="php-var">$namespace</span>
-</span><span id="572" class="l"><a class="l" href="#572"> 572: </a>               || !<span class="php-keyword1">empty</span>(<span class="php-var">$namespace</span>) &amp;&amp; <span class="php-num">0</span> === <span class="php-keyword2">strpos</span>(<span class="php-var">$extractedNamespace</span>, <span class="php-var">$namespace</span>)
-</span><span id="573" class="l"><a class="l" href="#573"> 573: </a>            ) {
-</span><span id="574" class="l"><a class="l" href="#574"> 574: </a>                <span class="php-var">$commands</span>[] = <span class="php-var">$command</span>-&gt;getName();
-</span><span id="575" class="l"><a class="l" href="#575"> 575: </a>            }
-</span><span id="576" class="l"><a class="l" href="#576"> 576: </a>        }
-</span><span id="577" class="l"><a class="l" href="#577"> 577: </a>
-</span><span id="578" class="l"><a class="l" href="#578"> 578: </a>        <span class="php-var">$abbrevs</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-var">$commands</span>));
-</span><span id="579" class="l"><a class="l" href="#579"> 579: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &amp;&amp; <span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>])) {
-</span><span id="580" class="l"><a class="l" href="#580"> 580: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;get(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>][<span class="php-num">0</span>]);
-</span><span id="581" class="l"><a class="l" href="#581"> 581: </a>        }
-</span><span id="582" class="l"><a class="l" href="#582"> 582: </a>
-</span><span id="583" class="l"><a class="l" href="#583"> 583: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &amp;&amp; <span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &gt; <span class="php-num">1</span>) {
-</span><span id="584" class="l"><a class="l" href="#584"> 584: </a>            <span class="php-var">$suggestions</span> = <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]);
-</span><span id="585" class="l"><a class="l" href="#585"> 585: </a>
-</span><span id="586" class="l"><a class="l" href="#586"> 586: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$name</span>, <span class="php-var">$suggestions</span>));
-</span><span id="587" class="l"><a class="l" href="#587"> 587: </a>        }
-</span><span id="588" class="l"><a class="l" href="#588"> 588: </a>
-</span><span id="589" class="l"><a class="l" href="#589"> 589: </a>        <span class="php-comment">// aliases</span>
-</span><span id="590" class="l"><a class="l" href="#590"> 590: </a>        <span class="php-var">$aliases</span> = <span class="php-keyword1">array</span>();
-</span><span id="591" class="l"><a class="l" href="#591"> 591: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$command</span>) {
-</span><span id="592" class="l"><a class="l" href="#592"> 592: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$command</span>-&gt;getAliases() <span class="php-keyword1">as</span> <span class="php-var">$alias</span>) {
-</span><span id="593" class="l"><a class="l" href="#593"> 593: </a>                <span class="php-var">$extractedNamespace</span> = <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$alias</span>);
-</span><span id="594" class="l"><a class="l" href="#594"> 594: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$extractedNamespace</span> === <span class="php-var">$namespace</span>
-</span><span id="595" class="l"><a class="l" href="#595"> 595: </a>                   || !<span class="php-keyword1">empty</span>(<span class="php-var">$namespace</span>) &amp;&amp; <span class="php-num">0</span> === <span class="php-keyword2">strpos</span>(<span class="php-var">$extractedNamespace</span>, <span class="php-var">$namespace</span>)
-</span><span id="596" class="l"><a class="l" href="#596"> 596: </a>                ) {
-</span><span id="597" class="l"><a class="l" href="#597"> 597: </a>                    <span class="php-var">$aliases</span>[] = <span class="php-var">$alias</span>;
-</span><span id="598" class="l"><a class="l" href="#598"> 598: </a>                }
-</span><span id="599" class="l"><a class="l" href="#599"> 599: </a>            }
-</span><span id="600" class="l"><a class="l" href="#600"> 600: </a>        }
-</span><span id="601" class="l"><a class="l" href="#601"> 601: </a>
-</span><span id="602" class="l"><a class="l" href="#602"> 602: </a>        <span class="php-var">$aliases</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-var">$aliases</span>));
-</span><span id="603" class="l"><a class="l" href="#603"> 603: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>])) {
-</span><span id="604" class="l"><a class="l" href="#604"> 604: </a>            <span class="php-var">$message</span> = <span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is not defined.'</span>, <span class="php-var">$name</span>);
+</span></span><span id="546" class="l"><a class="l" href="#546"> 546: </a><span class="php-comment">     * @api
+</span></span><span id="547" class="l"><a class="l" href="#547"> 547: </a><span class="php-comment">     */</span>
+</span><span id="548" class="l"><a class="l" href="#548"> 548: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_find" href="#_find">find</a>(<span class="php-var">$name</span>)
+</span><span id="549" class="l"><a class="l" href="#549"> 549: </a>    {
+</span><span id="550" class="l"><a class="l" href="#550"> 550: </a>        <span class="php-comment">// namespace</span>
+</span><span id="551" class="l"><a class="l" href="#551"> 551: </a>        <span class="php-var">$namespace</span> = <span class="php-quote">''</span>;
+</span><span id="552" class="l"><a class="l" href="#552"> 552: </a>        <span class="php-var">$searchName</span> = <span class="php-var">$name</span>;
+</span><span id="553" class="l"><a class="l" href="#553"> 553: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">false</span> !== <span class="php-var">$pos</span> = <span class="php-keyword2">strrpos</span>(<span class="php-var">$name</span>, <span class="php-quote">':'</span>)) {
+</span><span id="554" class="l"><a class="l" href="#554"> 554: </a>            <span class="php-var">$namespace</span> = <span class="php-var">$this</span>-&gt;findNamespace(<span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-num">0</span>, <span class="php-var">$pos</span>));
+</span><span id="555" class="l"><a class="l" href="#555"> 555: </a>            <span class="php-var">$searchName</span> = <span class="php-var">$namespace</span>.<span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-var">$pos</span>);
+</span><span id="556" class="l"><a class="l" href="#556"> 556: </a>        }
+</span><span id="557" class="l"><a class="l" href="#557"> 557: </a>
+</span><span id="558" class="l"><a class="l" href="#558"> 558: </a>        <span class="php-comment">// name</span>
+</span><span id="559" class="l"><a class="l" href="#559"> 559: </a>        <span class="php-var">$commands</span> = <span class="php-keyword1">array</span>();
+</span><span id="560" class="l"><a class="l" href="#560"> 560: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$command</span>) {
+</span><span id="561" class="l"><a class="l" href="#561"> 561: </a>            <span class="php-var">$extractedNamespace</span> = <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$command</span>-&gt;getName());
+</span><span id="562" class="l"><a class="l" href="#562"> 562: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$extractedNamespace</span> === <span class="php-var">$namespace</span>
+</span><span id="563" class="l"><a class="l" href="#563"> 563: </a>               || !<span class="php-keyword1">empty</span>(<span class="php-var">$namespace</span>) &amp;&amp; <span class="php-num">0</span> === <span class="php-keyword2">strpos</span>(<span class="php-var">$extractedNamespace</span>, <span class="php-var">$namespace</span>)
+</span><span id="564" class="l"><a class="l" href="#564"> 564: </a>            ) {
+</span><span id="565" class="l"><a class="l" href="#565"> 565: </a>                <span class="php-var">$commands</span>[] = <span class="php-var">$command</span>-&gt;getName();
+</span><span id="566" class="l"><a class="l" href="#566"> 566: </a>            }
+</span><span id="567" class="l"><a class="l" href="#567"> 567: </a>        }
+</span><span id="568" class="l"><a class="l" href="#568"> 568: </a>
+</span><span id="569" class="l"><a class="l" href="#569"> 569: </a>        <span class="php-var">$abbrevs</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-var">$commands</span>));
+</span><span id="570" class="l"><a class="l" href="#570"> 570: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &amp;&amp; <span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>])) {
+</span><span id="571" class="l"><a class="l" href="#571"> 571: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;get(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>][<span class="php-num">0</span>]);
+</span><span id="572" class="l"><a class="l" href="#572"> 572: </a>        }
+</span><span id="573" class="l"><a class="l" href="#573"> 573: </a>
+</span><span id="574" class="l"><a class="l" href="#574"> 574: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &amp;&amp; <span class="php-keyword2">count</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]) &gt; <span class="php-num">1</span>) {
+</span><span id="575" class="l"><a class="l" href="#575"> 575: </a>            <span class="php-var">$suggestions</span> = <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$abbrevs</span>[<span class="php-var">$searchName</span>]);
+</span><span id="576" class="l"><a class="l" href="#576"> 576: </a>
+</span><span id="577" class="l"><a class="l" href="#577"> 577: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$name</span>, <span class="php-var">$suggestions</span>));
+</span><span id="578" class="l"><a class="l" href="#578"> 578: </a>        }
+</span><span id="579" class="l"><a class="l" href="#579"> 579: </a>
+</span><span id="580" class="l"><a class="l" href="#580"> 580: </a>        <span class="php-comment">// aliases</span>
+</span><span id="581" class="l"><a class="l" href="#581"> 581: </a>        <span class="php-var">$aliases</span> = <span class="php-keyword1">array</span>();
+</span><span id="582" class="l"><a class="l" href="#582"> 582: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$command</span>) {
+</span><span id="583" class="l"><a class="l" href="#583"> 583: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$command</span>-&gt;getAliases() <span class="php-keyword1">as</span> <span class="php-var">$alias</span>) {
+</span><span id="584" class="l"><a class="l" href="#584"> 584: </a>                <span class="php-var">$extractedNamespace</span> = <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$alias</span>);
+</span><span id="585" class="l"><a class="l" href="#585"> 585: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$extractedNamespace</span> === <span class="php-var">$namespace</span>
+</span><span id="586" class="l"><a class="l" href="#586"> 586: </a>                   || !<span class="php-keyword1">empty</span>(<span class="php-var">$namespace</span>) &amp;&amp; <span class="php-num">0</span> === <span class="php-keyword2">strpos</span>(<span class="php-var">$extractedNamespace</span>, <span class="php-var">$namespace</span>)
+</span><span id="587" class="l"><a class="l" href="#587"> 587: </a>                ) {
+</span><span id="588" class="l"><a class="l" href="#588"> 588: </a>                    <span class="php-var">$aliases</span>[] = <span class="php-var">$alias</span>;
+</span><span id="589" class="l"><a class="l" href="#589"> 589: </a>                }
+</span><span id="590" class="l"><a class="l" href="#590"> 590: </a>            }
+</span><span id="591" class="l"><a class="l" href="#591"> 591: </a>        }
+</span><span id="592" class="l"><a class="l" href="#592"> 592: </a>
+</span><span id="593" class="l"><a class="l" href="#593"> 593: </a>        <span class="php-var">$aliases</span> = <span class="php-keyword1">static</span>::getAbbreviations(<span class="php-keyword2">array_unique</span>(<span class="php-var">$aliases</span>));
+</span><span id="594" class="l"><a class="l" href="#594"> 594: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>])) {
+</span><span id="595" class="l"><a class="l" href="#595"> 595: </a>            <span class="php-var">$message</span> = <span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is not defined.'</span>, <span class="php-var">$name</span>);
+</span><span id="596" class="l"><a class="l" href="#596"> 596: </a>
+</span><span id="597" class="l"><a class="l" href="#597"> 597: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$alternatives</span> = <span class="php-var">$this</span>-&gt;findAlternativeCommands(<span class="php-var">$searchName</span>, <span class="php-var">$abbrevs</span>)) {
+</span><span id="598" class="l"><a class="l" href="#598"> 598: </a>                <span class="php-keyword1">if</span> (<span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$alternatives</span>)) {
+</span><span id="599" class="l"><a class="l" href="#599"> 599: </a>                    <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean this?\n    &quot;</span>;
+</span><span id="600" class="l"><a class="l" href="#600"> 600: </a>                } <span class="php-keyword1">else</span> {
+</span><span id="601" class="l"><a class="l" href="#601"> 601: </a>                    <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean one of these?\n    &quot;</span>;
+</span><span id="602" class="l"><a class="l" href="#602"> 602: </a>                }
+</span><span id="603" class="l"><a class="l" href="#603"> 603: </a>                <span class="php-var">$message</span> .= <span class="php-keyword2">implode</span>(<span class="php-quote">&quot;\n    &quot;</span>, <span class="php-var">$alternatives</span>);
+</span><span id="604" class="l"><a class="l" href="#604"> 604: </a>            }
 </span><span id="605" class="l"><a class="l" href="#605"> 605: </a>
-</span><span id="606" class="l"><a class="l" href="#606"> 606: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$alternatives</span> = <span class="php-var">$this</span>-&gt;findAlternativeCommands(<span class="php-var">$searchName</span>, <span class="php-var">$abbrevs</span>)) {
-</span><span id="607" class="l"><a class="l" href="#607"> 607: </a>                <span class="php-keyword1">if</span> (<span class="php-num">1</span> == <span class="php-keyword2">count</span>(<span class="php-var">$alternatives</span>)) {
-</span><span id="608" class="l"><a class="l" href="#608"> 608: </a>                    <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean this?\n    &quot;</span>;
-</span><span id="609" class="l"><a class="l" href="#609"> 609: </a>                } <span class="php-keyword1">else</span> {
-</span><span id="610" class="l"><a class="l" href="#610"> 610: </a>                    <span class="php-var">$message</span> .= <span class="php-quote">&quot;\n\nDid you mean one of these?\n    &quot;</span>;
-</span><span id="611" class="l"><a class="l" href="#611"> 611: </a>                }
-</span><span id="612" class="l"><a class="l" href="#612"> 612: </a>                <span class="php-var">$message</span> .= <span class="php-keyword2">implode</span>(<span class="php-quote">&quot;\n    &quot;</span>, <span class="php-var">$alternatives</span>);
-</span><span id="613" class="l"><a class="l" href="#613"> 613: </a>            }
-</span><span id="614" class="l"><a class="l" href="#614"> 614: </a>
-</span><span id="615" class="l"><a class="l" href="#615"> 615: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-var">$message</span>);
-</span><span id="616" class="l"><a class="l" href="#616"> 616: </a>        }
-</span><span id="617" class="l"><a class="l" href="#617"> 617: </a>
-</span><span id="618" class="l"><a class="l" href="#618"> 618: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword2">count</span>(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>]) &gt; <span class="php-num">1</span>) {
-</span><span id="619" class="l"><a class="l" href="#619"> 619: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$name</span>, <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>])));
-</span><span id="620" class="l"><a class="l" href="#620"> 620: </a>        }
-</span><span id="621" class="l"><a class="l" href="#621"> 621: </a>
-</span><span id="622" class="l"><a class="l" href="#622"> 622: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;get(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>][<span class="php-num">0</span>]);
-</span><span id="623" class="l"><a class="l" href="#623"> 623: </a>    }
-</span><span id="624" class="l"><a class="l" href="#624"> 624: </a>
-</span><span id="625" class="l"><a class="l" href="#625"> 625: </a>    <span class="php-comment">/**
-</span></span><span id="626" class="l"><a class="l" href="#626"> 626: </a><span class="php-comment">     * Gets the commands (registered in the given namespace if provided).
-</span></span><span id="627" class="l"><a class="l" href="#627"> 627: </a><span class="php-comment">     *
-</span></span><span id="628" class="l"><a class="l" href="#628"> 628: </a><span class="php-comment">     * The array keys are the full names and the values the command instances.
-</span></span><span id="629" class="l"><a class="l" href="#629"> 629: </a><span class="php-comment">     *
-</span></span><span id="630" class="l"><a class="l" href="#630"> 630: </a><span class="php-comment">     * @param string $namespace A namespace name
-</span></span><span id="631" class="l"><a class="l" href="#631"> 631: </a><span class="php-comment">     *
-</span></span><span id="632" class="l"><a class="l" href="#632"> 632: </a><span class="php-comment">     * @return Command[] An array of Command instances
-</span></span><span id="633" class="l"><a class="l" href="#633"> 633: </a><span class="php-comment">     *
-</span></span><span id="634" class="l"><a class="l" href="#634"> 634: </a><span class="php-comment">     * @api
-</span></span><span id="635" class="l"><a class="l" href="#635"> 635: </a><span class="php-comment">     */</span>
-</span><span id="636" class="l"><a class="l" href="#636"> 636: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_all" href="#_all">all</a>(<span class="php-var">$namespace</span> = <span class="php-keyword1">null</span>)
-</span><span id="637" class="l"><a class="l" href="#637"> 637: </a>    {
-</span><span id="638" class="l"><a class="l" href="#638"> 638: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">null</span> === <span class="php-var">$namespace</span>) {
-</span><span id="639" class="l"><a class="l" href="#639"> 639: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;commands;
-</span><span id="640" class="l"><a class="l" href="#640"> 640: </a>        }
-</span><span id="641" class="l"><a class="l" href="#641"> 641: </a>
-</span><span id="642" class="l"><a class="l" href="#642"> 642: </a>        <span class="php-var">$commands</span> = <span class="php-keyword1">array</span>();
-</span><span id="643" class="l"><a class="l" href="#643"> 643: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$name</span> =&gt; <span class="php-var">$command</span>) {
-</span><span id="644" class="l"><a class="l" href="#644"> 644: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$namespace</span> === <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$name</span>, <span class="php-keyword2">substr_count</span>(<span class="php-var">$namespace</span>, <span class="php-quote">':'</span>) + <span class="php-num">1</span>)) {
-</span><span id="645" class="l"><a class="l" href="#645"> 645: </a>                <span class="php-var">$commands</span>[<span class="php-var">$name</span>] = <span class="php-var">$command</span>;
-</span><span id="646" class="l"><a class="l" href="#646"> 646: </a>            }
-</span><span id="647" class="l"><a class="l" href="#647"> 647: </a>        }
-</span><span id="648" class="l"><a class="l" href="#648"> 648: </a>
-</span><span id="649" class="l"><a class="l" href="#649"> 649: </a>        <span class="php-keyword1">return</span> <span class="php-var">$commands</span>;
-</span><span id="650" class="l"><a class="l" href="#650"> 650: </a>    }
-</span><span id="651" class="l"><a class="l" href="#651"> 651: </a>
-</span><span id="652" class="l"><a class="l" href="#652"> 652: </a>    <span class="php-comment">/**
-</span></span><span id="653" class="l"><a class="l" href="#653"> 653: </a><span class="php-comment">     * Returns an array of possible abbreviations given a set of names.
-</span></span><span id="654" class="l"><a class="l" href="#654"> 654: </a><span class="php-comment">     *
-</span></span><span id="655" class="l"><a class="l" href="#655"> 655: </a><span class="php-comment">     * @param array $names An array of names
-</span></span><span id="656" class="l"><a class="l" href="#656"> 656: </a><span class="php-comment">     *
-</span></span><span id="657" class="l"><a class="l" href="#657"> 657: </a><span class="php-comment">     * @return array An array of abbreviations
-</span></span><span id="658" class="l"><a class="l" href="#658"> 658: </a><span class="php-comment">     */</span>
-</span><span id="659" class="l"><a class="l" href="#659"> 659: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_getAbbreviations" href="#_getAbbreviations">getAbbreviations</a>(<span class="php-var">$names</span>)
-</span><span id="660" class="l"><a class="l" href="#660"> 660: </a>    {
-</span><span id="661" class="l"><a class="l" href="#661"> 661: </a>        <span class="php-var">$abbrevs</span> = <span class="php-keyword1">array</span>();
-</span><span id="662" class="l"><a class="l" href="#662"> 662: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$names</span> <span class="php-keyword1">as</span> <span class="php-var">$name</span>) {
-</span><span id="663" class="l"><a class="l" href="#663"> 663: </a>            <span class="php-keyword1">for</span> (<span class="php-var">$len</span> = <span class="php-keyword2">strlen</span>(<span class="php-var">$name</span>); <span class="php-var">$len</span> &gt; <span class="php-num">0</span>; --<span class="php-var">$len</span>) {
-</span><span id="664" class="l"><a class="l" href="#664"> 664: </a>                <span class="php-var">$abbrev</span> = <span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-num">0</span>, <span class="php-var">$len</span>);
-</span><span id="665" class="l"><a class="l" href="#665"> 665: </a>                <span class="php-var">$abbrevs</span>[<span class="php-var">$abbrev</span>][] = <span class="php-var">$name</span>;
-</span><span id="666" class="l"><a class="l" href="#666"> 666: </a>            }
+</span><span id="606" class="l"><a class="l" href="#606"> 606: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-var">$message</span>);
+</span><span id="607" class="l"><a class="l" href="#607"> 607: </a>        }
+</span><span id="608" class="l"><a class="l" href="#608"> 608: </a>
+</span><span id="609" class="l"><a class="l" href="#609"> 609: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword2">count</span>(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>]) &gt; <span class="php-num">1</span>) {
+</span><span id="610" class="l"><a class="l" href="#610"> 610: </a>            <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'Command &quot;%s&quot; is ambiguous (%s).'</span>, <span class="php-var">$name</span>, <span class="php-var">$this</span>-&gt;getAbbreviationSuggestions(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>])));
+</span><span id="611" class="l"><a class="l" href="#611"> 611: </a>        }
+</span><span id="612" class="l"><a class="l" href="#612"> 612: </a>
+</span><span id="613" class="l"><a class="l" href="#613"> 613: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;get(<span class="php-var">$aliases</span>[<span class="php-var">$searchName</span>][<span class="php-num">0</span>]);
+</span><span id="614" class="l"><a class="l" href="#614"> 614: </a>    }
+</span><span id="615" class="l"><a class="l" href="#615"> 615: </a>
+</span><span id="616" class="l"><a class="l" href="#616"> 616: </a>    <span class="php-comment">/**
+</span></span><span id="617" class="l"><a class="l" href="#617"> 617: </a><span class="php-comment">     * Gets the commands (registered in the given namespace if provided).
+</span></span><span id="618" class="l"><a class="l" href="#618"> 618: </a><span class="php-comment">     *
+</span></span><span id="619" class="l"><a class="l" href="#619"> 619: </a><span class="php-comment">     * The array keys are the full names and the values the command instances.
+</span></span><span id="620" class="l"><a class="l" href="#620"> 620: </a><span class="php-comment">     *
+</span></span><span id="621" class="l"><a class="l" href="#621"> 621: </a><span class="php-comment">     * @param string $namespace A namespace name
+</span></span><span id="622" class="l"><a class="l" href="#622"> 622: </a><span class="php-comment">     *
+</span></span><span id="623" class="l"><a class="l" href="#623"> 623: </a><span class="php-comment">     * @return Command[] An array of Command instances
+</span></span><span id="624" class="l"><a class="l" href="#624"> 624: </a><span class="php-comment">     *
+</span></span><span id="625" class="l"><a class="l" href="#625"> 625: </a><span class="php-comment">     * @api
+</span></span><span id="626" class="l"><a class="l" href="#626"> 626: </a><span class="php-comment">     */</span>
+</span><span id="627" class="l"><a class="l" href="#627"> 627: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_all" href="#_all">all</a>(<span class="php-var">$namespace</span> = <span class="php-keyword1">null</span>)
+</span><span id="628" class="l"><a class="l" href="#628"> 628: </a>    {
+</span><span id="629" class="l"><a class="l" href="#629"> 629: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">null</span> === <span class="php-var">$namespace</span>) {
+</span><span id="630" class="l"><a class="l" href="#630"> 630: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;commands;
+</span><span id="631" class="l"><a class="l" href="#631"> 631: </a>        }
+</span><span id="632" class="l"><a class="l" href="#632"> 632: </a>
+</span><span id="633" class="l"><a class="l" href="#633"> 633: </a>        <span class="php-var">$commands</span> = <span class="php-keyword1">array</span>();
+</span><span id="634" class="l"><a class="l" href="#634"> 634: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$this</span>-&gt;commands <span class="php-keyword1">as</span> <span class="php-var">$name</span> =&gt; <span class="php-var">$command</span>) {
+</span><span id="635" class="l"><a class="l" href="#635"> 635: </a>            <span class="php-keyword1">if</span> (<span class="php-var">$namespace</span> === <span class="php-var">$this</span>-&gt;extractNamespace(<span class="php-var">$name</span>, <span class="php-keyword2">substr_count</span>(<span class="php-var">$namespace</span>, <span class="php-quote">':'</span>) + <span class="php-num">1</span>)) {
+</span><span id="636" class="l"><a class="l" href="#636"> 636: </a>                <span class="php-var">$commands</span>[<span class="php-var">$name</span>] = <span class="php-var">$command</span>;
+</span><span id="637" class="l"><a class="l" href="#637"> 637: </a>            }
+</span><span id="638" class="l"><a class="l" href="#638"> 638: </a>        }
+</span><span id="639" class="l"><a class="l" href="#639"> 639: </a>
+</span><span id="640" class="l"><a class="l" href="#640"> 640: </a>        <span class="php-keyword1">return</span> <span class="php-var">$commands</span>;
+</span><span id="641" class="l"><a class="l" href="#641"> 641: </a>    }
+</span><span id="642" class="l"><a class="l" href="#642"> 642: </a>
+</span><span id="643" class="l"><a class="l" href="#643"> 643: </a>    <span class="php-comment">/**
+</span></span><span id="644" class="l"><a class="l" href="#644"> 644: </a><span class="php-comment">     * Returns an array of possible abbreviations given a set of names.
+</span></span><span id="645" class="l"><a class="l" href="#645"> 645: </a><span class="php-comment">     *
+</span></span><span id="646" class="l"><a class="l" href="#646"> 646: </a><span class="php-comment">     * @param array $names An array of names
+</span></span><span id="647" class="l"><a class="l" href="#647"> 647: </a><span class="php-comment">     *
+</span></span><span id="648" class="l"><a class="l" href="#648"> 648: </a><span class="php-comment">     * @return array An array of abbreviations
+</span></span><span id="649" class="l"><a class="l" href="#649"> 649: </a><span class="php-comment">     */</span>
+</span><span id="650" class="l"><a class="l" href="#650"> 650: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_getAbbreviations" href="#_getAbbreviations">getAbbreviations</a>(<span class="php-var">$names</span>)
+</span><span id="651" class="l"><a class="l" href="#651"> 651: </a>    {
+</span><span id="652" class="l"><a class="l" href="#652"> 652: </a>        <span class="php-var">$abbrevs</span> = <span class="php-keyword1">array</span>();
+</span><span id="653" class="l"><a class="l" href="#653"> 653: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$names</span> <span class="php-keyword1">as</span> <span class="php-var">$name</span>) {
+</span><span id="654" class="l"><a class="l" href="#654"> 654: </a>            <span class="php-keyword1">for</span> (<span class="php-var">$len</span> = <span class="php-keyword2">strlen</span>(<span class="php-var">$name</span>) - <span class="php-num">1</span>; <span class="php-var">$len</span> &gt; <span class="php-num">0</span>; --<span class="php-var">$len</span>) {
+</span><span id="655" class="l"><a class="l" href="#655"> 655: </a>                <span class="php-var">$abbrev</span> = <span class="php-keyword2">substr</span>(<span class="php-var">$name</span>, <span class="php-num">0</span>, <span class="php-var">$len</span>);
+</span><span id="656" class="l"><a class="l" href="#656"> 656: </a>                <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$abbrevs</span>[<span class="php-var">$abbrev</span>])) {
+</span><span id="657" class="l"><a class="l" href="#657"> 657: </a>                    <span class="php-var">$abbrevs</span>[<span class="php-var">$abbrev</span>] = <span class="php-keyword1">array</span>(<span class="php-var">$name</span>);
+</span><span id="658" class="l"><a class="l" href="#658"> 658: </a>                } <span class="php-keyword1">else</span> {
+</span><span id="659" class="l"><a class="l" href="#659"> 659: </a>                    <span class="php-var">$abbrevs</span>[<span class="php-var">$abbrev</span>][] = <span class="php-var">$name</span>;
+</span><span id="660" class="l"><a class="l" href="#660"> 660: </a>                }
+</span><span id="661" class="l"><a class="l" href="#661"> 661: </a>            }
+</span><span id="662" class="l"><a class="l" href="#662"> 662: </a>        }
+</span><span id="663" class="l"><a class="l" href="#663"> 663: </a>
+</span><span id="664" class="l"><a class="l" href="#664"> 664: </a>        <span class="php-comment">// Non-abbreviations always get entered, even if they aren't unique</span>
+</span><span id="665" class="l"><a class="l" href="#665"> 665: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$names</span> <span class="php-keyword1">as</span> <span class="php-var">$name</span>) {
+</span><span id="666" class="l"><a class="l" href="#666"> 666: </a>            <span class="php-var">$abbrevs</span>[<span class="php-var">$name</span>] = <span class="php-keyword1">array</span>(<span class="php-var">$name</span>);
 </span><span id="667" class="l"><a class="l" href="#667"> 667: </a>        }
 </span><span id="668" class="l"><a class="l" href="#668"> 668: </a>
 </span><span id="669" class="l"><a class="l" href="#669"> 669: </a>        <span class="php-keyword1">return</span> <span class="php-var">$abbrevs</span>;

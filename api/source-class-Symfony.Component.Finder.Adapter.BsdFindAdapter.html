@@ -8,7 +8,7 @@
 	<title>File finder/Symfony/Component/Finder/Adapter/BsdFindAdapter.php | php-coveralls</title>
 
 	<script type="text/javascript" src="resources/combined.js?344576979"></script>
-	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<script type="text/javascript" src="elementlist.js?1939296801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -49,6 +49,8 @@
 				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Log.html">Log</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
 						<ul>
@@ -174,6 +176,11 @@
 							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
+				<li><a href="namespace-Psr.html">Psr<span></span></a>
+						<ul>
+				<li><a href="namespace-Psr.Log.html">Log</a>
+						</li>
+							</ul></li>
 				<li class="active"><a href="namespace-Symfony.html">Symfony<span></span></a>
 						<ul>
 				<li class="active"><a href="namespace-Symfony.Component.html">Component<span></span></a>
@@ -363,7 +370,7 @@
 </span><span id="62" class="l"><a class="l" href="#62"> 62: </a>                <span class="php-var">$format</span> = <span class="php-quote">'%m'</span>;
 </span><span id="63" class="l"><a class="l" href="#63"> 63: </a>                <span class="php-keyword1">break</span>;
 </span><span id="64" class="l"><a class="l" href="#64"> 64: </a>            <span class="php-keyword1">default</span>:
-</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-keyword2">sprintf</span>(<span class="php-quote">'Unknown sort options: %s.'</span>, <span class="php-var">$sort</span>));
+</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>                <span class="php-keyword1">throw</span> <span class="php-keyword1">new</span> \InvalidArgumentException(<span class="php-quote">'Unknown sort options: '</span>.<span class="php-var">$sort</span>.<span class="php-quote">'.'</span>);
 </span><span id="66" class="l"><a class="l" href="#66"> 66: </a>        }
 </span><span id="67" class="l"><a class="l" href="#67"> 67: </a>
 </span><span id="68" class="l"><a class="l" href="#68"> 68: </a>        <span class="php-var">$command</span>

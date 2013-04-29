@@ -7,7 +7,7 @@
 	<title>Class Contrib\Component\Service\Coveralls\V1\Api\Jobs | php-coveralls</title>
 
 	<script type="text/javascript" src="resources/combined.js?344576979"></script>
-	<script type="text/javascript" src="elementlist.js?294768225"></script>
+	<script type="text/javascript" src="elementlist.js?1939296801"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -48,6 +48,8 @@
 				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.File.html">File</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Component.Log.html">Log</a>
 						</li>
 				<li class="active main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
 						<ul>
@@ -173,6 +175,11 @@
 							</ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
+				<li><a href="namespace-Psr.html">Psr<span></span></a>
+						<ul>
+				<li><a href="namespace-Psr.Log.html">Log</a>
+						</li>
+							</ul></li>
 				<li><a href="namespace-Symfony.html">Symfony<span></span></a>
 						<ul>
 				<li><a href="namespace-Symfony.Component.html">Component<span></span></a>
@@ -331,7 +338,7 @@
 				<b>Author:</b>
 				Kitamura Satoshi &lt;<a
 href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#9-146" title="Go to source code">Contrib/Component/Service/Coveralls/V1/Api/Jobs.php</a><br />
+		<b>Located at</b> <a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#10-164" title="Go to source code">Contrib/Component/Service/Coveralls/V1/Api/Jobs.php</a><br />
 	</div>
 
 
@@ -349,7 +356,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_collectCloverXml">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#39-54" title="Go to source code">collectCloverXml</a>( )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#40-55" title="Go to source code">collectCloverXml</a>( )</code>
 
 		<div class="description short">
 			
@@ -386,7 +393,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_collectGitInfo">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#56-69" title="Go to source code">collectGitInfo</a>( )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#57-70" title="Go to source code">collectGitInfo</a>( )</code>
 
 		<div class="description short">
 			
@@ -397,6 +404,85 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 		<div class="description detailed hidden">
 			
 <p>Collect git repository info into json_file.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html">Contrib\Component\Service\Coveralls\V1\Api\Jobs</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="collectEnvVars" id="_collectEnvVars">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html">Contrib\Component\Service\Coveralls\V1\Api\Jobs</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_collectEnvVars">#</a>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#72-85" title="Go to source code">collectEnvVars</a>( <span>array <var>$env</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Collect environment variables.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Collect environment variables.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$env</var></dt>
+					<dd><code>array</code><br>$env $_SERVER environment.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html">Contrib\Component\Service\Coveralls\V1\Api\Jobs</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="dumpJsonFile" id="_dumpJsonFile">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html">Contrib\Component\Service\Coveralls\V1\Api\Jobs</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_dumpJsonFile">#</a>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#87-99" title="Go to source code">dumpJsonFile</a>( )</code>
+
+		<div class="description short">
+			
+<p>Dump uploading json file.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Dump uploading json file.</p>
 
 
 
@@ -423,7 +509,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_send">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#71-98" title="Go to source code">send</a>( )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#101-116" title="Go to source code">send</a>( )</code>
 
 		<div class="description short">
 			
@@ -464,7 +550,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_upload">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#102-116" title="Go to source code">upload</a>( <span>string <var>$url</var></span>, <span>string <var>$path</var></span>, <span>string <var>$filename</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#120-134" title="Go to source code">upload</a>( <span>string <var>$url</var></span>, <span>string <var>$path</var></span>, <span>string <var>$filename</var></span> )</code>
 
 		<div class="description short">
 			
@@ -510,7 +596,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setJsonFile">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#120-131" title="Go to source code">setJsonFile</a>( <span><code><a href="class-Contrib.Component.Service.Coveralls.V1.Entity.JsonFile.html">Contrib\Component\Service\Coveralls\V1\Entity\JsonFile</a></code> <var>$jsonFile</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#138-149" title="Go to source code">setJsonFile</a>( <span><code><a href="class-Contrib.Component.Service.Coveralls.V1.Entity.JsonFile.html">Contrib\Component\Service\Coveralls\V1\Entity\JsonFile</a></code> <var>$jsonFile</var></span> )</code>
 
 		<div class="description short">
 			
@@ -552,7 +638,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getJsonFile">#</a>
-		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#133-145" title="Go to source code">getJsonFile</a>( )</code>
+		<code><a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#151-163" title="Go to source code">getJsonFile</a>( )</code>
 
 		<div class="description short">
 			
@@ -604,7 +690,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#16-21" title="Go to source code"><b>URL</b></a>
+				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#17-22" title="Go to source code"><b>URL</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'https://coveralls.io/api/v1/jobs'</span></code></td>
 		<td class="description"><div>
@@ -628,7 +714,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#23-28" title="Go to source code"><b>FILENAME</b></a>
+				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#24-29" title="Go to source code"><b>FILENAME</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'json_file'</span></code></td>
 		<td class="description"><div>
@@ -662,7 +748,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#30-35" title="Go to source code"><var>$jsonFile</var></a>
+				<a href="source-class-Contrib.Component.Service.Coveralls.V1.Api.Jobs.html#31-36" title="Go to source code"><var>$jsonFile</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
