@@ -150,13 +150,40 @@ test:
     - phpunit -c phpunit.xml.dist
 ```
 
-Add `php vendor/bin/coveralls` Test commands textarea on Web UI (Edit settings > Tests > Test commands textarea).
+Add `php vendor/bin/coveralls` to the "Test commands" textarea on Web UI (Edit settings > Tests > Test commands textarea).
 
 ```sh
 COVERALLS_REPO_TOKEN=your_token php vendor/bin/coveralls
 ```
 
 *Please note that `COVERALLS_REPO_TOKEN` should be set in the same line before coveralls command execution. You can not export this variable before coveralls command execution in other command since each command runs in its own shell and does not share environment variables ([see reference on CircleCI](https://circleci.com/docs/environment-variables)).*
+
+## Codeship
+
+You can configure CI process for Coveralls by adding the following commands to the textarea on Web UI (Project settings > Test tab).
+
+In the "Modify your Setup Commands" section:
+
+```sh
+curl -s http://getcomposer.org/installer | php
+php composer.phar install --dev --no-interaction
+mkdir -p build/logs
+```
+
+In the "Modify your Test Commands" section:
+
+```sh
+php vendor/bin/phpunit -c phpunit.xml.dist
+php vendor/bin/coveralls
+```
+
+Next, open Project settings > Environment tab, you can set `COVERALLS_REPO_TOKEN` environment variable.
+
+In the "Configure your environment variables" section:
+
+```sh
+COVERALLS_REPO_TOKEN=your_token
+```
 
 ## From local environment
 
@@ -206,17 +233,14 @@ json_path: build/logs/coveralls-upload.json
 
 # Plan
 
-- CI support
-    - [Codeship](https://www.codeship.io)
-    - [Bamboo](http://www.atlassian.com/en/software/bamboo)
-- `environment` in `json_file` (not documented but implemented in ruby lib)
+- Support multiple clover.xml collector
 - Refactor test cases
+- `environment` in `json_file` (not documented but implemented in ruby lib)
 - Support commands
     - `push` to run locally
     - `open` to open "https://coveralls.io/repos/${token}"
     - `service` to open "https://coveralls.io/repos/${token}/service"
     - `last` to open "https://coveralls.io/repos/${token}/last_build"
-- Support multiple clover.xml collector
 
 # Versions
 
@@ -224,6 +248,14 @@ json_path: build/logs/coveralls-upload.json
 
 - `--verbose (-v)` CLI option enables logging
 - Fix: only existing file lines should be included in coverage data
+- Support standardized env vars ([Codeship](https://www.codeship.io) supported these env vars)
+    - CI_NAME
+    - CI_BUILD_NUMBER
+    - CI_BUILD_URL
+    - CI_BRANCH
+    - CI_PULL_REQUEST
+- Refactor console logging (PSR-3 compliant)
+- Change composer's minimal stability from dev to stable
 
 ## 0.4
 
