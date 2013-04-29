@@ -117,6 +117,7 @@ XML;
                 'command'   => $command->getName(),
                 '--dry-run' => true,
                 '--config'  => 'coveralls.yml',
+                '--env'     => 'test',
             )
         );
 

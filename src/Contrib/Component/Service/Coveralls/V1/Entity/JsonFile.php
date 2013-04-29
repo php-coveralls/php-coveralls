@@ -39,6 +39,27 @@ class JsonFile extends Coveralls
     protected $serviceEventType;
 
     /**
+     * Build URL of the project (not documented).
+     *
+     * @var string
+     */
+    protected $serviceBuildUrl;
+
+    /**
+     * Branch name (not documented).
+     *
+     * @var string
+     */
+    protected $serviceBranch;
+
+    /**
+     * Pull request info (not documented).
+     *
+     * @var string
+     */
+    protected $servicePullRequest;
+
+    /**
      * Repository token.
      *
      * @var string
@@ -81,14 +102,17 @@ class JsonFile extends Coveralls
 
         $arrayMap = array(
             // json key => property name
-            'service_name'       => 'serviceName',
-            'service_job_id'     => 'serviceJobId',
-            'service_number'     => 'serviceNumber',
-            'service_event_type' => 'serviceEventType',
-            'repo_token'         => 'repoToken',
-            'git'                => 'git',
-            'run_at'             => 'runAt',
-            'source_files'       => 'sourceFiles',
+            'service_name'         => 'serviceName',
+            'service_job_id'       => 'serviceJobId',
+            'service_number'       => 'serviceNumber',
+            'service_build_url'    => 'serviceBuildUrl',
+            'service_branch'       => 'serviceBranch',
+            'service_pull_request' => 'servicePullRequest',
+            'service_event_type'   => 'serviceEventType',
+            'repo_token'           => 'repoToken',
+            'git'                  => 'git',
+            'run_at'               => 'runAt',
+            'source_files'         => 'sourceFiles',
         );
 
         foreach ($arrayMap as $jsonKey => $propName) {
@@ -130,12 +154,7 @@ class JsonFile extends Coveralls
     public function fillJobs(array $env)
     {
         return $this
-        ->fillTravisCi($env)
-        ->fillCircleCi($env)
-        ->fillJenkins($env)
-        //->fillCodeship($env)
-        ->fillLocal($env)
-        ->fillRepoToken($env)
+        ->fillStandardizedEnvVars($env)
         ->ensureJobs();
     }
 
@@ -176,6 +195,49 @@ class JsonFile extends Coveralls
     }
 
     /**
+     * Fill standardized environment variables.
+     *
+     * "CI_NAME", "CI_BUILD_NUMBER" must be set.
+     *
+     * Env vars are:
+     *
+     * * CI_NAME
+     * * CI_BUILD_NUMBER
+     * * CI_BUILD_URL
+     * * CI_BRANCH
+     * * CI_PULL_REQUEST
+     *
+     * These vars are supported by Codeship.
+     *
+     * @param array $env $_SERVER environment.
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+     */
+    protected function fillStandardizedEnvVars(array $env)
+    {
+        $map = array(
+            // defined in Ruby lib
+            'serviceName'        => 'CI_NAME',
+            'serviceNumber'      => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl'    => 'CI_BUILD_URL',
+            'serviceBranch'      => 'CI_BRANCH',
+            'servicePullRequest' => 'CI_PULL_REQUEST',
+
+            // extends by php-coveralls
+            'serviceJobId'       => 'CI_JOB_ID',
+            'serviceEventType'   => 'COVERALLS_EVENT_TYPE',
+            'repoToken'          => 'COVERALLS_REPO_TOKEN',
+        );
+
+        foreach ($map as $propName => $envName) {
+            if (isset($env[$envName])) {
+                $this->$propName = $env[$envName];
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Ensure data consistency for jobs API.
      *
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
@@ -209,121 +271,6 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Fill Travis CI environment variables.
-     *
-     * "TRAVIS_JOB_ID" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillTravisCi(array $env)
-    {
-        if (isset($env['TRAVIS']) && $env['TRAVIS'] && isset($env['TRAVIS_JOB_ID'])) {
-            $this->serviceJobId = $env['TRAVIS_JOB_ID'];
-
-            if (!isset($this->serviceName)) {
-                $this->serviceName = 'travis-ci';
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Fill CircleCI environment variables.
-     *
-     * "CIRCLE_BUILD_NUM" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillCircleCi(array $env)
-    {
-        if (isset($env['CIRCLECI']) && $env['CIRCLECI'] && isset($env['CIRCLE_BUILD_NUM'])) {
-            $this->serviceNumber = $env['CIRCLE_BUILD_NUM'];
-            $this->serviceName   = 'circleci';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Fill Jenkins environment variables.
-     *
-     * "BUILD_NUMBER" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillJenkins(array $env)
-    {
-        if (isset($env['JENKINS_URL']) && isset($env['BUILD_NUMBER'])) {
-            $this->serviceNumber = $env['BUILD_NUMBER'];
-            $this->serviceName   = 'jenkins';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Fill Codeship environment variables.
-     *
-     * "CODESHIP" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
-     * @codeCoverageIgnore
-     */
-    protected function fillCodeship(array $env)
-    {
-        if (isset($env['CODESHIP']) && $env['CODESHIP']) {
-            $this->serviceName = 'codeship';
-
-            // Coveralls needs some kind of build number as its service number
-            // but Codeship currently does not have correspondance env var.
-            //$this->serviceNumber = $env['BUILD_NUMBER'];
-        }
-
-        return $this;
-    }
-
-    /**
-     * Fill local environment variables.
-     *
-     * "COVERALLS_RUN_LOCALLY" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillLocal(array $env)
-    {
-        if (isset($env['COVERALLS_RUN_LOCALLY']) && $env['COVERALLS_RUN_LOCALLY']) {
-            $this->serviceJobId     = null;
-            $this->serviceName      = 'php-coveralls';
-            $this->serviceEventType = 'manual';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Fill repo_token for unsupported CI service.
-     *
-     * "COVERALLS_REPO_TOKEN" must be set.
-     *
-     * @param array $env $_SERVER environment.
-     * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
-     */
-    protected function fillRepoToken(array $env)
-    {
-        if (isset($env['COVERALLS_REPO_TOKEN'])) {
-            $this->repoToken = $env['COVERALLS_REPO_TOKEN'];
-        }
-
-        return $this;
-    }
-
-    /**
      * Return whether the job requires "service_job_id" (for Travis CI).
      *
      * @return boolean
@@ -334,7 +281,7 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship).
+     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship or other CIs).
      *
      * @return boolean
      */
@@ -474,6 +421,36 @@ class JsonFile extends Coveralls
     public function getServiceEventType()
     {
         return $this->serviceEventType;
+    }
+
+    /**
+     * Return build URL of the project.
+     *
+     * @return string
+     */
+    public function getServiceBuildUrl()
+    {
+        return $this->serviceBuildUrl;
+    }
+
+    /**
+     * Return branch name.
+     *
+     * @return string
+     */
+    public function getServiceBranch()
+    {
+        return $this->serviceBranch;
+    }
+
+    /**
+     * Return pull request info.
+     *
+     * @return string
+     */
+    public function getServicePullRequest()
+    {
+        return $this->servicePullRequest;
     }
 
     /**
