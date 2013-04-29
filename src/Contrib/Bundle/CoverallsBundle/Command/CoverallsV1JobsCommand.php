@@ -48,6 +48,13 @@ class CoverallsV1JobsCommand extends Command
             null,
             InputOption::VALUE_NONE,
             'Do not send json_file to Jobs API'
+        )
+        ->addOption(
+            'env',
+            '-e',
+            InputOption::VALUE_OPTIONAL,
+            'Runtime environment name: test, dev, prod',
+            'prod'
         );
     }
 
@@ -77,6 +84,7 @@ class CoverallsV1JobsCommand extends Command
         $coverallsYmlPath = $input->getOption('config');
         $isDryRun         = $input->getOption('dry-run');
         $verbose          = $input->getOption('verbose');
+        $env              = $input->getOption('env');
 
         $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
         $configurator = new Configurator();
@@ -84,7 +92,8 @@ class CoverallsV1JobsCommand extends Command
         return $configurator
         ->load($ymlPath, $rootDir)
         ->setDryRun($isDryRun)
-        ->setVerbose($verbose);
+        ->setVerbose($verbose)
+        ->setEnv($env);
     }
 
     /**
