@@ -145,6 +145,8 @@
 
 <span class="l-Scalar-Plain">after_script</span><span class="p-Indicator">:</span>
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php vendor/bin/coveralls</span>
+    <span class="c1"># or enable logging</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">php vendor/bin/coveralls -v</span>
 </pre></div>
 
 <h2>CircleCI</h2>
@@ -170,12 +172,36 @@
     <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">phpunit -c phpunit.xml.dist</span>
 </pre></div>
 
-<p>Add <code>php vendor/bin/coveralls</code> Test commands textarea on Web UI (Edit settings &gt; Tests &gt; Test commands textarea).</p>
+<p>Add <code>php vendor/bin/coveralls</code> to the "Test commands" textarea on Web UI (Edit settings &gt; Tests &gt; Test commands textarea).</p>
 
 <div class="highlight"><pre><span class="nv">COVERALLS_REPO_TOKEN</span><span class="o">=</span>your_token php vendor/bin/coveralls
 </pre></div>
 
 <p><em>Please note that <code>COVERALLS_REPO_TOKEN</code> should be set in the same line before coveralls command execution. You can not export this variable before coveralls command execution in other command since each command runs in its own shell and does not share environment variables (<a href="https://circleci.com/docs/environment-variables">see reference on CircleCI</a>).</em></p>
+
+<h2>Codeship</h2>
+
+<p>You can configure CI process for Coveralls by adding the following commands to the textarea on Web UI (Project settings &gt; Test tab).</p>
+
+<p>In the "Modify your Setup Commands" section:</p>
+
+<div class="highlight"><pre>curl -s http://getcomposer.org/installer | php
+php composer.phar install --dev --no-interaction
+mkdir -p build/logs
+</pre></div>
+
+<p>In the "Modify your Test Commands" section:</p>
+
+<div class="highlight"><pre>php vendor/bin/phpunit -c phpunit.xml.dist
+php vendor/bin/coveralls
+</pre></div>
+
+<p>Next, open Project settings &gt; Environment tab, you can set <code>COVERALLS_REPO_TOKEN</code> environment variable.</p>
+
+<p>In the "Configure your environment variables" section:</p>
+
+<div class="highlight"><pre><span class="nv">COVERALLS_REPO_TOKEN</span><span class="o">=</span>your_token
+</pre></div>
 
 <h2>From local environment</h2>
 
@@ -227,12 +253,12 @@ repo_token: your_token <span class="c"># should be kept secret!</span>
 <span class="l-Scalar-Plain">json_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">build/logs/coveralls-upload.json</span>
 </pre></div>
 
-<h1>Planned</h1>
+<h1>Plan</h1>
 
 <ul>
+<li>Refactor test cases</li>
 <li>
 <code>environment</code> in <code>json_file</code> (not documented but implemented in ruby lib)</li>
-<li>Refactor test cases</li>
 <li>Support commands
 
 <ul>
@@ -248,7 +274,29 @@ repo_token: your_token <span class="c"># should be kept secret!</span>
 </li>
 </ul><h1>Versions</h1>
 
-<h2>0.4</h2>
+<h2>0.6</h2>
+
+<ul>
+<li>Support configuration for multiple clover.xml</li>
+</ul><h2>0.5</h2>
+
+<ul>
+<li>
+<code>--verbose (-v)</code> CLI option enables logging</li>
+<li>Fix: only existing file lines should be included in coverage data</li>
+<li>Support standardized env vars (<a href="https://www.codeship.io">Codeship</a> supported these env vars)
+
+<ul>
+<li>CI_NAME</li>
+<li>CI_BUILD_NUMBER</li>
+<li>CI_BUILD_URL</li>
+<li>CI_BRANCH</li>
+<li>CI_PULL_REQUEST</li>
+</ul>
+</li>
+<li>Refactor console logging (PSR-3 compliant)</li>
+<li>Change composer's minimal stability from dev to stable</li>
+</ul><h2>0.4</h2>
 
 <ul>
 <li>Replace REST client implementation by <a href="https://github.com/guzzle/guzzle">guzzle/guzzle</a>
