@@ -5,7 +5,7 @@
     "homepage": "https://github.com/satooshi/php-coveralls",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Kitamura Satoshi",
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.17",
+        "php": ">=5.3",
         "ext-json": "*",
         "ext-curl": "*",
         "ext-simplexml": "*",
@@ -30,8 +30,10 @@
         "pdepend/pdepend": "dev-master",
         "phpmd/phpmd": "dev-master",
         "sebastian/phpcpd": "1.4.*@stable",
-        "squizlabs/php_codesniffer": "1.4.*",
-        "apigen/apigen": "2.8.0"
+        "sebastian/finder-facade": "dev-master",
+        "theseer/fdomdocument": "dev-master",
+        "squizlabs/php_codesniffer": "1.4.*@stable",
+        "apigen/apigen": "2.8.*@stable"
     },
     "autoload": {
         "psr-0": { "Contrib\\Component": "src/", "Contrib\\Bundle": "src/" }
