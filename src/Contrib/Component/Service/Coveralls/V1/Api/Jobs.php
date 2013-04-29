@@ -109,7 +109,13 @@ class Jobs extends CoverallsApi
 
         $this->log(sprintf('Upload json file to %s', static::URL));
 
-        return $this->upload(static::URL, $jsonPath, static::FILENAME);
+        $response = $this->upload(static::URL, $jsonPath, static::FILENAME);
+
+        if ($response) {
+            $this->log(sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase()));
+        }
+
+        return $response;
     }
 
     // internal method
@@ -128,19 +134,6 @@ class Jobs extends CoverallsApi
         ->post($url)
         ->addPostFiles(array($filename => $path))
         ->send();
-    }
-
-    /**
-     * Log a message.
-     *
-     * @param string $message Log message.
-     * @return void
-     */
-    protected function log($message)
-    {
-        if ($this->config->isVerbose()) {
-            echo $message, PHP_EOL;
-        }
     }
 
     // accessor

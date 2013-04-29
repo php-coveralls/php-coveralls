@@ -37,6 +37,26 @@ abstract class CoverallsApi
         $this->client = $client;
     }
 
+    /**
+     * Log a message.
+     *
+     * @param string $message Log message.
+     * @return string|null string if logged a message, null otherwise.
+     */
+    public function log($message)
+    {
+        if ($this->config->isVerbose()) {
+
+            $stream = $this->config->isTestEnv() ? 'php://memory' : 'php://stdout';
+
+            file_put_contents($stream, $message . PHP_EOL);
+
+            return $message;
+        }
+
+        return null;
+    }
+
     // accessor
 
     /**

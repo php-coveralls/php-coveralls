@@ -107,16 +107,10 @@ class CoverallsV1JobsCommand extends Command
         $client = new Client();
         $api    = new Jobs($config, $client);
 
-        $response = $api
+        return $api
         ->collectCloverXml()
         ->collectGitInfo()
         ->send();
-
-        if ($response !== null && $config->isVerbose()) {
-            echo sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase()), PHP_EOL;
-        }
-
-        return $response;
     }
 
     // accessor
