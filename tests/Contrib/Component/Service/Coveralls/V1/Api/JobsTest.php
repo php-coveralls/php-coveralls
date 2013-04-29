@@ -4,6 +4,7 @@ namespace Contrib\Component\Service\Coveralls\V1\Api;
 use Contrib\Component\Service\Coveralls\V1\Entity\JsonFile;
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
 use Contrib\Component\Service\Coveralls\V1\Collector\CloverXmlCoverageCollector;
+use Contrib\Component\Service\Coveralls\V1\Collector\CiEnvVarsCollector;
 
 /**
  * @covers Contrib\Component\Service\Coveralls\V1\Api\Jobs
@@ -206,6 +207,15 @@ XML;
         return $collector->collect($xml, $this->rootDir);
     }
 
+    protected function createCiEnvVarsCollector($config = null)
+    {
+        if ($config === null) {
+            $config = $this->createConfiguration();
+        }
+
+        return new CiEnvVarsCollector($config);
+    }
+
     // getJsonFile()
 
     /**
@@ -386,25 +396,18 @@ XML;
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
 
-        $object = $this->createJobsWith();
+        $server = array();
+        $server['TRAVIS']        = true;
+        $server['TRAVIS_JOB_ID'] = $serviceJobId;
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['TRAVIS']        = true;
-        $_SERVER['TRAVIS_JOB_ID'] = $serviceJobId;
-
+        $object   = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
-
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -415,23 +418,19 @@ XML;
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.1';
 
-        $object = $this->createJobsWith();
-        $object->getConfiguration()->setServiceName($serviceName);
+        $server = array();
+        $server['TRAVIS']        = true;
+        $server['TRAVIS_JOB_ID'] = $serviceJobId;
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['TRAVIS']        = true;
-        $_SERVER['TRAVIS_JOB_ID'] = $serviceJobId;
-
+        $object   = $this->createJobsWith();
+        $config   = $object->getConfiguration()->setServiceName($serviceName);
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
 
         $this->assertEquals($serviceName, $jsonFile->getServiceName());
         $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
@@ -444,27 +443,21 @@ XML;
     {
         $serviceName   = 'circleci';
         $serviceNumber = '123';
+        $repoToken     = 'token';
 
-        $object = $this->createJobsWith();
+        $server = array();
+        $server['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $server['CIRCLECI']             = 'true';
+        $server['CIRCLE_BUILD_NUM']     = $serviceNumber;
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
-        $_SERVER['CIRCLECI']             = 'true';
-        $_SERVER['CIRCLE_BUILD_NUM']     = $serviceNumber;
-
+        $object   = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
-
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceNumber, $jsonFile->getServiceNumber());
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -474,27 +467,21 @@ XML;
     {
         $serviceName   = 'jenkins';
         $serviceNumber = '123';
+        $repoToken     = 'token';
 
-        $object = $this->createJobsWith();
+        $server = array();
+        $server['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $server['JENKINS_URL']          = 'http://localhost:8080';
+        $server['BUILD_NUMBER']         = $serviceNumber;
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
-        $_SERVER['JENKINS_URL']          = 'http://localhost:8080';
-        $_SERVER['BUILD_NUMBER']         = $serviceNumber;
-
+        $object   = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
-
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceNumber, $jsonFile->getServiceNumber());
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -505,27 +492,18 @@ XML;
         $serviceName      = 'php-coveralls';
         $serviceEventType = 'manual';
 
-        $object = $this->createJobsWith();
-        $object->getConfiguration()->setRepoToken('token');
+        $server = array();
+        $server['COVERALLS_RUN_LOCALLY'] = '1';
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        $_SERVER['COVERALLS_RUN_LOCALLY'] = '1';
-
+        $object   = $this->createJobsWith();
+        $config   = $object->getConfiguration()->setRepoToken('token');
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
-
-        $this->assertNull($jsonFile->getServiceJobId());
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceEventType, $jsonFile->getServiceEventType());
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -533,22 +511,17 @@ XML;
      */
     public function sendUnsupportedJob()
     {
-        $object = $this->createJobsWith();
+        $server = array();
+        $server['COVERALLS_REPO_TOKEN'] = 'token';
 
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
-
+        $object   = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -556,45 +529,38 @@ XML;
      */
     public function sendUnsupportedGitJob()
     {
-        $object = $this->createJobsWith();
+        $server = array();
+        $server['COVERALLS_REPO_TOKEN'] = 'token';
+        $server['GIT_COMMIT']           = 'abc123';
 
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
-        $_SERVER['GIT_COMMIT'] = 'abc123';
-
+        $object   = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
      * @test
      */
-    public function dryRun()
+    public function shouldNotSendJobIfTestEnv()
     {
-        $object = $this->createJobsNeverSendOnDryRun();
+        $server = array();
+        $server['TRAVIS']        = true;
+        $server['TRAVIS_JOB_ID'] = '1.1';
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-        $_SERVER['TRAVIS'] = true;
-        $_SERVER['TRAVIS_JOB_ID'] = '1.1';
-
+        $object   = $this->createJobsNeverSendOnDryRun();
+        $config   = $object->getConfiguration()->setEnv('test');
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -603,22 +569,16 @@ XML;
      */
     public function throwRuntimeExceptionIfInvalidEnv()
     {
-        $object = $this->createJobsNeverSend();
+        $server = array();
 
-        unset($_SERVER['COVERALLS_REPO_TOKEN']);
-        unset($_SERVER['TRAVIS']);
-        unset($_SERVER['TRAVIS_JOB_ID']);
-        unset($_SERVER['CIRCLECI']);
-        unset($_SERVER['CIRCLE_BUILD_NUM']);
-        unset($_SERVER['JENKINS_URL']);
-        unset($_SERVER['BUILD_NUMBER']);
-        unset($_SERVER['GIT_COMMIT']);
-        unset($_SERVER['COVERALLS_RUN_LOCALLY']);
-
+        $object   = $this->createJobsNeverSend();
         $jsonFile = $this->collectJsonFile();
 
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 
     /**
@@ -627,16 +587,19 @@ XML;
      */
     public function throwRuntimeExceptionIfNoSourceFiles()
     {
-        $object = $this->createJobsNeverSend();
+        $server = array();
+        $server['TRAVIS']               = true;
+        $server['TRAVIS_JOB_ID']        = '1.1';
+        $server['COVERALLS_REPO_TOKEN'] = 'token';
+        $server['GIT_COMMIT']           = 'abc123';
 
-        $_SERVER['TRAVIS'] = true;
-        $_SERVER['TRAVIS_JOB_ID'] = '1.1';
-        $_SERVER['COVERALLS_REPO_TOKEN'] = 'token';
-        $_SERVER['GIT_COMMIT'] = 'abc123';
+        $object   = $this->createJobsNeverSend();
+        $jsonFile = $this->collectJsonFile();
 
-        $jsonFile = $this->collectJsonFileWithoutSourceFiles();
-
-        $object->setJsonFile($jsonFile);
-        $object->send();
+        $object
+        ->setJsonFile($jsonFile)
+        ->collectEnvVars($server)
+        ->dumpJsonFile()
+        ->send();
     }
 }

@@ -63,6 +63,13 @@ class Configuration
      */
     protected $verbose = false;
 
+    /**
+     * Runtime environment name.
+     *
+     * @var string
+     */
+    protected $env = 'prod';
+
     // accessor
 
     /**
@@ -245,5 +252,58 @@ class Configuration
     public function isVerbose()
     {
         return $this->verbose;
+    }
+
+    /**
+     * Set runtime environment name.
+     *
+     * @param string $env Runtime environment name.
+     * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
+     */
+    public function setEnv($env)
+    {
+        $this->env = $env;
+
+        return $this;
+    }
+
+    /**
+     * Return runtime environment name.
+     *
+     * @return string
+     */
+    public function getEnv()
+    {
+        return $this->env;
+    }
+
+    /**
+     * Return whether the runtime environment is test.
+     *
+     * @return boolean
+     */
+    public function isTestEnv()
+    {
+        return $this->env === 'test';
+    }
+
+    /**
+     * Return whether the runtime environment is dev.
+     *
+     * @return boolean
+     */
+    public function isDevEnv()
+    {
+        return $this->env === 'dev';
+    }
+
+    /**
+     * Return whether the runtime environment is prod.
+     *
+     * @return boolean
+     */
+    public function isProdEnv()
+    {
+        return $this->env === 'prod';
     }
 }

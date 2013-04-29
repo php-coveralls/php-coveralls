@@ -1,6 +1,8 @@
 <?php
 namespace Contrib\Bundle\CoverallsBundle\Command;
 
+use Psr\Log\NullLogger;
+use Contrib\Component\Log\ConsoleLogger;
 use Contrib\Component\Service\Coveralls\V1\Api\Jobs;
 use Contrib\Component\Service\Coveralls\V1\Config\Configurator;
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
@@ -22,7 +24,21 @@ class CoverallsV1JobsCommand extends Command
      *
      * @var string
      */
-    private $rootDir;
+    protected $rootDir;
+
+    /**
+     * Coveralls Jobs API.
+     *
+     * @var \Contrib\Component\Service\Coveralls\V1\Api\Jobs
+     */
+    protected $api;
+
+    /**
+     * Logger.
+     *
+     * @var \Psr\Log\LoggerInterface
+     */
+    protected $logger;
 
     // internal method
 
@@ -48,6 +64,13 @@ class CoverallsV1JobsCommand extends Command
             null,
             InputOption::VALUE_NONE,
             'Do not send json_file to Jobs API'
+        )
+        ->addOption(
+            'env',
+            '-e',
+            InputOption::VALUE_OPTIONAL,
+            'Runtime environment name: test, dev, prod',
+            'prod'
         );
     }
 
@@ -59,11 +82,14 @@ class CoverallsV1JobsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $config = $this->loadConfiguration($input, $this->rootDir);
+        $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
 
         $this->runApi($config);
 
         return 0;
     }
+
+    // for Jobs API
 
     /**
      * Load configuration.
@@ -77,6 +103,7 @@ class CoverallsV1JobsCommand extends Command
         $coverallsYmlPath = $input->getOption('config');
         $isDryRun         = $input->getOption('dry-run');
         $verbose          = $input->getOption('verbose');
+        $env              = $input->getOption('env');
 
         $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
         $configurator = new Configurator();
@@ -84,30 +111,113 @@ class CoverallsV1JobsCommand extends Command
         return $configurator
         ->load($ymlPath, $rootDir)
         ->setDryRun($isDryRun)
-        ->setVerbose($verbose);
+        ->setVerbose($verbose)
+        ->setEnv($env);
     }
 
     /**
      * Run Jobs API.
      *
-     * @param Configuration $config Configuration
-     * @return array|null
+     * @param Configuration $config Configuration.
+     * @return void
      */
     protected function runApi(Configuration $config)
     {
-        $client = new Client();
-        $api    = new Jobs($config, $client);
+        $client    = new Client();
+        $this->api = new Jobs($config, $client);
 
-        $response = $api
-        ->collectCloverXml()
+        $this
+        ->collectCloverXml($config)
         ->collectGitInfo()
+        ->collectEnvVars()
+        ->dumpJsonFile($config)
         ->send();
+    }
 
-        if ($response !== null && $config->isVerbose()) {
-            echo sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase()), PHP_EOL;
+    /**
+     * Collect clover XML into json_file.
+     *
+     * @param Configuration $config Configuration.
+     * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
+     */
+    protected function collectCloverXml(Configuration $config)
+    {
+        $this->logger->info(sprintf('Load coverage clover log: %s', $config->getCloverXmlPath()));
+        $this->api->collectCloverXml();
+
+        $jsonFile = $this->api->getJsonFile();
+
+        if ($jsonFile->hasSourceFiles()) {
+            $this->logger->info('Found source file: ');
+
+            foreach ($jsonFile->getSourceFiles() as $sourceFile) {
+                $this->logger->info(sprintf('  - %s', $sourceFile->getName()));
+            }
         }
 
-        return $response;
+        return $this;
+    }
+
+    /**
+     * Collect git repository info into json_file.
+     *
+     * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
+     */
+    protected function collectGitInfo()
+    {
+        $this->logger->info('Collect git info');
+
+        $this->api->collectGitInfo();
+
+        return $this;
+    }
+
+    /**
+     * Collect environment variables.
+     *
+     * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
+     */
+    protected function collectEnvVars()
+    {
+        $this->logger->info('Read environment variables');
+
+        $this->api->collectEnvVars($_SERVER);
+
+        return $this;
+    }
+
+    /**
+     * Dump uploading json file.
+     *
+     * @param Configuration $config Configuration.
+     * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
+     */
+    protected function dumpJsonFile(Configuration $config)
+    {
+        $this->logger->info(sprintf('Dump uploading json file: %s', $config->getJsonPath()));
+
+        $this->api->dumpJsonFile();
+
+        return $this;
+    }
+
+    /**
+     * Send json_file to jobs API.
+     *
+     * @return void
+     */
+    protected function send()
+    {
+        $this->logger->info(sprintf('Upload json file to %s', Jobs::URL));
+
+        $response = $this->api->send();
+
+        $message =
+            $response
+            ? sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
+            : 'Finish dry run';
+
+        $this->logger->info($message);
     }
 
     // accessor
