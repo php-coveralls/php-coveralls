@@ -77,6 +77,79 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->isDryRun());
     }
 
+    // isVerbose
+
+    /**
+     * @test
+     */
+    public function shouldNotBeVerboseOnConstruction()
+    {
+        $this->assertFalse($this->object->isVerbose());
+    }
+
+    // getEnv()
+
+    /**
+     * @test
+     */
+    public function shouldBeProdEnvOnConstruction()
+    {
+        $this->assertEquals('prod', $this->object->getEnv());
+    }
+
+    // isTestEnv()
+
+    /**
+     * @test
+     */
+    public function shouldBeTestEnv()
+    {
+        $expected = 'test';
+
+        $this->object->setEnv($expected);
+
+        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertTrue($this->object->isTestEnv());
+        $this->assertFalse($this->object->isDevEnv());
+        $this->assertFalse($this->object->isProdEnv());
+    }
+
+    // isDevEnv()
+
+    /**
+     * @test
+     */
+    public function shouldBeDevEnv()
+    {
+        $expected = 'dev';
+
+        $this->object->setEnv($expected);
+
+        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertFalse($this->object->isTestEnv());
+        $this->assertTrue($this->object->isDevEnv());
+        $this->assertFalse($this->object->isProdEnv());
+    }
+
+    // isProdEnv()
+
+    /**
+     * @test
+     */
+    public function shouldBeProdEnv()
+    {
+        $expected = 'prod';
+
+        $this->object->setEnv($expected);
+
+        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertFalse($this->object->isTestEnv());
+        $this->assertFalse($this->object->isDevEnv());
+        $this->assertTrue($this->object->isProdEnv());
+    }
+
+
+
     // setRepoToken()
 
     /**
@@ -157,7 +230,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setDryRun()
+    public function setDryRunFalse()
     {
         $expected = false;
 
@@ -165,5 +238,61 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($same, $this->object);
         $this->assertFalse($this->object->isDryRun());
+    }
+
+    /**
+     * @test
+     */
+    public function setDryRunTrue()
+    {
+        $expected = true;
+
+        $same = $this->object->setDryRun($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isDryRun());
+    }
+
+    // setVerbose()
+
+    /**
+     * @test
+     */
+    public function setVerboseFalse()
+    {
+        $expected = false;
+
+        $same = $this->object->setVerbose($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertFalse($this->object->isVerbose());
+    }
+
+    /**
+     * @test
+     */
+    public function setVerboseTrue()
+    {
+        $expected = true;
+
+        $same = $this->object->setVerbose($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isVerbose());
+    }
+
+    // setEnv()
+
+    /**
+     * @test
+     */
+    public function setEnv()
+    {
+        $expected = 'myenv';
+
+        $same = $this->object->setEnv($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertEquals($expected, $this->object->getEnv());
     }
 }
