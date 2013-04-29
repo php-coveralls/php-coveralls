@@ -174,6 +174,36 @@ XML;
         $this->assertNull($this->object->getServiceEventType());
     }
 
+    // getServiceBuildUrl()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveServiceBuildUrlOnConstruction()
+    {
+        $this->assertNull($this->object->getServiceBuildUrl());
+    }
+
+    // getServiceBranch()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveServiceBranchOnConstruction()
+    {
+        $this->assertNull($this->object->getServiceBranch());
+    }
+
+    // getServicePullRequest()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveServicePullRequestOnConstruction()
+    {
+        $this->assertNull($this->object->getServicePullRequest());
+    }
+
     // getGit()
 
     /**
@@ -193,7 +223,6 @@ XML;
     {
         $this->assertNull($this->object->getRunAt());
     }
-
 
 
     // setServiceName()
@@ -247,7 +276,6 @@ XML;
         return $this->object;
     }
 
-    //TODO refactor to user Git object
     // setGit()
 
     /**
@@ -440,20 +468,19 @@ XML;
         $this->assertEquals(json_encode($expected), (string)$object);
     }
 
-
     // fillJobs()
 
     /**
      * @test
      */
-    public function sendTravisCiJob()
+    public function fillJobsForServiceJobId()
     {
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
 
         $env = array();
-        $env['TRAVIS']        = true;
-        $env['TRAVIS_JOB_ID'] = $serviceJobId;
+        $env['CI_NAME']   = $serviceName;
+        $env['CI_JOB_ID'] = $serviceJobId;
 
         $object = $this->collectJsonFile();
 
@@ -467,44 +494,23 @@ XML;
     /**
      * @test
      */
-    public function sendTravisProJob()
+    public function fillJobsForServiceNumber()
     {
-        $serviceName  = 'travis-pro';
-        $serviceJobId = '1.2';
-
-        $env = array();
-        $env['TRAVIS']        = true;
-        $env['TRAVIS_JOB_ID'] = $serviceJobId;
-
-        $object = $this
-        ->collectJsonFile()
-        ->setServiceName($serviceName);
-
-        $same = $object->fillJobs($env);
-
-        $this->assertSame($same, $object);
-        $this->assertEquals($serviceName, $object->getServiceName());
-        $this->assertEquals($serviceJobId, $object->getServiceJobId());
-    }
-
-    /**
-     * @test
-     */
-    public function sendCircleCiJob()
-    {
+        $repoToken     = 'token';
         $serviceName   = 'circleci';
         $serviceNumber = '123';
 
         $env = array();
-        $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['CIRCLECI']             = 'true';
-        $env['CIRCLE_BUILD_NUM']     = $serviceNumber;
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $env['CI_NAME']              = $serviceName;
+        $env['CI_BUILD_NUMBER']      = $serviceNumber;
 
         $object = $this->collectJsonFile();
 
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
+        $this->assertEquals($repoToken, $object->getRepoToken());
         $this->assertEquals($serviceName, $object->getServiceName());
         $this->assertEquals($serviceNumber, $object->getServiceNumber());
     }
@@ -512,42 +518,65 @@ XML;
     /**
      * @test
      */
-    public function sendJenkinsJob()
+    public function fillJobsForStandardizedEnvVars()
     {
-        $serviceName   = 'jenkins';
-        $serviceNumber = '123';
+        /*
+         * CI_NAME=codeship
+         * CI_BUILD_NUMBER=108821
+         * CI_BUILD_URL=https://www.codeship.io/projects/2777/builds/108821
+         * CI_BRANCH=master
+         * CI_PULL_REQUEST=false
+         */
+
+        $repoToken          = 'token';
+        $serviceName        = 'codeship';
+        $serviceNumber      = '108821';
+        $serviceBuildUrl    = 'https://www.codeship.io/projects/2777/builds/108821';
+        $serviceBranch      = 'master';
+        $servicePullRequest = 'false';
 
         $env = array();
-        $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['JENKINS_URL']          = 'http://localhost:8080';
-        $env['BUILD_NUMBER']         = $serviceNumber;
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $env['CI_NAME']              = $serviceName;
+        $env['CI_BUILD_NUMBER']      = $serviceNumber;
+        $env['CI_BUILD_URL']         = $serviceBuildUrl;
+        $env['CI_BRANCH']            = $serviceBranch;
+        $env['CI_PULL_REQUEST']      = $servicePullRequest;
 
         $object = $this->collectJsonFile();
 
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
+        $this->assertEquals($repoToken, $object->getRepoToken());
         $this->assertEquals($serviceName, $object->getServiceName());
         $this->assertEquals($serviceNumber, $object->getServiceNumber());
+        $this->assertEquals($serviceBuildUrl, $object->getServiceBuildUrl());
+        $this->assertEquals($serviceBranch, $object->getServiceBranch());
+        $this->assertEquals($servicePullRequest, $object->getServicePullRequest());
     }
 
     /**
      * @test
      */
-    public function sendLocalJob()
+    public function fillJobsForServiceEventType()
     {
+        $repoToken        = 'token';
         $serviceName      = 'php-coveralls';
         $serviceEventType = 'manual';
 
         $env = array();
-        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['COVERALLS_REPO_TOKEN']  = $repoToken;
         $env['COVERALLS_RUN_LOCALLY'] = '1';
+        $env['COVERALLS_EVENT_TYPE']  = $serviceEventType;
+        $env['CI_NAME']               = $serviceName;
 
         $object = $this->collectJsonFile();
 
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
+        $this->assertEquals($repoToken, $object->getRepoToken());
         $this->assertEquals($serviceName, $object->getServiceName());
         $this->assertNull($object->getServiceJobId());
         $this->assertEquals($serviceEventType, $object->getServiceEventType());
@@ -556,7 +585,7 @@ XML;
     /**
      * @test
      */
-    public function sendUnsupportedJob()
+    public function fillJobsForUnsupportedJob()
     {
         $repoToken = 'token';
 
@@ -571,12 +600,11 @@ XML;
         $this->assertEquals($repoToken, $object->getRepoToken());
     }
 
-
     /**
      * @test
      * @expectedException RuntimeException
      */
-    public function throwRuntimeExceptionIfInvalidEnv()
+    public function throwRuntimeExceptionOnFillingJobsIfInvalidEnv()
     {
         $env = array();
 
@@ -589,7 +617,7 @@ XML;
      * @test
      * @expectedException RuntimeException
      */
-    public function throwRuntimeExceptionIfNoSourceFiles()
+    public function throwRuntimeExceptionOnFillingJobsIfNoSourceFiles()
     {
         $env = array();
         $env['TRAVIS']        = true;
