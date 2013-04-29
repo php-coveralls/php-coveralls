@@ -216,6 +216,7 @@ json_path: build/logs/coveralls-upload.json
     - `open` to open "https://coveralls.io/repos/${token}"
     - `service` to open "https://coveralls.io/repos/${token}/service"
     - `last` to open "https://coveralls.io/repos/${token}/last_build"
+- Support multiple clover.xml collector
 
 # Versions
 
