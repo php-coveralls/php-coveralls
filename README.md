@@ -247,9 +247,28 @@ json_path: build/logs/coveralls-upload.json
 
 # Versions
 
-## 0.6
+## 0.6 (WIP)
 
 - Support configuration for multiple clover.xml
+    - Can specify coverage clover logs at `coverage_clover` in `.coveralls.yml`:
+
+```yml
+#.coveralls.yml
+
+# single file
+coverage_clover: build/logs/clover.xml
+
+# glob
+# useful for ZF2 style build
+coverage_clover: build/test-results/clover-*.xml
+
+# array
+# can specify files
+coverage_clover: 
+    - build/logs/clover-Auth.xml
+    - build/logs/clover-Db.xml
+    - build/logs/clover-Validator.xml
+```
 
 ## 0.5
 
