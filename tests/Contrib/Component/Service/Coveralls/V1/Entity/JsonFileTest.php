@@ -331,6 +331,7 @@ XML;
 
 
     // addSourceFile()
+    // sortSourceFiles()
 
     /**
      * @test
@@ -340,6 +341,7 @@ XML;
         $sourceFile = $this->createSourceFile();
 
         $this->object->addSourceFile($sourceFile);
+        $this->object->sortSourceFiles();
 
         $path = $sourceFile->getPath();
 

@@ -138,6 +138,16 @@ class JsonFile extends Coveralls
         ->ensureJobs();
     }
 
+    /**
+     * Sort source files by path.
+     *
+     * @return void
+     */
+    public function sortSourceFiles()
+    {
+        ksort($this->sourceFiles);
+    }
+
     // internal method
 
     /**

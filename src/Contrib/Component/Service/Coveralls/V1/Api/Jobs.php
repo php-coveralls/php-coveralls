@@ -56,6 +56,8 @@ class Jobs extends CoverallsApi
 
         $this->jsonFile = $xmlCollector->getJsonFile();
 
+        $this->jsonFile->sortSourceFiles();
+
         return $this;
     }
 
