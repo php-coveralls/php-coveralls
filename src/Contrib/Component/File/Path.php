@@ -20,6 +20,26 @@ class Path
     }
 
     /**
+     * Cat file path.
+     *
+     * @param string $path    File path.
+     * @param string $rootDir Absolute path to project root directory.
+     * @return string|false Absolute path.
+     */
+    public function toAbsolutePath($path, $rootDir)
+    {
+        if (!is_string($path)) {
+            return false;
+        }
+
+        if ($this->isRelativePath($path)) {
+            return $rootDir . DIRECTORY_SEPARATOR . $path;
+        }
+
+        return $path;
+    }
+
+    /**
      * Return real file path.
      *
      * @param string $path    File path.
