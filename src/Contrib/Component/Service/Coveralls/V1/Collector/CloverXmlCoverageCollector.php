@@ -83,15 +83,15 @@ class CloverXmlCoverageCollector
      */
     protected function collectFileCoverage(\SimpleXMLElement $file, $root)
     {
-        $fullpath = (string)$file['name'];
+        $absolutePath = (string)$file['name'];
 
-        if (false === strpos($fullpath, $root)) {
+        if (false === strpos($absolutePath, $root)) {
             return null;
         }
 
-        $filename = str_replace($root, '', $fullpath);
+        $filename = str_replace($root, '', $absolutePath);
 
-        return $this->collectCoverage($file, $fullpath, $filename);
+        return $this->collectCoverage($file, $absolutePath, $filename);
     }
 
     /**
@@ -104,7 +104,11 @@ class CloverXmlCoverageCollector
      */
     protected function collectCoverage(\SimpleXMLElement $file, $path, $filename)
     {
-        $srcFile = new SourceFile($path, $filename);
+        if ($this->jsonFile->hasSourceFile($path)) {
+            $srcFile = $this->jsonFile->getSourceFile($path);
+        } else {
+            $srcFile = new SourceFile($path, $filename);
+        }
 
         foreach ($file->line as $line) {
             if ((string)$line['type'] === 'stmt') {

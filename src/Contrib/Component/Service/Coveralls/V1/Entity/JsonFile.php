@@ -125,26 +125,6 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Add SourceFile.
-     *
-     * @param SourceFile $sourceFile
-     */
-    public function addSourceFile(SourceFile $sourceFile)
-    {
-        $this->sourceFiles[] = $sourceFile;
-    }
-
-    /**
-     * Return whether the SourceFile object exists.
-     *
-     * @return boolean
-     */
-    public function hasSourceFiles()
-    {
-        return count($this->sourceFiles) > 0;
-    }
-
-    /**
      * Fill environment variables.
      *
      * @param array $env $_SERVER environment.
@@ -313,6 +293,62 @@ class JsonFile extends Coveralls
     // accessor
 
     /**
+     * Return whether the json file has source file.
+     *
+     * @param string $path Absolute path to source file.
+     * @return boolean
+     */
+    public function hasSourceFile($path)
+    {
+        return isset($this->sourceFiles[$path]);
+    }
+
+    /**
+     * Return source file.
+     *
+     * @param string $path Absolute path to source file.
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\SourceFile|null
+     */
+    public function getSourceFile($path)
+    {
+        if ($this->hasSourceFile($path)) {
+            return $this->sourceFiles[$path];
+        }
+
+        return null;
+    }
+
+    /**
+     * Add SourceFile.
+     *
+     * @param SourceFile $sourceFile
+     */
+    public function addSourceFile(SourceFile $sourceFile)
+    {
+        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
+    }
+
+    /**
+     * Return whether the SourceFile object exists.
+     *
+     * @return boolean
+     */
+    public function hasSourceFiles()
+    {
+        return count($this->sourceFiles) > 0;
+    }
+
+    /**
+     * Return source files.
+     *
+     * @return SourceFile[]
+     */
+    public function getSourceFiles()
+    {
+        return $this->sourceFiles;
+    }
+
+    /**
      * Set service name.
      *
      * @param string $serviceName Service name.
@@ -364,16 +400,6 @@ class JsonFile extends Coveralls
         }
 
         return null;
-    }
-
-    /**
-     * Return source files.
-     *
-     * @return SourceFile[]
-     */
-    public function getSourceFiles()
-    {
-        return $this->sourceFiles;
     }
 
     /**

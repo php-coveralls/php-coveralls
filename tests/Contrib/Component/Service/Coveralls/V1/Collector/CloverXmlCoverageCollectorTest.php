@@ -30,7 +30,14 @@ class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
       <line num="5" type="method" name="__construct" crap="1" count="0"/>
-      <line num="7" type="stmt" count="0"/>
+      <line num="7" type="stmt" count="2"/>
+    </file>
+    <file name="%s/test.php">
+      <class name="TestFile" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="__construct" crap="1" count="0"/>
+      <line num="7" type="stmt" count="1"/>
     </file>
     <file name="dummy.php">
       <class name="TestFile" namespace="global">
@@ -52,7 +59,7 @@ class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
 </coverage>
 XML;
 
-        return simplexml_load_string(sprintf($xml, $this->rootDir, $this->rootDir));
+        return simplexml_load_string(sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir));
     }
 
     // getJsonFile()
@@ -102,7 +109,11 @@ XML;
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
-        $this->assertSourceFileTest1($sourceFiles[0]);
+        $name1 = 'test.php';
+        $path1 = $this->rootDir . DIRECTORY_SEPARATOR . $name1;
+
+        $this->assertArrayHasKey($path1, $sourceFiles);
+        $this->assertSourceFileTest1($sourceFiles[$path1]);
     }
 
     /**
@@ -113,7 +124,11 @@ XML;
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
-        $this->assertSourceFileTest2($sourceFiles[1]);
+        $name2 = 'test2.php';
+        $path2 = $this->rootDir . DIRECTORY_SEPARATOR . $name2;
+
+        $this->assertArrayHasKey($path2, $sourceFiles);
+        $this->assertSourceFileTest2($sourceFiles[$path2]);
     }
 
     // custom assert
@@ -142,7 +157,7 @@ XML;
         $path1        = $this->rootDir . DIRECTORY_SEPARATOR . $name1;
         $fileLines1   = 10;
         $coverage1    = array_fill(0, $fileLines1, null);
-        $coverage1[6] = 0;
+        $coverage1[6] = 3;
         $source1      = file_get_contents($path1);
 
         $this->assertSourceFile($sourceFile, $name1, $path1, $fileLines1, $coverage1, $source1);
