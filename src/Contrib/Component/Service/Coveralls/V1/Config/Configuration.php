@@ -34,11 +34,11 @@ class Configuration
     protected $srcDir;
 
     /**
-     * Absolute path to clover.xml.
+     * Absolute paths to clover.xml.
      *
-     * @var string
+     * @var array
      */
-    protected $cloverXmlPath;
+    protected $cloverXmlPaths = array();
 
     /**
      * Absolute path to output json_file.
@@ -163,14 +163,27 @@ class Configuration
     }
 
     /**
-     * Set absolute path to clover.xml.
+     * Set absolute paths to clover.xml.
+     *
+     * @param string $cloverXmlPaths
+     * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
+     */
+    public function setCloverXmlPaths(array $cloverXmlPaths)
+    {
+        $this->cloverXmlPaths = $cloverXmlPaths;
+
+        return $this;
+    }
+
+    /**
+     * Add absolute path to clover.xml.
      *
      * @param string $cloverXmlPath
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
-    public function setCloverXmlPath($cloverXmlPath)
+    public function addCloverXmlPath($cloverXmlPath)
     {
-        $this->cloverXmlPath = $cloverXmlPath;
+        $this->cloverXmlPaths[] = $cloverXmlPath;
 
         return $this;
     }
@@ -180,9 +193,9 @@ class Configuration
      *
      * @return string
      */
-    public function getCloverXmlPath()
+    public function getCloverXmlPaths()
     {
-        return $this->cloverXmlPath;
+        return $this->cloverXmlPaths;
     }
 
     /**

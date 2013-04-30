@@ -55,6 +55,16 @@ XML;
         return simplexml_load_string(sprintf($xml, $this->rootDir, $this->rootDir));
     }
 
+    // getJsonFile()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveJsonFileOnConstruction()
+    {
+        $this->assertNull($this->object->getJsonFile());
+    }
+
     // collect()
 
     /**
@@ -65,6 +75,7 @@ XML;
         $xml      = $this->createCloverXml();
         $jsonFile = $this->object->collect($xml, $this->rootDir);
 
+        $this->assertSame($jsonFile, $this->object->getJsonFile());
         $this->assertJsonFile($jsonFile, null, null, null, null, '2013-04-13 10:28:13 +0000');
 
         return $jsonFile;

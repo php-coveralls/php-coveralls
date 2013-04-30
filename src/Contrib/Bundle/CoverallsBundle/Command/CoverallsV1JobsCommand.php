@@ -142,7 +142,12 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function collectCloverXml(Configuration $config)
     {
-        $this->logger->info(sprintf('Load coverage clover log: %s', $config->getCloverXmlPath()));
+        $this->logger->info(sprintf('Load coverage clover log:'));
+
+        foreach ($config->getCloverXmlPaths() as $path) {
+            $this->logger->info(sprintf('  - %s', $path));
+        }
+
         $this->api->collectCloverXml();
 
         $jsonFile = $this->api->getJsonFile();

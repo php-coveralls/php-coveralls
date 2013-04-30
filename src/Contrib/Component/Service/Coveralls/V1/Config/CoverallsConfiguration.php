@@ -53,7 +53,7 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->scalarNode('src_dir')
                     ->defaultValue('src')
                 ->end()
-                ->scalarNode('coverage_clover')
+                ->variableNode('coverage_clover')
                     ->defaultValue('build/logs/clover.xml')
                 ->end()
                 ->scalarNode('json_path')

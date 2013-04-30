@@ -11,6 +11,13 @@ use Contrib\Component\Service\Coveralls\V1\Entity\SourceFile;
  */
 class CloverXmlCoverageCollector
 {
+    /**
+     * JsonFile.
+     *
+     * @var \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+     */
+    protected $jsonFile;
+
     // API
 
     /**
@@ -22,12 +29,15 @@ class CloverXmlCoverageCollector
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
     {
-        //TODO assert rootDir exists
-        $root = realpath($rootDir) . DIRECTORY_SEPARATOR;
-        $jsonFile = new JsonFile();
+        $root = $rootDir . DIRECTORY_SEPARATOR;
 
+        if (!isset($this->jsonFile)) {
+            $this->jsonFile = new JsonFile();
+        }
+
+        // overwrite if run_at has already been set
         $runAt = $this->collectRunAt($xml);
-        $jsonFile->setRunAt($runAt);
+        $this->jsonFile->setRunAt($runAt);
 
         $xpaths = array(
             '/coverage/project/file',
@@ -39,12 +49,12 @@ class CloverXmlCoverageCollector
                 $srcFile = $this->collectFileCoverage($file, $root);
 
                 if ($srcFile !== null) {
-                    $jsonFile->addSourceFile($srcFile);
+                    $this->jsonFile->addSourceFile($srcFile);
                 }
             }
         }
 
-        return $jsonFile;
+        return $this->jsonFile;
     }
 
     // Internal method
@@ -107,5 +117,17 @@ class CloverXmlCoverageCollector
         }
 
         return $srcFile;
+    }
+
+    // accessor
+
+    /**
+     * Return json file.
+     *
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
+     */
+    public function getJsonFile()
+    {
+        return $this->jsonFile;
     }
 }
