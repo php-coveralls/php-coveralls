@@ -24,9 +24,11 @@ if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
     );
 }
 
+define('PHP_COVERALLS_VERSION', '0.6.0');
+
 use Contrib\Bundle\CoverallsBundle\Console\Application;
 
 $rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
 
-$app = new Application($rootDir, 'Coveralls API client for PHP', '0.6.0');
+$app = new Application($rootDir, 'Coveralls API client for PHP', PHP_COVERALLS_VERSION);
 $app->run();
