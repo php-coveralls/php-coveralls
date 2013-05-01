@@ -5,11 +5,7 @@ php-coveralls
 [![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
 [![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/9407192)](http://depending.in/satooshi/php-coveralls)
 
-Retina-ready badge is small…
-<img src="https://travis-ci.org/satooshi/php-coveralls.png?branch=master" height="10">
-<img src="https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master" height="10">
-
-PHP client library for [Coveralls](https://coveralls.io).
+PHP client library for [Coveralls](https://coveralls.io). 
 
 # API doc
 
@@ -235,6 +231,25 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
+You can specify multiple `.coveralls.yml` logs at `coverage_clover`. This is useful for a project that has more than two test suites if all of the test results should be merged into one `json_file`.
+
+```yml
+#.coveralls.yml
+
+# single file
+coverage_clover: build/logs/clover.xml
+
+# glob
+coverage_clover: build/logs/clover-*.xml
+
+# array
+# specify files
+coverage_clover: 
+    - build/logs/clover-Auth.xml
+    - build/logs/clover-Db.xml
+    - build/logs/clover-Validator.xml
+```
+
 # Plan
 
 - Refactor test cases
@@ -245,30 +260,12 @@ json_path: build/logs/coveralls-upload.json
     - `service` to open "https://coveralls.io/repos/${token}/service"
     - `last` to open "https://coveralls.io/repos/${token}/last_build"
 
-# Versions
+# Changelog
 
 ## 0.6 (WIP)
 
 - Support configuration for multiple clover.xml
-    - Can specify coverage clover logs at `coverage_clover` in `.coveralls.yml`:
-
-```yml
-#.coveralls.yml
-
-# single file
-coverage_clover: build/logs/clover.xml
-
-# glob
-# useful for ZF2 style build
-coverage_clover: build/test-results/clover-*.xml
-
-# array
-# can specify files
-coverage_clover: 
-    - build/logs/clover-Auth.xml
-    - build/logs/clover-Db.xml
-    - build/logs/clover-Validator.xml
-```
+- Show exception log at sending a request instead of exception backtrace
 
 ## 0.5
 
