@@ -10,7 +10,7 @@ matrix:
 
 before_script:
     - curl -s http://getcomposer.org/installer | php
-    - php composer.phar install --dev --no-interaction
+    - php composer.phar install --dev --no-interaction --prefer-source
 
 script:
     - mkdir -p build/logs
