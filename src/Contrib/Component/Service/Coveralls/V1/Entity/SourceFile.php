@@ -80,8 +80,8 @@ class SourceFile extends Coveralls
     /**
      * Add coverage.
      *
-     * @param integer $lineNum Line number.
-     * @param integer $count   Number of covered.
+     * @param  integer $lineNum Line number.
+     * @param  integer $count   Number of covered.
      * @return void
      */
     public function addCoverage($lineNum, $count)

@@ -28,7 +28,7 @@ abstract class CoverallsApi
     /**
      * Constructor.
      *
-     * @param Configuration      $config Configuration.
+     * @param Configuration       $config Configuration.
      * @param \Guzzle\Http\Client $client HTTP client.
      */
     public function __construct(Configuration $config, Client $client = null)
@@ -52,7 +52,7 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param \Guzzle\Http\Client $client HTTP client.
+     * @param  \Guzzle\Http\Client                                      $client HTTP client.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\CoverallsApi
      */
     public function setHttpClient(Client $client)

@@ -23,8 +23,8 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage from XML object.
      *
-     * @param SimpleXMLElement $xml     Clover XML object.
-     * @param string           $rootDir Path to src directory.
+     * @param  SimpleXMLElement                                        $xml     Clover XML object.
+     * @param  string                                                  $rootDir Path to src directory.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
@@ -62,8 +62,8 @@ class CloverXmlCoverageCollector
     /**
      * Collect timestamp when the job ran.
      *
-     * @param SimpleXMLElement $xml    Clover XML object of a file.
-     * @param string           $format DateTime format.
+     * @param  SimpleXMLElement $xml    Clover XML object of a file.
+     * @param  string           $format DateTime format.
      * @return string
      */
     protected function collectRunAt(\SimpleXMLElement $xml, $format = 'Y-m-d H:i:s O')
@@ -77,13 +77,13 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data of a file.
      *
-     * @param SimpleXMLElement $file Clover XML object of a file.
-     * @param string           $root Path to src directory.
+     * @param  SimpleXMLElement                                               $file Clover XML object of a file.
+     * @param  string                                                         $root Path to src directory.
      * @return NULL|\Contrib\Component\Service\Coveralls\Entity\V1\SourceFile
      */
     protected function collectFileCoverage(\SimpleXMLElement $file, $root)
     {
-        $absolutePath = (string)$file['name'];
+        $absolutePath = (string) $file['name'];
 
         if (false === strpos($absolutePath, $root)) {
             return null;
@@ -97,9 +97,9 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data.
      *
-     * @param SimpleXMLElement $file     Clover XML object of a file.
-     * @param string           $path     Path to source file.
-     * @param string           $filename Filename.
+     * @param  SimpleXMLElement                                          $file     Clover XML object of a file.
+     * @param  string                                                    $path     Path to source file.
+     * @param  string                                                    $filename Filename.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\SourceFile
      */
     protected function collectCoverage(\SimpleXMLElement $file, $path, $filename)
@@ -111,11 +111,11 @@ class CloverXmlCoverageCollector
         }
 
         foreach ($file->line as $line) {
-            if ((string)$line['type'] === 'stmt') {
-                $lineNum = (int)$line['num'];
+            if ((string) $line['type'] === 'stmt') {
+                $lineNum = (int) $line['num'];
 
                 if ($lineNum > 0) {
-                    $srcFile->addCoverage($lineNum - 1, (int)$line['count']);
+                    $srcFile->addCoverage($lineNum - 1, (int) $line['count']);
                 }
             }
         }

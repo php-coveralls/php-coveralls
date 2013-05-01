@@ -1,7 +1,6 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Config;
 
-use Contrib\Component\File\Path;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 

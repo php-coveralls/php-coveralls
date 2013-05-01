@@ -18,8 +18,8 @@ class Configurator
     /**
      * Load configuration.
      *
-     * @param string $coverallsYmlPath Path to .coveralls.yml.
-     * @param string $rootDir          Path to project root directory.
+     * @param  string                                                       $coverallsYmlPath Path to .coveralls.yml.
+     * @param  string                                                       $rootDir          Path to project root directory.
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function load($coverallsYmlPath, $rootDir)
@@ -35,7 +35,7 @@ class Configurator
     /**
      * Parse .coveralls.yml.
      *
-     * @param string $coverallsYmlPath Path to .coveralls.yml.
+     * @param  string $coverallsYmlPath Path to .coveralls.yml.
      * @return array
      */
     protected function parse($coverallsYmlPath)
@@ -55,7 +55,7 @@ class Configurator
     /**
      * Process parsed configuration according to the configuration definition.
      *
-     * @param array  $yml Parsed configuration.
+     * @param  array $yml Parsed configuration.
      * @return array
      */
     protected function process(array $yml)
@@ -69,8 +69,8 @@ class Configurator
     /**
      * Create coveralls configuration.
      *
-     * @param array  $options Processed configuration.
-     * @param string $rootDir Path to project root directory.
+     * @param  array                                                        $options Processed configuration.
+     * @param  string                                                       $rootDir Path to project root directory.
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     protected function createConfiguration(array $options, $rootDir)
@@ -93,10 +93,10 @@ class Configurator
     /**
      * Ensure src_dir is valid.
      *
-     * @param string $option  src_dir option.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     * @return string Valid src_dir.
+     * @param  string                        $option  src_dir option.
+     * @param  string                        $rootDir Path to project root directory.
+     * @param  Path                          $file    Path object.
+     * @return string                        Valid src_dir.
      * @throws InvalidConfigurationException
      */
     protected function ensureSrcDir($option, $rootDir, Path $file)
@@ -115,10 +115,10 @@ class Configurator
     /**
      * Ensure coverage_clover is valid.
      *
-     * @param string $option  coverage_clover option.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     * @return array Valid Absolute pathes of coverage_clover.
+     * @param  string                        $option  coverage_clover option.
+     * @param  string                        $rootDir Path to project root directory.
+     * @param  Path                          $file    Path object.
+     * @return array                         Valid Absolute pathes of coverage_clover.
      * @throws InvalidConfigurationException
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
@@ -133,8 +133,8 @@ class Configurator
     /**
      * Return absolute paths from glob path.
      *
-     * @param string $path Absolute path.
-     * @return array Absolute paths.
+     * @param  string                        $path Absolute path.
+     * @return array                         Absolute paths.
      * @throws InvalidConfigurationException
      */
     protected function getGlobPaths($path)
@@ -158,10 +158,10 @@ class Configurator
     /**
      * Return absolute paths from string option value.
      *
-     * @param string $option  coverage_clover option value.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     * @return array Absolute pathes.
+     * @param  string                        $option  coverage_clover option value.
+     * @param  string                        $rootDir Path to project root directory.
+     * @param  Path                          $file    Path object.
+     * @return array                         Absolute pathes.
      * @throws InvalidConfigurationException
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
@@ -179,10 +179,10 @@ class Configurator
     /**
      * Return absolute paths from array option values.
      *
-     * @param array  $options coverage_clover option values.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     * @return array Absolute pathes.
+     * @param  array  $options coverage_clover option values.
+     * @param  string $rootDir Path to project root directory.
+     * @param  Path   $file    Path object.
+     * @return array  Absolute pathes.
      */
     protected function getGlobPathsFromArrayOption(array $options, $rootDir, Path $file)
     {
@@ -198,10 +198,10 @@ class Configurator
     /**
      * Ensure json_path is valid.
      *
-     * @param string $option  json_path option.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     * @return string Valid json_path.
+     * @param  string                        $option  json_path option.
+     * @param  string                        $rootDir Path to project root directory.
+     * @param  Path                          $file    Path object.
+     * @return string                        Valid json_path.
      * @throws InvalidConfigurationException
      */
     protected function ensureJsonPath($option, $rootDir, Path $file)

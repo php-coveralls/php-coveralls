@@ -79,7 +79,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param array $env $_SERVER environment.
+     * @param  array                                            $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\Jobs
      */
     public function collectEnvVars(array $env)
@@ -127,9 +127,9 @@ class Jobs extends CoverallsApi
     /**
      * Upload a file.
      *
-     * @param string $url      URL to upload.
-     * @param string $path     File path.
-     * @param string $filename Filename.
+     * @param  string                        $url      URL to upload.
+     * @param  string                        $path     File path.
+     * @param  string                        $filename Filename.
      * @return \Guzzle\Http\Message\Response Response.
      * @throws \RuntimeException
      */
@@ -145,7 +145,7 @@ class Jobs extends CoverallsApi
     /**
      * Set JsonFile.
      *
-     * @param JsonFile $jsonFile json_file content.
+     * @param  JsonFile                                         $jsonFile json_file content.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\Jobs
      */
     public function setJsonFile(JsonFile $jsonFile)
