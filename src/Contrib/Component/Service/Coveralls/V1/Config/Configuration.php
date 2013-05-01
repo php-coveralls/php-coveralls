@@ -34,11 +34,11 @@ class Configuration
     protected $srcDir;
 
     /**
-     * Absolute path to clover.xml.
+     * Absolute paths to clover.xml.
      *
-     * @var string
+     * @var array
      */
-    protected $cloverXmlPath;
+    protected $cloverXmlPaths = array();
 
     /**
      * Absolute path to output json_file.
@@ -75,7 +75,7 @@ class Configuration
     /**
      * Set repository token.
      *
-     * @param string $repoToken
+     * @param  string                                                       $repoToken
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setRepoToken($repoToken)
@@ -108,7 +108,7 @@ class Configuration
     /**
      * Set service name.
      *
-     * @param string $serviceName
+     * @param  string                                                       $serviceName
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setServiceName($serviceName)
@@ -138,11 +138,10 @@ class Configuration
         return $this->serviceName;
     }
 
-
     /**
      * Set absolute path to src directory to include coverage report.
      *
-     * @param string $srcDir
+     * @param  string                                                       $srcDir
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setSrcDir($srcDir)
@@ -163,14 +162,27 @@ class Configuration
     }
 
     /**
-     * Set absolute path to clover.xml.
+     * Set absolute paths to clover.xml.
      *
-     * @param string $cloverXmlPath
+     * @param  string                                                       $cloverXmlPaths
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
-    public function setCloverXmlPath($cloverXmlPath)
+    public function setCloverXmlPaths(array $cloverXmlPaths)
     {
-        $this->cloverXmlPath = $cloverXmlPath;
+        $this->cloverXmlPaths = $cloverXmlPaths;
+
+        return $this;
+    }
+
+    /**
+     * Add absolute path to clover.xml.
+     *
+     * @param  string                                                       $cloverXmlPath
+     * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
+     */
+    public function addCloverXmlPath($cloverXmlPath)
+    {
+        $this->cloverXmlPaths[] = $cloverXmlPath;
 
         return $this;
     }
@@ -180,15 +192,15 @@ class Configuration
      *
      * @return string
      */
-    public function getCloverXmlPath()
+    public function getCloverXmlPaths()
     {
-        return $this->cloverXmlPath;
+        return $this->cloverXmlPaths;
     }
 
     /**
      * Set absolute path to output json_file.
      *
-     * @param string $jsonPath
+     * @param  string                                                       $jsonPath
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setJsonPath($jsonPath)
@@ -211,7 +223,7 @@ class Configuration
     /**
      * Set whether to send json_file to jobs API.
      *
-     * @param boolean $dryRun
+     * @param  boolean                                                      $dryRun
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setDryRun($dryRun)
@@ -234,7 +246,7 @@ class Configuration
     /**
      * Set whether to show log.
      *
-     * @param boolean $verbose
+     * @param  boolean                                                      $verbose
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setVerbose($verbose)
@@ -257,7 +269,7 @@ class Configuration
     /**
      * Set runtime environment name.
      *
-     * @param string $env Runtime environment name.
+     * @param  string                                                       $env Runtime environment name.
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     public function setEnv($env)

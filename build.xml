@@ -25,6 +25,35 @@
         <mkdir dir="${basedir}/build/pdepend"/>
     </target>
 
+    <target name="get-cs-fixer" depends="clean" description="Get coding standards fixer">
+        <get src="http://cs.sensiolabs.org/get/php-cs-fixer.phar" dest="${basedir}/php-cs-fixer.phar"/>
+    </target>
+
+    <target name="php-cs-fixer-dry-run" depends="clean" description="Get coding standards fixer">
+        <!-- php-cs-fixer.phar fix src \-\-level=all \-\-dry-run \-\-verbose -->
+        <exec executable="${phphome}/bin/php" failonerror="false">
+            <arg value="-n"/>
+            <arg path="${basedir}/php-cs-fixer.phar"/>
+            <arg value="fix"/>
+            <arg path="${basedir}/src"/>
+            <arg value="--level=all"/>
+            <arg value="--dry-run"/>
+            <arg value="--verbose"/>
+        </exec>
+    </target>
+
+    <target name="php-cs-fixer-fix" depends="clean" description="Get coding standards fixer">
+        <!-- php-cs-fixer.phar fix src \-\-level=all \-\-dry-run \-\-verbose -->
+        <exec executable="${phphome}/bin/php" failonerror="false">
+            <arg value="-n"/>
+            <arg path="${basedir}/php-cs-fixer.phar"/>
+            <arg value="fix"/>
+            <arg path="${basedir}/src"/>
+            <arg value="--level=all"/>
+            <arg value="--verbose"/>
+        </exec>
+    </target>
+
     <property name="phphome" value="/usr/local/php/versions/5.4.11"/>
 
     <target name="lint" description="Perform syntax check of sourcecode files">

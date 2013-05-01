@@ -11,12 +11,14 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->rootDir       = realpath(__DIR__ . '/../../../../../../prj');
-        $this->srcDir        = $this->rootDir . '/src';
-        $this->buildDir      = $this->rootDir . '/build';
-        $this->logsDir       = $this->rootDir . '/build/logs';
-        $this->cloverXmlPath = $this->logsDir . '/clover.xml';
-        $this->jsonPath      = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
+        $this->rootDir        = realpath(__DIR__ . '/../../../../../../prj');
+        $this->srcDir         = $this->rootDir . '/src';
+        $this->buildDir       = $this->rootDir . '/build';
+        $this->logsDir        = $this->rootDir . '/build/logs';
+        $this->cloverXmlPath  = $this->logsDir . '/clover.xml';
+        $this->cloverXmlPath1 = $this->logsDir . '/clover-part1.xml';
+        $this->cloverXmlPath2 = $this->logsDir . '/clover-part2.xml';
+        $this->jsonPath       = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
 
         $this->object = new Configurator();
     }
@@ -24,6 +26,8 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->cloverXmlPath1);
+        $this->rmFile($this->cloverXmlPath2);
         $this->rmFile($this->jsonPath);
         $this->rmDir($this->srcDir);
         $this->rmDir($this->logsDir);
@@ -46,7 +50,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    protected function makeProjectDir($srcDir, $logsDir, $cloverXmlPath, $logsDirUnwritable = false, $jsonPathUnwritable = false)
+    protected function makeProjectDir($srcDir, $logsDir, $cloverXmlPaths, $logsDirUnwritable = false, $jsonPathUnwritable = false)
     {
         if ($srcDir !== null) {
             mkdir($srcDir, 0777, true);
@@ -56,8 +60,14 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
             mkdir($logsDir, 0777, true);
         }
 
-        if ($cloverXmlPath !== null) {
-            touch($cloverXmlPath);
+        if ($cloverXmlPaths !== null) {
+            if (is_array($cloverXmlPaths)) {
+                foreach ($cloverXmlPaths as $cloverXmlPath) {
+                    touch($cloverXmlPath);
+                }
+            } else {
+                touch($cloverXmlPaths);
+            }
         }
 
         if ($logsDirUnwritable) {
@@ -72,10 +82,10 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
     // custom assertion
 
-    protected function assertConfiguration(Configuration $config, $srcDir, $cloverXml, $jsonPath)
+    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath)
     {
         $this->assertEquals($srcDir, $config->getSrcDir());
-        $this->assertEquals($cloverXml, $config->getCloverXmlPath());
+        $this->assertEquals($cloverXml, $config->getCloverXmlPaths());
         $this->assertEquals($jsonPath, $config->getJsonPath());
     }
 
@@ -92,7 +102,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, $this->cloverXmlPath, $this->jsonPath);
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     // default src_dir not found
@@ -166,7 +176,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, $this->cloverXmlPath, $this->jsonPath);
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     // load default value yml
@@ -182,7 +192,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, $this->cloverXmlPath, $this->jsonPath);
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     /**
@@ -196,7 +206,35 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, $this->cloverXmlPath, $this->jsonPath);
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLoadCoverageCloverYmlContainingGlobValue()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+
+        $path = realpath(__DIR__ . '/yaml/coverage_clover_glob.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLoadCoverageCloverYmlContainingArrayValue()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+
+        $path = realpath(__DIR__ . '/yaml/coverage_clover_array.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
     }
 
     /**
@@ -210,7 +248,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, $this->cloverXmlPath, $this->jsonPath);
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     // configured src_dir not found
@@ -239,6 +277,19 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover_not_found.yml');
+
+        $this->object->load($path, $this->rootDir);
+    }
+
+    /**
+     * @test
+     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverIsNotString()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/coverage_clover_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
     }

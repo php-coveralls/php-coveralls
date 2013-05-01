@@ -104,6 +104,45 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->isRelativePath($path));
     }
 
+    // toAbsolutePath()
+
+    /**
+     * @test
+     */
+    public function shouldNotConvertAbsolutePath()
+    {
+        $path    = false;
+        $rootDir = __DIR__;
+
+        $this->assertFalse($this->object->toAbsolutePath($path, $rootDir));
+    }
+
+    /**
+     * @test
+     * @dataProvider provideRelativePaths
+     */
+    public function shouldConvertAbsolutePathIfRelativePathGiven($path)
+    {
+        $rootDir = '/path/to/dir';
+
+        $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
+
+        $this->assertEquals($expected, $this->object->toAbsolutePath($path, $rootDir));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldConvertAbsolutePathIfAbsolutePathGiven()
+    {
+        $rootDir = '/path/to/dir';
+        $path    = __DIR__;
+
+        $expected = $path;
+
+        $this->assertEquals($expected, $this->object->toAbsolutePath($path, $rootDir));
+    }
+
     // getRealPath()
 
     /**

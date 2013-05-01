@@ -47,14 +47,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($this->object->getSrcDir());
     }
 
-    // getCloverXmlPath()
+    // getCloverXmlPaths()
 
     /**
      * @test
      */
-    public function shouldNotHaveCloverXmlPathOnConstruction()
+    public function shouldHaveEmptyCloverXmlPathsOnConstruction()
     {
-        $this->assertNull($this->object->getCloverXmlPath());
+        $this->assertEmpty($this->object->getCloverXmlPaths());
     }
 
     // getJsonPath()
@@ -195,19 +195,34 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($expected, $this->object->getSrcDir());
     }
 
-    // setCloverXmlPath()
+    // setCloverXmlPaths()
 
     /**
      * @test
      */
-    public function setCloverXmlPath()
+    public function setCloverXmlPaths()
+    {
+        $expected = array('/path/to/clover.xml');
+
+        $same = $this->object->setCloverXmlPaths($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertSame($expected, $this->object->getCloverXmlPaths());
+    }
+
+    // addCloverXmlPath()
+
+    /**
+     * @test
+     */
+    public function addCloverXmlPath()
     {
         $expected = '/path/to/clover.xml';
 
-        $same = $this->object->setCloverXmlPath($expected);
+        $same = $this->object->addCloverXmlPath($expected);
 
         $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getCloverXmlPath());
+        $this->assertSame(array($expected), $this->object->getCloverXmlPaths());
     }
 
     // setJsonPath()

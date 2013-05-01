@@ -76,7 +76,7 @@ class Commit extends Coveralls
     /**
      * Set commit ID.
      *
-     * @param string $id
+     * @param  string                                                    $id
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setId($id)
@@ -103,7 +103,7 @@ class Commit extends Coveralls
     /**
      * Set author name.
      *
-     * @param string $authorName
+     * @param  string                                                    $authorName
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setAuthorName($authorName)
@@ -130,7 +130,7 @@ class Commit extends Coveralls
     /**
      * Set author email.
      *
-     * @param string $authorEmail
+     * @param  string                                                    $authorEmail
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setAuthorEmail($authorEmail)
@@ -157,7 +157,7 @@ class Commit extends Coveralls
     /**
      * Set committer name.
      *
-     * @param string $committerName
+     * @param  string                                                    $committerName
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setCommitterName($committerName)
@@ -184,7 +184,7 @@ class Commit extends Coveralls
     /**
      * Set committer email.
      *
-     * @param string $committerEmail
+     * @param  string                                                    $committerEmail
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setCommitterEmail($committerEmail)
@@ -211,7 +211,7 @@ class Commit extends Coveralls
     /**
      * Set commit message.
      *
-     * @param string $message
+     * @param  string                                                    $message
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\Git\Commit
      */
     public function setMessage($message)

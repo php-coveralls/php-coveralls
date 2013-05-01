@@ -114,6 +114,32 @@ XML;
     }
 
 
+    // hasSourceFile()
+    // getSourceFile()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveSourceFileOnConstruction()
+    {
+        $path = 'test.php';
+
+        $this->assertFalse($this->object->hasSourceFile($path));
+        $this->assertNull($this->object->getSourceFile($path));
+    }
+
+    // hasSourceFiles()
+    // getSourceFiles()
+
+    /**
+     * @test
+     */
+    public function countZeroSourceFilesOnConstruction()
+    {
+        $this->assertFalse($this->object->hasSourceFiles());
+        $this->assertEmpty($this->object->getSourceFiles());
+    }
+
     // getServiceName()
 
     /**
@@ -132,16 +158,6 @@ XML;
     public function shouldNotHaveRepoTokenOnConstruction()
     {
         $this->assertNull($this->object->getRepoToken());
-    }
-
-    // getSourceFiles()
-
-    /**
-     * @test
-     */
-    public function shouldHaveEmptySourceFilesOnConstruction()
-    {
-        $this->assertEmpty($this->object->getSourceFiles());
     }
 
     // getServiceJobId()
@@ -315,6 +331,7 @@ XML;
 
 
     // addSourceFile()
+    // sortSourceFiles()
 
     /**
      * @test
@@ -324,19 +341,14 @@ XML;
         $sourceFile = $this->createSourceFile();
 
         $this->object->addSourceFile($sourceFile);
+        $this->object->sortSourceFiles();
 
-        $this->assertEquals(1, $this->object->hasSourceFiles());
-        $this->assertSame(array($sourceFile), $this->object->getSourceFiles());
-    }
+        $path = $sourceFile->getPath();
 
-    // hasSourceFiles()
-
-    /**
-     * @test
-     */
-    public function countZeroSourceFilesOnConstruction()
-    {
-        $this->assertEquals(0, $this->object->hasSourceFiles());
+        $this->assertTrue($this->object->hasSourceFiles());
+        $this->assertSame(array($path => $sourceFile), $this->object->getSourceFiles());
+        $this->assertTrue($this->object->hasSourceFile($path));
+        $this->assertSame($sourceFile, $this->object->getSourceFile($path));
     }
 
     // toArray()
