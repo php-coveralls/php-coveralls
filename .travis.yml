@@ -16,7 +16,7 @@ script:
     - mkdir -p build/logs
     - php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src
     - php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml
-    - php vendor/bin/phpunit -c travis.phpunit.xml --testdox
+    - php vendor/bin/phpunit -c travis.phpunit.xml
 
 after_script:
     - curl -s https://gist.github.com/satooshi/4750401/raw > travis/ColorCLI.php

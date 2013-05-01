@@ -25,7 +25,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     {
         $config = new Configuration($this->rootDir);
 
-        return $config->setSrcDir($this->srcDir)->setCloverXmlPath($this->cloverXmlPath);
+        return $config->setSrcDir($this->srcDir)->addCloverXmlPath($this->cloverXmlPath);
     }
 
     protected function createCiEnvVarsCollector($config = null)

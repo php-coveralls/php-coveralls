@@ -125,29 +125,9 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Add SourceFile.
-     *
-     * @param SourceFile $sourceFile
-     */
-    public function addSourceFile(SourceFile $sourceFile)
-    {
-        $this->sourceFiles[] = $sourceFile;
-    }
-
-    /**
-     * Return whether the SourceFile object exists.
-     *
-     * @return boolean
-     */
-    public function hasSourceFiles()
-    {
-        return count($this->sourceFiles) > 0;
-    }
-
-    /**
      * Fill environment variables.
      *
-     * @param array $env $_SERVER environment.
+     * @param  array                                                   $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\Entity\V1\JsonFile
      * @throws \RuntimeException
      */
@@ -158,19 +138,29 @@ class JsonFile extends Coveralls
         ->ensureJobs();
     }
 
+    /**
+     * Sort source files by path.
+     *
+     * @return void
+     */
+    public function sortSourceFiles()
+    {
+        ksort($this->sourceFiles);
+    }
+
     // internal method
 
     /**
      * Convert to json property.
      *
-     * @param mixed $prop
+     * @param  mixed $prop
      * @return mixed
      */
     protected function toJsonProperty($prop)
     {
         if ($prop instanceof Coveralls) {
             return $prop->toArray();
-        } else if (is_array($prop)) {
+        } elseif (is_array($prop)) {
             return $this->toJsonPropertyArray($prop);
         }
 
@@ -180,7 +170,7 @@ class JsonFile extends Coveralls
     /**
      * Convert to array as json property.
      *
-     * @param array $propArray
+     * @param  array $propArray
      * @return array
      */
     protected function toJsonPropertyArray(array $propArray)
@@ -209,7 +199,7 @@ class JsonFile extends Coveralls
      *
      * These vars are supported by Codeship.
      *
-     * @param array $env $_SERVER environment.
+     * @param  array                                                   $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\V1\Entity\JsonFile
      */
     protected function fillStandardizedEnvVars(array $env)
@@ -313,9 +303,65 @@ class JsonFile extends Coveralls
     // accessor
 
     /**
+     * Return whether the json file has source file.
+     *
+     * @param  string  $path Absolute path to source file.
+     * @return boolean
+     */
+    public function hasSourceFile($path)
+    {
+        return isset($this->sourceFiles[$path]);
+    }
+
+    /**
+     * Return source file.
+     *
+     * @param  string                                                         $path Absolute path to source file.
+     * @return \Contrib\Component\Service\Coveralls\V1\Entity\SourceFile|null
+     */
+    public function getSourceFile($path)
+    {
+        if ($this->hasSourceFile($path)) {
+            return $this->sourceFiles[$path];
+        }
+
+        return null;
+    }
+
+    /**
+     * Add SourceFile.
+     *
+     * @param SourceFile $sourceFile
+     */
+    public function addSourceFile(SourceFile $sourceFile)
+    {
+        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
+    }
+
+    /**
+     * Return whether the SourceFile object exists.
+     *
+     * @return boolean
+     */
+    public function hasSourceFiles()
+    {
+        return count($this->sourceFiles) > 0;
+    }
+
+    /**
+     * Return source files.
+     *
+     * @return SourceFile[]
+     */
+    public function getSourceFiles()
+    {
+        return $this->sourceFiles;
+    }
+
+    /**
      * Set service name.
      *
-     * @param string $serviceName Service name.
+     * @param  string    $serviceName Service name.
      * @return Coveralls
      */
     public function setServiceName($serviceName)
@@ -342,7 +388,7 @@ class JsonFile extends Coveralls
     /**
      * Set repository token.
      *
-     * @param string $repoToken Repository token.
+     * @param  string    $repoToken Repository token.
      * @return Coveralls
      */
     public function setRepoToken($repoToken)
@@ -367,19 +413,9 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Return source files.
-     *
-     * @return SourceFile[]
-     */
-    public function getSourceFiles()
-    {
-        return $this->sourceFiles;
-    }
-
-    /**
      * Set service job id.
      *
-     * @param string $serviceJobId Service job id.
+     * @param  string    $serviceJobId Service job id.
      * @return Coveralls
      */
     public function setServiceJobId($serviceJobId)
@@ -456,7 +492,7 @@ class JsonFile extends Coveralls
     /**
      * Set git data.
      *
-     * @param array $git Git data.
+     * @param  array     $git Git data.
      * @return Coveralls
      */
     public function setGit(Git $git)
@@ -483,7 +519,7 @@ class JsonFile extends Coveralls
     /**
      * Set timestamp when the job ran.
      *
-     * @param string $runAt Timestamp.
+     * @param  string    $runAt Timestamp.
      * @return Coveralls
      */
     public function setRunAt($runAt)

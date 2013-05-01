@@ -121,7 +121,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 
         return $config
         ->setSrcDir($this->srcDir)
-        ->setCloverXmlPath($this->cloverXmlPath);
+        ->addCloverXmlPath($this->cloverXmlPath);
     }
 
     protected function getCloverXml()

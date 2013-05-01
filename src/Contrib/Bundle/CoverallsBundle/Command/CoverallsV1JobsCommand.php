@@ -7,6 +7,8 @@ use Contrib\Component\Service\Coveralls\V1\Api\Jobs;
 use Contrib\Component\Service\Coveralls\V1\Config\Configurator;
 use Contrib\Component\Service\Coveralls\V1\Config\Configuration;
 use Guzzle\Http\Client;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -94,8 +96,8 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Load configuration.
      *
-     * @param InputInterface $input   Input arguments.
-     * @param string         $rootDir Path to project root directory.
+     * @param  InputInterface                                               $input   Input arguments.
+     * @param  string                                                       $rootDir Path to project root directory.
      * @return \Contrib\Component\Service\Coveralls\V1\Config\Configuration
      */
     protected function loadConfiguration(InputInterface $input, $rootDir)
@@ -118,7 +120,7 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Run Jobs API.
      *
-     * @param Configuration $config Configuration.
+     * @param  Configuration $config Configuration.
      * @return void
      */
     protected function runApi(Configuration $config)
@@ -137,12 +139,17 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Collect clover XML into json_file.
      *
-     * @param Configuration $config Configuration.
+     * @param  Configuration                                                  $config Configuration.
      * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
      */
     protected function collectCloverXml(Configuration $config)
     {
-        $this->logger->info(sprintf('Load coverage clover log: %s', $config->getCloverXmlPath()));
+        $this->logger->info(sprintf('Load coverage clover log:'));
+
+        foreach ($config->getCloverXmlPaths() as $path) {
+            $this->logger->info(sprintf('  - %s', $path));
+        }
+
         $this->api->collectCloverXml();
 
         $jsonFile = $this->api->getJsonFile();
@@ -189,7 +196,7 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Dump uploading json file.
      *
-     * @param Configuration $config Configuration.
+     * @param  Configuration                                                  $config Configuration.
      * @return \Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand
      */
     protected function dumpJsonFile(Configuration $config)
@@ -208,14 +215,26 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function send()
     {
-        $this->logger->info(sprintf('Upload json file to %s', Jobs::URL));
+        $this->logger->info(sprintf('Submitting to %s', Jobs::URL));
 
-        $response = $this->api->send();
+        try {
+            $response = $this->api->send();
 
-        $message =
-            $response
-            ? sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
-            : 'Finish dry run';
+            $message = $response
+                ? sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
+                : 'Finish dry run';
+
+            // @codeCoverageIgnoreStart
+        } catch (ClientErrorResponseException $e) {
+            // 422 Unprocessable Entity
+            $response = $e->getResponse();
+            $message  = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+        } catch (ServerErrorResponseException $e) {
+            // 503 Service Unavailable
+            $response = $e->getResponse();
+            $message  = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+        }
+        // @codeCoverageIgnoreEnd
 
         $this->logger->info($message);
     }

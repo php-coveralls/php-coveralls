@@ -54,11 +54,11 @@ class SourceFile extends Coveralls
     {
         $this->path   = $path;
         $this->name   = $name;
-        $this->source = file_get_contents($path);
+        $this->source = file_get_contents($path); //TODO trim() contents to avoid suspecious end of file coverage
 
         $lines = explode($eol, $this->source);
         $this->fileLines = count($lines);
-        $this->coverage = array_fill(0, $this->fileLines, null);
+        $this->coverage  = array_fill(0, $this->fileLines, null);
     }
 
     /**
@@ -80,14 +80,14 @@ class SourceFile extends Coveralls
     /**
      * Add coverage.
      *
-     * @param integer $lineNum Line number.
-     * @param integer $count   Number of covered.
+     * @param  integer $lineNum Line number.
+     * @param  integer $count   Number of covered.
      * @return void
      */
     public function addCoverage($lineNum, $count)
     {
         if (array_key_exists($lineNum, $this->coverage)) {
-            $this->coverage[$lineNum] = $count;
+            $this->coverage[$lineNum] += $count;
         }
     }
 

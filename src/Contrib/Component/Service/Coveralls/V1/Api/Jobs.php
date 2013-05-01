@@ -45,11 +45,18 @@ class Jobs extends CoverallsApi
     public function collectCloverXml()
     {
         $srcDir         = $this->config->getSrcDir();
-        $cloverXmlPath  = $this->config->getCloverXmlPath();
-
-        $xml            = simplexml_load_file($cloverXmlPath);
+        $cloverXmlPaths = $this->config->getCloverXmlPaths();
         $xmlCollector   = new CloverXmlCoverageCollector();
-        $this->jsonFile = $xmlCollector->collect($xml, $srcDir);
+
+        foreach ($cloverXmlPaths as $cloverXmlPath) {
+            $xml = simplexml_load_file($cloverXmlPath);
+
+            $xmlCollector->collect($xml, $srcDir);
+        }
+
+        $this->jsonFile = $xmlCollector->getJsonFile();
+
+        $this->jsonFile->sortSourceFiles();
 
         return $this;
     }
@@ -72,7 +79,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param array $env $_SERVER environment.
+     * @param  array                                            $env $_SERVER environment.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\Jobs
      */
     public function collectEnvVars(array $env)
@@ -101,7 +108,7 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
-     * @return array|null
+     * @return \Guzzle\Http\Message\Response|null
      * @throws \RuntimeException
      */
     public function send()
@@ -120,17 +127,17 @@ class Jobs extends CoverallsApi
     /**
      * Upload a file.
      *
-     * @param string $url      URL to upload.
-     * @param string $path     File path.
-     * @param string $filename Filename.
-     * @return array Returns the response(s)
+     * @param  string                        $url      URL to upload.
+     * @param  string                        $path     File path.
+     * @param  string                        $filename Filename.
+     * @return \Guzzle\Http\Message\Response Response.
+     * @throws \RuntimeException
      */
     protected function upload($url, $path, $filename)
     {
-        return $this->client
-        ->post($url)
-        ->addPostFiles(array($filename => $path))
-        ->send();
+        $request  = $this->client->post($url)->addPostFiles(array($filename => $path));
+
+        return $request->send();
     }
 
     // accessor
@@ -138,7 +145,7 @@ class Jobs extends CoverallsApi
     /**
      * Set JsonFile.
      *
-     * @param JsonFile $jsonFile json_file content.
+     * @param  JsonFile                                         $jsonFile json_file content.
      * @return \Contrib\Component\Service\Coveralls\V1\Api\Jobs
      */
     public function setJsonFile(JsonFile $jsonFile)

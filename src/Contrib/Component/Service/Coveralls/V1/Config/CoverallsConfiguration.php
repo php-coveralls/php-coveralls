@@ -1,7 +1,6 @@
 <?php
 namespace Contrib\Component\Service\Coveralls\V1\Config;
 
-use Contrib\Component\File\Path;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
@@ -53,7 +52,7 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->scalarNode('src_dir')
                     ->defaultValue('src')
                 ->end()
-                ->scalarNode('coverage_clover')
+                ->variableNode('coverage_clover')
                     ->defaultValue('build/logs/clover.xml')
                 ->end()
                 ->scalarNode('json_path')
