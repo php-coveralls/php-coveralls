@@ -14,5 +14,8 @@ composer.lock
 # travis
 travis/
 
-.coveralls.yml
+# bin
+composer.phar
 php-cs-fixer.phar
+
+.coveralls.yml
