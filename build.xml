@@ -161,7 +161,7 @@
         <exec executable="${basedir}/vendor/bin/phpcpd">
             <arg value="--log-pmd"/>
             <arg value="${basedir}/build/logs/pmd-cpd.xml"/>
-            <arg path="${basedir}/src/Contrib/Component/Service"/>
+            <arg path="${basedir}/src"/>
         </exec>
     </target>
 
