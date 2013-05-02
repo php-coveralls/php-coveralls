@@ -36,7 +36,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveSourceOnConstruction()
     {
-        $expected = file_get_contents($this->path);
+        $expected = trim(file_get_contents($this->path));
 
         $this->assertEquals($expected, $this->object->getSource());
     }
@@ -48,7 +48,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveNullCoverageOnConstruction()
     {
-        $expected = array_fill(0, 10, null);
+        $expected = array_fill(0, 9, null);
 
         $this->assertEquals($expected, $this->object->getCoverage());
     }
@@ -70,7 +70,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveFileLinesOnConstruction()
     {
-        $this->assertEquals(10, $this->object->getFileLines());
+        $this->assertEquals(9, $this->object->getFileLines());
     }
 
     // toArray()
@@ -82,8 +82,8 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     {
         $expected = array(
             'name'     => $this->filename,
-            'source'   => file_get_contents($this->path),
-            'coverage' => array_fill(0, 10, null),
+            'source'   => trim(file_get_contents($this->path)),
+            'coverage' => array_fill(0, 9, null),
         );
 
         $this->assertEquals($expected, $this->object->toArray());
@@ -99,7 +99,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     {
         $this->object->addCoverage(5, 1);
 
-        $expected = array_fill(0, 10, null);
+        $expected = array_fill(0, 9, null);
         $expected[5] = 1;
 
         $this->assertEquals($expected, $this->object->getCoverage());

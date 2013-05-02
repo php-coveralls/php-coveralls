@@ -155,10 +155,10 @@ XML;
     {
         $name1        = 'test.php';
         $path1        = $this->rootDir . DIRECTORY_SEPARATOR . $name1;
-        $fileLines1   = 10;
+        $fileLines1   = 9;
         $coverage1    = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
-        $source1      = file_get_contents($path1);
+        $source1      = trim(file_get_contents($path1));
 
         $this->assertSourceFile($sourceFile, $name1, $path1, $fileLines1, $coverage1, $source1);
     }
@@ -167,10 +167,10 @@ XML;
     {
         $name2        = 'test2.php';
         $path2        = $this->rootDir . DIRECTORY_SEPARATOR . $name2;
-        $fileLines2   = 11;
+        $fileLines2   = 10;
         $coverage2    = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;
-        $source2      = file_get_contents($path2);
+        $source2      = trim(file_get_contents($path2));
 
         $this->assertSourceFile($sourceFile, $name2, $path2, $fileLines2, $coverage2, $source2);
     }
