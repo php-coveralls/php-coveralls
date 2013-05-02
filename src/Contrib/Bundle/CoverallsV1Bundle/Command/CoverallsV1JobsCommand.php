@@ -1,6 +1,8 @@
 <?php
 namespace Contrib\Bundle\CoverallsV1Bundle\Command;
 
+use Symfony\Component\Stopwatch\Stopwatch;
+
 use Psr\Log\NullLogger;
 use Contrib\Component\Log\ConsoleLogger;
 use Contrib\Bundle\CoverallsV1Bundle\Api\Jobs;
@@ -85,10 +87,18 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $stopwatch = new Stopwatch();
+        $stopwatch->start(__CLASS__);
+
         $config = $this->loadConfiguration($input, $this->rootDir);
         $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
 
         $this->runApi($config);
+
+        $event = $stopwatch->stop(__CLASS__);
+        $time  = number_format($event->getDuration() / 1000, 2);     // sec
+        $mem   = number_format($event->getMemory() / (1024 * 1024)); // MB
+        $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return 0;
     }
@@ -146,7 +156,7 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function collectCloverXml(Configuration $config)
     {
-        $this->logger->info(sprintf('Load coverage clover log:'));
+        $this->logger->info('Load coverage clover log:');
 
         foreach ($config->getCloverXmlPaths() as $path) {
             $this->logger->info(sprintf('  - %s', $path));
@@ -160,7 +170,7 @@ class CoverallsV1JobsCommand extends Command
             $sourceFiles = $jsonFile->getSourceFiles();
             $numFiles    = count($sourceFiles);
 
-            $this->logger->info('Found %d source file%s:', $numFiles , $numFiles > 1 ? 's' : '');
+            $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
             foreach ($sourceFiles as $sourceFile) {
                 $this->logger->info(sprintf('  - %s', $sourceFile->getName()));
@@ -211,7 +221,8 @@ class CoverallsV1JobsCommand extends Command
 
         $this->api->dumpJsonFile();
 
-        $this->logger->info(sprintf('File size: %s bytes', filesize($jsonPath)));
+        $filesize = number_format(filesize($jsonPath) / 1024, 2); // kB
+        $this->logger->info(sprintf('File size: <info>%s</info> kB', $filesize));
 
         return $this;
     }
