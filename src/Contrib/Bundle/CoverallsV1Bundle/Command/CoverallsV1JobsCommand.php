@@ -203,9 +203,12 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function dumpJsonFile(Configuration $config)
     {
-        $this->logger->info(sprintf('Dump uploading json file: %s', $config->getJsonPath()));
+        $jsonPath = $config->getJsonPath();
+        $this->logger->info(sprintf('Dump uploading json file: %s', $jsonPath));
 
         $this->api->dumpJsonFile();
+
+        $this->logger->info(sprintf('File size: %s bytes', filesize($jsonPath)));
 
         return $this;
     }
