@@ -19,6 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Coveralls Jobs API v1 command.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class CoverallsV1JobsCommand extends Command
 {
@@ -232,7 +233,9 @@ class CoverallsV1JobsCommand extends Command
         } catch (CurlException $e) {
             // connection error
             // tested with network disconnected and got message:
-            // Connection error occurred. [curl] 6: Could not resolve host: (nil); nodename nor servname provided, or not known [url] https://coveralls.io/api/v1/jobs
+            //   Connection error occurred.
+            //   [curl] 6: Could not resolve host:
+            //   (nil); nodename nor servname provided, or not known [url] https://coveralls.io/api/v1/jobs
             $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
         } catch (ClientErrorResponseException $e) {
             // 422 Unprocessable Entity
