@@ -9,6 +9,7 @@ use Contrib\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
+use Guzzle\Http\Exception\CurlException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -18,6 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Coveralls Jobs API v1 command.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class CoverallsV1JobsCommand extends Command
 {
@@ -221,10 +223,20 @@ class CoverallsV1JobsCommand extends Command
             $response = $this->api->send();
 
             $message = $response
-                ? sprintf('Finish uploading. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
+                ? sprintf('Finish submitting. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
                 : 'Finish dry run';
 
+            $this->logger->info($message);
+
+            return;
             // @codeCoverageIgnoreStart
+        } catch (CurlException $e) {
+            // connection error
+            // tested with network disconnected and got message:
+            //   Connection error occurred.
+            //   [curl] 6: Could not resolve host:
+            //   (nil); nodename nor servname provided, or not known [url] https://coveralls.io/api/v1/jobs
+            $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
         } catch (ClientErrorResponseException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
@@ -233,11 +245,12 @@ class CoverallsV1JobsCommand extends Command
             // 503 Service Unavailable
             $response = $e->getResponse();
             $message  = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+        } catch (\Exception $e) {
+            $message  = sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString());
         }
-        // @codeCoverageIgnoreEnd
 
-        $this->logger->info($message);
-    }
+        $this->logger->error($message);
+    } // @codeCoverageIgnoreEnd
 
     // accessor
 
