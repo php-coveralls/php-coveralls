@@ -54,7 +54,7 @@ class SourceFile extends Coveralls
     {
         $this->path   = $path;
         $this->name   = $name;
-        $this->source = file_get_contents($path); //TODO trim() contents to avoid suspecious end of file coverage
+        $this->source = trim(file_get_contents($path));
 
         $lines = explode($eol, $this->source);
         $this->fileLines = count($lines);
