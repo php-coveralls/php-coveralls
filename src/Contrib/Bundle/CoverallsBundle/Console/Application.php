@@ -1,7 +1,7 @@
 <?php
 namespace Contrib\Bundle\CoverallsBundle\Console;
 
-use Contrib\Bundle\CoverallsBundle\Command\CoverallsV1JobsCommand;
+use Contrib\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Input\InputInterface;
 
