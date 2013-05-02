@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="PHP Coveralls" default="build" basedir=".">
-    <target name="build-ci" depends="prepare,lint,apigen,phploc,phpcb,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend"/>
+    <target name="build-ci" depends="prepare,lint,apigen,phploc,phpcb,php-cs-fixer-dry-run,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend"/>
 
-    <target name="build" depends="prepare,lint,apigen,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
+    <target name="build" depends="prepare,lint,apigen,php-cs-fixer-dry-run,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
 
     <target name="test" depends="prepare,lint,phpunit,pdepend"/>
 
-    <target name="analysis" depends="prepare,lint,phpcs,phpmd,phpcpd"/>
+    <target name="analysis" depends="prepare,lint,php-cs-fixer-dry-run,phpcs,phpmd,phpcpd"/>
 
     <target name="doc" depends="prepare,lint,apigen"/>
 
