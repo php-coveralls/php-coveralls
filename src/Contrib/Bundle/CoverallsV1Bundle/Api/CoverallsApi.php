@@ -52,7 +52,7 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param  \Guzzle\Http\Client                                      $client HTTP client.
+     * @param  \Guzzle\Http\Client                                $client HTTP client.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\CoverallsApi
      */
     public function setHttpClient(Client $client)

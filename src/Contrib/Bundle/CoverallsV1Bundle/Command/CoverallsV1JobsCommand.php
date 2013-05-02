@@ -96,8 +96,8 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Load configuration.
      *
-     * @param  InputInterface                                               $input   Input arguments.
-     * @param  string                                                       $rootDir Path to project root directory.
+     * @param  InputInterface                                         $input   Input arguments.
+     * @param  string                                                 $rootDir Path to project root directory.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     protected function loadConfiguration(InputInterface $input, $rootDir)
@@ -139,7 +139,7 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Collect clover XML into json_file.
      *
-     * @param  Configuration                                                  $config Configuration.
+     * @param  Configuration                                                    $config Configuration.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand
      */
     protected function collectCloverXml(Configuration $config)
@@ -196,7 +196,7 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Dump uploading json file.
      *
-     * @param  Configuration                                                  $config Configuration.
+     * @param  Configuration                                                    $config Configuration.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand
      */
     protected function dumpJsonFile(Configuration $config)

@@ -18,8 +18,8 @@ class Configurator
     /**
      * Load configuration.
      *
-     * @param  string                                                       $coverallsYmlPath Path to .coveralls.yml.
-     * @param  string                                                       $rootDir          Path to project root directory.
+     * @param  string                                                 $coverallsYmlPath Path to .coveralls.yml.
+     * @param  string                                                 $rootDir          Path to project root directory.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function load($coverallsYmlPath, $rootDir)
@@ -69,8 +69,8 @@ class Configurator
     /**
      * Create coveralls configuration.
      *
-     * @param  array                                                        $options Processed configuration.
-     * @param  string                                                       $rootDir Path to project root directory.
+     * @param  array                                                  $options Processed configuration.
+     * @param  string                                                 $rootDir Path to project root directory.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     protected function createConfiguration(array $options, $rootDir)

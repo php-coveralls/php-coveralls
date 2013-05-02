@@ -127,7 +127,7 @@ class JsonFile extends Coveralls
     /**
      * Fill environment variables.
      *
-     * @param  array                                                   $env $_SERVER environment.
+     * @param  array                                             $env $_SERVER environment.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      * @throws \RuntimeException
      */
@@ -199,7 +199,7 @@ class JsonFile extends Coveralls
      *
      * These vars are supported by Codeship.
      *
-     * @param  array                                                   $env $_SERVER environment.
+     * @param  array                                             $env $_SERVER environment.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     protected function fillStandardizedEnvVars(array $env)
@@ -316,7 +316,7 @@ class JsonFile extends Coveralls
     /**
      * Return source file.
      *
-     * @param  string                                                         $path Absolute path to source file.
+     * @param  string                                                   $path Absolute path to source file.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile|null
      */
     public function getSourceFile($path)

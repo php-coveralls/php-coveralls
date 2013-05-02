@@ -75,7 +75,7 @@ class Configuration
     /**
      * Set repository token.
      *
-     * @param  string                                                       $repoToken
+     * @param  string                                                 $repoToken
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setRepoToken($repoToken)
@@ -108,7 +108,7 @@ class Configuration
     /**
      * Set service name.
      *
-     * @param  string                                                       $serviceName
+     * @param  string                                                 $serviceName
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setServiceName($serviceName)
@@ -141,7 +141,7 @@ class Configuration
     /**
      * Set absolute path to src directory to include coverage report.
      *
-     * @param  string                                                       $srcDir
+     * @param  string                                                 $srcDir
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setSrcDir($srcDir)
@@ -164,7 +164,7 @@ class Configuration
     /**
      * Set absolute paths to clover.xml.
      *
-     * @param  string                                                       $cloverXmlPaths
+     * @param  string                                                 $cloverXmlPaths
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setCloverXmlPaths(array $cloverXmlPaths)
@@ -177,7 +177,7 @@ class Configuration
     /**
      * Add absolute path to clover.xml.
      *
-     * @param  string                                                       $cloverXmlPath
+     * @param  string                                                 $cloverXmlPath
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function addCloverXmlPath($cloverXmlPath)
@@ -200,7 +200,7 @@ class Configuration
     /**
      * Set absolute path to output json_file.
      *
-     * @param  string                                                       $jsonPath
+     * @param  string                                                 $jsonPath
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setJsonPath($jsonPath)
@@ -223,7 +223,7 @@ class Configuration
     /**
      * Set whether to send json_file to jobs API.
      *
-     * @param  boolean                                                      $dryRun
+     * @param  boolean                                                $dryRun
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setDryRun($dryRun)
@@ -246,7 +246,7 @@ class Configuration
     /**
      * Set whether to show log.
      *
-     * @param  boolean                                                      $verbose
+     * @param  boolean                                                $verbose
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setVerbose($verbose)
@@ -269,7 +269,7 @@ class Configuration
     /**
      * Set runtime environment name.
      *
-     * @param  string                                                       $env Runtime environment name.
+     * @param  string                                                 $env Runtime environment name.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     public function setEnv($env)

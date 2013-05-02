@@ -44,7 +44,7 @@ class Remote extends Coveralls
     /**
      * Set remote name.
      *
-     * @param  string                                                    $name Remote name.
+     * @param  string                                              $name Remote name.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Remote
      */
     public function setName($name)
@@ -71,7 +71,7 @@ class Remote extends Coveralls
     /**
      * Set remote URL.
      *
-     * @param  string                                                    $url Remote URL.
+     * @param  string                                              $url Remote URL.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Remote
      */
     public function setUrl($url)

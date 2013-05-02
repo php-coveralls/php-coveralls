@@ -79,7 +79,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param  array                                            $env $_SERVER environment.
+     * @param  array                                      $env $_SERVER environment.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
      */
     public function collectEnvVars(array $env)
@@ -145,7 +145,7 @@ class Jobs extends CoverallsApi
     /**
      * Set JsonFile.
      *
-     * @param  JsonFile                                         $jsonFile json_file content.
+     * @param  JsonFile                                   $jsonFile json_file content.
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
      */
     public function setJsonFile(JsonFile $jsonFile)
