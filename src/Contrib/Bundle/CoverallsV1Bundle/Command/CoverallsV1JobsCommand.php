@@ -157,9 +157,12 @@ class CoverallsV1JobsCommand extends Command
         $jsonFile = $this->api->getJsonFile();
 
         if ($jsonFile->hasSourceFiles()) {
-            $this->logger->info('Found source file: ');
+            $sourceFiles = $jsonFile->getSourceFiles();
+            $numFiles    = count($sourceFiles);
 
-            foreach ($jsonFile->getSourceFiles() as $sourceFile) {
+            $this->logger->info('Found %d source file%s:', $numFiles , $numFiles > 1 ? 's' : '');
+
+            foreach ($sourceFiles as $sourceFile) {
                 $this->logger->info(sprintf('  - %s', $sourceFile->getName()));
             }
         }
