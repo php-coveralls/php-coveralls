@@ -181,10 +181,11 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
+        // @codeCoverageIgnoreStart
         $color = function ($coverage, $format) {
-            // green 90% - 100% <info>
-            // yello 80% -  90% <comment>
-            // red    0% -  80% <fg=red>
+            // green  90% - 100% <info>
+            // yellow 80% -  90% <comment>
+            // red     0% -  80% <fg=red>
             if ($coverage >= 90) {
                 return sprintf('<info>%s</info>', $format);
             } elseif ($coverage >= 80) {
@@ -193,6 +194,7 @@ class CoverallsV1JobsCommand extends Command
                 return sprintf('<fg=red>%s</fg=red>', $format);
             }
         };
+        // @codeCoverageIgnoreEnd
 
         $sourceFiles = $jsonFile->getSourceFiles();
         $numFiles    = count($sourceFiles);
