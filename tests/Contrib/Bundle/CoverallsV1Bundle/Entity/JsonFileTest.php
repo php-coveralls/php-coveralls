@@ -41,7 +41,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
       <line num="5" type="method" name="__construct" crap="1" count="0"/>
-      <line num="7" type="stmt" count="0"/>
+      <line num="7" type="stmt" count="1"/>
     </file>
     <file name="dummy.php">
       <class name="TestFile" namespace="global">
@@ -240,6 +240,19 @@ XML;
         $this->assertNull($this->object->getRunAt());
     }
 
+    // getMetrics()
+
+    /**
+     * @test
+     */
+    public function shouldHaveEmptyMetrics()
+    {
+        $metrics = $this->object->getMetrics();
+
+        $this->assertEquals(0, $metrics->getStatements());
+        $this->assertEquals(0, $metrics->getCoveredStatements());
+        $this->assertEquals(0, $metrics->getLineCoverage());
+    }
 
     // setServiceName()
 
@@ -638,5 +651,23 @@ XML;
         $object = $this->collectJsonFileWithoutSourceFiles();
 
         $object->fillJobs($env);
+    }
+
+    // reportLineCoverage()
+
+    /**
+     * @test
+     */
+    public function reportLineCoverage()
+    {
+        $object = $this->collectJsonFile();
+
+        $this->assertEquals(50, $object->reportLineCoverage());
+
+        $metrics = $object->getMetrics();
+
+        $this->assertEquals(2, $metrics->getStatements());
+        $this->assertEquals(1, $metrics->getCoveredStatements());
+        $this->assertEquals(50, $metrics->getLineCoverage());
     }
 }
