@@ -286,10 +286,16 @@ class CoverallsV1JobsCommand extends Command
                 $body = $response->json();
 
                 if (isset($body['error'])) {
-                    $this->logger->info($body['message']);
+                    if (isset($body['message'])) {
+                        $this->logger->info($body['message']);
+                    }
                 } else {
-                    $this->logger->info(sprintf('Accepted %s', $body['message']));
-                    $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+                    if (isset($body['message'])) {
+                        $this->logger->info(sprintf('Accepted %s', $body['message']));
+                    }
+                    if (isset($body['url'])) {
+                        $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+                    }
                 }
             }
 
