@@ -279,8 +279,19 @@ class CoverallsV1JobsCommand extends Command
 
             $this->logger->info($message);
 
-            return;
             // @codeCoverageIgnoreStart
+            if ($response) {
+                $body = $response->json();
+
+                if ($body['error']) {
+                    $this->logger->info($body['message']);
+                } else {
+                    $this->logger->info(sprintf('Accepted %s', $body['message']));
+                    $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+                }
+            }
+
+            return;
         } catch (CurlException $e) {
             // connection error
             // tested with network disconnected and got message:
