@@ -9,7 +9,7 @@
 
     <target name="analysis" depends="prepare,lint,php-cs-fixer-dry-run,phpcs,phpmd,phpcpd"/>
 
-    <target name="doc" depends="prepare,lint,apigen"/>
+    <target name="doc" depends="prepare,lint,apigen,checkstyle-cli"/>
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/api"/>
