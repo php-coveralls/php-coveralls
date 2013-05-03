@@ -1,13 +1,12 @@
 <?php
 namespace Contrib\Bundle\CoverallsV1Bundle\Command;
 
-use Symfony\Component\Stopwatch\Stopwatch;
-
 use Psr\Log\NullLogger;
 use Contrib\Component\Log\ConsoleLogger;
 use Contrib\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
@@ -16,6 +15,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
  * Coveralls Jobs API v1 command.
@@ -167,17 +167,51 @@ class CoverallsV1JobsCommand extends Command
         $jsonFile = $this->api->getJsonFile();
 
         if ($jsonFile->hasSourceFiles()) {
-            $sourceFiles = $jsonFile->getSourceFiles();
-            $numFiles    = count($sourceFiles);
-
-            $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
-
-            foreach ($sourceFiles as $sourceFile) {
-                $this->logger->info(sprintf('  - %s', $sourceFile->getName()));
-            }
+            $this->logCollectedSourceFiles($jsonFile);
         }
 
         return $this;
+    }
+
+    /**
+     * Log collected source files.
+     *
+     * @param JsonFile $jsonFile
+     * @return void
+     */
+    protected function logCollectedSourceFiles(JsonFile $jsonFile)
+    {
+        $color = function ($coverage, $format) {
+            // green 90% - 100% <info>
+            // yello 80% -  90% <comment>
+            // red    0% -  80% <fg=red>
+            if ($coverage >= 90) {
+                return sprintf('<info>%s</info>', $format);
+            } elseif ($coverage >= 80) {
+                return sprintf('<comment>%s</comment>', $format);
+            } else {
+                return sprintf('<fg=red>%s</fg=red>', $format);
+            }
+        };
+
+        $sourceFiles = $jsonFile->getSourceFiles();
+        $numFiles    = count($sourceFiles);
+
+        $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
+
+        foreach ($sourceFiles as $sourceFile) {
+            /* @var $sourceFile \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile */
+            $coverage = $sourceFile->reportLineCoverage();
+            $template = '  - ' . $color($coverage, '%6.2f%%') . ' %s';
+
+            $this->logger->info(sprintf($template, $coverage, $sourceFile->getName()));
+        }
+
+        $coverage = $jsonFile->reportLineCoverage();
+        $template = 'Coverage: ' . $color($coverage, '%6.2f%% (%d/%d)');
+        $metrics  = $jsonFile->getMetrics();
+
+        $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));
     }
 
     /**
