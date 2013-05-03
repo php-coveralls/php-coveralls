@@ -18,11 +18,11 @@
         "ext-json": "*",
         "ext-curl": "*",
         "ext-simplexml": "*",
-        "symfony/yaml": "2.2.*@stable,<2.3.0",
-        "symfony/console": "2.2.*@stable,<2.3.0",
-        "symfony/config": "2.2.*@stable,<2.3.0",
-        "symfony/stopwatch": "2.*@stable",
-        "guzzle/guzzle": "3.4.*@stable",
+        "symfony/yaml": ">=2.0",
+        "symfony/console": ">=2.0",
+        "symfony/config": ">=2.0",
+        "symfony/stopwatch": ">=2.2",
+        "guzzle/guzzle": ">=3.0",
         "psr/log": "1.0.0"
     },
     "require-dev": {
