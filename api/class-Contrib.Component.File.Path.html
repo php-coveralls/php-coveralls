@@ -7,7 +7,7 @@
 	<title>Class Contrib\Component\File\Path | php-coveralls</title>
 
 	<script type="text/javascript" src="resources/combined.js?344576979"></script>
-	<script type="text/javascript" src="elementlist.js?1939296801"></script>
+	<script type="text/javascript" src="elementlist.js?2435059933"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 	<script type="text/javascript">
@@ -38,36 +38,32 @@
 						<ul>
 				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.html">CoverallsBundle<span></span></a>
 						<ul>
-				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Command.html">Command</a>
-						</li>
 				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Console.html">Console</a>
 						</li>
-							</ul></li></ul></li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsBundle.Entity.html">Entity</a>
+						</li>
+							</ul></li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.html">CoverallsV1Bundle<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Api.html">Api</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Collector.html">Collector</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Command.html">Command</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Config.html">Config</a>
+						</li>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Entity.html">Entity<span></span></a>
+						<ul>
+				<li class="main"><a href="namespace-Contrib.Bundle.CoverallsV1Bundle.Entity.Git.html">Git</a>
+						</li>
+							</ul></li></ul></li></ul></li>
 				<li class="active main"><a href="namespace-Contrib.Component.html">Component<span></span></a>
 						<ul>
-				<li class="main"><a href="namespace-Contrib.Component.Entity.html">Entity</a>
-						</li>
 				<li class="active main"><a href="namespace-Contrib.Component.File.html">File</a>
 						</li>
 				<li class="main"><a href="namespace-Contrib.Component.Log.html">Log</a>
 						</li>
-				<li class="main"><a href="namespace-Contrib.Component.Service.html">Service<span></span></a>
-						<ul>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.html">Coveralls<span></span></a>
-						<ul>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.html">V1<span></span></a>
-						<ul>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Api.html">Api</a>
-						</li>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Collector.html">Collector</a>
-						</li>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Config.html">Config</a>
-						</li>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.html">Entity<span></span></a>
-						<ul>
-				<li class="main"><a href="namespace-Contrib.Component.Service.Coveralls.V1.Entity.Git.html">Git</a>
-						</li>
-							</ul></li></ul></li></ul></li></ul></li>
 				<li class="main"><a href="namespace-Contrib.Component.System.html">System<span></span></a>
 						<ul>
 				<li class="main"><a href="namespace-Contrib.Component.System.Git.html">Git</a>
@@ -237,6 +233,8 @@
 				<li><a href="namespace-Symfony.Component.Finder.Shell.html">Shell</a>
 						</li>
 							</ul></li>
+				<li><a href="namespace-Symfony.Component.Stopwatch.html">Stopwatch</a>
+						</li>
 				<li><a href="namespace-Symfony.Component.Yaml.html">Yaml<span></span></a>
 						<ul>
 				<li><a href="namespace-Symfony.Component.Yaml.Exception.html">Exception</a>
@@ -323,7 +321,7 @@
 				<b>Author:</b>
 				Kitamura Satoshi &lt;<a
 href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail.com</a>&gt;<br />
-		<b>Located at</b> <a href="source-class-Contrib.Component.File.Path.html#4-145" title="Go to source code">Contrib/Component/File/Path.php</a><br />
+		<b>Located at</b> <a href="source-class-Contrib.Component.File.Path.html#4-165" title="Go to source code">Contrib/Component/File/Path.php</a><br />
 	</div>
 
 
@@ -372,6 +370,50 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="toAbsolutePath" id="_toAbsolutePath">
+
+		<td class="attributes"><code>
+			 public 
+			string|false
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toAbsolutePath">#</a>
+		<code><a href="source-class-Contrib.Component.File.Path.html#22-40" title="Go to source code">toAbsolutePath</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Cat file path.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Cat file path.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$path</var></dt>
+					<dd><code>string</code><br>$path File path.</dd>
+					<dt><var>$rootDir</var></dt>
+					<dd><code>string</code><br>$rootDir Absolute path to project root directory.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|false</code><br>Absolute path.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getRealPath" id="_getRealPath">
 
 		<td class="attributes"><code>
@@ -383,7 +425,7 @@ href="mailto:with.no.parachute&#64;gmail.com">with.no.parachute&#64;<!---->gmail
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRealPath">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#22-40" title="Go to source code">getRealPath</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#42-60" title="Go to source code">getRealPath</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
 
 		<div class="description short">
 			
@@ -428,7 +470,7 @@ otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRealDir">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#42-60" title="Go to source code">getRealDir</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#62-80" title="Go to source code">getRealDir</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
 
 		<div class="description short">
 			
@@ -473,7 +515,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRealWritingFilePath">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#62-78" title="Go to source code">getRealWritingFilePath</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#82-98" title="Go to source code">getRealWritingFilePath</a>( <span>string <var>$path</var></span>, <span>string <var>$rootDir</var></span> )</code>
 
 		<div class="description short">
 			
@@ -517,7 +559,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealPathExist">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#80-89" title="Go to source code">isRealPathExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#100-109" title="Go to source code">isRealPathExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -559,7 +601,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealFileExist">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#91-100" title="Go to source code">isRealFileExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#111-120" title="Go to source code">isRealFileExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -601,7 +643,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealFileReadable">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#102-111" title="Go to source code">isRealFileReadable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#122-131" title="Go to source code">isRealFileReadable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -643,7 +685,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealFileWritable">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#113-122" title="Go to source code">isRealFileWritable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#133-142" title="Go to source code">isRealFileWritable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -685,7 +727,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealDirExist">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#124-133" title="Go to source code">isRealDirExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#144-153" title="Go to source code">isRealDirExist</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
@@ -727,7 +769,7 @@ exists, false otherwise.<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRealDirWritable">#</a>
-		<code><a href="source-class-Contrib.Component.File.Path.html#135-144" title="Go to source code">isRealDirWritable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
+		<code><a href="source-class-Contrib.Component.File.Path.html#155-164" title="Go to source code">isRealDirWritable</a>( <span>string|boolean <var>$realpath</var></span> )</code>
 
 		<div class="description short">
 			
