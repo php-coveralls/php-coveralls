@@ -283,7 +283,7 @@ class CoverallsV1JobsCommand extends Command
             if ($response) {
                 $body = $response->json();
 
-                if ($body['error']) {
+                if (isset($body['error'])) {
                     $this->logger->info($body['message']);
                 } else {
                     $this->logger->info(sprintf('Accepted %s', $body['message']));

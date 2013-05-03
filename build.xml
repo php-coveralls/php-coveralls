@@ -3,7 +3,7 @@
 <project name="PHP Coveralls" default="build" basedir=".">
     <target name="build-ci" depends="prepare,lint,apigen,phploc,phpcb,php-cs-fixer-dry-run,phpcs-ci,phpmd-ci,phpcpd,phpunit,pdepend"/>
 
-    <target name="build" depends="prepare,lint,apigen,php-cs-fixer-dry-run,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
+    <target name="build" depends="prepare,lint,php-cs-fixer-dry-run,phpcs-ci,checkstyle-cli,phpmd,pmd-cli,phpcpd,phpunit,pdepend,junit-cli"/>
 
     <target name="test" depends="prepare,lint,phpunit,pdepend"/>
 
