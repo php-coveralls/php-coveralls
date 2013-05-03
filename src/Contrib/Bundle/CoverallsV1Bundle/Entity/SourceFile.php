@@ -44,6 +44,13 @@ class SourceFile extends Coveralls
     protected $fileLines;
 
     /**
+     * Metrics.
+     *
+     * @var Metrics
+     */
+    protected $metrics;
+
+    /**
      * Constructor.
      *
      * @param string $path Absolute path.
@@ -89,6 +96,16 @@ class SourceFile extends Coveralls
         if (array_key_exists($lineNum, $this->coverage)) {
             $this->coverage[$lineNum] += $count;
         }
+    }
+
+    /**
+     * Return line coverage.
+     *
+     * @return float
+     */
+    public function reportLineCoverage()
+    {
+        return $this->getMetrics()->getLineCoverage();
     }
 
     // accessor
@@ -141,5 +158,19 @@ class SourceFile extends Coveralls
     public function getFileLines()
     {
         return $this->fileLines;
+    }
+
+    /**
+     * Return metrics.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Metrics
+     */
+    public function getMetrics()
+    {
+        if (!isset($this->metrics)) {
+            $this->metrics = new Metrics($this->coverage);
+        }
+
+        return $this->metrics;
     }
 }

@@ -6,14 +6,17 @@ use Contrib\Component\Log\ConsoleLogger;
 use Contrib\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
+use Guzzle\Http\Message\Response;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
  * Coveralls Jobs API v1 command.
@@ -85,10 +88,18 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $stopwatch = new Stopwatch();
+        $stopwatch->start(__CLASS__);
+
         $config = $this->loadConfiguration($input, $this->rootDir);
         $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
 
         $this->runApi($config);
+
+        $event = $stopwatch->stop(__CLASS__);
+        $time  = number_format($event->getDuration() / 1000, 3);        // sec
+        $mem   = number_format($event->getMemory() / (1024 * 1024), 2); // MB
+        $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return 0;
     }
@@ -146,7 +157,7 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function collectCloverXml(Configuration $config)
     {
-        $this->logger->info(sprintf('Load coverage clover log:'));
+        $this->logger->info('Load coverage clover log:');
 
         foreach ($config->getCloverXmlPaths() as $path) {
             $this->logger->info(sprintf('  - %s', $path));
@@ -157,14 +168,53 @@ class CoverallsV1JobsCommand extends Command
         $jsonFile = $this->api->getJsonFile();
 
         if ($jsonFile->hasSourceFiles()) {
-            $this->logger->info('Found source file: ');
-
-            foreach ($jsonFile->getSourceFiles() as $sourceFile) {
-                $this->logger->info(sprintf('  - %s', $sourceFile->getName()));
-            }
+            $this->logCollectedSourceFiles($jsonFile);
         }
 
         return $this;
+    }
+
+    /**
+     * Log collected source files.
+     *
+     * @param  JsonFile $jsonFile
+     * @return void
+     */
+    protected function logCollectedSourceFiles(JsonFile $jsonFile)
+    {
+        // @codeCoverageIgnoreStart
+        $color = function ($coverage, $format) {
+            // green  90% - 100% <info>
+            // yellow 80% -  90% <comment>
+            // red     0% -  80% <fg=red>
+            if ($coverage >= 90) {
+                return sprintf('<info>%s</info>', $format);
+            } elseif ($coverage >= 80) {
+                return sprintf('<comment>%s</comment>', $format);
+            } else {
+                return sprintf('<fg=red>%s</fg=red>', $format);
+            }
+        };
+        // @codeCoverageIgnoreEnd
+
+        $sourceFiles = $jsonFile->getSourceFiles();
+        $numFiles    = count($sourceFiles);
+
+        $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
+
+        foreach ($sourceFiles as $sourceFile) {
+            /* @var $sourceFile \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile */
+            $coverage = $sourceFile->reportLineCoverage();
+            $template = '  - ' . $color($coverage, '%6.2f%%') . ' %s';
+
+            $this->logger->info(sprintf($template, $coverage, $sourceFile->getName()));
+        }
+
+        $coverage = $jsonFile->reportLineCoverage();
+        $template = 'Coverage: ' . $color($coverage, '%6.2f%% (%d/%d)');
+        $metrics  = $jsonFile->getMetrics();
+
+        $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));
     }
 
     /**
@@ -203,9 +253,13 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function dumpJsonFile(Configuration $config)
     {
-        $this->logger->info(sprintf('Dump uploading json file: %s', $config->getJsonPath()));
+        $jsonPath = $config->getJsonPath();
+        $this->logger->info(sprintf('Dump uploading json file: %s', $jsonPath));
 
         $this->api->dumpJsonFile();
+
+        $filesize = number_format(filesize($jsonPath) / 1024, 2); // kB
+        $this->logger->info(sprintf('File size: <info>%s</info> kB', $filesize));
 
         return $this;
     }
@@ -228,8 +282,12 @@ class CoverallsV1JobsCommand extends Command
 
             $this->logger->info($message);
 
-            return;
             // @codeCoverageIgnoreStart
+            if ($response instanceof Response) {
+                $this->logResponse($response);
+            }
+
+            return;
         } catch (CurlException $e) {
             // connection error
             // tested with network disconnected and got message:
@@ -251,6 +309,33 @@ class CoverallsV1JobsCommand extends Command
 
         $this->logger->error($message);
     } // @codeCoverageIgnoreEnd
+
+    /**
+     * Log response.
+     *
+     * @param  Response $response API response.
+     * @return void
+     *
+     * @codeCoverageIgnore
+     */
+    protected function logResponse(Response $response)
+    {
+        $body = $response->json();
+
+        if (isset($body['error'])) {
+            if (isset($body['message'])) {
+                $this->logger->info($body['message']);
+            }
+        } else {
+            if (isset($body['message'])) {
+                $this->logger->info(sprintf('Accepted %s', $body['message']));
+            }
+
+            if (isset($body['url'])) {
+                $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+            }
+        }
+    }
 
     // accessor
 
