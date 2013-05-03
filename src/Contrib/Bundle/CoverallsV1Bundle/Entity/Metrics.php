@@ -39,12 +39,22 @@ class Metrics
         if (!empty($coverage)) {
             // statements
             // not null
-            $statementsArray = array_filter($coverage, function ($line) {return $line !== null;});
+            $statementsArray = array_filter(
+                $coverage,
+                function ($line) {
+                    return $line !== null;
+                }
+            );
             $this->statements = count($statementsArray);
 
             // coveredstatements
             // gt 0
-            $coveredArray = array_filter($statementsArray, function ($line) {return $line > 0;});
+            $coveredArray = array_filter(
+                $statementsArray,
+                function ($line) {
+                    return $line > 0;
+                }
+            );
             $this->coveredStatements = count($coveredArray);
         } else {
             $this->statements        = 0;
@@ -57,7 +67,7 @@ class Metrics
     /**
      * Merge other metrics.
      *
-     * @param Metrics $that
+     * @param  Metrics $that
      * @return void
      */
     public function merge(Metrics $that)

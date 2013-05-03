@@ -176,7 +176,7 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Log collected source files.
      *
-     * @param JsonFile $jsonFile
+     * @param  JsonFile $jsonFile
      * @return void
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
