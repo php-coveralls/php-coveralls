@@ -104,4 +104,35 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $this->object->getCoverage());
     }
+
+    // getMetrics()
+    // reportLineCoverage()
+
+    /**
+     * @test
+     */
+    public function shouldLineCoverageZeroWithoutAddingCoverage()
+    {
+        $metrics = $this->object->getMetrics();
+
+        $this->assertEquals(0, $metrics->getStatements());
+        $this->assertEquals(0, $metrics->getCoveredStatements());
+        $this->assertEquals(0, $metrics->getLineCoverage());
+        $this->assertEquals(0, $this->object->reportLineCoverage());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLineCoverageAfterAddingCoverage()
+    {
+        $this->object->addCoverage(6, 1);
+
+        $metrics = $this->object->getMetrics();
+
+        $this->assertEquals(1, $metrics->getStatements());
+        $this->assertEquals(1, $metrics->getCoveredStatements());
+        $this->assertEquals(100, $metrics->getLineCoverage());
+        $this->assertEquals(100, $this->object->reportLineCoverage());
+    }
 }
