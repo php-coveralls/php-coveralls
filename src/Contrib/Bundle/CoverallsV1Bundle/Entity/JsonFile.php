@@ -89,6 +89,13 @@ class JsonFile extends Coveralls
      */
     protected $runAt;
 
+    /**
+     * Metrics.
+     *
+     * @var Metrics
+     */
+    protected $metrics;
+
     // API
 
     /**
@@ -146,6 +153,23 @@ class JsonFile extends Coveralls
     public function sortSourceFiles()
     {
         ksort($this->sourceFiles);
+    }
+
+    /**
+     * Return line coverage.
+     *
+     * @return float
+     */
+    public function reportLineCoverage()
+    {
+        $metrics = $this->getMetrics();
+
+        foreach ($this->sourceFiles as $sourceFile) {
+            /* @var $sourceFile \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile */
+            $metrics->merge($sourceFile->getMetrics());
+        }
+
+        return $metrics->getLineCoverage();
     }
 
     // internal method
@@ -541,5 +565,19 @@ class JsonFile extends Coveralls
         }
 
         return null;
+    }
+
+    /**
+     * Return metrics.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Metrics
+     */
+    public function getMetrics()
+    {
+        if (!isset($this->metrics)) {
+            $this->metrics = new Metrics();
+        }
+
+        return $this->metrics;
     }
 }
