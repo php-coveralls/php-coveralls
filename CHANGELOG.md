@@ -1,7 +1,7 @@
 CHANGELOG
 =============
 
-## 0.7 (WIP)
+## 0.6.1 (WIP)
 
 - Add CLI option: `--exclude-no-stmt`
 
