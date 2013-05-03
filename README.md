@@ -231,7 +231,7 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
-You can specify multiple `.coveralls.yml` logs at `coverage_clover`. This is useful for a project that has more than two test suites if all of the test results should be merged into one `json_file`.
+You can specify multiple `clover.xml` logs at `coverage_clover`. This is useful for a project that has more than two test suites if all of the test results should be merged into one `json_file`.
 
 ```yml
 #.coveralls.yml
