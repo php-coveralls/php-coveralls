@@ -1,10 +1,23 @@
 CHANGELOG
 =============
 
-## 0.6 (WIP)
+## 0.7 (WIP)
 
-- Support configuration for multiple clover.xml
+- Add CLI option: `--exclude-no-stmt`
+
+## 0.6
+
+- Support configuration for multiple clover.xml (issue #11)
+- Fix issue #12: end of file should not be included in code coverage
 - Show exception log at sending a request instead of exception backtrace
+- Log enhancement (issue #14): 
+    - show file size of `json_file`
+    - show number of included source files
+    - show elapsed time and memory usage
+    - show coverage
+    - show response message
+- Relax dependent libs version (issue #18)
+- Add connection error handling (issue #21)
 
 ## 0.5
 
