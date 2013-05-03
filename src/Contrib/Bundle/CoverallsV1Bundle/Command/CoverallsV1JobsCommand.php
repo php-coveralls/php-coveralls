@@ -11,6 +11,7 @@ use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
+use Guzzle\Http\Message\Response;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -282,21 +283,8 @@ class CoverallsV1JobsCommand extends Command
             $this->logger->info($message);
 
             // @codeCoverageIgnoreStart
-            if ($response) {
-                $body = $response->json();
-
-                if (isset($body['error'])) {
-                    if (isset($body['message'])) {
-                        $this->logger->info($body['message']);
-                    }
-                } else {
-                    if (isset($body['message'])) {
-                        $this->logger->info(sprintf('Accepted %s', $body['message']));
-                    }
-                    if (isset($body['url'])) {
-                        $this->logger->info(sprintf('You can see the build on %s', $body['url']));
-                    }
-                }
+            if ($response instanceof Response) {
+                $this->logResponse($response);
             }
 
             return;
@@ -321,6 +309,33 @@ class CoverallsV1JobsCommand extends Command
 
         $this->logger->error($message);
     } // @codeCoverageIgnoreEnd
+
+    /**
+     * Log response.
+     *
+     * @param  Response $response API response.
+     * @return void
+     *
+     * @codeCoverageIgnore
+     */
+    protected function logResponse(Response $response)
+    {
+        $body = $response->json();
+
+        if (isset($body['error'])) {
+            if (isset($body['message'])) {
+                $this->logger->info($body['message']);
+            }
+        } else {
+            if (isset($body['message'])) {
+                $this->logger->info(sprintf('Accepted %s', $body['message']));
+            }
+
+            if (isset($body['url'])) {
+                $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+            }
+        }
+    }
 
     // accessor
 
