@@ -96,8 +96,8 @@ class CoverallsV1JobsCommand extends Command
         $this->runApi($config);
 
         $event = $stopwatch->stop(__CLASS__);
-        $time  = number_format($event->getDuration() / 1000, 2);     // sec
-        $mem   = number_format($event->getMemory() / (1024 * 1024)); // MB
+        $time  = number_format($event->getDuration() / 1000, 3);        // sec
+        $mem   = number_format($event->getMemory() / (1024 * 1024), 2); // MB
         $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return 0;
