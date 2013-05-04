@@ -7,6 +7,7 @@ use Contrib\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile;
+use Guzzle\Common\Exception\RuntimeException;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
@@ -328,19 +329,28 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function logResponse(Response $response)
     {
-        $body = $response->json();
+        try {
+            $body = $response->json();
 
-        if (isset($body['error'])) {
-            if (isset($body['message'])) {
-                $this->logger->error($body['message']);
-            }
-        } else {
-            if (isset($body['message'])) {
-                $this->logger->info(sprintf('Accepted %s', $body['message']));
-            }
+            if (isset($body['error'])) {
+                if (isset($body['message'])) {
+                    $this->logger->error($body['message']);
+                }
+            } else {
+                if (isset($body['message'])) {
+                    $this->logger->info(sprintf('Accepted %s', $body['message']));
+                }
 
-            if (isset($body['url'])) {
-                $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+                if (isset($body['url'])) {
+                    $this->logger->info(sprintf('You can see the build on %s', $body['url']));
+                }
+            }
+        } catch (RuntimeException $e) {
+            // the response body is not in JSON format
+            $body = $response->getBody(true);
+
+            if ($body) {
+                $this->logger->error($body);
             }
         }
     }
