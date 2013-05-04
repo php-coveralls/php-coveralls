@@ -24,7 +24,7 @@ if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
     );
 }
 
-define('PHP_COVERALLS_VERSION', '0.6.1');
+define('PHP_COVERALLS_VERSION', '0.7.0');
 
 use Contrib\Bundle\CoverallsBundle\Console\Application;
 
