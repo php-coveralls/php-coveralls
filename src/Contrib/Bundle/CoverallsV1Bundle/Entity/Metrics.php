@@ -98,6 +98,16 @@ class Metrics
     // accessor
 
     /**
+     * Return whether the source file has executable statements.
+     *
+     * @return boolean
+     */
+    public function hasStatements()
+    {
+        return $this->statements !== 0;
+    }
+
+    /**
      * Return number of statements.
      *
      * @return integer

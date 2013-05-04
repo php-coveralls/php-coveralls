@@ -205,6 +205,14 @@ php-coveralls set the following properties to `json_file` which is sent to Cover
 - service_name: php-coveralls
 - service_event_type: manual
 
+## CLI options
+
+You can get help information for `coveralls` with the `--help (-h)` option.
+
+```sh
+php vendor/bin/coveralls --help
+```
+
 ## .coveralls.yml
 
 php-coveralls can use optional `.coveralls.yml` file to configure options. This configuration file is usually at the root level of your repository, but you can specify other path by `--config (or -c)` CLI option. Following options are the same as Ruby library ([see reference on coveralls.io](https://coveralls.io/docs/ruby)).

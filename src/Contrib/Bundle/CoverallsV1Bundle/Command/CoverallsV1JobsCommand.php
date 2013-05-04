@@ -73,6 +73,12 @@ class CoverallsV1JobsCommand extends Command
             'Do not send json_file to Jobs API'
         )
         ->addOption(
+            'exclude-no-stmt',
+            null,
+            InputOption::VALUE_NONE,
+            'Exclude source files that have no executable statements'
+        )
+        ->addOption(
             'env',
             '-e',
             InputOption::VALUE_OPTIONAL,
@@ -116,18 +122,16 @@ class CoverallsV1JobsCommand extends Command
     protected function loadConfiguration(InputInterface $input, $rootDir)
     {
         $coverallsYmlPath = $input->getOption('config');
-        $isDryRun         = $input->getOption('dry-run');
-        $verbose          = $input->getOption('verbose');
-        $env              = $input->getOption('env');
 
         $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
         ->load($ymlPath, $rootDir)
-        ->setDryRun($isDryRun)
-        ->setVerbose($verbose)
-        ->setEnv($env);
+        ->setDryRun($input->getOption('dry-run'))
+        ->setExcludeNoStatementsUnlessFalse($input->getOption('exclude-no-stmt'))
+        ->setVerbose($input->getOption('verbose'))
+        ->setEnv($input->getOption('env'));
     }
 
     /**

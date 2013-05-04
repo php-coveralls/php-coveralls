@@ -69,7 +69,7 @@ class JsonFile extends Coveralls
     /**
      * Source files.
      *
-     * @var SourceFile[]
+     * @var \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile[]
      */
     protected $sourceFiles = array();
 
@@ -143,6 +143,21 @@ class JsonFile extends Coveralls
         return $this
         ->fillStandardizedEnvVars($env)
         ->ensureJobs();
+    }
+
+    /**
+     * Exclude source files that have no executable statements.
+     *
+     * @return void
+     */
+    public function excludeNoStatementsFiles()
+    {
+        $this->sourceFiles = array_filter(
+            $this->sourceFiles,
+            function (SourceFile $sourceFile) {
+                return $sourceFile->getMetrics()->hasStatements();
+            }
+        );
     }
 
     /**
@@ -353,7 +368,7 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Add SourceFile.
+     * Add source file.
      *
      * @param SourceFile $sourceFile
      */
@@ -363,7 +378,7 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * Return whether the SourceFile object exists.
+     * Return whether the json file has a source file.
      *
      * @return boolean
      */

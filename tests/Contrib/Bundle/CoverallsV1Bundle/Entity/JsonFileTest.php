@@ -43,6 +43,18 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
       <line num="5" type="method" name="__construct" crap="1" count="0"/>
       <line num="7" type="stmt" count="1"/>
     </file>
+    <file name="%s/TestInterface.php">
+      <class name="TestInterface" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="hello" crap="1" count="0"/>
+    </file>
+    <file name="%s/AbstractClass.php">
+      <class name="AbstractClass" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="hello" crap="1" count="0"/>
+    </file>
     <file name="dummy.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
@@ -62,7 +74,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->rootDir, $this->rootDir);
+        return sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir, $this->rootDir);
     }
 
     protected function createCloverXml()
@@ -669,5 +681,45 @@ XML;
         $this->assertEquals(2, $metrics->getStatements());
         $this->assertEquals(1, $metrics->getCoveredStatements());
         $this->assertEquals(50, $metrics->getLineCoverage());
+    }
+
+    // excludeNoStatementsFiles()
+
+    /**
+     * @test
+     */
+    public function excludeNoStatementsFiles()
+    {
+        $rootDir = $this->rootDir . DIRECTORY_SEPARATOR;
+
+        $object = $this->collectJsonFile();
+
+        // before excluding
+        $sourceFiles = $object->getSourceFiles();
+        $this->assertCount(4, $sourceFiles);
+
+        // filenames
+        $paths     = array_keys($sourceFiles);
+        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+
+        $this->assertContains('test.php', $filenames);
+        $this->assertContains('test2.php', $filenames);
+        $this->assertContains('TestInterface.php', $filenames);
+        $this->assertContains('AbstractClass.php', $filenames);
+
+        // after excluding
+        $object->excludeNoStatementsFiles();
+
+        $sourceFiles = $object->getSourceFiles();
+        $this->assertCount(2, $sourceFiles);
+
+        // filenames
+        $paths     = array_keys($sourceFiles);
+        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+
+        $this->assertContains('test.php', $filenames);
+        $this->assertContains('test2.php', $filenames);
+        $this->assertNotContains('TestInterface.php', $filenames);
+        $this->assertNotContains('AbstractClass.php', $filenames);
     }
 }
