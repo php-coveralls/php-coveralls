@@ -399,40 +399,50 @@
 </span><span id="98" class="l"><a class="l" href="#98"> 98: </a>    <span class="php-comment">// accessor</span>
 </span><span id="99" class="l"><a class="l" href="#99"> 99: </a>
 </span><span id="100" class="l"><a class="l" href="#100">100: </a>    <span class="php-comment">/**
-</span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">     * Return number of statements.
+</span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">     * Return whether the source file has executable statements.
 </span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     *
-</span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">     * @return integer
+</span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">     * @return boolean
 </span></span><span id="104" class="l"><a class="l" href="#104">104: </a><span class="php-comment">     */</span>
-</span><span id="105" class="l"><a class="l" href="#105">105: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getStatements" href="#_getStatements">getStatements</a>()
+</span><span id="105" class="l"><a class="l" href="#105">105: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_hasStatements" href="#_hasStatements">hasStatements</a>()
 </span><span id="106" class="l"><a class="l" href="#106">106: </a>    {
-</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;statements;
+</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;statements !== <span class="php-num">0</span>;
 </span><span id="108" class="l"><a class="l" href="#108">108: </a>    }
 </span><span id="109" class="l"><a class="l" href="#109">109: </a>
 </span><span id="110" class="l"><a class="l" href="#110">110: </a>    <span class="php-comment">/**
-</span></span><span id="111" class="l"><a class="l" href="#111">111: </a><span class="php-comment">     * Return number of covered statements.
+</span></span><span id="111" class="l"><a class="l" href="#111">111: </a><span class="php-comment">     * Return number of statements.
 </span></span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-comment">     *
 </span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     * @return integer
 </span></span><span id="114" class="l"><a class="l" href="#114">114: </a><span class="php-comment">     */</span>
-</span><span id="115" class="l"><a class="l" href="#115">115: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getCoveredStatements" href="#_getCoveredStatements">getCoveredStatements</a>()
+</span><span id="115" class="l"><a class="l" href="#115">115: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getStatements" href="#_getStatements">getStatements</a>()
 </span><span id="116" class="l"><a class="l" href="#116">116: </a>    {
-</span><span id="117" class="l"><a class="l" href="#117">117: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;coveredStatements;
+</span><span id="117" class="l"><a class="l" href="#117">117: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;statements;
 </span><span id="118" class="l"><a class="l" href="#118">118: </a>    }
 </span><span id="119" class="l"><a class="l" href="#119">119: </a>
 </span><span id="120" class="l"><a class="l" href="#120">120: </a>    <span class="php-comment">/**
-</span></span><span id="121" class="l"><a class="l" href="#121">121: </a><span class="php-comment">     * Return line coverage.
+</span></span><span id="121" class="l"><a class="l" href="#121">121: </a><span class="php-comment">     * Return number of covered statements.
 </span></span><span id="122" class="l"><a class="l" href="#122">122: </a><span class="php-comment">     *
-</span></span><span id="123" class="l"><a class="l" href="#123">123: </a><span class="php-comment">     * @return float
+</span></span><span id="123" class="l"><a class="l" href="#123">123: </a><span class="php-comment">     * @return integer
 </span></span><span id="124" class="l"><a class="l" href="#124">124: </a><span class="php-comment">     */</span>
-</span><span id="125" class="l"><a class="l" href="#125">125: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getLineCoverage" href="#_getLineCoverage">getLineCoverage</a>()
+</span><span id="125" class="l"><a class="l" href="#125">125: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getCoveredStatements" href="#_getCoveredStatements">getCoveredStatements</a>()
 </span><span id="126" class="l"><a class="l" href="#126">126: </a>    {
-</span><span id="127" class="l"><a class="l" href="#127">127: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;lineCoverage)) {
-</span><span id="128" class="l"><a class="l" href="#128">128: </a>            <span class="php-var">$this</span>-&gt;lineCoverage = <span class="php-var">$this</span>-&gt;calculateLineCoverage(<span class="php-var">$this</span>-&gt;statements, <span class="php-var">$this</span>-&gt;coveredStatements);
-</span><span id="129" class="l"><a class="l" href="#129">129: </a>        }
-</span><span id="130" class="l"><a class="l" href="#130">130: </a>
-</span><span id="131" class="l"><a class="l" href="#131">131: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;lineCoverage;
-</span><span id="132" class="l"><a class="l" href="#132">132: </a>    }
-</span><span id="133" class="l"><a class="l" href="#133">133: </a>}
-</span><span id="134" class="l"><a class="l" href="#134">134: </a></span></code></pre>
+</span><span id="127" class="l"><a class="l" href="#127">127: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;coveredStatements;
+</span><span id="128" class="l"><a class="l" href="#128">128: </a>    }
+</span><span id="129" class="l"><a class="l" href="#129">129: </a>
+</span><span id="130" class="l"><a class="l" href="#130">130: </a>    <span class="php-comment">/**
+</span></span><span id="131" class="l"><a class="l" href="#131">131: </a><span class="php-comment">     * Return line coverage.
+</span></span><span id="132" class="l"><a class="l" href="#132">132: </a><span class="php-comment">     *
+</span></span><span id="133" class="l"><a class="l" href="#133">133: </a><span class="php-comment">     * @return float
+</span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     */</span>
+</span><span id="135" class="l"><a class="l" href="#135">135: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getLineCoverage" href="#_getLineCoverage">getLineCoverage</a>()
+</span><span id="136" class="l"><a class="l" href="#136">136: </a>    {
+</span><span id="137" class="l"><a class="l" href="#137">137: </a>        <span class="php-keyword1">if</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;lineCoverage)) {
+</span><span id="138" class="l"><a class="l" href="#138">138: </a>            <span class="php-var">$this</span>-&gt;lineCoverage = <span class="php-var">$this</span>-&gt;calculateLineCoverage(<span class="php-var">$this</span>-&gt;statements, <span class="php-var">$this</span>-&gt;coveredStatements);
+</span><span id="139" class="l"><a class="l" href="#139">139: </a>        }
+</span><span id="140" class="l"><a class="l" href="#140">140: </a>
+</span><span id="141" class="l"><a class="l" href="#141">141: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;lineCoverage;
+</span><span id="142" class="l"><a class="l" href="#142">142: </a>    }
+</span><span id="143" class="l"><a class="l" href="#143">143: </a>}
+</span><span id="144" class="l"><a class="l" href="#144">144: </a></span></code></pre>
 
 	<div id="footer">
 		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

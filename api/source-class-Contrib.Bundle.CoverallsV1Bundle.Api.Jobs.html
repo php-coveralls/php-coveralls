@@ -355,120 +355,124 @@
 </span><span id="56" class="l"><a class="l" href="#56"> 56: </a>
 </span><span id="57" class="l"><a class="l" href="#57"> 57: </a>        <span class="php-var">$this</span>-&gt;jsonFile = <span class="php-var">$xmlCollector</span>-&gt;getJsonFile();
 </span><span id="58" class="l"><a class="l" href="#58"> 58: </a>
-</span><span id="59" class="l"><a class="l" href="#59"> 59: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;sortSourceFiles();
-</span><span id="60" class="l"><a class="l" href="#60"> 60: </a>
-</span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="62" class="l"><a class="l" href="#62"> 62: </a>    }
-</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>
-</span><span id="64" class="l"><a class="l" href="#64"> 64: </a>    <span class="php-comment">/**
-</span></span><span id="65" class="l"><a class="l" href="#65"> 65: </a><span class="php-comment">     * Collect git repository info into json_file.
-</span></span><span id="66" class="l"><a class="l" href="#66"> 66: </a><span class="php-comment">     *
-</span></span><span id="67" class="l"><a class="l" href="#67"> 67: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
-</span></span><span id="68" class="l"><a class="l" href="#68"> 68: </a><span class="php-comment">     */</span>
-</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_collectGitInfo" href="#_collectGitInfo">collectGitInfo</a>()
-</span><span id="70" class="l"><a class="l" href="#70"> 70: </a>    {
-</span><span id="71" class="l"><a class="l" href="#71"> 71: </a>        <span class="php-var">$command</span>      = <span class="php-keyword1">new</span> GitCommand();
-</span><span id="72" class="l"><a class="l" href="#72"> 72: </a>        <span class="php-var">$gitCollector</span> = <span class="php-keyword1">new</span> GitInfoCollector(<span class="php-var">$command</span>);
-</span><span id="73" class="l"><a class="l" href="#73"> 73: </a>
-</span><span id="74" class="l"><a class="l" href="#74"> 74: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;setGit(<span class="php-var">$gitCollector</span>-&gt;collect());
-</span><span id="75" class="l"><a class="l" href="#75"> 75: </a>
-</span><span id="76" class="l"><a class="l" href="#76"> 76: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="77" class="l"><a class="l" href="#77"> 77: </a>    }
-</span><span id="78" class="l"><a class="l" href="#78"> 78: </a>
-</span><span id="79" class="l"><a class="l" href="#79"> 79: </a>    <span class="php-comment">/**
-</span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">     * Collect environment variables.
-</span></span><span id="81" class="l"><a class="l" href="#81"> 81: </a><span class="php-comment">     *
-</span></span><span id="82" class="l"><a class="l" href="#82"> 82: </a><span class="php-comment">     * @param  array                                      $env $_SERVER environment.
-</span></span><span id="83" class="l"><a class="l" href="#83"> 83: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
-</span></span><span id="84" class="l"><a class="l" href="#84"> 84: </a><span class="php-comment">     */</span>
-</span><span id="85" class="l"><a class="l" href="#85"> 85: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_collectEnvVars" href="#_collectEnvVars">collectEnvVars</a>(<span class="php-keyword1">array</span> <span class="php-var">$env</span>)
-</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>    {
-</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>        <span class="php-var">$envCollector</span> = <span class="php-keyword1">new</span> CiEnvVarsCollector(<span class="php-var">$this</span>-&gt;config);
-</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>
-</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;fillJobs(<span class="php-var">$envCollector</span>-&gt;collect(<span class="php-var">$env</span>));
-</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>
-</span><span id="91" class="l"><a class="l" href="#91"> 91: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>    }
-</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>
-</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>    <span class="php-comment">/**
-</span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-comment">     * Dump uploading json file.
-</span></span><span id="96" class="l"><a class="l" href="#96"> 96: </a><span class="php-comment">     *
-</span></span><span id="97" class="l"><a class="l" href="#97"> 97: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
-</span></span><span id="98" class="l"><a class="l" href="#98"> 98: </a><span class="php-comment">     */</span>
-</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_dumpJsonFile" href="#_dumpJsonFile">dumpJsonFile</a>()
-</span><span id="100" class="l"><a class="l" href="#100">100: </a>    {
-</span><span id="101" class="l"><a class="l" href="#101">101: </a>        <span class="php-var">$jsonPath</span> = <span class="php-var">$this</span>-&gt;config-&gt;getJsonPath();
-</span><span id="102" class="l"><a class="l" href="#102">102: </a>
-</span><span id="103" class="l"><a class="l" href="#103">103: </a>        <span class="php-keyword2">file_put_contents</span>(<span class="php-var">$jsonPath</span>, <span class="php-var">$this</span>-&gt;jsonFile);
-</span><span id="104" class="l"><a class="l" href="#104">104: </a>
-</span><span id="105" class="l"><a class="l" href="#105">105: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="106" class="l"><a class="l" href="#106">106: </a>    }
-</span><span id="107" class="l"><a class="l" href="#107">107: </a>
-</span><span id="108" class="l"><a class="l" href="#108">108: </a>    <span class="php-comment">/**
-</span></span><span id="109" class="l"><a class="l" href="#109">109: </a><span class="php-comment">     * Send json_file to jobs API.
-</span></span><span id="110" class="l"><a class="l" href="#110">110: </a><span class="php-comment">     *
-</span></span><span id="111" class="l"><a class="l" href="#111">111: </a><span class="php-comment">     * @return \Guzzle\Http\Message\Response|null
-</span></span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-comment">     * @throws \RuntimeException
-</span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     */</span>
-</span><span id="114" class="l"><a class="l" href="#114">114: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_send" href="#_send">send</a>()
-</span><span id="115" class="l"><a class="l" href="#115">115: </a>    {
-</span><span id="116" class="l"><a class="l" href="#116">116: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;config-&gt;isDryRun()) {
-</span><span id="117" class="l"><a class="l" href="#117">117: </a>            <span class="php-keyword1">return</span>;
-</span><span id="118" class="l"><a class="l" href="#118">118: </a>        }
-</span><span id="119" class="l"><a class="l" href="#119">119: </a>
-</span><span id="120" class="l"><a class="l" href="#120">120: </a>        <span class="php-var">$jsonPath</span> = <span class="php-var">$this</span>-&gt;config-&gt;getJsonPath();
-</span><span id="121" class="l"><a class="l" href="#121">121: </a>
-</span><span id="122" class="l"><a class="l" href="#122">122: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;upload(<span class="php-keyword1">static</span>::URL, <span class="php-var">$jsonPath</span>, <span class="php-keyword1">static</span>::FILENAME);
-</span><span id="123" class="l"><a class="l" href="#123">123: </a>    }
-</span><span id="124" class="l"><a class="l" href="#124">124: </a>
-</span><span id="125" class="l"><a class="l" href="#125">125: </a>    <span class="php-comment">// internal method</span>
-</span><span id="126" class="l"><a class="l" href="#126">126: </a>
-</span><span id="127" class="l"><a class="l" href="#127">127: </a>    <span class="php-comment">/**
-</span></span><span id="128" class="l"><a class="l" href="#128">128: </a><span class="php-comment">     * Upload a file.
-</span></span><span id="129" class="l"><a class="l" href="#129">129: </a><span class="php-comment">     *
-</span></span><span id="130" class="l"><a class="l" href="#130">130: </a><span class="php-comment">     * @param  string                        $url      URL to upload.
-</span></span><span id="131" class="l"><a class="l" href="#131">131: </a><span class="php-comment">     * @param  string                        $path     File path.
-</span></span><span id="132" class="l"><a class="l" href="#132">132: </a><span class="php-comment">     * @param  string                        $filename Filename.
-</span></span><span id="133" class="l"><a class="l" href="#133">133: </a><span class="php-comment">     * @return \Guzzle\Http\Message\Response Response.
-</span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     * @throws \RuntimeException
-</span></span><span id="135" class="l"><a class="l" href="#135">135: </a><span class="php-comment">     */</span>
-</span><span id="136" class="l"><a class="l" href="#136">136: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_upload" href="#_upload">upload</a>(<span class="php-var">$url</span>, <span class="php-var">$path</span>, <span class="php-var">$filename</span>)
-</span><span id="137" class="l"><a class="l" href="#137">137: </a>    {
-</span><span id="138" class="l"><a class="l" href="#138">138: </a>        <span class="php-var">$request</span>  = <span class="php-var">$this</span>-&gt;client-&gt;post(<span class="php-var">$url</span>)-&gt;addPostFiles(<span class="php-keyword1">array</span>(<span class="php-var">$filename</span> =&gt; <span class="php-var">$path</span>));
-</span><span id="139" class="l"><a class="l" href="#139">139: </a>
-</span><span id="140" class="l"><a class="l" href="#140">140: </a>        <span class="php-keyword1">return</span> <span class="php-var">$request</span>-&gt;send();
-</span><span id="141" class="l"><a class="l" href="#141">141: </a>    }
-</span><span id="142" class="l"><a class="l" href="#142">142: </a>
-</span><span id="143" class="l"><a class="l" href="#143">143: </a>    <span class="php-comment">// accessor</span>
-</span><span id="144" class="l"><a class="l" href="#144">144: </a>
-</span><span id="145" class="l"><a class="l" href="#145">145: </a>    <span class="php-comment">/**
-</span></span><span id="146" class="l"><a class="l" href="#146">146: </a><span class="php-comment">     * Set JsonFile.
-</span></span><span id="147" class="l"><a class="l" href="#147">147: </a><span class="php-comment">     *
-</span></span><span id="148" class="l"><a class="l" href="#148">148: </a><span class="php-comment">     * @param  JsonFile                                   $jsonFile json_file content.
-</span></span><span id="149" class="l"><a class="l" href="#149">149: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
-</span></span><span id="150" class="l"><a class="l" href="#150">150: </a><span class="php-comment">     */</span>
-</span><span id="151" class="l"><a class="l" href="#151">151: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setJsonFile" href="#_setJsonFile">setJsonFile</a>(JsonFile <span class="php-var">$jsonFile</span>)
-</span><span id="152" class="l"><a class="l" href="#152">152: </a>    {
-</span><span id="153" class="l"><a class="l" href="#153">153: </a>        <span class="php-var">$this</span>-&gt;jsonFile = <span class="php-var">$jsonFile</span>;
-</span><span id="154" class="l"><a class="l" href="#154">154: </a>
-</span><span id="155" class="l"><a class="l" href="#155">155: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="156" class="l"><a class="l" href="#156">156: </a>    }
-</span><span id="157" class="l"><a class="l" href="#157">157: </a>
-</span><span id="158" class="l"><a class="l" href="#158">158: </a>    <span class="php-comment">/**
-</span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     * Return JsonFile.
-</span></span><span id="160" class="l"><a class="l" href="#160">160: </a><span class="php-comment">     *
-</span></span><span id="161" class="l"><a class="l" href="#161">161: </a><span class="php-comment">     * @return JsonFile
-</span></span><span id="162" class="l"><a class="l" href="#162">162: </a><span class="php-comment">     */</span>
-</span><span id="163" class="l"><a class="l" href="#163">163: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getJsonFile" href="#_getJsonFile">getJsonFile</a>()
-</span><span id="164" class="l"><a class="l" href="#164">164: </a>    {
-</span><span id="165" class="l"><a class="l" href="#165">165: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;jsonFile)) {
-</span><span id="166" class="l"><a class="l" href="#166">166: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;jsonFile;
-</span><span id="167" class="l"><a class="l" href="#167">167: </a>        }
-</span><span id="168" class="l"><a class="l" href="#168">168: </a>
-</span><span id="169" class="l"><a class="l" href="#169">169: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">null</span>;
-</span><span id="170" class="l"><a class="l" href="#170">170: </a>    }
-</span><span id="171" class="l"><a class="l" href="#171">171: </a>}
-</span><span id="172" class="l"><a class="l" href="#172">172: </a></span></code></pre>
+</span><span id="59" class="l"><a class="l" href="#59"> 59: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;config-&gt;isExcludeNoStatements()) {
+</span><span id="60" class="l"><a class="l" href="#60"> 60: </a>            <span class="php-var">$this</span>-&gt;jsonFile-&gt;excludeNoStatementsFiles();
+</span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        }
+</span><span id="62" class="l"><a class="l" href="#62"> 62: </a>
+</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;sortSourceFiles();
+</span><span id="64" class="l"><a class="l" href="#64"> 64: </a>
+</span><span id="65" class="l"><a class="l" href="#65"> 65: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="66" class="l"><a class="l" href="#66"> 66: </a>    }
+</span><span id="67" class="l"><a class="l" href="#67"> 67: </a>
+</span><span id="68" class="l"><a class="l" href="#68"> 68: </a>    <span class="php-comment">/**
+</span></span><span id="69" class="l"><a class="l" href="#69"> 69: </a><span class="php-comment">     * Collect git repository info into json_file.
+</span></span><span id="70" class="l"><a class="l" href="#70"> 70: </a><span class="php-comment">     *
+</span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
+</span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment">     */</span>
+</span><span id="73" class="l"><a class="l" href="#73"> 73: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_collectGitInfo" href="#_collectGitInfo">collectGitInfo</a>()
+</span><span id="74" class="l"><a class="l" href="#74"> 74: </a>    {
+</span><span id="75" class="l"><a class="l" href="#75"> 75: </a>        <span class="php-var">$command</span>      = <span class="php-keyword1">new</span> GitCommand();
+</span><span id="76" class="l"><a class="l" href="#76"> 76: </a>        <span class="php-var">$gitCollector</span> = <span class="php-keyword1">new</span> GitInfoCollector(<span class="php-var">$command</span>);
+</span><span id="77" class="l"><a class="l" href="#77"> 77: </a>
+</span><span id="78" class="l"><a class="l" href="#78"> 78: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;setGit(<span class="php-var">$gitCollector</span>-&gt;collect());
+</span><span id="79" class="l"><a class="l" href="#79"> 79: </a>
+</span><span id="80" class="l"><a class="l" href="#80"> 80: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="81" class="l"><a class="l" href="#81"> 81: </a>    }
+</span><span id="82" class="l"><a class="l" href="#82"> 82: </a>
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>    <span class="php-comment">/**
+</span></span><span id="84" class="l"><a class="l" href="#84"> 84: </a><span class="php-comment">     * Collect environment variables.
+</span></span><span id="85" class="l"><a class="l" href="#85"> 85: </a><span class="php-comment">     *
+</span></span><span id="86" class="l"><a class="l" href="#86"> 86: </a><span class="php-comment">     * @param  array                                      $env $_SERVER environment.
+</span></span><span id="87" class="l"><a class="l" href="#87"> 87: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
+</span></span><span id="88" class="l"><a class="l" href="#88"> 88: </a><span class="php-comment">     */</span>
+</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_collectEnvVars" href="#_collectEnvVars">collectEnvVars</a>(<span class="php-keyword1">array</span> <span class="php-var">$env</span>)
+</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>    {
+</span><span id="91" class="l"><a class="l" href="#91"> 91: </a>        <span class="php-var">$envCollector</span> = <span class="php-keyword1">new</span> CiEnvVarsCollector(<span class="php-var">$this</span>-&gt;config);
+</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>
+</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>        <span class="php-var">$this</span>-&gt;jsonFile-&gt;fillJobs(<span class="php-var">$envCollector</span>-&gt;collect(<span class="php-var">$env</span>));
+</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>
+</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>    }
+</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>
+</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>    <span class="php-comment">/**
+</span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">     * Dump uploading json file.
+</span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">     *
+</span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
+</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     */</span>
+</span><span id="103" class="l"><a class="l" href="#103">103: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_dumpJsonFile" href="#_dumpJsonFile">dumpJsonFile</a>()
+</span><span id="104" class="l"><a class="l" href="#104">104: </a>    {
+</span><span id="105" class="l"><a class="l" href="#105">105: </a>        <span class="php-var">$jsonPath</span> = <span class="php-var">$this</span>-&gt;config-&gt;getJsonPath();
+</span><span id="106" class="l"><a class="l" href="#106">106: </a>
+</span><span id="107" class="l"><a class="l" href="#107">107: </a>        <span class="php-keyword2">file_put_contents</span>(<span class="php-var">$jsonPath</span>, <span class="php-var">$this</span>-&gt;jsonFile);
+</span><span id="108" class="l"><a class="l" href="#108">108: </a>
+</span><span id="109" class="l"><a class="l" href="#109">109: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="110" class="l"><a class="l" href="#110">110: </a>    }
+</span><span id="111" class="l"><a class="l" href="#111">111: </a>
+</span><span id="112" class="l"><a class="l" href="#112">112: </a>    <span class="php-comment">/**
+</span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     * Send json_file to jobs API.
+</span></span><span id="114" class="l"><a class="l" href="#114">114: </a><span class="php-comment">     *
+</span></span><span id="115" class="l"><a class="l" href="#115">115: </a><span class="php-comment">     * @return \Guzzle\Http\Message\Response|null
+</span></span><span id="116" class="l"><a class="l" href="#116">116: </a><span class="php-comment">     * @throws \RuntimeException
+</span></span><span id="117" class="l"><a class="l" href="#117">117: </a><span class="php-comment">     */</span>
+</span><span id="118" class="l"><a class="l" href="#118">118: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_send" href="#_send">send</a>()
+</span><span id="119" class="l"><a class="l" href="#119">119: </a>    {
+</span><span id="120" class="l"><a class="l" href="#120">120: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;config-&gt;isDryRun()) {
+</span><span id="121" class="l"><a class="l" href="#121">121: </a>            <span class="php-keyword1">return</span>;
+</span><span id="122" class="l"><a class="l" href="#122">122: </a>        }
+</span><span id="123" class="l"><a class="l" href="#123">123: </a>
+</span><span id="124" class="l"><a class="l" href="#124">124: </a>        <span class="php-var">$jsonPath</span> = <span class="php-var">$this</span>-&gt;config-&gt;getJsonPath();
+</span><span id="125" class="l"><a class="l" href="#125">125: </a>
+</span><span id="126" class="l"><a class="l" href="#126">126: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;upload(<span class="php-keyword1">static</span>::URL, <span class="php-var">$jsonPath</span>, <span class="php-keyword1">static</span>::FILENAME);
+</span><span id="127" class="l"><a class="l" href="#127">127: </a>    }
+</span><span id="128" class="l"><a class="l" href="#128">128: </a>
+</span><span id="129" class="l"><a class="l" href="#129">129: </a>    <span class="php-comment">// internal method</span>
+</span><span id="130" class="l"><a class="l" href="#130">130: </a>
+</span><span id="131" class="l"><a class="l" href="#131">131: </a>    <span class="php-comment">/**
+</span></span><span id="132" class="l"><a class="l" href="#132">132: </a><span class="php-comment">     * Upload a file.
+</span></span><span id="133" class="l"><a class="l" href="#133">133: </a><span class="php-comment">     *
+</span></span><span id="134" class="l"><a class="l" href="#134">134: </a><span class="php-comment">     * @param  string                        $url      URL to upload.
+</span></span><span id="135" class="l"><a class="l" href="#135">135: </a><span class="php-comment">     * @param  string                        $path     File path.
+</span></span><span id="136" class="l"><a class="l" href="#136">136: </a><span class="php-comment">     * @param  string                        $filename Filename.
+</span></span><span id="137" class="l"><a class="l" href="#137">137: </a><span class="php-comment">     * @return \Guzzle\Http\Message\Response Response.
+</span></span><span id="138" class="l"><a class="l" href="#138">138: </a><span class="php-comment">     * @throws \RuntimeException
+</span></span><span id="139" class="l"><a class="l" href="#139">139: </a><span class="php-comment">     */</span>
+</span><span id="140" class="l"><a class="l" href="#140">140: </a>    <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_upload" href="#_upload">upload</a>(<span class="php-var">$url</span>, <span class="php-var">$path</span>, <span class="php-var">$filename</span>)
+</span><span id="141" class="l"><a class="l" href="#141">141: </a>    {
+</span><span id="142" class="l"><a class="l" href="#142">142: </a>        <span class="php-var">$request</span>  = <span class="php-var">$this</span>-&gt;client-&gt;post(<span class="php-var">$url</span>)-&gt;addPostFiles(<span class="php-keyword1">array</span>(<span class="php-var">$filename</span> =&gt; <span class="php-var">$path</span>));
+</span><span id="143" class="l"><a class="l" href="#143">143: </a>
+</span><span id="144" class="l"><a class="l" href="#144">144: </a>        <span class="php-keyword1">return</span> <span class="php-var">$request</span>-&gt;send();
+</span><span id="145" class="l"><a class="l" href="#145">145: </a>    }
+</span><span id="146" class="l"><a class="l" href="#146">146: </a>
+</span><span id="147" class="l"><a class="l" href="#147">147: </a>    <span class="php-comment">// accessor</span>
+</span><span id="148" class="l"><a class="l" href="#148">148: </a>
+</span><span id="149" class="l"><a class="l" href="#149">149: </a>    <span class="php-comment">/**
+</span></span><span id="150" class="l"><a class="l" href="#150">150: </a><span class="php-comment">     * Set JsonFile.
+</span></span><span id="151" class="l"><a class="l" href="#151">151: </a><span class="php-comment">     *
+</span></span><span id="152" class="l"><a class="l" href="#152">152: </a><span class="php-comment">     * @param  JsonFile                                   $jsonFile json_file content.
+</span></span><span id="153" class="l"><a class="l" href="#153">153: </a><span class="php-comment">     * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
+</span></span><span id="154" class="l"><a class="l" href="#154">154: </a><span class="php-comment">     */</span>
+</span><span id="155" class="l"><a class="l" href="#155">155: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setJsonFile" href="#_setJsonFile">setJsonFile</a>(JsonFile <span class="php-var">$jsonFile</span>)
+</span><span id="156" class="l"><a class="l" href="#156">156: </a>    {
+</span><span id="157" class="l"><a class="l" href="#157">157: </a>        <span class="php-var">$this</span>-&gt;jsonFile = <span class="php-var">$jsonFile</span>;
+</span><span id="158" class="l"><a class="l" href="#158">158: </a>
+</span><span id="159" class="l"><a class="l" href="#159">159: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="160" class="l"><a class="l" href="#160">160: </a>    }
+</span><span id="161" class="l"><a class="l" href="#161">161: </a>
+</span><span id="162" class="l"><a class="l" href="#162">162: </a>    <span class="php-comment">/**
+</span></span><span id="163" class="l"><a class="l" href="#163">163: </a><span class="php-comment">     * Return JsonFile.
+</span></span><span id="164" class="l"><a class="l" href="#164">164: </a><span class="php-comment">     *
+</span></span><span id="165" class="l"><a class="l" href="#165">165: </a><span class="php-comment">     * @return JsonFile
+</span></span><span id="166" class="l"><a class="l" href="#166">166: </a><span class="php-comment">     */</span>
+</span><span id="167" class="l"><a class="l" href="#167">167: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getJsonFile" href="#_getJsonFile">getJsonFile</a>()
+</span><span id="168" class="l"><a class="l" href="#168">168: </a>    {
+</span><span id="169" class="l"><a class="l" href="#169">169: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;jsonFile)) {
+</span><span id="170" class="l"><a class="l" href="#170">170: </a>            <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;jsonFile;
+</span><span id="171" class="l"><a class="l" href="#171">171: </a>        }
+</span><span id="172" class="l"><a class="l" href="#172">172: </a>
+</span><span id="173" class="l"><a class="l" href="#173">173: </a>        <span class="php-keyword1">return</span> <span class="php-keyword1">null</span>;
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>    }
+</span><span id="175" class="l"><a class="l" href="#175">175: </a>}
+</span><span id="176" class="l"><a class="l" href="#176">176: </a></span></code></pre>
 
 	<div id="footer">
 		php-coveralls API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
