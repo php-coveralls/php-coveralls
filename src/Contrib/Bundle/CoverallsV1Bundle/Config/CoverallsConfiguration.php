@@ -58,6 +58,9 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->scalarNode('json_path')
                     ->defaultValue('build/logs/coveralls-upload.json')
                 ->end()
+                ->booleanNode('exclude_no_stmt')
+                    ->defaultFalse()
+                ->end()
             ->end();
 
         return $treeBuilder;

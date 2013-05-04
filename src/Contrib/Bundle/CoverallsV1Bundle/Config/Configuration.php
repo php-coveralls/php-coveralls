@@ -264,6 +264,21 @@ class Configuration
     }
 
     /**
+     * Set whether to exclude source files that have no executable statements unless false.
+     *
+     * @param  boolean                                                $excludeNoStatements
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
+     */
+    public function setExcludeNoStatementsUnlessFalse($excludeNoStatements)
+    {
+        if ($excludeNoStatements) {
+            $this->excludeNoStatements = true;
+        }
+
+        return $this;
+    }
+
+    /**
      * Return whether to exclude source files that have no executable statements.
      *
      * @return boolean

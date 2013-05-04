@@ -306,6 +306,62 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->isExcludeNoStatements());
     }
 
+    // setExcludeNoStatementsUnlessFalse()
+
+    /**
+     * @test
+     */
+    public function setExcludeNoStatementsFalseUnlessFalse()
+    {
+        $expected = false;
+
+        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertFalse($this->object->isExcludeNoStatements());
+    }
+
+    /**
+     * @test
+     */
+    public function setExcludeNoStatementsTrueUnlessFalse()
+    {
+        $expected = true;
+
+        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isExcludeNoStatements());
+    }
+
+    /**
+     * @test
+     */
+    public function setExcludeNoStatementsTrueIfFalsePassedAndIfTrueWasSet()
+    {
+        $expected = false;
+
+        $same = $this->object->setExcludeNoStatements(true);
+        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isExcludeNoStatements());
+    }
+
+    /**
+     * @test
+     */
+    public function setExcludeNoStatementsTrueIfTruePassedAndIfTrueWasSet()
+    {
+        $expected = true;
+
+        $same = $this->object->setExcludeNoStatements(true);
+        $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isExcludeNoStatements());
+    }
+
     // setVerbose()
 
     /**

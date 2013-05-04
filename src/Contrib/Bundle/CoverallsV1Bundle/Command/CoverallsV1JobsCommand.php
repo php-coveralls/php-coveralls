@@ -129,7 +129,7 @@ class CoverallsV1JobsCommand extends Command
         return $configurator
         ->load($ymlPath, $rootDir)
         ->setDryRun($input->getOption('dry-run'))
-        ->setExcludeNoStatements($input->getOption('exclude-no-stmt'))
+        ->setExcludeNoStatementsUnlessFalse($input->getOption('exclude-no-stmt'))
         ->setVerbose($input->getOption('verbose'))
         ->setEnv($input->getOption('env'));
     }
