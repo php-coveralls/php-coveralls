@@ -23,6 +23,7 @@ after_script:
     - curl -s https://gist.github.com/satooshi/4752226/raw > travis/junit.php
     - curl -s https://gist.github.com/satooshi/4958593/raw > travis/pmd.php
     - curl -s https://gist.github.com/satooshi/4958909/raw > travis/checkstyle.php
+    - echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
     - php travis/checkstyle.php
     - php travis/pmd.php
     - php travis/junit.php
