@@ -16,6 +16,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
         $this->coverage[4] = 0;
     }
 
+    // hasStatements()
     // getStatements()
 
     /**
@@ -25,6 +26,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics();
 
+        $this->assertFalse($object->hasStatements());
         $this->assertEquals(0, $object->getStatements());
     }
 
@@ -35,6 +37,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics($this->coverage);
 
+        $this->assertTrue($object->hasStatements());
         $this->assertEquals(3, $object->getStatements());
     }
 

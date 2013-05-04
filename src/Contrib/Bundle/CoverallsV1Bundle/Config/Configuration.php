@@ -57,6 +57,13 @@ class Configuration
     protected $dryRun = true;
 
     /**
+     * Whether to exclude source files that have no executable statements.
+     *
+     * @var boolean
+     */
+    protected $excludeNoStatements = false;
+
+    /**
      * Whether to show log.
      *
      * @var boolean
@@ -241,6 +248,29 @@ class Configuration
     public function isDryRun()
     {
         return $this->dryRun;
+    }
+
+    /**
+     * Set whether to exclude source files that have no executable statements.
+     *
+     * @param  boolean                                                $excludeNoStatements
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
+     */
+    public function setExcludeNoStatements($excludeNoStatements)
+    {
+        $this->excludeNoStatements = $excludeNoStatements;
+
+        return $this;
+    }
+
+    /**
+     * Return whether to exclude source files that have no executable statements.
+     *
+     * @return boolean
+     */
+    public function isExcludeNoStatements()
+    {
+        return $this->excludeNoStatements;
     }
 
     /**

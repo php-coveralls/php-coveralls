@@ -137,6 +137,18 @@ class JobsTest extends \PHPUnit_Framework_TestCase
       <line num="5" type="method" name="__construct" crap="1" count="0"/>
       <line num="7" type="stmt" count="0"/>
     </file>
+    <file name="%s/TestInterface.php">
+      <class name="TestInterface" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="hello" crap="1" count="0"/>
+    </file>
+    <file name="%s/AbstractClass.php">
+      <class name="AbstractClass" namespace="global">
+        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="hello" crap="1" count="0"/>
+    </file>
     <file name="dummy.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
@@ -156,7 +168,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->rootDir, $this->rootDir);
+        return sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir, $this->rootDir);
     }
 
     protected function createCloverXml()
@@ -331,6 +343,8 @@ XML;
         $jsonFile = $object->getJsonFile();
 
         $this->assertNotNull($jsonFile);
+        $sourceFiles = $jsonFile->getSourceFiles();
+        $this->assertCount(4, $sourceFiles);
 
         return $jsonFile;
     }
@@ -344,6 +358,42 @@ XML;
         $git = $jsonFile->getGit();
 
         $this->assertNull($git);
+    }
+
+    /**
+     * @test
+     */
+    public function collectCloverXmlExcludingNoStatementsFiles()
+    {
+        $xml = $this->getCloverXml();
+
+        file_put_contents($this->cloverXmlPath, $xml);
+
+        $config = $this->createConfiguration()->setExcludeNoStatements(true);
+
+        $object = new Jobs($config);
+
+        $same = $object->collectCloverXml();
+
+        // return $this
+        $this->assertSame($same, $object);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     * @depends collectCloverXmlExcludingNoStatementsFiles
+     */
+    public function shouldHaveJsonFileAfterCollectCloverXmlExcludingNoStatementsFiles(Jobs $object)
+    {
+        $jsonFile = $object->getJsonFile();
+
+        $this->assertNotNull($jsonFile);
+        $sourceFiles = $jsonFile->getSourceFiles();
+        $this->assertCount(2, $sourceFiles);
+
+        return $jsonFile;
     }
 
     // collectGitInfo()
