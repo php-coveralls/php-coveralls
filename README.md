@@ -141,8 +141,8 @@ dependencies:
     - mkdir -p build/logs
     - composer install --dev --no-interaction
     - pecl install xdebug
-    - cat ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini | sed -e "s/;//" > xdebug.ini
-    - mv xdebug.ini ~/.phpenv/versions/5.4.10/etc/conf.d/xdebug.ini
+    - cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini | sed -e "s/;//" > xdebug.ini
+    - mv xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 
 ## Customize test commands
 test:

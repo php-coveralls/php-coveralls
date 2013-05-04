@@ -1,9 +1,17 @@
 CHANGELOG
 =============
 
-## 0.6.1 (WIP)
+## 0.7.0 (WIP)
 
-- Add CLI option: `--exclude-no-stmt`
+- Support environment prop in json_file (issue #15)
+- Support commands: push, open, service, last (issue #16)
+- Show helpful message if the requirements are not satisfied (issue #24)
+
+## 0.6.1
+
+- Add CLI option: `--exclude-no-stmt` (issue #23)
+- Add .coveralls.yml configuration: `exclude_no_stmt` (issue #23)
+- Fix issue #27: Response message is not shown if exception occurred
 
 ## 0.6
 
