@@ -312,6 +312,10 @@ class CoverallsV1JobsCommand extends Command
         }
 
         $this->logger->error($message);
+
+        if (isset($response)) {
+            $this->logResponse($response);
+        }
     } // @codeCoverageIgnoreEnd
 
     /**
@@ -328,7 +332,7 @@ class CoverallsV1JobsCommand extends Command
 
         if (isset($body['error'])) {
             if (isset($body['message'])) {
-                $this->logger->info($body['message']);
+                $this->logger->error($body['message']);
             }
         } else {
             if (isset($body['message'])) {
