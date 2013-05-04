@@ -82,14 +82,15 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
     // custom assertion
 
-    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath)
+    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
         $this->assertEquals($srcDir, $config->getSrcDir());
         $this->assertEquals($cloverXml, $config->getCloverXmlPaths());
         $this->assertEquals($jsonPath, $config->getJsonPath());
+        $this->assertEquals($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
-    // load($coverallsYmlPath, $rootDir)
+    // load()
 
     /**
      * @test
@@ -251,6 +252,34 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
     }
 
+    /**
+     * @test
+     */
+    public function shouldLoadExcludeNoStmtYmlContainingTrue()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_true.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, true);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLoadExcludeNoStmtYmlContainingFalse()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_false.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, false);
+    }
+
     // configured src_dir not found
 
     /**
@@ -305,6 +334,21 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/json_path_not_found.yml');
+
+        $this->object->load($path, $this->rootDir);
+    }
+
+    // configured exclude_no_stmt invalid
+
+    /**
+     * @test
+     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
     }

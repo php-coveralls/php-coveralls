@@ -30,5 +30,5 @@ use Contrib\Bundle\CoverallsBundle\Console\Application;
 
 $rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
 
-$app = new Application($rootDir, 'Coveralls API client for PHP', PHP_COVERALLS_VERSION);
+$app = new Application($rootDir, 'PHP client library for Coveralls API', PHP_COVERALLS_VERSION);
 $app->run();
