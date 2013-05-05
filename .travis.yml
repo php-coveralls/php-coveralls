@@ -25,5 +25,6 @@ after_script:
   - php travis/checkstyle.php
   - php travis/pmd.php
   - php travis/junit.php
+  - php -d memory_limit=-1 vendor/bin/phpcov.php --merge --clover build/logs/clover.xml --whitelist src build/cov
   - php composer/bin/coveralls -v --exclude-no-stmt
 

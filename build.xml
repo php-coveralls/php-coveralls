@@ -16,6 +16,7 @@
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
         <delete dir="${basedir}/build/pdepend"/>
+        <delete dir="${basedir}/build/cov"/>
     </target>
 
     <target name="prepare" depends="clean" description="Prepare for build">
@@ -23,6 +24,7 @@
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <mkdir dir="${basedir}/build/pdepend"/>
+        <mkdir dir="${basedir}/build/cov"/>
     </target>
 
     <target name="get-cs-fixer" depends="clean" description="Get coding standards fixer">
@@ -30,7 +32,6 @@
     </target>
 
     <target name="php-cs-fixer-dry-run" depends="clean" description="Get coding standards fixer">
-        <!-- php-cs-fixer.phar fix src \-\-level=all \-\-dry-run \-\-verbose -->
         <exec executable="${phphome}/bin/php" failonerror="false">
             <arg value="-n"/>
             <arg path="${basedir}/php-cs-fixer.phar"/>
@@ -186,6 +187,20 @@
             <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg"/>
             <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg"/>
             <arg path="${basedir}/src"/>
+        </exec>
+    </target>
+
+    <target name="merge-clover" description="Merges the individual clover reports of each component into a single clover.xml">
+        <exec executable="${phphome}/bin/php" failonerror="true">
+            <arg value="-d"/>
+            <arg value="memory_limit=-1"/>
+            <arg value="${basedir}/vendor/bin/phpcov.php"/>
+            <arg value="--merge"/>
+            <arg value="--clover"/>
+            <arg value="${basedir}/build/logs/clover.xml"/>
+            <arg value="--whitelist"/>
+            <arg value="${basedir}/src"/>
+            <arg value="${basedir}/build/cov"/>
         </exec>
     </target>
 
