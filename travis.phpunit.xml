@@ -20,17 +20,17 @@
         <whitelist>
             <directory>./src</directory>
             <exclude>
-                <directory>./vendor</directory>
+                <directory>./build</directory>
+                <directory>./composer</directory>
                 <directory>./tests</directory>
                 <directory>./travis</directory>
-                <directory>./composer</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>
 
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
-        <log type="coverage-php" target="build/cov/coverage.cov"/>
         <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>
