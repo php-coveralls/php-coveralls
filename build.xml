@@ -84,7 +84,11 @@
             <arg value="-s"/>
             <arg path="${basedir}/src"/>
             <arg value="-s"/>
-            <arg path="${basedir}/vendor/symfony"/>
+            <arg path="${basedir}/vendor/symfony/config"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/symfony/console"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/symfony/yaml"/>
             <arg value="-s"/>
             <arg path="${basedir}/vendor/guzzle/guzzle/src"/>
             <arg value="-s"/>
