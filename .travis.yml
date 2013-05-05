@@ -10,7 +10,7 @@ before_script:
   - php composer.phar install --dev --no-interaction --prefer-source
 
 script:
-  - mkdir -p build/logs
+  - mkdir -p build/{logs,cov}
   - php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src
   - php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml
   - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
