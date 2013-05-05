@@ -15,7 +15,7 @@ script:
   - php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml
   - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
   - php vendor/bin/phpunit -c travis.phpunit.xml
-  - php -d memory_limit=-1 vendor/bin/phpcov.php --merge --clover build/logs/clover.xml --whitelist src build/cov
+  - php -d memory_limit=-1 vendor/bin/phpcov.php --clover build/logs/clover.xml --whitelist src --merge build/cov
   - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 
 after_script:
