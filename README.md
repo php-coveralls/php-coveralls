@@ -3,7 +3,7 @@ php-coveralls
 
 [![Build Status](https://travis-ci.org/satooshi/php-coveralls.png?branch=master)](https://travis-ci.org/satooshi/php-coveralls)
 [![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
-[![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/9407192)](http://depending.in/satooshi/php-coveralls)
+[![Dependency Status](https://www.versioneye.com/package/php--satooshi--php-coveralls/badge.png)](https://www.versioneye.com/package/php--satooshi--php-coveralls)
 
 PHP client library for [Coveralls](https://coveralls.io). 
 
