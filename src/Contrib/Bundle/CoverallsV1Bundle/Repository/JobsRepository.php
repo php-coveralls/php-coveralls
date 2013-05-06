@@ -195,8 +195,9 @@ class JobsRepository implements LoggerAwareInterface
      * * yellow 80% -  90% <comment>
      * * red     0% -  80% <fg=red>
      *
-     * @param  float  $coverage Coverage.
-     * @param  string $format   Format string to colorize.
+     * @param float  $coverage Coverage.
+     * @param string $format   Format string to colorize.
+     *
      * @return string
      */
     protected function colorizeCoverage($coverage, $format)
@@ -213,7 +214,8 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Log collected source files.
      *
-     * @param  JsonFile $jsonFile Json file.
+     * @param JsonFile $jsonFile Json file.
+     *
      * @return void
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
@@ -241,7 +243,8 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Log response.
      *
-     * @param  Response $response API response.
+     * @param Response $response API response.
+     *
      * @return void
      */
     protected function logResponse(Response $response)
@@ -278,6 +281,7 @@ class JobsRepository implements LoggerAwareInterface
      * {@inheritdoc}
      *
      * @return void
+     *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */
     public function setLogger(LoggerInterface $logger)

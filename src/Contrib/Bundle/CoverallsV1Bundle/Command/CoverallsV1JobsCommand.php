@@ -103,8 +103,9 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Load configuration.
      *
-     * @param  InputInterface                                         $input   Input arguments.
-     * @param  string                                                 $rootDir Path to project root directory.
+     * @param InputInterface $input   Input arguments.
+     * @param string         $rootDir Path to project root directory.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Config\Configuration
      */
     protected function loadConfiguration(InputInterface $input, $rootDir)
@@ -125,7 +126,8 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param  Configuration $config Configuration.
+     * @param Configuration $config Configuration.
+     *
      * @return void
      */
     protected function executeApi(Configuration $config)
@@ -144,6 +146,8 @@ class CoverallsV1JobsCommand extends Command
      * Set root directory.
      *
      * @param string $rootDir Path to project root directory.
+     *
+     * @return void
      */
     public function setRootDir($rootDir)
     {

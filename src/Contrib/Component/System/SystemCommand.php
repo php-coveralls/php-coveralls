@@ -34,8 +34,10 @@ abstract class SystemCommand
     /**
      * Execute command.
      *
-     * @param  string            $command
+     * @param string $command
+     *
      * @return array
+     *
      * @throws \RuntimeException
      */
     protected function executeCommand($command)
@@ -52,7 +54,8 @@ abstract class SystemCommand
     /**
      * Create command.
      *
-     * @param  string $args Command arguments.
+     * @param string $args Command arguments.
+     *
      * @return string
      */
     protected function createCommand($args = null)
@@ -70,7 +73,8 @@ abstract class SystemCommand
     /**
      * Set command path.
      *
-     * @param  string $commandPath Command name or path.
+     * @param string $commandPath Command name or path.
+     *
      * @return void
      */
     public function setCommandPath($commandPath)
