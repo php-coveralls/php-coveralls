@@ -1,8 +1,8 @@
 <?php
 namespace Contrib\Bundle\CoverallsV1Bundle\Api;
 
-use Guzzle\Http\Client;
 use Contrib\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Guzzle\Http\Client;
 
 /**
  * Coveralls API client.
@@ -52,7 +52,8 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param  \Guzzle\Http\Client                                $client HTTP client.
+     * @param \Guzzle\Http\Client $client HTTP client.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\CoverallsApi
      */
     public function setHttpClient(Client $client)

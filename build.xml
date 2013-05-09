@@ -30,7 +30,6 @@
     </target>
 
     <target name="php-cs-fixer-dry-run" depends="clean" description="Get coding standards fixer">
-        <!-- php-cs-fixer.phar fix src \-\-level=all \-\-dry-run \-\-verbose -->
         <exec executable="${phphome}/bin/php" failonerror="false">
             <arg value="-n"/>
             <arg path="${basedir}/php-cs-fixer.phar"/>
@@ -43,7 +42,6 @@
     </target>
 
     <target name="php-cs-fixer-fix" depends="clean" description="Get coding standards fixer">
-        <!-- php-cs-fixer.phar fix src \-\-level=all \-\-dry-run \-\-verbose -->
         <exec executable="${phphome}/bin/php" failonerror="false">
             <arg value="-n"/>
             <arg path="${basedir}/php-cs-fixer.phar"/>
@@ -84,7 +82,11 @@
             <arg value="-s"/>
             <arg path="${basedir}/src"/>
             <arg value="-s"/>
-            <arg path="${basedir}/vendor/symfony"/>
+            <arg path="${basedir}/vendor/symfony/config"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/symfony/console"/>
+            <arg value="-s"/>
+            <arg path="${basedir}/vendor/symfony/yaml"/>
             <arg value="-s"/>
             <arg path="${basedir}/vendor/guzzle/guzzle/src"/>
             <arg value="-s"/>

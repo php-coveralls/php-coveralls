@@ -1,33 +1,32 @@
 language: php
 php:
-    - 5.5
-    - 5.4
-    - 5.3
-
-matrix:
-    allow_failures:
-        - php: 5.5
+  - 5.5
+  - 5.4
+  - 5.3
 
 before_script:
-    - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
-    - curl -s http://getcomposer.org/installer | php
-    - php composer.phar install --dev --no-interaction --prefer-source
+  - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
+  - curl http://cs.sensiolabs.org/get/php-cs-fixer.phar -o php-cs-fixer.phar
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction --prefer-source
 
 script:
-    - mkdir -p build/logs
-    - php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src
-    - php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml
-    - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
-    - php vendor/bin/phpunit -c travis.phpunit.xml
-    - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+  - mkdir -p build/logs
+  #- php -n php-cs-fixer.phar fix -v --dry-run --level=all src
+  - output=$(php -n php-cs-fixer.phar fix -v --dry-run --level=all src); if [[ $output ]]; then while read -r line; do echo -e "\e[00;31m$line\e[00m"; done <<< "$output"; false; fi;
+  - php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src
+  - php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml
+  - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+  - php vendor/bin/phpunit -c travis.phpunit.xml
+  - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 
 after_script:
-    - curl -s https://gist.github.com/satooshi/4750401/raw > travis/ColorCLI.php
-    - curl -s https://gist.github.com/satooshi/4752226/raw > travis/junit.php
-    - curl -s https://gist.github.com/satooshi/4958593/raw > travis/pmd.php
-    - curl -s https://gist.github.com/satooshi/4958909/raw > travis/checkstyle.php
-    - php travis/checkstyle.php
-    - php travis/pmd.php
-    - php travis/junit.php
-    - php composer/bin/coveralls -v --exclude-no-stmt
+  - curl -s https://gist.github.com/satooshi/4750401/raw > travis/ColorCLI.php
+  - curl -s https://gist.github.com/satooshi/4752226/raw > travis/junit.php
+  - curl -s https://gist.github.com/satooshi/4958593/raw > travis/pmd.php
+  - curl -s https://gist.github.com/satooshi/4958909/raw > travis/checkstyle.php
+  - php travis/checkstyle.php
+  - php travis/pmd.php
+  - php travis/junit.php
+  - php composer/bin/coveralls -v --exclude-no-stmt
 

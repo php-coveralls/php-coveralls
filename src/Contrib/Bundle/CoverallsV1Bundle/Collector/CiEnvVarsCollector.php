@@ -41,7 +41,8 @@ class CiEnvVarsCollector
     /**
      * Collect environment variables.
      *
-     * @param  array $env $_SERVER environment.
+     * @param array $env $_SERVER environment.
+     *
      * @return array
      */
     public function collect(array $env)

@@ -67,7 +67,8 @@ class Metrics
     /**
      * Merge other metrics.
      *
-     * @param  Metrics $that
+     * @param Metrics $that
+     *
      * @return void
      */
     public function merge(Metrics $that)
@@ -82,8 +83,9 @@ class Metrics
     /**
      * Calculate line coverage.
      *
-     * @param  integer $statements        Number of statements.
-     * @param  integer $coveredStatements Number of covered statements.
+     * @param integer $statements        Number of statements.
+     * @param integer $coveredStatements Number of covered statements.
+     *
      * @return float
      */
     protected function calculateLineCoverage($statements, $coveredStatements)
