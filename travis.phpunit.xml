@@ -20,10 +20,11 @@
         <whitelist>
             <directory>./src</directory>
             <exclude>
-                <directory>./vendor</directory>
+                <directory>./build</directory>
+                <directory>./composer</directory>
                 <directory>./tests</directory>
                 <directory>./travis</directory>
-                <directory>./composer</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>

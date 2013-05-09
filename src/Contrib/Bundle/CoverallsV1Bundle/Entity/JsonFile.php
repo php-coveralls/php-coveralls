@@ -134,8 +134,10 @@ class JsonFile extends Coveralls
     /**
      * Fill environment variables.
      *
-     * @param  array                                             $env $_SERVER environment.
+     * @param array $env $_SERVER environment.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     *
      * @throws \RuntimeException
      */
     public function fillJobs(array $env)
@@ -192,7 +194,8 @@ class JsonFile extends Coveralls
     /**
      * Convert to json property.
      *
-     * @param  mixed $prop
+     * @param mixed $prop
+     *
      * @return mixed
      */
     protected function toJsonProperty($prop)
@@ -209,7 +212,8 @@ class JsonFile extends Coveralls
     /**
      * Convert to array as json property.
      *
-     * @param  array $propArray
+     * @param array $propArray
+     *
      * @return array
      */
     protected function toJsonPropertyArray(array $propArray)
@@ -238,7 +242,8 @@ class JsonFile extends Coveralls
      *
      * These vars are supported by Codeship.
      *
-     * @param  array                                             $env $_SERVER environment.
+     * @param array $env $_SERVER environment.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     protected function fillStandardizedEnvVars(array $env)
@@ -270,6 +275,7 @@ class JsonFile extends Coveralls
      * Ensure data consistency for jobs API.
      *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     *
      * @throws \RuntimeException
      */
     protected function ensureJobs()
@@ -344,7 +350,8 @@ class JsonFile extends Coveralls
     /**
      * Return whether the json file has source file.
      *
-     * @param  string  $path Absolute path to source file.
+     * @param string $path Absolute path to source file.
+     *
      * @return boolean
      */
     public function hasSourceFile($path)
@@ -355,7 +362,8 @@ class JsonFile extends Coveralls
     /**
      * Return source file.
      *
-     * @param  string                                                   $path Absolute path to source file.
+     * @param string $path Absolute path to source file.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile|null
      */
     public function getSourceFile($path)
@@ -371,6 +379,8 @@ class JsonFile extends Coveralls
      * Add source file.
      *
      * @param SourceFile $sourceFile
+     *
+     * @return void
      */
     public function addSourceFile(SourceFile $sourceFile)
     {
@@ -390,7 +400,7 @@ class JsonFile extends Coveralls
     /**
      * Return source files.
      *
-     * @return SourceFile[]
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile[]
      */
     public function getSourceFiles()
     {
@@ -400,8 +410,9 @@ class JsonFile extends Coveralls
     /**
      * Set service name.
      *
-     * @param  string    $serviceName Service name.
-     * @return Coveralls
+     * @param string $serviceName Service name.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function setServiceName($serviceName)
     {
@@ -427,8 +438,9 @@ class JsonFile extends Coveralls
     /**
      * Set repository token.
      *
-     * @param  string    $repoToken Repository token.
-     * @return Coveralls
+     * @param string $repoToken Repository token.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function setRepoToken($repoToken)
     {
@@ -454,8 +466,9 @@ class JsonFile extends Coveralls
     /**
      * Set service job id.
      *
-     * @param  string    $serviceJobId Service job id.
-     * @return Coveralls
+     * @param string $serviceJobId Service job id.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function setServiceJobId($serviceJobId)
     {
@@ -531,8 +544,9 @@ class JsonFile extends Coveralls
     /**
      * Set git data.
      *
-     * @param  array     $git Git data.
-     * @return Coveralls
+     * @param array $git Git data.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function setGit(Git $git)
     {
@@ -558,8 +572,9 @@ class JsonFile extends Coveralls
     /**
      * Set timestamp when the job ran.
      *
-     * @param  string    $runAt Timestamp.
-     * @return Coveralls
+     * @param string $runAt Timestamp.
+     *
+     * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function setRunAt($runAt)
     {

@@ -23,8 +23,9 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage from XML object.
      *
-     * @param  SimpleXMLElement                                  $xml     Clover XML object.
-     * @param  string                                            $rootDir Path to src directory.
+     * @param SimpleXMLElement $xml     Clover XML object.
+     * @param string           $rootDir Path to src directory.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
@@ -62,8 +63,9 @@ class CloverXmlCoverageCollector
     /**
      * Collect timestamp when the job ran.
      *
-     * @param  SimpleXMLElement $xml    Clover XML object of a file.
-     * @param  string           $format DateTime format.
+     * @param SimpleXMLElement $xml    Clover XML object of a file.
+     * @param string           $format DateTime format.
+     *
      * @return string
      */
     protected function collectRunAt(\SimpleXMLElement $xml, $format = 'Y-m-d H:i:s O')
@@ -77,9 +79,10 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data of a file.
      *
-     * @param  SimpleXMLElement                                         $file Clover XML object of a file.
-     * @param  string                                                   $root Path to src directory.
-     * @return NULL|\Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile
+     * @param SimpleXMLElement $file Clover XML object of a file.
+     * @param string           $root Path to src directory.
+     *
+     * @return null|\Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile
      */
     protected function collectFileCoverage(\SimpleXMLElement $file, $root)
     {
@@ -97,9 +100,10 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data.
      *
-     * @param  SimpleXMLElement                                    $file     Clover XML object of a file.
-     * @param  string                                              $path     Path to source file.
-     * @param  string                                              $filename Filename.
+     * @param SimpleXMLElement $file     Clover XML object of a file.
+     * @param string           $path     Path to source file.
+     * @param string           $filename Filename.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\SourceFile
      */
     protected function collectCoverage(\SimpleXMLElement $file, $path, $filename)

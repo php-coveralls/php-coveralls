@@ -1,10 +1,10 @@
 <?php
 namespace Contrib\Bundle\CoverallsV1Bundle\Api;
 
-use Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile;
+use Contrib\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
 use Contrib\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Contrib\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector;
-use Contrib\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
+use Contrib\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Contrib\Component\System\Git\GitCommand;
 
 /**
@@ -83,7 +83,8 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param  array                                      $env $_SERVER environment.
+     * @param array $env $_SERVER environment.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
      */
     public function collectEnvVars(array $env)
@@ -113,6 +114,7 @@ class Jobs extends CoverallsApi
      * Send json_file to jobs API.
      *
      * @return \Guzzle\Http\Message\Response|null
+     *
      * @throws \RuntimeException
      */
     public function send()
@@ -131,10 +133,12 @@ class Jobs extends CoverallsApi
     /**
      * Upload a file.
      *
-     * @param  string                        $url      URL to upload.
-     * @param  string                        $path     File path.
-     * @param  string                        $filename Filename.
+     * @param string $url      URL to upload.
+     * @param string $path     File path.
+     * @param string $filename Filename.
+     *
      * @return \Guzzle\Http\Message\Response Response.
+     *
      * @throws \RuntimeException
      */
     protected function upload($url, $path, $filename)
@@ -149,7 +153,8 @@ class Jobs extends CoverallsApi
     /**
      * Set JsonFile.
      *
-     * @param  JsonFile                                   $jsonFile json_file content.
+     * @param JsonFile $jsonFile json_file content.
+     *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Api\Jobs
      */
     public function setJsonFile(JsonFile $jsonFile)

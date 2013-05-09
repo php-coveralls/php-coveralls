@@ -1,9 +1,9 @@
 <?php
 namespace Contrib\Bundle\CoverallsV1Bundle\Collector;
 
-use Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
 use Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Git;
+use Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
 use Contrib\Component\System\Git\GitCommand;
 
 /**
@@ -52,6 +52,7 @@ class GitInfoCollector
      * Collect branch name.
      *
      * @return string
+     *
      * @throws \RuntimeException
      */
     protected function collectBranch()
@@ -73,6 +74,7 @@ class GitInfoCollector
      * Collect commit info.
      *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Commit
+     *
      * @throws \RuntimeException
      */
     protected function collectCommit()
@@ -98,6 +100,7 @@ class GitInfoCollector
      * Collect remotes info.
      *
      * @return \Contrib\Bundle\CoverallsV1Bundle\Entity\Git\Remote[]
+     *
      * @throws \RuntimeException
      */
     protected function collectRemotes()
