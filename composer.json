@@ -16,7 +16,6 @@
     "require": {
         "php": ">=5.3",
         "ext-json": "*",
-        "ext-curl": "*",
         "ext-simplexml": "*",
         "symfony/yaml": ">=2.0",
         "symfony/console": ">=2.0",
