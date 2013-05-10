@@ -36,7 +36,7 @@
         "apigen/apigen": "2.8.*@stable"
     },
     "autoload": {
-        "psr-0": { "Contrib\\Component": "src/", "Contrib\\Bundle": "src/" }
+        "psr-0": { "Satooshi\\Component": "src/", "Satooshi\\Bundle": "src/" }
     },
     "bin": ["composer/bin/coveralls"]
 }

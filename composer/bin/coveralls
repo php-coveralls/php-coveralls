@@ -26,7 +26,7 @@ if (!defined('PHP_COVERALLS_COMPOSER_INSTALL')) {
 
 define('PHP_COVERALLS_VERSION', '0.7.0');
 
-use Contrib\Bundle\CoverallsBundle\Console\Application;
+use Satooshi\Bundle\CoverallsBundle\Console\Application;
 
 $rootDir = realpath(dirname(PHP_COVERALLS_COMPOSER_INSTALL) . '/..');
 
