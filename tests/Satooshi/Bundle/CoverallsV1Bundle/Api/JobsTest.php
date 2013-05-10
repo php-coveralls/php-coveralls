@@ -245,7 +245,7 @@ XML;
     /**
      * @test
      */
-    public function setJsonFile()
+    public function shouldSetJsonFile()
     {
         $jsonFile = $this->collectJsonFile();
 
@@ -259,7 +259,7 @@ XML;
     /**
      * @test
      */
-    public function getConfiguration()
+    public function shouldReturnConfiguration()
     {
         $config = $this->createConfiguration();
 
@@ -300,7 +300,7 @@ XML;
     /**
      * @test
      */
-    public function setHttpClient()
+    public function shouldSetHttpClient()
     {
         $config = $this->createConfiguration();
         $client = $this->createAdapterMockNeverCalled();
@@ -316,7 +316,7 @@ XML;
     /**
      * @test
      */
-    public function collectCloverXml()
+    public function shouldCollectCloverXml()
     {
         $xml = $this->getCloverXml();
 
@@ -336,7 +336,7 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXml
+     * @depends shouldCollectCloverXml
      */
     public function shouldHaveJsonFileAfterCollectCloverXml(Jobs $object)
     {
@@ -363,7 +363,7 @@ XML;
     /**
      * @test
      */
-    public function collectCloverXmlExcludingNoStatementsFiles()
+    public function shouldCollectCloverXmlExcludingNoStatementsFiles()
     {
         $xml = $this->getCloverXml();
 
@@ -383,7 +383,7 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXmlExcludingNoStatementsFiles
+     * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      */
     public function shouldHaveJsonFileAfterCollectCloverXmlExcludingNoStatementsFiles(Jobs $object)
     {
@@ -400,9 +400,9 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXml
+     * @depends shouldCollectCloverXml
      */
-    public function collectGitInfo(Jobs $object)
+    public function shouldCollectGitInfo(Jobs $object)
     {
         $same = $object->collectGitInfo();
 
@@ -414,7 +414,7 @@ XML;
 
     /**
      * @test
-     * @depends collectGitInfo
+     * @depends shouldCollectGitInfo
      */
     public function shouldHaveJsonFileAfterCollectGitInfo(Jobs $object)
     {
@@ -441,7 +441,7 @@ XML;
     /**
      * @test
      */
-    public function sendTravisCiJob()
+    public function shouldSendTravisCiJob()
     {
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
@@ -463,7 +463,7 @@ XML;
     /**
      * @test
      */
-    public function sendTravisProJob()
+    public function shouldSendTravisProJob()
     {
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.1';
@@ -489,7 +489,7 @@ XML;
     /**
      * @test
      */
-    public function sendCircleCiJob()
+    public function shouldSendCircleCiJob()
     {
         $serviceName   = 'circleci';
         $serviceNumber = '123';
@@ -513,7 +513,7 @@ XML;
     /**
      * @test
      */
-    public function sendJenkinsJob()
+    public function shouldSendJenkinsJob()
     {
         $serviceName   = 'jenkins';
         $serviceNumber = '123';
@@ -537,7 +537,7 @@ XML;
     /**
      * @test
      */
-    public function sendLocalJob()
+    public function shouldSendLocalJob()
     {
         $serviceName      = 'php-coveralls';
         $serviceEventType = 'manual';
@@ -559,7 +559,7 @@ XML;
     /**
      * @test
      */
-    public function sendUnsupportedJob()
+    public function shouldSendUnsupportedJob()
     {
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';
@@ -577,7 +577,7 @@ XML;
     /**
      * @test
      */
-    public function sendUnsupportedGitJob()
+    public function shouldSendUnsupportedGitJob()
     {
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';

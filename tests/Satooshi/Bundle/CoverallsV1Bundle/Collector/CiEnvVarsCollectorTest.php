@@ -42,7 +42,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectTravisCiEnvVars()
+    public function shouldCollectTravisCiEnvVars()
     {
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
@@ -65,7 +65,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectTravisProEnvVars()
+    public function shouldCollectTravisProEnvVars()
     {
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.2';
@@ -91,7 +91,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectCircleCiEnvVars()
+    public function shouldCollectCircleCiEnvVars()
     {
         $serviceName   = 'circleci';
         $serviceNumber = '123';
@@ -115,7 +115,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectJenkinsEnvVars()
+    public function shouldCollectJenkinsEnvVars()
     {
         $serviceName   = 'jenkins';
         $serviceNumber = '123';
@@ -143,7 +143,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectLocalEnvVars()
+    public function shouldCollectLocalEnvVars()
     {
         $serviceName      = 'php-coveralls';
         $serviceEventType = 'manual';
@@ -169,7 +169,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectUnsupportedConfig()
+    public function shouldCollectUnsupportedConfig()
     {
         $repoToken = 'token';
 
@@ -189,7 +189,7 @@ class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collectUnsupportedEnvVars()
+    public function shouldCollectUnsupportedEnvVars()
     {
         $repoToken = 'token';
 

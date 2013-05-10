@@ -146,7 +146,7 @@ XML;
     /**
      * @test
      */
-    public function countZeroSourceFilesOnConstruction()
+    public function shouldCountZeroSourceFilesOnConstruction()
     {
         $this->assertFalse($this->object->hasSourceFiles());
         $this->assertEmpty($this->object->getSourceFiles());
@@ -271,7 +271,7 @@ XML;
     /**
      * @test
      */
-    public function setServiceName()
+    public function shouldSetServiceName()
     {
         $expected = 'travis-ci';
 
@@ -288,7 +288,7 @@ XML;
     /**
      * @test
      */
-    public function setRepoToken()
+    public function shouldSetRepoToken()
     {
         $expected = 'token';
 
@@ -305,7 +305,7 @@ XML;
     /**
      * @test
      */
-    public function setServiceJobId()
+    public function shouldSetServiceJobId()
     {
         $expected = 'job_id';
 
@@ -322,7 +322,7 @@ XML;
     /**
      * @test
      */
-    public function setGit()
+    public function shouldSetGit()
     {
         $remotes = array(new Remote());
         $head    = new Commit();
@@ -341,7 +341,7 @@ XML;
     /**
      * @test
      */
-    public function setRunAt()
+    public function shouldSetRunAt()
     {
         $expected = '2013-04-04 11:22:33 +0900';
 
@@ -361,7 +361,7 @@ XML;
     /**
      * @test
      */
-    public function addSourceFile()
+    public function shouldAddSourceFile()
     {
         $sourceFile = $this->createSourceFile();
 
@@ -381,7 +381,7 @@ XML;
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'source_files' => array(),
@@ -394,7 +394,7 @@ XML;
     /**
      * @test
      */
-    public function toArrayWithSourceFiles()
+    public function shouldConvertToArrayWithSourceFiles()
     {
         $sourceFile = $this->createSourceFile();
 
@@ -412,9 +412,9 @@ XML;
 
     /**
      * @test
-     * @depends setServiceName
+     * @depends shouldSetServiceName
      */
-    public function toArrayWithServiceName($object)
+    public function shouldConvertToArrayWithServiceName($object)
     {
         $item = 'travis-ci';
 
@@ -431,9 +431,9 @@ XML;
 
     /**
      * @test
-     * @depends setServiceJobId
+     * @depends shouldSetServiceJobId
      */
-    public function toArrayWithServiceJobId($object)
+    public function shouldConvertToArrayWithServiceJobId($object)
     {
         $item = 'job_id';
 
@@ -450,9 +450,9 @@ XML;
 
     /**
      * @test
-     * @depends setRepoToken
+     * @depends shouldSetRepoToken
      */
-    public function toArrayWithRepoToken($object)
+    public function shouldConvertToArrayWithRepoToken($object)
     {
         $item = 'token';
 
@@ -469,9 +469,9 @@ XML;
 
     /**
      * @test
-     * @depends setGit
+     * @depends shouldSetGit
      */
-    public function toArrayWithGit($object)
+    public function shouldConvertToArrayWithGit($object)
     {
         $remotes = array(new Remote());
         $head    = new Commit();
@@ -490,9 +490,9 @@ XML;
 
     /**
      * @test
-     * @depends setRunAt
+     * @depends shouldSetRunAt
      */
-    public function toArrayWithRunAt($object)
+    public function shouldConvertToArrayWithRunAt($object)
     {
         $item = '2013-04-04 11:22:33 +0900';
 
@@ -510,7 +510,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceJobId()
+    public function shouldFillJobsForServiceJobId()
     {
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
@@ -531,7 +531,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceNumber()
+    public function shouldFillJobsForServiceNumber()
     {
         $repoToken     = 'token';
         $serviceName   = 'circleci';
@@ -555,7 +555,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForStandardizedEnvVars()
+    public function shouldFillJobsForStandardizedEnvVars()
     {
         /*
          * CI_NAME=codeship
@@ -596,7 +596,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceEventType()
+    public function shouldFillJobsForServiceEventType()
     {
         $repoToken        = 'token';
         $serviceName      = 'php-coveralls';
@@ -622,7 +622,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForUnsupportedJob()
+    public function shouldFillJobsForUnsupportedJob()
     {
         $repoToken = 'token';
 
@@ -654,7 +654,7 @@ XML;
      * @test
      * @expectedException RuntimeException
      */
-    public function throwRuntimeExceptionOnFillingJobsIfNoSourceFiles()
+    public function throwRuntimeExceptionOnFillingJobsWithoutSourceFiles()
     {
         $env = array();
         $env['TRAVIS']        = true;
@@ -670,7 +670,7 @@ XML;
     /**
      * @test
      */
-    public function reportLineCoverage()
+    public function shouldReportLineCoverage()
     {
         $object = $this->collectJsonFile();
 
@@ -688,7 +688,7 @@ XML;
     /**
      * @test
      */
-    public function excludeNoStatementsFiles()
+    public function shouldExcludeNoStatementsFiles()
     {
         $rootDir = $this->rootDir . DIRECTORY_SEPARATOR;
 

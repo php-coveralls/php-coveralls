@@ -90,7 +90,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function mergeThatWithEmptyMetrics()
+    public function shouldMergeThatWithEmptyMetrics()
     {
         $object = new Metrics();
         $that   = new Metrics($this->coverage);
@@ -104,7 +104,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function mergeThat()
+    public function shouldMergeThat()
     {
         $object = new Metrics($this->coverage);
         $that   = new Metrics($this->coverage);

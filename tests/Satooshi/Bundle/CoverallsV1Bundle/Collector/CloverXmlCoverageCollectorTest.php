@@ -77,7 +77,7 @@ XML;
     /**
      * @test
      */
-    public function collect()
+    public function shouldCollect()
     {
         $xml      = $this->createCloverXml();
         $jsonFile = $this->object->collect($xml, $this->rootDir);
@@ -90,9 +90,9 @@ XML;
 
     /**
      * @test
-     * @depends collect
+     * @depends shouldCollect
      */
-    public function collectSourceFiles(JsonFile $jsonFile)
+    public function shouldCollectSourceFiles(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
@@ -103,9 +103,9 @@ XML;
 
     /**
      * @test
-     * @depends collectSourceFiles
+     * @depends shouldCollectSourceFiles
      */
-    public function collectSourceFileTest1(JsonFile $jsonFile)
+    public function shouldCollectSourceFileTest1(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
@@ -118,9 +118,9 @@ XML;
 
     /**
      * @test
-     * @depends collectSourceFiles
+     * @depends shouldCollectSourceFiles
      */
-    public function collectSourceFileTest2(JsonFile $jsonFile)
+    public function shouldCollectSourceFileTest2(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 

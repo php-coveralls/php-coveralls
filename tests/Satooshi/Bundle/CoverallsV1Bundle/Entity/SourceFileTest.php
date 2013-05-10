@@ -78,7 +78,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'name'     => $this->filename,
@@ -95,7 +95,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function addCoverage()
+    public function shouldAddCoverage()
     {
         $this->object->addCoverage(5, 1);
 
@@ -111,7 +111,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldLineCoverageZeroWithoutAddingCoverage()
+    public function shouldReportLineCoverage0PercentWithoutAddingCoverage()
     {
         $metrics = $this->object->getMetrics();
 
@@ -124,7 +124,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldLineCoverageAfterAddingCoverage()
+    public function shouldReportLineCoverage100PercentAfterAddingCoverage()
     {
         $this->object->addCoverage(6, 1);
 

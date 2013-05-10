@@ -39,7 +39,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setRemoteName()
+    public function shouldSetRemoteName()
     {
         $expected = 'remote_name';
 
@@ -54,7 +54,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setRemoteUrl()
+    public function shouldSetRemoteUrl()
     {
         $expected = 'git@github.com:satooshi/php-coveralls.git';
 
@@ -69,7 +69,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'name' => null,
@@ -83,7 +83,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArrayFilled()
+    public function shouldConvertToFilledArray()
     {
         $name = 'name';
         $url  = 'url';

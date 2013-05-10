@@ -276,7 +276,7 @@ class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function persist()
+    public function shouldPersist()
     {
         $statusCode = 200;
         $json       = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
@@ -294,7 +294,7 @@ class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function persistDryRun()
+    public function shouldPersistDryRun()
     {
         $api    = $this->createApiMock(null);
         $config = $this->createConfiguration();
@@ -307,6 +307,7 @@ class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
     }
 
     // unexpected Exception
+    // source files not found
 
     /**
      * @test
