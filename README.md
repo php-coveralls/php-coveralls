@@ -83,6 +83,86 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 </phpunit>
 ```
 
+You can also use `--coverage-clover` CLI option.
+
+```sh
+phpunit --coverage-clover build/logs/clover.xml
+```
+
+### phpcov
+
+Above settings are good for almost projects If your test suite is executed once a build and is not devided into several parts. But if your test suite is configured as parallel task or generates multiple coverage reports through a build, you can use either `coverage_clover` configuration in `.coveralls.yml` ([see below coverage clover configuration section](#coverage-clover-configuration)) to specify multiple `clover.xml` or `phpcov` for processing coverages reports.
+
+#### composer.json
+
+`phpcov` is not ready for Packagist yet but you can install it via PEAR channel:
+
+```json
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "sebastianbergmann/phpcov",
+                "version": "1.1.0",
+                "dist": {
+                    "url": "https://github.com/sebastianbergmann/phpcov/archive/1.1.0.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/sebastianbergmann/phpcov.git",
+                    "type": "git",
+                    "reference": "1.1.0"
+                },
+                "bin": [
+                    "phpcov.php"
+                ]
+            }
+        }
+    ],
+    …
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master",
+        "sebastianbergmann/phpcov": "1.1.0"
+    },
+```
+
+#### phpunit configuration
+
+Make sure that `phpunit.xml.dist` is configured to generate "coverage-php" type log:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit ...>
+    <logging>
+        ...
+        <log type="coverage-php" target="build/cov/coverage.cov"/>
+        ...
+    </logging>
+</phpunit>
+```
+
+You can also use `--coverage-php` CLI option.
+
+```sh
+# use --coverage-php option instead of --coverage-clover
+phpunit --coverage-php build/cov/coverage-${component_name}.cov
+```
+
+#### phpcov configuration
+
+And then, execute `phpcov.php` to merge `coverage.cov` logs.
+
+```sh
+# get information
+php vendor/bin/phpcov.php --help
+
+# merge coverage.cov logs under build/cov
+php vendor/bin/phpcov.php --merge --clover build/logs/clover.xml --whitelist /path/to/src build/cov
+
+# in case of memory exhausting error
+php -d memory_limit=-1 vendor/bin/phpcov.php ...
+```
+
 ### clover.xml
 
 php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if its `type` attribute equals to `stmt`. When `type` attribute equals to `method`, php-coveralls excludes its `count` attribute from coverage collection because abstract method in an abstract class is never counted though subclasses implement that method which is executed in test cases.
@@ -104,26 +184,26 @@ Add `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
 # .travis.yml
 language: php
 php:
-    - 5.5
-    - 5.4
-    - 5.3
+  - 5.5
+  - 5.4
+  - 5.3
 
 matrix:
-    allow_failures:
-        - php: 5.5
+  allow_failures:
+    - php: 5.5
 
 before_script:
-    - curl -s http://getcomposer.org/installer | php
-    - php composer.phar install --dev --no-interaction
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
 
 script:
-    - mkdir -p build/logs
-    - php vendor/bin/phpunit -c phpunit.xml.dist
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
-    - php vendor/bin/coveralls
-    # or enable logging
-    - php vendor/bin/coveralls -v
+  - php vendor/bin/coveralls
+  # or enable logging
+  - php vendor/bin/coveralls -v
 ```
 
 ## CircleCI
@@ -213,6 +293,11 @@ You can get help information for `coveralls` with the `--help (-h)` option.
 php vendor/bin/coveralls --help
 ```
 
+- `--config (-c)`: Used to specify the path to `.coveralls.yml`. Default is `.coveralls.yml`
+- `--verbose (-v)`: Used to show logs.
+- `--dry-run`: Used not to send json_file to Coveralls Jobs API.
+- `--exclude-no-stmt`: Used to exclude source files that have no executable statements.
+
 ## .coveralls.yml
 
 php-coveralls can use optional `.coveralls.yml` file to configure options. This configuration file is usually at the root level of your repository, but you can specify other path by `--config (or -c)` CLI option. Following options are the same as Ruby library ([see reference on coveralls.io](https://coveralls.io/docs/ruby)).
@@ -239,6 +324,8 @@ coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```
 
+### coverage clover configuration
+
 You can specify multiple `clover.xml` logs at `coverage_clover`. This is useful for a project that has more than two test suites if all of the test results should be merged into one `json_file`.
 
 ```yml
@@ -253,11 +340,15 @@ coverage_clover: build/logs/clover-*.xml
 # array
 # specify files
 coverage_clover: 
-    - build/logs/clover-Auth.xml
-    - build/logs/clover-Db.xml
-    - build/logs/clover-Validator.xml
+  - build/logs/clover-Auth.xml
+  - build/logs/clover-Db.xml
+  - build/logs/clover-Validator.xml
 ```
 
-# Changelog
+# Change log
 
 [See changelog](CHANGELOG.md)
+
+# Wiki
+
+[See wiki](https://github.com/satooshi/php-coveralls/wiki)
