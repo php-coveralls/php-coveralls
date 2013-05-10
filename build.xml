@@ -30,7 +30,7 @@
     </target>
 
     <target name="php-cs-fixer-dry-run" depends="clean" description="Get coding standards fixer">
-        <exec executable="${phphome}/bin/php" failonerror="false">
+        <exec executable="php" failonerror="false">
             <arg value="-n"/>
             <arg path="${basedir}/php-cs-fixer.phar"/>
             <arg value="fix"/>
@@ -42,7 +42,7 @@
     </target>
 
     <target name="php-cs-fixer-fix" depends="clean" description="Get coding standards fixer">
-        <exec executable="${phphome}/bin/php" failonerror="false">
+        <exec executable="php" failonerror="false">
             <arg value="-n"/>
             <arg path="${basedir}/php-cs-fixer.phar"/>
             <arg value="fix"/>
@@ -52,10 +52,8 @@
         </exec>
     </target>
 
-    <property name="phphome" value="/usr/local/php/versions/5.4.11"/>
-
     <target name="lint" description="Perform syntax check of sourcecode files">
-        <apply executable="${phphome}/bin/php" failonerror="true">
+        <apply executable="php" failonerror="true">
             <arg value="-n"/>
             <arg value="-l"/>
 
@@ -72,7 +70,7 @@
     </target>
 
     <target name="apigen" description="Generate API documentation using apigen">
-        <exec executable="${phphome}/bin/php">
+        <exec executable="php">
             <arg value="-n"/>
             <arg path="${basedir}/vendor/bin/apigen.php"/>
             <arg value="-c"/>
@@ -103,7 +101,7 @@
     </target>
 
     <target name="phploc" description="Measure project size using PHPLOC">
-        <exec executable="${phphome}/bin/phploc">
+        <exec executable="phploc">
             <arg value="--log-csv"/>
             <arg value="${basedir}/build/logs/phploc.csv"/>
             <arg path="${basedir}/src"/>
@@ -111,7 +109,7 @@
     </target>
 
     <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
-        <exec executable="${phphome}/bin/phpcb">
+        <exec executable="phpcb">
             <arg value="--log"/>
             <arg path="${basedir}/build/logs"/>
             <arg value="--source"/>
@@ -168,10 +166,7 @@
     </target>
 
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec executable="${phphome}/bin/php" failonerror="false">
-            <arg value="-d"/>
-            <arg value="zend_extension=${phphome}/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so"/>
-            <arg path="${basedir}/vendor/bin/phpunit"/>
+        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="false">
             <arg value="--configuration"/>
             <arg path="${basedir}/phpunit.xml.dist"/>
         </exec>
@@ -188,21 +183,21 @@
     </target>
 
     <target name="junit-cli" description="Show elapsed time of PHPUnit tests">
-        <exec executable="${phphome}/bin/php">
+        <exec executable="php">
             <arg value="-n"/>
             <arg path="${basedir}/travis/junit.php"/>
         </exec>
     </target>
 
     <target name="pmd-cli" description="Show violations by PHPMD">
-        <exec executable="${phphome}/bin/php">
+        <exec executable="php">
             <arg value="-n"/>
             <arg path="${basedir}/travis/pmd.php"/>
         </exec>
     </target>
 
     <target name="checkstyle-cli" description="Show violations by PHP_CodeSniffer and apigen">
-        <exec executable="${phphome}/bin/php">
+        <exec executable="php">
             <arg value="-n"/>
             <arg path="${basedir}/travis/checkstyle.php"/>
         </exec>
