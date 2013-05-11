@@ -1,20 +1,24 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
+use Satooshi\ProjectTestCase;
+
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class SourceFileTest extends \PHPUnit_Framework_TestCase
+class SourceFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir      = realpath(__DIR__ . '/../../../../');
-        $this->rootDir  = realpath($this->dir . '/prj/files');
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
+
         $this->filename = 'test.php';
-        $this->path     = $this->rootDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->path     = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
 
         $this->object = new SourceFile($this->path, $this->filename);
     }
@@ -78,7 +82,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'name'     => $this->filename,
@@ -95,7 +99,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function addCoverage()
+    public function shouldAddCoverage()
     {
         $this->object->addCoverage(5, 1);
 
@@ -111,7 +115,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldLineCoverageZeroWithoutAddingCoverage()
+    public function shouldReportLineCoverage0PercentWithoutAddingCoverage()
     {
         $metrics = $this->object->getMetrics();
 
@@ -124,7 +128,7 @@ class SourceFileTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldLineCoverageAfterAddingCoverage()
+    public function shouldReportLineCoverage100PercentAfterAddingCoverage()
     {
         $this->object->addCoverage(6, 1);
 

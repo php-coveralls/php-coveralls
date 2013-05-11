@@ -80,7 +80,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setId()
+    public function shouldSetId()
     {
         $expected = 'id';
 
@@ -95,7 +95,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setAuthorName()
+    public function shouldSetAuthorName()
     {
         $expected = 'author_name';
 
@@ -110,7 +110,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setAuthorEmail()
+    public function shouldSetAuthorEmail()
     {
         $expected = 'author_email';
 
@@ -125,7 +125,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setCommitterName()
+    public function shouldSetCommitterName()
     {
         $expected = 'committer_name';
 
@@ -140,7 +140,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setCommitterEmail()
+    public function shouldSetCommitterEmail()
     {
         $expected = 'committer_email';
 
@@ -155,7 +155,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setMessage()
+    public function shouldSetMessage()
     {
         $expected = 'message';
 
@@ -170,7 +170,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'id'              => null,
@@ -188,14 +188,14 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArrayFilled()
+    public function shouldConvertToFilledArray()
     {
-        $id = 'id';
-        $authorName  = 'author_name';
-        $authorEmail = 'author_email';
-        $committerName = 'committer_name';
+        $id             = 'id';
+        $authorName     = 'author_name';
+        $authorEmail    = 'author_email';
+        $committerName  = 'committer_name';
         $committerEmail = 'committer_email';
-        $message = 'message';
+        $message        = 'message';
 
         $this->object
         ->setId($id)

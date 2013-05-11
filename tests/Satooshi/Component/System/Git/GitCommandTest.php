@@ -27,7 +27,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function commandPathIsGit()
+    public function shouldBeGitCommand()
     {
         $object = new GitCommand();
 
@@ -37,11 +37,12 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     // getBranches()
+    //
 
     /**
      * @test
      */
-    public function getBranchesExecuteCommand()
+    public function shouldExecuteGitBranchCommand()
     {
         $expected = 'git branch';
 
@@ -52,7 +53,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getBranches()
+    public function shouldReturnBranches()
     {
         $object = new GitCommand();
         $actual = $object->getBranches();
@@ -66,7 +67,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getHeadCommitExecuteCommand()
+    public function shouldExecuteGitLogCommand()
     {
         $expected = "git log -1 --pretty=format:'%H\n%aN\n%ae\n%cN\n%ce\n%s'";
 
@@ -77,13 +78,14 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getHeadCommit()
+    public function shouldReturnHeadCommit()
     {
         $object = new GitCommand();
         $actual = $object->getHeadCommit();
 
         $this->assertTrue(is_array($actual));
         $this->assertNotEmpty($actual);
+        $this->assertCount(6, $actual);
     }
 
     // getRemotes()
@@ -91,7 +93,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getRemotesExecuteCommand()
+    public function shouldExecuteGitRemoteCommand()
     {
         $expected = 'git remote -v';
 
@@ -102,7 +104,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getRemotes()
+    public function shouldReturnRemotes()
     {
         $object = new GitCommand();
         $actual = $object->getRemotes();
@@ -129,7 +131,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getCommandPath()
+    public function shouldCreateCommand()
     {
         $object = new GitCommand();
         $object->setCommandPath('ls');
