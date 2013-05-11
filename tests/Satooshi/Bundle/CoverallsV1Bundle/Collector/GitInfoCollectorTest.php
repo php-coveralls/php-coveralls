@@ -115,7 +115,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getCommand()
+    public function shouldHaveGitCommandOnConstruction()
     {
         $command = new GitCommand();
         $object = new GitInfoCollector($command);
@@ -128,7 +128,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function collect()
+    public function shouldCollect()
     {
         $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
         $object = new GitInfoCollector($gitCommand);

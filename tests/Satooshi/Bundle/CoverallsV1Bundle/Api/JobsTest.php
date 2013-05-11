@@ -1,10 +1,11 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
-use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
-use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
+use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
+use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
@@ -12,35 +13,26 @@ use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class JobsTest extends \PHPUnit_Framework_TestCase
+class JobsTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir           = realpath(__DIR__ . '/../../../../');
-        $this->rootDir       = realpath($this->dir . '/prj/files');
-        $this->srcDir        = $this->rootDir;
-        $this->url           = 'https://coveralls.io/api/v1/jobs';
-        $this->jsonPath      = __DIR__ . '/coveralls.json';
-        $this->filename      = 'json_file';
-        $this->cloverXmlPath = $this->rootDir . 'clover.xml';
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
     }
 
     protected function tearDown()
     {
         $this->rmFile($this->jsonPath);
         $this->rmFile($this->cloverXmlPath);
-    }
-
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            unlink($file);
-        }
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
     }
 
     protected function createJobsWith()
     {
-        $this->config = new Configuration($this->rootDir);
+        $this->config = new Configuration();
 
         $this->config
         ->setJsonPath($this->jsonPath)
@@ -53,7 +45,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 
     protected function createJobsNeverSend()
     {
-        $this->config = new Configuration($this->rootDir);
+        $this->config = new Configuration();
         $this->config
         ->setJsonPath($this->jsonPath)
         ->setDryRun(false);
@@ -65,7 +57,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 
     protected function createJobsNeverSendOnDryRun()
     {
-        $this->config = new Configuration($this->rootDir);
+        $this->config = new Configuration();
         $this->config
         ->setJsonPath($this->jsonPath)
         ->setDryRun(true);
@@ -117,7 +109,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
 
     protected function createConfiguration()
     {
-        $config = new Configuration($this->rootDir);
+        $config = new Configuration();
 
         return $config
         ->setSrcDir($this->srcDir)
@@ -168,7 +160,7 @@ class JobsTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir, $this->rootDir);
+        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
     protected function createCloverXml()
@@ -208,7 +200,7 @@ XML;
         $xml       = $this->createCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
     protected function collectJsonFileWithoutSourceFiles()
@@ -216,7 +208,7 @@ XML;
         $xml       = $this->createNoSourceCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
     protected function createCiEnvVarsCollector($config = null)
@@ -245,7 +237,7 @@ XML;
     /**
      * @test
      */
-    public function setJsonFile()
+    public function shouldSetJsonFile()
     {
         $jsonFile = $this->collectJsonFile();
 
@@ -259,7 +251,7 @@ XML;
     /**
      * @test
      */
-    public function getConfiguration()
+    public function shouldReturnConfiguration()
     {
         $config = $this->createConfiguration();
 
@@ -300,7 +292,7 @@ XML;
     /**
      * @test
      */
-    public function setHttpClient()
+    public function shouldSetHttpClient()
     {
         $config = $this->createConfiguration();
         $client = $this->createAdapterMockNeverCalled();
@@ -316,8 +308,9 @@ XML;
     /**
      * @test
      */
-    public function collectCloverXml()
+    public function shouldCollectCloverXml()
     {
+        $this->makeProjectDir(null, $this->logsDir);
         $xml = $this->getCloverXml();
 
         file_put_contents($this->cloverXmlPath, $xml);
@@ -336,7 +329,7 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXml
+     * @depends shouldCollectCloverXml
      */
     public function shouldHaveJsonFileAfterCollectCloverXml(Jobs $object)
     {
@@ -363,8 +356,9 @@ XML;
     /**
      * @test
      */
-    public function collectCloverXmlExcludingNoStatementsFiles()
+    public function shouldCollectCloverXmlExcludingNoStatementsFiles()
     {
+        $this->makeProjectDir(null, $this->logsDir);
         $xml = $this->getCloverXml();
 
         file_put_contents($this->cloverXmlPath, $xml);
@@ -383,7 +377,7 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXmlExcludingNoStatementsFiles
+     * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      */
     public function shouldHaveJsonFileAfterCollectCloverXmlExcludingNoStatementsFiles(Jobs $object)
     {
@@ -400,9 +394,9 @@ XML;
 
     /**
      * @test
-     * @depends collectCloverXml
+     * @depends shouldCollectCloverXml
      */
-    public function collectGitInfo(Jobs $object)
+    public function shouldCollectGitInfo(Jobs $object)
     {
         $same = $object->collectGitInfo();
 
@@ -414,7 +408,7 @@ XML;
 
     /**
      * @test
-     * @depends collectGitInfo
+     * @depends shouldCollectGitInfo
      */
     public function shouldHaveJsonFileAfterCollectGitInfo(Jobs $object)
     {
@@ -441,8 +435,10 @@ XML;
     /**
      * @test
      */
-    public function sendTravisCiJob()
+    public function shouldSendTravisCiJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
 
@@ -463,8 +459,10 @@ XML;
     /**
      * @test
      */
-    public function sendTravisProJob()
+    public function shouldSendTravisProJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.1';
 
@@ -489,8 +487,10 @@ XML;
     /**
      * @test
      */
-    public function sendCircleCiJob()
+    public function shouldSendCircleCiJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $serviceName   = 'circleci';
         $serviceNumber = '123';
         $repoToken     = 'token';
@@ -513,8 +513,10 @@ XML;
     /**
      * @test
      */
-    public function sendJenkinsJob()
+    public function shouldSendJenkinsJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $serviceName   = 'jenkins';
         $serviceNumber = '123';
         $repoToken     = 'token';
@@ -537,8 +539,10 @@ XML;
     /**
      * @test
      */
-    public function sendLocalJob()
+    public function shouldSendLocalJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $serviceName      = 'php-coveralls';
         $serviceEventType = 'manual';
 
@@ -559,8 +563,10 @@ XML;
     /**
      * @test
      */
-    public function sendUnsupportedJob()
+    public function shouldSendUnsupportedJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';
 
@@ -577,8 +583,10 @@ XML;
     /**
      * @test
      */
-    public function sendUnsupportedGitJob()
+    public function shouldSendUnsupportedGitJob()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';
         $server['GIT_COMMIT']           = 'abc123';
@@ -598,6 +606,8 @@ XML;
      */
     public function shouldNotSendJobIfTestEnv()
     {
+        $this->makeProjectDir(null, $this->logsDir);
+
         $server = array();
         $server['TRAVIS']        = true;
         $server['TRAVIS_JOB_ID'] = '1.1';

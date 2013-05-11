@@ -165,7 +165,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setRepoToken()
+    public function shouldSetRepoToken()
     {
         $expected = 'token';
 
@@ -180,7 +180,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setServiceName()
+    public function shouldSetServiceName()
     {
         $expected = 'travis-ci';
 
@@ -195,7 +195,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setSrcDir()
+    public function shouldSetSrcDir()
     {
         $expected = '/path/to/src';
 
@@ -210,7 +210,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setCloverXmlPaths()
+    public function shouldSetCloverXmlPaths()
     {
         $expected = array('/path/to/clover.xml');
 
@@ -225,7 +225,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function addCloverXmlPath()
+    public function shouldAddCloverXmlPath()
     {
         $expected = '/path/to/clover.xml';
 
@@ -240,7 +240,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setJsonPath()
+    public function shouldSetJsonPath()
     {
         $expected = '/path/to/coveralls-upload.json';
 
@@ -255,7 +255,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setDryRunFalse()
+    public function shouldSetDryRunFalse()
     {
         $expected = false;
 
@@ -268,7 +268,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setDryRunTrue()
+    public function shouldSetDryRunTrue()
     {
         $expected = true;
 
@@ -283,7 +283,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsFalse()
+    public function shouldSetExcludeNoStatementsFalse()
     {
         $expected = false;
 
@@ -296,7 +296,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsTrue()
+    public function shouldSetExcludeNoStatementsTrue()
     {
         $expected = true;
 
@@ -311,7 +311,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsFalseUnlessFalse()
+    public function shouldSetExcludeNoStatementsFalseUnlessFalse()
     {
         $expected = false;
 
@@ -324,7 +324,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsTrueUnlessFalse()
+    public function shouldSetExcludeNoStatementsTrueUnlessFalse()
     {
         $expected = true;
 
@@ -337,7 +337,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsTrueIfFalsePassedAndIfTrueWasSet()
+    public function shouldSetExcludeNoStatementsTrueIfFalsePassedAndIfTrueWasSet()
     {
         $expected = false;
 
@@ -351,7 +351,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setExcludeNoStatementsTrueIfTruePassedAndIfTrueWasSet()
+    public function shouldSetExcludeNoStatementsTrueIfTruePassedAndIfTrueWasSet()
     {
         $expected = true;
 
@@ -367,7 +367,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setVerboseFalse()
+    public function shouldSetVerboseFalse()
     {
         $expected = false;
 
@@ -380,7 +380,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setVerboseTrue()
+    public function shouldSetVerboseTrue()
     {
         $expected = true;
 
@@ -395,7 +395,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setEnv()
+    public function shouldSetEnv()
     {
         $expected = 'myenv';
 

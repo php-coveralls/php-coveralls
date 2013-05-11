@@ -12,8 +12,8 @@ class GitTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->branchName = 'branch_name';
-        $this->commit = $this->createCommit();
-        $this->remote = $this->createRemote();
+        $this->commit     = $this->createCommit();
+        $this->remote     = $this->createRemote();
 
         $this->object = new Git($this->branchName, $this->commit, array($this->remote));
     }
@@ -45,7 +45,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getBranch()
+    public function shouldHaveBranchNameOnConstruction()
     {
         $this->assertEquals($this->branchName, $this->object->getBranch());
     }
@@ -55,7 +55,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getHead()
+    public function shouldHaveHeadCommitOnConstruction()
     {
         $this->assertSame($this->commit, $this->object->getHead());
     }
@@ -65,7 +65,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function getRemotes()
+    public function shouldHaveRemotesOnConstruction()
     {
         $this->assertSame(array($this->remote), $this->object->getRemotes());
     }
@@ -75,7 +75,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'branch'  => $this->branchName,

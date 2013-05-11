@@ -1,24 +1,22 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 
-use Symfony\Component\Console\Tester\CommandTester;
+use Satooshi\ProjectTestCase;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CoverallsV1JobsCommandTest extends \PHPUnit_Framework_TestCase
+class CoverallsV1JobsCommandTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->rootDir       = realpath(__DIR__ . '/../../../../prj');
-        $this->srcDir        = $this->rootDir . '/files';
-        $this->buildDir      = $this->rootDir . '/build';
-        $this->logsDir       = $this->rootDir . '/build/logs';
-        $this->cloverXmlPath = $this->logsDir . '/clover.xml';
-        $this->jsonPath      = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
     }
 
     protected function tearDown()
@@ -27,42 +25,6 @@ class CoverallsV1JobsCommandTest extends \PHPUnit_Framework_TestCase
         $this->rmFile($this->jsonPath);
         $this->rmDir($this->logsDir);
         $this->rmDir($this->buildDir);
-    }
-
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            chmod(dirname($file), 0777);
-            unlink($file);
-        }
-    }
-
-    protected function rmDir($dir)
-    {
-        if (is_dir($dir)) {
-            chmod($dir, 0777);
-            rmdir($dir);
-        }
-    }
-
-    protected function makeProjectDir($logsDir, $cloverXmlPath, $logsDirUnwritable = false, $jsonPathUnwritable = false)
-    {
-        if ($logsDir !== null) {
-            mkdir($logsDir, 0777, true);
-        }
-
-        if ($cloverXmlPath !== null) {
-            file_put_contents($cloverXmlPath, $this->getCloverXml());
-        }
-
-        if ($logsDirUnwritable) {
-            chmod($logsDir, 0577);
-        }
-
-        if ($jsonPathUnwritable) {
-            touch($this->jsonPath);
-            chmod($this->jsonPath, 0577);
-        }
     }
 
     protected function getCloverXml()
@@ -93,12 +55,18 @@ XML;
         return sprintf($xml, $this->srcDir, $this->srcDir);
     }
 
+    protected function dumpCloverXml()
+    {
+        file_put_contents($this->cloverXmlPath, $this->getCloverXml());
+    }
+
     /**
      * @test
      */
     public function shouldExecuteCoverallsV1JobsCommand()
     {
-        $this->makeProjectDir($this->logsDir, $this->cloverXmlPath);
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
 
         $command = new CoverallsV1JobsCommand();
         $command->setRootDir($this->rootDir);

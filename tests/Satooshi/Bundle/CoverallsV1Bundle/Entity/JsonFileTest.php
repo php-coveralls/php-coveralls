@@ -1,10 +1,11 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
-use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
@@ -12,14 +13,13 @@ use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class JsonFileTest extends \PHPUnit_Framework_TestCase
+class JsonFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir      = realpath(__DIR__ . '/../../../../');
-        $this->rootDir  = realpath($this->dir . '/prj/files');
-        $this->filename = 'test.php';
-        $this->path     = $this->rootDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
 
         $this->object = new JsonFile();
     }
@@ -27,7 +27,10 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 
     protected function createSourceFile()
     {
-        return new SourceFile($this->path, $this->filename);
+        $filename = 'test.php';
+        $path     = $this->srcDir . DIRECTORY_SEPARATOR . $filename;
+
+        return new SourceFile($path, $filename);
     }
 
     protected function getCloverXml()
@@ -74,7 +77,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir, $this->rootDir);
+        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
     protected function createCloverXml()
@@ -89,7 +92,7 @@ XML;
         $xml       = $this->createCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
     protected function getNoSourceCloverXml()
@@ -122,7 +125,7 @@ XML;
         $xml       = $this->createNoSourceCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
 
@@ -146,7 +149,7 @@ XML;
     /**
      * @test
      */
-    public function countZeroSourceFilesOnConstruction()
+    public function shouldCountZeroSourceFilesOnConstruction()
     {
         $this->assertFalse($this->object->hasSourceFiles());
         $this->assertEmpty($this->object->getSourceFiles());
@@ -271,7 +274,7 @@ XML;
     /**
      * @test
      */
-    public function setServiceName()
+    public function shouldSetServiceName()
     {
         $expected = 'travis-ci';
 
@@ -288,7 +291,7 @@ XML;
     /**
      * @test
      */
-    public function setRepoToken()
+    public function shouldSetRepoToken()
     {
         $expected = 'token';
 
@@ -305,7 +308,7 @@ XML;
     /**
      * @test
      */
-    public function setServiceJobId()
+    public function shouldSetServiceJobId()
     {
         $expected = 'job_id';
 
@@ -322,7 +325,7 @@ XML;
     /**
      * @test
      */
-    public function setGit()
+    public function shouldSetGit()
     {
         $remotes = array(new Remote());
         $head    = new Commit();
@@ -341,7 +344,7 @@ XML;
     /**
      * @test
      */
-    public function setRunAt()
+    public function shouldSetRunAt()
     {
         $expected = '2013-04-04 11:22:33 +0900';
 
@@ -361,7 +364,7 @@ XML;
     /**
      * @test
      */
-    public function addSourceFile()
+    public function shouldAddSourceFile()
     {
         $sourceFile = $this->createSourceFile();
 
@@ -381,7 +384,7 @@ XML;
     /**
      * @test
      */
-    public function toArray()
+    public function shouldConvertToArray()
     {
         $expected = array(
             'source_files' => array(),
@@ -394,7 +397,7 @@ XML;
     /**
      * @test
      */
-    public function toArrayWithSourceFiles()
+    public function shouldConvertToArrayWithSourceFiles()
     {
         $sourceFile = $this->createSourceFile();
 
@@ -412,9 +415,9 @@ XML;
 
     /**
      * @test
-     * @depends setServiceName
+     * @depends shouldSetServiceName
      */
-    public function toArrayWithServiceName($object)
+    public function shouldConvertToArrayWithServiceName($object)
     {
         $item = 'travis-ci';
 
@@ -431,9 +434,9 @@ XML;
 
     /**
      * @test
-     * @depends setServiceJobId
+     * @depends shouldSetServiceJobId
      */
-    public function toArrayWithServiceJobId($object)
+    public function shouldConvertToArrayWithServiceJobId($object)
     {
         $item = 'job_id';
 
@@ -450,9 +453,9 @@ XML;
 
     /**
      * @test
-     * @depends setRepoToken
+     * @depends shouldSetRepoToken
      */
-    public function toArrayWithRepoToken($object)
+    public function shouldConvertToArrayWithRepoToken($object)
     {
         $item = 'token';
 
@@ -469,9 +472,9 @@ XML;
 
     /**
      * @test
-     * @depends setGit
+     * @depends shouldSetGit
      */
-    public function toArrayWithGit($object)
+    public function shouldConvertToArrayWithGit($object)
     {
         $remotes = array(new Remote());
         $head    = new Commit();
@@ -490,9 +493,9 @@ XML;
 
     /**
      * @test
-     * @depends setRunAt
+     * @depends shouldSetRunAt
      */
-    public function toArrayWithRunAt($object)
+    public function shouldConvertToArrayWithRunAt($object)
     {
         $item = '2013-04-04 11:22:33 +0900';
 
@@ -510,7 +513,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceJobId()
+    public function shouldFillJobsForServiceJobId()
     {
         $serviceName  = 'travis-ci';
         $serviceJobId = '1.1';
@@ -531,7 +534,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceNumber()
+    public function shouldFillJobsForServiceNumber()
     {
         $repoToken     = 'token';
         $serviceName   = 'circleci';
@@ -555,7 +558,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForStandardizedEnvVars()
+    public function shouldFillJobsForStandardizedEnvVars()
     {
         /*
          * CI_NAME=codeship
@@ -596,7 +599,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForServiceEventType()
+    public function shouldFillJobsForServiceEventType()
     {
         $repoToken        = 'token';
         $serviceName      = 'php-coveralls';
@@ -622,7 +625,7 @@ XML;
     /**
      * @test
      */
-    public function fillJobsForUnsupportedJob()
+    public function shouldFillJobsForUnsupportedJob()
     {
         $repoToken = 'token';
 
@@ -654,7 +657,7 @@ XML;
      * @test
      * @expectedException RuntimeException
      */
-    public function throwRuntimeExceptionOnFillingJobsIfNoSourceFiles()
+    public function throwRuntimeExceptionOnFillingJobsWithoutSourceFiles()
     {
         $env = array();
         $env['TRAVIS']        = true;
@@ -670,7 +673,7 @@ XML;
     /**
      * @test
      */
-    public function reportLineCoverage()
+    public function shouldReportLineCoverage()
     {
         $object = $this->collectJsonFile();
 
@@ -688,9 +691,9 @@ XML;
     /**
      * @test
      */
-    public function excludeNoStatementsFiles()
+    public function shouldExcludeNoStatementsFiles()
     {
-        $rootDir = $this->rootDir . DIRECTORY_SEPARATOR;
+        $srcDir = $this->srcDir . DIRECTORY_SEPARATOR;
 
         $object = $this->collectJsonFile();
 
@@ -700,7 +703,7 @@ XML;
 
         // filenames
         $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);
@@ -715,7 +718,7 @@ XML;
 
         // filenames
         $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);
