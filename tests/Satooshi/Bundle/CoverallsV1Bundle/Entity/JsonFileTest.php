@@ -1,10 +1,11 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
-use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
@@ -12,14 +13,13 @@ use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class JsonFileTest extends \PHPUnit_Framework_TestCase
+class JsonFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir      = realpath(__DIR__ . '/../../../../');
-        $this->rootDir  = realpath($this->dir . '/prj/files');
-        $this->filename = 'test.php';
-        $this->path     = $this->rootDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
 
         $this->object = new JsonFile();
     }
@@ -27,7 +27,10 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 
     protected function createSourceFile()
     {
-        return new SourceFile($this->path, $this->filename);
+        $filename = 'test.php';
+        $path     = $this->srcDir . DIRECTORY_SEPARATOR . $filename;
+
+        return new SourceFile($path, $filename);
     }
 
     protected function getCloverXml()
@@ -74,7 +77,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
   </project>
 </coverage>
 XML;
-        return sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir, $this->rootDir);
+        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
     protected function createCloverXml()
@@ -89,7 +92,7 @@ XML;
         $xml       = $this->createCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
     protected function getNoSourceCloverXml()
@@ -122,7 +125,7 @@ XML;
         $xml       = $this->createNoSourceCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
-        return $collector->collect($xml, $this->rootDir);
+        return $collector->collect($xml, $this->srcDir);
     }
 
 
@@ -690,7 +693,7 @@ XML;
      */
     public function shouldExcludeNoStatementsFiles()
     {
-        $rootDir = $this->rootDir . DIRECTORY_SEPARATOR;
+        $srcDir = $this->srcDir . DIRECTORY_SEPARATOR;
 
         $object = $this->collectJsonFile();
 
@@ -700,7 +703,7 @@ XML;
 
         // filenames
         $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);
@@ -715,7 +718,7 @@ XML;
 
         // filenames
         $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($rootDir) {return str_replace($rootDir, '', $path);}, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);

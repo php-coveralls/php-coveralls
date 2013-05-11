@@ -3,18 +3,20 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
+class CloverXmlCoverageCollectorTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir     = realpath(__DIR__ . '/../../../../');
-        $this->rootDir = realpath($this->dir . '/prj/files');
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
 
         $this->object = new CloverXmlCoverageCollector();
     }
@@ -59,7 +61,7 @@ class CloverXmlCoverageCollectorTest extends \PHPUnit_Framework_TestCase
 </coverage>
 XML;
 
-        return simplexml_load_string(sprintf($xml, $this->rootDir, $this->rootDir, $this->rootDir));
+        return simplexml_load_string(sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir));
     }
 
     // getJsonFile()
@@ -80,7 +82,7 @@ XML;
     public function shouldCollect()
     {
         $xml      = $this->createCloverXml();
-        $jsonFile = $this->object->collect($xml, $this->rootDir);
+        $jsonFile = $this->object->collect($xml, $this->srcDir);
 
         $this->assertSame($jsonFile, $this->object->getJsonFile());
         $this->assertJsonFile($jsonFile, null, null, null, null, '2013-04-13 10:28:13 +0000');
@@ -110,7 +112,7 @@ XML;
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name1 = 'test.php';
-        $path1 = $this->rootDir . DIRECTORY_SEPARATOR . $name1;
+        $path1 = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
 
         $this->assertArrayHasKey($path1, $sourceFiles);
         $this->assertSourceFileTest1($sourceFiles[$path1]);
@@ -125,7 +127,7 @@ XML;
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name2 = 'test2.php';
-        $path2 = $this->rootDir . DIRECTORY_SEPARATOR . $name2;
+        $path2 = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
 
         $this->assertArrayHasKey($path2, $sourceFiles);
         $this->assertSourceFileTest2($sourceFiles[$path2]);
@@ -154,7 +156,7 @@ XML;
     protected function assertSourceFileTest1(SourceFile $sourceFile)
     {
         $name1        = 'test.php';
-        $path1        = $this->rootDir . DIRECTORY_SEPARATOR . $name1;
+        $path1        = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
         $fileLines1   = 9;
         $coverage1    = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
@@ -166,7 +168,7 @@ XML;
     protected function assertSourceFileTest2(SourceFile $sourceFile)
     {
         $name2        = 'test2.php';
-        $path2        = $this->rootDir . DIRECTORY_SEPARATOR . $name2;
+        $path2        = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
         $fileLines2   = 10;
         $coverage2    = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;

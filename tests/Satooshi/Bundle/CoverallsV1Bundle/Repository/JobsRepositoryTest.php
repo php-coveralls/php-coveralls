@@ -1,47 +1,28 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Http\Exception\CurlException;
-
-use Guzzle\Http\Exception\ClientErrorResponseException;
-
 use Guzzle\Common\Exception\RuntimeException;
-
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\CurlException;
+use Psr\Log\NullLogger;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
-use Psr\Log\NullLogger;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
+class JobsRepositoryTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir           = realpath(__DIR__ . '/../../../../');
-        $this->rootDir       = realpath($this->dir . '/prj/files');
-        $this->srcDir        = $this->rootDir;
-        $this->url           = 'https://coveralls.io/api/v1/jobs';
-        $this->jsonPath      = __DIR__ . '/coveralls.json';
-        $this->filename      = 'json_file';
-        $this->cloverXmlPath = $this->rootDir . 'clover.xml';
-    }
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
 
-    protected function tearDown()
-    {
-        $this->rmFile($this->jsonPath);
-        $this->rmFile($this->cloverXmlPath);
-    }
-
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            unlink($file);
-        }
+        $this->setUpDir($this->projectDir);
     }
 
     // mock
@@ -243,7 +224,7 @@ class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->rootDir  . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir  . '/RepositoryTest';
 
         $sourceFiles = array(
             0   => new SourceFile($repositoryTestDir . '/Coverage0.php',   'Coverage0.php'),
@@ -264,7 +245,7 @@ class JobsRepositoryTest extends \PHPUnit_Framework_TestCase
 
     protected function createConfiguration()
     {
-        $config = new Configuration($this->rootDir);
+        $config = new Configuration();
 
         return $config
         ->setSrcDir($this->srcDir)

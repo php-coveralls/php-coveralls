@@ -2,30 +2,29 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\ProjectTestCase;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CiEnvVarsCollectorTest extends \PHPUnit_Framework_TestCase
+class CiEnvVarsCollectorTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->dir = realpath(__DIR__ . '/../../../../');
-        $this->rootDir = realpath($this->dir . '/prj/files');
-        $this->srcDir = $this->rootDir;
-        //$this->url           = 'https://coveralls.io/api/v1/jobs';
-        //$this->jsonPath      = __DIR__ . '/coveralls.json';
-        //$this->filename      = 'json_file';
-        $this->cloverXmlPath = $this->rootDir . 'clover.xml';
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
     }
 
     protected function createConfiguration()
     {
-        $config = new Configuration($this->rootDir);
+        $config = new Configuration();
 
-        return $config->setSrcDir($this->srcDir)->addCloverXmlPath($this->cloverXmlPath);
+        return $config
+        ->setSrcDir($this->srcDir)
+        ->addCloverXmlPath($this->cloverXmlPath);
     }
 
     protected function createCiEnvVarsCollector($config = null)

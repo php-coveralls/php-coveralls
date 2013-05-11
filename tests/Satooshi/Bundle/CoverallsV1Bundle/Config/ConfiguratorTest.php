@@ -1,24 +1,23 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
+use Satooshi\ProjectTestCase;
+
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConfiguratorTest extends \PHPUnit_Framework_TestCase
+class ConfiguratorTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->rootDir        = realpath(__DIR__ . '/../../../../prj');
-        $this->srcDir         = $this->rootDir . '/src';
-        $this->buildDir       = $this->rootDir . '/build';
-        $this->logsDir        = $this->rootDir . '/build/logs';
-        $this->cloverXmlPath  = $this->logsDir . '/clover.xml';
-        $this->cloverXmlPath1 = $this->logsDir . '/clover-part1.xml';
-        $this->cloverXmlPath2 = $this->logsDir . '/clover-part2.xml';
-        $this->jsonPath       = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
+        $this->projectDir = realpath(__DIR__ . '/../../../..');
+
+        $this->setUpDir($this->projectDir);
+
+        $this->srcDir = $this->rootDir . '/src';
 
         $this->object = new Configurator();
     }
@@ -32,52 +31,6 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         $this->rmDir($this->srcDir);
         $this->rmDir($this->logsDir);
         $this->rmDir($this->buildDir);
-    }
-
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            chmod(dirname($file), 0777);
-            unlink($file);
-        }
-    }
-
-    protected function rmDir($dir)
-    {
-        if (is_dir($dir)) {
-            chmod($dir, 0777);
-            rmdir($dir);
-        }
-    }
-
-    protected function makeProjectDir($srcDir, $logsDir, $cloverXmlPaths, $logsDirUnwritable = false, $jsonPathUnwritable = false)
-    {
-        if ($srcDir !== null) {
-            mkdir($srcDir, 0777, true);
-        }
-
-        if ($logsDir !== null) {
-            mkdir($logsDir, 0777, true);
-        }
-
-        if ($cloverXmlPaths !== null) {
-            if (is_array($cloverXmlPaths)) {
-                foreach ($cloverXmlPaths as $cloverXmlPath) {
-                    touch($cloverXmlPath);
-                }
-            } else {
-                touch($cloverXmlPaths);
-            }
-        }
-
-        if ($logsDirUnwritable) {
-            chmod($logsDir, 0577);
-        }
-
-        if ($jsonPathUnwritable) {
-            touch($this->jsonPath);
-            chmod($this->jsonPath, 0577);
-        }
     }
 
     // custom assertion
