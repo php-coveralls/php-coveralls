@@ -36,7 +36,7 @@
         "apigen/apigen": "2.8.*@stable"
     },
     "suggest": {
-        "symfony/http-kernel": "Allows Symfony integration",
+        "symfony/http-kernel": "Allows Symfony integration"
     },
     "autoload": {
         "psr-0": { "Satooshi\\Component": "src/", "Satooshi\\Bundle": "src/" }
