@@ -35,6 +35,9 @@
         "squizlabs/php_codesniffer": "1.4.*@stable",
         "apigen/apigen": "2.8.*@stable"
     },
+    "suggest": {
+        "symfony/http-kernel": "Allows Symfony integration"
+    },
     "autoload": {
         "psr-0": { "Satooshi\\Component": "src/", "Satooshi\\Bundle": "src/" }
     },

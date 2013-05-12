@@ -1,6 +1,8 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
+use Satooshi\Bundle\CoverallsV1Bundle\Version;
+
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
@@ -388,6 +390,7 @@ XML;
     {
         $expected = array(
             'source_files' => array(),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $this->object->toArray());
@@ -405,6 +408,7 @@ XML;
 
         $expected = array(
             'source_files' => array($sourceFile->toArray()),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $this->object->toArray());
@@ -424,6 +428,7 @@ XML;
         $expected = array(
             'service_name' => $item,
             'source_files' => array(),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -443,6 +448,7 @@ XML;
         $expected = array(
             'service_job_id' => $item,
             'source_files'   => array(),
+            'environment'    => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -462,6 +468,7 @@ XML;
         $expected = array(
             'repo_token'   => $item,
             'source_files' => array(),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $object->toArray());
@@ -483,6 +490,7 @@ XML;
         $expected = array(
             'git'          => $git->toArray(),
             'source_files' => array(),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertSame($expected, $object->toArray());
@@ -502,6 +510,7 @@ XML;
         $expected = array(
             'run_at'       => $item,
             'source_files' => array(),
+            'environment'  => array('packagist_version' => Version::VERSION),
         );
 
         $this->assertEquals($expected, $object->toArray());
