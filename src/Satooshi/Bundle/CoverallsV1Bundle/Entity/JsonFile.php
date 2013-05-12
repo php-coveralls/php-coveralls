@@ -2,6 +2,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
+use Satooshi\Bundle\CoverallsV1Bundle\Version;
 
 /**
  * Data represents "json_file" of Coveralls API.
@@ -127,6 +128,10 @@ class JsonFile extends Coveralls
                 $array[$jsonKey] = $this->toJsonProperty($this->$propName);
             }
         }
+
+        $array['environment'] = array(
+            'packagist_version' => Version::VERSION,
+        );
 
         return $array;
     }
