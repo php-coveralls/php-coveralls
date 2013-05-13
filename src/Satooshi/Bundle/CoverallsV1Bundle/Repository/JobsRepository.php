@@ -1,13 +1,13 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
-use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
+use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
+use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 
 /**
  * Jobs API client.
@@ -67,6 +67,8 @@ class JobsRepository implements LoggerAwareInterface
             ->collectEnvVars()
             ->dumpJsonFile()
             ->send();
+        } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
+            $this->logger->error(sprintf("%s", $e->getHelpMessage()));
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
         }
