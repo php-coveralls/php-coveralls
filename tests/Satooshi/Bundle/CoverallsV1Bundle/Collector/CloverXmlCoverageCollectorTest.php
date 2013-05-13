@@ -74,7 +74,7 @@ XML;
         $this->assertNull($this->object->getJsonFile());
     }
 
-    // collect()
+    // collect() under srcDir
 
     /**
      * @test
@@ -133,6 +133,66 @@ XML;
         $this->assertSourceFileTest2($sourceFiles[$path2]);
     }
 
+    // collect() under /
+
+    /**
+     * @test
+     */
+    public function shouldCollectUnderRootDir()
+    {
+        $xml      = $this->createCloverXml();
+        $jsonFile = $this->object->collect($xml, '/');
+
+        $this->assertSame($jsonFile, $this->object->getJsonFile());
+        $this->assertJsonFile($jsonFile, null, null, null, null, '2013-04-13 10:28:13 +0000');
+
+        return $jsonFile;
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectUnderRootDir
+     */
+    public function shouldCollectSourceFilesUnderRootDir(JsonFile $jsonFile)
+    {
+        $sourceFiles = $jsonFile->getSourceFiles();
+
+        $this->assertCount(2, $sourceFiles);
+
+        return $jsonFile;
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectSourceFilesUnderRootDir
+     */
+    public function shouldCollectSourceFileTest1UnderRootDir(JsonFile $jsonFile)
+    {
+        $sourceFiles = $jsonFile->getSourceFiles();
+
+        $name1 = 'test.php';
+        $path1 = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
+
+        $this->assertArrayHasKey($path1, $sourceFiles);
+        $this->assertSourceFileTest1UnderRootDir($sourceFiles[$path1]);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectSourceFilesUnderRootDir
+     */
+    public function shouldCollectSourceFileTest2UnderRootDir(JsonFile $jsonFile)
+    {
+        $sourceFiles = $jsonFile->getSourceFiles();
+
+        $name2 = 'test2.php';
+        $path2 = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
+
+        $this->assertArrayHasKey($path2, $sourceFiles);
+        $this->assertSourceFileTest2UnderRootDir($sourceFiles[$path2]);
+    }
+
+
     // custom assert
 
     protected function assertJsonFile($jsonFile, $serviceName, $serviceJobId, $repoToken, $git, $runAt)
@@ -175,5 +235,29 @@ XML;
         $source2      = trim(file_get_contents($path2));
 
         $this->assertSourceFile($sourceFile, $name2, $path2, $fileLines2, $coverage2, $source2);
+    }
+
+    protected function assertSourceFileTest1UnderRootDir(SourceFile $sourceFile)
+    {
+        $name1        = 'test.php';
+        $path1        = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
+        $fileLines1   = 9;
+        $coverage1    = array_fill(0, $fileLines1, null);
+        $coverage1[6] = 3;
+        $source1      = trim(file_get_contents($path1));
+
+        $this->assertSourceFile($sourceFile, $path1, $path1, $fileLines1, $coverage1, $source1);
+    }
+
+    protected function assertSourceFileTest2UnderRootDir(SourceFile $sourceFile)
+    {
+        $name2        = 'test2.php';
+        $path2        = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
+        $fileLines2   = 10;
+        $coverage2    = array_fill(0, $fileLines2, null);
+        $coverage2[7] = 0;
+        $source2      = trim(file_get_contents($path2));
+
+        $this->assertSourceFile($sourceFile, $path2, $path2, $fileLines2, $coverage2, $source2);
     }
 }
