@@ -59,6 +59,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertEquals($serviceJobId, $actual['CI_JOB_ID']);
+
+        return $object;
     }
 
     /**
@@ -85,6 +87,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertEquals($serviceJobId, $actual['CI_JOB_ID']);
+
+        return $object;
     }
 
     /**
@@ -109,6 +113,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
         $this->assertEquals($serviceNumber, $actual['CI_BUILD_NUMBER']);
+
+        return $object;
     }
 
     /**
@@ -137,6 +143,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_BUILD_URL', $actual);
         $this->assertEquals($buildUrl, $actual['CI_BUILD_URL']);
+
+        return $object;
     }
 
     /**
@@ -163,6 +171,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertNull($actual['CI_JOB_ID']);
+
+        return $object;
     }
 
     /**
@@ -183,6 +193,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
         $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+
+        return $object;
     }
 
     /**
@@ -201,5 +213,116 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
         $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+
+        return $object;
+    }
+
+    // getReadEnv()
+
+    /**
+     * @test
+     */
+    public function shouldNotHaveReadEnvOnConstruction()
+    {
+        $object = $this->createCiEnvVarsCollector();
+
+        $this->assertNull($object->getReadEnv());
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectTravisCiEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectTravisCiEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(3, $readEnv);
+        $this->assertArrayHasKey('TRAVIS', $readEnv);
+        $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectTravisProEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectTravisProEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(3, $readEnv);
+        $this->assertArrayHasKey('TRAVIS', $readEnv);
+        $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectCircleCiEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectCircleCiEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(4, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        $this->assertArrayHasKey('CIRCLECI', $readEnv);
+        $this->assertArrayHasKey('CIRCLE_BUILD_NUM', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectJenkinsEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectJenkinsEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(4, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        $this->assertArrayHasKey('JENKINS_URL', $readEnv);
+        $this->assertArrayHasKey('BUILD_NUMBER', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectLocalEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectLocalEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(4, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        $this->assertArrayHasKey('COVERALLS_RUN_LOCALLY', $readEnv);
+        $this->assertArrayHasKey('COVERALLS_EVENT_TYPE', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectUnsupportedConfig
+     */
+    public function shouldHaveReadEnvAfterCollectUnsupportedConfig(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(1, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectUnsupportedEnvVars
+     */
+    public function shouldHaveReadEnvAfterCollectUnsupportedEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(1, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 }
