@@ -30,7 +30,7 @@ class CloverXmlCoverageCollector
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
     {
-        $root = $rootDir . DIRECTORY_SEPARATOR;
+        $root = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
         if (!isset($this->jsonFile)) {
             $this->jsonFile = new JsonFile();
@@ -92,7 +92,11 @@ class CloverXmlCoverageCollector
             return null;
         }
 
-        $filename = str_replace($root, '', $absolutePath);
+        if ($root !== DIRECTORY_SEPARATOR) {
+            $filename = str_replace($root, '', $absolutePath);
+        } else {
+            $filename = $absolutePath;
+        }
 
         return $this->collectCoverage($file, $absolutePath, $filename);
     }
