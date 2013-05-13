@@ -27,6 +27,13 @@ class CiEnvVarsCollector
     protected $env;
 
     /**
+     * Read environment variables.
+     *
+     * @var array
+     */
+    protected $readEnv;
+
+    /**
      * Constructor.
      *
      * @param Configuration $config Configuration.
@@ -47,7 +54,8 @@ class CiEnvVarsCollector
      */
     public function collect(array $env)
     {
-        $this->env = $env;
+        $this->env     = $env;
+        $this->readEnv = array();
 
         $this->fillTravisCi()
         ->fillCircleCi()
@@ -77,6 +85,11 @@ class CiEnvVarsCollector
             } else {
                 $this->env['CI_NAME'] = 'travis-ci';
             }
+
+            // backup
+            $this->readEnv['TRAVIS']        = $this->env['TRAVIS'];
+            $this->readEnv['TRAVIS_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
+            $this->readEnv['CI_NAME']       = $this->env['CI_NAME'];
         }
 
         return $this;
@@ -94,6 +107,11 @@ class CiEnvVarsCollector
         if (isset($this->env['CIRCLECI']) && $this->env['CIRCLECI'] && isset($this->env['CIRCLE_BUILD_NUM'])) {
             $this->env['CI_BUILD_NUMBER'] = $this->env['CIRCLE_BUILD_NUM'];
             $this->env['CI_NAME']         = 'circleci';
+
+            // backup
+            $this->readEnv['CIRCLECI']         = $this->env['CIRCLECI'];
+            $this->readEnv['CIRCLE_BUILD_NUM'] = $this->env['CIRCLE_BUILD_NUM'];
+            $this->readEnv['CI_NAME']          = $this->env['CI_NAME'];
         }
 
         return $this;
@@ -112,6 +130,11 @@ class CiEnvVarsCollector
             $this->env['CI_BUILD_NUMBER'] = $this->env['BUILD_NUMBER'];
             $this->env['CI_BUILD_URL']    = $this->env['JENKINS_URL'];
             $this->env['CI_NAME']         = 'jenkins';
+
+            // backup
+            $this->readEnv['BUILD_NUMBER'] = $this->env['BUILD_NUMBER'];
+            $this->readEnv['JENKINS_URL']  = $this->env['JENKINS_URL'];
+            $this->readEnv['CI_NAME']      = $this->env['CI_NAME'];
         }
 
         return $this;
@@ -130,6 +153,11 @@ class CiEnvVarsCollector
             $this->env['CI_JOB_ID']            = null;
             $this->env['CI_NAME']              = 'php-coveralls';
             $this->env['COVERALLS_EVENT_TYPE'] = 'manual';
+
+            // backup
+            $this->readEnv['COVERALLS_RUN_LOCALLY'] = $this->env['COVERALLS_RUN_LOCALLY'];
+            $this->readEnv['COVERALLS_EVENT_TYPE']  = $this->env['COVERALLS_EVENT_TYPE'];
+            $this->readEnv['CI_NAME']               = $this->env['CI_NAME'];
         }
 
         return $this;
@@ -146,8 +174,26 @@ class CiEnvVarsCollector
     {
         if ($this->config->hasRepoToken()) {
             $this->env['COVERALLS_REPO_TOKEN'] = $this->config->getRepoToken();
+
+        }
+
+        // backup
+        if (isset($this->env['COVERALLS_REPO_TOKEN'])) {
+            $this->readEnv['COVERALLS_REPO_TOKEN'] = $this->env['COVERALLS_REPO_TOKEN'];
         }
 
         return $this;
+    }
+
+    // accessor
+
+    /**
+     * Return read environment variables.
+     *
+     * @return array
+     */
+    public function getReadEnv()
+    {
+        return $this->readEnv;
     }
 }

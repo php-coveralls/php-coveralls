@@ -10,6 +10,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
 use Satooshi\ProjectTestCase;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
@@ -26,6 +27,52 @@ class JobsRepositoryTest extends ProjectTestCase
     }
 
     // mock
+
+    protected function createApiMockWithRequirementsNotSatisfiedException()
+    {
+        $jobsMethods = array(
+            'collectCloverXml',
+            'getJsonFile',
+            'collectGitInfo',
+            'collectEnvVars',
+            'dumpJsonFile',
+            'send'
+        );
+        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
+        ->disableOriginalConstructor()
+        ->setMethods($jobsMethods)
+        ->getMock();
+
+        $exception = new RequirementsNotSatisfiedException();
+
+        $api
+        ->expects($this->once())
+        ->method('collectCloverXml')
+        ->with()
+        ->will($this->throwException($exception));
+
+        $api
+        ->expects($this->never())
+        ->method('getJsonFile');
+
+        $api
+        ->expects($this->never())
+        ->method('collectGitInfo');
+
+        $api
+        ->expects($this->never())
+        ->method('collectEnvVars');
+
+        $api
+        ->expects($this->never())
+        ->method('dumpJsonFile');
+
+        $api
+        ->expects($this->never())
+        ->method('send');
+
+        return $api;
+    }
 
     protected function createApiMockWithException()
     {
@@ -296,6 +343,21 @@ class JobsRepositoryTest extends ProjectTestCase
     public function unexpectedException()
     {
         $api    = $this->createApiMockWithException();
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    /**
+     * @test
+     */
+    public function requirementsNotSatisfiedException()
+    {
+        $api    = $this->createApiMockWithRequirementsNotSatisfiedException();
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
