@@ -86,12 +86,20 @@ class Jobs extends CoverallsApi
      * @param array $env $_SERVER environment.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     *
+     * @throws \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function collectEnvVars(array $env)
     {
         $envCollector = new CiEnvVarsCollector($this->config);
 
-        $this->jsonFile->fillJobs($envCollector->collect($env));
+        try {
+            $this->jsonFile->fillJobs($envCollector->collect($env));
+        } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
+            $e->setReadEnv($envCollector->getReadEnv());
+
+            throw $e;
+        }
 
         return $this;
     }

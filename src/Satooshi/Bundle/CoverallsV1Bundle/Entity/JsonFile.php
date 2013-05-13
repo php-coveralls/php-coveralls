@@ -1,6 +1,7 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Version;
 
@@ -305,9 +306,7 @@ class JsonFile extends Coveralls
             return $this;
         }
 
-        $message = 'requirements are not satisfied.';
-
-        throw new \RuntimeException($message);
+        throw new RequirementsNotSatisfiedException();
     }
 
     /**

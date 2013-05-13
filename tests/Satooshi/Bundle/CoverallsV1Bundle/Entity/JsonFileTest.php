@@ -651,7 +651,7 @@ XML;
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function throwRuntimeExceptionOnFillingJobsIfInvalidEnv()
     {
