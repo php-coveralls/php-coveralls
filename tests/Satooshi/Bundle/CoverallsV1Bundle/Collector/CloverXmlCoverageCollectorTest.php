@@ -56,12 +56,19 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         <line num="6" type="method" name="__construct" crap="1" count="0"/>
         <line num="8" type="stmt" count="0"/>
       </file>
+      <file path="%s/test3.php" name="test3.php">
+        <class name="TestFileBis" namespace="Hoge">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        </class>
+        <line num="6" type="method" name="__construct" crap="1" count="0"/>
+        <line num="8" type="stmt" count="0"/>
+      </file>
     </package>
   </project>
 </coverage>
 XML;
 
-        return simplexml_load_string(sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir));
+        return simplexml_load_string(sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir));
     }
 
     // getJsonFile()
@@ -98,7 +105,7 @@ XML;
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
-        $this->assertCount(2, $sourceFiles);
+        $this->assertCount(3, $sourceFiles);
 
         return $jsonFile;
     }
@@ -157,7 +164,7 @@ XML;
     {
         $sourceFiles = $jsonFile->getSourceFiles();
 
-        $this->assertCount(2, $sourceFiles);
+        $this->assertCount(3, $sourceFiles);
 
         return $jsonFile;
     }
