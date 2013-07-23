@@ -181,8 +181,6 @@ php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if it
 
 Add `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
 
-*Please note that `--dev` must be set to `composer install` option.*
-
 ```yml
 # .travis.yml
 language: php
