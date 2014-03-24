@@ -465,10 +465,12 @@ XML;
 
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.1';
+        $repoToken    = 'your_token';
 
         $server = array();
-        $server['TRAVIS']        = true;
-        $server['TRAVIS_JOB_ID'] = $serviceJobId;
+        $server['TRAVIS']               = true;
+        $server['TRAVIS_JOB_ID']        = $serviceJobId;
+        $server['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $object   = $this->createJobsWith();
         $config   = $object->getConfiguration()->setServiceName($serviceName);
@@ -482,6 +484,7 @@ XML;
 
         $this->assertEquals($serviceName, $jsonFile->getServiceName());
         $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
+        $this->assertEquals($repoToken, $jsonFile->getRepoToken());
     }
 
     /**
