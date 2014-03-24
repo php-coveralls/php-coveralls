@@ -348,7 +348,8 @@ class JsonFile extends Coveralls
      *
      * @return boolean
      */
-    protected function requireRepoToken() {
+    protected function requireRepoToken()
+    {
         return isset($this->serviceName) && $this->serviceName === 'travis-pro' && isset($this->repoToken);
     }
 
