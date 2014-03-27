@@ -41,5 +41,10 @@
     "autoload": {
         "psr-0": { "Satooshi\\Component": "src/", "Satooshi\\Bundle": "src/" }
     },
-    "bin": ["composer/bin/coveralls"]
+    "bin": ["composer/bin/coveralls"],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.7-dev"
+        }
+    }
 }
