@@ -70,10 +70,12 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $serviceName  = 'travis-pro';
         $serviceJobId = '1.2';
+        $repoToken    = 'your_token';
 
         $env = array();
-        $env['TRAVIS']        = true;
-        $env['TRAVIS_JOB_ID'] = $serviceJobId;
+        $env['TRAVIS']               = true;
+        $env['TRAVIS_JOB_ID']        = $serviceJobId;
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $config = $this->createConfiguration();
         $config->setServiceName($serviceName);
@@ -87,6 +89,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertEquals($serviceJobId, $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
+        $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -251,10 +256,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(3, $readEnv);
+        $this->assertCount(4, $readEnv);
         $this->assertArrayHasKey('TRAVIS', $readEnv);
         $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
     /**

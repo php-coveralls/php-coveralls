@@ -302,6 +302,10 @@ class JsonFile extends Coveralls
             return $this;
         }
 
+        if ($this->requireRepoToken()) {
+            return $this;
+        }
+
         if ($this->isUnsupportedServiceJob()) {
             return $this;
         }
@@ -337,6 +341,16 @@ class JsonFile extends Coveralls
     protected function requireServiceEventType()
     {
         return isset($this->serviceName) && isset($this->serviceEventType) && isset($this->repoToken);
+    }
+
+    /**
+     * Return whether the job requires "repo_token" (for Travis PRO).
+     *
+     * @return boolean
+     */
+    protected function requireRepoToken()
+    {
+        return isset($this->serviceName) && $this->serviceName === 'travis-pro' && isset($this->repoToken);
     }
 
     /**
