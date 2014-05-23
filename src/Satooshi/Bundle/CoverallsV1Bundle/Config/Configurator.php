@@ -117,7 +117,7 @@ class Configurator
 
         // validate
         if (!$file->isRealDirExist($realpath)) {
-            throw new InvalidConfigurationException('src directory is not found');
+            throw new InvalidConfigurationException(sprintf('src directory %s is not found', $realpath));
         }
 
         return $realpath;
