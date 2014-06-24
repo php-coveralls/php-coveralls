@@ -27,7 +27,7 @@
     "require-dev": {
         "phpunit/phpunit": "3.7.*@stable",
         "phpunit/php-invoker": ">=1.1.0,<1.2.0",
-        "pdepend/pdepend": "dev-master",
+        "pdepend/pdepend": "dev-master as 2.0.0",
         "phpmd/phpmd": "dev-master",
         "sebastian/phpcpd": "1.4.*@stable",
         "sebastian/finder-facade": "dev-master",
