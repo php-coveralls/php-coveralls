@@ -85,7 +85,7 @@ class SourceFileTest extends ProjectTestCase
     public function shouldConvertToArray()
     {
         $expected = array(
-            'name'     => $this->filename,
+            'name'     => substr($this->path, strlen(getcwd())+1),
             'source'   => trim(file_get_contents($this->path)),
             'coverage' => array_fill(0, 9, null),
         );
