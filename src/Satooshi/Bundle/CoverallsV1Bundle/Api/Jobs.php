@@ -123,7 +123,7 @@ class Jobs extends CoverallsApi
      *
      * @return \Guzzle\Http\Message\Response|null
      *
-     * @throws \RuntimeException
+     * @throws \Exception
      */
     public function send()
     {
@@ -145,15 +145,13 @@ class Jobs extends CoverallsApi
      * @param string $path     File path.
      * @param string $filename Filename.
      *
-     * @return \Guzzle\Http\Message\Response Response.
+     * @return \Psr\Http\Message\IncomingResponseInterface Response.
      *
-     * @throws \RuntimeException
+     * @throws \Exception
      */
     protected function upload($url, $path, $filename)
     {
-        $request  = $this->client->post($url)->addPostFiles(array($filename => $path));
-
-        return $request->send();
+        return $this->client->post($url, array(), array(), array($filename => $path));
     }
 
     // accessor

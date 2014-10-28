@@ -71,6 +71,13 @@ class Configuration
     protected $excludeNoStatements = false;
 
     /**
+     * The http client name.
+     *
+     * @var string
+     */
+    protected $http = 'socket';
+
+    /**
      * Whether to show log.
      *
      * @var boolean
@@ -314,6 +321,32 @@ class Configuration
     public function isExcludeNoStatements()
     {
         return $this->excludeNoStatements;
+    }
+
+    /**
+     * Set the http client name.
+     *
+     * @param string $http
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     */
+    public function setHttp($http)
+    {
+        if ($http) {
+            $this->http = trim($http);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Return the http client name.
+     *
+     * @return string
+     */
+    public function getHttp()
+    {
+        return $this->http;
     }
 
     /**

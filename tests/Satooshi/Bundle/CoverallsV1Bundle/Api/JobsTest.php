@@ -70,39 +70,29 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('send'));
+        $client = $this->getMock('Ivory\HttpAdapter\HttpAdapterInterface');
 
         $client
         ->expects($this->never())
-        ->method('send');
+        ->method('post');
 
         return $client;
     }
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('post', 'addPostFiles'));
-        $request = $this->getMockBuilder('Guzzle\Http\Message\EntityEnclosingRequest')
-        ->disableOriginalConstructor()
-        ->getMock();
+        $client = $this->getMock('Ivory\HttpAdapter\HttpAdapterInterface');
 
         $client
         ->expects($this->once())
         ->method('post')
-        ->with($this->equalTo($url))
+        ->with(
+            $this->equalTo($url),
+            $this->equalTo(array()),
+            $this->equalTo(array()),
+            $this->equalTo(array($filename => $jsonPath))
+        )
         ->will($this->returnSelf());
-
-        $client
-        ->expects($this->once())
-        ->method('addPostFiles')
-        ->with($this->equalTo(array($filename => $jsonPath)))
-        ->will($this->returnValue($request));
-
-        $request
-        ->expects($this->once())
-        ->method('send')
-        ->with()
-        ;
 
         return $client;
     }
