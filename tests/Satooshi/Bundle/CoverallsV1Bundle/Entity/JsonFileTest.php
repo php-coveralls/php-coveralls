@@ -634,29 +634,6 @@ XML;
     /**
      * @test
      */
-    public function shouldFillJobsForRepoToken()
-    {
-        $repoToken   = 'token';
-        $serviceName = 'travis-pro';
-
-        $env = array();
-        $env['COVERALLS_REPO_TOKEN']  = $repoToken;
-        $env['COVERALLS_RUN_LOCALLY'] = '1';
-        $env['CI_NAME']               = $serviceName;
-
-        $object = $this->collectJsonFile();
-
-        $same = $object->fillJobs($env);
-
-        $this->assertSame($same, $object);
-        $this->assertEquals($repoToken, $object->getRepoToken());
-        $this->assertEquals($serviceName, $object->getServiceName());
-        $this->assertNull($object->getServiceJobId());
-    }
-
-    /**
-     * @test
-     */
     public function shouldFillJobsForUnsupportedJob()
     {
         $repoToken = 'token';

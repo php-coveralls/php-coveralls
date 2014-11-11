@@ -35,13 +35,12 @@ class ConfiguratorTest extends ProjectTestCase
 
     // custom assertion
 
-    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath, $excludeNoStatements = false, $http = 'curl')
+    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
         $this->assertEquals($srcDir, $config->getSrcDir());
         $this->assertEquals($cloverXml, $config->getCloverXmlPaths());
         $this->assertEquals($jsonPath, $config->getJsonPath());
         $this->assertEquals($excludeNoStatements, $config->isExcludeNoStatements());
-        $this->assertEquals($http, $config->getHttp());
     }
 
     // load()
@@ -232,20 +231,6 @@ class ConfiguratorTest extends ProjectTestCase
         $config = $this->object->load($path, $this->rootDir);
 
         $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, false);
-    }
-
-    /**
-     * @test
-     */
-    public function shouldLoadHttp()
-    {
-        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
-
-        $path = realpath(__DIR__ . '/yaml/http.yml');
-
-        $config = $this->object->load($path, $this->rootDir);
-
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, false, 'socket');
     }
 
     // configured src_dir not found

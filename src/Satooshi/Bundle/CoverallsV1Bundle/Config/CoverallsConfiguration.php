@@ -61,9 +61,6 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->booleanNode('exclude_no_stmt')
                     ->defaultFalse()
                 ->end()
-                ->scalarNode('http')
-                    ->defaultValue('curl')
-                ->end()
             ->end();
 
         return $treeBuilder;
