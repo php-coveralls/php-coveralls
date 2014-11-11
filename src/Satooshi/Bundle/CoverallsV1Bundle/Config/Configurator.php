@@ -94,6 +94,7 @@ class Configurator
         ->setServiceName($options['service_name'])
         // for PHP lib
         ->setSrcDir($this->ensureSrcDir($options['src_dir'], $rootDir, $file))
+        ->setRootDir($rootDir)
         ->setCloverXmlPaths($this->ensureCloverXmlPaths($options['coverage_clover'], $rootDir, $file))
         ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
         ->setExcludeNoStatements($options['exclude_no_stmt']);

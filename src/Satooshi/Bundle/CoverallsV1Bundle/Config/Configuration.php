@@ -34,6 +34,13 @@ class Configuration
     protected $srcDir;
 
     /**
+     * Absolute path to repository root directory.
+     *
+     * @var string
+     */
+    protected $rootDir;
+
+    /**
      * Absolute paths to clover.xml.
      *
      * @var array
@@ -169,6 +176,18 @@ class Configuration
     public function getSrcDir()
     {
         return $this->srcDir;
+    }
+
+    public function setRootDir($rootDir)
+    {
+        $this->rootDir = $rootDir;
+
+        return $this;
+    }
+
+    public function getRootDir()
+    {
+        return $this->rootDir;
     }
 
     /**

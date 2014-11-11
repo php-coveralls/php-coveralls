@@ -23,8 +23,8 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage from XML object.
      *
-     * @param SimpleXMLElement $xml     Clover XML object.
-     * @param string           $rootDir Path to src directory.
+     * @param \SimpleXMLElement $xml     Clover XML object.
+     * @param string            $rootDir Path to repository root directory.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */

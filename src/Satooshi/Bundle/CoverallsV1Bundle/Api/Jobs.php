@@ -44,14 +44,14 @@ class Jobs extends CoverallsApi
      */
     public function collectCloverXml()
     {
-        $srcDir         = $this->config->getSrcDir();
+        $rootDir        = $this->config->getRootDir();
         $cloverXmlPaths = $this->config->getCloverXmlPaths();
         $xmlCollector   = new CloverXmlCoverageCollector();
 
         foreach ($cloverXmlPaths as $cloverXmlPath) {
             $xml = simplexml_load_file($cloverXmlPath);
 
-            $xmlCollector->collect($xml, $srcDir);
+            $xmlCollector->collect($xml, $rootDir);
         }
 
         $this->jsonFile = $xmlCollector->getJsonFile();
