@@ -4,9 +4,9 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator;
-use Satooshi\Bundle\CoverallsV1Bundle\Http\ClientFactory;
 use Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository;
 use Satooshi\Component\Log\ConsoleLogger;
+use Guzzle\Http\Client;
 use Psr\Log\NullLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -65,12 +65,6 @@ class CoverallsV1JobsCommand extends Command
             null,
             InputOption::VALUE_NONE,
             'Exclude source files that have no executable statements'
-        )
-        ->addOption(
-            'http',
-            null,
-            InputOption::VALUE_NONE,
-            'HTTP client name'
         )
         ->addOption(
             'env',
@@ -138,7 +132,7 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function executeApi(Configuration $config)
     {
-        $client     = ClientFactory::create($config->getHttp());
+        $client     = new Client();
         $api        = new Jobs($config, $client);
         $repository = new JobsRepository($api, $config);
 

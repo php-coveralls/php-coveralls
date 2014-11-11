@@ -86,7 +86,6 @@ XML;
                 '--dry-run' => true,
                 '--config'  => 'coveralls.yml',
                 '--env'     => 'test',
-                '--http'    => 'socket',
             )
         );
 

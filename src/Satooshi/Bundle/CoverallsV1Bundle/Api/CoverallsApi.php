@@ -2,7 +2,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
-use Ivory\HttpAdapter\HttpAdapterInterface;
+use Guzzle\Http\Client;
 
 /**
  * Coveralls API client.
@@ -21,17 +21,17 @@ abstract class CoverallsApi
     /**
      * HTTP client.
      *
-     * @var \Ivory\HttpAdapter\HttpAdapterInterface
+     * @var \Guzzle\Http\Client
      */
     protected $client;
 
     /**
      * Constructor.
      *
-     * @param Configuration                           $config Configuration.
-     * @param \Ivory\HttpAdapter\HttpAdapterInterface $client HTTP client.
+     * @param Configuration       $config Configuration.
+     * @param \Guzzle\Http\Client $client HTTP client.
      */
-    public function __construct(Configuration $config, HttpAdapterInterface $client = null)
+    public function __construct(Configuration $config, Client $client = null)
     {
         $this->config = $config;
         $this->client = $client;
@@ -52,11 +52,11 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param \Ivory\HttpAdapter\HttpAdapterInterface $client HTTP client.
+     * @param \Guzzle\Http\Client $client HTTP client.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\CoverallsApi
      */
-    public function setHttpClient(HttpAdapterInterface $client)
+    public function setHttpClient(Client $client)
     {
         $this->client = $client;
 
@@ -66,7 +66,7 @@ abstract class CoverallsApi
     /**
      * Return HTTP client.
      *
-     * @return \Ivory\HttpAdapter\HttpAdapterInterface
+     * @return \Guzzle\Http\Client
      */
     public function getHttpClient()
     {
