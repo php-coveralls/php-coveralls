@@ -8,7 +8,7 @@ php-coveralls
 [![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
 [![Total Downloads](https://poser.pugx.org/satooshi/php-coveralls/downloads.png)](https://packagist.org/packages/satooshi/php-coveralls)
 
-PHP client library for [Coveralls](https://coveralls.io). 
+PHP client library for [Coveralls](https://coveralls.io).
 
 # API doc
 
@@ -298,6 +298,23 @@ php vendor/bin/coveralls --help
 - `--verbose (-v)`: Used to show logs.
 - `--dry-run`: Used not to send json_file to Coveralls Jobs API.
 - `--exclude-no-stmt`: Used to exclude source files that have no executable statements.
+- `--http`: Used to configure the http transport. Default is `curl`
+
+## HTTP transport
+
+You can use different transport according to your own dependencies. By default, the `curl` one is used but you can
+either use:
+
+- [`buzz`](https://github.com/kriswallsmith/Buzz)
+- [`curl`](http://curl.haxx.se/)
+- [`file_get_contents`](http://php.net/manual/en/function.file-get-contents.php)
+- [`fopen`](http://php.net/manual/en/function.fopen.php)
+- [`guzzle`](http://guzzle3.readthedocs.org/)
+- [`guzzle_http`](http://guzzle.readthedocs.org/)
+- [`httpful`](http://phphttpclient.com/)
+- [`socket`](http://php.net/manual/en/function.stream-socket-client.php)
+- [`zend1`](http://framework.zend.com/manual/1.12/en/zend.http.html)
+- [`zend2`](http://framework.zend.com/manual/2.0/en/modules/zend.http.html)
 
 ## .coveralls.yml
 
@@ -308,9 +325,10 @@ php-coveralls can use optional `.coveralls.yml` file to configure options. This 
 
 Following options can be used for php-coveralls.
 
-- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`. 
+- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`.
 - `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
 - `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
+- `http`: Used to configure the http transport. Default is `curl`.
 
 ```yml
 # .coveralls.yml example configuration
@@ -323,6 +341,7 @@ service_name: travis-pro # travis-ci or travis-pro
 src_dir: src
 coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
+http: curl
 ```
 
 ### coverage clover configuration
@@ -340,7 +359,7 @@ coverage_clover: build/logs/clover-*.xml
 
 # array
 # specify files
-coverage_clover: 
+coverage_clover:
   - build/logs/clover-Auth.xml
   - build/logs/clover-Db.xml
   - build/logs/clover-Validator.xml

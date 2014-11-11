@@ -1,10 +1,7 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Common\Exception\RuntimeException;
-use Guzzle\Http\Exception\ClientErrorResponseException;
-use Guzzle\Http\Exception\CurlException;
-use Psr\Log\NullLogger;
+use Ivory\HttpAdapter\HttpAdapterException;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
@@ -175,14 +172,11 @@ class JobsRepositoryTest extends ProjectTestCase
             ->with()
             ->will($this->returnValue($response));
         } else {
-            if ($statusCode === null) {
-                $exception = new \Guzzle\Http\Exception\CurlException();
-            } elseif ($statusCode === 422) {
-                $exception = new \Guzzle\Http\Exception\ClientErrorResponseException();
+            if ($response !== null) {
+                $exception = new HttpAdapterException();
                 $exception->setResponse($response);
             } else {
-                $exception = new \Guzzle\Http\Exception\ServerErrorResponseException();
-                $exception->setResponse($response);
+                $exception = new \Exception();
             }
 
             $api
@@ -198,37 +192,25 @@ class JobsRepositoryTest extends ProjectTestCase
     protected function createResponseMock($statusCode, $reasonPhrase, $body)
     {
         $json     = is_array($body) ? json_encode($body) : $body;
-        $args     = array($statusCode, null, $json);
-        $methods  = array('getStatusCode', 'getReasonPhrase', 'json');
-        $response = $this->getMock('Guzzle\Http\Message\Response', $methods, $args);
+        $response = $this->getMock('Psr\Http\Message\ResponseInterface');
 
         $response
-        ->expects($this->once())
+        ->expects($this->any())
         ->method('getStatusCode')
         ->with()
         ->will($this->returnValue($statusCode));
 
         $response
-        ->expects($this->once())
+        ->expects($this->any())
         ->method('getReasonPhrase')
         ->with()
         ->will($this->returnValue($reasonPhrase));
 
-        if (is_array($body)) {
-            $response
-            ->expects($this->once())
-            ->method('json')
-            ->with()
-            ->will($this->returnValue($body));
-        } else {
-            $exception = new \Guzzle\Common\Exception\RuntimeException();
-
-            $response
-            ->expects($this->once())
-            ->method('json')
-            ->with()
-            ->will($this->throwException($exception));
-        }
+        $response
+        ->expects($this->any())
+        ->method('getBody')
+        ->with()
+        ->will($this->returnValue($json));
 
         return $response;
     }
@@ -367,7 +349,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object->persist();
     }
 
-    // curl error
+    // error
 
     /**
      * @test
@@ -384,16 +366,15 @@ class JobsRepositoryTest extends ProjectTestCase
         $object->persist();
     }
 
-    // response 422
+    // http error
 
     /**
      * @test
      */
-    public function response422()
+    public function responseError()
     {
         $statusCode = 422;
-        $json       = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
-        $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
+        $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', null);
         $api        = $this->createApiMock($response, $statusCode);
         $config     = $this->createConfiguration();
         $logger     = $this->createLoggerMock();
@@ -404,15 +385,15 @@ class JobsRepositoryTest extends ProjectTestCase
         $object->persist();
     }
 
-    // response 500
+    // json error
 
     /**
      * @test
      */
-    public function response500()
+    public function jsonError()
     {
         $statusCode = 500;
-        $response   = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
+        $response   = $this->createResponseMock($statusCode, 'Error', '{"error":"foo","message":"bar"}');
         $api        = $this->createApiMock($response, $statusCode);
         $config     = $this->createConfiguration();
         $logger     = $this->createLoggerMock();

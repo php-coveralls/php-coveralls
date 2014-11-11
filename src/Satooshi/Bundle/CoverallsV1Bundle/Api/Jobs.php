@@ -151,9 +151,7 @@ class Jobs extends CoverallsApi
      */
     protected function upload($url, $path, $filename)
     {
-        $request  = $this->client->post($url)->addPostFiles(array($filename => $path));
-
-        return $request->send();
+        return $this->client->post($url, array(), array(), array($filename => $path));
     }
 
     // accessor
