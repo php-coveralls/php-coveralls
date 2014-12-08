@@ -562,7 +562,7 @@ class JsonFile extends Coveralls
     /**
      * Set git data.
      *
-     * @param array $git Git data.
+     * @param Git $git Git data.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
