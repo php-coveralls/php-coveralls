@@ -608,6 +608,41 @@ XML;
     /**
      * @test
      */
+    public function shouldFillJobsForServiceUrl()
+    {
+        /*
+         * CI_NAME=wercker
+         * CI_BUILD_URL = WERCKER_BUILD_URL = https://app.wercker.com/#buildstep/5485fc8a2ca6bc215524eb8f
+         * CI_BRANCH = WERCKER_GIT_BRANCH = master
+         */
+
+        $repoToken          = 'token';
+        $serviceName        = 'wercker';
+        $serviceBuildUrl    = 'https://app.wercker.com/#buildstep/5485fc8a2ca6bc215524eb8f';
+        $serviceBranch      = 'master';
+
+        $env = array();
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $env['CI_NAME']              = $serviceName;
+        $env['CI_BUILD_URL']         = $serviceBuildUrl;
+        $env['CI_BRANCH']            = $serviceBranch;
+
+        $object = $this->collectJsonFile();
+
+        $same = $object->fillJobs($env);
+
+        $this->assertSame($same, $object);
+        $this->assertEquals($repoToken, $object->getRepoToken());
+        $this->assertEquals($serviceName, $object->getServiceName());
+        $this->assertEquals($serviceBuildUrl, $object->getServiceBuildUrl());
+        $this->assertEquals($serviceBranch, $object->getServiceBranch());
+        $this->assertNull($object->getServiceJobId());
+        $this->assertNull($object->getServiceEventType());
+    }
+
+    /**
+     * @test
+     */
     public function shouldFillJobsForServiceEventType()
     {
         $repoToken        = 'token';
