@@ -8,7 +8,7 @@ php-coveralls
 [![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
 [![Total Downloads](https://poser.pugx.org/satooshi/php-coveralls/downloads.png)](https://packagist.org/packages/satooshi/php-coveralls)
 
-PHP client library for [Coveralls](https://coveralls.io). 
+PHP client library for [Coveralls](https://coveralls.io).
 
 # API doc
 
@@ -266,6 +266,37 @@ In the "Configure your environment variables" section:
 COVERALLS_REPO_TOKEN=your_token
 ```
 
+
+## Wercker
+
+Add `vendor/bin/coveralls` to your `wercker.yml` as a build steps script:
+
+```yml
+box: wercker/php
+build:
+    steps:
+        - script:
+            name: PHP Information
+            code: |
+                echo "PHP version  : $(php --version)"
+                echo "Installed Modules: $(php --modules)"
+        - script:
+            name: Install Dependencies
+            code: composer install --prefer-dist --no-interaction
+        - script:
+            name: Run Test Suite
+            code: vendor/bin/phpunit
+        - script:
+            name: Export Code Coverage
+            code: vendor/bin/coveralls
+```
+
+Next an [Environment variable](http://devcenter.wercker.com/articles/steps/variables.html)
+needs to be created to hold your secret Coveralls token. To do this, open Project settings > Pipeline and click on the "Add new variable" button.
+The name of the Environment variable should be `COVERALLS_REPO_TOKEN` and the text value is where `your_token` goes.
+IMPORTANT: Make sure that `Protected` is selected, otherwise your token will not be secret!
+Now just click the `save` button and you're good to go!
+
 ## From local environment
 
 If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` envrionment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
@@ -308,7 +339,7 @@ php-coveralls can use optional `.coveralls.yml` file to configure options. This 
 
 Following options can be used for php-coveralls.
 
-- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`. 
+- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`.
 - `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
 - `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
 
@@ -340,7 +371,7 @@ coverage_clover: build/logs/clover-*.xml
 
 # array
 # specify files
-coverage_clover: 
+coverage_clover:
   - build/logs/clover-Auth.xml
   - build/logs/clover-Db.xml
   - build/logs/clover-Validator.xml
