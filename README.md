@@ -23,7 +23,7 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Installation
 
-To install php-coveralls with Composer, just add the following to your composer.json file:
+To install php-coveralls with Composer, run the following command:
 
 ```sh
 $ composer require satooshi/php-coveralls --dev
