@@ -25,27 +25,8 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 To install php-coveralls with Composer, just add the following to your composer.json file:
 
-```js
-// composer.json
-{
-    "require-dev": {
-        "satooshi/php-coveralls": "dev-master"
-    }
-}
-```
-
-Then, you can install the new dependencies by running Composer’s update command from the directory where your `composer.json` file is located:
-
 ```sh
-# install
-$ php composer.phar install --dev
-# update
-$ php composer.phar update satooshi/php-coveralls --dev
-
-# or you can simply execute composer command if you set it to
-# your PATH environment variable
-$ composer install --dev
-$ composer update satooshi/php-coveralls --dev
+$ composer require satooshi/php-coveralls --dev
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/satooshi/php-coveralls).
