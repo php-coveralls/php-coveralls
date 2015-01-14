@@ -49,8 +49,8 @@ class Configurator
         $file = new Path();
         $path = realpath($coverallsYmlPath);
 
-        if ($file->isRealFileReadable($path)) {
-            $yml = Yaml::parse($path);
+        if ($file->isRealFileReadable($path) && ($content = file_get_contents($coverallsYmlPath)) !== false) {
+            $yml = Yaml::parse($content);
 
             return empty($yml) ? array() : $yml;
         }
@@ -115,10 +115,13 @@ class Configurator
     {
         // normalize
         $realpath = $file->getRealPath($option, $rootDir);
+        if ($realpath === false) {
+            throw new InvalidConfigurationException(sprintf('src path for root directory "%1$s" and relative directory "%2$s" is not found', $rootDir, $option));
+        }
 
         // validate
         if (!$file->isRealDirExist($realpath)) {
-            throw new InvalidConfigurationException(sprintf('src directory %s is not found', $realpath));
+            throw new InvalidConfigurationException(sprintf('src directory "%s" is not found', $realpath));
         }
 
         return $realpath;
