@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls;
@@ -98,7 +99,7 @@ class Commit extends Coveralls
             return $this->id;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -126,7 +127,7 @@ class Commit extends Coveralls
             return $this->authorName;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -154,7 +155,7 @@ class Commit extends Coveralls
             return $this->authorEmail;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -182,7 +183,7 @@ class Commit extends Coveralls
             return $this->committerName;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -210,7 +211,7 @@ class Commit extends Coveralls
             return $this->committerEmail;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -238,6 +239,6 @@ class Commit extends Coveralls
             return $this->message;
         }
 
-        return null;
+        return;
     }
 }

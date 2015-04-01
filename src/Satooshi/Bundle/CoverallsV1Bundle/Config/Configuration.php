@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 /**
@@ -59,21 +60,21 @@ class Configuration
     /**
      * Whether to send json_file to jobs API.
      *
-     * @var boolean
+     * @var bool
      */
     protected $dryRun = true;
 
     /**
      * Whether to exclude source files that have no executable statements.
      *
-     * @var boolean
+     * @var bool
      */
     protected $excludeNoStatements = false;
 
     /**
      * Whether to show log.
      *
-     * @var boolean
+     * @var bool
      */
     protected $verbose = false;
 
@@ -103,7 +104,7 @@ class Configuration
     /**
      * Return whether repository token is configured.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasRepoToken()
     {
@@ -137,7 +138,7 @@ class Configuration
     /**
      * Return whether the service name is configured.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasServiceName()
     {
@@ -255,7 +256,7 @@ class Configuration
     /**
      * Set whether to send json_file to jobs API.
      *
-     * @param boolean $dryRun
+     * @param bool $dryRun
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -269,7 +270,7 @@ class Configuration
     /**
      * Return whether to send json_file to jobs API.
      *
-     * @return boolean
+     * @return bool
      */
     public function isDryRun()
     {
@@ -279,7 +280,7 @@ class Configuration
     /**
      * Set whether to exclude source files that have no executable statements.
      *
-     * @param boolean $excludeNoStatements
+     * @param bool $excludeNoStatements
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -293,7 +294,7 @@ class Configuration
     /**
      * Set whether to exclude source files that have no executable statements unless false.
      *
-     * @param boolean $excludeNoStatements
+     * @param bool $excludeNoStatements
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -309,7 +310,7 @@ class Configuration
     /**
      * Return whether to exclude source files that have no executable statements.
      *
-     * @return boolean
+     * @return bool
      */
     public function isExcludeNoStatements()
     {
@@ -319,7 +320,7 @@ class Configuration
     /**
      * Set whether to show log.
      *
-     * @param boolean $verbose
+     * @param bool $verbose
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -333,7 +334,7 @@ class Configuration
     /**
      * Return whether to show log.
      *
-     * @return boolean
+     * @return bool
      */
     public function isVerbose()
     {
@@ -367,7 +368,7 @@ class Configuration
     /**
      * Return whether the runtime environment is test.
      *
-     * @return boolean
+     * @return bool
      */
     public function isTestEnv()
     {
@@ -377,7 +378,7 @@ class Configuration
     /**
      * Return whether the runtime environment is dev.
      *
-     * @return boolean
+     * @return bool
      */
     public function isDevEnv()
     {
@@ -387,7 +388,7 @@ class Configuration
     /**
      * Return whether the runtime environment is prod.
      *
-     * @return boolean
+     * @return bool
      */
     public function isProdEnv()
     {

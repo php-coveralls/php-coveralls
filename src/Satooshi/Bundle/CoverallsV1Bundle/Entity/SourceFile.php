@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 /**
@@ -39,7 +40,7 @@ class SourceFile extends Coveralls
     /**
      * Line number of the source file.
      *
-     * @var integer
+     * @var int
      */
     protected $fileLines;
 
@@ -87,10 +88,8 @@ class SourceFile extends Coveralls
     /**
      * Add coverage.
      *
-     * @param integer $lineNum Line number.
-     * @param integer $count   Number of covered.
-     *
-     * @return void
+     * @param int $lineNum Line number.
+     * @param int $count   Number of covered.
      */
     public function addCoverage($lineNum, $count)
     {
@@ -154,7 +153,7 @@ class SourceFile extends Coveralls
     /**
      * Return line number of the source file.
      *
-     * @return integer
+     * @return int
      */
     public function getFileLines()
     {

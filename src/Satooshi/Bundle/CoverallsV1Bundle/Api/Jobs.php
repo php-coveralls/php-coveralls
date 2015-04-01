@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
@@ -183,6 +184,6 @@ class Jobs extends CoverallsApi
             return $this->jsonFile;
         }
 
-        return null;
+        return;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
@@ -174,7 +175,6 @@ class CiEnvVarsCollector
     {
         if ($this->config->hasRepoToken()) {
             $this->env['COVERALLS_REPO_TOKEN'] = $this->config->getRepoToken();
-
         }
 
         // backup
