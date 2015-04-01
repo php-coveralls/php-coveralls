@@ -10,11 +10,14 @@ matrix:
     allow_failures:
         - php: hhvm
 
-before_script:
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
   - curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer.phar
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev --no-interaction --prefer-source
+  - travis_retry composer update --no-interaction
 
 script:
   - mkdir -p build/logs
