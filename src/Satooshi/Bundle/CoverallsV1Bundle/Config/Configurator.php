@@ -5,7 +5,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 use Satooshi\Component\File\Path;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * Coveralls API configurator.
@@ -51,7 +51,8 @@ class Configurator
         $path = realpath($coverallsYmlPath);
 
         if ($file->isRealFileReadable($path)) {
-            $yml = Yaml::parse($path);
+            $parser = new Parser();
+            $yml = $parser->parse(file_get_contents($path));;
 
             return empty($yml) ? array() : $yml;
         }
