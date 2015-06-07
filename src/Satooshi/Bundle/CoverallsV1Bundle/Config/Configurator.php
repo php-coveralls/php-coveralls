@@ -51,7 +51,7 @@ class Configurator
 
         if ($file->isRealFileReadable($path)) {
             $parser = new Parser();
-            $yml = $parser->parse(file_get_contents($path));;
+            $yml = $parser->parse(file_get_contents($path));
 
             return empty($yml) ? array() : $yml;
         }
