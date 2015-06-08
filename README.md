@@ -1,8 +1,8 @@
 php-coveralls
 =============
 
-[![Build Status](https://travis-ci.org/satooshi/php-coveralls.png?branch=master)](https://travis-ci.org/satooshi/php-coveralls)
-[![Coverage Status](https://coveralls.io/repos/satooshi/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/satooshi/php-coveralls)
+[![Build Status](https://travis-ci.org/onema/php-coveralls.svg?branch=master)](https://travis-ci.org/onema/php-coveralls)
+[![Coverage Status](https://coveralls.io/repos/onema/php-coveralls/badge.svg)](https://coveralls.io/r/onema/php-coveralls)
 [![Dependency Status](https://www.versioneye.com/package/php--satooshi--php-coveralls/badge.png)](https://www.versioneye.com/package/php--satooshi--php-coveralls)
 
 [![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
