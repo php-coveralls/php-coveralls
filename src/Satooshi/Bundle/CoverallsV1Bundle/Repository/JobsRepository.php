@@ -2,12 +2,16 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Http\Client;
+use Guzzle\Common\Exception\RuntimeException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\CurlException;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Http\Message\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 
 /**
@@ -66,7 +70,7 @@ class JobsRepository implements LoggerAwareInterface
             ->collectEnvVars()
             ->dumpJsonFile()
             ->send();
-        } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
+        } catch (RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
@@ -164,14 +168,14 @@ class JobsRepository implements LoggerAwareInterface
             }
 
             return;
-        } catch (\Guzzle\Http\Exception\CurlException $e) {
+        } catch (CurlException $e) {
             // connection error
             $message = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
-        } catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
+        } catch (ClientErrorResponseException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
             $message = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        } catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
+        } catch (ServerErrorResponseException $e) {
             // 500 Internal Server Error
             // 503 Service Unavailable
             $response = $e->getResponse();
@@ -260,7 +264,7 @@ class JobsRepository implements LoggerAwareInterface
                     $this->logger->info(sprintf('You can see the build on %s', $body['url']));
                 }
             }
-        } catch (\Guzzle\Common\Exception\RuntimeException $e) {
+        } catch (RuntimeException $e) {
             // the response body is not in JSON format
             $body = $response->getBody(true);
 
