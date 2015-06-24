@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsBundle\Console;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand;

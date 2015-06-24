@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 /**
@@ -39,7 +40,7 @@ class SourceFile extends Coveralls
     /**
      * Line number of the source file.
      *
-     * @var integer
+     * @var int
      */
     protected $fileLines;
 
@@ -59,13 +60,13 @@ class SourceFile extends Coveralls
      */
     public function __construct($path, $name, $eol = "\n")
     {
-        $this->path   = $path;
-        $this->name   = $name;
+        $this->path = $path;
+        $this->name = $name;
         $this->source = trim(file_get_contents($path));
 
         $lines = explode($eol, $this->source);
         $this->fileLines = count($lines);
-        $this->coverage  = array_fill(0, $this->fileLines, null);
+        $this->coverage = array_fill(0, $this->fileLines, null);
     }
 
     /**
@@ -76,8 +77,8 @@ class SourceFile extends Coveralls
     public function toArray()
     {
         return array(
-            'name'     => $this->name,
-            'source'   => $this->source,
+            'name' => $this->name,
+            'source' => $this->source,
             'coverage' => $this->coverage,
         );
     }
@@ -87,10 +88,8 @@ class SourceFile extends Coveralls
     /**
      * Add coverage.
      *
-     * @param integer $lineNum Line number.
-     * @param integer $count   Number of covered.
-     *
-     * @return void
+     * @param int $lineNum Line number.
+     * @param int $count   Number of covered.
      */
     public function addCoverage($lineNum, $count)
     {
@@ -154,7 +153,7 @@ class SourceFile extends Coveralls
     /**
      * Return line number of the source file.
      *
-     * @return integer
+     * @return int
      */
     public function getFileLines()
     {

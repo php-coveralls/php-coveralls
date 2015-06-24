@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls;
@@ -35,7 +36,7 @@ class Remote extends Coveralls
     {
         return array(
             'name' => $this->name,
-            'url'  => $this->url,
+            'url' => $this->url,
         );
     }
 
@@ -66,7 +67,7 @@ class Remote extends Coveralls
             return $this->name;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -94,6 +95,6 @@ class Remote extends Coveralls
             return $this->url;
         }
 
-        return null;
+        return;
     }
 }
