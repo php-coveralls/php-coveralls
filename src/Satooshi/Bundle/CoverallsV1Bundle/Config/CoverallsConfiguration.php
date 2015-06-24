@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

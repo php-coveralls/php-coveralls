@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
 
 /**
@@ -29,7 +30,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
      */
     public function getHelpMessage()
     {
-        $message = $this->message . "\n";
+        $message = $this->message."\n";
 
         if (isset($this->readEnv) && is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {
@@ -71,8 +72,6 @@ EOL;
      * Set read environment variables.
      *
      * @param array $readEnv Read environment variables.
-     *
-     * @return void
      */
     public function setReadEnv(array $readEnv)
     {

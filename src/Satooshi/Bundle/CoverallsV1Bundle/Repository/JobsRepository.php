@@ -1,12 +1,17 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Http\Client;
+use Guzzle\Common\Exception\RuntimeException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\CurlException;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Http\Message\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 
 /**
@@ -47,7 +52,7 @@ class JobsRepository implements LoggerAwareInterface
      */
     public function __construct(Jobs $api, Configuration $config)
     {
-        $this->api    = $api;
+        $this->api = $api;
         $this->config = $config;
     }
 
@@ -55,8 +60,6 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Persist coverage data to Coveralls.
-     *
-     * @return void
      */
     public function persist()
     {
@@ -67,8 +70,8 @@ class JobsRepository implements LoggerAwareInterface
             ->collectEnvVars()
             ->dumpJsonFile()
             ->send();
-        } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
-            $this->logger->error(sprintf("%s", $e->getHelpMessage()));
+        } catch (RequirementsNotSatisfiedException $e) {
+            $this->logger->error(sprintf('%s', $e->getHelpMessage()));
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
         }
@@ -146,8 +149,6 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Send json_file to Jobs API.
-     *
-     * @return void
      */
     protected function send()
     {
@@ -167,18 +168,18 @@ class JobsRepository implements LoggerAwareInterface
             }
 
             return;
-        } catch (\Guzzle\Http\Exception\CurlException $e) {
+        } catch (CurlException $e) {
             // connection error
-            $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
-        } catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
+            $message = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
+        } catch (ClientErrorResponseException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
-            $message  = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        } catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
+            $message = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+        } catch (ServerErrorResponseException $e) {
             // 500 Internal Server Error
             // 503 Service Unavailable
             $response = $e->getResponse();
-            $message  = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+            $message = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
         }
 
         $this->logger->error($message);
@@ -217,27 +218,25 @@ class JobsRepository implements LoggerAwareInterface
      * Log collected source files.
      *
      * @param JsonFile $jsonFile Json file.
-     *
-     * @return void
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
-        $numFiles    = count($sourceFiles);
+        $numFiles = count($sourceFiles);
 
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
         foreach ($sourceFiles as $sourceFile) {
             /* @var $sourceFile \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile */
             $coverage = $sourceFile->reportLineCoverage();
-            $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
+            $template = '  - '.$this->colorizeCoverage($coverage, '%6.2f%%').' %s';
 
             $this->logger->info(sprintf($template, $coverage, $sourceFile->getName()));
         }
 
         $coverage = $jsonFile->reportLineCoverage();
-        $template = 'Coverage: ' . $this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
-        $metrics  = $jsonFile->getMetrics();
+        $template = 'Coverage: '.$this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
+        $metrics = $jsonFile->getMetrics();
 
         $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));
     }
@@ -246,8 +245,6 @@ class JobsRepository implements LoggerAwareInterface
      * Log response.
      *
      * @param Response $response API response.
-     *
-     * @return void
      */
     protected function logResponse(Response $response)
     {
@@ -267,7 +264,7 @@ class JobsRepository implements LoggerAwareInterface
                     $this->logger->info(sprintf('You can see the build on %s', $body['url']));
                 }
             }
-        } catch (\Guzzle\Common\Exception\RuntimeException $e) {
+        } catch (RuntimeException $e) {
             // the response body is not in JSON format
             $body = $response->getBody(true);
 
@@ -282,7 +279,6 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * {@inheritdoc}
      *
-     * @return void
      *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */

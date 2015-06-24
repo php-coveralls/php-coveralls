@@ -1,10 +1,11 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 use Satooshi\Component\File\Path;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * Coveralls API configurator.
@@ -27,7 +28,7 @@ class Configurator
      */
     public function load($coverallsYmlPath, $rootDir)
     {
-        $yml     = $this->parse($coverallsYmlPath);
+        $yml = $this->parse($coverallsYmlPath);
         $options = $this->process($yml);
 
         return $this->createConfiguration($options, $rootDir);
@@ -50,7 +51,8 @@ class Configurator
         $path = realpath($coverallsYmlPath);
 
         if ($file->isRealFileReadable($path)) {
-            $yml = Yaml::parse($path);
+            $parser = new Parser();
+            $yml = $parser->parse(file_get_contents($path));
 
             return empty($yml) ? array() : $yml;
         }
@@ -67,7 +69,7 @@ class Configurator
      */
     protected function process(array $yml)
     {
-        $processor     = new Processor();
+        $processor = new Processor();
         $configuration = new CoverallsConfiguration();
 
         return $processor->processConfiguration($configuration, array('coveralls' => $yml));
@@ -84,9 +86,9 @@ class Configurator
     protected function createConfiguration(array $options, $rootDir)
     {
         $configuration = new Configuration();
-        $file          = new Path();
+        $file = new Path();
 
-        $repoToken       = $options['repo_token'];
+        $repoToken = $options['repo_token'];
         $repoSecretToken = $options['repo_secret_token'];
 
         return $configuration
@@ -155,7 +157,7 @@ class Configurator
      */
     protected function getGlobPaths($path)
     {
-        $paths    = array();
+        $paths = array();
         $iterator = new \GlobIterator($path);
 
         foreach ($iterator as $fileInfo) {

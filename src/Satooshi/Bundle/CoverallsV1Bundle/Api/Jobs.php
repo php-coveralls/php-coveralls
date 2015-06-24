@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
@@ -44,9 +45,9 @@ class Jobs extends CoverallsApi
      */
     public function collectCloverXml()
     {
-        $rootDir        = $this->config->getRootDir();
+        $rootDir = $this->config->getRootDir();
         $cloverXmlPaths = $this->config->getCloverXmlPaths();
-        $xmlCollector   = new CloverXmlCoverageCollector();
+        $xmlCollector = new CloverXmlCoverageCollector();
 
         foreach ($cloverXmlPaths as $cloverXmlPath) {
             $xml = simplexml_load_file($cloverXmlPath);
@@ -72,7 +73,7 @@ class Jobs extends CoverallsApi
      */
     public function collectGitInfo()
     {
-        $command      = new GitCommand();
+        $command = new GitCommand();
         $gitCollector = new GitInfoCollector($command);
 
         $this->jsonFile->setGit($gitCollector->collect());
@@ -151,7 +152,7 @@ class Jobs extends CoverallsApi
      */
     protected function upload($url, $path, $filename)
     {
-        $request  = $this->client->post($url)->addPostFiles(array($filename => $path));
+        $request = $this->client->post($url)->addPostFiles(array($filename => $path));
 
         return $request->send();
     }
@@ -183,6 +184,6 @@ class Jobs extends CoverallsApi
             return $this->jsonFile;
         }
 
-        return null;
+        return;
     }
 }

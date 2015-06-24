@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
@@ -39,8 +40,8 @@ class GitInfoCollector
      */
     public function collect()
     {
-        $branch  = $this->collectBranch();
-        $commit  = $this->collectCommit();
+        $branch = $this->collectBranch();
+        $commit = $this->collectCommit();
         $remotes = $this->collectRemotes();
 
         return new Git($branch, $commit, $remotes);
