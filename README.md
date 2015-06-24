@@ -5,6 +5,10 @@ php-coveralls
 [![Coverage Status](https://coveralls.io/repos/onema/php-coveralls/badge.svg)](https://coveralls.io/r/onema/php-coveralls)
 [![Dependency Status](https://www.versioneye.com/package/php--satooshi--php-coveralls/badge.png)](https://www.versioneye.com/package/php--satooshi--php-coveralls)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/607362a7-fa98-4759-a1f0-d63d5211bccb/mini.png)](https://insight.sensiolabs.com/projects/607362a7-fa98-4759-a1f0-d63d5211bccb)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/onema/php-coveralls/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/onema/php-coveralls/?branch=master)
+
+
 [![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
 [![Total Downloads](https://poser.pugx.org/satooshi/php-coveralls/downloads.png)](https://packagist.org/packages/satooshi/php-coveralls)
 
