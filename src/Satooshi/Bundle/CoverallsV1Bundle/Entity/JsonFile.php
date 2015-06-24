@@ -283,31 +283,19 @@ class JsonFile extends Coveralls
      */
     protected function ensureJobs()
     {
-        if (!$this->hasSourceFiles()) {
+        if (
+            $this->requireServiceJobId() ||
+            $this->requireServiceNumber() ||
+            $this->requireServiceEventType() ||
+            $this->requireRepoToken() ||
+            $this->isUnsupportedServiceJob()
+        ) {
+            return $this;
+        } elseif (!$this->hasSourceFiles()) {
             throw new \RuntimeException('source_files must be set');
+        } else {
+            throw new RequirementsNotSatisfiedException();
         }
-
-        if ($this->requireServiceJobId()) {
-            return $this;
-        }
-
-        if ($this->requireServiceNumber()) {
-            return $this;
-        }
-
-        if ($this->requireServiceEventType()) {
-            return $this;
-        }
-
-        if ($this->requireRepoToken()) {
-            return $this;
-        }
-
-        if ($this->isUnsupportedServiceJob()) {
-            return $this;
-        }
-
-        throw new RequirementsNotSatisfiedException();
     }
 
     /**
