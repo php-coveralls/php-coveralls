@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Component\Log;
 
 use Psr\Log\AbstractLogger;
@@ -31,7 +32,6 @@ class ConsoleLogger extends AbstractLogger
     /**
      * {@inheritdoc}
      *
-     * @return void
      *
      * @see \Psr\Log\LoggerInterface::log()
      */

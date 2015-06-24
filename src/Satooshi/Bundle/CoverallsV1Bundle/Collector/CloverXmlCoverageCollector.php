@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
@@ -30,7 +31,7 @@ class CloverXmlCoverageCollector
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
     {
-        $root = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        $root = rtrim($rootDir, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
 
         if (!isset($this->jsonFile)) {
             $this->jsonFile = new JsonFile();
@@ -71,7 +72,7 @@ class CloverXmlCoverageCollector
     protected function collectRunAt(\SimpleXMLElement $xml, $format = 'Y-m-d H:i:s O')
     {
         $timestamp = $xml->project['timestamp'];
-        $runAt     = new \DateTime('@' . $timestamp);
+        $runAt = new \DateTime('@'.$timestamp);
 
         return $runAt->format($format);
     }
@@ -89,7 +90,7 @@ class CloverXmlCoverageCollector
         $absolutePath = (string) ($file['path'] ?: $file['name']);
 
         if (false === strpos($absolutePath, $root)) {
-            return null;
+            return;
         }
 
         if ($root !== DIRECTORY_SEPARATOR) {

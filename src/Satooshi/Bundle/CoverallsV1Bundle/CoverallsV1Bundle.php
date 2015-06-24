@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
@@ -111,17 +112,17 @@ class JsonFile extends Coveralls
 
         $arrayMap = array(
             // json key => property name
-            'service_name'         => 'serviceName',
-            'service_job_id'       => 'serviceJobId',
-            'service_number'       => 'serviceNumber',
-            'service_build_url'    => 'serviceBuildUrl',
-            'service_branch'       => 'serviceBranch',
+            'service_name' => 'serviceName',
+            'service_job_id' => 'serviceJobId',
+            'service_number' => 'serviceNumber',
+            'service_build_url' => 'serviceBuildUrl',
+            'service_branch' => 'serviceBranch',
             'service_pull_request' => 'servicePullRequest',
-            'service_event_type'   => 'serviceEventType',
-            'repo_token'           => 'repoToken',
-            'git'                  => 'git',
-            'run_at'               => 'runAt',
-            'source_files'         => 'sourceFiles',
+            'service_event_type' => 'serviceEventType',
+            'repo_token' => 'repoToken',
+            'git' => 'git',
+            'run_at' => 'runAt',
+            'source_files' => 'sourceFiles',
         );
 
         foreach ($arrayMap as $jsonKey => $propName) {
@@ -155,8 +156,6 @@ class JsonFile extends Coveralls
 
     /**
      * Exclude source files that have no executable statements.
-     *
-     * @return void
      */
     public function excludeNoStatementsFiles()
     {
@@ -170,8 +169,6 @@ class JsonFile extends Coveralls
 
     /**
      * Sort source files by path.
-     *
-     * @return void
      */
     public function sortSourceFiles()
     {
@@ -256,16 +253,16 @@ class JsonFile extends Coveralls
     {
         $map = array(
             // defined in Ruby lib
-            'serviceName'        => 'CI_NAME',
-            'serviceNumber'      => 'CI_BUILD_NUMBER',
-            'serviceBuildUrl'    => 'CI_BUILD_URL',
-            'serviceBranch'      => 'CI_BRANCH',
+            'serviceName' => 'CI_NAME',
+            'serviceNumber' => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl' => 'CI_BUILD_URL',
+            'serviceBranch' => 'CI_BRANCH',
             'servicePullRequest' => 'CI_PULL_REQUEST',
 
             // extends by php-coveralls
-            'serviceJobId'       => 'CI_JOB_ID',
-            'serviceEventType'   => 'COVERALLS_EVENT_TYPE',
-            'repoToken'          => 'COVERALLS_REPO_TOKEN',
+            'serviceJobId' => 'CI_JOB_ID',
+            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
+            'repoToken' => 'COVERALLS_REPO_TOKEN',
         );
 
         foreach ($map as $propName => $envName) {
@@ -316,7 +313,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the job requires "service_job_id" (for Travis CI).
      *
-     * @return boolean
+     * @return bool
      */
     protected function requireServiceJobId()
     {
@@ -326,7 +323,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship or other CIs).
      *
-     * @return boolean
+     * @return bool
      */
     protected function requireServiceNumber()
     {
@@ -336,7 +333,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the job requires "service_event_type" (for local environment).
      *
-     * @return boolean
+     * @return bool
      */
     protected function requireServiceEventType()
     {
@@ -346,7 +343,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the job requires "repo_token" (for Travis PRO).
      *
-     * @return boolean
+     * @return bool
      */
     protected function requireRepoToken()
     {
@@ -356,7 +353,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the job is running on unsupported service.
      *
-     * @return boolean
+     * @return bool
      */
     protected function isUnsupportedServiceJob()
     {
@@ -370,7 +367,7 @@ class JsonFile extends Coveralls
      *
      * @param string $path Absolute path to source file.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasSourceFile($path)
     {
@@ -390,15 +387,13 @@ class JsonFile extends Coveralls
             return $this->sourceFiles[$path];
         }
 
-        return null;
+        return;
     }
 
     /**
      * Add source file.
      *
      * @param SourceFile $sourceFile
-     *
-     * @return void
      */
     public function addSourceFile(SourceFile $sourceFile)
     {
@@ -408,7 +403,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the json file has a source file.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasSourceFiles()
     {
@@ -450,7 +445,7 @@ class JsonFile extends Coveralls
             return $this->serviceName;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -478,7 +473,7 @@ class JsonFile extends Coveralls
             return $this->repoToken;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -506,7 +501,7 @@ class JsonFile extends Coveralls
             return $this->serviceJobId;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -584,7 +579,7 @@ class JsonFile extends Coveralls
             return $this->git;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -612,7 +607,7 @@ class JsonFile extends Coveralls
             return $this->runAt;
         }
 
-        return null;
+        return;
     }
 
     /**

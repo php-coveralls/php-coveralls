@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Component\System;
 
 /**
@@ -74,8 +75,6 @@ abstract class SystemCommand
      * Set command path.
      *
      * @param string $commandPath Command name or path.
-     *
-     * @return void
      */
     public function setCommandPath($commandPath)
     {
