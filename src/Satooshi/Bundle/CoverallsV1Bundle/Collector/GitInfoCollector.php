@@ -57,6 +57,10 @@ class GitInfoCollector
      */
     protected function collectBranch()
     {
+        if(isset($_SERVER['TRAVIS_BRANCH'])){
+            return $_SERVER['TRAVIS_BRANCH'];
+        }
+        
         $branchesResult = $this->command->getBranches();
 
         foreach ($branchesResult as $result) {
