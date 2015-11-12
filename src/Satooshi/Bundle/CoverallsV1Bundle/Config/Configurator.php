@@ -50,7 +50,7 @@ class Configurator
         $path = realpath($coverallsYmlPath);
 
         if ($file->isRealFileReadable($path)) {
-            $yml = Yaml::parse($path);
+            $yml = Yaml::parse(file_get_contents($path));
 
             return empty($yml) ? array() : $yml;
         }
