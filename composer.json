@@ -29,9 +29,9 @@
         "phpunit/php-invoker": ">=1.1.0,<1.2.0",
         "pdepend/pdepend": "dev-master as 2.0.0",
         "phpmd/phpmd": "dev-master",
-        "sebastian/phpcpd": "1.4.*@stable",
-        "sebastian/finder-facade": "dev-master",
-        "theseer/fdomdocument": "dev-master",
+        "sebastian/phpcpd": "~2.0",
+        "sebastian/finder-facade": "~1.1",
+        "theseer/fdomdocument": "~1.6",
         "squizlabs/php_codesniffer": "1.4.*@stable",
         "apigen/apigen": "2.8.*@stable"
     },
