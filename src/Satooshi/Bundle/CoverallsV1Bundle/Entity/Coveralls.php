@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 use Satooshi\Bundle\CoverallsBundle\Entity\ArrayConvertable;

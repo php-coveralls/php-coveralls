@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsBundle\Entity;
 
 /**

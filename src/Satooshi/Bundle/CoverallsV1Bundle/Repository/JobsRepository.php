@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
 use Guzzle\Http\Client;
@@ -55,8 +56,6 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Persist coverage data to Coveralls.
-     *
-     * @return void
      */
     public function persist()
     {
@@ -68,7 +67,7 @@ class JobsRepository implements LoggerAwareInterface
             ->dumpJsonFile()
             ->send();
         } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
-            $this->logger->error(sprintf("%s", $e->getHelpMessage()));
+            $this->logger->error(sprintf('%s', $e->getHelpMessage()));
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
         }
@@ -146,8 +145,6 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Send json_file to Jobs API.
-     *
-     * @return void
      */
     protected function send()
     {
@@ -217,8 +214,6 @@ class JobsRepository implements LoggerAwareInterface
      * Log collected source files.
      *
      * @param JsonFile $jsonFile Json file.
-     *
-     * @return void
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
@@ -230,13 +225,13 @@ class JobsRepository implements LoggerAwareInterface
         foreach ($sourceFiles as $sourceFile) {
             /* @var $sourceFile \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile */
             $coverage = $sourceFile->reportLineCoverage();
-            $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
+            $template = '  - '.$this->colorizeCoverage($coverage, '%6.2f%%').' %s';
 
             $this->logger->info(sprintf($template, $coverage, $sourceFile->getName()));
         }
 
         $coverage = $jsonFile->reportLineCoverage();
-        $template = 'Coverage: ' . $this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
+        $template = 'Coverage: '.$this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
         $metrics  = $jsonFile->getMetrics();
 
         $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));
@@ -246,8 +241,6 @@ class JobsRepository implements LoggerAwareInterface
      * Log response.
      *
      * @param Response $response API response.
-     *
-     * @return void
      */
     protected function logResponse(Response $response)
     {
@@ -282,7 +275,6 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * {@inheritdoc}
      *
-     * @return void
      *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */

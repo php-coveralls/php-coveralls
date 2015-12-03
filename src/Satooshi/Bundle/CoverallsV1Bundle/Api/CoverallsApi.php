@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
@@ -112,7 +113,7 @@ class CoverallsV1JobsCommand extends Command
     {
         $coverallsYmlPath = $input->getOption('config');
 
-        $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
+        $ymlPath      = $this->rootDir.DIRECTORY_SEPARATOR.$coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
@@ -127,8 +128,6 @@ class CoverallsV1JobsCommand extends Command
      * Execute Jobs API.
      *
      * @param Configuration $config Configuration.
-     *
-     * @return void
      */
     protected function executeApi(Configuration $config)
     {
@@ -146,8 +145,6 @@ class CoverallsV1JobsCommand extends Command
      * Set root directory.
      *
      * @param string $rootDir Path to project root directory.
-     *
-     * @return void
      */
     public function setRootDir($rootDir)
     {

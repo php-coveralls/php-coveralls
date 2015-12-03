@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 /**
@@ -11,14 +12,14 @@ class Metrics
     /**
      * Number of statements.
      *
-     * @var integer
+     * @var int
      */
     protected $statements;
 
     /**
      * Number of covered statements.
      *
-     * @var integer
+     * @var int
      */
     protected $coveredStatements;
 
@@ -68,8 +69,6 @@ class Metrics
      * Merge other metrics.
      *
      * @param Metrics $that
-     *
-     * @return void
      */
     public function merge(Metrics $that)
     {
@@ -83,8 +82,8 @@ class Metrics
     /**
      * Calculate line coverage.
      *
-     * @param integer $statements        Number of statements.
-     * @param integer $coveredStatements Number of covered statements.
+     * @param int $statements        Number of statements.
+     * @param int $coveredStatements Number of covered statements.
      *
      * @return float
      */
@@ -102,7 +101,7 @@ class Metrics
     /**
      * Return whether the source file has executable statements.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasStatements()
     {
@@ -112,7 +111,7 @@ class Metrics
     /**
      * Return number of statements.
      *
-     * @return integer
+     * @return int
      */
     public function getStatements()
     {
@@ -122,7 +121,7 @@ class Metrics
     /**
      * Return number of covered statements.
      *
-     * @return integer
+     * @return int
      */
     public function getCoveredStatements()
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
