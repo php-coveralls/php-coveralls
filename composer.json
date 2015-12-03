@@ -27,6 +27,7 @@
         "phpunit/phpunit": "~4.0",
         "phpunit/php-invoker": "~1.1",
         "phpmd/phpmd": "~2.0",
+        "pdepend/pdepend": "~2.2",
         "sebastian/phpcpd": "~1.4",
         "sebastian/finder-facade": "~1.1",
         "theseer/fdomdocument": "~1.6",
