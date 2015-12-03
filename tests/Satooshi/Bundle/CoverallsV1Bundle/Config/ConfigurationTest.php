@@ -87,6 +87,16 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->isExcludeNoStatements());
     }
 
+    // getHttp()
+
+    /**
+     * @test
+     */
+    public function shouldHaveSocketHttpOnConstruction()
+    {
+        $this->assertSame('socket', $this->object->getHttp());
+    }
+
     // isVerbose
 
     /**
@@ -360,6 +370,21 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($same, $this->object);
         $this->assertTrue($this->object->isExcludeNoStatements());
+    }
+
+    // setHttp()
+
+    /**
+     * @test
+     */
+    public function shouldSetHttp()
+    {
+        $expected = 'socket';
+
+        $same = $this->object->setHttp($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertSame($expected, $this->object->getHttp());
     }
 
     // setVerbose()

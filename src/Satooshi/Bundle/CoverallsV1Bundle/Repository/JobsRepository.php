@@ -1,8 +1,8 @@
 <?php
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Http\Client;
-use Guzzle\Http\Message\Response;
+use Ivory\HttpAdapter\HttpAdapterException;
+use Psr\Http\Message\IncomingResponseInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
@@ -68,7 +68,7 @@ class JobsRepository implements LoggerAwareInterface
             ->dumpJsonFile()
             ->send();
         } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
-            $this->logger->error(sprintf("%s", $e->getHelpMessage()));
+            $this->logger->error($e->getHelpMessage());
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
         }
@@ -162,29 +162,19 @@ class JobsRepository implements LoggerAwareInterface
 
             $this->logger->info($message);
 
-            if ($response instanceof Response) {
+            if ($response instanceof IncomingResponseInterface) {
                 $this->logResponse($response);
             }
 
             return;
-        } catch (\Guzzle\Http\Exception\CurlException $e) {
-            // connection error
-            $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
-        } catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
-            // 422 Unprocessable Entity
-            $response = $e->getResponse();
-            $message  = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        } catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
-            // 500 Internal Server Error
-            // 503 Service Unavailable
-            $response = $e->getResponse();
-            $message  = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        }
+        } catch (HttpAdapterException $e) {
+            $this->logger->error($e->getMessage());
 
-        $this->logger->error($message);
-
-        if (isset($response)) {
-            $this->logResponse($response);
+            if ($e->hasResponse()) {
+                $this->logResponse($e->getResponse());
+            }
+        } catch (\Exception $e) {
+            $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
         }
     }
 
@@ -245,34 +235,32 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Log response.
      *
-     * @param Response $response API response.
+     * @param IncomingResponseInterface $response API response.
      *
      * @return void
      */
-    protected function logResponse(Response $response)
+    protected function logResponse(IncomingResponseInterface $response)
     {
-        try {
-            $body = $response->json();
+        $body = (string) $response->getBody();
+        $json = json_decode($body, true);
 
-            if (isset($body['error'])) {
-                if (isset($body['message'])) {
-                    $this->logger->error($body['message']);
-                }
-            } else {
-                if (isset($body['message'])) {
-                    $this->logger->info(sprintf('Accepted %s', $body['message']));
-                }
+        if (empty($json)) {
+            $this->logger->error($body);
 
-                if (isset($body['url'])) {
-                    $this->logger->info(sprintf('You can see the build on %s', $body['url']));
-                }
+            return;
+        }
+
+        if (isset($json['error'])) {
+            if (isset($json['message'])) {
+                $this->logger->error($json['message']);
             }
-        } catch (\Guzzle\Common\Exception\RuntimeException $e) {
-            // the response body is not in JSON format
-            $body = $response->getBody(true);
+        } else {
+            if (isset($json['message'])) {
+                $this->logger->info(sprintf('Accepted %s', $json['message']));
+            }
 
-            if ($body) {
-                $this->logger->error($body);
+            if (isset($json['url'])) {
+                $this->logger->info(sprintf('You can see the build on %s', $json['url']));
             }
         }
     }
