@@ -75,7 +75,7 @@ phpunit --coverage-clover build/logs/clover.xml
 
 ### phpcov
 
-Above settings are good for most projects if your test suite is executed once a build and is not divided into several parts. But if your test suite is configured as parallel tasks or generates multiple coverage reports through a build, you can use either `coverage_clover` configuration in `.coveralls.yml` ([see below coverage clover configuration section](#coverage-clover-configuration)) to specify multiple `clover.xml` or `phpcov` for processing coverages reports.
+Above settings are good for most projects if your test suite is executed once a build and is not divided into several parts. But if your test suite is configured as parallel tasks or generates multiple coverage reports through a build, you can use either `coverage_clover` configuration in `.coveralls.yml` ([see below coverage clover configuration section](#coverage-clover-configuration)) to specify multiple `clover.xml` files or `phpcov` for processing coverage reports.
 
 #### composer.json
 
