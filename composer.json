@@ -13,15 +13,15 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.3.3",
         "ext-json": "*",
         "ext-simplexml": "*",
-        "guzzle/guzzle": "^2.7|^3.0",
+        "guzzle/guzzle": "^2.8|^3.0",
         "psr/log": "^1.0",
         "symfony/config": "^2.0",
-        "symfony/console": "^2.0",
+        "symfony/console": "^2.1",
         "symfony/stopwatch": "^2.2",
-        "symfony/yaml": "^2.0"
+        "symfony/yaml": "^2.1"
     },
     "require-dev": {
         "apigen/apigen": "^2.8",
