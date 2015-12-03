@@ -4,10 +4,14 @@ php:
   - 5.5
   - 5.4
   - 5.3
+  - 5.3.3
   - 7.0
   - hhvm
  
 matrix:
+    include:
+        - php: 5.3.3
+          env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
     allow_failures:
         - php: 7.0
         - php: hhvm
@@ -19,7 +23,7 @@ cache:
 install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini
   - curl http://get.sensiolabs.org/php-cs-fixer.phar -o php-cs-fixer.phar
-  - travis_retry composer update --no-interaction
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
 
 script:
   - mkdir -p build/logs
