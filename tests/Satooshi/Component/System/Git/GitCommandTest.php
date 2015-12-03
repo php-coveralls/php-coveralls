@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Component\System\Git;
 
 /**

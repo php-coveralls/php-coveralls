@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
 
 /**
@@ -70,7 +71,7 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertContains("  - ENV_NAME=123", $message);
+        $this->assertContains('  - ENV_NAME=123', $message);
     }
 
     /**
@@ -87,6 +88,6 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertContains("  - ENV_NAME=true", $message);
+        $this->assertContains('  - ENV_NAME=true', $message);
     }
 }

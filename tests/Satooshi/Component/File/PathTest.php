@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Component\File;
 
 /**
@@ -393,7 +394,6 @@ class PathTest extends \PHPUnit_Framework_TestCase
     public function shouldNotExistRealDirIfFileGiven()
     {
         touch($this->existingFile);
-
 
         $this->assertFalse($this->object->isRealDirExist($this->existingFile));
     }

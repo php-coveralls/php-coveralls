@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi;
 
 class ProjectTestCase extends \PHPUnit_Framework_TestCase

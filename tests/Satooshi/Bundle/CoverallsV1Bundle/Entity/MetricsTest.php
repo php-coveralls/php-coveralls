@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 /**
@@ -82,7 +83,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertEquals(200/3, $object->getLineCoverage());
+        $this->assertEquals(200 / 3, $object->getLineCoverage());
     }
 
     // merge()
@@ -98,7 +99,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(3, $object->getStatements());
         $this->assertEquals(2, $object->getCoveredStatements());
-        $this->assertEquals(200/3, $object->getLineCoverage());
+        $this->assertEquals(200 / 3, $object->getLineCoverage());
     }
 
     /**
@@ -112,6 +113,6 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(6, $object->getStatements());
         $this->assertEquals(4, $object->getCoveredStatements());
-        $this->assertEquals(400/6, $object->getLineCoverage());
+        $this->assertEquals(400 / 6, $object->getLineCoverage());
     }
 }

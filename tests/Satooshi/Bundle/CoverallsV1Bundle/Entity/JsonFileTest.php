@@ -1,8 +1,8 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Version;
-
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
@@ -25,7 +25,6 @@ class JsonFileTest extends ProjectTestCase
 
         $this->object = new JsonFile();
     }
-
 
     protected function createSourceFile()
     {
@@ -79,6 +78,7 @@ class JsonFileTest extends ProjectTestCase
   </project>
 </coverage>
 XML;
+
         return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
@@ -129,7 +129,6 @@ XML;
 
         return $collector->collect($xml, $this->srcDir);
     }
-
 
     // hasSourceFile()
     // getSourceFile()
@@ -358,8 +357,6 @@ XML;
         return $this->object;
     }
 
-
-
     // addSourceFile()
     // sortSourceFiles()
 
@@ -394,7 +391,7 @@ XML;
         );
 
         $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$this->object);
+        $this->assertEquals(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -412,7 +409,7 @@ XML;
         );
 
         $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$this->object);
+        $this->assertEquals(json_encode($expected), (string) $this->object);
     }
 
     // service_name
@@ -432,7 +429,7 @@ XML;
         );
 
         $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$object);
+        $this->assertEquals(json_encode($expected), (string) $object);
     }
 
     // service_job_id
@@ -452,7 +449,7 @@ XML;
         );
 
         $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$object);
+        $this->assertEquals(json_encode($expected), (string) $object);
     }
 
     // repo_token
@@ -472,7 +469,7 @@ XML;
         );
 
         $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$object);
+        $this->assertEquals(json_encode($expected), (string) $object);
     }
 
     // git
@@ -494,7 +491,7 @@ XML;
         );
 
         $this->assertSame($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$object);
+        $this->assertEquals(json_encode($expected), (string) $object);
     }
 
     // run_at
@@ -514,7 +511,7 @@ XML;
         );
 
         $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$object);
+        $this->assertEquals(json_encode($expected), (string) $object);
     }
 
     // fillJobs()

@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 /**
@@ -84,6 +85,6 @@ class GitTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string)$this->object);
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 }
