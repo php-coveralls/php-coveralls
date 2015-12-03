@@ -190,7 +190,7 @@ after_script:
 
 ## CircleCI
 
-Add `pecl install xdebug` to your `circle.yml` at `dependencies` section since currently Xdebug extension is not pre-installed. `composer` and `phpunit` are pre-installed but you can install them manually in this dependencies section. The following sample uses default ones.
+Enable Xdebug in your `circle.yml` at `dependencies` section since currently Xdebug extension is not pre-enabled. `composer` and `phpunit` are pre-installed but you can install them manually in this dependencies section. The following sample uses default ones.
 
 ```yml
 machine:
@@ -202,9 +202,7 @@ dependencies:
   override:
     - mkdir -p build/logs
     - composer install --dev --no-interaction
-    - pecl install xdebug
-    - cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini | sed -e "s/;//" > xdebug.ini
-    - mv xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+    - perl -pi -e 's/; z/z/' ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 
 ## Customize test commands
 test:
