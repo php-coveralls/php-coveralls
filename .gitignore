@@ -19,3 +19,4 @@ composer.phar
 php-cs-fixer.phar
 
 .coveralls.yml
+.php_cs.cache
