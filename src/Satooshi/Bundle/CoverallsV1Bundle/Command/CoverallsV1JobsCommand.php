@@ -92,8 +92,8 @@ class CoverallsV1JobsCommand extends Command
         $this->executeApi($config);
 
         $event = $stopwatch->stop(__CLASS__);
-        $time  = number_format($event->getDuration() / 1000, 3);        // sec
-        $mem   = number_format($event->getMemory() / (1024 * 1024), 2); // MB
+        $time = number_format($event->getDuration() / 1000, 3);        // sec
+        $mem = number_format($event->getMemory() / (1024 * 1024), 2); // MB
         $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return 0;
@@ -113,7 +113,7 @@ class CoverallsV1JobsCommand extends Command
     {
         $coverallsYmlPath = $input->getOption('config');
 
-        $ymlPath      = $this->rootDir.DIRECTORY_SEPARATOR.$coverallsYmlPath;
+        $ymlPath = $this->rootDir.DIRECTORY_SEPARATOR.$coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
@@ -131,8 +131,8 @@ class CoverallsV1JobsCommand extends Command
      */
     protected function executeApi(Configuration $config)
     {
-        $client     = new Client();
-        $api        = new Jobs($config, $client);
+        $client = new Client();
+        $api = new Jobs($config, $client);
         $repository = new JobsRepository($api, $config);
 
         $repository->setLogger($this->logger);

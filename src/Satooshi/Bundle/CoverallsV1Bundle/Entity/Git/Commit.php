@@ -63,12 +63,12 @@ class Commit extends Coveralls
     public function toArray()
     {
         return array(
-            'id'              => $this->id,
-            'author_name'     => $this->authorName,
-            'author_email'    => $this->authorEmail,
-            'committer_name'  => $this->committerName,
+            'id' => $this->id,
+            'author_name' => $this->authorName,
+            'author_email' => $this->authorEmail,
+            'committer_name' => $this->committerName,
             'committer_email' => $this->committerEmail,
-            'message'         => $this->message,
+            'message' => $this->message,
         );
     }
 
