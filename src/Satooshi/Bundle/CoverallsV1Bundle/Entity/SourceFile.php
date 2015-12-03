@@ -75,11 +75,23 @@ class SourceFile extends Coveralls
      */
     public function toArray()
     {
+        // coveralls expects relative path for name
+        $name = $this->toRelative($this->path);
+
         return array(
-            'name'     => $this->name,
+            'name'     => $name,
             'source'   => $this->source,
             'coverage' => $this->coverage,
         );
+    }
+
+    private function toRelative($path)
+    {
+        static $cwd;
+        if ($cwd === null) {
+            $cwd = getcwd();
+        }
+        return substr($path, strlen($cwd)+1);
     }
 
     // API
