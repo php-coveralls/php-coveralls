@@ -112,17 +112,17 @@ class JsonFile extends Coveralls
 
         $arrayMap = array(
             // json key => property name
-            'service_name'         => 'serviceName',
-            'service_job_id'       => 'serviceJobId',
-            'service_number'       => 'serviceNumber',
-            'service_build_url'    => 'serviceBuildUrl',
-            'service_branch'       => 'serviceBranch',
+            'service_name' => 'serviceName',
+            'service_job_id' => 'serviceJobId',
+            'service_number' => 'serviceNumber',
+            'service_build_url' => 'serviceBuildUrl',
+            'service_branch' => 'serviceBranch',
             'service_pull_request' => 'servicePullRequest',
-            'service_event_type'   => 'serviceEventType',
-            'repo_token'           => 'repoToken',
-            'git'                  => 'git',
-            'run_at'               => 'runAt',
-            'source_files'         => 'sourceFiles',
+            'service_event_type' => 'serviceEventType',
+            'repo_token' => 'repoToken',
+            'git' => 'git',
+            'run_at' => 'runAt',
+            'source_files' => 'sourceFiles',
         );
 
         foreach ($arrayMap as $jsonKey => $propName) {
@@ -253,16 +253,16 @@ class JsonFile extends Coveralls
     {
         $map = array(
             // defined in Ruby lib
-            'serviceName'        => 'CI_NAME',
-            'serviceNumber'      => 'CI_BUILD_NUMBER',
-            'serviceBuildUrl'    => 'CI_BUILD_URL',
-            'serviceBranch'      => 'CI_BRANCH',
+            'serviceName' => 'CI_NAME',
+            'serviceNumber' => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl' => 'CI_BUILD_URL',
+            'serviceBranch' => 'CI_BRANCH',
             'servicePullRequest' => 'CI_PULL_REQUEST',
 
             // extends by php-coveralls
-            'serviceJobId'       => 'CI_JOB_ID',
-            'serviceEventType'   => 'COVERALLS_EVENT_TYPE',
-            'repoToken'          => 'COVERALLS_REPO_TOKEN',
+            'serviceJobId' => 'CI_JOB_ID',
+            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
+            'repoToken' => 'COVERALLS_REPO_TOKEN',
         );
 
         foreach ($map as $propName => $envName) {

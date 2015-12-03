@@ -59,8 +59,8 @@ class Git extends Coveralls
      */
     public function __construct($branch, Commit $head, array $remotes)
     {
-        $this->branch  = $branch;
-        $this->head    = $head;
+        $this->branch = $branch;
+        $this->head = $head;
         $this->remotes = $remotes;
     }
 
@@ -80,8 +80,8 @@ class Git extends Coveralls
         }
 
         return array(
-            'branch'  => $this->branch,
-            'head'    => $this->head->toArray(),
+            'branch' => $this->branch,
+            'head' => $this->head->toArray(),
             'remotes' => $remotes,
         );
     }

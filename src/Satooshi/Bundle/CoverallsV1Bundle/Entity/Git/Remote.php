@@ -36,7 +36,7 @@ class Remote extends Coveralls
     {
         return array(
             'name' => $this->name,
-            'url'  => $this->url,
+            'url' => $this->url,
         );
     }
 

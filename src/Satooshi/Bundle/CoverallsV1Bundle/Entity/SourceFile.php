@@ -60,13 +60,13 @@ class SourceFile extends Coveralls
      */
     public function __construct($path, $name, $eol = "\n")
     {
-        $this->path   = $path;
-        $this->name   = $name;
+        $this->path = $path;
+        $this->name = $name;
         $this->source = trim(file_get_contents($path));
 
         $lines = explode($eol, $this->source);
         $this->fileLines = count($lines);
-        $this->coverage  = array_fill(0, $this->fileLines, null);
+        $this->coverage = array_fill(0, $this->fileLines, null);
     }
 
     /**
@@ -77,8 +77,8 @@ class SourceFile extends Coveralls
     public function toArray()
     {
         return array(
-            'name'     => $this->name,
-            'source'   => $this->source,
+            'name' => $this->name,
+            'source' => $this->source,
             'coverage' => $this->coverage,
         );
     }

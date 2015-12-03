@@ -58,7 +58,7 @@ class Metrics
             );
             $this->coveredStatements = count($coveredArray);
         } else {
-            $this->statements        = 0;
+            $this->statements = 0;
             $this->coveredStatements = 0;
         }
     }
@@ -74,7 +74,7 @@ class Metrics
     {
         $this->statements        += $that->statements;
         $this->coveredStatements += $that->coveredStatements;
-        $this->lineCoverage       = null; // clear previous data
+        $this->lineCoverage = null; // clear previous data
     }
 
     // internal method
