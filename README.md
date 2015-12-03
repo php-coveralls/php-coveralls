@@ -75,38 +75,14 @@ phpunit --coverage-clover build/logs/clover.xml
 
 ### phpcov
 
-Above settings are good for almost projects If your test suite is executed once a build and is not devided into several parts. But if your test suite is configured as parallel task or generates multiple coverage reports through a build, you can use either `coverage_clover` configuration in `.coveralls.yml` ([see below coverage clover configuration section](#coverage-clover-configuration)) to specify multiple `clover.xml` or `phpcov` for processing coverages reports.
+Above settings are good for most projects if your test suite is executed once a build and is not divided into several parts. But if your test suite is configured as parallel tasks or generates multiple coverage reports through a build, you can use either `coverage_clover` configuration in `.coveralls.yml` ([see below coverage clover configuration section](#coverage-clover-configuration)) to specify multiple `clover.xml` files or `phpcov` for processing coverage reports.
 
 #### composer.json
 
-`phpcov` is not ready for Packagist yet but you can install it via PEAR channel:
-
 ```json
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "sebastianbergmann/phpcov",
-                "version": "1.1.0",
-                "dist": {
-                    "url": "https://github.com/sebastianbergmann/phpcov/archive/1.1.0.zip",
-                    "type": "zip"
-                },
-                "source": {
-                    "url": "https://github.com/sebastianbergmann/phpcov.git",
-                    "type": "git",
-                    "reference": "1.1.0"
-                },
-                "bin": [
-                    "phpcov.php"
-                ]
-            }
-        }
-    ],
-    …
     "require-dev": {
         "satooshi/php-coveralls": "dev-master",
-        "sebastianbergmann/phpcov": "1.1.0"
+        "phpunit/phpcov": "2.*"
     },
 ```
 
@@ -141,7 +117,7 @@ And then, execute `phpcov.php` to merge `coverage.cov` logs.
 php vendor/bin/phpcov.php --help
 
 # merge coverage.cov logs under build/cov
-php vendor/bin/phpcov.php --merge --clover build/logs/clover.xml --whitelist /path/to/src build/cov
+php vendor/bin/phpcov.php merge --clover build/logs/clover.xml build/cov
 
 # in case of memory exhausting error
 php -d memory_limit=-1 vendor/bin/phpcov.php ...
@@ -247,7 +223,7 @@ COVERALLS_REPO_TOKEN=your_token
 
 ## From local environment
 
-If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` envrionment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
+If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` environment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
 
 ```sh
 $ export COVERALLS_RUN_LOCALLY=1
