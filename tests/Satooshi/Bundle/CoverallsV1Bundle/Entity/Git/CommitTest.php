@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 /**
@@ -73,7 +74,6 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertNull($this->object->getMessage());
     }
-
 
     // setId()
 
@@ -182,7 +182,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string)$this->object);
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -215,6 +215,6 @@ class CommitTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string)$this->object);
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 }

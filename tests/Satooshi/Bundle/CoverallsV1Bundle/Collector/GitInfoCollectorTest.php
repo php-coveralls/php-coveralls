@@ -1,8 +1,8 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
 use Satooshi\Component\System\Git\GitCommand;
-
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;

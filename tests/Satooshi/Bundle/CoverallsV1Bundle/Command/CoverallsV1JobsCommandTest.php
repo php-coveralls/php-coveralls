@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 
 use Satooshi\ProjectTestCase;
@@ -52,6 +53,7 @@ class CoverallsV1JobsCommandTest extends ProjectTestCase
   </project>
 </coverage>
 XML;
+
         return sprintf($xml, $this->srcDir, $this->srcDir);
     }
 

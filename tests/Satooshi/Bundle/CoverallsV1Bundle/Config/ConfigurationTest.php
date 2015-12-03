@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 /**
@@ -157,8 +158,6 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->object->isDevEnv());
         $this->assertTrue($this->object->isProdEnv());
     }
-
-
 
     // setRepoToken()
 

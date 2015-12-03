@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 use Satooshi\ProjectTestCase;
@@ -91,7 +92,7 @@ class SourceFileTest extends ProjectTestCase
         );
 
         $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string)$this->object);
+        $this->assertEquals(json_encode($expected), (string) $this->object);
     }
 
     // addCoverage()
