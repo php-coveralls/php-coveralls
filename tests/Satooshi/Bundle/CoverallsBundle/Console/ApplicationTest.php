@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsBundle\Console;
 
 use Satooshi\ProjectTestCase;
@@ -51,6 +52,7 @@ class ApplicationTest extends ProjectTestCase
   </project>
 </coverage>
 XML;
+
         return sprintf($xml, $this->srcDir, $this->srcDir);
     }
 

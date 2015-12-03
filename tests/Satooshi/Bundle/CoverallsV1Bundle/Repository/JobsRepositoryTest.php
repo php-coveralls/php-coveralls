@@ -1,10 +1,7 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Common\Exception\RuntimeException;
-use Guzzle\Http\Exception\ClientErrorResponseException;
-use Guzzle\Http\Exception\CurlException;
-use Psr\Log\NullLogger;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
@@ -36,7 +33,7 @@ class JobsRepositoryTest extends ProjectTestCase
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
-            'send'
+            'send',
         );
         $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
         ->disableOriginalConstructor()
@@ -82,7 +79,7 @@ class JobsRepositoryTest extends ProjectTestCase
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
-            'send'
+            'send',
         );
         $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
         ->disableOriginalConstructor()
@@ -131,7 +128,7 @@ class JobsRepositoryTest extends ProjectTestCase
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
-            'send'
+            'send',
         );
         $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
         ->disableOriginalConstructor()
@@ -260,7 +257,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $covered  = ($percent * $stmt) / 100;
         $coverage = array_fill(0, 100, 0);
 
-        for ($i = 0; $i < $covered; $i++) {
+        for ($i = 0; $i < $covered; ++$i) {
             $coverage[$i] = 1;
         }
 

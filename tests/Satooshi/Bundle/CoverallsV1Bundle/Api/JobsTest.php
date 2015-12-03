@@ -1,4 +1,5 @@
 <?php
+
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
@@ -66,7 +67,6 @@ class JobsTest extends ProjectTestCase
 
         return new Jobs($this->config, $this->client);
     }
-
 
     protected function createAdapterMockNeverCalled()
     {
@@ -160,6 +160,7 @@ class JobsTest extends ProjectTestCase
   </project>
 </coverage>
 XML;
+
         return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
