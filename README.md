@@ -159,9 +159,9 @@ script:
   - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_script:
-  - php vendor/bin/coveralls
+  - travis_retry php vendor/bin/coveralls
   # or enable logging
-  - php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/coveralls -v
 ```
 
 ## CircleCI
