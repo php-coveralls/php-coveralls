@@ -4,7 +4,6 @@
 .settings/
 
 # PHP prj
-build/
 cache.properties
 
 # composer
