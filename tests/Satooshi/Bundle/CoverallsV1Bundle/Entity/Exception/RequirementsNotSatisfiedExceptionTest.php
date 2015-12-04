@@ -57,6 +57,46 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
         $this->assertContains("  - ENV_NAME='value'", $message);
     }
 
+    // getHelpMessage()
+
+    /**
+     * @test
+     */
+    public function shouldGetHelpMessageWithSecretStringEnvVarHidden()
+    {
+        // Make sure the secret repo token is HIDDEN.
+        $env = array(
+            'COVERALLS_REPO_TOKEN' => 'secret',
+        );
+        $expected = "  - COVERALLS_REPO_TOKEN='********(HIDDEN)'";
+
+        $object = new RequirementsNotSatisfiedException();
+        $object->setReadEnv($env);
+
+        $message = $object->getHelpMessage();
+
+        $this->assertContains($expected, $message);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldGetHelpMessageWithSecretEmptyStringEnvVarShown()
+    {
+        // Make sure the secret repo token is shown when it's empty.
+        $env = array(
+            'COVERALLS_REPO_TOKEN' => '',
+        );
+        $expected = "  - COVERALLS_REPO_TOKEN=''";
+
+        $object = new RequirementsNotSatisfiedException();
+        $object->setReadEnv($env);
+
+        $message = $object->getHelpMessage();
+
+        $this->assertContains($expected, $message);
+    }
+
     /**
      * @test
      */

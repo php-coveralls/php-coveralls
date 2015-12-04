@@ -24,6 +24,34 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     protected $readEnv;
 
     /**
+     * Array of secret env vars.
+     *
+     * @var array
+     */
+    private static $secretEnvVars = array(
+        'COVERALLS_REPO_TOKEN',
+    );
+
+    /**
+     * Format a pair of the envVarName and the value.
+     *
+     * @param string $key   the env var name.
+     * @param string $value the value of the env var.
+     *
+     * @return string
+     */
+    protected function format($key, $value)
+    {
+        if (in_array($key, self::$secretEnvVars, true)
+            && is_string($value)
+            && strlen($value) > 0) {
+            $value = '********(HIDDEN)';
+        }
+
+        return sprintf("  - %s=%s\n", $key, var_export($value, true));
+    }
+
+    /**
      * Return help message.
      *
      * @return string
@@ -34,7 +62,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
 
         if (isset($this->readEnv) && is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {
-                $message .= sprintf("  - %s=%s\n", $envVarName, var_export($value, true));
+                $message .= $this->format($envVarName, $value);
             }
         }
 
