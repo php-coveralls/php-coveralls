@@ -26,7 +26,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     /**
      * Array of secret env vars.
      *
-     * @staticvar array
+     * @var array
      */
     private static $secretEnvVars = array(
         'COVERALLS_REPO_TOKEN',
