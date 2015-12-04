@@ -26,7 +26,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     /**
      * Array of secret env vars.
      *
-     * @const array
+     * @staticvar array
      */
     private static $secretEnvVars = array(
         'COVERALLS_REPO_TOKEN',
@@ -42,8 +42,10 @@ class RequirementsNotSatisfiedException extends \RuntimeException
      */
     protected function format($key, $value)
     {
-        if (in_array($key, self::$secretEnvVars, true)) {
-            $value = preg_replace('/./', '*', $value) . '(REDUCTED)';
+        if (in_array($key, self::$secretEnvVars, true)
+            && is_string($value)
+            && strlen($value) > 0) {
+            $value = '********(HIDDEN)';
         }
 
         return sprintf("  - %s=%s\n", $key, var_export($value, true));
