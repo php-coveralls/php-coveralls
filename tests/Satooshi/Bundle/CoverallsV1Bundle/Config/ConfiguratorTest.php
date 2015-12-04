@@ -36,9 +36,8 @@ class ConfiguratorTest extends ProjectTestCase
 
     // custom assertion
 
-    protected function assertConfiguration(Configuration $config, $srcDir, array $cloverXml, $jsonPath, $excludeNoStatements = false)
+    protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
-        $this->assertEquals($srcDir, $config->getSrcDir());
         $this->assertEquals($cloverXml, $config->getCloverXmlPaths());
         $this->assertEquals($jsonPath, $config->getJsonPath());
         $this->assertEquals($excludeNoStatements, $config->isExcludeNoStatements());
@@ -57,14 +56,13 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
-    // default src_dir not found
+    // default src_dir not found, it doesn't throw anything now.
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfSrcDirNotFound()
     {
@@ -131,7 +129,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     // load default value yml
@@ -147,7 +145,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     /**
@@ -161,7 +159,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     /**
@@ -175,7 +173,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
     }
 
     /**
@@ -189,7 +187,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
     }
 
     /**
@@ -203,7 +201,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     /**
@@ -217,7 +215,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, true);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath, true);
     }
 
     /**
@@ -231,14 +229,13 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, $this->srcDir, array($this->cloverXmlPath), $this->jsonPath, false);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath, false);
     }
 
-    // configured src_dir not found
+    // configured src_dir not found, now it doesn't throw anything.
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadSrcDirYmlIfSrcDirNotFound()
     {

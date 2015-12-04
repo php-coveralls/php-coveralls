@@ -38,16 +38,6 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($this->object->getServiceName());
     }
 
-    // getSrcDir()
-
-    /**
-     * @test
-     */
-    public function shouldNotHaveSrcDirOnConstruction()
-    {
-        $this->assertNull($this->object->getSrcDir());
-    }
-
     // getCloverXmlPaths()
 
     /**
@@ -56,6 +46,16 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function shouldHaveEmptyCloverXmlPathsOnConstruction()
     {
         $this->assertEmpty($this->object->getCloverXmlPaths());
+    }
+
+    // getRootDir()
+
+    /**
+     * @test
+     */
+    public function shouldNotRootDirOnConstruction()
+    {
+        $this->assertNull($this->object->getRootDir());
     }
 
     // getJsonPath()
@@ -159,6 +159,20 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->object->isProdEnv());
     }
 
+    // setRootDir()
+
+    /**
+     * @test
+     */
+    public function shouldSetRootDir()
+    {
+        $expected = '/root';
+
+        $same = $this->object->setRootDir($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertSame($expected, $this->object->getRootDir());
+    }
     // setRepoToken()
 
     /**
@@ -187,21 +201,6 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($same, $this->object);
         $this->assertSame($expected, $this->object->getServiceName());
-    }
-
-    // setSrcDir()
-
-    /**
-     * @test
-     */
-    public function shouldSetSrcDir()
-    {
-        $expected = '/path/to/src';
-
-        $same = $this->object->setSrcDir($expected);
-
-        $this->assertSame($same, $this->object);
-        $this->assertSame($expected, $this->object->getSrcDir());
     }
 
     // setCloverXmlPaths()

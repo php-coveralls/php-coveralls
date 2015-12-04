@@ -49,7 +49,7 @@ class CoverallsConfiguration implements ConfigurationInterface
                     ->defaultNull()
                 ->end()
 
-                // for php lib
+                // src_dir is not used any more, now it's here only for backward compatibility reason.
                 ->scalarNode('src_dir')
                     ->defaultValue('src')
                 ->end()
