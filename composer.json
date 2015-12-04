@@ -43,7 +43,7 @@
     "autoload-dev": {
         "psr-4": { "Satooshi\\": "tests/Satooshi/" }
     },
-    "bin": ["composer/bin/coveralls"],
+    "bin": ["bin/coveralls"],
     "extra": {
         "branch-alias": {
             "dev-master": "0.7-dev"
