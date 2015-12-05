@@ -40,4 +40,4 @@ after_script:
     - php travis/checkstyle.php
     - php travis/pmd.php
     - php travis/junit.php
-    - php composer/bin/coveralls -v --exclude-no-stmt
+    - php bin/coveralls -v --exclude-no-stmt
