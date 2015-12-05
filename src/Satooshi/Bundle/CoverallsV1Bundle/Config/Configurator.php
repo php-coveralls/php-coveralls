@@ -5,6 +5,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 use Satooshi\Component\File\Path;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -19,19 +20,20 @@ class Configurator
     /**
      * Load configuration.
      *
-     * @param string $coverallsYmlPath Path to .coveralls.yml.
-     * @param string $rootDir          Path to project root directory.
+     * @param string         $coverallsYmlPath Path to .coveralls.yml.
+     * @param string         $rootDir          Path to project root directory.
+     * @param InputInterface $input|null       Input arguments.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      *
      * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
-    public function load($coverallsYmlPath, $rootDir)
+    public function load($coverallsYmlPath, $rootDir, InputInterface $input = null)
     {
         $yml     = $this->parse($coverallsYmlPath);
         $options = $this->process($yml);
 
-        return $this->createConfiguration($options, $rootDir);
+        return $this->createConfiguration($options, $rootDir, $input);
     }
 
     // Internal method
@@ -78,24 +80,32 @@ class Configurator
     /**
      * Create coveralls configuration.
      *
-     * @param array  $options Processed configuration.
-     * @param string $rootDir Path to project root directory.
+     * @param array          $options    Processed configuration.
+     * @param string         $rootDir    Path to project root directory.
+     * @param InputInterface $input|null Input arguments.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
-    protected function createConfiguration(array $options, $rootDir)
+    protected function createConfiguration(array $options, $rootDir, InputInterface $input = null)
     {
         $configuration = new Configuration();
         $file          = new Path();
 
         $repoToken       = $options['repo_token'];
         $repoSecretToken = $options['repo_secret_token'];
+        if ($input !== null
+            && $input->hasOption('coverage_clover')
+            && count($input->getOption('coverage_clover')) > 0) {
+            $coverage_clover = $input->getOption('coverage_clover');
+        } else {
+            $coverage_clover = $options['coverage_clover'];
+        }
 
         return $configuration
         ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
         ->setServiceName($options['service_name'])
         ->setRootDir($rootDir)
-        ->setCloverXmlPaths($this->ensureCloverXmlPaths($options['coverage_clover'], $rootDir, $file))
+        ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
         ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
         ->setExcludeNoStatements($options['exclude_no_stmt']);
     }

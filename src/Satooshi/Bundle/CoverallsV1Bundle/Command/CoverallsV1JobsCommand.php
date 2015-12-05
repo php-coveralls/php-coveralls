@@ -7,6 +7,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository;
 use Satooshi\Component\Log\ConsoleLogger;
+use Satooshi\Component\File\Path;
 use Guzzle\Http\Client;
 use Psr\Log\NullLogger;
 use Symfony\Component\Console\Command\Command;
@@ -73,6 +74,20 @@ class CoverallsV1JobsCommand extends Command
             InputOption::VALUE_OPTIONAL,
             'Runtime environment name: test, dev, prod',
             'prod'
+        )
+        ->addOption(
+            'coverage_clover',
+            '-x',
+            InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+            'Coverage clover xml files(allowing multiple values).',
+            array()
+        )
+        ->addOption(
+            'root_dir',
+            '-r',
+            InputOption::VALUE_OPTIONAL,
+            'Root directory of the project.',
+            '.'
         );
     }
 
@@ -85,6 +100,13 @@ class CoverallsV1JobsCommand extends Command
     {
         $stopwatch = new Stopwatch();
         $stopwatch->start(__CLASS__);
+        $file = new Path();
+        if ($input->getOption('root_dir') !== '.') {
+            $this->rootDir = $file->toAbsolutePath(
+                $input->getOption('root_dir'),
+                $this->rootDir
+            );
+        }
 
         $config = $this->loadConfiguration($input, $this->rootDir);
         $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
@@ -117,11 +139,11 @@ class CoverallsV1JobsCommand extends Command
         $configurator = new Configurator();
 
         return $configurator
-        ->load($ymlPath, $rootDir)
-        ->setDryRun($input->getOption('dry-run'))
-        ->setExcludeNoStatementsUnlessFalse($input->getOption('exclude-no-stmt'))
-        ->setVerbose($input->getOption('verbose'))
-        ->setEnv($input->getOption('env'));
+            ->load($ymlPath, $rootDir, $input)
+            ->setDryRun($input->getOption('dry-run'))
+            ->setExcludeNoStatementsUnlessFalse($input->getOption('exclude-no-stmt'))
+            ->setVerbose($input->getOption('verbose'))
+            ->setEnv($input->getOption('env'));
     }
 
     /**
