@@ -60,6 +60,7 @@ class CiEnvVarsCollector
 
         $this->fillTravisCi()
         ->fillCircleCi()
+        ->fillWercker()
         ->fillJenkins()
         ->fillLocal()
         ->fillRepoToken();
@@ -113,6 +114,27 @@ class CiEnvVarsCollector
             $this->readEnv['CIRCLECI']         = $this->env['CIRCLECI'];
             $this->readEnv['CIRCLE_BUILD_NUM'] = $this->env['CIRCLE_BUILD_NUM'];
             $this->readEnv['CI_NAME']          = $this->env['CI_NAME'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill Wercker environment variables.
+     *
+     * "WERCKER_BUILD_URL" must be set.
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     */
+    protected function fillWercker()
+    {
+        if (isset($this->env['WERCKER_BUILD_URL'])) {
+            $this->env['CI_BUILD_URL'] = $this->env['WERCKER_BUILD_URL'];
+            $this->env['CI_NAME']         = 'wercker';
+
+            // backup
+            $this->readEnv['WERCKER_BUILD_URL'] = $this->env['WERCKER_BUILD_URL'];
+            $this->readEnv['CI_NAME']           = $this->env['CI_NAME'];
         }
 
         return $this;

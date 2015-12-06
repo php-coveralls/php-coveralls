@@ -126,6 +126,31 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldCollectWerckerEnvVars()
+    {
+        $serviceName   = 'wercker';
+        $buildUrl      = 'http://localhost:8080';
+
+        $env = array();
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['WERCKER_BUILD_URL']    = $buildUrl;
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('CI_NAME', $actual);
+        $this->assertEquals($serviceName, $actual['CI_NAME']);
+
+        $this->assertArrayHasKey('CI_BUILD_URL', $actual);
+        $this->assertEquals($buildUrl, $actual['CI_BUILD_URL']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
     public function shouldCollectJenkinsEnvVars()
     {
         $serviceName   = 'jenkins';
@@ -238,6 +263,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectTravisCiEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -252,6 +279,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectTravisProEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisProEnvVars(CiEnvVarsCollector $object)
     {
@@ -267,6 +296,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectCircleCiEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectCircleCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -282,6 +313,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectJenkinsEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectJenkinsEnvVars(CiEnvVarsCollector $object)
     {
@@ -297,6 +330,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectLocalEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectLocalEnvVars(CiEnvVarsCollector $object)
     {
@@ -312,6 +347,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectUnsupportedConfig
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedConfig(CiEnvVarsCollector $object)
     {
@@ -324,6 +361,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectUnsupportedEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedEnvVars(CiEnvVarsCollector $object)
     {
