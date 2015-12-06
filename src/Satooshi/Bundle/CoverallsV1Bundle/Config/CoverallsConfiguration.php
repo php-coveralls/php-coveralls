@@ -13,8 +13,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * repo_secret_token: your-token
  * service_name: travis-pro
  *
- * # for php
- * src_dir: src
  * coverage_clover: build/logs/clover.xml
  * json_path: build/logs/coveralls-upload.json
  *
@@ -47,11 +45,6 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('service_name')
                     ->defaultNull()
-                ->end()
-
-                // src_dir is not used any more, now it's here only for backward compatibility reason.
-                ->scalarNode('src_dir')
-                    ->defaultValue('src')
                 ->end()
                 ->variableNode('coverage_clover')
                     ->defaultValue('build/logs/clover.xml')

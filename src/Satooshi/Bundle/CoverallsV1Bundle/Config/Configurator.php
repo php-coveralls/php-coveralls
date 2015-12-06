@@ -33,16 +33,6 @@ class Configurator
         $yml     = $this->parse($coverallsYmlPath);
         $options = $this->process($yml);
 
-        if (array_key_exists('src_dir', $yml)) {
-            trigger_error(
-                'The "src_dir" configuration option is deprecated. '
-                . 'Starting from v0.8.0, such configuration files will result '
-                . 'in an error. Please remove "src_dir" from your coveralls '
-                . 'configuration file right now.',
-                E_USER_DEPRECATED
-            );
-        }
-
         return $this->createConfiguration($options, $rootDir, $input);
     }
 
