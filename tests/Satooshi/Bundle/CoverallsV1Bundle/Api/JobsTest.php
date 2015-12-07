@@ -112,7 +112,6 @@ class JobsTest extends ProjectTestCase
         $config = new Configuration();
 
         return $config
-        ->setSrcDir($this->srcDir)
         ->addCloverXmlPath($this->cloverXmlPath);
     }
 

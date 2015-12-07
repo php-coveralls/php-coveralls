@@ -28,13 +28,6 @@ class Configuration
     // only for php lib
 
     /**
-     * Absolute path to src directory to include coverage report.
-     *
-     * @var string
-     */
-    protected $srcDir;
-
-    /**
      * Absolute path to repository root directory.
      *
      * @var string
@@ -153,30 +146,6 @@ class Configuration
     public function getServiceName()
     {
         return $this->serviceName;
-    }
-
-    /**
-     * Set absolute path to src directory to include coverage report.
-     *
-     * @param string $srcDir
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
-     */
-    public function setSrcDir($srcDir)
-    {
-        $this->srcDir = $srcDir;
-
-        return $this;
-    }
-
-    /**
-     * Return absolute path to src directory to include coverage report.
-     *
-     * @return string
-     */
-    public function getSrcDir()
-    {
-        return $this->srcDir;
     }
 
     public function setRootDir($rootDir)

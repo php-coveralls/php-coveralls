@@ -263,7 +263,6 @@ php-coveralls can use optional `.coveralls.yml` file to configure options. This 
 
 Following options can be used for php-coveralls.
 
-- `src_dir`: Used to specify where the root level of your source files directory is. Default is `src`. 
 - `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
 - `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
 
@@ -275,7 +274,6 @@ repo_token: your_token # should be kept secret!
 service_name: travis-pro # travis-ci or travis-pro
 
 # for php-coveralls
-src_dir: src
 coverage_clover: build/logs/clover.xml
 json_path: build/logs/coveralls-upload.json
 ```

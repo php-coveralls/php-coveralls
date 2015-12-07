@@ -94,36 +94,10 @@ class Configurator
         return $configuration
         ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
         ->setServiceName($options['service_name'])
-        // for PHP lib
-        ->setSrcDir($this->ensureSrcDir($options['src_dir'], $rootDir, $file))
         ->setRootDir($rootDir)
         ->setCloverXmlPaths($this->ensureCloverXmlPaths($options['coverage_clover'], $rootDir, $file))
         ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
         ->setExcludeNoStatements($options['exclude_no_stmt']);
-    }
-
-    /**
-     * Ensure src_dir is valid.
-     *
-     * @param string $option  src_dir option.
-     * @param string $rootDir Path to project root directory.
-     * @param Path   $file    Path object.
-     *
-     * @return string Valid src_dir.
-     *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    protected function ensureSrcDir($option, $rootDir, Path $file)
-    {
-        // normalize
-        $realpath = $file->getRealPath($option, $rootDir);
-
-        // validate
-        if (!$file->isRealDirExist($realpath)) {
-            throw new InvalidConfigurationException(sprintf('src directory %s is not found', $realpath));
-        }
-
-        return $realpath;
     }
 
     /**
