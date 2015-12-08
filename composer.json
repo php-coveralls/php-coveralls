@@ -44,6 +44,16 @@
         "psr-4": { "Satooshi\\": "tests/Satooshi/" }
     },
     "bin": ["bin/coveralls"],
+    "scripts": {
+        "sca": [
+            "php vendor/bin/php-cs-fixer fix --dry-run -vv",
+            "php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
+            "php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml"
+        ]
+    },
+    "config": {
+        "process-timeout": 0
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.7-dev"

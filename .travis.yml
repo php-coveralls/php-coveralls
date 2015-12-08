@@ -25,12 +25,10 @@ install:
     - if [ "$CHECKS" = "yes" ]; then travis_retry composer require --no-interaction fabpot/php-cs-fixer:^1.11; fi;
 
 script:
-    - if [ "$CHECKS" = "yes" ]; then php vendor/bin/php-cs-fixer fix --dry-run -vv; fi;
-    - if [ "$CHECKS" = "yes" ]; then php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src; fi;
-    - if [ "$CHECKS" = "yes" ]; then php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml; fi;
     - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - php vendor/bin/phpunit
     - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
+    - if [ "$CHECKS" = "yes" ]; then composer run sca; fi;
 
 after_script:
     - curl -s https://gist.github.com/satooshi/4750401/raw > travis/ColorCLI.php
