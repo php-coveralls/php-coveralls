@@ -29,7 +29,7 @@ script:
     - if [ "$CHECKS" = "yes" ]; then php vendor/bin/phpcs --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src; fi;
     - if [ "$CHECKS" = "yes" ]; then php vendor/bin/phpmd src xml build/config/phpmd.xml --reportfile build/logs/pmd.xml; fi;
     - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - php vendor/bin/phpunit -c travis.phpunit.xml
+    - php vendor/bin/phpunit
     - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
 
 after_script:
