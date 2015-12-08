@@ -142,7 +142,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     protected function assertGit(Git $git)
     {
-        $this->assertEquals('branch1', $git->getBranch());
+        $this->assertSame('branch1', $git->getBranch());
 
         $commit = $git->getHead();
 
@@ -160,18 +160,18 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     protected function assertCommit(Commit $commit)
     {
-        $this->assertEquals('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $commit->getId());
-        $this->assertEquals('Author Name', $commit->getAuthorName());
-        $this->assertEquals('author@satooshi.jp', $commit->getAuthorEmail());
-        $this->assertEquals('Committer Name', $commit->getCommitterName());
-        $this->assertEquals('committer@satooshi.jp', $commit->getCommitterEmail());
-        $this->assertEquals('commit message', $commit->getMessage());
+        $this->assertSame('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $commit->getId());
+        $this->assertSame('Author Name', $commit->getAuthorName());
+        $this->assertSame('author@satooshi.jp', $commit->getAuthorEmail());
+        $this->assertSame('Committer Name', $commit->getCommitterName());
+        $this->assertSame('committer@satooshi.jp', $commit->getCommitterEmail());
+        $this->assertSame('commit message', $commit->getMessage());
     }
 
     protected function assertRemote(Remote $remote)
     {
-        $this->assertEquals('origin', $remote->getName());
-        $this->assertEquals('git@github.com:satooshi/php-coveralls.git', $remote->getUrl());
+        $this->assertSame('origin', $remote->getName());
+        $this->assertSame('git@github.com:satooshi/php-coveralls.git', $remote->getUrl());
     }
 
     // collectBranch() exception

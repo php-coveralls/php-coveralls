@@ -482,9 +482,9 @@ XML;
         ->dumpJsonFile()
         ->send();
 
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
-        $this->assertEquals($repoToken, $jsonFile->getRepoToken());
+        $this->assertSame($serviceName, $jsonFile->getServiceName());
+        $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
+        $this->assertSame($repoToken, $jsonFile->getRepoToken());
     }
 
     /**

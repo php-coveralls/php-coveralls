@@ -105,7 +105,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldBeProdEnvOnConstruction()
     {
-        $this->assertEquals('prod', $this->object->getEnv());
+        $this->assertSame('prod', $this->object->getEnv());
     }
 
     // isTestEnv()
@@ -119,7 +119,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->object->setEnv($expected);
 
-        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertSame($expected, $this->object->getEnv());
         $this->assertTrue($this->object->isTestEnv());
         $this->assertFalse($this->object->isDevEnv());
         $this->assertFalse($this->object->isProdEnv());
@@ -136,7 +136,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->object->setEnv($expected);
 
-        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertSame($expected, $this->object->getEnv());
         $this->assertFalse($this->object->isTestEnv());
         $this->assertTrue($this->object->isDevEnv());
         $this->assertFalse($this->object->isProdEnv());
@@ -153,7 +153,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
         $this->object->setEnv($expected);
 
-        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertSame($expected, $this->object->getEnv());
         $this->assertFalse($this->object->isTestEnv());
         $this->assertFalse($this->object->isDevEnv());
         $this->assertTrue($this->object->isProdEnv());
@@ -400,6 +400,6 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $same = $this->object->setEnv($expected);
 
         $this->assertSame($same, $this->object);
-        $this->assertEquals($expected, $this->object->getEnv());
+        $this->assertSame($expected, $this->object->getEnv());
     }
 }

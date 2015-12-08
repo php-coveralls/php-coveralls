@@ -128,7 +128,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
 
-        $this->assertEquals($expected, $this->object->toAbsolutePath($path, $rootDir));
+        $this->assertSame($expected, $this->object->toAbsolutePath($path, $rootDir));
     }
 
     /**
@@ -141,7 +141,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = $path;
 
-        $this->assertEquals($expected, $this->object->toAbsolutePath($path, $rootDir));
+        $this->assertSame($expected, $this->object->toAbsolutePath($path, $rootDir));
     }
 
     // getRealPath()
@@ -167,7 +167,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = realpath($rootDir . DIRECTORY_SEPARATOR . $path);
 
-        $this->assertEquals($expected, $this->object->getRealPath($path, $rootDir));
+        $this->assertSame($expected, $this->object->getRealPath($path, $rootDir));
     }
 
     /**
@@ -180,7 +180,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = realpath($path);
 
-        $this->assertEquals($expected, $this->object->getRealPath($path, $rootDir));
+        $this->assertSame($expected, $this->object->getRealPath($path, $rootDir));
     }
 
     // getRealDir()
@@ -206,7 +206,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = realpath($rootDir . DIRECTORY_SEPARATOR . $path);
 
-        $this->assertEquals($expected, $this->object->getRealDir($path, $rootDir));
+        $this->assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
 
     /**
@@ -219,7 +219,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = realpath($path . '/..');
 
-        $this->assertEquals($expected, $this->object->getRealDir($path, $rootDir));
+        $this->assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
 
     // getRealWritingFilePath()
@@ -245,7 +245,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
         $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
 
-        $this->assertEquals($expected, $this->object->getRealWritingFilePath($path, $rootDir));
+        $this->assertSame($expected, $this->object->getRealWritingFilePath($path, $rootDir));
     }
 
     // isRealPathExist()

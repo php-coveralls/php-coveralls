@@ -48,7 +48,7 @@ class GitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldHaveBranchNameOnConstruction()
     {
-        $this->assertEquals($this->branchName, $this->object->getBranch());
+        $this->assertSame($this->branchName, $this->object->getBranch());
     }
 
     // getHead()

@@ -265,9 +265,9 @@ XML;
     {
         $metrics = $this->object->getMetrics();
 
-        $this->assertEquals(0, $metrics->getStatements());
-        $this->assertEquals(0, $metrics->getCoveredStatements());
-        $this->assertEquals(0, $metrics->getLineCoverage());
+        $this->assertSame(0, $metrics->getStatements());
+        $this->assertSame(0, $metrics->getCoveredStatements());
+        $this->assertSame(0, $metrics->getLineCoverage());
     }
 
     // setServiceName()
@@ -281,7 +281,7 @@ XML;
 
         $obj = $this->object->setServiceName($expected);
 
-        $this->assertEquals($expected, $this->object->getServiceName());
+        $this->assertSame($expected, $this->object->getServiceName());
         $this->assertSame($obj, $this->object);
 
         return $this->object;
@@ -298,7 +298,7 @@ XML;
 
         $obj = $this->object->setRepoToken($expected);
 
-        $this->assertEquals($expected, $this->object->getRepoToken());
+        $this->assertSame($expected, $this->object->getRepoToken());
         $this->assertSame($obj, $this->object);
 
         return $this->object;
@@ -315,7 +315,7 @@ XML;
 
         $obj = $this->object->setServiceJobId($expected);
 
-        $this->assertEquals($expected, $this->object->getServiceJobId());
+        $this->assertSame($expected, $this->object->getServiceJobId());
         $this->assertSame($obj, $this->object);
 
         return $this->object;
@@ -351,7 +351,7 @@ XML;
 
         $obj = $this->object->setRunAt($expected);
 
-        $this->assertEquals($expected, $this->object->getRunAt());
+        $this->assertSame($expected, $this->object->getRunAt());
         $this->assertSame($obj, $this->object);
 
         return $this->object;
@@ -390,8 +390,8 @@ XML;
             'environment'  => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $this->object);
+        $this->assertSame($expected, $this->object->toArray());
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -408,8 +408,8 @@ XML;
             'environment'  => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $this->object);
+        $this->assertSame($expected, $this->object->toArray());
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
     // service_name
@@ -428,8 +428,8 @@ XML;
             'environment'  => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $object);
+        $this->assertSame($expected, $object->toArray());
+        $this->assertSame(json_encode($expected), (string) $object);
     }
 
     // service_job_id
@@ -448,8 +448,8 @@ XML;
             'environment'    => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $object);
+        $this->assertSame($expected, $object->toArray());
+        $this->assertSame(json_encode($expected), (string) $object);
     }
 
     // repo_token
@@ -468,8 +468,8 @@ XML;
             'environment'  => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $object);
+        $this->assertSame($expected, $object->toArray());
+        $this->assertSame(json_encode($expected), (string) $object);
     }
 
     // git
@@ -491,7 +491,7 @@ XML;
         );
 
         $this->assertSame($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $object);
+        $this->assertSame(json_encode($expected), (string) $object);
     }
 
     // run_at
@@ -510,8 +510,8 @@ XML;
             'environment'  => array('packagist_version' => Version::VERSION),
         );
 
-        $this->assertEquals($expected, $object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $object);
+        $this->assertSame($expected, $object->toArray());
+        $this->assertSame(json_encode($expected), (string) $object);
     }
 
     // fillJobs()
@@ -533,8 +533,8 @@ XML;
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
-        $this->assertEquals($serviceName, $object->getServiceName());
-        $this->assertEquals($serviceJobId, $object->getServiceJobId());
+        $this->assertSame($serviceName, $object->getServiceName());
+        $this->assertSame($serviceJobId, $object->getServiceJobId());
     }
 
     /**
@@ -556,9 +556,9 @@ XML;
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
-        $this->assertEquals($repoToken, $object->getRepoToken());
-        $this->assertEquals($serviceName, $object->getServiceName());
-        $this->assertEquals($serviceNumber, $object->getServiceNumber());
+        $this->assertSame($repoToken, $object->getRepoToken());
+        $this->assertSame($serviceName, $object->getServiceName());
+        $this->assertSame($serviceNumber, $object->getServiceNumber());
     }
 
     /**
@@ -594,12 +594,12 @@ XML;
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
-        $this->assertEquals($repoToken, $object->getRepoToken());
-        $this->assertEquals($serviceName, $object->getServiceName());
-        $this->assertEquals($serviceNumber, $object->getServiceNumber());
-        $this->assertEquals($serviceBuildUrl, $object->getServiceBuildUrl());
-        $this->assertEquals($serviceBranch, $object->getServiceBranch());
-        $this->assertEquals($servicePullRequest, $object->getServicePullRequest());
+        $this->assertSame($repoToken, $object->getRepoToken());
+        $this->assertSame($serviceName, $object->getServiceName());
+        $this->assertSame($serviceNumber, $object->getServiceNumber());
+        $this->assertSame($serviceBuildUrl, $object->getServiceBuildUrl());
+        $this->assertSame($serviceBranch, $object->getServiceBranch());
+        $this->assertSame($servicePullRequest, $object->getServicePullRequest());
     }
 
     /**
@@ -622,10 +622,10 @@ XML;
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
-        $this->assertEquals($repoToken, $object->getRepoToken());
-        $this->assertEquals($serviceName, $object->getServiceName());
+        $this->assertSame($repoToken, $object->getRepoToken());
+        $this->assertSame($serviceName, $object->getServiceName());
         $this->assertNull($object->getServiceJobId());
-        $this->assertEquals($serviceEventType, $object->getServiceEventType());
+        $this->assertSame($serviceEventType, $object->getServiceEventType());
     }
 
     /**
@@ -643,7 +643,7 @@ XML;
         $same = $object->fillJobs($env);
 
         $this->assertSame($same, $object);
-        $this->assertEquals($repoToken, $object->getRepoToken());
+        $this->assertSame($repoToken, $object->getRepoToken());
     }
 
     /**
@@ -683,13 +683,13 @@ XML;
     {
         $object = $this->collectJsonFile();
 
-        $this->assertEquals(50, $object->reportLineCoverage());
+        $this->assertSame(50.0, $object->reportLineCoverage());
 
         $metrics = $object->getMetrics();
 
-        $this->assertEquals(2, $metrics->getStatements());
-        $this->assertEquals(1, $metrics->getCoveredStatements());
-        $this->assertEquals(50, $metrics->getLineCoverage());
+        $this->assertSame(2, $metrics->getStatements());
+        $this->assertSame(1, $metrics->getCoveredStatements());
+        $this->assertSame(50.0, $metrics->getLineCoverage());
     }
 
     // excludeNoStatementsFiles()
