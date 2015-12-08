@@ -178,7 +178,7 @@ dependencies:
   override:
     - mkdir -p build/logs
     - composer install --dev --no-interaction
-    - perl -pi -e 's/; z/z/' ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
 
 ## Customize test commands
 test:
@@ -186,13 +186,7 @@ test:
     - phpunit -c phpunit.xml.dist
 ```
 
-Add `php vendor/bin/coveralls` to the "Test commands" textarea on Web UI (Edit settings > Tests > Test commands textarea).
-
-```sh
-COVERALLS_REPO_TOKEN=your_token php vendor/bin/coveralls
-```
-
-*Please note that `COVERALLS_REPO_TOKEN` should be set in the same line before coveralls command execution. You can not export this variable before coveralls command execution in other command since each command runs in its own shell and does not share environment variables ([see reference on CircleCI](https://circleci.com/docs/environment-variables)).*
+Add `COVERALLS_REPO_TOKEN` environment variable with your coveralls repo token on Web UI (Tweaks -> Environment Variable).
 
 ## Codeship
 

@@ -196,36 +196,26 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $json     = is_array($body) ? json_encode($body) : $body;
         $args     = array($statusCode, null, $json);
-        $methods  = array('getStatusCode', 'getReasonPhrase', 'json');
-        $response = $this->getMock('Guzzle\Http\Message\Response', $methods, $args);
+        $methods  = array('getStatusCode', 'getReasonPhrase', 'getBody');
+        $response = $this->getMock('\Guzzle\Http\Message\Response', $methods, $args);
 
         $response
-        ->expects($this->once())
-        ->method('getStatusCode')
-        ->with()
-        ->will($this->returnValue($statusCode));
+            ->expects($this->once())
+            ->method('getStatusCode')
+            ->with()
+            ->will($this->returnValue($statusCode));
 
         $response
-        ->expects($this->once())
-        ->method('getReasonPhrase')
-        ->with()
-        ->will($this->returnValue($reasonPhrase));
-
-        if (is_array($body)) {
-            $response
             ->expects($this->once())
-            ->method('json')
+            ->method('getReasonPhrase')
             ->with()
-            ->will($this->returnValue($body));
-        } else {
-            $exception = new \Guzzle\Common\Exception\RuntimeException();
+            ->will($this->returnValue($reasonPhrase));
 
-            $response
+        $response
             ->expects($this->once())
-            ->method('json')
-            ->with()
-            ->will($this->throwException($exception));
-        }
+            ->method('getBody')
+            ->with(true)
+            ->will($this->returnValue($json));
 
         return $response;
     }
