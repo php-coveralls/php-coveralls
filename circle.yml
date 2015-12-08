@@ -13,6 +13,6 @@ dependencies:
 
 test:
   override:
-    - phpunit -c travis.phpunit.xml
+    - phpunit
   post:
     - bin/coveralls -v --exclude-no-stmt
