@@ -244,28 +244,22 @@ class JobsRepository implements LoggerAwareInterface
      */
     protected function logResponse(Response $response)
     {
-        try {
-            $body = $response->json();
-
-            if (isset($body['error'])) {
-                if (isset($body['message'])) {
-                    $this->logger->error($body['message']);
-                }
-            } else {
-                if (isset($body['message'])) {
-                    $this->logger->info(sprintf('Accepted %s', $body['message']));
-                }
-
-                if (isset($body['url'])) {
-                    $this->logger->info(sprintf('You can see the build on %s', $body['url']));
-                }
-            }
-        } catch (\Guzzle\Common\Exception\RuntimeException $e) {
+        $raw_body = $response->getBody(true);
+        $body = json_decode($raw_body, true);
+        if ($body === null) {
             // the response body is not in JSON format
-            $body = $response->getBody(true);
+            $this->logger->error($raw_body);
+        } elseif (isset($body['error'])) {
+            if (isset($body['message'])) {
+                $this->logger->error($body['message']);
+            }
+        } else {
+            if (isset($body['message'])) {
+                $this->logger->info(sprintf('Accepted %s', $body['message']));
+            }
 
-            if ($body) {
-                $this->logger->error($body);
+            if (isset($body['url'])) {
+                $this->logger->info(sprintf('You can see the build on %s', $body['url']));
             }
         }
     }
