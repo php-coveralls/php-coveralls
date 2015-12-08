@@ -31,7 +31,7 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveNameOnConstruction()
     {
-        $this->assertEquals($this->filename, $this->object->getName());
+        $this->assertSame($this->filename, $this->object->getName());
     }
 
     // getSource()
@@ -43,7 +43,7 @@ class SourceFileTest extends ProjectTestCase
     {
         $expected = trim(file_get_contents($this->path));
 
-        $this->assertEquals($expected, $this->object->getSource());
+        $this->assertSame($expected, $this->object->getSource());
     }
 
     // getCoverage()
@@ -55,7 +55,7 @@ class SourceFileTest extends ProjectTestCase
     {
         $expected = array_fill(0, 9, null);
 
-        $this->assertEquals($expected, $this->object->getCoverage());
+        $this->assertSame($expected, $this->object->getCoverage());
     }
 
     // getPath()
@@ -65,7 +65,7 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHavePathOnConstruction()
     {
-        $this->assertEquals($this->path, $this->object->getPath());
+        $this->assertSame($this->path, $this->object->getPath());
     }
 
     // getFileLines()
@@ -75,7 +75,7 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveFileLinesOnConstruction()
     {
-        $this->assertEquals(9, $this->object->getFileLines());
+        $this->assertSame(9, $this->object->getFileLines());
     }
 
     // toArray()
@@ -91,8 +91,8 @@ class SourceFileTest extends ProjectTestCase
             'coverage' => array_fill(0, 9, null),
         );
 
-        $this->assertEquals($expected, $this->object->toArray());
-        $this->assertEquals(json_encode($expected), (string) $this->object);
+        $this->assertSame($expected, $this->object->toArray());
+        $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
     // addCoverage()
@@ -107,7 +107,7 @@ class SourceFileTest extends ProjectTestCase
         $expected = array_fill(0, 9, null);
         $expected[5] = 1;
 
-        $this->assertEquals($expected, $this->object->getCoverage());
+        $this->assertSame($expected, $this->object->getCoverage());
     }
 
     // getMetrics()
@@ -120,10 +120,10 @@ class SourceFileTest extends ProjectTestCase
     {
         $metrics = $this->object->getMetrics();
 
-        $this->assertEquals(0, $metrics->getStatements());
-        $this->assertEquals(0, $metrics->getCoveredStatements());
-        $this->assertEquals(0, $metrics->getLineCoverage());
-        $this->assertEquals(0, $this->object->reportLineCoverage());
+        $this->assertSame(0, $metrics->getStatements());
+        $this->assertSame(0, $metrics->getCoveredStatements());
+        $this->assertSame(0, $metrics->getLineCoverage());
+        $this->assertSame(0, $this->object->reportLineCoverage());
     }
 
     /**
@@ -135,9 +135,9 @@ class SourceFileTest extends ProjectTestCase
 
         $metrics = $this->object->getMetrics();
 
-        $this->assertEquals(1, $metrics->getStatements());
-        $this->assertEquals(1, $metrics->getCoveredStatements());
-        $this->assertEquals(100, $metrics->getLineCoverage());
-        $this->assertEquals(100, $this->object->reportLineCoverage());
+        $this->assertSame(1, $metrics->getStatements());
+        $this->assertSame(1, $metrics->getCoveredStatements());
+        $this->assertSame(100, $metrics->getLineCoverage());
+        $this->assertSame(100, $this->object->reportLineCoverage());
     }
 }

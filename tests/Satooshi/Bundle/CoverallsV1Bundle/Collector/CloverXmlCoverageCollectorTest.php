@@ -204,20 +204,20 @@ XML;
 
     protected function assertJsonFile($jsonFile, $serviceName, $serviceJobId, $repoToken, $git, $runAt)
     {
-        $this->assertEquals($serviceName, $jsonFile->getServiceName());
-        $this->assertEquals($serviceJobId, $jsonFile->getServiceJobId());
-        $this->assertEquals($repoToken, $jsonFile->getRepoToken());
+        $this->assertSame($serviceName, $jsonFile->getServiceName());
+        $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
+        $this->assertSame($repoToken, $jsonFile->getRepoToken());
         $this->assertSame($git, $jsonFile->getGit());
-        $this->assertEquals($runAt, $jsonFile->getRunAt());
+        $this->assertSame($runAt, $jsonFile->getRunAt());
     }
 
     protected function assertSourceFile(SourceFile $sourceFile, $name, $path, $fileLines, array $coverage, $source)
     {
-        $this->assertEquals($name, $sourceFile->getName());
-        $this->assertEquals($path, $sourceFile->getPath());
-        $this->assertEquals($fileLines, $sourceFile->getFileLines());
+        $this->assertSame($name, $sourceFile->getName());
+        $this->assertSame($path, $sourceFile->getPath());
+        $this->assertSame($fileLines, $sourceFile->getFileLines());
         $this->assertSame($coverage, $sourceFile->getCoverage());
-        $this->assertEquals($source, $sourceFile->getSource());
+        $this->assertSame($source, $sourceFile->getSource());
     }
 
     protected function assertSourceFileTest1(SourceFile $sourceFile)

@@ -46,7 +46,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setName($expected);
 
-        $this->assertEquals($expected, $this->object->getName());
+        $this->assertSame($expected, $this->object->getName());
         $this->assertSame($obj, $this->object);
     }
 
@@ -61,7 +61,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setUrl($expected);
 
-        $this->assertEquals($expected, $this->object->getUrl());
+        $this->assertSame($expected, $this->object->getUrl());
         $this->assertSame($obj, $this->object);
     }
 

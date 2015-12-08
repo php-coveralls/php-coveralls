@@ -9,6 +9,10 @@ return Symfony\CS\Config\Config::create()
         '-unalign_double_arrow',
         '-unalign_equals',
         'concat_with_spaces',
+        'php_unit_construct',
+        'php_unit_strict',
+        'strict',
+        'strict_param',
     ])
     ->finder(
         Symfony\CS\Finder\DefaultFinder::create()

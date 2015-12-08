@@ -34,7 +34,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
         $expected = 'git';
 
-        $this->assertEquals($expected, $object->getCommandPath());
+        $this->assertSame($expected, $object->getCommandPath());
     }
 
     // getBranches()

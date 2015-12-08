@@ -28,7 +28,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
         $object = new Metrics();
 
         $this->assertFalse($object->hasStatements());
-        $this->assertEquals(0, $object->getStatements());
+        $this->assertSame(0, $object->getStatements());
     }
 
     /**
@@ -39,7 +39,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
         $object = new Metrics($this->coverage);
 
         $this->assertTrue($object->hasStatements());
-        $this->assertEquals(3, $object->getStatements());
+        $this->assertSame(3, $object->getStatements());
     }
 
     // getCoveredStatements()
@@ -51,7 +51,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics();
 
-        $this->assertEquals(0, $object->getCoveredStatements());
+        $this->assertSame(0, $object->getCoveredStatements());
     }
 
     /**
@@ -61,7 +61,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertEquals(2, $object->getCoveredStatements());
+        $this->assertSame(2, $object->getCoveredStatements());
     }
 
     // getLineCoverage()
@@ -73,7 +73,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics();
 
-        $this->assertEquals(0, $object->getLineCoverage());
+        $this->assertSame(0, $object->getLineCoverage());
     }
 
     /**
@@ -83,7 +83,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertEquals(200 / 3, $object->getLineCoverage());
+        $this->assertSame(200 / 3, $object->getLineCoverage());
     }
 
     // merge()
@@ -97,9 +97,9 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
         $that   = new Metrics($this->coverage);
         $object->merge($that);
 
-        $this->assertEquals(3, $object->getStatements());
-        $this->assertEquals(2, $object->getCoveredStatements());
-        $this->assertEquals(200 / 3, $object->getLineCoverage());
+        $this->assertSame(3, $object->getStatements());
+        $this->assertSame(2, $object->getCoveredStatements());
+        $this->assertSame(200 / 3, $object->getLineCoverage());
     }
 
     /**
@@ -111,8 +111,8 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
         $that   = new Metrics($this->coverage);
         $object->merge($that);
 
-        $this->assertEquals(6, $object->getStatements());
-        $this->assertEquals(4, $object->getCoveredStatements());
-        $this->assertEquals(400 / 6, $object->getLineCoverage());
+        $this->assertSame(6, $object->getStatements());
+        $this->assertSame(4, $object->getCoveredStatements());
+        $this->assertSame(400 / 6, $object->getLineCoverage());
     }
 }

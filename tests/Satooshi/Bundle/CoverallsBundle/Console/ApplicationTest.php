@@ -84,6 +84,6 @@ XML;
             )
         );
 
-        $this->assertEquals(0, $actual);
+        $this->assertSame(0, $actual);
     }
 }

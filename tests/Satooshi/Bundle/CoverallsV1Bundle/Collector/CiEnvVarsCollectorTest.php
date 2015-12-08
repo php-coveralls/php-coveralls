@@ -55,10 +55,10 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertEquals($serviceName, $actual['CI_NAME']);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertEquals($serviceJobId, $actual['CI_JOB_ID']);
+        $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
 
         return $object;
     }
@@ -85,13 +85,13 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertEquals($serviceName, $actual['CI_NAME']);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertEquals($serviceJobId, $actual['CI_JOB_ID']);
+        $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -114,10 +114,10 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertEquals($serviceName, $actual['CI_NAME']);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertEquals($serviceNumber, $actual['CI_BUILD_NUMBER']);
+        $this->assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
 
         return $object;
     }
@@ -141,13 +141,13 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertEquals($serviceName, $actual['CI_NAME']);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertEquals($serviceNumber, $actual['CI_BUILD_NUMBER']);
+        $this->assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
 
         $this->assertArrayHasKey('CI_BUILD_URL', $actual);
-        $this->assertEquals($buildUrl, $actual['CI_BUILD_URL']);
+        $this->assertSame($buildUrl, $actual['CI_BUILD_URL']);
 
         return $object;
     }
@@ -169,10 +169,10 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertEquals($serviceName, $actual['CI_NAME']);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('COVERALLS_EVENT_TYPE', $actual);
-        $this->assertEquals($serviceEventType, $actual['COVERALLS_EVENT_TYPE']);
+        $this->assertSame($serviceEventType, $actual['COVERALLS_EVENT_TYPE']);
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertNull($actual['CI_JOB_ID']);
@@ -197,7 +197,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -217,7 +217,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $actual = $object->collect($env);
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertEquals($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }

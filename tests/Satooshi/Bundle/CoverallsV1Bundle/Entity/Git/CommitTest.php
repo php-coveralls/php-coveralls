@@ -86,7 +86,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setId($expected);
 
-        $this->assertEquals($expected, $this->object->getId());
+        $this->assertSame($expected, $this->object->getId());
         $this->assertSame($obj, $this->object);
     }
 
@@ -101,7 +101,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setAuthorName($expected);
 
-        $this->assertEquals($expected, $this->object->getAuthorName());
+        $this->assertSame($expected, $this->object->getAuthorName());
         $this->assertSame($obj, $this->object);
     }
 
@@ -116,7 +116,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setAuthorEmail($expected);
 
-        $this->assertEquals($expected, $this->object->getAuthorEmail());
+        $this->assertSame($expected, $this->object->getAuthorEmail());
         $this->assertSame($obj, $this->object);
     }
 
@@ -131,7 +131,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setCommitterName($expected);
 
-        $this->assertEquals($expected, $this->object->getCommitterName());
+        $this->assertSame($expected, $this->object->getCommitterName());
         $this->assertSame($obj, $this->object);
     }
 
@@ -146,7 +146,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setCommitterEmail($expected);
 
-        $this->assertEquals($expected, $this->object->getCommitterEmail());
+        $this->assertSame($expected, $this->object->getCommitterEmail());
         $this->assertSame($obj, $this->object);
     }
 
@@ -161,7 +161,7 @@ class CommitTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->setMessage($expected);
 
-        $this->assertEquals($expected, $this->object->getMessage());
+        $this->assertSame($expected, $this->object->getMessage());
         $this->assertSame($obj, $this->object);
     }
 

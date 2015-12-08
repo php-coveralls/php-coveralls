@@ -38,9 +38,9 @@ class ConfiguratorTest extends ProjectTestCase
 
     protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
-        $this->assertEquals($cloverXml, $config->getCloverXmlPaths());
-        $this->assertEquals($jsonPath, $config->getJsonPath());
-        $this->assertEquals($excludeNoStatements, $config->isExcludeNoStatements());
+        $this->assertSame($cloverXml, $config->getCloverXmlPaths());
+        $this->assertSame($jsonPath, $config->getJsonPath());
+        $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
     // load()
