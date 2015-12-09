@@ -293,6 +293,17 @@ coverage_clover:
   - build/logs/clover-Validator.xml
 ```
 
+You can also use `--coverage_clover` (or `-x`) command line option as follows:
+
+```
+coveralls --coverage_clover=build/logs/my-clover.xml
+```
+
+### root_dir detection and override
+
+This tool assume the current directory is the project root directory by default. You can override it with `--root_dir` command line option.
+
+
 # Change log
 
 [See changelog](CHANGELOG.md)

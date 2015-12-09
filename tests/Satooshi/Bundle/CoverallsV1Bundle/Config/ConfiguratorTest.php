@@ -3,6 +3,9 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 use Satooshi\ProjectTestCase;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputDefinition;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
@@ -160,6 +163,36 @@ class ConfiguratorTest extends ProjectTestCase
         $config = $this->object->load($path, $this->rootDir);
 
         $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLoadCoverageCloverOverriddenByInput()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+
+        $path = realpath(__DIR__ . '/yaml/coverage_clover.yml');
+
+        // Mocking command line options.
+        $defs = new InputDefinition(
+            array(
+                new InputOption(
+                    'coverage_clover',
+                    'x',
+                    InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY
+                ),
+            )
+        );
+        $inputArray = array(
+            '--coverage_clover' => array(
+                'build/logs/clover-part1.xml',
+                'build/logs/clover-part2.xml',
+            ),
+        );
+        $input = new ArrayInput($inputArray, $defs);
+        $config = $this->object->load($path, $this->rootDir, $input);
+        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
     }
 
     /**

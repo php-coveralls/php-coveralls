@@ -92,5 +92,117 @@ XML;
         );
 
         $this->assertSame(0, $actual);
+
+        # It should succeed too with a correct coverage_clover option.
+        $actual = $commandTester->execute(
+            array(
+                'command'           => $command->getName(),
+                '--dry-run'         => true,
+                '--config'          => 'coveralls.yml',
+                '--env'             => 'test',
+                '--coverage_clover' => 'build/logs/clover.xml',
+            )
+        );
+
+        $this->assertSame(0, $actual);
+    }
+
+    /**
+     * @test
+     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function shouldExecuteCoverallsV1JobsCommandWithWrongRootDir()
+    {
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
+
+        $command = new CoverallsV1JobsCommand();
+        $command->setRootDir($this->logsDir); // Wrong rootDir.
+
+        $app = new Application();
+        $app->add($command);
+
+        $command = $app->find('coveralls:v1:jobs');
+        $commandTester = new CommandTester($command);
+
+        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
+
+        $actual = $commandTester->execute(
+            array(
+                'command'    => $command->getName(),
+                '--dry-run'  => true,
+                '--config'   => 'coveralls.yml',
+                '--env'      => 'test',
+            )
+        );
+
+        $this->assertSame(0, $actual);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldExecuteCoverallsV1JobsCommandWithRootDirOverride()
+    {
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
+
+        $command = new CoverallsV1JobsCommand();
+        $command->setRootDir($this->logsDir); // Wrong rootDir.
+
+        $app = new Application();
+        $app->add($command);
+
+        $command = $app->find('coveralls:v1:jobs');
+        $commandTester = new CommandTester($command);
+
+        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
+
+        $actual = $commandTester->execute(
+            array(
+                'command'    => $command->getName(),
+                '--dry-run'  => true,
+                '--config'   => 'coveralls.yml',
+                '--env'      => 'test',
+                // Overriding with a correct one.
+                '--root_dir' => $this->rootDir,
+            )
+        );
+
+        $this->assertSame(0, $actual);
+    }
+
+    /**
+     * @test
+     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     */
+    public function shouldExecuteCoverallsV1JobsCommandThrowInvalidConfigurationException()
+    {
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
+
+        $command = new CoverallsV1JobsCommand();
+        $command->setRootDir($this->rootDir);
+
+        $app = new Application();
+        $app->add($command);
+
+        $command = $app->find('coveralls:v1:jobs');
+        $commandTester = new CommandTester($command);
+
+        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
+
+        $actual = $commandTester->execute(
+            array(
+                'command'           => $command->getName(),
+                '--dry-run'         => true,
+                '--config'          => 'coveralls.yml',
+                '--env'             => 'test',
+                '--coverage_clover' => 'nonexistense.xml',
+            )
+        );
     }
 }
