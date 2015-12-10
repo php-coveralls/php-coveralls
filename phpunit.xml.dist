@@ -23,7 +23,6 @@
                 <directory>./build</directory>
                 <directory>./composer</directory>
                 <directory>./tests</directory>
-                <directory>./scripts</directory>
                 <directory>./vendor</directory>
             </exclude>
         </whitelist>
