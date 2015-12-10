@@ -11,6 +11,6 @@ dependencies:
 
 test:
   override:
-    - phpunit
+    - php vendor/bin/phpunit
   post:
     - bin/coveralls -v --exclude-no-stmt
