@@ -2,13 +2,11 @@ machine:
   timezone: America/Los_Angeles
   php:
     version: 5.3.3
-  environment:
-    COMPOSER_FLAGS: "--prefer-stable --prefer-lowest"
 
 dependencies:
   override:
     - mkdir -p build/logs
-    - composer update ${COMPOSER_FLAGS} --no-interaction
+    - composer update --prefer-stable --prefer-lowest --no-interaction
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
 
 test:
