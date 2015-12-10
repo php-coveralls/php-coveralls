@@ -2,15 +2,8 @@ language: php
 
 matrix:
     include:
-        - php: 5.3.3
-          env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
-        - php: 5.3
-        - php: 5.4
-        - php: 5.5
-        - php: 5.6
         - php: 7.0
           env: CHECKS=yes
-        - php: hhvm
 
 sudo: false
 
@@ -19,16 +12,11 @@ cache:
         - $HOME/.composer/cache
 
 install:
-    - mkdir -p build/logs
-    - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/xdebug.ini || return 0
-    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
-    - if [ "$CHECKS" = "yes" ]; then travis_retry composer install-devtools; fi;
+    - /bin/true
 
 script:
-    - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - phpunit
-    - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
+    - which phpunit
+    - cat `which phpunit`
+    - cat /home/travis/.phpenv/versions/7.0/bin/phpunit
 
-after_script:
-    - bin/coveralls -v --exclude-no-stmt
+
