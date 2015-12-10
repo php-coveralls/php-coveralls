@@ -26,7 +26,7 @@ install:
 
 script:
     - cp ~/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - phpunit
+    - php vendor/bin/phpunit
     - rm ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 
