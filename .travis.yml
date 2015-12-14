@@ -31,7 +31,7 @@ script:
     - rm ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 
-after_script:
+before_deploy:
     - bin/coveralls -v --exclude-no-stmt
     - if [ "${BOX}" = "yes" ]; then curl -LSs http://box-project.github.io/box2/installer.php | php; fi;
     - if [ "${BOX}" = "yes" ]; then composer update --no-dev --no-interaction ${COMPOSER_FLAGS}; fi;
