@@ -1,19 +1,29 @@
 CHANGELOG
 =============
 
-## 0.7.0 (WIP)
+## 0.8.0 (WIP)
 
 This version corresponds to dev-master and is not tagged yet.
+
+## 0.7.0
 
 ### Bug fix
 
 - [#30](https://github.com/satooshi/php-coveralls/issues/30) Fix bug: Guzzle\Common\Exception\RuntimeException occur without response body
+- [#41](https://github.com/satooshi/php-coveralls/issues/41) CloverXmlCoverageCollector could not handle root directory
+- [#114](https://github.com/satooshi/php-coveralls/pull/114) Fix PHP 5.3.3, Fix HHVM on Travis, boost Travis configuration, enhance PHP CS Fixer usage
 
 ### Enhancement
 
 - [#15](https://github.com/satooshi/php-coveralls/issues/15) Support environment prop in json_file
-- [#16](https://github.com/satooshi/php-coveralls/issues/16) Support commands: push, open, service, last
 - [#24](https://github.com/satooshi/php-coveralls/issues/24) Show helpful message if the requirements are not satisfied
+- [#53](https://github.com/satooshi/php-coveralls/issues/53) Setting configuration options through command line flags
+  - Added --root_dir and --coverage_clover flags
+- [#64](https://github.com/satooshi/php-coveralls/issues/64) file names need to be relative to the git repo root
+- [#114](https://github.com/satooshi/php-coveralls/pull/114) Fix PHP 5.3.3, Fix HHVM on Travis, boost Travis configuration, enhance PHP CS Fixer usage
+- [#124](https://github.com/satooshi/php-coveralls/pull/124) Create a .phar file
+- [#149](https://github.com/satooshi/php-coveralls/pull/149) Build phar file on travis
+- [#127](https://github.com/satooshi/php-coveralls/issues/126) Remove src_dir entirely
 
 ### miscellaneous
 
@@ -21,6 +31,7 @@ This version corresponds to dev-master and is not tagged yet.
 - [#32](https://github.com/satooshi/php-coveralls/issues/32) Refactor CoverallsV1JobsCommand
 - [#35](https://github.com/satooshi/php-coveralls/issues/35) Remove ext-curl dependency
 - [#38](https://github.com/satooshi/php-coveralls/issues/38) Change namespace
+- [#114](https://github.com/satooshi/php-coveralls/pull/114) PHP 7.0.0 is now officially supported
 
 ## 0.6.1 (2013-05-04)
 
