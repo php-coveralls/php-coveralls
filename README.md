@@ -10,13 +10,6 @@ php-coveralls
 
 PHP client library for [Coveralls](https://coveralls.io). 
 
-# Future deprecations
-
-We will make a breaking change regarding to the config file format on
-v0.8.0 line in the first half of the year of 2016. The tool will no
-longer work if you have `src_dir` configuration option. Beware if
-you're using `dev-master` version of this tool.
-
 # Prerequisites
 
 - PHP 5.3 or later
@@ -171,7 +164,7 @@ php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if it
 
 ## Travis CI
 
-Add `php coveralls.phar` or `php vendor/bin/coveralls` to your `.travis.yml` at `after_script`.
+Add `php coveralls.phar` or `php vendor/bin/coveralls` to your `.travis.yml` at `after_success`.
 
 ```yml
 # .travis.yml
@@ -185,7 +178,7 @@ matrix:
   allow_failures:
     - php: 5.5
 
-before_script:
+install:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
   - wget https://github.com/satooshi/php-coveralls/releases/download/v0.7.0/coveralls.phar
@@ -194,7 +187,7 @@ script:
   - mkdir -p build/logs
   - php vendor/bin/phpunit -c phpunit.xml.dist
 
-after_script:
+after_success:
   - travis_retry php coveralls.phar
   # or enable logging
   - travis_retry php coveralls.phar -v
