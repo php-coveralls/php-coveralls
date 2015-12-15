@@ -19,12 +19,6 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Installation
 
-tl;dr
-Try the phar file first, come back if it doesn't work for you.
-
-There are multiple ways to install php-coveralls. We recommend phar
-file installation.
-
 ## Download phar file
 
 We started to create a phar file, starting from the version 0.7.0
@@ -47,8 +41,6 @@ To install php-coveralls with Composer, run the following command:
 
 ```sh
 $ composer require satooshi/php-coveralls --dev
-# Call vendor/bin/coveralls
-$ vendor/bin/coveralls
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/satooshi/php-coveralls).
@@ -72,8 +64,6 @@ Or you can use git clone command:
 $ git clone https://github.com/satooshi/php-coveralls.git
 # SSH
 $ git clone git@github.com:satooshi/php-coveralls.git
-# Call bin/coveralls
-$ php-coveralls/bin/coveralls
 ```
 
 # Configuration
@@ -181,16 +171,14 @@ matrix:
 install:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
-  - wget https://github.com/satooshi/php-coveralls/releases/download/v0.7.0/coveralls.phar
-  - chmod +x coveralls.phar
 script:
   - mkdir -p build/logs
   - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_success:
-  - travis_retry php coveralls.phar
+  - travis_retry php vendor/bin/coveralls
   # or enable logging
-  - travis_retry php coveralls.phar -v
+  - travis_retry php vendor/bin/coveralls -v
 ```
 
 ## CircleCI
