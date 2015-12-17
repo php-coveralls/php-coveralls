@@ -139,16 +139,15 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
+     * @expectedException \PHPUnit_Framework_Error_Deprecated
      */
-    public function shouldLoadSrcDirYmlContainingDefaultValue()
+    public function shouldThrowErrorDeprecatedUponLoadingSrcDirYml()
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/src_dir.yml');
 
         $config = $this->object->load($path, $this->rootDir);
-
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
     /**
@@ -263,20 +262,6 @@ class ConfiguratorTest extends ProjectTestCase
         $config = $this->object->load($path, $this->rootDir);
 
         $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath, false);
-    }
-
-    // configured src_dir not found, now it doesn't throw anything.
-
-    /**
-     * @test
-     */
-    public function throwInvalidConfigurationExceptionOnLoadSrcDirYmlIfSrcDirNotFound()
-    {
-        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
-
-        $path = realpath(__DIR__ . '/yaml/src_dir_not_found.yml');
-
-        $this->object->load($path, $this->rootDir);
     }
 
     // configured coverage_clover not found

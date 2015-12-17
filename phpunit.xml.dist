@@ -10,6 +10,10 @@
          stopOnFailure="false"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php">
+    <php>
+        <ini name="error_reporting" value="E_ALL" />
+    </php>
+
     <testsuites>
         <testsuite name="PHP Coveralls component test suite">
             <directory>./tests/</directory>
