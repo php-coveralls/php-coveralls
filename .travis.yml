@@ -5,7 +5,7 @@ matrix:
         - php: 5.3.3
           env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
         - php: 5.3
-          env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest" BOX=yes'
+          env: 'BOX=yes'
         - php: 5.4
         - php: 5.5
         - php: 5.6
