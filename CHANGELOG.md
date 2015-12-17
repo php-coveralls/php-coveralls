@@ -5,6 +5,10 @@ CHANGELOG
 
 This version corresponds to dev-master and is not tagged yet.
 
+### miscellaneous
+
+- [#154](https://github.com/satooshi/php-coveralls/issues/154) Show a deprecation notice when src_dir is set in the config
+
 ## 0.7.0
 
 ### Bug fix
