@@ -70,7 +70,7 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('send'));
+        $client = $this->getMock('GuzzleHttp\Client', array('send'));
 
         $client
         ->expects($this->never())
@@ -81,28 +81,22 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('post', 'addPostFiles'));
-        $request = $this->getMockBuilder('Guzzle\Http\Message\EntityEnclosingRequest')
-        ->disableOriginalConstructor()
-        ->getMock();
+        $client = $this->getMock('GuzzleHttp\Client', array('post'));
+        $response = $this->getMock('GuzzleHttp\Psr7\Response');
 
         $client
         ->expects($this->once())
         ->method('post')
-        ->with($this->equalTo($url))
-        ->will($this->returnSelf());
-
-        $client
-        ->expects($this->once())
-        ->method('addPostFiles')
-        ->with($this->equalTo(array($filename => $jsonPath)))
-        ->will($this->returnValue($request));
-
-        $request
-        ->expects($this->once())
-        ->method('send')
-        ->with()
-        ;
+        ->with(
+            $this->equalTo($url),
+            $this->callback(function ($options) use ($filename) {
+                return !empty($options['multipart'][0]['name'])
+                    && !empty($options['multipart'][0]['contents'])
+                    && $options['multipart'][0]['name'] === $filename
+                    && is_resource($options['multipart'][0]['contents']);
+            })
+        )
+        ->willReturn($response);
 
         return $client;
     }

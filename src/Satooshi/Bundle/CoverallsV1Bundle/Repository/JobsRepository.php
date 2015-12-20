@@ -2,8 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use Guzzle\Http\Client;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
@@ -164,14 +164,14 @@ class JobsRepository implements LoggerAwareInterface
             }
 
             return;
-        } catch (\Guzzle\Http\Exception\CurlException $e) {
+        } catch (\GuzzleHttp\Exception\ConnectException $e) {
             // connection error
             $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
-        } catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
             $message  = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        } catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
+        } catch (\GuzzleHttp\Exception\ServerException $e) {
             // 500 Internal Server Error
             // 503 Service Unavailable
             $response = $e->getResponse();
@@ -244,7 +244,7 @@ class JobsRepository implements LoggerAwareInterface
      */
     protected function logResponse(Response $response)
     {
-        $raw_body = $response->getBody(true);
+        $raw_body = (string) $response->getBody();
         $body = json_decode($raw_body, true);
         if ($body === null) {
             // the response body is not in JSON format
