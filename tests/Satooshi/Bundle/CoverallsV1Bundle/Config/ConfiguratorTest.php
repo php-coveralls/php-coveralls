@@ -139,9 +139,9 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \PHPUnit_Framework_Error_Deprecated
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
-    public function shouldThrowErrorDeprecatedUponLoadingSrcDirYml()
+    public function shouldThrowInvalidConfigurationExceptionUponLoadingSrcDirYml()
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
