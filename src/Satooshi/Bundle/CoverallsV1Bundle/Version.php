@@ -14,5 +14,5 @@ final class Version
      *
      * @var string
      */
-    const VERSION = '1.1.0-dev';
+    const VERSION = '2.0.0-dev';
 }
