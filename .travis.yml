@@ -48,5 +48,5 @@ deploy:
     on:
         repo: satooshi/php-coveralls
         tags: true
-        branch: master
+        all_branches: true
         condition: $BOX = yes
