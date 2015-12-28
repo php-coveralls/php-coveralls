@@ -8,7 +8,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository;
 use Satooshi\Component\Log\ConsoleLogger;
 use Satooshi\Component\File\Path;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Psr\Log\NullLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
