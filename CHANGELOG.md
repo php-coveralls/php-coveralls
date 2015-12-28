@@ -1,11 +1,11 @@
 CHANGELOG
 =============
 
-## 0.8.0 (WIP)
+## 1.0.0
 
-This version corresponds to dev-master and is not tagged yet.
+### miscellaneous
 
-## 0.7.1
+- [#136](https://github.com/satooshi/php-coveralls/pull/136) Removed src_dir from CoverallsConfiguration
 
 ### miscellaneous
 
