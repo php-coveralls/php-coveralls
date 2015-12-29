@@ -12,7 +12,7 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
-- PHP 5.3 or later
+- PHP 5.5+ for 2.x or 5.2+ for 1.x
 - On [GitHub](https://github.com/)
 - Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/) or [Codeship](https://www.codeship.io/)
 - Testing by [PHPUnit](https://github.com/sebastianbergmann/phpunit/) or other testing framework that can generate clover style coverage report
@@ -40,7 +40,13 @@ $ chmod +x coveralls.phar
 To install php-coveralls with Composer, run the following command:
 
 ```sh
-$ composer require satooshi/php-coveralls --dev
+$ composer require satooshi/php-coveralls
+```
+
+If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
+
+```sh
+$ composer require satooshi/php-coveralls '~1.0'
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/satooshi/php-coveralls).
