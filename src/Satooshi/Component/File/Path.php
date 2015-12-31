@@ -18,7 +18,15 @@ class Path
      */
     public function isRelativePath($path)
     {
-        return strlen($path) === 0 || strpos($path, DIRECTORY_SEPARATOR) !== 0;
+        if (strlen($path) === 0) {
+            return true;
+        }
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            return !preg_match('/^[a-z]+\:\\\\/i', $path);
+        }
+
+        return strpos($path, DIRECTORY_SEPARATOR) !== 0;
     }
 
     /**
