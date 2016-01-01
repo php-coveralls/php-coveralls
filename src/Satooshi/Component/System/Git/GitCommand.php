@@ -39,7 +39,7 @@ class GitCommand extends SystemCommand
      */
     public function getHeadCommit()
     {
-        $command = $this->createCommand("log -1 --pretty=format:'%H\n%aN\n%ae\n%cN\n%ce\n%s'");
+        $command = $this->createCommand("log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
 
         return $this->executeCommand($command);
     }
