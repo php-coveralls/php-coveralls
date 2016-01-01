@@ -77,12 +77,19 @@ class PathTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function proviceAbsolutePaths()
+    public function provideAbsolutePaths()
     {
-        return array(
-            array('/'),
-            array('/path/to/somewhere'),
-        );
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            return array(
+                array('c:\\'),
+                array('z:\\path\\to\\somewhere'),
+            );
+        } else {
+            return array(
+                array('/'),
+                array('/path/to/somewhere'),
+            );
+        }
     }
 
     // isRelativePath()
@@ -98,7 +105,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @dataProvider proviceAbsolutePaths
+     * @dataProvider provideAbsolutePaths
      */
     public function shouldNotBeRelativePath($path)
     {
