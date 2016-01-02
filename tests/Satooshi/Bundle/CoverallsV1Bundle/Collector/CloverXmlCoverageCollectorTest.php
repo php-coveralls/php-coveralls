@@ -149,7 +149,7 @@ XML;
     public function shouldCollectUnderRootDir()
     {
         $xml      = $this->createCloverXml();
-        $jsonFile = $this->object->collect($xml, '/');
+        $jsonFile = $this->object->collect($xml, DIRECTORY_SEPARATOR);
 
         $this->assertSame($jsonFile, $this->object->getJsonFile());
         $this->assertJsonFile($jsonFile, null, null, null, null, '2013-04-13 10:28:13 +0000');
