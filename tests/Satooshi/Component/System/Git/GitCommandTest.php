@@ -16,9 +16,9 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
         $adapter = $this->getMock($class, array('executeCommand'));
 
         $adapter
-        ->expects($this->once())
-        ->method('executeCommand')
-        ->with($this->equalTo($params));
+            ->expects($this->once())
+            ->method('executeCommand')
+            ->with($this->equalTo($params));
 
         return $adapter;
     }
@@ -70,7 +70,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitLogCommand()
     {
-        $expected = "git log -1 --pretty=format:'%H\n%aN\n%ae\n%cN\n%ce\n%s'";
+        $expected = "git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'";
 
         $object = $this->createGitCommandMock($expected);
         $object->getHeadCommit();
