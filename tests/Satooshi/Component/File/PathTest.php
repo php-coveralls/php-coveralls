@@ -31,6 +31,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
     protected function rmFile($file)
     {
         if (is_file($file)) {
+            chmod($file, 0777);
             unlink($file);
         }
     }
@@ -38,6 +39,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
     protected function rmDir($dir)
     {
         if (is_dir($dir)) {
+            chmod($dir, 0777);
             rmdir($dir);
         }
     }
@@ -77,8 +79,15 @@ class PathTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function proviceAbsolutePaths()
+    public function provideAbsolutePaths()
     {
+        if ($this->isWindowsOS()) {
+            return array(
+                array('c:\\'),
+                array('z:\\path\\to\\somewhere'),
+            );
+        }
+
         return array(
             array('/'),
             array('/path/to/somewhere'),
@@ -98,7 +107,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @dataProvider proviceAbsolutePaths
+     * @dataProvider provideAbsolutePaths
      */
     public function shouldNotBeRelativePath($path)
     {
@@ -327,8 +336,13 @@ class PathTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldNotBeRealFileReadableIFFileUnreadable()
+    public function shouldNotBeRealFileReadableIfFileUnreadable()
     {
+        if ($this->isWindowsOS()) {
+            // On Windows there is no write-only attribute.
+            $this->markTestSkipped('Unable to run on Windows');
+        }
+
         $this->touchUnreadableFile();
 
         $this->assertFalse($this->object->isRealFileReadable($this->unreadablePath));
@@ -425,6 +439,11 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealDirWritableIfDirUnwritable()
     {
+        if ($this->isWindowsOS()) {
+            // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
+            $this->markTestSkipped('Unable to run on Windows');
+        }
+
         $this->mkdirUnwritableDir();
 
         $this->assertFalse($this->object->isRealDirWritable($this->unwritableDir));
@@ -438,5 +457,16 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $path = __DIR__;
 
         $this->assertTrue($this->object->isRealDirWritable($path));
+    }
+
+    private function isWindowsOS()
+    {
+        static $isWindows;
+
+        if ($isWindows === null) {
+            $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        }
+
+        return $isWindows;
     }
 }

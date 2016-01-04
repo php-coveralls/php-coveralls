@@ -7,7 +7,7 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
     protected function setUpDir($projectDir)
     {
         $this->rootDir       = realpath($projectDir . '/prj');
-        $this->srcDir        = $this->rootDir . '/files';
+        $this->srcDir        = realpath($this->rootDir . '/files');
 
         $this->url           = 'https://coveralls.io/api/v1/jobs';
         $this->filename      = 'json_file';

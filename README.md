@@ -8,7 +8,7 @@ php-coveralls
 [![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
 [![Total Downloads](https://poser.pugx.org/satooshi/php-coveralls/downloads.png)](https://packagist.org/packages/satooshi/php-coveralls)
 
-PHP client library for [Coveralls](https://coveralls.io). 
+PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
@@ -313,7 +313,7 @@ coverage_clover: build/logs/clover-*.xml
 
 # array
 # specify files
-coverage_clover: 
+coverage_clover:
   - build/logs/clover-Auth.xml
   - build/logs/clover-Db.xml
   - build/logs/clover-Validator.xml
