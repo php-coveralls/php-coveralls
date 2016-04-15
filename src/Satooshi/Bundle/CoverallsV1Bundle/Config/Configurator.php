@@ -93,6 +93,8 @@ class Configurator
 
         $repoToken       = $options['repo_token'];
         $repoSecretToken = $options['repo_secret_token'];
+
+        // handle coverage clover
         if ($input !== null
             && $input->hasOption('coverage_clover')
             && count($input->getOption('coverage_clover')) > 0) {
@@ -101,12 +103,21 @@ class Configurator
             $coverage_clover = $options['coverage_clover'];
         }
 
+        // handle output json path
+        if ($input !== null
+            && $input->hasOption('json_path')
+            && count($input->getOption('json_path')) > 0) {
+            $json_path = $input->getOption('json_path')[0];
+        } else {
+            $json_path = $options['json_path'];
+        }
+
         return $configuration
         ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
         ->setServiceName($options['service_name'])
         ->setRootDir($rootDir)
         ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
-        ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
+        ->setJsonPath($this->ensureJsonPath($json_path, $rootDir, $file))
         ->setExcludeNoStatements($options['exclude_no_stmt']);
     }
 
