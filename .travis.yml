@@ -22,6 +22,8 @@ cache:
 install:
     - mkdir -p build/logs
     - mv ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ${HOME}/xdebug.ini || return 0
+    - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config disable-tls true; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config secure-http false; fi
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
     - if [ "$CHECKS" = "yes" ]; then travis_retry composer install-devtools; fi;
 
