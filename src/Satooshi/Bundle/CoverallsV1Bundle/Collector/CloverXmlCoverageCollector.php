@@ -64,7 +64,7 @@ class CloverXmlCoverageCollector
     /**
      * Collect timestamp when the job ran.
      *
-     * @param SimpleXMLElement $xml    Clover XML object of a file.
+     * @param \SimpleXMLElement $xml    Clover XML object of a file.
      * @param string           $format DateTime format.
      *
      * @return string
@@ -80,7 +80,7 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data of a file.
      *
-     * @param SimpleXMLElement $file Clover XML object of a file.
+     * @param \SimpleXMLElement $file Clover XML object of a file.
      * @param string           $root Path to src directory.
      *
      * @return null|\Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
@@ -105,7 +105,7 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data.
      *
-     * @param SimpleXMLElement $file     Clover XML object of a file.
+     * @param \SimpleXMLElement $file     Clover XML object of a file.
      * @param string           $path     Path to source file.
      * @param string           $filename Filename.
      *
