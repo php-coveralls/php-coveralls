@@ -10,19 +10,6 @@ namespace Satooshi\Component\System\Git;
  */
 class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
-    protected function createGitCommandMock($params)
-    {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-        $adapter = $this->createMock($class, array('executeCommand'));
-
-        $adapter
-            ->expects($this->once())
-            ->method('executeCommand')
-            ->with($this->equalTo($params));
-
-        return $adapter;
-    }
-
     // getCommandPath()
 
     /**
@@ -38,18 +25,6 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     // getBranches()
-    //
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitBranchCommand()
-    {
-        $expected = 'git branch';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getBranches();
-    }
 
     /**
      * @test
@@ -68,17 +43,6 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function shouldExecuteGitLogCommand()
-    {
-        $expected = "git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'";
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getHeadCommit();
-    }
-
-    /**
-     * @test
-     */
     public function shouldReturnHeadCommit()
     {
         $object = new GitCommand();
@@ -90,17 +54,6 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     // getRemotes()
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitRemoteCommand()
-    {
-        $expected = 'git remote -v';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getRemotes();
-    }
 
     /**
      * @test

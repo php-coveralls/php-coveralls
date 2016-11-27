@@ -49,7 +49,7 @@
     },
     "bin": ["bin/coveralls"],
     "scripts": {
-        "test": "phpunit --bootstrap tests/bootstrap.php --colors=always --verbose --coverage-clover=build/logs/clover.xml",
+        "test": "phpunit --colors=always --verbose --coverage-clover=build/logs/clover.xml",
         "sca": [
             "php vendor/bin/php-cs-fixer fix --dry-run -vv",
             "php vendor/bin/phpcs --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
