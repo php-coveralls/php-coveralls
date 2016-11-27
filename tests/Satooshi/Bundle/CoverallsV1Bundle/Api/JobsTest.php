@@ -70,7 +70,7 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('GuzzleHttp\Client', array('send'));
+        $client = $this->createMock('GuzzleHttp\Client', array('send'));
 
         $client
         ->expects($this->never())
@@ -81,8 +81,8 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('GuzzleHttp\Client', array('post'));
-        $response = $this->getMock('GuzzleHttp\Psr7\Response');
+        $client = $this->createMock('GuzzleHttp\Client', array('post'));
+        $response = $this->createMock('GuzzleHttp\Psr7\Response');
 
         $client
         ->expects($this->once())

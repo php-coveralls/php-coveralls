@@ -39,7 +39,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     {
         $class = 'Satooshi\Component\System\Git\GitCommand';
 
-        return $this->getMock($class);
+        return $this->createMock($class);
     }
 
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)

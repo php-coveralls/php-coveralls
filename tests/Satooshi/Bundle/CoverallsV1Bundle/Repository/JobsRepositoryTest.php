@@ -238,7 +238,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createLoggerMock()
     {
-        $logger = $this->getMock('Psr\Log\NullLogger', array('info', 'error'));
+        $logger = $this->createMock('Psr\Log\NullLogger', array('info', 'error'));
 
         $logger
         ->expects($this->any())
