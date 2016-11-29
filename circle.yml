@@ -1,13 +1,12 @@
 machine:
   timezone: America/Los_Angeles
   php:
-    version: 5.5.0
+    version: 5.6.28
 
 dependencies:
   override:
     - mkdir -p build/logs
-    - composer update --prefer-stable --prefer-lowest --no-interaction
-    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+    - composer install --no-progress --no-ansi --no-interaction --profile
 
 test:
   override:

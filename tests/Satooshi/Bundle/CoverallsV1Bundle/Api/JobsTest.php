@@ -81,13 +81,14 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->createMock('GuzzleHttp\Client', array('post'));
+        $client = $this->createMock('GuzzleHttp\Client', array('request'));
         $response = $this->createMock('GuzzleHttp\Psr7\Response');
 
         $client
-        ->expects($this->once())
-        ->method('post')
+        ->expects($this->never())
+        ->method('request')
         ->with(
+            'post',
             $this->equalTo($url),
             $this->callback(function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
