@@ -1,7 +1,6 @@
 machine:
   timezone: America/Los_Angeles
   php:
-    version: 5.6.28
 
 dependencies:
   override:
@@ -10,6 +9,6 @@ dependencies:
 
 test:
   override:
-    - phpunit
+    - composer test
   post:
-    - bin/coveralls -v --exclude-no-stmt
+    - php bin/coveralls --config=.coveralls.yml --coverage_clover=build/logs/clover.xml --verbose

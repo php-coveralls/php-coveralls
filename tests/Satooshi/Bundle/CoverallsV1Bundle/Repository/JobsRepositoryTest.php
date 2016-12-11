@@ -31,9 +31,8 @@ class JobsRepositoryTest extends ProjectTestCase
     public function shouldPersist()
     {
         $statusCode = 200;
-        $json = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
-        $response = $this->createResponseMock($statusCode, 'OK', $json);
-        $api = $this->createApiMock($response, $statusCode);
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode, 'https://coveralls.io/jobs/67528');
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -99,6 +98,44 @@ class JobsRepositoryTest extends ProjectTestCase
     public function networkDisconnected()
     {
         $api = $this->createApiMock(null, null);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // response 422
+
+    /**
+     * @test
+     */
+    public function response422()
+    {
+        $statusCode = 422;
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // response 500
+
+    /**
+     * @test
+     */
+    public function response500()
+    {
+        $statusCode = 500;
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -203,7 +240,7 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api;
     }
 
-    protected function createApiMock($response, $statusCode = 200)
+    protected function createApiMock($response, $statusCode = 200, $uri = '/')
     {
         $jsonFile = $this->createJsonFile();
 
@@ -250,9 +287,7 @@ class JobsRepositoryTest extends ProjectTestCase
         ->with()
         ->will($this->returnSelf());
 
-        $request = $this->getMockBuilder('\GuzzleHttp\Psr7\Request')
-        ->setConstructorArgs(array('POST', '/'))
-        ->getMock();
+        $request = new \GuzzleHttp\Psr7\Request('POST', $uri);
 
         if ($statusCode === 200) {
             $api
@@ -277,48 +312,6 @@ class JobsRepositoryTest extends ProjectTestCase
         }
 
         return $api;
-    }
-
-    protected function createResponseMock($statusCode, $reasonPhrase, $body)
-    {
-        $json = is_array($body) ? json_encode($body) : $body;
-
-        $response = $this->getMockBuilder('\GuzzleHttp\Psr7\Response')
-            ->setMethods(array(
-                'getStatusCode',
-                'getReasonPhrase',
-                'getBody',
-            ))
-            ->getMock();
-
-        $stream = $this->getMockBuilder('\GuzzleHttp\Psr7\Stream')
-            ->setMethods(array('__toString'))
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getStatusCode')
-            ->with()
-            ->will($this->returnValue($statusCode));
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getReasonPhrase')
-            ->with()
-            ->will($this->returnValue($reasonPhrase));
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getBody')
-            ->will($this->returnValue($stream));
-
-        $stream
-            ->expects($this->atLeastOnce())
-            ->method('__toString')
-            ->will($this->returnValue($json));
-
-        return $response;
     }
 
     protected function createLoggerMock()
@@ -385,44 +378,4 @@ class JobsRepositoryTest extends ProjectTestCase
         return $config
         ->addCloverXmlPath($this->cloverXmlPath);
     }
-
-    //FIXME: test error. so sorry.
-    //// response 422
-
-    ///**
-    // * @test
-    // */
-    //public function response422()
-    //{
-    //    $statusCode = 422;
-    //    $json       = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
-    //    $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
-    //    $api        = $this->createApiMock($response, $statusCode);
-    //    $config     = $this->createConfiguration();
-    //    $logger     = $this->createLoggerMock();
-
-    //    $object = new JobsRepository($api, $config);
-
-    //    $object->setLogger($logger);
-    //    $object->persist();
-    //}
-
-    //// response 500
-
-    //**
-    // * @test
-    // */
-    //public function response500()
-    //{
-    //    $statusCode = 500;
-    //    $response   = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
-    //    $api        = $this->createApiMock($response, $statusCode);
-    //    $config     = $this->createConfiguration();
-    //    $logger     = $this->createLoggerMock();
-
-    //    $object = new JobsRepository($api, $config);
-
-    //    $object->setLogger($logger);
-    //    $object->persist();
-    //}
 }
