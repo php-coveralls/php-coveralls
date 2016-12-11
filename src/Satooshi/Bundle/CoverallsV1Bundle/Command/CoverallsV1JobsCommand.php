@@ -2,14 +2,14 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 
+use GuzzleHttp\Client;
+use Psr\Log\NullLogger;
 use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator;
 use Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository;
-use Satooshi\Component\Log\ConsoleLogger;
 use Satooshi\Component\File\Path;
-use GuzzleHttp\Client;
-use Psr\Log\NullLogger;
+use Satooshi\Component\Log\ConsoleLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -36,6 +36,18 @@ class CoverallsV1JobsCommand extends Command
      * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
+
+    // accessor
+
+    /**
+     * Set root directory.
+     *
+     * @param string $rootDir Path to project root directory
+     */
+    public function setRootDir($rootDir)
+    {
+        $this->rootDir = $rootDir;
+    }
 
     // internal method
 
@@ -114,8 +126,8 @@ class CoverallsV1JobsCommand extends Command
         $this->executeApi($config);
 
         $event = $stopwatch->stop(__CLASS__);
-        $time  = number_format($event->getDuration() / 1000, 3);        // sec
-        $mem   = number_format($event->getMemory() / (1024 * 1024), 2); // MB
+        $time = number_format($event->getDuration() / 1000, 3);        // sec
+        $mem = number_format($event->getMemory() / (1024 * 1024), 2); // MB
         $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return 0;
@@ -126,8 +138,8 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Load configuration.
      *
-     * @param InputInterface $input   Input arguments.
-     * @param string         $rootDir Path to project root directory.
+     * @param InputInterface $input   Input arguments
+     * @param string         $rootDir Path to project root directory
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -135,7 +147,7 @@ class CoverallsV1JobsCommand extends Command
     {
         $coverallsYmlPath = $input->getOption('config');
 
-        $ymlPath      = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
+        $ymlPath = $this->rootDir.DIRECTORY_SEPARATOR.$coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
@@ -149,27 +161,15 @@ class CoverallsV1JobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param Configuration $config Configuration.
+     * @param Configuration $config Configuration
      */
     protected function executeApi(Configuration $config)
     {
-        $client     = new Client();
-        $api        = new Jobs($config, $client);
+        $client = new Client();
+        $api = new Jobs($config, $client);
         $repository = new JobsRepository($api, $config);
 
         $repository->setLogger($this->logger);
         $repository->persist();
-    }
-
-    // accessor
-
-    /**
-     * Set root directory.
-     *
-     * @param string $rootDir Path to project root directory.
-     */
-    public function setRootDir($rootDir)
-    {
-        $this->rootDir = $rootDir;
     }
 }

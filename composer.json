@@ -26,7 +26,7 @@
     "require-dev": {
         "phpunit/phpunit":           ">=5.0",
         "apigen/apigen":             ">=4.0",
-        "friendsofphp/php-cs-fixer": ">=1.0",
+        "friendsofphp/php-cs-fixer": ">=2.0",
         "pdepend/pdepend":           ">=2.0",
         "phpmd/phpmd":               ">=2.0",
         "sebastian/finder-facade":   ">=1.0",
@@ -51,7 +51,7 @@
     "scripts": {
         "test": "phpunit --colors=always --verbose --coverage-clover=build/logs/clover.xml",
         "sca": [
-            "php vendor/bin/php-cs-fixer fix --dry-run -vv",
+            "php vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --verbose",
             "php vendor/bin/phpcs --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
             "php vendor/bin/phpmd src text build/config/phpmd.xml"
         ],

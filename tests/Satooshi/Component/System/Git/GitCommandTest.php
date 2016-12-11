@@ -3,8 +3,8 @@
 namespace Satooshi\Component\System\Git;
 
 /**
- * @covers Satooshi\Component\System\Git\GitCommand
- * @covers Satooshi\Component\System\SystemCommand
+ * @covers \Satooshi\Component\System\Git\GitCommand
+ * @covers \Satooshi\Component\System\SystemCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -34,7 +34,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
         $object = new GitCommand();
         $actual = $object->getBranches();
 
-        $this->assertTrue(is_array($actual));
+        $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
     }
 
@@ -48,7 +48,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
         $object = new GitCommand();
         $actual = $object->getHeadCommit();
 
-        $this->assertTrue(is_array($actual));
+        $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
         $this->assertCount(6, $actual);
     }
@@ -63,7 +63,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
         $object = new GitCommand();
         $actual = $object->getRemotes();
 
-        $this->assertTrue(is_array($actual));
+        $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
     }
 
@@ -71,7 +71,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfExecutedWithoutArgs()
     {
@@ -92,7 +92,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
         $actual = $object->execute();
 
-        $this->assertTrue(is_array($actual));
+        $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
     }
 }

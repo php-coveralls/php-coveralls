@@ -112,17 +112,17 @@ class JsonFile extends Coveralls
 
         $arrayMap = array(
             // json key => property name
-            'service_name'         => 'serviceName',
-            'service_job_id'       => 'serviceJobId',
-            'service_number'       => 'serviceNumber',
-            'service_build_url'    => 'serviceBuildUrl',
-            'service_branch'       => 'serviceBranch',
+            'service_name' => 'serviceName',
+            'service_job_id' => 'serviceJobId',
+            'service_number' => 'serviceNumber',
+            'service_build_url' => 'serviceBuildUrl',
+            'service_branch' => 'serviceBranch',
             'service_pull_request' => 'servicePullRequest',
-            'service_event_type'   => 'serviceEventType',
-            'repo_token'           => 'repoToken',
-            'git'                  => 'git',
-            'run_at'               => 'runAt',
-            'source_files'         => 'sourceFiles',
+            'service_event_type' => 'serviceEventType',
+            'repo_token' => 'repoToken',
+            'git' => 'git',
+            'run_at' => 'runAt',
+            'source_files' => 'sourceFiles',
         );
 
         foreach ($arrayMap as $jsonKey => $propName) {
@@ -141,7 +141,7 @@ class JsonFile extends Coveralls
     /**
      * Fill environment variables.
      *
-     * @param array $env $_SERVER environment.
+     * @param array $env $_SERVER environment
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      *
@@ -190,6 +190,258 @@ class JsonFile extends Coveralls
         }
 
         return $metrics->getLineCoverage();
+    }
+
+    // accessor
+
+    /**
+     * Return whether the json file has source file.
+     *
+     * @param string $path Absolute path to source file
+     *
+     * @return bool
+     */
+    public function hasSourceFile($path)
+    {
+        return isset($this->sourceFiles[$path]);
+    }
+
+    /**
+     * Return source file.
+     *
+     * @param string $path Absolute path to source file
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile|null
+     */
+    public function getSourceFile($path)
+    {
+        if ($this->hasSourceFile($path)) {
+            return $this->sourceFiles[$path];
+        }
+    }
+
+    /**
+     * Add source file.
+     *
+     * @param SourceFile $sourceFile
+     */
+    public function addSourceFile(SourceFile $sourceFile)
+    {
+        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
+    }
+
+    /**
+     * Return whether the json file has a source file.
+     *
+     * @return bool
+     */
+    public function hasSourceFiles()
+    {
+        return count($this->sourceFiles) > 0;
+    }
+
+    /**
+     * Return source files.
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile[]
+     */
+    public function getSourceFiles()
+    {
+        return $this->sourceFiles;
+    }
+
+    /**
+     * Set service name.
+     *
+     * @param string $serviceName Service name
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     */
+    public function setServiceName($serviceName)
+    {
+        $this->serviceName = $serviceName;
+
+        return $this;
+    }
+
+    /**
+     * Return service name.
+     *
+     * @return string
+     */
+    public function getServiceName()
+    {
+        if (isset($this->serviceName)) {
+            return $this->serviceName;
+        }
+    }
+
+    /**
+     * Set repository token.
+     *
+     * @param string $repoToken Repository token
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     */
+    public function setRepoToken($repoToken)
+    {
+        $this->repoToken = $repoToken;
+
+        return $this;
+    }
+
+    /**
+     * Return repository token.
+     *
+     * @return string
+     */
+    public function getRepoToken()
+    {
+        if (isset($this->repoToken)) {
+            return $this->repoToken;
+        }
+    }
+
+    /**
+     * Set service job id.
+     *
+     * @param string $serviceJobId Service job id
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     */
+    public function setServiceJobId($serviceJobId)
+    {
+        $this->serviceJobId = $serviceJobId;
+
+        return $this;
+    }
+
+    /**
+     * Return service job id.
+     *
+     * @return string
+     */
+    public function getServiceJobId()
+    {
+        if (isset($this->serviceJobId)) {
+            return $this->serviceJobId;
+        }
+    }
+
+    /**
+     * Return service number.
+     *
+     * @return string
+     */
+    public function getServiceNumber()
+    {
+        return $this->serviceNumber;
+    }
+
+    /**
+     * Return service event type.
+     *
+     * @return string
+     */
+    public function getServiceEventType()
+    {
+        return $this->serviceEventType;
+    }
+
+    /**
+     * Return build URL of the project.
+     *
+     * @return string
+     */
+    public function getServiceBuildUrl()
+    {
+        return $this->serviceBuildUrl;
+    }
+
+    /**
+     * Return branch name.
+     *
+     * @return string
+     */
+    public function getServiceBranch()
+    {
+        return $this->serviceBranch;
+    }
+
+    /**
+     * Return pull request info.
+     *
+     * @return string
+     */
+    public function getServicePullRequest()
+    {
+        return $this->servicePullRequest;
+    }
+
+    /**
+     * Set git data.
+     *
+     * @param array $git Git data
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     */
+    public function setGit(Git $git)
+    {
+        $this->git = $git;
+
+        return $this;
+    }
+
+    /**
+     * Return git data.
+     *
+     * @return array
+     */
+    public function getGit()
+    {
+        if (isset($this->git)) {
+            return $this->git;
+        }
+    }
+
+    /**
+     * Set timestamp when the job ran.
+     *
+     * @param string $runAt Timestamp
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     */
+    public function setRunAt($runAt)
+    {
+        $this->runAt = $runAt;
+
+        return $this;
+    }
+
+    /**
+     * Return timestamp when the job ran.
+     *
+     * @return string
+     */
+    public function getRunAt()
+    {
+        if (isset($this->runAt)) {
+            return $this->runAt;
+        }
+    }
+
+    /**
+     * Return metrics.
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics
+     */
+    public function getMetrics()
+    {
+        if (!isset($this->metrics)) {
+            $this->metrics = new Metrics();
+        }
+
+        return $this->metrics;
     }
 
     // internal method
@@ -245,7 +497,7 @@ class JsonFile extends Coveralls
      *
      * These vars are supported by Codeship.
      *
-     * @param array $env $_SERVER environment.
+     * @param array $env $_SERVER environment
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -253,16 +505,16 @@ class JsonFile extends Coveralls
     {
         $map = array(
             // defined in Ruby lib
-            'serviceName'        => 'CI_NAME',
-            'serviceNumber'      => 'CI_BUILD_NUMBER',
-            'serviceBuildUrl'    => 'CI_BUILD_URL',
-            'serviceBranch'      => 'CI_BRANCH',
+            'serviceName' => 'CI_NAME',
+            'serviceNumber' => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl' => 'CI_BUILD_URL',
+            'serviceBranch' => 'CI_BRANCH',
             'servicePullRequest' => 'CI_PULL_REQUEST',
 
             // extends by php-coveralls
-            'serviceJobId'       => 'CI_JOB_ID',
-            'serviceEventType'   => 'COVERALLS_EVENT_TYPE',
-            'repoToken'          => 'COVERALLS_REPO_TOKEN',
+            'serviceJobId' => 'CI_JOB_ID',
+            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
+            'repoToken' => 'COVERALLS_REPO_TOKEN',
         );
 
         foreach ($map as $propName => $envName) {
@@ -358,269 +610,5 @@ class JsonFile extends Coveralls
     protected function isUnsupportedServiceJob()
     {
         return !isset($this->serviceJobId) && !isset($this->serviceNumber) && !isset($this->serviceEventType) && isset($this->repoToken);
-    }
-
-    // accessor
-
-    /**
-     * Return whether the json file has source file.
-     *
-     * @param string $path Absolute path to source file.
-     *
-     * @return bool
-     */
-    public function hasSourceFile($path)
-    {
-        return isset($this->sourceFiles[$path]);
-    }
-
-    /**
-     * Return source file.
-     *
-     * @param string $path Absolute path to source file.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile|null
-     */
-    public function getSourceFile($path)
-    {
-        if ($this->hasSourceFile($path)) {
-            return $this->sourceFiles[$path];
-        }
-
-        return;
-    }
-
-    /**
-     * Add source file.
-     *
-     * @param SourceFile $sourceFile
-     */
-    public function addSourceFile(SourceFile $sourceFile)
-    {
-        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
-    }
-
-    /**
-     * Return whether the json file has a source file.
-     *
-     * @return bool
-     */
-    public function hasSourceFiles()
-    {
-        return count($this->sourceFiles) > 0;
-    }
-
-    /**
-     * Return source files.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile[]
-     */
-    public function getSourceFiles()
-    {
-        return $this->sourceFiles;
-    }
-
-    /**
-     * Set service name.
-     *
-     * @param string $serviceName Service name.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     */
-    public function setServiceName($serviceName)
-    {
-        $this->serviceName = $serviceName;
-
-        return $this;
-    }
-
-    /**
-     * Return service name.
-     *
-     * @return string
-     */
-    public function getServiceName()
-    {
-        if (isset($this->serviceName)) {
-            return $this->serviceName;
-        }
-
-        return;
-    }
-
-    /**
-     * Set repository token.
-     *
-     * @param string $repoToken Repository token.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     */
-    public function setRepoToken($repoToken)
-    {
-        $this->repoToken = $repoToken;
-
-        return $this;
-    }
-
-    /**
-     * Return repository token.
-     *
-     * @return string
-     */
-    public function getRepoToken()
-    {
-        if (isset($this->repoToken)) {
-            return $this->repoToken;
-        }
-
-        return;
-    }
-
-    /**
-     * Set service job id.
-     *
-     * @param string $serviceJobId Service job id.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     */
-    public function setServiceJobId($serviceJobId)
-    {
-        $this->serviceJobId = $serviceJobId;
-
-        return $this;
-    }
-
-    /**
-     * Return service job id.
-     *
-     * @return string
-     */
-    public function getServiceJobId()
-    {
-        if (isset($this->serviceJobId)) {
-            return $this->serviceJobId;
-        }
-
-        return;
-    }
-
-    /**
-     * Return service number.
-     *
-     * @return string
-     */
-    public function getServiceNumber()
-    {
-        return $this->serviceNumber;
-    }
-
-    /**
-     * Return service event type.
-     *
-     * @return string
-     */
-    public function getServiceEventType()
-    {
-        return $this->serviceEventType;
-    }
-
-    /**
-     * Return build URL of the project.
-     *
-     * @return string
-     */
-    public function getServiceBuildUrl()
-    {
-        return $this->serviceBuildUrl;
-    }
-
-    /**
-     * Return branch name.
-     *
-     * @return string
-     */
-    public function getServiceBranch()
-    {
-        return $this->serviceBranch;
-    }
-
-    /**
-     * Return pull request info.
-     *
-     * @return string
-     */
-    public function getServicePullRequest()
-    {
-        return $this->servicePullRequest;
-    }
-
-    /**
-     * Set git data.
-     *
-     * @param array $git Git data.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     */
-    public function setGit(Git $git)
-    {
-        $this->git = $git;
-
-        return $this;
-    }
-
-    /**
-     * Return git data.
-     *
-     * @return array
-     */
-    public function getGit()
-    {
-        if (isset($this->git)) {
-            return $this->git;
-        }
-
-        return;
-    }
-
-    /**
-     * Set timestamp when the job ran.
-     *
-     * @param string $runAt Timestamp.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     */
-    public function setRunAt($runAt)
-    {
-        $this->runAt = $runAt;
-
-        return $this;
-    }
-
-    /**
-     * Return timestamp when the job ran.
-     *
-     * @return string
-     */
-    public function getRunAt()
-    {
-        if (isset($this->runAt)) {
-            return $this->runAt;
-        }
-
-        return;
-    }
-
-    /**
-     * Return metrics.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics
-     */
-    public function getMetrics()
-    {
-        if (!isset($this->metrics)) {
-            $this->metrics = new Metrics();
-        }
-
-        return $this->metrics;
     }
 }

@@ -313,7 +313,7 @@ class Configuration
     /**
      * Set runtime environment name.
      *
-     * @param string $env Runtime environment name.
+     * @param string $env Runtime environment name
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */

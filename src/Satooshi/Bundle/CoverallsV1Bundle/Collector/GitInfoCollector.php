@@ -40,11 +40,23 @@ class GitInfoCollector
      */
     public function collect()
     {
-        $branch  = $this->collectBranch();
-        $commit  = $this->collectCommit();
+        $branch = $this->collectBranch();
+        $commit = $this->collectCommit();
         $remotes = $this->collectRemotes();
 
         return new Git($branch, $commit, $remotes);
+    }
+
+    // accessor
+
+    /**
+     * Return git command.
+     *
+     * @return \Satooshi\Component\System\Git\GitCommand
+     */
+    public function getCommand()
+    {
+        return $this->command;
     }
 
     // internal method
@@ -139,17 +151,5 @@ class GitInfoCollector
         }
 
         return $remotes;
-    }
-
-    // accessor
-
-    /**
-     * Return git command.
-     *
-     * @return \Satooshi\Component\System\Git\GitCommand
-     */
-    public function getCommand()
-    {
-        return $this->command;
     }
 }
