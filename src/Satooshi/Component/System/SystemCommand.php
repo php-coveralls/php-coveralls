@@ -30,6 +30,28 @@ abstract class SystemCommand
         return $this->executeCommand($command);
     }
 
+    // accessor
+
+    /**
+     * Set command path.
+     *
+     * @param string $commandPath Command name or path
+     */
+    public function setCommandPath($commandPath)
+    {
+        $this->commandPath = $commandPath;
+    }
+
+    /**
+     * Return command path.
+     *
+     * @return string
+     */
+    public function getCommandPath()
+    {
+        return $this->commandPath;
+    }
+
     // internal method
 
     /**
@@ -55,7 +77,7 @@ abstract class SystemCommand
     /**
      * Create command.
      *
-     * @param string $args Command arguments.
+     * @param string $args Command arguments
      *
      * @return string
      */
@@ -67,27 +89,5 @@ abstract class SystemCommand
 
         // escapeshellarg($args) ?
         return sprintf('%s %s', $this->commandPath, $args);
-    }
-
-    // accessor
-
-    /**
-     * Set command path.
-     *
-     * @param string $commandPath Command name or path.
-     */
-    public function setCommandPath($commandPath)
-    {
-        $this->commandPath = $commandPath;
-    }
-
-    /**
-     * Return command path.
-     *
-     * @return string
-     */
-    public function getCommandPath()
-    {
-        return $this->commandPath;
     }
 }

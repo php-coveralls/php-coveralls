@@ -33,7 +33,7 @@ class Metrics
     /**
      * Constructor.
      *
-     * @param array $coverage Coverage data.
+     * @param array $coverage Coverage data
      */
     public function __construct(array $coverage = array())
     {
@@ -58,7 +58,7 @@ class Metrics
             );
             $this->coveredStatements = count($coveredArray);
         } else {
-            $this->statements        = 0;
+            $this->statements = 0;
             $this->coveredStatements = 0;
         }
     }
@@ -72,28 +72,9 @@ class Metrics
      */
     public function merge(Metrics $that)
     {
-        $this->statements        += $that->statements;
+        $this->statements += $that->statements;
         $this->coveredStatements += $that->coveredStatements;
-        $this->lineCoverage       = null; // clear previous data
-    }
-
-    // internal method
-
-    /**
-     * Calculate line coverage.
-     *
-     * @param int $statements        Number of statements.
-     * @param int $coveredStatements Number of covered statements.
-     *
-     * @return float
-     */
-    protected function calculateLineCoverage($statements, $coveredStatements)
-    {
-        if ($statements === 0) {
-            return 0;
-        }
-
-        return ($coveredStatements / $statements) * 100;
+        $this->lineCoverage = null; // clear previous data
     }
 
     // accessor
@@ -140,5 +121,24 @@ class Metrics
         }
 
         return $this->lineCoverage;
+    }
+
+    // internal method
+
+    /**
+     * Calculate line coverage.
+     *
+     * @param int $statements        Number of statements
+     * @param int $coveredStatements Number of covered statements
+     *
+     * @return float
+     */
+    protected function calculateLineCoverage($statements, $coveredStatements)
+    {
+        if ($statements === 0) {
+            return 0;
+        }
+
+        return ($coveredStatements / $statements) * 100;
     }
 }

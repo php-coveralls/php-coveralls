@@ -23,7 +23,7 @@ class Application extends BaseApplication
     /**
      * Constructor.
      *
-     * @param string $rootDir Path to project root directory.
+     * @param string $rootDir Path to project root directory
      * @param string $name    The name of the application
      * @param string $version The version of the application
      */
@@ -32,6 +32,22 @@ class Application extends BaseApplication
         $this->rootDir = $rootDir;
 
         parent::__construct($name, $version);
+    }
+
+    // accessor
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \Symfony\Component\Console\Application::getDefinition()
+     */
+    public function getDefinition()
+    {
+        $inputDefinition = parent::getDefinition();
+        // clear out the normal first argument, which is the command name
+        $inputDefinition->setArguments();
+
+        return $inputDefinition;
     }
 
     // internal method
@@ -73,21 +89,5 @@ class Application extends BaseApplication
         $command->setRootDir($this->rootDir);
 
         return $command;
-    }
-
-    // accessor
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \Symfony\Component\Console\Application::getDefinition()
-     */
-    public function getDefinition()
-    {
-        $inputDefinition = parent::getDefinition();
-        // clear out the normal first argument, which is the command name
-        $inputDefinition->setArguments();
-
-        return $inputDefinition;
     }
 }

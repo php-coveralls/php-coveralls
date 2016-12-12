@@ -3,14 +3,14 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
 use Satooshi\ProjectTestCase;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -18,9 +18,131 @@ class JobsRepositoryTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
+        $this->projectDir = realpath(__DIR__.'/../../../..');
 
         $this->setUpDir($this->projectDir);
+    }
+
+    // persist()
+
+    /**
+     * @test
+     */
+    public function shouldPersist()
+    {
+        $statusCode = 200;
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode, 'https://coveralls.io/jobs/67528');
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    /**
+     * @test
+     */
+    public function shouldPersistDryRun()
+    {
+        $api = $this->createApiMock(null);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // unexpected Exception
+    // source files not found
+
+    /**
+     * @test
+     */
+    public function unexpectedException()
+    {
+        $api = $this->createApiMockWithException();
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    /**
+     * @test
+     */
+    public function requirementsNotSatisfiedException()
+    {
+        $api = $this->createApiMockWithRequirementsNotSatisfiedException();
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // curl error
+
+    /**
+     * @test
+     */
+    public function networkDisconnected()
+    {
+        $api = $this->createApiMock(null, null);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // response 422
+
+    /**
+     * @test
+     */
+    public function response422()
+    {
+        $statusCode = 422;
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
+    }
+
+    // response 500
+
+    /**
+     * @test
+     */
+    public function response500()
+    {
+        $statusCode = 500;
+        $response = new \GuzzleHttp\Psr7\Response($statusCode);
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
+
+        $object = new JobsRepository($api, $config);
+
+        $object->setLogger($logger);
+        $object->persist();
     }
 
     // mock
@@ -118,7 +240,7 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api;
     }
 
-    protected function createApiMock($response, $statusCode = 200)
+    protected function createApiMock($response, $statusCode = 200, $uri = '/')
     {
         $jsonFile = $this->createJsonFile();
 
@@ -165,9 +287,7 @@ class JobsRepositoryTest extends ProjectTestCase
         ->with()
         ->will($this->returnSelf());
 
-        $request = $this->getMockBuilder('\GuzzleHttp\Psr7\Request')
-        ->setConstructorArgs(['POST', '/'])
-        ->getMock();
+        $request = new \GuzzleHttp\Psr7\Request('POST', $uri);
 
         if ($statusCode === 200) {
             $api
@@ -194,51 +314,9 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api;
     }
 
-    protected function createResponseMock($statusCode, $reasonPhrase, $body)
-    {
-        $json = is_array($body) ? json_encode($body) : $body;
-
-        $response = $this->getMockBuilder('\GuzzleHttp\Psr7\Response')
-            ->setMethods([
-                'getStatusCode',
-                'getReasonPhrase',
-                'getBody',
-            ])
-            ->getMock();
-
-        $stream = $this->getMockBuilder('\GuzzleHttp\Psr7\Stream')
-            ->setMethods(['__toString'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getStatusCode')
-            ->with()
-            ->will($this->returnValue($statusCode));
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getReasonPhrase')
-            ->with()
-            ->will($this->returnValue($reasonPhrase));
-
-        $response
-            ->expects($this->atLeastOnce())
-            ->method('getBody')
-            ->will($this->returnValue($stream));
-
-        $stream
-            ->expects($this->atLeastOnce())
-            ->method('__toString')
-            ->will($this->returnValue($json));
-
-        return $response;
-    }
-
     protected function createLoggerMock()
     {
-        $logger = $this->getMock('Psr\Log\NullLogger', array('info', 'error'));
+        $logger = $this->createMock('Psr\Log\NullLogger', array('info', 'error'));
 
         $logger
         ->expects($this->any())
@@ -259,8 +337,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         // percent = (covered / stmt) * 100;
         // (percent * stmt) / 100 = covered
-        $stmt     = 100;
-        $covered  = ($percent * $stmt) / 100;
+        $stmt = 100;
+        $covered = ($percent * $stmt) / 100;
         $coverage = array_fill(0, 100, 0);
 
         for ($i = 0; $i < $covered; ++$i) {
@@ -274,15 +352,15 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir  . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir.'/RepositoryTest';
 
         $sourceFiles = array(
-            0   => new SourceFile($repositoryTestDir . '/Coverage0.php',   'Coverage0.php'),
-            10  => new SourceFile($repositoryTestDir . '/Coverage10.php',  'Coverage10.php'),
-            70  => new SourceFile($repositoryTestDir . '/Coverage70.php',  'Coverage70.php'),
-            80  => new SourceFile($repositoryTestDir . '/Coverage80.php',  'Coverage80.php'),
-            90  => new SourceFile($repositoryTestDir . '/Coverage90.php',  'Coverage90.php'),
-            100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
+            0 => new SourceFile($repositoryTestDir.'/Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir.'/Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir.'/Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir.'/Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir.'/Coverage90.php', 'Coverage90.php'),
+            100 => new SourceFile($repositoryTestDir.'/Coverage100.php', 'Coverage100.php'),
         );
 
         foreach ($sourceFiles as $percent => $sourceFile) {
@@ -299,129 +377,5 @@ class JobsRepositoryTest extends ProjectTestCase
 
         return $config
         ->addCloverXmlPath($this->cloverXmlPath);
-    }
-
-    // persist()
-
-    /**
-     * @test
-     */
-    public function shouldPersist()
-    {
-        $statusCode = 200;
-        $json       = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
-        $response   = $this->createResponseMock($statusCode, 'OK', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    /**
-     * @test
-     */
-    public function shouldPersistDryRun()
-    {
-        $api    = $this->createApiMock(null);
-        $config = $this->createConfiguration();
-        $logger = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    // unexpected Exception
-    // source files not found
-
-    /**
-     * @test
-     */
-    public function unexpectedException()
-    {
-        $api    = $this->createApiMockWithException();
-        $config = $this->createConfiguration();
-        $logger = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    /**
-     * @test
-     */
-    public function requirementsNotSatisfiedException()
-    {
-        $api    = $this->createApiMockWithRequirementsNotSatisfiedException();
-        $config = $this->createConfiguration();
-        $logger = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    // curl error
-
-    /**
-     * @test
-     */
-    public function networkDisconnected()
-    {
-        $api    = $this->createApiMock(null, null);
-        $config = $this->createConfiguration();
-        $logger = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    // response 422
-
-    /**
-     * @test
-     */
-    public function response422()
-    {
-        $statusCode = 422;
-        $json       = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
-        $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
-    }
-
-    // response 500
-
-    /**
-     * @test
-     */
-    public function response500()
-    {
-        $statusCode = 500;
-        $response   = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
-
-        $object = new JobsRepository($api, $config);
-
-        $object->setLogger($logger);
-        $object->persist();
     }
 }

@@ -45,9 +45,9 @@ class Jobs extends CoverallsApi
      */
     public function collectCloverXml()
     {
-        $rootDir        = $this->config->getRootDir();
+        $rootDir = $this->config->getRootDir();
         $cloverXmlPaths = $this->config->getCloverXmlPaths();
-        $xmlCollector   = new CloverXmlCoverageCollector();
+        $xmlCollector = new CloverXmlCoverageCollector();
 
         foreach ($cloverXmlPaths as $cloverXmlPath) {
             $xml = simplexml_load_file($cloverXmlPath);
@@ -73,7 +73,7 @@ class Jobs extends CoverallsApi
      */
     public function collectGitInfo()
     {
-        $command      = new GitCommand();
+        $command = new GitCommand();
         $gitCollector = new GitInfoCollector($command);
 
         $this->jsonFile->setGit($gitCollector->collect());
@@ -84,7 +84,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param array $env $_SERVER environment.
+     * @param array $env $_SERVER environment
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
      *
@@ -135,37 +135,12 @@ class Jobs extends CoverallsApi
         return $this->upload(static::URL, $jsonPath, static::FILENAME);
     }
 
-    // internal method
-
-    /**
-     * Upload a file.
-     *
-     * @param string $url      URL to upload.
-     * @param string $path     File path.
-     * @param string $filename Filename.
-     *
-     * @return \GuzzleHttp\Psr7\Response
-     */
-    protected function upload($url, $path, $filename)
-    {
-        $options = [
-            'multipart' => [
-                [
-                    'name' => $filename,
-                    'contents' => fopen($path, 'r'),
-                ],
-            ],
-        ];
-
-        return $this->client->post($url, $options);
-    }
-
     // accessor
 
     /**
      * Set JsonFile.
      *
-     * @param JsonFile $jsonFile json_file content.
+     * @param JsonFile $jsonFile json_file content
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
      */
@@ -186,7 +161,30 @@ class Jobs extends CoverallsApi
         if (isset($this->jsonFile)) {
             return $this->jsonFile;
         }
+    }
 
-        return;
+    // internal method
+
+    /**
+     * Upload a file.
+     *
+     * @param string $url      URL to upload
+     * @param string $path     File path
+     * @param string $filename Filename
+     *
+     * @return \GuzzleHttp\Psr7\Response
+     */
+    protected function upload($url, $path, $filename)
+    {
+        $options = array(
+            'multipart' => array(
+                array(
+                    'name' => $filename,
+                    'contents' => fopen($path, 'r'),
+                ),
+            ),
+        );
+
+        return $this->client->post($url, $options);
     }
 }

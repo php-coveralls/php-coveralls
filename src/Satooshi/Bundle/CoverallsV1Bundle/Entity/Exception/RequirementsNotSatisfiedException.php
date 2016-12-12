@@ -33,32 +33,13 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     );
 
     /**
-     * Format a pair of the envVarName and the value.
-     *
-     * @param string $key   the env var name.
-     * @param string $value the value of the env var.
-     *
-     * @return string
-     */
-    protected function format($key, $value)
-    {
-        if (in_array($key, self::$secretEnvVars, true)
-            && is_string($value)
-            && strlen($value) > 0) {
-            $value = '********(HIDDEN)';
-        }
-
-        return sprintf("  - %s=%s\n", $key, var_export($value, true));
-    }
-
-    /**
      * Return help message.
      *
      * @return string
      */
     public function getHelpMessage()
     {
-        $message = $this->message . "\n";
+        $message = $this->message."\n";
 
         if (isset($this->readEnv) && is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {
@@ -66,7 +47,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
             }
         }
 
-        $message .= <<< EOL
+        $message .= <<<'EOL'
 
 Set environment variables properly like the following.
 For Travis users:
@@ -99,7 +80,7 @@ EOL;
     /**
      * Set read environment variables.
      *
-     * @param array $readEnv Read environment variables.
+     * @param array $readEnv Read environment variables
      */
     public function setReadEnv(array $readEnv)
     {
@@ -114,5 +95,24 @@ EOL;
     public function getReadEnv()
     {
         return $this->readEnv;
+    }
+
+    /**
+     * Format a pair of the envVarName and the value.
+     *
+     * @param string $key   the env var name
+     * @param string $value the value of the env var
+     *
+     * @return string
+     */
+    protected function format($key, $value)
+    {
+        if (in_array($key, self::$secretEnvVars, true)
+            && is_string($value)
+            && strlen($value) > 0) {
+            $value = '********(HIDDEN)';
+        }
+
+        return sprintf("  - %s=%s\n", $key, var_export($value, true));
     }
 }

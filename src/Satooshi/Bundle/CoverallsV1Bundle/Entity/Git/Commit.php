@@ -63,12 +63,12 @@ class Commit extends Coveralls
     public function toArray()
     {
         return array(
-            'id'              => $this->id,
-            'author_name'     => $this->authorName,
-            'author_email'    => $this->authorEmail,
-            'committer_name'  => $this->committerName,
+            'id' => $this->id,
+            'author_name' => $this->authorName,
+            'author_email' => $this->authorEmail,
+            'committer_name' => $this->committerName,
             'committer_email' => $this->committerEmail,
-            'message'         => $this->message,
+            'message' => $this->message,
         );
     }
 
@@ -98,8 +98,6 @@ class Commit extends Coveralls
         if (isset($this->id)) {
             return $this->id;
         }
-
-        return;
     }
 
     /**
@@ -126,8 +124,6 @@ class Commit extends Coveralls
         if (isset($this->authorName)) {
             return $this->authorName;
         }
-
-        return;
     }
 
     /**
@@ -154,8 +150,6 @@ class Commit extends Coveralls
         if (isset($this->authorEmail)) {
             return $this->authorEmail;
         }
-
-        return;
     }
 
     /**
@@ -182,8 +176,6 @@ class Commit extends Coveralls
         if (isset($this->committerName)) {
             return $this->committerName;
         }
-
-        return;
     }
 
     /**
@@ -210,8 +202,6 @@ class Commit extends Coveralls
         if (isset($this->committerEmail)) {
             return $this->committerEmail;
         }
-
-        return;
     }
 
     /**
@@ -238,7 +228,5 @@ class Commit extends Coveralls
         if (isset($this->message)) {
             return $this->message;
         }
-
-        return;
     }
 }

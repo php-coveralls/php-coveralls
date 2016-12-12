@@ -12,9 +12,9 @@ class Path
     /**
      * Return whether the path is relative path.
      *
-     * @param string $path Path.
+     * @param string $path Path
      *
-     * @return bool true if the path is relative path, false otherwise.
+     * @return bool true if the path is relative path, false otherwise
      */
     public function isRelativePath($path)
     {
@@ -32,10 +32,10 @@ class Path
     /**
      * Cat file path.
      *
-     * @param string $path    File path.
-     * @param string $rootDir Absolute path to project root directory.
+     * @param string $path    File path
+     * @param string $rootDir Absolute path to project root directory
      *
-     * @return string|false Absolute path.
+     * @return string|false Absolute path
      */
     public function toAbsolutePath($path, $rootDir)
     {
@@ -44,7 +44,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return $rootDir . DIRECTORY_SEPARATOR . $path;
+            return $rootDir.DIRECTORY_SEPARATOR.$path;
         }
 
         return $path;
@@ -53,10 +53,10 @@ class Path
     /**
      * Return real file path.
      *
-     * @param string $path    File path.
-     * @param string $rootDir Absolute path to project root directory.
+     * @param string $path    File path
+     * @param string $rootDir Absolute path to project root directory
      *
-     * @return string|false Real path string if the path string is passed and real path exists, false otherwise.
+     * @return string|false Real path string if the path string is passed and real path exists, false otherwise
      */
     public function getRealPath($path, $rootDir)
     {
@@ -65,7 +65,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir . DIRECTORY_SEPARATOR . $path);
+            return realpath($rootDir.DIRECTORY_SEPARATOR.$path);
         }
 
         return realpath($path);
@@ -74,10 +74,10 @@ class Path
     /**
      * Return real directory path.
      *
-     * @param string $path    Path.
-     * @param string $rootDir Absolute path to project root directory.
+     * @param string $path    Path
+     * @param string $rootDir Absolute path to project root directory
      *
-     * @return string|false Real directory path string if the path string is passed and real directory exists, false otherwise.
+     * @return string|false Real directory path string if the path string is passed and real directory exists, false otherwise
      */
     public function getRealDir($path, $rootDir)
     {
@@ -86,7 +86,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir . DIRECTORY_SEPARATOR . dirname($path));
+            return realpath($rootDir.DIRECTORY_SEPARATOR.dirname($path));
         }
 
         return realpath(dirname($path));
@@ -95,10 +95,10 @@ class Path
     /**
      * Return real file path to write.
      *
-     * @param string $path    File path.
-     * @param string $rootDir Absolute path to project root directory.
+     * @param string $path    File path
+     * @param string $rootDir Absolute path to project root directory
      *
-     * @return string|false Real file path string if the parent directory exists, false otherwise.
+     * @return string|false Real file path string if the parent directory exists, false otherwise
      */
     public function getRealWritingFilePath($path, $rootDir)
     {
@@ -108,15 +108,15 @@ class Path
             return false;
         }
 
-        return $realDir . DIRECTORY_SEPARATOR . basename($path);
+        return $realDir.DIRECTORY_SEPARATOR.basename($path);
     }
 
     /**
      * Return whether the real path exists.
      *
-     * @param string|bool $realpath Real path.
+     * @param string|bool $realpath Real path
      *
-     * @return bool true if the real path exists, false otherwise.
+     * @return bool true if the real path exists, false otherwise
      */
     public function isRealPathExist($realpath)
     {
@@ -126,9 +126,9 @@ class Path
     /**
      * Return whether the real file path exists.
      *
-     * @param string|bool $realpath Real file path.
+     * @param string|bool $realpath Real file path
      *
-     * @return bool true if the real file path exists, false otherwise.
+     * @return bool true if the real file path exists, false otherwise
      */
     public function isRealFileExist($realpath)
     {
@@ -138,9 +138,9 @@ class Path
     /**
      * Return whether the real file path is readable.
      *
-     * @param string|bool $realpath Real file path.
+     * @param string|bool $realpath Real file path
      *
-     * @return bool true if the real file path is readable, false otherwise.
+     * @return bool true if the real file path is readable, false otherwise
      */
     public function isRealFileReadable($realpath)
     {
@@ -150,9 +150,9 @@ class Path
     /**
      * Return whether the real file path is writable.
      *
-     * @param string|bool $realpath Real file path.
+     * @param string|bool $realpath Real file path
      *
-     * @return bool true if the real file path is writable, false otherwise.
+     * @return bool true if the real file path is writable, false otherwise
      */
     public function isRealFileWritable($realpath)
     {
@@ -162,9 +162,9 @@ class Path
     /**
      * Return whether the real directory exists.
      *
-     * @param string|bool $realpath Real directory path.
+     * @param string|bool $realpath Real directory path
      *
-     * @return bool true if the real directory exists, false otherwise.
+     * @return bool true if the real directory exists, false otherwise
      */
     public function isRealDirExist($realpath)
     {
@@ -174,9 +174,9 @@ class Path
     /**
      * Return whether the real directory is writable.
      *
-     * @param string|bool $realpath Real directory path.
+     * @param string|bool $realpath Real directory path
      *
-     * @return bool true if the real directory is writable, false otherwise.
+     * @return bool true if the real directory is writable, false otherwise
      */
     public function isRealDirWritable($realpath)
     {
