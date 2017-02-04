@@ -18,7 +18,7 @@ class JobsRepositoryTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
+        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
 
         $this->setUpDir($this->projectDir);
     }
@@ -210,15 +210,15 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir . DIRECTORY_SEPARATOR . 'RepositoryTest';
 
         $sourceFiles = [
-            0 => new SourceFile($repositoryTestDir . '/Coverage0.php', 'Coverage0.php'),
-            10 => new SourceFile($repositoryTestDir . '/Coverage10.php', 'Coverage10.php'),
-            70 => new SourceFile($repositoryTestDir . '/Coverage70.php', 'Coverage70.php'),
-            80 => new SourceFile($repositoryTestDir . '/Coverage80.php', 'Coverage80.php'),
-            90 => new SourceFile($repositoryTestDir . '/Coverage90.php', 'Coverage90.php'),
-            100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
+            0 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage90.php', 'Coverage90.php'),
+            100 => new SourceFile($repositoryTestDir . DIRECTORY_SEPARATOR . 'Coverage100.php', 'Coverage100.php'),
         ];
 
         foreach ($sourceFiles as $percent => $sourceFile) {
@@ -234,7 +234,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $config = new Configuration();
 
         return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+            ->addCloverXmlPath($this->cloverXmlPath);
     }
 
     // persist()

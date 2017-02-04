@@ -166,7 +166,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRootDir()
     {
-        $expected = '/root';
+        $expected = DIRECTORY_SEPARATOR . 'root';
 
         $same = $this->object->setRootDir($expected);
 
@@ -211,7 +211,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetCloverXmlPaths()
     {
-        $expected = ['/path/to/clover.xml'];
+        $expected = [DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'clover.xml'];
 
         $same = $this->object->setCloverXmlPaths($expected);
 
@@ -226,7 +226,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAddCloverXmlPath()
     {
-        $expected = '/path/to/clover.xml';
+        $expected = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'clover.xml';
 
         $same = $this->object->addCloverXmlPath($expected);
 
@@ -241,7 +241,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetJsonPath()
     {
-        $expected = '/path/to/coveralls-upload.json';
+        $expected = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
 
         $same = $this->object->setJsonPath($expected);
 

@@ -19,7 +19,7 @@ class JsonFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
+        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
 
         $this->setUpDir($this->projectDir);
 
@@ -40,20 +40,20 @@ class JsonFileTest extends ProjectTestCase
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
-    <file name="%s/test.php">
+    <file name="%stest.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
       <line num="5" type="method" name="__construct" crap="1" count="0"/>
       <line num="7" type="stmt" count="1"/>
     </file>
-    <file name="%s/TestInterface.php">
+    <file name="%sTestInterface.php">
       <class name="TestInterface" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
       </class>
       <line num="5" type="method" name="hello" crap="1" count="0"/>
     </file>
-    <file name="%s/AbstractClass.php">
+    <file name="%sAbstractClass.php">
       <class name="AbstractClass" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
       </class>
@@ -67,7 +67,7 @@ class JsonFileTest extends ProjectTestCase
       <line num="7" type="stmt" count="0"/>
     </file>
     <package name="Hoge">
-      <file name="%s/test2.php">
+      <file name="%stest2.php">
         <class name="TestFile" namespace="Hoge">
           <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
@@ -79,7 +79,7 @@ class JsonFileTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
+        return sprintf($xml, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR);
     }
 
     protected function createCloverXml()

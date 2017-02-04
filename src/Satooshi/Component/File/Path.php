@@ -9,6 +9,11 @@ namespace Satooshi\Component\File;
  */
 class Path
 {
+    public static function isWindowsOS()
+    {
+        return strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+    }
+
     /**
      * Return whether the path is relative path.
      *
@@ -22,7 +27,7 @@ class Path
             return true;
         }
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if (self::isWindowsOS()) {
             return !preg_match('/^[a-z]+\:\\\\/i', $path);
         }
 
