@@ -7,6 +7,7 @@
         "friendsofphp/php-cs-fixer": "~2.1.0",
         "pdepend/pdepend": "^2.2",
         "phpmd/phpmd": "^2.3",
+        "phpunit/phpunit": "^4.5.0",
         "sebastian/finder-facade": "^1.1",
         "sebastian/phpcpd": "^1.4",
         "squizlabs/php_codesniffer": "^1.4",
