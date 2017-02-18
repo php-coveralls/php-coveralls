@@ -12,19 +12,18 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
     protected function createGitCommandMock($params)
     {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-        if (method_exists(__CLASS__, 'createPartialMock')) {
-            $adapter = $this->createPartialMock($class, array('executeCommand'));
-        } else {
-            $adapter = $this->getMock($class, array('executeCommand'));
-        }
-
+        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
         $adapter
-            ->expects($this->once())
-            ->method('executeCommand')
-            ->with($this->equalTo($params));
+            ->getBranches()
+            ->willReturn($params);
+        $adapter
+            ->getHeadCommit()
+            ->willReturn($params);
+        $adapter
+            ->getRemotes()
+            ->willReturn($params);
 
-        return $adapter;
+        return $adapter->reveal();
     }
 
     // getCommandPath()

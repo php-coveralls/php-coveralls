@@ -206,23 +206,13 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createLoggerMock()
     {
-        if (method_exists(__CLASS__, 'createPartialMock')) {
-            $logger = $this->createPartialMock('Psr\Log\NullLogger', array('info', 'error'));
-        } else {
-            $logger = $this->getMock('Psr\Log\NullLogger', array('info', 'error'));
-        }
-
+        $logger = $this->prophesize('\Psr\Log\NullLogger');
         $logger
-        ->expects($this->any())
-        ->method('info')
-        ->with();
-
+            ->info();
         $logger
-        ->expects($this->any())
-        ->method('error')
-        ->with();
+            ->error();
 
-        return $logger;
+        return $logger->reveal();
     }
 
     // dependent object
