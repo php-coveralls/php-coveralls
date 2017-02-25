@@ -9,8 +9,8 @@ use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Api\CoverallsApi
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Api\CoverallsApi
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -197,7 +197,7 @@ XML;
 
     protected function collectJsonFile()
     {
-        $xml       = $this->createCloverXml();
+        $xml = $this->createCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
         return $collector->collect($xml, $this->srcDir);
@@ -205,7 +205,7 @@ XML;
 
     protected function collectJsonFileWithoutSourceFiles()
     {
-        $xml       = $this->createNoSourceCloverXml();
+        $xml = $this->createNoSourceCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
         return $collector->collect($xml, $this->srcDir);
@@ -439,14 +439,14 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName  = 'travis-ci';
+        $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
 
         $server = array();
-        $server['TRAVIS']        = true;
+        $server['TRAVIS'] = true;
         $server['TRAVIS_JOB_ID'] = $serviceJobId;
 
-        $object   = $this->createJobsWith();
+        $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -463,17 +463,17 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName  = 'travis-pro';
+        $serviceName = 'travis-pro';
         $serviceJobId = '1.1';
-        $repoToken    = 'your_token';
+        $repoToken = 'your_token';
 
         $server = array();
-        $server['TRAVIS']               = true;
-        $server['TRAVIS_JOB_ID']        = $serviceJobId;
+        $server['TRAVIS'] = true;
+        $server['TRAVIS_JOB_ID'] = $serviceJobId;
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
 
-        $object   = $this->createJobsWith();
-        $config   = $object->getConfiguration()->setServiceName($serviceName);
+        $object = $this->createJobsWith();
+        $config = $object->getConfiguration()->setServiceName($serviceName);
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -494,16 +494,16 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName   = 'circleci';
+        $serviceName = 'circleci';
         $serviceNumber = '123';
-        $repoToken     = 'token';
+        $repoToken = 'token';
 
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
-        $server['CIRCLECI']             = 'true';
-        $server['CIRCLE_BUILD_NUM']     = $serviceNumber;
+        $server['CIRCLECI'] = 'true';
+        $server['CIRCLE_BUILD_NUM'] = $serviceNumber;
 
-        $object   = $this->createJobsWith();
+        $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -520,16 +520,16 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName   = 'jenkins';
+        $serviceName = 'jenkins';
         $serviceNumber = '123';
-        $repoToken     = 'token';
+        $repoToken = 'token';
 
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
-        $server['JENKINS_URL']          = 'http://localhost:8080';
-        $server['BUILD_NUMBER']         = $serviceNumber;
+        $server['JENKINS_URL'] = 'http://localhost:8080';
+        $server['BUILD_NUMBER'] = $serviceNumber;
 
-        $object   = $this->createJobsWith();
+        $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -546,14 +546,14 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName      = 'php-coveralls';
+        $serviceName = 'php-coveralls';
         $serviceEventType = 'manual';
 
         $server = array();
         $server['COVERALLS_RUN_LOCALLY'] = '1';
 
-        $object   = $this->createJobsWith();
-        $config   = $object->getConfiguration()->setRepoToken('token');
+        $object = $this->createJobsWith();
+        $config = $object->getConfiguration()->setRepoToken('token');
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -573,7 +573,7 @@ XML;
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';
 
-        $object   = $this->createJobsWith();
+        $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -592,9 +592,9 @@ XML;
 
         $server = array();
         $server['COVERALLS_REPO_TOKEN'] = 'token';
-        $server['GIT_COMMIT']           = 'abc123';
+        $server['GIT_COMMIT'] = 'abc123';
 
-        $object   = $this->createJobsWith();
+        $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -612,11 +612,11 @@ XML;
         $this->makeProjectDir(null, $this->logsDir);
 
         $server = array();
-        $server['TRAVIS']        = true;
+        $server['TRAVIS'] = true;
         $server['TRAVIS_JOB_ID'] = '1.1';
 
-        $object   = $this->createJobsNeverSendOnDryRun();
-        $config   = $object->getConfiguration()->setEnv('test');
+        $object = $this->createJobsNeverSendOnDryRun();
+        $config = $object->getConfiguration()->setEnv('test');
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -628,13 +628,13 @@ XML;
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfInvalidEnv()
     {
         $server = array();
 
-        $object   = $this->createJobsNeverSend();
+        $object = $this->createJobsNeverSend();
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -646,17 +646,17 @@ XML;
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfNoSourceFiles()
     {
         $server = array();
-        $server['TRAVIS']               = true;
-        $server['TRAVIS_JOB_ID']        = '1.1';
+        $server['TRAVIS'] = true;
+        $server['TRAVIS_JOB_ID'] = '1.1';
         $server['COVERALLS_REPO_TOKEN'] = 'token';
-        $server['GIT_COMMIT']           = 'abc123';
+        $server['GIT_COMMIT'] = 'abc123';
 
-        $object   = $this->createJobsNeverSend();
+        $object = $this->createJobsNeverSend();
         $jsonFile = $this->collectJsonFile();
 
         $object

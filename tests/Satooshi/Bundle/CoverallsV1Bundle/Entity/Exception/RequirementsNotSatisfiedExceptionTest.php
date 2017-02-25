@@ -3,7 +3,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */

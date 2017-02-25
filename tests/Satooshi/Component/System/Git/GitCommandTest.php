@@ -3,8 +3,8 @@
 namespace Satooshi\Component\System\Git;
 
 /**
- * @covers Satooshi\Component\System\Git\GitCommand
- * @covers Satooshi\Component\System\SystemCommand
+ * @covers \Satooshi\Component\System\Git\GitCommand
+ * @covers \Satooshi\Component\System\SystemCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -118,7 +118,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfExecutedWithoutArgs()
     {

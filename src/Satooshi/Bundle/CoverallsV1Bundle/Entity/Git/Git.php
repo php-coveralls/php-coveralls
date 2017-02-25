@@ -53,14 +53,14 @@ class Git extends Coveralls
     /**
      * Constructor.
      *
-     * @param string $branch  Branch name.
-     * @param Commit $head    HEAD commit.
-     * @param array  $remotes Remote repositories.
+     * @param string $branch  branch name
+     * @param Commit $head    hEAD commit
+     * @param array  $remotes remote repositories
      */
     public function __construct($branch, Commit $head, array $remotes)
     {
-        $this->branch  = $branch;
-        $this->head    = $head;
+        $this->branch = $branch;
+        $this->head = $head;
         $this->remotes = $remotes;
     }
 
@@ -80,8 +80,8 @@ class Git extends Coveralls
         }
 
         return array(
-            'branch'  => $this->branch,
-            'head'    => $this->head->toArray(),
+            'branch' => $this->branch,
+            'head' => $this->head->toArray(),
             'remotes' => $remotes,
         );
     }

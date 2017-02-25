@@ -3,7 +3,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -173,6 +173,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($same, $this->object);
         $this->assertSame($expected, $this->object->getRootDir());
     }
+
     // setRepoToken()
 
     /**

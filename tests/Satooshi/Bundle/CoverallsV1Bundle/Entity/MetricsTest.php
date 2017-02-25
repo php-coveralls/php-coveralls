@@ -3,7 +3,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -94,7 +94,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     public function shouldMergeThatWithEmptyMetrics()
     {
         $object = new Metrics();
-        $that   = new Metrics($this->coverage);
+        $that = new Metrics($this->coverage);
         $object->merge($that);
 
         $this->assertSame(3, $object->getStatements());
@@ -108,7 +108,7 @@ class MetricsTest extends \PHPUnit_Framework_TestCase
     public function shouldMergeThat()
     {
         $object = new Metrics($this->coverage);
-        $that   = new Metrics($this->coverage);
+        $that = new Metrics($this->coverage);
         $object->merge($that);
 
         $this->assertSame(6, $object->getStatements());

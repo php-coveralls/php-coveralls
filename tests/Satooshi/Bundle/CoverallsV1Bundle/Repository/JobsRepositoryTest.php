@@ -10,7 +10,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -194,9 +194,9 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createResponseMock($statusCode, $reasonPhrase, $body)
     {
-        $json     = is_array($body) ? json_encode($body) : $body;
-        $args     = array($statusCode, null, $json);
-        $methods  = array('getStatusCode', 'getReasonPhrase', 'getBody');
+        $json = is_array($body) ? json_encode($body) : $body;
+        $args = array($statusCode, null, $json);
+        $methods = array('getStatusCode', 'getReasonPhrase', 'getBody');
         $response = $this->getMock('\Guzzle\Http\Message\Response', $methods, $args);
 
         $response
@@ -243,8 +243,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         // percent = (covered / stmt) * 100;
         // (percent * stmt) / 100 = covered
-        $stmt     = 100;
-        $covered  = ($percent * $stmt) / 100;
+        $stmt = 100;
+        $covered = ($percent * $stmt) / 100;
         $coverage = array_fill(0, 100, 0);
 
         for ($i = 0; $i < $covered; ++$i) {
@@ -261,11 +261,11 @@ class JobsRepositoryTest extends ProjectTestCase
         $repositoryTestDir = $this->srcDir . '/RepositoryTest';
 
         $sourceFiles = array(
-            0   => new SourceFile($repositoryTestDir . '/Coverage0.php',   'Coverage0.php'),
-            10  => new SourceFile($repositoryTestDir . '/Coverage10.php',  'Coverage10.php'),
-            70  => new SourceFile($repositoryTestDir . '/Coverage70.php',  'Coverage70.php'),
-            80  => new SourceFile($repositoryTestDir . '/Coverage80.php',  'Coverage80.php'),
-            90  => new SourceFile($repositoryTestDir . '/Coverage90.php',  'Coverage90.php'),
+            0 => new SourceFile($repositoryTestDir . '/Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir . '/Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir . '/Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir . '/Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir . '/Coverage90.php', 'Coverage90.php'),
             100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
         );
 
@@ -293,11 +293,11 @@ class JobsRepositoryTest extends ProjectTestCase
     public function shouldPersist()
     {
         $statusCode = 200;
-        $json       = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
-        $response   = $this->createResponseMock($statusCode, 'OK', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $json = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
+        $response = $this->createResponseMock($statusCode, 'OK', $json);
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
@@ -310,7 +310,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function shouldPersistDryRun()
     {
-        $api    = $this->createApiMock(null);
+        $api = $this->createApiMock(null);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -328,7 +328,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function unexpectedException()
     {
-        $api    = $this->createApiMockWithException();
+        $api = $this->createApiMockWithException();
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -343,7 +343,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function requirementsNotSatisfiedException()
     {
-        $api    = $this->createApiMockWithRequirementsNotSatisfiedException();
+        $api = $this->createApiMockWithRequirementsNotSatisfiedException();
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -360,7 +360,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function networkDisconnected()
     {
-        $api    = $this->createApiMock(null, null);
+        $api = $this->createApiMock(null, null);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -378,11 +378,11 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response422()
     {
         $statusCode = 422;
-        $json       = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
-        $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $json = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
+        $response = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
@@ -398,10 +398,10 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response500()
     {
         $statusCode = 500;
-        $response   = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $response = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 

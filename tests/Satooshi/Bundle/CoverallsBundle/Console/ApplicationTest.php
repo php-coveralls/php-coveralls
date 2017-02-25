@@ -6,7 +6,7 @@ use Satooshi\ProjectTestCase;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
- * @covers Satooshi\Bundle\CoverallsBundle\Console\Application
+ * @covers \Satooshi\Bundle\CoverallsBundle\Console\Application
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -73,14 +73,14 @@ XML;
         $app->setAutoExit(false); // avoid to call exit() in Application
 
         // run
-        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'application_test';
 
         $tester = new ApplicationTester($app);
         $actual = $tester->run(
             array(
                 '--dry-run' => true,
-                '--config'  => 'coveralls.yml',
+                '--config' => 'coveralls.yml',
             )
         );
 

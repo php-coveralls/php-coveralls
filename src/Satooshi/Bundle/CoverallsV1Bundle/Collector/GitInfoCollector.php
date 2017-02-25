@@ -40,8 +40,8 @@ class GitInfoCollector
      */
     public function collect()
     {
-        $branch  = $this->collectBranch();
-        $commit  = $this->collectCommit();
+        $branch = $this->collectBranch();
+        $commit = $this->collectCommit();
         $remotes = $this->collectRemotes();
 
         return new Git($branch, $commit, $remotes);
@@ -53,8 +53,8 @@ class GitInfoCollector
      * Collect branch name.
      *
      * @throws \RuntimeException
-     * @return string
      *
+     * @return string
      */
     protected function collectBranch()
     {
@@ -75,8 +75,8 @@ class GitInfoCollector
      * Collect commit info.
      *
      * @throws \RuntimeException
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
      *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
      */
     protected function collectCommit()
     {
@@ -101,8 +101,8 @@ class GitInfoCollector
      * Collect remotes info.
      *
      * @throws \RuntimeException
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote[]
      *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote[]
      */
     protected function collectRemotes()
     {
