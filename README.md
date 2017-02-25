@@ -106,7 +106,7 @@ Above settings are good for most projects if your test suite is executed once a 
 ```json
     "require-dev": {
         "satooshi/php-coveralls": "dev-master",
-        "phpunit/phpcov": "2.*"
+        "phpunit/phpcov": "^2.0"
     },
 ```
 
