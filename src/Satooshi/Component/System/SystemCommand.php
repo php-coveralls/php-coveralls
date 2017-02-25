@@ -37,9 +37,9 @@ abstract class SystemCommand
      *
      * @param string $command
      *
+     * @throws \RuntimeException
      * @return array
      *
-     * @throws \RuntimeException
      */
     protected function executeCommand($command)
     {

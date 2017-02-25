@@ -86,9 +86,9 @@ class Jobs extends CoverallsApi
      *
      * @param array $env $_SERVER environment.
      *
+     * @throws \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
      *
-     * @throws \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function collectEnvVars(array $env)
     {
@@ -122,9 +122,9 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
+     * @throws \RuntimeException
      * @return \Guzzle\Http\Message\Response|null
      *
-     * @throws \RuntimeException
      */
     public function send()
     {
@@ -146,9 +146,9 @@ class Jobs extends CoverallsApi
      * @param string $path     File path.
      * @param string $filename Filename.
      *
+     * @throws \RuntimeException
      * @return \Guzzle\Http\Message\Response Response.
      *
-     * @throws \RuntimeException
      */
     protected function upload($url, $path, $filename)
     {

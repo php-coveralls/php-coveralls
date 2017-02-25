@@ -24,9 +24,9 @@ class Configurator
      * @param string         $rootDir          Path to project root directory.
      * @param InputInterface $input|null       Input arguments.
      *
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      *
-     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     public function load($coverallsYmlPath, $rootDir, InputInterface $input = null)
     {
@@ -43,9 +43,9 @@ class Configurator
      *
      * @param string $coverallsYmlPath Path to .coveralls.yml.
      *
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      * @return array
      *
-     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     protected function parse($coverallsYmlPath)
     {
@@ -117,9 +117,9 @@ class Configurator
      * @param string $rootDir Path to project root directory.
      * @param Path   $file    Path object.
      *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @return array Valid Absolute pathes of coverage_clover.
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
     {
@@ -135,9 +135,9 @@ class Configurator
      *
      * @param string $path Absolute path.
      *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @return array Absolute paths.
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPaths($path)
     {
@@ -164,9 +164,9 @@ class Configurator
      * @param string $rootDir Path to project root directory.
      * @param Path   $file    Path object.
      *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @return array Absolute pathes.
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
@@ -187,9 +187,9 @@ class Configurator
      * @param string $rootDir Path to project root directory.
      * @param Path   $file    Path object.
      *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @return array Absolute pathes.
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromArrayOption(array $options, $rootDir, Path $file)
     {
@@ -209,9 +209,9 @@ class Configurator
      * @param string $rootDir Path to project root directory.
      * @param Path   $file    Path object.
      *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @return string Valid json_path.
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureJsonPath($option, $rootDir, Path $file)
     {
