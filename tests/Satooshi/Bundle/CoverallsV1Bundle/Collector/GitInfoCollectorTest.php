@@ -2,13 +2,13 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
-use Satooshi\Component\System\Git\GitCommand;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Component\System\Git\GitCommand;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -178,7 +178,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
@@ -196,7 +196,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
@@ -212,7 +212,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {

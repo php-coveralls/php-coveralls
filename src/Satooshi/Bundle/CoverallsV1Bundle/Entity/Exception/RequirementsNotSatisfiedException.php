@@ -35,8 +35,8 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     /**
      * Format a pair of the envVarName and the value.
      *
-     * @param string $key   the env var name.
-     * @param string $value the value of the env var.
+     * @param string $key   the env var name
+     * @param string $value the value of the env var
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
             }
         }
 
-        $message .= <<< EOL
+        $message .= <<< 'EOL'
 
 Set environment variables properly like the following.
 For Travis users:
@@ -99,7 +99,7 @@ EOL;
     /**
      * Set read environment variables.
      *
-     * @param array $readEnv Read environment variables.
+     * @param array $readEnv read environment variables
      */
     public function setReadEnv(array $readEnv)
     {

@@ -7,7 +7,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -30,7 +30,7 @@ class CoverallsV1JobsCommandTest extends ProjectTestCase
 
     protected function getCloverXml()
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
@@ -79,27 +79,27 @@ XML;
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
 
-        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
         $actual = $commandTester->execute(
             array(
-                'command'   => $command->getName(),
+                'command' => $command->getName(),
                 '--dry-run' => true,
-                '--config'  => 'coveralls.yml',
-                '--env'     => 'test',
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
             )
         );
 
         $this->assertSame(0, $actual);
 
-        # It should succeed too with a correct coverage_clover option.
+        // It should succeed too with a correct coverage_clover option.
         $actual = $commandTester->execute(
             array(
-                'command'           => $command->getName(),
-                '--dry-run'         => true,
-                '--config'          => 'coveralls.yml',
-                '--env'             => 'test',
+                'command' => $command->getName(),
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
                 '--coverage_clover' => 'build/logs/clover.xml',
             )
         );
@@ -109,7 +109,7 @@ XML;
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function shouldExecuteCoverallsV1JobsCommandWithWrongRootDir()
     {
@@ -125,15 +125,15 @@ XML;
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
 
-        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
         $actual = $commandTester->execute(
             array(
-                'command'    => $command->getName(),
-                '--dry-run'  => true,
-                '--config'   => 'coveralls.yml',
-                '--env'      => 'test',
+                'command' => $command->getName(),
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
             )
         );
 
@@ -157,15 +157,15 @@ XML;
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
 
-        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
         $actual = $commandTester->execute(
             array(
-                'command'    => $command->getName(),
-                '--dry-run'  => true,
-                '--config'   => 'coveralls.yml',
-                '--env'      => 'test',
+                'command' => $command->getName(),
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
                 // Overriding with a correct one.
                 '--root_dir' => $this->rootDir,
             )
@@ -176,7 +176,7 @@ XML;
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function shouldExecuteCoverallsV1JobsCommandThrowInvalidConfigurationException()
     {
@@ -192,15 +192,15 @@ XML;
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
 
-        $_SERVER['TRAVIS']        = true;
+        $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
         $actual = $commandTester->execute(
             array(
-                'command'           => $command->getName(),
-                '--dry-run'         => true,
-                '--config'          => 'coveralls.yml',
-                '--env'             => 'test',
+                'command' => $command->getName(),
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
                 '--coverage_clover' => 'nonexistense.xml',
             )
         );

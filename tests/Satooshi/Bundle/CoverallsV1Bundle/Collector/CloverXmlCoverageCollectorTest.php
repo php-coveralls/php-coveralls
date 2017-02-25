@@ -7,7 +7,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -24,7 +24,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     protected function createCloverXml()
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
@@ -89,7 +89,7 @@ XML;
      */
     public function shouldCollect()
     {
-        $xml      = $this->createCloverXml();
+        $xml = $this->createCloverXml();
         $jsonFile = $this->object->collect($xml, $this->srcDir);
 
         $this->assertSame($jsonFile, $this->object->getJsonFile());
@@ -148,7 +148,7 @@ XML;
      */
     public function shouldCollectUnderRootDir()
     {
-        $xml      = $this->createCloverXml();
+        $xml = $this->createCloverXml();
         $jsonFile = $this->object->collect($xml, DIRECTORY_SEPARATOR);
 
         $this->assertSame($jsonFile, $this->object->getJsonFile());
@@ -222,48 +222,48 @@ XML;
 
     protected function assertSourceFileTest1(SourceFile $sourceFile)
     {
-        $name1        = 'test.php';
-        $path1        = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
-        $fileLines1   = 9;
-        $coverage1    = array_fill(0, $fileLines1, null);
+        $name1 = 'test.php';
+        $path1 = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
+        $fileLines1 = 9;
+        $coverage1 = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
-        $source1      = trim(file_get_contents($path1));
+        $source1 = trim(file_get_contents($path1));
 
         $this->assertSourceFile($sourceFile, $name1, $path1, $fileLines1, $coverage1, $source1);
     }
 
     protected function assertSourceFileTest2(SourceFile $sourceFile)
     {
-        $name2        = 'test2.php';
-        $path2        = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
-        $fileLines2   = 10;
-        $coverage2    = array_fill(0, $fileLines2, null);
+        $name2 = 'test2.php';
+        $path2 = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
+        $fileLines2 = 10;
+        $coverage2 = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;
-        $source2      = trim(file_get_contents($path2));
+        $source2 = trim(file_get_contents($path2));
 
         $this->assertSourceFile($sourceFile, $name2, $path2, $fileLines2, $coverage2, $source2);
     }
 
     protected function assertSourceFileTest1UnderRootDir(SourceFile $sourceFile)
     {
-        $name1        = 'test.php';
-        $path1        = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
-        $fileLines1   = 9;
-        $coverage1    = array_fill(0, $fileLines1, null);
+        $name1 = 'test.php';
+        $path1 = $this->srcDir . DIRECTORY_SEPARATOR . $name1;
+        $fileLines1 = 9;
+        $coverage1 = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
-        $source1      = trim(file_get_contents($path1));
+        $source1 = trim(file_get_contents($path1));
 
         $this->assertSourceFile($sourceFile, $path1, $path1, $fileLines1, $coverage1, $source1);
     }
 
     protected function assertSourceFileTest2UnderRootDir(SourceFile $sourceFile)
     {
-        $name2        = 'test2.php';
-        $path2        = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
-        $fileLines2   = 10;
-        $coverage2    = array_fill(0, $fileLines2, null);
+        $name2 = 'test2.php';
+        $path2 = $this->srcDir . DIRECTORY_SEPARATOR . $name2;
+        $fileLines2 = 10;
+        $coverage2 = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;
-        $source2      = trim(file_get_contents($path2));
+        $source2 = trim(file_get_contents($path2));
 
         $this->assertSourceFile($sourceFile, $path2, $path2, $fileLines2, $coverage2, $source2);
     }

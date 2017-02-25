@@ -3,7 +3,7 @@
 namespace Satooshi\Component\Log;
 
 /**
- * @covers Satooshi\Component\Log\ConsoleLogger
+ * @covers \Satooshi\Component\Log\ConsoleLogger
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */

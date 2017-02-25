@@ -54,19 +54,19 @@ class SourceFile extends Coveralls
     /**
      * Constructor.
      *
-     * @param string $path Absolute path.
-     * @param string $name Source filename.
-     * @param string $eol  End of line.
+     * @param string $path absolute path
+     * @param string $name source filename
+     * @param string $eol  end of line
      */
     public function __construct($path, $name, $eol = "\n")
     {
-        $this->path   = $path;
-        $this->name   = $name;
+        $this->path = $path;
+        $this->name = $name;
         $this->source = trim(file_get_contents($path));
 
         $lines = explode($eol, $this->source);
         $this->fileLines = count($lines);
-        $this->coverage  = array_fill(0, $this->fileLines, null);
+        $this->coverage = array_fill(0, $this->fileLines, null);
     }
 
     /**
@@ -77,8 +77,8 @@ class SourceFile extends Coveralls
     public function toArray()
     {
         return array(
-            'name'     => $this->name,
-            'source'   => $this->source,
+            'name' => $this->name,
+            'source' => $this->source,
             'coverage' => $this->coverage,
         );
     }
@@ -88,8 +88,8 @@ class SourceFile extends Coveralls
     /**
      * Add coverage.
      *
-     * @param int $lineNum Line number.
-     * @param int $count   Number of covered.
+     * @param int $lineNum line number
+     * @param int $count   number of covered
      */
     public function addCoverage($lineNum, $count)
     {
