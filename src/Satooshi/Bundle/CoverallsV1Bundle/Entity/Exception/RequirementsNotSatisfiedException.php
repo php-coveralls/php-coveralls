@@ -66,7 +66,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
             }
         }
 
-        $message .= <<< EOL
+        $message .= <<< 'EOL'
 
 Set environment variables properly like the following.
 For Travis users:

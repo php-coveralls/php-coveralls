@@ -117,7 +117,7 @@ class JobsTest extends ProjectTestCase
 
     protected function getCloverXml()
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
@@ -172,7 +172,7 @@ XML;
 
     protected function getNoSourceCloverXml()
     {
-        return <<<XML
+        return <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">

@@ -30,7 +30,7 @@ class CoverallsV1JobsCommandTest extends ProjectTestCase
 
     protected function getCloverXml()
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
