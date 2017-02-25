@@ -2,8 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Guzzle\Http\Client;
+use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 
 /**
  * Coveralls API client.
