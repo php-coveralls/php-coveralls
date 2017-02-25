@@ -39,6 +39,10 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     {
         $class = 'Satooshi\Component\System\Git\GitCommand';
 
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            return $this->createMock($class);
+        }
+
         return $this->getMock($class);
     }
 

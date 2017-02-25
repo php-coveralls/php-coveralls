@@ -27,18 +27,22 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createApiMockWithRequirementsNotSatisfiedException()
     {
-        $jobsMethods = [
+        $jobsMethods = array(
             'collectCloverXml',
             'getJsonFile',
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
             'send',
-        ];
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
+        );
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $api = $this->createPartialMock('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs', $jobsMethods);
+        } else {
+            $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
+            ->disableOriginalConstructor()
+            ->setMethods($jobsMethods)
+            ->getMock();
+        }
 
         $exception = new RequirementsNotSatisfiedException();
 
@@ -73,18 +77,22 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createApiMockWithException()
     {
-        $jobsMethods = [
+        $jobsMethods = array(
             'collectCloverXml',
             'getJsonFile',
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
             'send',
-        ];
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
+        );
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $api = $this->createPartialMock('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs', $jobsMethods);
+        } else {
+            $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
+            ->disableOriginalConstructor()
+            ->setMethods($jobsMethods)
+            ->getMock();
+        }
 
         $message = 'unexpected exception';
         $exception = new \Exception($message);
@@ -122,18 +130,22 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = $this->createJsonFile();
 
-        $jobsMethods = [
+        $jobsMethods = array(
             'collectCloverXml',
             'getJsonFile',
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
             'send',
-        ];
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
+        );
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $api = $this->createPartialMock('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs', $jobsMethods);
+        } else {
+            $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
+            ->disableOriginalConstructor()
+            ->setMethods($jobsMethods)
+            ->getMock();
+        }
 
         $api
         ->expects($this->once())
@@ -194,7 +206,11 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createLoggerMock()
     {
-        $logger = $this->getMock('Psr\Log\NullLogger', ['info', 'error']);
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $logger = $this->createPartialMock('Psr\Log\NullLogger', array('info', 'error'));
+        } else {
+            $logger = $this->getMock('Psr\Log\NullLogger', array('info', 'error'));
+        }
 
         $logger
         ->expects($this->any())

@@ -11,10 +11,14 @@ class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
 {
     protected function createAdapterMockWith($message)
     {
-        $mock = $this->getMockBuilder('Symfony\Component\Console\Output\StreamOutput')
-        ->disableOriginalConstructor()
-        ->setMethods(['writeln'])
-        ->getMock();
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $mock = $this->createPartialMock('Symfony\Component\Console\Output\StreamOutput', array('writeln'));
+        } else {
+            $mock = $this->getMockBuilder('Symfony\Component\Console\Output\StreamOutput')
+            ->disableOriginalConstructor()
+            ->setMethods(array('writeln'))
+            ->getMock();
+        }
 
         $mock
         ->expects($this->once())

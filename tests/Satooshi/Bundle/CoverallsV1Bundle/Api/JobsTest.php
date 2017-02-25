@@ -70,7 +70,11 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('GuzzleHttp\Client', ['send']);
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $client = $this->createPartialMock('GuzzleHttp\Client', array('send'));
+        } else {
+            $client = $this->getMock('GuzzleHttp\Client', array('send'));
+        }
 
         $client
         ->expects($this->never())
@@ -81,8 +85,13 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('GuzzleHttp\Client', ['post']);
-        $response = $this->getMock('GuzzleHttp\Psr7\Response');
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $client = $this->createPartialMock('GuzzleHttp\Client', array('post'));
+            $response = $this->createMock('GuzzleHttp\Psr7\Response');
+        } else {
+            $client = $this->getMock('GuzzleHttp\Client', array('post'));
+            $response = $this->getMock('GuzzleHttp\Psr7\Response');
+        }
 
         $client
         ->expects($this->once())

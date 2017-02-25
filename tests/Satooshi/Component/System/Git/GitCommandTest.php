@@ -13,7 +13,11 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
     protected function createGitCommandMock($params)
     {
         $class = 'Satooshi\Component\System\Git\GitCommand';
-        $adapter = $this->getMock($class, ['executeCommand']);
+        if (method_exists(__CLASS__, 'createPartialMock')) {
+            $adapter = $this->createPartialMock($class, array('executeCommand'));
+        } else {
+            $adapter = $this->getMock($class, array('executeCommand'));
+        }
 
         $adapter
             ->expects($this->once())
