@@ -165,6 +165,10 @@ class JobsRepositoryTest extends ProjectTestCase
         ->with()
         ->will($this->returnSelf());
 
+        $request = $this->getMockBuilder('\GuzzleHttp\Psr7\Request')
+        ->setConstructorArgs(['POST', '/'])
+        ->getMock();
+
         if ($statusCode === 200) {
             $api
             ->expects($this->once())
@@ -173,13 +177,11 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will($this->returnValue($response));
         } else {
             if ($statusCode === null) {
-                $exception = new \Guzzle\Http\Exception\CurlException();
+                $exception = \GuzzleHttp\Exception\ConnectException::create($request);
             } elseif ($statusCode === 422) {
-                $exception = new \Guzzle\Http\Exception\ClientErrorResponseException();
-                $exception->setResponse($response);
+                $exception = \GuzzleHttp\Exception\ClientException::create($request, $response);
             } else {
-                $exception = new \Guzzle\Http\Exception\ServerErrorResponseException();
-                $exception->setResponse($response);
+                $exception = \GuzzleHttp\Exception\ServerException::create($request, $response);
             }
 
             $api
@@ -194,27 +196,41 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createResponseMock($statusCode, $reasonPhrase, $body)
     {
-        $json     = is_array($body) ? json_encode($body) : $body;
-        $args     = array($statusCode, null, $json);
-        $methods  = array('getStatusCode', 'getReasonPhrase', 'getBody');
-        $response = $this->getMock('\Guzzle\Http\Message\Response', $methods, $args);
+        $json = is_array($body) ? json_encode($body) : $body;
+
+        $response = $this->getMockBuilder('\GuzzleHttp\Psr7\Response')
+            ->setMethods([
+                'getStatusCode',
+                'getReasonPhrase',
+                'getBody',
+            ])
+            ->getMock();
+
+        $stream = $this->getMockBuilder('\GuzzleHttp\Psr7\Stream')
+            ->setMethods(['__toString'])
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $response
-            ->expects($this->once())
+            ->expects($this->atLeastOnce())
             ->method('getStatusCode')
             ->with()
             ->will($this->returnValue($statusCode));
 
         $response
-            ->expects($this->once())
+            ->expects($this->atLeastOnce())
             ->method('getReasonPhrase')
             ->with()
             ->will($this->returnValue($reasonPhrase));
 
         $response
-            ->expects($this->once())
+            ->expects($this->atLeastOnce())
             ->method('getBody')
-            ->with(true)
+            ->will($this->returnValue($stream));
+
+        $stream
+            ->expects($this->atLeastOnce())
+            ->method('__toString')
             ->will($this->returnValue($json));
 
         return $response;
