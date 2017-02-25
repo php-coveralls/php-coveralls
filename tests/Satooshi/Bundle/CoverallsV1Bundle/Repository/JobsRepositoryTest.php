@@ -258,7 +258,7 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir  . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir . '/RepositoryTest';
 
         $sourceFiles = array(
             0   => new SourceFile($repositoryTestDir . '/Coverage0.php',   'Coverage0.php'),
