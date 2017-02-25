@@ -205,9 +205,9 @@ class JobsRepository implements LoggerAwareInterface
             return sprintf('<info>%s</info>', $format);
         } elseif ($coverage >= 80) {
             return sprintf('<comment>%s</comment>', $format);
-        } else {
+        }  
             return sprintf('<fg=red>%s</fg=red>', $format);
-        }
+        
     }
 
     /**
