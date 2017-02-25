@@ -207,7 +207,6 @@ class JobsRepository implements LoggerAwareInterface
             return sprintf('<comment>%s</comment>', $format);
         }  
             return sprintf('<fg=red>%s</fg=red>', $format);
-        
     }
 
     /**
