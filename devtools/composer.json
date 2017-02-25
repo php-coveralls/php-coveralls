@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": ">=5.3.6",
+        "php": "^5.3.6 || ^7.0",
         "ext-json": "*",
         "ext-simplexml": "*",
         "apigen/apigen": "^2.8",
