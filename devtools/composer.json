@@ -4,7 +4,7 @@
         "ext-json": "*",
         "ext-simplexml": "*",
         "apigen/apigen": "^2.8",
-        "fabpot/php-cs-fixer": "^1.11",
+        "friendsofphp/php-cs-fixer": "^1.11",
         "pdepend/pdepend": "^2.2",
         "phpmd/phpmd": "^2.3",
         "sebastian/finder-facade": "^1.1",
