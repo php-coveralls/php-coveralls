@@ -23,7 +23,7 @@ class Application extends BaseApplication
     /**
      * Constructor.
      *
-     * @param string $rootDir Path to project root directory.
+     * @param string $rootDir path to project root directory
      * @param string $name    The name of the application
      * @param string $version The version of the application
      */

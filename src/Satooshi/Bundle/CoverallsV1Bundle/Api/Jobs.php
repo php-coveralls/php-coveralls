@@ -45,9 +45,9 @@ class Jobs extends CoverallsApi
      */
     public function collectCloverXml()
     {
-        $rootDir        = $this->config->getRootDir();
+        $rootDir = $this->config->getRootDir();
         $cloverXmlPaths = $this->config->getCloverXmlPaths();
-        $xmlCollector   = new CloverXmlCoverageCollector();
+        $xmlCollector = new CloverXmlCoverageCollector();
 
         foreach ($cloverXmlPaths as $cloverXmlPath) {
             $xml = simplexml_load_file($cloverXmlPath);
@@ -73,7 +73,7 @@ class Jobs extends CoverallsApi
      */
     public function collectGitInfo()
     {
-        $command      = new GitCommand();
+        $command = new GitCommand();
         $gitCollector = new GitInfoCollector($command);
 
         $this->jsonFile->setGit($gitCollector->collect());
@@ -84,11 +84,11 @@ class Jobs extends CoverallsApi
     /**
      * Collect environment variables.
      *
-     * @param array $env $_SERVER environment.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @param array $env $_SERVER environment
      *
      * @throws \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
      */
     public function collectEnvVars(array $env)
     {
@@ -140,9 +140,9 @@ class Jobs extends CoverallsApi
     /**
      * Upload a file.
      *
-     * @param string $url      URL to upload.
-     * @param string $path     File path.
-     * @param string $filename Filename.
+     * @param string $url      uRL to upload
+     * @param string $path     file path
+     * @param string $filename filename
      *
      * @return \GuzzleHttp\Psr7\Response
      */
@@ -165,7 +165,7 @@ class Jobs extends CoverallsApi
     /**
      * Set JsonFile.
      *
-     * @param JsonFile $jsonFile json_file content.
+     * @param JsonFile $jsonFile json_file content
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
      */

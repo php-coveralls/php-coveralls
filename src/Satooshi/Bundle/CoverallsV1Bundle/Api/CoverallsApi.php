@@ -2,8 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use GuzzleHttp\Client;
+use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 
 /**
  * Coveralls API client.
@@ -29,8 +29,8 @@ abstract class CoverallsApi
     /**
      * Constructor.
      *
-     * @param Configuration      $config Configuration.
-     * @param \GuzzleHttp\Client $client HTTP client.
+     * @param Configuration      $config configuration
+     * @param \GuzzleHttp\Client $client hTTP client
      */
     public function __construct(Configuration $config, Client $client = null)
     {
@@ -53,7 +53,7 @@ abstract class CoverallsApi
     /**
      * Set HTTP client.
      *
-     * @param \GuzzleHttp\Client $client HTTP client.
+     * @param \GuzzleHttp\Client $client hTTP client
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\CoverallsApi
      */

@@ -34,10 +34,10 @@ class Remote extends Coveralls
      */
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
-            'url'  => $this->url,
-        );
+            'url' => $this->url,
+        ];
     }
 
     // accessor
@@ -45,7 +45,7 @@ class Remote extends Coveralls
     /**
      * Set remote name.
      *
-     * @param string $name Remote name.
+     * @param string $name remote name
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
      */
@@ -73,7 +73,7 @@ class Remote extends Coveralls
     /**
      * Set remote URL.
      *
-     * @param string $url Remote URL.
+     * @param string $url remote URL
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
      */

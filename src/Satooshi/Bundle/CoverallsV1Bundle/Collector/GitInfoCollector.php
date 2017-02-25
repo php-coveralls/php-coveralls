@@ -40,8 +40,8 @@ class GitInfoCollector
      */
     public function collect()
     {
-        $branch  = $this->collectBranch();
-        $commit  = $this->collectCommit();
+        $branch = $this->collectBranch();
+        $commit = $this->collectCommit();
         $remotes = $this->collectRemotes();
 
         return new Git($branch, $commit, $remotes);
@@ -52,9 +52,9 @@ class GitInfoCollector
     /**
      * Collect branch name.
      *
-     * @return string
-     *
      * @throws \RuntimeException
+     *
+     * @return string
      */
     protected function collectBranch()
     {
@@ -74,9 +74,9 @@ class GitInfoCollector
     /**
      * Collect commit info.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
-     *
      * @throws \RuntimeException
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
      */
     protected function collectCommit()
     {
@@ -100,9 +100,9 @@ class GitInfoCollector
     /**
      * Collect remotes info.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote[]
-     *
      * @throws \RuntimeException
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote[]
      */
     protected function collectRemotes()
     {
@@ -113,7 +113,7 @@ class GitInfoCollector
         }
 
         // parse command result
-        $results = array();
+        $results = [];
 
         foreach ($remotesResult as $result) {
             if (strpos($result, ' ') !== false) {
@@ -127,7 +127,7 @@ class GitInfoCollector
         $results = array_unique($results);
 
         // create Remote instances
-        $remotes = array();
+        $remotes = [];
 
         foreach ($results as $result) {
             if (strpos($result, "\t") !== false) {

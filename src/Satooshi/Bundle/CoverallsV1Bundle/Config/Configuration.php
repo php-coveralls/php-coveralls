@@ -39,7 +39,7 @@ class Configuration
      *
      * @var array
      */
-    protected $cloverXmlPaths = array();
+    protected $cloverXmlPaths = [];
 
     /**
      * Absolute path to output json_file.
@@ -313,7 +313,7 @@ class Configuration
     /**
      * Set runtime environment name.
      *
-     * @param string $env Runtime environment name.
+     * @param string $env runtime environment name
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */

@@ -2,13 +2,13 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
-use Satooshi\Component\System\Git\GitCommand;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Component\System\Git\GitCommand;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -16,23 +16,23 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->getBranchesValue = array(
+        $this->getBranchesValue = [
             '  master',
             '* branch1',
             '  branch2',
-        );
-        $this->getHeadCommitValue = array(
+        ];
+        $this->getHeadCommitValue = [
             'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             'Author Name',
             'author@satooshi.jp',
             'Committer Name',
             'committer@satooshi.jp',
             'commit message',
-        );
-        $this->getRemotesValue = array(
+        ];
+        $this->getRemotesValue = [
             "origin\tgit@github.com:satooshi/php-coveralls.git (fetch)",
             "origin\tgit@github.com:satooshi/php-coveralls.git (push)",
-        );
+        ];
     }
 
     protected function createGitCommandStub()
@@ -178,13 +178,13 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
-        $getBranchesValue = array(
+        $getBranchesValue = [
             '  master',
-        );
+        ];
         $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
 
         $object = new GitInfoCollector($gitCommand);
@@ -196,11 +196,11 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
-        $getHeadCommitValue = array();
+        $getHeadCommitValue = [];
         $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue, $this->getRemotesValue);
 
         $object = new GitInfoCollector($gitCommand);
@@ -212,11 +212,11 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {
-        $getRemotesValue = array();
+        $getRemotesValue = [];
         $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $getRemotesValue);
 
         $object = new GitInfoCollector($gitCommand);

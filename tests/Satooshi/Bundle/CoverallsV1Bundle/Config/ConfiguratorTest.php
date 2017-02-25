@@ -8,8 +8,8 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -59,7 +59,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath);
     }
 
     // default src_dir not found, it doesn't throw anything now.
@@ -80,7 +80,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfCoverageCloverNotFound()
     {
@@ -95,7 +95,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathDirNotWritable()
     {
@@ -108,7 +108,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathNotWritable()
     {
@@ -132,7 +132,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath);
     }
 
     // load default value yml
@@ -161,7 +161,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath);
     }
 
     /**
@@ -169,29 +169,29 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function shouldLoadCoverageCloverOverriddenByInput()
     {
-        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+        $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover.yml');
 
         // Mocking command line options.
         $defs = new InputDefinition(
-            array(
+            [
                 new InputOption(
                     'coverage_clover',
                     'x',
                     InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY
                 ),
-            )
+            ]
         );
-        $inputArray = array(
-            '--coverage_clover' => array(
+        $inputArray = [
+            '--coverage_clover' => [
                 'build/logs/clover-part1.xml',
                 'build/logs/clover-part2.xml',
-            ),
-        );
+            ],
+        ];
         $input = new ArrayInput($inputArray, $defs);
         $config = $this->object->load($path, $this->rootDir, $input);
-        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath1, $this->cloverXmlPath2], $this->jsonPath);
     }
 
     /**
@@ -199,13 +199,13 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function shouldLoadCoverageCloverYmlContainingGlobValue()
     {
-        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+        $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover_glob.yml');
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath1, $this->cloverXmlPath2], $this->jsonPath);
     }
 
     /**
@@ -213,13 +213,13 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function shouldLoadCoverageCloverYmlContainingArrayValue()
     {
-        $this->makeProjectDir($this->srcDir, $this->logsDir, array($this->cloverXmlPath1, $this->cloverXmlPath2));
+        $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover_array.yml');
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath1, $this->cloverXmlPath2), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath1, $this->cloverXmlPath2], $this->jsonPath);
     }
 
     /**
@@ -233,7 +233,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath);
     }
 
     /**
@@ -247,7 +247,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath, true);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath, true);
     }
 
     /**
@@ -261,14 +261,14 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath, false);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath, false);
     }
 
     // configured coverage_clover not found
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverNotFound()
     {
@@ -281,7 +281,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverIsNotString()
     {
@@ -296,7 +296,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadJsonPathYmlIfJsonPathNotFound()
     {
@@ -311,7 +311,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {

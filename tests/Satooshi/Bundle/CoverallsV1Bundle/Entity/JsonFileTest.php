@@ -2,16 +2,16 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Version;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Bundle\CoverallsV1Bundle\Version;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -29,14 +29,14 @@ class JsonFileTest extends ProjectTestCase
     protected function createSourceFile()
     {
         $filename = 'test.php';
-        $path     = $this->srcDir . DIRECTORY_SEPARATOR . $filename;
+        $path = $this->srcDir . DIRECTORY_SEPARATOR . $filename;
 
         return new SourceFile($path, $filename);
     }
 
     protected function getCloverXml()
     {
-        $xml = <<<XML
+        $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
@@ -91,7 +91,7 @@ XML;
 
     protected function collectJsonFile()
     {
-        $xml       = $this->createCloverXml();
+        $xml = $this->createCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
         return $collector->collect($xml, $this->srcDir);
@@ -99,7 +99,7 @@ XML;
 
     protected function getNoSourceCloverXml()
     {
-        return <<<XML
+        return <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
@@ -124,7 +124,7 @@ XML;
 
     protected function collectJsonFileWithoutSourceFiles()
     {
-        $xml       = $this->createNoSourceCloverXml();
+        $xml = $this->createNoSourceCloverXml();
         $collector = new CloverXmlCoverageCollector();
 
         return $collector->collect($xml, $this->srcDir);
@@ -328,9 +328,9 @@ XML;
      */
     public function shouldSetGit()
     {
-        $remotes = array(new Remote());
-        $head    = new Commit();
-        $git     = new Git('master', $head, $remotes);
+        $remotes = [new Remote()];
+        $head = new Commit();
+        $git = new Git('master', $head, $remotes);
 
         $obj = $this->object->setGit($git);
 
@@ -373,7 +373,7 @@ XML;
         $path = $sourceFile->getPath();
 
         $this->assertTrue($this->object->hasSourceFiles());
-        $this->assertSame(array($path => $sourceFile), $this->object->getSourceFiles());
+        $this->assertSame([$path => $sourceFile], $this->object->getSourceFiles());
         $this->assertTrue($this->object->hasSourceFile($path));
         $this->assertSame($sourceFile, $this->object->getSourceFile($path));
     }
@@ -385,10 +385,10 @@ XML;
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
-            'source_files' => array(),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+        $expected = [
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
@@ -403,10 +403,10 @@ XML;
 
         $this->object->addSourceFile($sourceFile);
 
-        $expected = array(
-            'source_files' => array($sourceFile->toArray()),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+        $expected = [
+            'source_files' => [$sourceFile->toArray()],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
@@ -422,11 +422,11 @@ XML;
     {
         $item = 'travis-ci';
 
-        $expected = array(
+        $expected = [
             'service_name' => $item,
-            'source_files' => array(),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $object->toArray());
         $this->assertSame(json_encode($expected), (string) $object);
@@ -442,11 +442,11 @@ XML;
     {
         $item = 'job_id';
 
-        $expected = array(
+        $expected = [
             'service_job_id' => $item,
-            'source_files'   => array(),
-            'environment'    => array('packagist_version' => Version::VERSION),
-        );
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $object->toArray());
         $this->assertSame(json_encode($expected), (string) $object);
@@ -462,11 +462,11 @@ XML;
     {
         $item = 'token';
 
-        $expected = array(
-            'repo_token'   => $item,
-            'source_files' => array(),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+        $expected = [
+            'repo_token' => $item,
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $object->toArray());
         $this->assertSame(json_encode($expected), (string) $object);
@@ -480,15 +480,15 @@ XML;
      */
     public function shouldConvertToArrayWithGit($object)
     {
-        $remotes = array(new Remote());
-        $head    = new Commit();
-        $git     = new Git('master', $head, $remotes);
+        $remotes = [new Remote()];
+        $head = new Commit();
+        $git = new Git('master', $head, $remotes);
 
-        $expected = array(
-            'git'          => $git->toArray(),
-            'source_files' => array(),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+        $expected = [
+            'git' => $git->toArray(),
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $object->toArray());
         $this->assertSame(json_encode($expected), (string) $object);
@@ -504,11 +504,11 @@ XML;
     {
         $item = '2013-04-04 11:22:33 +0900';
 
-        $expected = array(
-            'run_at'       => $item,
-            'source_files' => array(),
-            'environment'  => array('packagist_version' => Version::VERSION),
-        );
+        $expected = [
+            'run_at' => $item,
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
 
         $this->assertSame($expected, $object->toArray());
         $this->assertSame(json_encode($expected), (string) $object);
@@ -521,11 +521,11 @@ XML;
      */
     public function shouldFillJobsForServiceJobId()
     {
-        $serviceName  = 'travis-ci';
+        $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
 
-        $env = array();
-        $env['CI_NAME']   = $serviceName;
+        $env = [];
+        $env['CI_NAME'] = $serviceName;
         $env['CI_JOB_ID'] = $serviceJobId;
 
         $object = $this->collectJsonFile();
@@ -542,14 +542,14 @@ XML;
      */
     public function shouldFillJobsForServiceNumber()
     {
-        $repoToken     = 'token';
-        $serviceName   = 'circleci';
+        $repoToken = 'token';
+        $serviceName = 'circleci';
         $serviceNumber = '123';
 
-        $env = array();
+        $env = [];
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
-        $env['CI_NAME']              = $serviceName;
-        $env['CI_BUILD_NUMBER']      = $serviceNumber;
+        $env['CI_NAME'] = $serviceName;
+        $env['CI_BUILD_NUMBER'] = $serviceNumber;
 
         $object = $this->collectJsonFile();
 
@@ -574,20 +574,20 @@ XML;
          * CI_PULL_REQUEST=false
          */
 
-        $repoToken          = 'token';
-        $serviceName        = 'codeship';
-        $serviceNumber      = '108821';
-        $serviceBuildUrl    = 'https://www.codeship.io/projects/2777/builds/108821';
-        $serviceBranch      = 'master';
+        $repoToken = 'token';
+        $serviceName = 'codeship';
+        $serviceNumber = '108821';
+        $serviceBuildUrl = 'https://www.codeship.io/projects/2777/builds/108821';
+        $serviceBranch = 'master';
         $servicePullRequest = 'false';
 
-        $env = array();
+        $env = [];
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
-        $env['CI_NAME']              = $serviceName;
-        $env['CI_BUILD_NUMBER']      = $serviceNumber;
-        $env['CI_BUILD_URL']         = $serviceBuildUrl;
-        $env['CI_BRANCH']            = $serviceBranch;
-        $env['CI_PULL_REQUEST']      = $servicePullRequest;
+        $env['CI_NAME'] = $serviceName;
+        $env['CI_BUILD_NUMBER'] = $serviceNumber;
+        $env['CI_BUILD_URL'] = $serviceBuildUrl;
+        $env['CI_BRANCH'] = $serviceBranch;
+        $env['CI_PULL_REQUEST'] = $servicePullRequest;
 
         $object = $this->collectJsonFile();
 
@@ -607,15 +607,15 @@ XML;
      */
     public function shouldFillJobsForServiceEventType()
     {
-        $repoToken        = 'token';
-        $serviceName      = 'php-coveralls';
+        $repoToken = 'token';
+        $serviceName = 'php-coveralls';
         $serviceEventType = 'manual';
 
-        $env = array();
-        $env['COVERALLS_REPO_TOKEN']  = $repoToken;
+        $env = [];
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
         $env['COVERALLS_RUN_LOCALLY'] = '1';
-        $env['COVERALLS_EVENT_TYPE']  = $serviceEventType;
-        $env['CI_NAME']               = $serviceName;
+        $env['COVERALLS_EVENT_TYPE'] = $serviceEventType;
+        $env['CI_NAME'] = $serviceName;
 
         $object = $this->collectJsonFile();
 
@@ -635,7 +635,7 @@ XML;
     {
         $repoToken = 'token';
 
-        $env = array();
+        $env = [];
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $object = $this->collectJsonFile();
@@ -648,11 +648,11 @@ XML;
 
     /**
      * @test
-     * @expectedException Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
+     * @expectedException \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function throwRuntimeExceptionOnFillingJobsIfInvalidEnv()
     {
-        $env = array();
+        $env = [];
 
         $object = $this->collectJsonFile();
 
@@ -661,12 +661,12 @@ XML;
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionOnFillingJobsWithoutSourceFiles()
     {
-        $env = array();
-        $env['TRAVIS']        = true;
+        $env = [];
+        $env['TRAVIS'] = true;
         $env['TRAVIS_JOB_ID'] = '1.1';
 
         $object = $this->collectJsonFileWithoutSourceFiles();
@@ -708,8 +708,8 @@ XML;
         $this->assertCount(4, $sourceFiles);
 
         // filenames
-        $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
+        $paths = array_keys($sourceFiles);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);
@@ -723,8 +723,8 @@ XML;
         $this->assertCount(2, $sourceFiles);
 
         // filenames
-        $paths     = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path);}, $paths);
+        $paths = array_keys($sourceFiles);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         $this->assertContains('test.php', $filenames);
         $this->assertContains('test2.php', $filenames);

@@ -3,7 +3,7 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -28,9 +28,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetReadEnv()
     {
-        $expected = array(
+        $expected = [
             'ENV_NAME' => 'value',
-        );
+        ];
 
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);
@@ -45,9 +45,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithStringEnvVar()
     {
-        $expected = array(
+        $expected = [
             'ENV_NAME' => 'value',
-        );
+        ];
 
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);
@@ -65,9 +65,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
     public function shouldGetHelpMessageWithSecretStringEnvVarHidden()
     {
         // Make sure the secret repo token is HIDDEN.
-        $env = array(
+        $env = [
             'COVERALLS_REPO_TOKEN' => 'secret',
-        );
+        ];
         $expected = "  - COVERALLS_REPO_TOKEN='********(HIDDEN)'";
 
         $object = new RequirementsNotSatisfiedException();
@@ -84,9 +84,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
     public function shouldGetHelpMessageWithSecretEmptyStringEnvVarShown()
     {
         // Make sure the secret repo token is shown when it's empty.
-        $env = array(
+        $env = [
             'COVERALLS_REPO_TOKEN' => '',
-        );
+        ];
         $expected = "  - COVERALLS_REPO_TOKEN=''";
 
         $object = new RequirementsNotSatisfiedException();
@@ -102,9 +102,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithIntegerEnvVar()
     {
-        $expected = array(
+        $expected = [
             'ENV_NAME' => 123,
-        );
+        ];
 
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);
@@ -119,9 +119,9 @@ class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldGetHelpMessageWithBooleanEnvVar()
     {
-        $expected = array(
+        $expected = [
             'ENV_NAME' => true,
-        );
+        ];
 
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);

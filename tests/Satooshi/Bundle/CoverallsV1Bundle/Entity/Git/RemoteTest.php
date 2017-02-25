@@ -3,8 +3,8 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -72,10 +72,10 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToArray()
     {
-        $expected = array(
+        $expected = [
             'name' => null,
-            'url'  => null,
-        );
+            'url' => null,
+        ];
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
@@ -87,16 +87,16 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     public function shouldConvertToFilledArray()
     {
         $name = 'name';
-        $url  = 'url';
+        $url = 'url';
 
         $this->object
         ->setName($name)
         ->setUrl($url);
 
-        $expected = array(
+        $expected = [
             'name' => $name,
-            'url'  => $url,
-        );
+            'url' => $url,
+        ];
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
