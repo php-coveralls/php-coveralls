@@ -27,14 +27,14 @@ class JobsRepositoryTest extends ProjectTestCase
 
     private function setUpJobsApiMethods()
     {
-        return array(
+        return [
             'collectCloverXml',
             'getJsonFile',
             'collectGitInfo',
             'collectEnvVars',
             'dumpJsonFile',
             'send',
-        );
+        ];
     }
 
     private function setUpJobsApiWithCollectCloverXmlCalled($api)
@@ -287,14 +287,14 @@ class JobsRepositoryTest extends ProjectTestCase
     public function shouldPersist()
     {
         $statusCode = 200;
-        $url        = 'https://coveralls.io/jobs/67528';
-        $response   = new \GuzzleHttp\Psr7\Response(
-            $statusCode, array(), json_encode(array(
+        $url = 'https://coveralls.io/jobs/67528';
+        $response = new \GuzzleHttp\Psr7\Response(
+            $statusCode, [], json_encode([
                 'message' => 'Job #115.3',
-                'url'     => $url,
-            )), '1.1', 'OK'
+                'url' => $url,
+            ]), '1.1', 'OK'
         );
-        $api    = $this->createApiMock($response, $statusCode, $url);
+        $api = $this->createApiMock($response, $statusCode, $url);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -377,14 +377,14 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response422()
     {
         $statusCode = 422;
-        $response   = new \GuzzleHttp\Psr7\Response(
-            $statusCode, array(), json_encode(array(
+        $response = new \GuzzleHttp\Psr7\Response(
+            $statusCode, [], json_encode([
                 'message' => 'Build processing error.',
-                'url'     => '',
-                'error'   => true,
-            )), '1.1', 'Unprocessable Entity'
+                'url' => '',
+                'error' => true,
+            ]), '1.1', 'Unprocessable Entity'
         );
-        $api    = $this->createApiMock($response, $statusCode);
+        $api = $this->createApiMock($response, $statusCode);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -402,10 +402,10 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response500()
     {
         $statusCode = 500;
-        $response   = new \GuzzleHttp\Psr7\Response($statusCode, array(), null, '1.1', 'Internal Server Error');
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $response = new \GuzzleHttp\Psr7\Response($statusCode, [], null, '1.1', 'Internal Server Error');
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
