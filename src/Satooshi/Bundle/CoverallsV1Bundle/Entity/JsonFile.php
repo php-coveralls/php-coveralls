@@ -79,7 +79,7 @@ class JsonFile extends Coveralls
     /**
      * Git data.
      *
-     * @var array
+     * @var Git
      */
     protected $git;
 
@@ -557,7 +557,7 @@ class JsonFile extends Coveralls
     /**
      * Set git data.
      *
-     * @param array $git Git data.
+     * @param Git $git Git data.
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -571,7 +571,7 @@ class JsonFile extends Coveralls
     /**
      * Return git data.
      *
-     * @return array
+     * @return Git
      */
     public function getGit()
     {
