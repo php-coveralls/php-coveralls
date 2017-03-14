@@ -10,18 +10,35 @@ namespace Satooshi\Component\System\Git;
  */
 class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
-    protected function createGitCommandMock($params)
+    protected function createGitBranchesCommandMock($params)
     {
         $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
         $adapter
             ->getBranches()
-            ->willReturn($params);
+            ->willReturn($params)
+            ->shouldBeCalled();
+
+        return $adapter->reveal();
+    }
+
+    protected function createGitHeadCommitCommandMock($params)
+    {
+        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
         $adapter
             ->getHeadCommit()
-            ->willReturn($params);
+            ->willReturn($params)
+            ->shouldBeCalled();
+
+        return $adapter->reveal();
+    }
+
+    protected function createGitRemotesCommandMock($params)
+    {
+        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
         $adapter
             ->getRemotes()
-            ->willReturn($params);
+            ->willReturn($params)
+            ->shouldBeCalled();
 
         return $adapter->reveal();
     }
@@ -48,9 +65,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitBranchCommand()
     {
-        $expected = 'git branch';
-
-        $object = $this->createGitCommandMock($expected);
+        $object = $this->createGitBranchesCommandMock('git branch');
         $object->getBranches();
     }
 
@@ -73,9 +88,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitLogCommand()
     {
-        $expected = "git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'";
-
-        $object = $this->createGitCommandMock($expected);
+        $object = $this->createGitHeadCommitCommandMock("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
         $object->getHeadCommit();
     }
 
@@ -99,9 +112,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldExecuteGitRemoteCommand()
     {
-        $expected = 'git remote -v';
-
-        $object = $this->createGitCommandMock($expected);
+        $object = $this->createGitRemotesCommandMock('git remote -v');
         $object->getRemotes();
     }
 
