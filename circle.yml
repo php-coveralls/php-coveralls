@@ -1,13 +1,13 @@
 machine:
-  timezone: America/Los_Angeles
   php:
-    version: 5.5.0
+    version:
+      7.1.0
 
 dependencies:
   override:
     - mkdir -p build/logs
+    - echo "date.timezone = America/Los_Angeles" > /opt/circleci/php/$(phpenv global)/etc/conf.d/date.ini
     - composer update --prefer-stable --prefer-lowest --no-interaction
-    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
 
 test:
   override:

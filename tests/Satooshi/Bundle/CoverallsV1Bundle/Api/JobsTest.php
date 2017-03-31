@@ -70,35 +70,31 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('GuzzleHttp\Client', ['send']);
-
+        $client = $this->prophesize('\GuzzleHttp\Client');
         $client
-        ->expects($this->never())
-        ->method('send');
+            ->send()
+            ->shouldNotBeCalled();
 
-        return $client;
+        return $client->reveal();
     }
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('GuzzleHttp\Client', ['post']);
-        $response = $this->getMock('GuzzleHttp\Psr7\Response');
+        $response = $this->prophesize('\GuzzleHttp\Psr7\Response');
+        $response->reveal();
 
+        $client = $this->prophesize('\GuzzleHttp\Client');
         $client
-        ->expects($this->once())
-        ->method('post')
-        ->with(
-            $this->equalTo($url),
-            $this->callback(function ($options) use ($filename) {
+            ->post($url, \Prophecy\Argument::that(function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
                     && $options['multipart'][0]['name'] === $filename
                     && is_resource($options['multipart'][0]['contents']);
-            })
-        )
-        ->willReturn($response);
+            }))
+            ->willReturn($response)
+            ->shouldBeCalled();
 
-        return $client;
+        return $client->reveal();
     }
 
     protected function createConfiguration()

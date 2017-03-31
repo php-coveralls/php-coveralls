@@ -8,6 +8,7 @@ matrix:
           env: 'BOX=yes'
         - php: 5.6
         - php: 7.0
+        - php: 7.1
           env: CHECKS=yes
         - php: hhvm
 
@@ -25,7 +26,7 @@ install:
 
 script:
     - cp ${HOME}/xdebug.ini ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - phpunit
+    - phpunit -v
     - rm ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 

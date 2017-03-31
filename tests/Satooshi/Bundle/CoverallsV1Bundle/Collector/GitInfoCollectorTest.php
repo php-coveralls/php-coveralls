@@ -35,79 +35,75 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    protected function createGitCommandStub()
-    {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-
-        return $this->getMock($class);
-    }
-
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
         $this->setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue);
 
-        return $stub;
+        return $stub->reveal();
     }
 
     protected function createGitCommandStubCalledBranches($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue);
         $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
 
-        return $stub;
+        return $stub->reveal();
     }
 
     protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
         $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
 
-        return $stub;
+        return $stub->reveal();
     }
 
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {
-        $stub->expects($this->once())
-        ->method('getBranches')
-        ->will($this->returnValue($getBranchesValue));
+        $stub
+            ->getBranches()
+            ->willReturn($getBranchesValue)
+            ->shouldBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue)
     {
-        $stub->expects($this->once())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+        $stub
+            ->getHeadCommit()
+            ->willReturn($getHeadCommitValue)
+            ->shouldBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue)
     {
-        $stub->expects($this->never())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+        $stub
+            ->getHeadCommit()
+            ->shouldNotBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue)
     {
-        $stub->expects($this->once())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+        $stub
+            ->getRemotes()
+            ->willReturn($getRemotesValue)
+            ->shouldBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue)
     {
-        $stub->expects($this->never())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+        $stub
+            ->getRemotes()
+            ->shouldNotBeCalled();
     }
 
     // getCommand()
