@@ -19,23 +19,21 @@ class JsonFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
-
-        $this->setUpDir($this->projectDir);
-
+        parent::setUp();
         $this->object = new JsonFile();
     }
 
     protected function createSourceFile()
     {
         $filename = 'test.php';
-        $path = $this->srcDir . DIRECTORY_SEPARATOR . $filename;
+        $path = $this->getSrcDirSeparator() . $filename;
 
         return new SourceFile($path, $filename);
     }
 
     protected function getCloverXml()
     {
+        $srcDirSeparator = $this->getSrcDirSeparator();
         $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
@@ -79,7 +77,7 @@ class JsonFileTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR);
+        return sprintf($xml, $srcDirSeparator, $srcDirSeparator, $srcDirSeparator, $srcDirSeparator);
     }
 
     protected function createCloverXml()
@@ -699,7 +697,7 @@ XML;
      */
     public function shouldExcludeNoStatementsFiles()
     {
-        $srcDir = $this->srcDir . DIRECTORY_SEPARATOR;
+        $srcDir = $this->getSrcDirSeparator();
 
         $object = $this->collectJsonFile();
 

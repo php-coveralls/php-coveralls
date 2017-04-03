@@ -7,23 +7,44 @@ use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 
 class ProjectTestCase extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        $this->projectDir = realpath(dirname(__DIR__));
+        $this->setUpDir($this->projectDir);
+    }
+
     protected function setUpDir($projectDir)
     {
         $this->rootDir = realpath($projectDir . DIRECTORY_SEPARATOR . 'prj');
-        $this->srcDir = realpath($this->rootDir . DIRECTORY_SEPARATOR . 'files');
+        $this->srcDir = realpath($this->getRootDirSeparator() . 'files');
 
         $this->url = 'https://coveralls.io/api/v1/jobs';
         $this->filename = 'json_file';
 
         // build
-        $this->buildDir = $this->rootDir . DIRECTORY_SEPARATOR . 'build';
-        $this->logsDir = $this->rootDir . DIRECTORY_SEPARATOR . 'build' . DIRECTORY_SEPARATOR . 'logs';
+        $this->buildDir = $this->getRootDirSeparator() . 'build';
+        $this->logsDir = $this->getRootDirSeparator() . 'build' . DIRECTORY_SEPARATOR . 'logs';
 
         // log
-        $this->cloverXmlPath = $this->logsDir . DIRECTORY_SEPARATOR . 'clover.xml';
-        $this->cloverXmlPath1 = $this->logsDir . DIRECTORY_SEPARATOR . 'clover-part1.xml';
-        $this->cloverXmlPath2 = $this->logsDir . DIRECTORY_SEPARATOR . 'clover-part2.xml';
-        $this->jsonPath = $this->logsDir . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
+        $this->cloverXmlPath = $this->getLogsDirSeparator() . 'clover.xml';
+        $this->cloverXmlPath1 = $this->getLogsDirSeparator() . 'clover-part1.xml';
+        $this->cloverXmlPath2 = $this->getLogsDirSeparator() . 'clover-part2.xml';
+        $this->jsonPath = $this->getLogsDirSeparator() . 'coveralls-upload.json';
+    }
+
+    protected function getRootDirSeparator()
+    {
+        return $this->rootDir . DIRECTORY_SEPARATOR;
+    }
+
+    protected function getSrcDirSeparator()
+    {
+        return $this->srcDir . DIRECTORY_SEPARATOR;
+    }
+
+    private function getLogsDirSeparator()
+    {
+        return $this->logsDir . DIRECTORY_SEPARATOR;
     }
 
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)

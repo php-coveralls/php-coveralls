@@ -12,13 +12,6 @@ use Satooshi\ProjectTestCase;
  */
 class CiEnvVarsCollectorTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
-
-        $this->setUpDir($this->projectDir);
-    }
-
     protected function createConfiguration()
     {
         $config = new Configuration();

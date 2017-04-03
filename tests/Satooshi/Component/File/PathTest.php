@@ -13,10 +13,11 @@ class PathTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->existingFile = __DIR__ . DIRECTORY_SEPARATOR . 'existing.txt';
-        $this->unreadablePath = __DIR__ . DIRECTORY_SEPARATOR . 'unreadable.txt';
-        $this->unwritablePath = __DIR__ . DIRECTORY_SEPARATOR . 'unwritable.txt';
-        $this->unwritableDir = __DIR__ . DIRECTORY_SEPARATOR . 'unwritable.dir';
+        $currentDir = __DIR__ . DIRECTORY_SEPARATOR;
+        $this->existingFile = $currentDir . 'existing.txt';
+        $this->unreadablePath = $currentDir . 'unreadable.txt';
+        $this->unwritablePath = $currentDir . 'unwritable.txt';
+        $this->unwritableDir = $currentDir . 'unwritable.dir';
 
         $this->object = new Path();
     }

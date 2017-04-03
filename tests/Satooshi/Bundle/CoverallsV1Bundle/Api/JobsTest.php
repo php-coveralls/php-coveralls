@@ -16,13 +16,6 @@ use Satooshi\ProjectTestCase;
  */
 class JobsTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
-
-        $this->setUpDir($this->projectDir);
-    }
-
     protected function tearDown()
     {
         $this->rmFile($this->jsonPath);
@@ -107,6 +100,7 @@ class JobsTest extends ProjectTestCase
 
     protected function getCloverXml()
     {
+        $srcDirSeparator = $this->getSrcDirSeparator();
         $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
@@ -150,7 +144,7 @@ class JobsTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR, $this->srcDir . DIRECTORY_SEPARATOR);
+        return sprintf($xml, $srcDirSeparator, $srcDirSeparator, $srcDirSeparator, $srcDirSeparator);
     }
 
     protected function createCloverXml()

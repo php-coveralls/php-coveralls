@@ -18,11 +18,8 @@ class ConfiguratorTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..');
-
-        $this->setUpDir($this->projectDir);
-
-        $this->srcDir = $this->rootDir . DIRECTORY_SEPARATOR . 'src';
+        parent::setUp();
+        $this->srcDir = $this->getRootDirSeparator() . 'src';
 
         $this->object = new Configurator();
     }
@@ -38,9 +35,9 @@ class ConfiguratorTest extends ProjectTestCase
         $this->rmDir($this->buildDir);
     }
 
-    public static function getYmlFilePath($fileName)
+    private static function getYmlFilePath($fileName, $env)
     {
-        if (Path::isWindowsOS()) {
+        if (Path::isWindowsOS() && $env) {
             return realpath(__DIR__ . '\yaml\\' . $fileName . '_win.yml');
         }
 
@@ -65,7 +62,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'dummy.yml');
+        $path = self::getYmlFilePath('dummy', false);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -81,7 +78,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir(null, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'dummy.yml');
+        $path = self::getYmlFilePath('dummy', false);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -96,7 +93,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, null);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'dummy.yml');
+        $path = self::getYmlFilePath('dummy', false);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -111,7 +108,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, true);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'dummy.yml');
+        $path = self::getYmlFilePath('dummy', false);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -124,7 +121,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, false, true);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'dummy.yml');
+        $path = self::getYmlFilePath('dummy', false);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -138,7 +135,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'empty.yml');
+        $path = self::getYmlFilePath('empty', false);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -155,7 +152,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'src_dir.yml');
+        $path = self::getYmlFilePath('src_dir', false);
 
         $config = $this->object->load($path, $this->rootDir);
     }
@@ -167,7 +164,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = self::getYmlFilePath('coverage_clover');
+        $path = self::getYmlFilePath('coverage_clover', true);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -181,7 +178,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
-        $path = self::getYmlFilePath('coverage_clover');
+        $path = self::getYmlFilePath('coverage_clover', true);
 
         // Mocking command line options.
         $defs = new InputDefinition(
@@ -211,7 +208,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
-        $path = self::getYmlFilePath('coverage_clover_glob');
+        $path = self::getYmlFilePath('coverage_clover_glob', true);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -225,7 +222,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, [$this->cloverXmlPath1, $this->cloverXmlPath2]);
 
-        $path = self::getYmlFilePath('coverage_clover_array');
+        $path = self::getYmlFilePath('coverage_clover_array', true);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -239,7 +236,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = self::getYmlFilePath('json_path');
+        $path = self::getYmlFilePath('json_path', true);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -253,7 +250,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'exclude_no_stmt_true.yml');
+        $path = self::getYmlFilePath('exclude_no_stmt_true', false);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -267,7 +264,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'exclude_no_stmt_false.yml');
+        $path = self::getYmlFilePath('exclude_no_stmt_false', false);
 
         $config = $this->object->load($path, $this->rootDir);
 
@@ -284,7 +281,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = self::getYmlFilePath('coverage_clover_not_found');
+        $path = self::getYmlFilePath('coverage_clover_not_found', true);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -297,7 +294,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'coverage_clover_invalid.yml');
+        $path = self::getYmlFilePath('coverage_clover_invalid', false);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -312,7 +309,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = self::getYmlFilePath('json_path_not_found');
+        $path = self::getYmlFilePath('json_path_not_found', true);
 
         $this->object->load($path, $this->rootDir);
     }
@@ -327,7 +324,7 @@ class ConfiguratorTest extends ProjectTestCase
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . DIRECTORY_SEPARATOR . 'yaml' . DIRECTORY_SEPARATOR . 'exclude_no_stmt_invalid.yml');
+        $path = self::getYmlFilePath('exclude_no_stmt_invalid', false);
 
         $this->object->load($path, $this->rootDir);
     }
