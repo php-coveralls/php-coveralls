@@ -13,7 +13,7 @@ class PathTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $currentDir = __DIR__ . DIRECTORY_SEPARATOR;
+        $currentDir = $this->getPathSeparator(__DIR__);
         $this->existingFile = $currentDir . 'existing.txt';
         $this->unreadablePath = $currentDir . 'unreadable.txt';
         $this->unwritablePath = $currentDir . 'unwritable.txt';
@@ -273,7 +273,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealPath()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealPathExist($path));
     }
@@ -295,7 +295,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealFile()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileExist($path));
     }
@@ -327,7 +327,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealFileReadableIfFileNotFound()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileReadable($path));
     }
@@ -359,7 +359,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealFileWritableIfFileNotFound()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileWritable($path));
     }
@@ -393,7 +393,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealDir()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealDirExist($path));
     }
@@ -425,7 +425,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealDirWritableIfDirNotFound()
     {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealDirWritable($path));
     }

@@ -47,6 +47,11 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
         return $this->logsDir . DIRECTORY_SEPARATOR;
     }
 
+    protected function getPathSeparator($path)
+    {
+        return $path . DIRECTORY_SEPARATOR;
+    }
+
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)
     {
         if ($srcDir !== null && !is_dir($srcDir)) {
