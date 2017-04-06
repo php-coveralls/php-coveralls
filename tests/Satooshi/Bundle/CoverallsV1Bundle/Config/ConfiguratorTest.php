@@ -239,6 +239,35 @@ class ConfiguratorTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldLoadJsonPathOverriddenByInput()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/json_path.yml');
+
+        // Mocking command line options.
+        $defs = new InputDefinition(
+            array(
+                new InputOption(
+                    'json_path',
+                    'j',
+                    InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY
+                ),
+            )
+        );
+        $inputArray = array(
+            '--json_path' => array(
+                'build/logs/coveralls-upload.json',
+            ),
+        );
+        $input = new ArrayInput($inputArray, $defs);
+        $config = $this->object->load($path, $this->rootDir, $input);
+        $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
+    }
+
+    /**
+     * @test
+     */
     public function shouldLoadExcludeNoStmtYmlContainingTrue()
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
