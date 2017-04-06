@@ -132,7 +132,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldConvertAbsolutePathIfRelativePathGiven($path)
     {
-        $rootDir = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'dir';
+        $rootDir = $this->getPathToSeparator() . 'dir';
 
         $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
 
@@ -144,7 +144,7 @@ class PathTest extends ProjectTestCase
      */
     public function shouldConvertAbsolutePathIfAbsolutePathGiven()
     {
-        $rootDir = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'dir';
+        $rootDir = $this->getPathToSeparator() . 'dir';
         $path = __DIR__;
 
         $expected = $path;

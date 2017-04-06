@@ -2,12 +2,14 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
 
+use Satooshi\ProjectTestCase;
+
 /**
  * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends ProjectTestCase
 {
     protected function setUp()
     {
@@ -211,7 +213,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetCloverXmlPaths()
     {
-        $expected = [DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'clover.xml'];
+        $expected = [$this->getPathToSeparator() . 'clover.xml'];
 
         $same = $this->object->setCloverXmlPaths($expected);
 
@@ -226,7 +228,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAddCloverXmlPath()
     {
-        $expected = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'clover.xml';
+        $expected = $this->getPathToSeparator() . 'clover.xml';
 
         $same = $this->object->addCloverXmlPath($expected);
 
@@ -241,7 +243,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetJsonPath()
     {
-        $expected = DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR . 'coveralls-upload.json';
+        $expected = $this->getPathToSeparator() . 'coveralls-upload.json';
 
         $same = $this->object->setJsonPath($expected);
 

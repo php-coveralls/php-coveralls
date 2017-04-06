@@ -190,10 +190,11 @@ class ConfiguratorTest extends ProjectTestCase
                 ),
             ]
         );
+        $defaultFilePath = CoverallsConfiguration::getDefaultFilePath();
         $inputArray = [
             '--coverage_clover' => [
-                'build' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'clover-part1.xml',
-                'build' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'clover-part2.xml',
+                $defaultFilePath . 'clover-part1.xml',
+                $defaultFilePath . 'clover-part2.xml',
             ],
         ];
         $input = new ArrayInput($inputArray, $defs);

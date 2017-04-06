@@ -2,6 +2,7 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Command;
 
+use Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration;
 use Satooshi\ProjectTestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -94,7 +95,7 @@ XML;
                 '--dry-run' => true,
                 '--config' => 'coveralls.yml',
                 '--env' => 'test',
-                '--coverage_clover' => 'build' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR . 'clover.xml',
+                '--coverage_clover' => CoverallsConfiguration::getDefaultFilePath() . 'clover.xml',
             ]
         );
 

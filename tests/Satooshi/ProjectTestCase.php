@@ -47,6 +47,11 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
         return $this->logsDir . DIRECTORY_SEPARATOR;
     }
 
+    protected function getPathToSeparator()
+    {
+        return DIRECTORY_SEPARATOR . 'path' . DIRECTORY_SEPARATOR . 'to' . DIRECTORY_SEPARATOR;
+    }
+
     protected function getPathSeparator($path)
     {
         return $path . DIRECTORY_SEPARATOR;
