@@ -2,14 +2,14 @@
 
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
-    ->setRules(array(
+    ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
-        'array_syntax' => array('syntax' => 'short'),
+        'array_syntax' => ['syntax' => 'short'],
         'combine_consecutive_unsets' => true,
-        'concat_space' => array('spacing' => 'one'),
+        'concat_space' => ['spacing' => 'one'],
         'heredoc_to_nowdoc' => true,
-        'no_extra_consecutive_blank_lines' => array('break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'),
+        'no_extra_consecutive_blank_lines' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
         'no_unreachable_default_argument_value' => true,
         'no_useless_else' => true,
         'ordered_imports' => true,
@@ -19,10 +19,10 @@ return PhpCsFixer\Config::create()
         'psr4' => true,
         'strict_comparison' => true,
         'strict_param' => true,
-    ))
+    ])
     ->setFinder(
         PhpCsFixer\Finder::create()
-            ->in(__DIR__ . '/tests/Satooshi')
-            ->in(__DIR__ . '/src')
+            ->in(__DIR__ . DIRECTORY_SEPARATOR . 'tests' . DIRECTORY_SEPARATOR . 'Satooshi')
+            ->in(__DIR__ . DIRECTORY_SEPARATOR . 'src')
     )
 ;

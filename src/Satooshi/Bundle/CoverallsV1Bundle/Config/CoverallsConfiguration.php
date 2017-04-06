@@ -22,6 +22,11 @@ class CoverallsConfiguration implements ConfigurationInterface
 {
     // ConfigurationInterface
 
+    public static function getDefaultFilePath()
+    {
+        return 'build' . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR;
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -34,6 +39,7 @@ class CoverallsConfiguration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('coveralls');
 
+        $defaultFilePath = self::getDefaultFilePath();
         $rootNode
             ->children()
                 // same as ruby lib
@@ -47,10 +53,10 @@ class CoverallsConfiguration implements ConfigurationInterface
                     ->defaultNull()
                 ->end()
                 ->variableNode('coverage_clover')
-                    ->defaultValue('build/logs/clover.xml')
+                    ->defaultValue($defaultFilePath . 'clover.xml')
                 ->end()
                 ->scalarNode('json_path')
-                    ->defaultValue('build/logs/coveralls-upload.json')
+                    ->defaultValue($defaultFilePath . 'coveralls-upload.json')
                 ->end()
                 ->booleanNode('exclude_no_stmt')
                     ->defaultFalse()

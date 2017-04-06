@@ -2,19 +2,22 @@
 
 namespace Satooshi\Component\File;
 
+use Satooshi\ProjectTestCase;
+
 /**
  * @covers \Satooshi\Component\File\Path
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class PathTest extends \PHPUnit_Framework_TestCase
+class PathTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->existingFile = __DIR__ . '/existing.txt';
-        $this->unreadablePath = __DIR__ . '/unreadable.txt';
-        $this->unwritablePath = __DIR__ . '/unwritable.txt';
-        $this->unwritableDir = __DIR__ . '/unwritable.dir';
+        $currentDir = $this->getPathSeparator(__DIR__);
+        $this->existingFile = $currentDir . 'existing.txt';
+        $this->unreadablePath = $currentDir . 'unreadable.txt';
+        $this->unwritablePath = $currentDir . 'unwritable.txt';
+        $this->unwritableDir = $currentDir . 'unwritable.dir';
 
         $this->object = new Path();
     }
@@ -28,44 +31,40 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $this->rmDir($this->unwritableDir);
     }
 
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            chmod($file, 0777);
-            unlink($file);
-        }
-    }
-
-    protected function rmDir($dir)
-    {
-        if (is_dir($dir)) {
-            chmod($dir, 0777);
-            rmdir($dir);
-        }
-    }
-
     protected function touchUnreadableFile()
     {
         $this->rmFile($this->unreadablePath);
 
-        touch($this->unreadablePath);
-        chmod($this->unreadablePath, 0377);
-    }
+        if (!Path::isWindowsOS()) {
+            touch($this->unreadablePath);
+            chmod($this->unreadablePath, 0377);
+        } else {
+            $command = 'attrib -A -H -I -R -S ' . $this->unreadablePath;
+            exec($command, $result, $returnValue);
 
-    protected function touchUnwritableFile()
-    {
-        $this->rmFile($this->unwritablePath);
-
-        touch($this->unwritablePath);
-        chmod($this->unwritablePath, 0577);
+            if ($returnValue !== 0) {
+                throw new \RuntimeException(sprintf('Failed to execute command: %s', $command), $returnValue);
+            }
+        }
     }
 
     protected function mkdirUnwritableDir()
     {
         $this->rmDir($this->unwritableDir);
 
-        mkdir($this->unwritableDir);
-        chmod($this->unwritableDir, 0577);
+        if (!Path::isWindowsOS()) {
+            mkdir($this->unwritableDir);
+            chmod($this->unwritableDir, 0577);
+        } elseif (is_dir($this->unwritableDir)) {
+            throw new InvalidConfigurationException(sprintf('Windows directory attribute is ng: %s', $this->unwritableDir));
+        } else {
+            $command = 'attrib -A -H -I +R -S ' . $this->unwritableDir;
+            exec($command, $result, $returnValue);
+
+            if ($returnValue !== 0) {
+                throw new \RuntimeException(sprintf('Failed to execute command: %s', $command), $returnValue);
+            }
+        }
     }
 
     // provider
@@ -81,7 +80,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
 
     public function provideAbsolutePaths()
     {
-        if ($this->isWindowsOS()) {
+        if (Path::isWindowsOS()) {
             return [
                 ['c:\\'],
                 ['z:\\path\\to\\somewhere'],
@@ -133,7 +132,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertAbsolutePathIfRelativePathGiven($path)
     {
-        $rootDir = '/path/to/dir';
+        $rootDir = $this->getPathToSeparator() . 'dir';
 
         $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
 
@@ -145,7 +144,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertAbsolutePathIfAbsolutePathGiven()
     {
-        $rootDir = '/path/to/dir';
+        $rootDir = $this->getPathToSeparator() . 'dir';
         $path = __DIR__;
 
         $expected = $path;
@@ -226,7 +225,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $path = __DIR__;
         $rootDir = '';
 
-        $expected = realpath($path . '/..');
+        $expected = realpath($path . DIRECTORY_SEPARATOR . '..');
 
         $this->assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
@@ -274,7 +273,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotExistRealPath()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealPathExist($path));
     }
@@ -296,7 +295,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotExistRealFile()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileExist($path));
     }
@@ -328,7 +327,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealFileReadableIfFileNotFound()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileReadable($path));
     }
@@ -338,11 +337,6 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealFileReadableIfFileUnreadable()
     {
-        if ($this->isWindowsOS()) {
-            // On Windows there is no write-only attribute.
-            $this->markTestSkipped('Unable to run on Windows');
-        }
-
         $this->touchUnreadableFile();
 
         $this->assertFalse($this->object->isRealFileReadable($this->unreadablePath));
@@ -365,7 +359,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealFileWritableIfFileNotFound()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.file';
 
         $this->assertFalse($this->object->isRealFileWritable($path));
     }
@@ -375,7 +369,9 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealFileWritableIfFileUnwritable()
     {
-        $this->touchUnwritableFile();
+        $this->rmFile($this->unwritablePath);
+        touch($this->unwritablePath);
+        $this->unwritableFile($this->unwritablePath);
 
         $this->assertFalse($this->object->isRealFileWritable($this->unwritablePath));
     }
@@ -397,7 +393,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotExistRealDir()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealDirExist($path));
     }
@@ -429,7 +425,7 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealDirWritableIfDirNotFound()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = $this->getPathSeparator(__DIR__) . 'dummy.dir';
 
         $this->assertFalse($this->object->isRealDirWritable($path));
     }
@@ -439,11 +435,6 @@ class PathTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldNotBeRealDirWritableIfDirUnwritable()
     {
-        if ($this->isWindowsOS()) {
-            // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
-            $this->markTestSkipped('Unable to run on Windows');
-        }
-
         $this->mkdirUnwritableDir();
 
         $this->assertFalse($this->object->isRealDirWritable($this->unwritableDir));
@@ -457,16 +448,5 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $path = __DIR__;
 
         $this->assertTrue($this->object->isRealDirWritable($path));
-    }
-
-    private function isWindowsOS()
-    {
-        static $isWindows;
-
-        if ($isWindows === null) {
-            $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
-        }
-
-        return $isWindows;
     }
 }

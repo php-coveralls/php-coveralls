@@ -14,12 +14,9 @@ class SourceFileTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
-
-        $this->setUpDir($this->projectDir);
-
+        parent::setUp();
         $this->filename = 'test.php';
-        $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->path = $this->getSrcDirSeparator() . $this->filename;
 
         $this->object = new SourceFile($this->path, $this->filename);
     }

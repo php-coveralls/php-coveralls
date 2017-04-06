@@ -12,13 +12,6 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  */
 class ApplicationTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
-
-        $this->setUpDir($this->projectDir);
-    }
-
     protected function tearDown()
     {
         $this->rmFile($this->cloverXmlPath);
@@ -29,11 +22,12 @@ class ApplicationTest extends ProjectTestCase
 
     protected function getCloverXml()
     {
+        $srcDirSeparator = $this->getSrcDirSeparator();
         $xml = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
 <coverage generated="1365848893">
   <project timestamp="1365848893">
-    <file name="%s/test.php">
+    <file name="%stest.php">
       <class name="TestFile" namespace="global">
         <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </class>
@@ -41,7 +35,7 @@ class ApplicationTest extends ProjectTestCase
       <line num="7" type="stmt" count="0"/>
     </file>
     <package name="Hoge">
-      <file name="%s/test2.php">
+      <file name="%stest2.php">
         <class name="TestFile" namespace="Hoge">
           <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
         </class>
@@ -53,7 +47,7 @@ class ApplicationTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir);
+        return sprintf($xml, $srcDirSeparator, $srcDirSeparator);
     }
 
     protected function dumpCloverXml()
