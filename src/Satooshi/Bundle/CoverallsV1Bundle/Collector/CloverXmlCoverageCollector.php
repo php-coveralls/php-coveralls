@@ -24,8 +24,8 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage from XML object.
      *
-     * @param \SimpleXMLElement $xml     Clover XML object.
-     * @param string            $rootDir Path to repository root directory.
+     * @param \SimpleXMLElement $xml     clover XML object
+     * @param string            $rootDir path to repository root directory
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -64,15 +64,15 @@ class CloverXmlCoverageCollector
     /**
      * Collect timestamp when the job ran.
      *
-     * @param SimpleXMLElement $xml    Clover XML object of a file.
-     * @param string           $format DateTime format.
+     * @param \SimpleXMLElement $xml    clover XML object of a file
+     * @param string            $format dateTime format
      *
      * @return string
      */
     protected function collectRunAt(\SimpleXMLElement $xml, $format = 'Y-m-d H:i:s O')
     {
         $timestamp = $xml->project['timestamp'];
-        $runAt     = new \DateTime('@' . $timestamp);
+        $runAt = new \DateTime('@' . $timestamp);
 
         return $runAt->format($format);
     }
@@ -80,8 +80,8 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data of a file.
      *
-     * @param SimpleXMLElement $file Clover XML object of a file.
-     * @param string           $root Path to src directory.
+     * @param \SimpleXMLElement $file clover XML object of a file
+     * @param string            $root path to src directory
      *
      * @return null|\Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
      */
@@ -105,9 +105,9 @@ class CloverXmlCoverageCollector
     /**
      * Collect coverage data.
      *
-     * @param SimpleXMLElement $file     Clover XML object of a file.
-     * @param string           $path     Path to source file.
-     * @param string           $filename Filename.
+     * @param \SimpleXMLElement $file     clover XML object of a file
+     * @param string            $path     path to source file
+     * @param string            $filename filename
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
      */

@@ -8,8 +8,8 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\Configurator
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Config\CoverallsConfiguration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -80,7 +80,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfCoverageCloverNotFound()
     {
@@ -95,7 +95,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathDirNotWritable()
     {
@@ -108,7 +108,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathNotWritable()
     {
@@ -268,7 +268,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverNotFound()
     {
@@ -281,7 +281,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverIsNotString()
     {
@@ -296,7 +296,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadJsonPathYmlIfJsonPathNotFound()
     {
@@ -311,7 +311,7 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {

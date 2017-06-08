@@ -5,8 +5,8 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Entity;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -19,7 +19,7 @@ class SourceFileTest extends ProjectTestCase
         $this->setUpDir($this->projectDir);
 
         $this->filename = 'test.php';
-        $this->path     = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
 
         $this->object = new SourceFile($this->path, $this->filename);
     }
@@ -86,8 +86,8 @@ class SourceFileTest extends ProjectTestCase
     public function shouldConvertToArray()
     {
         $expected = array(
-            'name'     => $this->filename,
-            'source'   => trim(file_get_contents($this->path)),
+            'name' => $this->filename,
+            'source' => trim(file_get_contents($this->path)),
             'coverage' => array_fill(0, 9, null),
         );
 

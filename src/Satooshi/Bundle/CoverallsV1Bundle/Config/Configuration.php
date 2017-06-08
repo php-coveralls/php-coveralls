@@ -163,7 +163,7 @@ class Configuration
     /**
      * Set absolute paths to clover.xml.
      *
-     * @param string $cloverXmlPaths
+     * @param string[] $cloverXmlPaths
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */
@@ -191,7 +191,7 @@ class Configuration
     /**
      * Return absolute path to clover.xml.
      *
-     * @return string
+     * @return string[]
      */
     public function getCloverXmlPaths()
     {
@@ -313,7 +313,7 @@ class Configuration
     /**
      * Set runtime environment name.
      *
-     * @param string $env Runtime environment name.
+     * @param string $env runtime environment name
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
      */

@@ -79,7 +79,7 @@ class JsonFile extends Coveralls
     /**
      * Git data.
      *
-     * @var array
+     * @var Git
      */
     protected $git;
 
@@ -112,17 +112,17 @@ class JsonFile extends Coveralls
 
         $arrayMap = array(
             // json key => property name
-            'service_name'         => 'serviceName',
-            'service_job_id'       => 'serviceJobId',
-            'service_number'       => 'serviceNumber',
-            'service_build_url'    => 'serviceBuildUrl',
-            'service_branch'       => 'serviceBranch',
+            'service_name' => 'serviceName',
+            'service_job_id' => 'serviceJobId',
+            'service_number' => 'serviceNumber',
+            'service_build_url' => 'serviceBuildUrl',
+            'service_branch' => 'serviceBranch',
             'service_pull_request' => 'servicePullRequest',
-            'service_event_type'   => 'serviceEventType',
-            'repo_token'           => 'repoToken',
-            'git'                  => 'git',
-            'run_at'               => 'runAt',
-            'source_files'         => 'sourceFiles',
+            'service_event_type' => 'serviceEventType',
+            'repo_token' => 'repoToken',
+            'git' => 'git',
+            'run_at' => 'runAt',
+            'source_files' => 'sourceFiles',
         );
 
         foreach ($arrayMap as $jsonKey => $propName) {
@@ -141,11 +141,11 @@ class JsonFile extends Coveralls
     /**
      * Fill environment variables.
      *
-     * @param array $env $_SERVER environment.
-     *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @param array $env $_SERVER environment
      *
      * @throws \RuntimeException
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     public function fillJobs(array $env)
     {
@@ -245,7 +245,7 @@ class JsonFile extends Coveralls
      *
      * These vars are supported by Codeship.
      *
-     * @param array $env $_SERVER environment.
+     * @param array $env $_SERVER environment
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -253,16 +253,16 @@ class JsonFile extends Coveralls
     {
         $map = array(
             // defined in Ruby lib
-            'serviceName'        => 'CI_NAME',
-            'serviceNumber'      => 'CI_BUILD_NUMBER',
-            'serviceBuildUrl'    => 'CI_BUILD_URL',
-            'serviceBranch'      => 'CI_BRANCH',
+            'serviceName' => 'CI_NAME',
+            'serviceNumber' => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl' => 'CI_BUILD_URL',
+            'serviceBranch' => 'CI_BRANCH',
             'servicePullRequest' => 'CI_PULL_REQUEST',
 
             // extends by php-coveralls
-            'serviceJobId'       => 'CI_JOB_ID',
-            'serviceEventType'   => 'COVERALLS_EVENT_TYPE',
-            'repoToken'          => 'COVERALLS_REPO_TOKEN',
+            'serviceJobId' => 'CI_JOB_ID',
+            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
+            'repoToken' => 'COVERALLS_REPO_TOKEN',
         );
 
         foreach ($map as $propName => $envName) {
@@ -277,9 +277,9 @@ class JsonFile extends Coveralls
     /**
      * Ensure data consistency for jobs API.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
-     *
      * @throws \RuntimeException
+     *
+     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
     protected function ensureJobs()
     {
@@ -365,7 +365,7 @@ class JsonFile extends Coveralls
     /**
      * Return whether the json file has source file.
      *
-     * @param string $path Absolute path to source file.
+     * @param string $path absolute path to source file
      *
      * @return bool
      */
@@ -377,7 +377,7 @@ class JsonFile extends Coveralls
     /**
      * Return source file.
      *
-     * @param string $path Absolute path to source file.
+     * @param string $path absolute path to source file
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile|null
      */
@@ -423,7 +423,7 @@ class JsonFile extends Coveralls
     /**
      * Set service name.
      *
-     * @param string $serviceName Service name.
+     * @param string $serviceName service name
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -451,7 +451,7 @@ class JsonFile extends Coveralls
     /**
      * Set repository token.
      *
-     * @param string $repoToken Repository token.
+     * @param string $repoToken repository token
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -479,7 +479,7 @@ class JsonFile extends Coveralls
     /**
      * Set service job id.
      *
-     * @param string $serviceJobId Service job id.
+     * @param string $serviceJobId service job id
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -557,7 +557,7 @@ class JsonFile extends Coveralls
     /**
      * Set git data.
      *
-     * @param array $git Git data.
+     * @param Git $git git data
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
@@ -571,7 +571,7 @@ class JsonFile extends Coveralls
     /**
      * Return git data.
      *
-     * @return array
+     * @return Git
      */
     public function getGit()
     {
@@ -585,7 +585,7 @@ class JsonFile extends Coveralls
     /**
      * Set timestamp when the job ran.
      *
-     * @param string $runAt Timestamp.
+     * @param string $runAt timestamp
      *
      * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
      */
