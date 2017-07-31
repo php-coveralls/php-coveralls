@@ -198,12 +198,12 @@ class CommitTest extends \PHPUnit_Framework_TestCase
         $message = 'message';
 
         $this->object
-        ->setId($id)
-        ->setAuthorName($authorName)
-        ->setAuthorEmail($authorEmail)
-        ->setCommitterName($committerName)
-        ->setCommitterEmail($committerEmail)
-        ->setMessage($message);
+            ->setId($id)
+            ->setAuthorName($authorName)
+            ->setAuthorEmail($authorEmail)
+            ->setCommitterName($committerName)
+            ->setCommitterEmail($committerEmail)
+            ->setMessage($message);
 
         $expected = [
             'id' => $id,

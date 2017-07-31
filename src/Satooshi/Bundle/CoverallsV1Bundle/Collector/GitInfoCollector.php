@@ -89,12 +89,12 @@ class GitInfoCollector
         $commit = new Commit();
 
         return $commit
-        ->setId($commitResult[0])
-        ->setAuthorName($commitResult[1])
-        ->setAuthorEmail($commitResult[2])
-        ->setCommitterName($commitResult[3])
-        ->setCommitterEmail($commitResult[4])
-        ->setMessage($commitResult[5]);
+            ->setId($commitResult[0])
+            ->setAuthorName($commitResult[1])
+            ->setAuthorEmail($commitResult[2])
+            ->setCommitterName($commitResult[3])
+            ->setCommitterEmail($commitResult[4])
+            ->setMessage($commitResult[5]);
     }
 
     /**

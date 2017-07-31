@@ -183,10 +183,8 @@ class JobsRepositoryTest extends ProjectTestCase
     protected function createLoggerMock()
     {
         $logger = $this->prophesize(NullLogger::class);
-        $logger
-            ->info();
-        $logger
-            ->error();
+        $logger->info();
+        $logger->error();
 
         return $logger->reveal();
     }
@@ -235,8 +233,7 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $config = new Configuration();
 
-        return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+        return $config->addCloverXmlPath($this->cloverXmlPath);
     }
 
     // persist()

@@ -38,8 +38,8 @@ class JobsTest extends ProjectTestCase
         $this->config = new Configuration();
 
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(false);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(false);
 
         $this->client = $this->createAdapterMockWith($this->url, $this->filename);
 
@@ -50,8 +50,8 @@ class JobsTest extends ProjectTestCase
     {
         $this->config = new Configuration();
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(false);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(false);
 
         $this->client = $this->createAdapterMockNeverCalled();
 
@@ -62,8 +62,8 @@ class JobsTest extends ProjectTestCase
     {
         $this->config = new Configuration();
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(true);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(true);
 
         $this->client = $this->createAdapterMockNeverCalled();
 
@@ -103,8 +103,7 @@ class JobsTest extends ProjectTestCase
     {
         $config = new Configuration();
 
-        return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+        return $config->addCloverXmlPath($this->cloverXmlPath);
     }
 
     protected function getCloverXml()
@@ -441,10 +440,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -468,10 +467,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
 
         $this->assertSame($serviceName, $jsonFile->getServiceName());
         $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
@@ -497,10 +496,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -522,10 +521,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -543,10 +542,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -563,10 +562,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -584,10 +583,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -606,10 +605,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -624,10 +623,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -646,9 +645,9 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 }
