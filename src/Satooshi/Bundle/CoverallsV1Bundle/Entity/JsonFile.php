@@ -150,8 +150,8 @@ class JsonFile extends Coveralls
     public function fillJobs(array $env)
     {
         return $this
-        ->fillStandardizedEnvVars($env)
-        ->ensureJobs();
+            ->fillStandardizedEnvVars($env)
+            ->ensureJobs();
     }
 
     /**

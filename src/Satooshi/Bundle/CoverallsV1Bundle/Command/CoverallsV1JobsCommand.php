@@ -47,48 +47,48 @@ class CoverallsV1JobsCommand extends Command
     protected function configure()
     {
         $this
-        ->setName('coveralls:v1:jobs')
-        ->setDescription('Coveralls Jobs API v1')
-        ->addOption(
-            'config',
-            '-c',
-            InputOption::VALUE_OPTIONAL,
-            '.coveralls.yml path',
-            '.coveralls.yml'
-        )
-        ->addOption(
-            'dry-run',
-            null,
-            InputOption::VALUE_NONE,
-            'Do not send json_file to Jobs API'
-        )
-        ->addOption(
-            'exclude-no-stmt',
-            null,
-            InputOption::VALUE_NONE,
-            'Exclude source files that have no executable statements'
-        )
-        ->addOption(
-            'env',
-            '-e',
-            InputOption::VALUE_OPTIONAL,
-            'Runtime environment name: test, dev, prod',
-            'prod'
-        )
-        ->addOption(
-            'coverage_clover',
-            '-x',
-            InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
-            'Coverage clover xml files(allowing multiple values).',
-            []
-        )
-        ->addOption(
-            'root_dir',
-            '-r',
-            InputOption::VALUE_OPTIONAL,
-            'Root directory of the project.',
-            '.'
-        );
+            ->setName('coveralls:v1:jobs')
+            ->setDescription('Coveralls Jobs API v1')
+            ->addOption(
+                'config',
+                '-c',
+                InputOption::VALUE_OPTIONAL,
+                '.coveralls.yml path',
+                '.coveralls.yml'
+            )
+            ->addOption(
+                'dry-run',
+                null,
+                InputOption::VALUE_NONE,
+                'Do not send json_file to Jobs API'
+            )
+            ->addOption(
+                'exclude-no-stmt',
+                null,
+                InputOption::VALUE_NONE,
+                'Exclude source files that have no executable statements'
+            )
+            ->addOption(
+                'env',
+                '-e',
+                InputOption::VALUE_OPTIONAL,
+                'Runtime environment name: test, dev, prod',
+                'prod'
+            )
+            ->addOption(
+                'coverage_clover',
+                '-x',
+                InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+                'Coverage clover xml files(allowing multiple values).',
+                []
+            )
+            ->addOption(
+                'root_dir',
+                '-r',
+                InputOption::VALUE_OPTIONAL,
+                'Root directory of the project.',
+                '.'
+            );
     }
 
     /**
