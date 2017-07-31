@@ -386,8 +386,6 @@ class JsonFile extends Coveralls
         if ($this->hasSourceFile($path)) {
             return $this->sourceFiles[$path];
         }
-
-        return;
     }
 
     /**
@@ -444,8 +442,6 @@ class JsonFile extends Coveralls
         if (isset($this->serviceName)) {
             return $this->serviceName;
         }
-
-        return;
     }
 
     /**
@@ -472,8 +468,6 @@ class JsonFile extends Coveralls
         if (isset($this->repoToken)) {
             return $this->repoToken;
         }
-
-        return;
     }
 
     /**
@@ -500,8 +494,6 @@ class JsonFile extends Coveralls
         if (isset($this->serviceJobId)) {
             return $this->serviceJobId;
         }
-
-        return;
     }
 
     /**
@@ -578,8 +570,6 @@ class JsonFile extends Coveralls
         if (isset($this->git)) {
             return $this->git;
         }
-
-        return;
     }
 
     /**
@@ -606,8 +596,6 @@ class JsonFile extends Coveralls
         if (isset($this->runAt)) {
             return $this->runAt;
         }
-
-        return;
     }
 
     /**
