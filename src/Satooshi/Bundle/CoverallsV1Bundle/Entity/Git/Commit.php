@@ -98,8 +98,6 @@ class Commit extends Coveralls
         if (isset($this->id)) {
             return $this->id;
         }
-
-        return;
     }
 
     /**
@@ -126,8 +124,6 @@ class Commit extends Coveralls
         if (isset($this->authorName)) {
             return $this->authorName;
         }
-
-        return;
     }
 
     /**
@@ -154,8 +150,6 @@ class Commit extends Coveralls
         if (isset($this->authorEmail)) {
             return $this->authorEmail;
         }
-
-        return;
     }
 
     /**
@@ -182,8 +176,6 @@ class Commit extends Coveralls
         if (isset($this->committerName)) {
             return $this->committerName;
         }
-
-        return;
     }
 
     /**
@@ -210,8 +202,6 @@ class Commit extends Coveralls
         if (isset($this->committerEmail)) {
             return $this->committerEmail;
         }
-
-        return;
     }
 
     /**
@@ -238,7 +228,5 @@ class Commit extends Coveralls
         if (isset($this->message)) {
             return $this->message;
         }
-
-        return;
     }
 }

@@ -186,7 +186,5 @@ class Jobs extends CoverallsApi
         if (isset($this->jsonFile)) {
             return $this->jsonFile;
         }
-
-        return;
     }
 }

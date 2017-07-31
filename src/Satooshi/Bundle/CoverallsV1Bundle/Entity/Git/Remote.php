@@ -66,8 +66,6 @@ class Remote extends Coveralls
         if (isset($this->name)) {
             return $this->name;
         }
-
-        return;
     }
 
     /**
@@ -94,7 +92,5 @@ class Remote extends Coveralls
         if (isset($this->url)) {
             return $this->url;
         }
-
-        return;
     }
 }
