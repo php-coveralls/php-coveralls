@@ -99,6 +99,11 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathDirNotWritable()
     {
+        if ($this->isWindowsOS()) {
+            // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
+            $this->markTestSkipped('Unable to run on Windows');
+        }
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, true);
 
         $path = realpath(__DIR__ . '/yaml/dummy.yml');
@@ -320,5 +325,16 @@ class ConfiguratorTest extends ProjectTestCase
         $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
+    }
+
+    private function isWindowsOS()
+    {
+        static $isWindows;
+
+        if ($isWindows === null) {
+            $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        }
+
+        return $isWindows;
     }
 }
