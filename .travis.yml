@@ -1,3 +1,5 @@
+sudo: false
+dist: trusty
 language: php
 
 matrix:
@@ -12,8 +14,6 @@ matrix:
           env: CHECKS=yes
         - php: hhvm
 
-sudo: false
-
 cache:
     directories:
         - $HOME/.composer/cache
@@ -26,7 +26,7 @@ install:
 
 script:
     - cp ${HOME}/xdebug.ini ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - phpunit -v
+    - vendor/bin/phpunit -v
     - rm ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 
