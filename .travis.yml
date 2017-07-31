@@ -1,10 +1,14 @@
+sudo: false
+dist: trusty
 language: php
 
 matrix:
     include:
-        - php: 5.3.3
+        - php: 5.3
+          dist: precise
           env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
         - php: 5.3
+          dist: precise
           env: 'BOX=yes'
         - php: 5.4
         - php: 5.5
@@ -12,8 +16,6 @@ matrix:
         - php: 7.0
           env: CHECKS=yes
         - php: hhvm
-
-sudo: false
 
 cache:
     directories:
@@ -27,7 +29,7 @@ install:
 
 script:
     - cp ${HOME}/xdebug.ini ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
-    - phpunit
+    - vendor/bin/phpunit
     - rm ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 
