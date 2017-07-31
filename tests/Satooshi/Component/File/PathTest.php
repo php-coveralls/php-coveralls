@@ -2,12 +2,14 @@
 
 namespace Satooshi\Component\File;
 
+use Satooshi\ProjectTestCase;
+
 /**
  * @covers \Satooshi\Component\File\Path
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class PathTest extends \PHPUnit_Framework_TestCase
+class PathTest extends ProjectTestCase
 {
     protected function setUp()
     {
@@ -26,22 +28,6 @@ class PathTest extends \PHPUnit_Framework_TestCase
         $this->rmFile($this->unwritablePath);
 
         $this->rmDir($this->unwritableDir);
-    }
-
-    protected function rmFile($file)
-    {
-        if (is_file($file)) {
-            chmod($file, 0777);
-            unlink($file);
-        }
-    }
-
-    protected function rmDir($dir)
-    {
-        if (is_dir($dir)) {
-            chmod($dir, 0777);
-            rmdir($dir);
-        }
     }
 
     protected function touchUnreadableFile()
