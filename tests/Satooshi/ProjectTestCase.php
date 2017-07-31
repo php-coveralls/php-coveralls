@@ -56,7 +56,9 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
     protected function rmFile($file)
     {
         if (is_file($file)) {
-            chmod($file, 0777);
+            // we try to unlock file, for that, we might need different permissions:
+            chmod(dirname($file), 0777); // on unix
+            chmod($file, 0777); // on Windows
             unlink($file);
         }
     }
