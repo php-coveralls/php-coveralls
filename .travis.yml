@@ -10,7 +10,6 @@ matrix:
         - php: 7.0
         - php: 7.1
           env: CHECKS=yes
-        - php: hhvm
 
 sudo: false
 
