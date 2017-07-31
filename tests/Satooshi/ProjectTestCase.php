@@ -56,7 +56,7 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
     protected function rmFile($file)
     {
         if (is_file($file)) {
-            chmod(dirname($file), 0777);
+            chmod($file, 0777);
             unlink($file);
         }
     }
