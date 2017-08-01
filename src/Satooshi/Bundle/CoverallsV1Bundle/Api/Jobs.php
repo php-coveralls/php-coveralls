@@ -179,12 +179,10 @@ class Jobs extends CoverallsApi
     /**
      * Return JsonFile.
      *
-     * @return JsonFile
+     * @return JsonFile|null
      */
     public function getJsonFile()
     {
-        if (isset($this->jsonFile)) {
-            return $this->jsonFile;
-        }
+        return $this->jsonFile;
     }
 }

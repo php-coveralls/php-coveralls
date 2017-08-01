@@ -16,14 +16,14 @@ class JsonFile extends Coveralls
     /**
      * Service name.
      *
-     * @var string
+     * @var string|null
      */
     protected $serviceName;
 
     /**
      * Service job id.
      *
-     * @var string
+     * @var string|null
      */
     protected $serviceJobId;
 
@@ -65,7 +65,7 @@ class JsonFile extends Coveralls
     /**
      * Repository token.
      *
-     * @var string
+     * @var string|null
      */
     protected $repoToken;
 
@@ -79,7 +79,7 @@ class JsonFile extends Coveralls
     /**
      * Git data.
      *
-     * @var Git
+     * @var Git|null
      */
     protected $git;
 
@@ -88,7 +88,7 @@ class JsonFile extends Coveralls
      *
      * "2013-02-18 00:52:48 -0800"
      *
-     * @var string
+     * @var string|null
      */
     protected $runAt;
 
@@ -437,13 +437,11 @@ class JsonFile extends Coveralls
     /**
      * Return service name.
      *
-     * @return string
+     * @return string|null
      */
     public function getServiceName()
     {
-        if (isset($this->serviceName)) {
-            return $this->serviceName;
-        }
+        return $this->serviceName;
     }
 
     /**
@@ -463,13 +461,11 @@ class JsonFile extends Coveralls
     /**
      * Return repository token.
      *
-     * @return string
+     * @return string|null
      */
     public function getRepoToken()
     {
-        if (isset($this->repoToken)) {
-            return $this->repoToken;
-        }
+        return $this->repoToken;
     }
 
     /**
@@ -489,13 +485,11 @@ class JsonFile extends Coveralls
     /**
      * Return service job id.
      *
-     * @return string
+     * @return string|null
      */
     public function getServiceJobId()
     {
-        if (isset($this->serviceJobId)) {
-            return $this->serviceJobId;
-        }
+        return $this->serviceJobId;
     }
 
     /**
@@ -565,13 +559,11 @@ class JsonFile extends Coveralls
     /**
      * Return git data.
      *
-     * @return Git
+     * @return Git|null
      */
     public function getGit()
     {
-        if (isset($this->git)) {
-            return $this->git;
-        }
+        return $this->git;
     }
 
     /**
@@ -591,13 +583,11 @@ class JsonFile extends Coveralls
     /**
      * Return timestamp when the job ran.
      *
-     * @return string
+     * @return string|null
      */
     public function getRunAt()
     {
-        if (isset($this->runAt)) {
-            return $this->runAt;
-        }
+        return $this->runAt;
     }
 
     /**
