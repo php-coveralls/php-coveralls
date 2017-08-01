@@ -32,7 +32,7 @@ class Jobs extends CoverallsApi
     /**
      * JsonFile.
      *
-     * @var Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @var JsonFile
      */
     protected $jsonFile;
 

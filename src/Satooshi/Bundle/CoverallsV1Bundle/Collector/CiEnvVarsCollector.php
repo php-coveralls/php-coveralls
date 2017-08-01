@@ -14,7 +14,7 @@ class CiEnvVarsCollector
     /**
      * Configuration.
      *
-     * @var Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @var Configuration
      */
     protected $config;
 
