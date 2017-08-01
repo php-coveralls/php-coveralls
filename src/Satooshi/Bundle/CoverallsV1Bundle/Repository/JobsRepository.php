@@ -61,11 +61,11 @@ class JobsRepository implements LoggerAwareInterface
     {
         try {
             $this
-            ->collectCloverXml()
-            ->collectGitInfo()
-            ->collectEnvVars()
-            ->dumpJsonFile()
-            ->send();
+                ->collectCloverXml()
+                ->collectGitInfo()
+                ->collectEnvVars()
+                ->dumpJsonFile()
+                ->send();
         } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
         } catch (\Exception $e) {

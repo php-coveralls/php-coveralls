@@ -58,11 +58,12 @@ class CiEnvVarsCollector
         $this->env = $env;
         $this->readEnv = [];
 
-        $this->fillTravisCi()
-        ->fillCircleCi()
-        ->fillJenkins()
-        ->fillLocal()
-        ->fillRepoToken();
+        $this
+            ->fillTravisCi()
+            ->fillCircleCi()
+            ->fillJenkins()
+            ->fillLocal()
+            ->fillRepoToken();
 
         return $this->env;
     }

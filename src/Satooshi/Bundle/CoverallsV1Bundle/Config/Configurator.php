@@ -102,12 +102,12 @@ class Configurator
         }
 
         return $configuration
-        ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
-        ->setServiceName($options['service_name'])
-        ->setRootDir($rootDir)
-        ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
-        ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
-        ->setExcludeNoStatements($options['exclude_no_stmt']);
+            ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
+            ->setServiceName($options['service_name'])
+            ->setRootDir($rootDir)
+            ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
+            ->setJsonPath($this->ensureJsonPath($options['json_path'], $rootDir, $file))
+            ->setExcludeNoStatements($options['exclude_no_stmt']);
     }
 
     /**
