@@ -14,14 +14,14 @@ class Remote extends Coveralls
     /**
      * Remote name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
 
     /**
      * Remote URL.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
 
@@ -59,15 +59,11 @@ class Remote extends Coveralls
     /**
      * Return remote name.
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
-        if (isset($this->name)) {
-            return $this->name;
-        }
-
-        return;
+        return $this->name;
     }
 
     /**
@@ -87,14 +83,10 @@ class Remote extends Coveralls
     /**
      * Return remote URL.
      *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
-        if (isset($this->url)) {
-            return $this->url;
-        }
-
-        return;
+        return $this->url;
     }
 }

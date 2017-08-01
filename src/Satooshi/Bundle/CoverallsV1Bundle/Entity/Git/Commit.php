@@ -14,42 +14,42 @@ class Commit extends Coveralls
     /**
      * Commit ID.
      *
-     * @var string
+     * @var string|null
      */
     protected $id;
 
     /**
      * Author name.
      *
-     * @var string
+     * @var string|null
      */
     protected $authorName;
 
     /**
      * Author email.
      *
-     * @var string
+     * @var string|null
      */
     protected $authorEmail;
 
     /**
      * Committer name.
      *
-     * @var string
+     * @var string|null
      */
     protected $committerName;
 
     /**
      * Committer email.
      *
-     * @var string
+     * @var string|null
      */
     protected $committerEmail;
 
     /**
      * Commit message.
      *
-     * @var string
+     * @var string|null
      */
     protected $message;
 
@@ -95,11 +95,7 @@ class Commit extends Coveralls
      */
     public function getId()
     {
-        if (isset($this->id)) {
-            return $this->id;
-        }
-
-        return;
+        return $this->id;
     }
 
     /**
@@ -123,11 +119,7 @@ class Commit extends Coveralls
      */
     public function getAuthorName()
     {
-        if (isset($this->authorName)) {
-            return $this->authorName;
-        }
-
-        return;
+        return $this->authorName;
     }
 
     /**
@@ -151,11 +143,7 @@ class Commit extends Coveralls
      */
     public function getAuthorEmail()
     {
-        if (isset($this->authorEmail)) {
-            return $this->authorEmail;
-        }
-
-        return;
+        return $this->authorEmail;
     }
 
     /**
@@ -179,11 +167,7 @@ class Commit extends Coveralls
      */
     public function getCommitterName()
     {
-        if (isset($this->committerName)) {
-            return $this->committerName;
-        }
-
-        return;
+        return $this->committerName;
     }
 
     /**
@@ -207,11 +191,7 @@ class Commit extends Coveralls
      */
     public function getCommitterEmail()
     {
-        if (isset($this->committerEmail)) {
-            return $this->committerEmail;
-        }
-
-        return;
+        return $this->committerEmail;
     }
 
     /**
@@ -235,10 +215,6 @@ class Commit extends Coveralls
      */
     public function getMessage()
     {
-        if (isset($this->message)) {
-            return $this->message;
-        }
-
-        return;
+        return $this->message;
     }
 }
