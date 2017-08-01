@@ -317,7 +317,7 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceJobId()
     {
-        return isset($this->serviceName) && isset($this->serviceJobId) && !isset($this->repoToken);
+        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken === null;
     }
 
     /**
@@ -327,7 +327,7 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceNumber()
     {
-        return isset($this->serviceName) && isset($this->serviceNumber) && isset($this->repoToken);
+        return $this->serviceName !== null && $this->serviceNumber !== null && $this->repoToken !== null;
     }
 
     /**
@@ -337,7 +337,7 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceEventType()
     {
-        return isset($this->serviceName) && isset($this->serviceEventType) && isset($this->repoToken);
+        return $this->serviceName !== null && $this->serviceEventType !== null && $this->repoToken !== null;
     }
 
     /**
@@ -347,7 +347,7 @@ class JsonFile extends Coveralls
      */
     protected function requireRepoToken()
     {
-        return isset($this->serviceName) && $this->serviceName === 'travis-pro' && isset($this->repoToken);
+        return $this->serviceName === 'travis-pro' && $this->repoToken !== null;
     }
 
     /**
@@ -357,7 +357,7 @@ class JsonFile extends Coveralls
      */
     protected function isUnsupportedServiceJob()
     {
-        return !isset($this->serviceJobId) && !isset($this->serviceNumber) && !isset($this->serviceEventType) && isset($this->repoToken);
+        return $this->serviceJobId === null && $this->serviceNumber === null && $this->serviceEventType === null && $this->repoToken !== null;
     }
 
     // accessor
@@ -617,7 +617,7 @@ class JsonFile extends Coveralls
      */
     public function getMetrics()
     {
-        if (!isset($this->metrics)) {
+        if ($this->metrics === null) {
             $this->metrics = new Metrics();
         }
 

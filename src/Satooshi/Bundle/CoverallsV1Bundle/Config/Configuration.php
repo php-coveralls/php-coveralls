@@ -101,7 +101,7 @@ class Configuration
      */
     public function hasRepoToken()
     {
-        return isset($this->repoToken);
+        return $this->repoToken !== null;
     }
 
     /**
@@ -135,7 +135,7 @@ class Configuration
      */
     public function hasServiceName()
     {
-        return isset($this->serviceName);
+        return $this->serviceName !== null;
     }
 
     /**

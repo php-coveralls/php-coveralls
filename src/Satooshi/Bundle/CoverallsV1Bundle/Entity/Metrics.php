@@ -135,7 +135,7 @@ class Metrics
      */
     public function getLineCoverage()
     {
-        if (!isset($this->lineCoverage)) {
+        if ($this->lineCoverage === null) {
             $this->lineCoverage = $this->calculateLineCoverage($this->statements, $this->coveredStatements);
         }
 

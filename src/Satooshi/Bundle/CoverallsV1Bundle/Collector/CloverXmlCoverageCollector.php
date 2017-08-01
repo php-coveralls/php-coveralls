@@ -33,7 +33,7 @@ class CloverXmlCoverageCollector
     {
         $root = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        if (!isset($this->jsonFile)) {
+        if ($this->jsonFile === null) {
             $this->jsonFile = new JsonFile();
         }
 
