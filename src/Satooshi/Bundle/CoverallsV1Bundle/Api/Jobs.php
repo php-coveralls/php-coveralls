@@ -32,7 +32,7 @@ class Jobs extends CoverallsApi
     /**
      * JsonFile.
      *
-     * @var Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @var Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile|null
      */
     protected $jsonFile;
 
@@ -179,12 +179,10 @@ class Jobs extends CoverallsApi
     /**
      * Return JsonFile.
      *
-     * @return JsonFile
+     * @return JsonFile|null
      */
     public function getJsonFile()
     {
-        if (isset($this->jsonFile)) {
-            return $this->jsonFile;
-        }
+        return $this->jsonFile;
     }
 }
