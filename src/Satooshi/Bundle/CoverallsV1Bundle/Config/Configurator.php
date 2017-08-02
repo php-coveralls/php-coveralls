@@ -119,7 +119,7 @@ class Configurator
      *
      * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      *
-     * @return array valid Absolute pathes of coverage_clover
+     * @return string[] valid Absolute pathes of coverage_clover
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
     {
@@ -137,7 +137,7 @@ class Configurator
      *
      * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      *
-     * @return array absolute paths
+     * @return string[] absolute paths
      */
     protected function getGlobPaths($path)
     {
@@ -166,7 +166,7 @@ class Configurator
      *
      * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      *
-     * @return array absolute pathes
+     * @return string[] absolute pathes
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
@@ -189,7 +189,7 @@ class Configurator
      *
      * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      *
-     * @return array absolute pathes
+     * @return string[] absolute pathes
      */
     protected function getGlobPathsFromArrayOption(array $options, $rootDir, Path $file)
     {
