@@ -147,7 +147,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $path = realpath(__DIR__ . '/yaml/src_dir.yml');
 
-        $config = $this->object->load($path, $this->rootDir);
+        $this->object->load($path, $this->rootDir);
     }
 
     /**

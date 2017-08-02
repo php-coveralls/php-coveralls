@@ -195,7 +195,7 @@ XML;
         $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
-        $actual = $commandTester->execute(
+        $commandTester->execute(
             [
                 'command' => $command->getName(),
                 '--dry-run' => true,

@@ -431,7 +431,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
 
         $server = [];
@@ -465,7 +464,7 @@ XML;
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $object = $this->createJobsWith();
-        $config = $object->getConfiguration()->setServiceName($serviceName);
+        $object->getConfiguration()->setServiceName($serviceName);
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -486,7 +485,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'circleci';
         $serviceNumber = '123';
         $repoToken = 'token';
 
@@ -512,7 +510,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'jenkins';
         $serviceNumber = '123';
         $repoToken = 'token';
 
@@ -538,14 +535,11 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'php-coveralls';
-        $serviceEventType = 'manual';
-
         $server = [];
         $server['COVERALLS_RUN_LOCALLY'] = '1';
 
         $object = $this->createJobsWith();
-        $config = $object->getConfiguration()->setRepoToken('token');
+        $object->getConfiguration()->setRepoToken('token');
         $jsonFile = $this->collectJsonFile();
 
         $object
@@ -608,7 +602,7 @@ XML;
         $server['TRAVIS_JOB_ID'] = '1.1';
 
         $object = $this->createJobsNeverSendOnDryRun();
-        $config = $object->getConfiguration()->setEnv('test');
+        $object->getConfiguration()->setEnv('test');
         $jsonFile = $this->collectJsonFile();
 
         $object
