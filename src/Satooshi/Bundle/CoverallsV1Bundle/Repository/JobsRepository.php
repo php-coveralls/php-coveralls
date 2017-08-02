@@ -2,7 +2,6 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
