@@ -46,13 +46,13 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
         return $stub->reveal();
     }
 
-    protected function createGitCommandStubCalledBranches($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
+    protected function createGitCommandStubCalledBranches($getBranchesValue)
     {
         $stub = $this->prophesize(GitCommand::class);
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
-        $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
+        $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub);
+        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub);
 
         return $stub->reveal();
     }
@@ -63,7 +63,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
+        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub);
 
         return $stub->reveal();
     }
@@ -84,7 +84,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
             ->shouldBeCalled();
     }
 
-    protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue)
+    protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub)
     {
         $stub
             ->getHeadCommit()
@@ -99,7 +99,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
             ->shouldBeCalled();
     }
 
-    protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue)
+    protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub)
     {
         $stub
             ->getRemotes()
@@ -178,7 +178,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
         $getBranchesValue = [
             '  master',
         ];
-        $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
+        $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue);
 
         $object = new GitInfoCollector($gitCommand);
 

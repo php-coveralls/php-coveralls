@@ -41,7 +41,7 @@ class JobsTest extends ProjectTestCase
         ->setJsonPath($this->jsonPath)
         ->setDryRun(false);
 
-        $this->client = $this->createAdapterMockWith($this->url, $this->filename, $this->jsonPath);
+        $this->client = $this->createAdapterMockWith($this->url, $this->filename);
 
         return new Jobs($this->config, $this->client);
     }
@@ -80,7 +80,7 @@ class JobsTest extends ProjectTestCase
         return $client->reveal();
     }
 
-    protected function createAdapterMockWith($url, $filename, $jsonPath)
+    protected function createAdapterMockWith($url, $filename)
     {
         $response = $this->prophesize(Psr7\Response::class);
         $response->reveal();
