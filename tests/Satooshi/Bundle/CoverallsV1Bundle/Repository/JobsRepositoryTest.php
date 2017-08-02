@@ -2,6 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
+use Psr\Log\NullLogger;
+use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
@@ -141,7 +143,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createApiMockWithRequirementsNotSatisfiedException()
     {
-        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $api = $this->prophesize(Jobs::class);
         $this->setUpJobsApiWithCollectCloverXmlThrow($api, new RequirementsNotSatisfiedException());
         $this->setUpJobsApiWithGetJsonFileNotCalled($api);
         $this->setUpJobsApiWithCollectGitInfoNotCalled($api);
@@ -154,7 +156,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createApiMockWithException()
     {
-        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $api = $this->prophesize(Jobs::class);
         $this->setUpJobsApiWithCollectCloverXmlThrow($api, new \Exception('unexpected exception'));
         $this->setUpJobsApiWithGetJsonFileNotCalled($api);
         $this->setUpJobsApiWithCollectGitInfoNotCalled($api);
@@ -167,7 +169,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createApiMock($response, $statusCode = '', $uri = '/')
     {
-        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $api = $this->prophesize(Jobs::class);
         $this->setUpJobsApiWithCollectCloverXmlCalled($api);
         $this->setUpJobsApiWithGetJsonFileCalled($api, $this->createJsonFile());
         $this->setUpJobsApiWithCollectGitInfoCalled($api);
@@ -180,7 +182,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function createLoggerMock()
     {
-        $logger = $this->prophesize('\Psr\Log\NullLogger');
+        $logger = $this->prophesize(NullLogger::class);
         $logger
             ->info();
         $logger

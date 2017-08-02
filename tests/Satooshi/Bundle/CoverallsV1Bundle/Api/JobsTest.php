@@ -2,6 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
@@ -70,7 +72,7 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->prophesize('\GuzzleHttp\Client');
+        $client = $this->prophesize(Client::class);
         $client
             ->send()
             ->shouldNotBeCalled();
@@ -80,10 +82,10 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $response = $this->prophesize('\GuzzleHttp\Psr7\Response');
+        $response = $this->prophesize(Psr7\Response::class);
         $response->reveal();
 
-        $client = $this->prophesize('\GuzzleHttp\Client');
+        $client = $this->prophesize(Client::class);
         $client
             ->post($url, \Prophecy\Argument::that(function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])

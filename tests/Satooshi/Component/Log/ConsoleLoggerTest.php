@@ -2,6 +2,8 @@
 
 namespace Satooshi\Component\Log;
 
+use Symfony\Component\Console\Output\StreamOutput;
+
 /**
  * @covers \Satooshi\Component\Log\ConsoleLogger
  *
@@ -11,7 +13,7 @@ class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
 {
     protected function createAdapterMockWith($message)
     {
-        $mock = $this->prophesize('\Symfony\Component\Console\Output\StreamOutput');
+        $mock = $this->prophesize(StreamOutput::class);
         $mock
             ->writeln($message)
             ->shouldBeCalled();

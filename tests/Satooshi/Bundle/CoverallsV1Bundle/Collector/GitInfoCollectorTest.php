@@ -37,7 +37,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $stub = $this->prophesize(GitCommand::class);
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
@@ -48,7 +48,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     protected function createGitCommandStubCalledBranches($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $stub = $this->prophesize(GitCommand::class);
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue);
@@ -59,7 +59,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $stub = $this->prophesize(GitCommand::class);
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
@@ -131,7 +131,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $git = $object->collect();
 
-        $gitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git';
+        $gitClass = Git::class;
         $this->assertTrue($git instanceof $gitClass);
         $this->assertGit($git);
     }
@@ -142,14 +142,14 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $commit = $git->getHead();
 
-        $commitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit';
+        $commitClass = Commit::class;
         $this->assertTrue($commit instanceof $commitClass);
         $this->assertCommit($commit);
 
         $remotes = $git->getRemotes();
         $this->assertCount(1, $remotes);
 
-        $remoteClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote';
+        $remoteClass = Remote::class;
         $this->assertTrue($remotes[0] instanceof $remoteClass);
         $this->assertRemote($remotes[0]);
     }
