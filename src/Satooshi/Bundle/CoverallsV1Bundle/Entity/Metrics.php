@@ -48,7 +48,7 @@ class Metrics
             );
             $this->statements = count($statementsArray);
 
-            // coveredstatements
+            // covered statements
             // gt 0
             $coveredArray = array_filter(
                 $statementsArray,

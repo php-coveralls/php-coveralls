@@ -201,7 +201,7 @@ XML;
                 '--dry-run' => true,
                 '--config' => 'coveralls.yml',
                 '--env' => 'test',
-                '--coverage_clover' => 'nonexistense.xml',
+                '--coverage_clover' => 'nonexistent.xml',
             ]
         );
     }
