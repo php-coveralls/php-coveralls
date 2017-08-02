@@ -77,7 +77,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect clover XML into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectCloverXml()
     {
@@ -99,7 +99,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect git repository info into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectGitInfo()
     {
@@ -113,7 +113,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect environment variables.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectEnvVars()
     {
@@ -127,7 +127,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Dump submitting json file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function dumpJsonFile()
     {

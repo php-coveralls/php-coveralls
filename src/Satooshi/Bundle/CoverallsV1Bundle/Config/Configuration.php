@@ -85,7 +85,7 @@ class Configuration
      *
      * @param string $repoToken
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setRepoToken($repoToken)
     {
@@ -119,7 +119,7 @@ class Configuration
      *
      * @param string $serviceName
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setServiceName($serviceName)
     {
@@ -165,7 +165,7 @@ class Configuration
      *
      * @param string[] $cloverXmlPaths
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setCloverXmlPaths(array $cloverXmlPaths)
     {
@@ -179,7 +179,7 @@ class Configuration
      *
      * @param string $cloverXmlPath
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function addCloverXmlPath($cloverXmlPath)
     {
@@ -203,7 +203,7 @@ class Configuration
      *
      * @param string $jsonPath
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setJsonPath($jsonPath)
     {
@@ -227,7 +227,7 @@ class Configuration
      *
      * @param bool $dryRun
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setDryRun($dryRun)
     {
@@ -251,7 +251,7 @@ class Configuration
      *
      * @param bool $excludeNoStatements
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setExcludeNoStatements($excludeNoStatements)
     {
@@ -265,7 +265,7 @@ class Configuration
      *
      * @param bool $excludeNoStatements
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setExcludeNoStatementsUnlessFalse($excludeNoStatements)
     {
@@ -291,7 +291,7 @@ class Configuration
      *
      * @param bool $verbose
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setVerbose($verbose)
     {
@@ -315,7 +315,7 @@ class Configuration
      *
      * @param string $env runtime environment name
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration
+     * @return $this
      */
     public function setEnv($env)
     {

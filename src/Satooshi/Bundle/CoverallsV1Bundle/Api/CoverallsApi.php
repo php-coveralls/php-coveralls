@@ -55,7 +55,7 @@ abstract class CoverallsApi
      *
      * @param \GuzzleHttp\Client $client hTTP client
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\CoverallsApi
+     * @return $this
      */
     public function setHttpClient(Client $client)
     {

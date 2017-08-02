@@ -41,7 +41,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect clover XML into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @return $this
      */
     public function collectCloverXml()
     {
@@ -69,7 +69,7 @@ class Jobs extends CoverallsApi
     /**
      * Collect git repository info into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @return $this
      */
     public function collectGitInfo()
     {
@@ -88,7 +88,7 @@ class Jobs extends CoverallsApi
      *
      * @throws \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @return $this
      */
     public function collectEnvVars(array $env)
     {
@@ -108,7 +108,7 @@ class Jobs extends CoverallsApi
     /**
      * Dump uploading json file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @return $this
      */
     public function dumpJsonFile()
     {
@@ -167,7 +167,7 @@ class Jobs extends CoverallsApi
      *
      * @param JsonFile $jsonFile json_file content
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs
+     * @return $this
      */
     public function setJsonFile(JsonFile $jsonFile)
     {

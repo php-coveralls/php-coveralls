@@ -145,7 +145,7 @@ class JsonFile extends Coveralls
      *
      * @throws \RuntimeException
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function fillJobs(array $env)
     {
@@ -249,7 +249,7 @@ class JsonFile extends Coveralls
      *
      * @param array $env $_SERVER environment
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     protected function fillStandardizedEnvVars(array $env)
     {
@@ -281,7 +281,7 @@ class JsonFile extends Coveralls
      *
      * @throws \RuntimeException
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     protected function ensureJobs()
     {
@@ -425,7 +425,7 @@ class JsonFile extends Coveralls
      *
      * @param string $serviceName service name
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function setServiceName($serviceName)
     {
@@ -449,7 +449,7 @@ class JsonFile extends Coveralls
      *
      * @param string $repoToken repository token
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function setRepoToken($repoToken)
     {
@@ -473,7 +473,7 @@ class JsonFile extends Coveralls
      *
      * @param string $serviceJobId service job id
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function setServiceJobId($serviceJobId)
     {
@@ -547,7 +547,7 @@ class JsonFile extends Coveralls
      *
      * @param Git $git git data
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function setGit(Git $git)
     {
@@ -571,7 +571,7 @@ class JsonFile extends Coveralls
      *
      * @param string $runAt timestamp
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile
+     * @return $this
      */
     public function setRunAt($runAt)
     {

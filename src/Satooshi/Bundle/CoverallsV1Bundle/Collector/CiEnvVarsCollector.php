@@ -75,7 +75,7 @@ class CiEnvVarsCollector
      *
      * "TRAVIS", "TRAVIS_JOB_ID" must be set.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     * @return $this
      */
     protected function fillTravisCi()
     {
@@ -102,7 +102,7 @@ class CiEnvVarsCollector
      *
      * "CIRCLECI", "CIRCLE_BUILD_NUM" must be set.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     * @return $this
      */
     protected function fillCircleCi()
     {
@@ -124,7 +124,7 @@ class CiEnvVarsCollector
      *
      * "JENKINS_URL", "BUILD_NUMBER" must be set.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     * @return $this
      */
     protected function fillJenkins()
     {
@@ -147,7 +147,7 @@ class CiEnvVarsCollector
      *
      * "COVERALLS_RUN_LOCALLY" must be set.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     * @return $this
      */
     protected function fillLocal()
     {
@@ -170,7 +170,7 @@ class CiEnvVarsCollector
      *
      * "COVERALLS_REPO_TOKEN" must be set.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+     * @return $this
      */
     protected function fillRepoToken()
     {
