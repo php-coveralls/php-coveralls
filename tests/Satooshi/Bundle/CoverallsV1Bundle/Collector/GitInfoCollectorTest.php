@@ -131,8 +131,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $git = $object->collect();
 
-        $gitClass = Git::class;
-        $this->assertTrue($git instanceof $gitClass);
+        $this->assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
     }
 
@@ -142,15 +141,13 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $commit = $git->getHead();
 
-        $commitClass = Commit::class;
-        $this->assertTrue($commit instanceof $commitClass);
+        $this->assertInstanceOf(Commit::class, $commit);
         $this->assertCommit($commit);
 
         $remotes = $git->getRemotes();
         $this->assertCount(1, $remotes);
 
-        $remoteClass = Remote::class;
-        $this->assertTrue($remotes[0] instanceof $remoteClass);
+        $this->assertInstanceOf(Remote::class, $remotes[0]);
         $this->assertRemote($remotes[0]);
     }
 
