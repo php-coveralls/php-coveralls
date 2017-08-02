@@ -203,7 +203,9 @@ class JobsRepository implements LoggerAwareInterface
     {
         if ($coverage >= 90) {
             return sprintf('<info>%s</info>', $format);
-        } elseif ($coverage >= 80) {
+        }
+
+        if ($coverage >= 80) {
             return sprintf('<comment>%s</comment>', $format);
         }
 

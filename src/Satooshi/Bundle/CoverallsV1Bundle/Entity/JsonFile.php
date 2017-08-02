@@ -205,7 +205,9 @@ class JsonFile extends Coveralls
     {
         if ($prop instanceof Coveralls) {
             return $prop->toArray();
-        } elseif (is_array($prop)) {
+        }
+
+        if (is_array($prop)) {
             return $this->toJsonPropertyArray($prop);
         }
 
