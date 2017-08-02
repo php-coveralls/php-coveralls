@@ -43,10 +43,8 @@ class ProjectTestCase extends \PHPUnit_Framework_TestCase
             }
         }
 
-        if ($logsDirUnwritable) {
-            if (file_exists($logsDir)) {
-                chmod($logsDir, 0577);
-            }
+        if ($logsDirUnwritable && file_exists($logsDir)) {
+            chmod($logsDir, 0577);
         }
 
         if ($jsonPathUnwritable) {
