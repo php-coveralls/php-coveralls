@@ -163,7 +163,7 @@ class SourceFile extends Coveralls
     /**
      * Return metrics.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics
+     * @return Metrics
      */
     public function getMetrics()
     {
