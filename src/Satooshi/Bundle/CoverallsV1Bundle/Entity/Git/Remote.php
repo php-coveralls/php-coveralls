@@ -14,14 +14,14 @@ class Remote extends Coveralls
     /**
      * Remote name.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
 
     /**
      * Remote URL.
      *
-     * @var string
+     * @var string|null
      */
     protected $url;
 
@@ -47,7 +47,7 @@ class Remote extends Coveralls
      *
      * @param string $name remote name
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
+     * @return $this
      */
     public function setName($name)
     {
@@ -59,15 +59,11 @@ class Remote extends Coveralls
     /**
      * Return remote name.
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
-        if (isset($this->name)) {
-            return $this->name;
-        }
-
-        return;
+        return $this->name;
     }
 
     /**
@@ -75,7 +71,7 @@ class Remote extends Coveralls
      *
      * @param string $url remote URL
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
+     * @return $this
      */
     public function setUrl($url)
     {
@@ -87,14 +83,10 @@ class Remote extends Coveralls
     /**
      * Return remote URL.
      *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
-        if (isset($this->url)) {
-            return $this->url;
-        }
-
-        return;
+        return $this->url;
     }
 }

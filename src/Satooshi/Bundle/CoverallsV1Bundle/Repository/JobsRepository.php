@@ -2,7 +2,6 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
@@ -61,11 +60,11 @@ class JobsRepository implements LoggerAwareInterface
     {
         try {
             $this
-            ->collectCloverXml()
-            ->collectGitInfo()
-            ->collectEnvVars()
-            ->dumpJsonFile()
-            ->send();
+                ->collectCloverXml()
+                ->collectGitInfo()
+                ->collectEnvVars()
+                ->dumpJsonFile()
+                ->send();
         } catch (\Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
         } catch (\Exception $e) {
@@ -78,7 +77,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect clover XML into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectCloverXml()
     {
@@ -100,7 +99,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect git repository info into json_file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectGitInfo()
     {
@@ -114,7 +113,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Collect environment variables.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function collectEnvVars()
     {
@@ -128,7 +127,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Dump submitting json file.
      *
-     * @return \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+     * @return $this
      */
     protected function dumpJsonFile()
     {
@@ -203,7 +202,9 @@ class JobsRepository implements LoggerAwareInterface
     {
         if ($coverage >= 90) {
             return sprintf('<info>%s</info>', $format);
-        } elseif ($coverage >= 80) {
+        }
+
+        if ($coverage >= 80) {
             return sprintf('<comment>%s</comment>', $format);
         }
 

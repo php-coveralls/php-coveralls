@@ -14,14 +14,14 @@ class Metrics
      *
      * @var int
      */
-    protected $statements;
+    protected $statements = 0;
 
     /**
      * Number of covered statements.
      *
      * @var int
      */
-    protected $coveredStatements;
+    protected $coveredStatements = 0;
 
     /**
      * Line coverage.
@@ -37,30 +37,25 @@ class Metrics
      */
     public function __construct(array $coverage = [])
     {
-        if (!empty($coverage)) {
-            // statements
-            // not null
-            $statementsArray = array_filter(
-                $coverage,
-                function ($line) {
-                    return $line !== null;
-                }
-            );
-            $this->statements = count($statementsArray);
+        // statements
+        // not null
+        $statementsArray = array_filter(
+            $coverage,
+            function ($line) {
+                return $line !== null;
+            }
+        );
+        $this->statements = count($statementsArray);
 
-            // coveredstatements
-            // gt 0
-            $coveredArray = array_filter(
-                $statementsArray,
-                function ($line) {
-                    return $line > 0;
-                }
-            );
-            $this->coveredStatements = count($coveredArray);
-        } else {
-            $this->statements = 0;
-            $this->coveredStatements = 0;
-        }
+        // covered statements
+        // gt 0
+        $coveredArray = array_filter(
+            $statementsArray,
+            function ($line) {
+                return $line > 0;
+            }
+        );
+        $this->coveredStatements = count($coveredArray);
     }
 
     // API
@@ -135,7 +130,7 @@ class Metrics
      */
     public function getLineCoverage()
     {
-        if (!isset($this->lineCoverage)) {
+        if ($this->lineCoverage === null) {
             $this->lineCoverage = $this->calculateLineCoverage($this->statements, $this->coveredStatements);
         }
 

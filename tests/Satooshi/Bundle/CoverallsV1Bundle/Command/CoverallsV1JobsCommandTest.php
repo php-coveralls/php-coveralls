@@ -195,13 +195,13 @@ XML;
         $_SERVER['TRAVIS'] = true;
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
-        $actual = $commandTester->execute(
+        $commandTester->execute(
             [
                 'command' => $command->getName(),
                 '--dry-run' => true,
                 '--config' => 'coveralls.yml',
                 '--env' => 'test',
-                '--coverage_clover' => 'nonexistense.xml',
+                '--coverage_clover' => 'nonexistent.xml',
             ]
         );
     }

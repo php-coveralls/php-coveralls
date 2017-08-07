@@ -33,7 +33,7 @@ class CloverXmlCoverageCollector
     {
         $root = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        if (!isset($this->jsonFile)) {
+        if ($this->jsonFile === null) {
             $this->jsonFile = new JsonFile();
         }
 
@@ -93,10 +93,10 @@ class CloverXmlCoverageCollector
             return;
         }
 
+        $filename = $absolutePath;
+
         if ($root !== DIRECTORY_SEPARATOR) {
             $filename = str_replace($root, '', $absolutePath);
-        } else {
-            $filename = $absolutePath;
         }
 
         return $this->collectCoverage($file, $absolutePath, $filename);

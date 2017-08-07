@@ -60,7 +60,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     {
         $message = $this->message . "\n";
 
-        if (isset($this->readEnv) && is_array($this->readEnv)) {
+        if (is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {
                 $message .= $this->format($envVarName, $value);
             }

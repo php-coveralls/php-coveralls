@@ -12,7 +12,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
     protected function createGitBranchesCommandMock($params)
     {
-        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $adapter = $this->prophesize(GitCommand::class);
         $adapter
             ->getBranches()
             ->willReturn($params)
@@ -23,7 +23,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
     protected function createGitHeadCommitCommandMock($params)
     {
-        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $adapter = $this->prophesize(GitCommand::class);
         $adapter
             ->getHeadCommit()
             ->willReturn($params)
@@ -34,7 +34,7 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
     protected function createGitRemotesCommandMock($params)
     {
-        $adapter = $this->prophesize('\Satooshi\Component\System\Git\GitCommand');
+        $adapter = $this->prophesize(GitCommand::class);
         $adapter
             ->getRemotes()
             ->willReturn($params)

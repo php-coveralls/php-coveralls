@@ -2,6 +2,8 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Api;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Collector\CloverXmlCoverageCollector;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
@@ -36,10 +38,10 @@ class JobsTest extends ProjectTestCase
         $this->config = new Configuration();
 
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(false);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(false);
 
-        $this->client = $this->createAdapterMockWith($this->url, $this->filename, $this->jsonPath);
+        $this->client = $this->createAdapterMockWith($this->url, $this->filename);
 
         return new Jobs($this->config, $this->client);
     }
@@ -48,8 +50,8 @@ class JobsTest extends ProjectTestCase
     {
         $this->config = new Configuration();
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(false);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(false);
 
         $this->client = $this->createAdapterMockNeverCalled();
 
@@ -60,8 +62,8 @@ class JobsTest extends ProjectTestCase
     {
         $this->config = new Configuration();
         $this->config
-        ->setJsonPath($this->jsonPath)
-        ->setDryRun(true);
+            ->setJsonPath($this->jsonPath)
+            ->setDryRun(true);
 
         $this->client = $this->createAdapterMockNeverCalled();
 
@@ -70,7 +72,7 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->prophesize('\GuzzleHttp\Client');
+        $client = $this->prophesize(Client::class);
         $client
             ->send()
             ->shouldNotBeCalled();
@@ -78,12 +80,12 @@ class JobsTest extends ProjectTestCase
         return $client->reveal();
     }
 
-    protected function createAdapterMockWith($url, $filename, $jsonPath)
+    protected function createAdapterMockWith($url, $filename)
     {
-        $response = $this->prophesize('\GuzzleHttp\Psr7\Response');
+        $response = $this->prophesize(Psr7\Response::class);
         $response->reveal();
 
-        $client = $this->prophesize('\GuzzleHttp\Client');
+        $client = $this->prophesize(Client::class);
         $client
             ->post($url, \Prophecy\Argument::that(function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
@@ -101,8 +103,7 @@ class JobsTest extends ProjectTestCase
     {
         $config = new Configuration();
 
-        return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+        return $config->addCloverXmlPath($this->cloverXmlPath);
     }
 
     protected function getCloverXml()
@@ -429,7 +430,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
 
         $server = [];
@@ -440,10 +440,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -463,14 +463,14 @@ XML;
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $object = $this->createJobsWith();
-        $config = $object->getConfiguration()->setServiceName($serviceName);
+        $object->getConfiguration()->setServiceName($serviceName);
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
 
         $this->assertSame($serviceName, $jsonFile->getServiceName());
         $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
@@ -484,7 +484,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'circleci';
         $serviceNumber = '123';
         $repoToken = 'token';
 
@@ -497,10 +496,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -510,7 +509,6 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'jenkins';
         $serviceNumber = '123';
         $repoToken = 'token';
 
@@ -523,10 +521,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -536,21 +534,18 @@ XML;
     {
         $this->makeProjectDir(null, $this->logsDir);
 
-        $serviceName = 'php-coveralls';
-        $serviceEventType = 'manual';
-
         $server = [];
         $server['COVERALLS_RUN_LOCALLY'] = '1';
 
         $object = $this->createJobsWith();
-        $config = $object->getConfiguration()->setRepoToken('token');
+        $object->getConfiguration()->setRepoToken('token');
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -567,10 +562,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -588,10 +583,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -606,14 +601,14 @@ XML;
         $server['TRAVIS_JOB_ID'] = '1.1';
 
         $object = $this->createJobsNeverSendOnDryRun();
-        $config = $object->getConfiguration()->setEnv('test');
+        $object->getConfiguration()->setEnv('test');
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -628,10 +623,10 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 
     /**
@@ -650,9 +645,9 @@ XML;
         $jsonFile = $this->collectJsonFile();
 
         $object
-        ->setJsonFile($jsonFile)
-        ->collectEnvVars($server)
-        ->dumpJsonFile()
-        ->send();
+            ->setJsonFile($jsonFile)
+            ->collectEnvVars($server)
+            ->dumpJsonFile()
+            ->send();
     }
 }

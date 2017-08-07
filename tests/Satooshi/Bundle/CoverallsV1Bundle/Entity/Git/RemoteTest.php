@@ -90,8 +90,8 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
         $url = 'url';
 
         $this->object
-        ->setName($name)
-        ->setUrl($url);
+            ->setName($name)
+            ->setUrl($url);
 
         $expected = [
             'name' => $name,

@@ -24,8 +24,8 @@ class GitTest extends \PHPUnit_Framework_TestCase
         $remote = new Remote();
 
         return $remote
-        ->setName($name)
-        ->setUrl($url);
+            ->setName($name)
+            ->setUrl($url);
     }
 
     protected function createCommit($id = 'id', $authorName = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
@@ -33,12 +33,12 @@ class GitTest extends \PHPUnit_Framework_TestCase
         $commit = new Commit();
 
         return $commit
-        ->setId($id)
-        ->setAuthorName($authorName)
-        ->setAuthorEmail($authorEmail)
-        ->setCommitterName($committerName)
-        ->setCommitterEmail($committerEmail)
-        ->setMessage($message);
+            ->setId($id)
+            ->setAuthorName($authorName)
+            ->setAuthorEmail($authorEmail)
+            ->setCommitterName($committerName)
+            ->setCommitterEmail($committerEmail)
+            ->setMessage($message);
     }
 
     // getBranch()
