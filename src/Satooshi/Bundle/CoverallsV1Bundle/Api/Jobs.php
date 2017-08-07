@@ -114,12 +114,7 @@ class Jobs extends CoverallsApi
     {
         $jsonPath = $this->config->getJsonPath();
 
-        $content = $this->jsonFile->toArray();
-        $content['source_files'] = [];
-        $content = json_encode($content);
-        var_dump($content);
-
-        file_put_contents($jsonPath, $content);
+        file_put_contents($jsonPath, $this->jsonFile);
 
         return $this;
     }
