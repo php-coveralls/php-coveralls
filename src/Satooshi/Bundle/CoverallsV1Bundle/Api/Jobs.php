@@ -158,6 +158,7 @@ class Jobs extends CoverallsApi
                 [
                     'name' => $filename,
                     'contents' => file_get_contents($path),
+                    'filename' => basename($path),
                 ],
             ],
         ];
