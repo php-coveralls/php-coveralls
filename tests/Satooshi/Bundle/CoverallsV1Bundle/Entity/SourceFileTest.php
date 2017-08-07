@@ -65,7 +65,7 @@ class SourceFileTest extends ProjectTestCase
      */
     public function shouldHavePathOnConstruction()
     {
-        $this->assertSame($this->path, $this->object->getPath());
+        $this->assertSamePath($this->path, $this->object->getPath());
     }
 
     // getFileLines()
