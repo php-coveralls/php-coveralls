@@ -61,6 +61,7 @@ class CiEnvVarsCollector
         $this
             ->fillTravisCi()
             ->fillCircleCi()
+            ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
             ->fillRepoToken();
@@ -113,6 +114,34 @@ class CiEnvVarsCollector
             // backup
             $this->readEnv['CIRCLECI'] = $this->env['CIRCLECI'];
             $this->readEnv['CIRCLE_BUILD_NUM'] = $this->env['CIRCLE_BUILD_NUM'];
+            $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill AppVeyor environment variables.
+     *
+     * "APPVEYOR", "APPVEYOR_BUILD_NUMBER" must be set.
+     *
+     * @return $this
+     */
+    protected function fillAppVeyor()
+    {
+        if (isset($this->env['APPVEYOR']) && $this->env['APPVEYOR'] && isset($this->env['APPVEYOR_BUILD_NUMBER'])) {
+            $this->env['CI_BUILD_NUMBER'] = $this->env['APPVEYOR_BUILD_NUMBER'];
+            $this->env['CI_JOB_ID'] = $this->env['APPVEYOR_JOB_NUMBER'];
+            $this->env['CI_BRANCH'] = $this->env['APPVEYOR_REPO_BRANCH'];
+            $this->env['CI_PULL_REQUEST'] = $this->env['APPVEYOR_PULL_REQUEST_NUMBER'];
+            $this->env['CI_NAME'] = 'AppVeyor';
+
+            // backup
+            $this->readEnv['APPVEYOR'] = $this->env['APPVEYOR'];
+            $this->readEnv['APPVEYOR_BUILD_NUMBER'] = $this->env['APPVEYOR_BUILD_NUMBER'];
+            $this->readEnv['APPVEYOR_JOB_NUMBER'] = $this->env['APPVEYOR_JOB_NUMBER'];
+            $this->readEnv['APPVEYOR_REPO_BRANCH'] = $this->env['APPVEYOR_REPO_BRANCH'];
+            $this->readEnv['APPVEYOR_PULL_REQUEST_NUMBER'] = $this->env['APPVEYOR_PULL_REQUEST_NUMBER'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
         }
 

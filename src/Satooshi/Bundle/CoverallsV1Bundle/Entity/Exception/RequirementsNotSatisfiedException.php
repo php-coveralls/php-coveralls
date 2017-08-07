@@ -86,6 +86,11 @@ For Jenkins users:
   - BUILD_NUMBER
   - COVERALLS_REPO_TOKEN
 
+For AppVeyor users:
+
+  - APPVEYOR
+  - APPVEYOR_BUILD_NUMBER
+
 From local environment:
 
   - COVERALLS_RUN_LOCALLY
