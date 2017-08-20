@@ -45,7 +45,7 @@ deploy:
     file: build/artifacts/coveralls.phar
     skip_cleanup: true
     on:
-        repo: satooshi/php-coveralls
+        repo: php-coveralls/php-coveralls
         tags: true
         all_branches: true
         condition: $BOX = yes
