@@ -22,7 +22,7 @@ install:
     - mkdir -p build/logs
     - mv ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ${HOME}/xdebug.ini || return 0
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
-    - if [ "$CHECKS" = "yes" ]; then travis_retry composer install-devtools; fi;
+    - if [ "$CHECKS" = "yes" ]; then travis_retry composer install-dev-tools; fi;
 
 script:
     - cp ${HOME}/xdebug.ini ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini || return 0

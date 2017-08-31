@@ -37,16 +37,16 @@
     },
     "bin": ["bin/coveralls"],
     "scripts": {
-        "install-devtools": [
-            "cd devtools && composer update --no-interaction"
+        "install-dev-tools": [
+            "cd dev-tools && composer update --no-interaction"
         ],
         "sca": [
-            "php devtools/vendor/bin/php-cs-fixer fix --dry-run -vv",
-            "php devtools/vendor/bin/phpcs --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
-            "php devtools/vendor/bin/phpmd src text build/config/phpmd.xml"
+            "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",
+            "php dev-tools/vendor/bin/phpcs --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
+            "php dev-tools/vendor/bin/phpmd src text build/config/phpmd.xml"
         ],
         "apigen": [
-            "php devtools/vendor/bin/apigen -c build/config/apigen.neon -d build/api -s src -s vendor/symfony/config -s vendor/symfony/console -s vendor/symfony/yaml -s vendor/guzzle/guzzle/src -s vendor/psr/log --report build/logs/checkstyle-apigen.xml --exclude *Test.php --exclude */Tests/* --google-analytics UA-40398434-1"
+            "php dev-tools/vendor/bin/apigen -c build/config/apigen.neon -d build/api -s src -s vendor/symfony/config -s vendor/symfony/console -s vendor/symfony/yaml -s vendor/guzzle/guzzle/src -s vendor/psr/log --report build/logs/checkstyle-apigen.xml --exclude *Test.php --exclude */Tests/* --google-analytics UA-40398434-1"
         ]
     },
     "config": {
