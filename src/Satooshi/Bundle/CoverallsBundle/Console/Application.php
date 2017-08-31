@@ -2,7 +2,7 @@
 
 namespace Satooshi\Bundle\CoverallsBundle\Console;
 
-use Satooshi\Bundle\CoverallsV1Bundle\Command\CoverallsV1JobsCommand;
+use Satooshi\Bundle\CoverallsBundle\Command\CoverallsJobsCommand;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Input\InputInterface;
 
@@ -57,19 +57,19 @@ class Application extends BaseApplication
         // which is used when using the --help option
         $defaultCommands = parent::getDefaultCommands();
 
-        $defaultCommands[] = $this->createCoverallsV1JobsCommand();
+        $defaultCommands[] = $this->createCoverallsJobsCommand();
 
         return $defaultCommands;
     }
 
     /**
-     * Create CoverallsV1JobsCommand.
+     * Create CoverallsJobsCommand.
      *
-     * @return \Satooshi\Bundle\CoverallsBundle\Console\CoverallsV1JobsCommand
+     * @return \Satooshi\Bundle\CoverallsBundle\Console\CoverallsJobsCommand
      */
-    protected function createCoverallsV1JobsCommand()
+    protected function createCoverallsJobsCommand()
     {
-        $command = new CoverallsV1JobsCommand();
+        $command = new CoverallsJobsCommand();
         $command->setRootDir($this->rootDir);
 
         return $command;
