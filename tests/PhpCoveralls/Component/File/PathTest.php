@@ -2,7 +2,7 @@
 
 namespace PhpCoveralls\Component\File;
 
-use Satooshi\ProjectTestCase;
+use PhpCoveralls\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Component\File\Path
