@@ -85,6 +85,8 @@ class PathTest extends ProjectTestCase
     /**
      * @test
      * @dataProvider provideRelativePaths
+     *
+     * @param mixed $path
      */
     public function shouldBeRelativePath($path)
     {
@@ -94,6 +96,8 @@ class PathTest extends ProjectTestCase
     /**
      * @test
      * @dataProvider provideAbsolutePaths
+     *
+     * @param mixed $path
      */
     public function shouldNotBeRelativePath($path)
     {
@@ -116,6 +120,8 @@ class PathTest extends ProjectTestCase
     /**
      * @test
      * @dataProvider provideRelativePaths
+     *
+     * @param mixed $path
      */
     public function shouldConvertAbsolutePathIfRelativePathGiven($path)
     {
@@ -155,6 +161,8 @@ class PathTest extends ProjectTestCase
     /**
      * @test
      * @dataProvider provideRelativePaths
+     *
+     * @param mixed $path
      */
     public function shouldGetRealPathIfRelativePathGiven($path)
     {

@@ -417,6 +417,8 @@ XML;
     /**
      * @test
      * @depends shouldSetServiceName
+     *
+     * @param mixed $object
      */
     public function shouldConvertToArrayWithServiceName($object)
     {
@@ -437,6 +439,8 @@ XML;
     /**
      * @test
      * @depends shouldSetServiceJobId
+     *
+     * @param mixed $object
      */
     public function shouldConvertToArrayWithServiceJobId($object)
     {
@@ -457,6 +461,8 @@ XML;
     /**
      * @test
      * @depends shouldSetRepoToken
+     *
+     * @param mixed $object
      */
     public function shouldConvertToArrayWithRepoToken($object)
     {
@@ -477,6 +483,8 @@ XML;
     /**
      * @test
      * @depends shouldSetGit
+     *
+     * @param mixed $object
      */
     public function shouldConvertToArrayWithGit($object)
     {
@@ -499,6 +507,8 @@ XML;
     /**
      * @test
      * @depends shouldSetRunAt
+     *
+     * @param mixed $object
      */
     public function shouldConvertToArrayWithRunAt($object)
     {
