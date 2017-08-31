@@ -1,8 +1,8 @@
 {
-    "name": "satooshi/php-coveralls",
+    "name": "php-coveralls/php-coveralls",
     "description": "PHP client library for Coveralls API",
     "keywords": ["coverage", "github", "test", "ci"],
-    "homepage": "https://github.com/satooshi/php-coveralls",
+    "homepage": "https://github.com/php-coveralls/php-coveralls",
     "type": "library",
     "license": "MIT",
     "authors": [
