@@ -64,7 +64,7 @@ XML;
     /**
      * @test
      */
-    public function shouldExecuteCoverallsV1JobsCommand()
+    public function shouldExecuteCoverallsJobsCommand()
     {
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
