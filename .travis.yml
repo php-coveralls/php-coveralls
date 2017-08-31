@@ -7,9 +7,9 @@ matrix:
         - php: 5.5
           env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
         - php: 5.5
-          env: 'BOX=yes'
         - php: 5.6
         - php: 7.0
+          env: 'BOX=yes'
         - php: 7.1
           env: CHECKS=yes
         - php: hhvm
@@ -35,6 +35,7 @@ after_success:
 
 before_deploy:
     - if [ "${BOX}" = "yes" ]; then curl -LSs http://box-project.github.io/box2/installer.php | php; fi;
+    - if [ "${BOX}" = "yes" ]; then composer config platform.php 2> /dev/null || composer config platform.php 5.5.0; fi;
     - if [ "${BOX}" = "yes" ]; then composer update --no-dev --no-interaction ${COMPOSER_FLAGS}; fi;
     - if [ "${BOX}" = "yes" ]; then php -d phar.readonly=false box.phar build; fi;
 
@@ -45,7 +46,7 @@ deploy:
     file: build/artifacts/coveralls.phar
     skip_cleanup: true
     on:
-        repo: satooshi/php-coveralls
+        repo: php-coveralls/php-coveralls
         tags: true
         all_branches: true
         condition: $BOX = yes

@@ -15,7 +15,7 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
     );
 }
 
-use Satooshi\Bundle\CoverallsBundle\Console\Application;
+use PhpCoveralls\Bundle\CoverallsBundle\Console\Application;
 
 $rootDir = getcwd();
 $app = new Application($rootDir, 'PHP client library for Coveralls API', '@package_version@');
