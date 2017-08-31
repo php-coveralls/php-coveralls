@@ -30,8 +30,8 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
             'commit message',
         ];
         $this->getRemotesValue = [
-            "origin\tgit@github.com:satooshi/php-coveralls.git (fetch)",
-            "origin\tgit@github.com:satooshi/php-coveralls.git (push)",
+            "origin\tgit@github.com:php-coveralls/php-coveralls.git (fetch)",
+            "origin\tgit@github.com:php-coveralls/php-coveralls.git (push)",
         ];
     }
 
@@ -164,7 +164,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     protected function assertRemote(Remote $remote)
     {
         $this->assertSame('origin', $remote->getName());
-        $this->assertSame('git@github.com:satooshi/php-coveralls.git', $remote->getUrl());
+        $this->assertSame('git@github.com:php-coveralls/php-coveralls.git', $remote->getUrl());
     }
 
     // collectBranch() exception

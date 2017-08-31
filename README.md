@@ -5,8 +5,8 @@ php-coveralls
 [![Coverage Status](https://coveralls.io/repos/php-coveralls/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/php-coveralls/php-coveralls)
 [![Dependency Status](https://www.versioneye.com/php/php-coveralls:php-coveralls/1.0.1/badge?style=flat-square)](https://www.versioneye.com/php/php-coveralls:php-coveralls/1.0.1)
 
-[![Latest Stable Version](https://poser.pugx.org/satooshi/php-coveralls/v/stable.png)](https://packagist.org/packages/satooshi/php-coveralls)
-[![Total Downloads](https://poser.pugx.org/satooshi/php-coveralls/downloads.png)](https://packagist.org/packages/satooshi/php-coveralls)
+[![Latest Stable Version](https://poser.pugx.org/php-coveralls/php-coveralls/v/stable.png)](https://packagist.org/packages/php-coveralls/php-coveralls)
+[![Total Downloads](https://poser.pugx.org/php-coveralls/php-coveralls/downloads.png)](https://packagist.org/packages/php-coveralls/php-coveralls)
 
 PHP client library for [Coveralls](https://coveralls.io).
 
@@ -40,16 +40,16 @@ $ chmod +x coveralls.phar
 To install php-coveralls with Composer, run the following command:
 
 ```sh
-$ composer require satooshi/php-coveralls
+$ composer require php-coveralls/php-coveralls
 ```
 
 If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
 
 ```sh
-$ composer require satooshi/php-coveralls '~1.0'
+$ composer require php-coveralls/php-coveralls '~1.0'
 ```
 
-You can see this library on [Packagist](https://packagist.org/packages/satooshi/php-coveralls).
+You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
 
 Composer installs autoloader at `./vendor/autoloader.php`. If you use
 php-coveralls in your php script, add:
@@ -105,7 +105,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "satooshi/php-coveralls": "dev-master",
+        "php-coveralls/php-coveralls": "dev-master",
         "phpunit/phpcov": "^2.0"
     },
 ```
