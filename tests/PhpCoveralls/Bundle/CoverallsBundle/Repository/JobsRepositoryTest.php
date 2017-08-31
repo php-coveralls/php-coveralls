@@ -246,10 +246,14 @@ class JobsRepositoryTest extends ProjectTestCase
         $statusCode = 200;
         $url = 'https://coveralls.io/jobs/67528';
         $response = new \GuzzleHttp\Psr7\Response(
-            $statusCode, [], json_encode([
+            $statusCode,
+            [],
+            json_encode([
                 'message' => 'Job #115.3',
                 'url' => $url,
-            ]), '1.1', 'OK'
+            ]),
+            '1.1',
+            'OK'
         );
         $api = $this->createApiMock($response, $statusCode, $url);
         $config = $this->createConfiguration();
@@ -335,11 +339,15 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $statusCode = 422;
         $response = new \GuzzleHttp\Psr7\Response(
-            $statusCode, [], json_encode([
+            $statusCode,
+            [],
+            json_encode([
                 'message' => 'Build processing error.',
                 'url' => '',
                 'error' => true,
-            ]), '1.1', 'Unprocessable Entity'
+            ]),
+            '1.1',
+            'Unprocessable Entity'
         );
         $api = $this->createApiMock($response, $statusCode);
         $config = $this->createConfiguration();
