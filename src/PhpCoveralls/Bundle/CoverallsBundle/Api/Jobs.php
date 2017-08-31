@@ -122,7 +122,7 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
-     * @return \GuzzleHttp\Psr7\Response|null
+     * @return null|\GuzzleHttp\Psr7\Response
      */
     public function send()
     {
@@ -180,7 +180,7 @@ class Jobs extends CoverallsApi
     /**
      * Return JsonFile.
      *
-     * @return JsonFile|null
+     * @return null|JsonFile
      */
     public function getJsonFile()
     {

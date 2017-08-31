@@ -14,42 +14,42 @@ class Commit extends Coveralls
     /**
      * Commit ID.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $id;
 
     /**
      * Author name.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $authorName;
 
     /**
      * Author email.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $authorEmail;
 
     /**
      * Committer name.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $committerName;
 
     /**
      * Committer email.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $committerEmail;
 
     /**
      * Commit message.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $message;
 
@@ -91,7 +91,7 @@ class Commit extends Coveralls
     /**
      * Return commit ID.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getId()
     {
@@ -115,7 +115,7 @@ class Commit extends Coveralls
     /**
      * Return author name.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getAuthorName()
     {
@@ -139,7 +139,7 @@ class Commit extends Coveralls
     /**
      * Return author email.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getAuthorEmail()
     {
@@ -163,7 +163,7 @@ class Commit extends Coveralls
     /**
      * Return committer name.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCommitterName()
     {
@@ -187,7 +187,7 @@ class Commit extends Coveralls
     /**
      * Return committer email.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getCommitterEmail()
     {
@@ -211,7 +211,7 @@ class Commit extends Coveralls
     /**
      * Return commit message.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getMessage()
     {

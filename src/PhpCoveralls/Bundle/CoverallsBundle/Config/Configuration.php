@@ -107,7 +107,7 @@ class Configuration
     /**
      * Return repository token.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getRepoToken()
     {
@@ -141,7 +141,7 @@ class Configuration
     /**
      * Return service name.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getServiceName()
     {

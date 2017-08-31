@@ -16,14 +16,14 @@ class JsonFile extends Coveralls
     /**
      * Service name.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $serviceName;
 
     /**
      * Service job id.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $serviceJobId;
 
@@ -65,7 +65,7 @@ class JsonFile extends Coveralls
     /**
      * Repository token.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $repoToken;
 
@@ -79,7 +79,7 @@ class JsonFile extends Coveralls
     /**
      * Git data.
      *
-     * @var Git|null
+     * @var null|Git
      */
     protected $git;
 
@@ -88,7 +88,7 @@ class JsonFile extends Coveralls
      *
      * "2013-02-18 00:52:48 -0800"
      *
-     * @var string|null
+     * @var null|string
      */
     protected $runAt;
 
@@ -381,7 +381,7 @@ class JsonFile extends Coveralls
      *
      * @param string $path absolute path to source file
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile|null
+     * @return null|\PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
      */
     public function getSourceFile($path)
     {
@@ -437,7 +437,7 @@ class JsonFile extends Coveralls
     /**
      * Return service name.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getServiceName()
     {
@@ -461,7 +461,7 @@ class JsonFile extends Coveralls
     /**
      * Return repository token.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getRepoToken()
     {
@@ -485,7 +485,7 @@ class JsonFile extends Coveralls
     /**
      * Return service job id.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getServiceJobId()
     {
@@ -559,7 +559,7 @@ class JsonFile extends Coveralls
     /**
      * Return git data.
      *
-     * @return Git|null
+     * @return null|Git
      */
     public function getGit()
     {
@@ -583,7 +583,7 @@ class JsonFile extends Coveralls
     /**
      * Return timestamp when the job ran.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getRunAt()
     {
