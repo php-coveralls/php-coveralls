@@ -152,7 +152,8 @@ class Jobs extends CoverallsApi
             'multipart' => [
                 [
                     'name' => $filename,
-                    'contents' => fopen($path, 'r'),
+                    'contents' => file_get_contents($path),
+                    'filename' => basename($path),
                 ],
             ],
         ];

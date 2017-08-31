@@ -214,7 +214,7 @@ XML;
     protected function assertSourceFile(SourceFile $sourceFile, $name, $path, $fileLines, array $coverage, $source)
     {
         $this->assertSame($name, $sourceFile->getName());
-        $this->assertSame($path, $sourceFile->getPath());
+        $this->assertSamePath($path, $sourceFile->getPath());
         $this->assertSame($fileLines, $sourceFile->getFileLines());
         $this->assertSame($coverage, $sourceFile->getCoverage());
         $this->assertSame($source, $sourceFile->getSource());
