@@ -42,7 +42,6 @@
         ],
         "sca": [
             "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",
-            "php dev-tools/vendor/bin/phpcs --standard=build/config/phpcs.xml --ignore=*.html.php,*.config.php,*.twig.php src",
             "php dev-tools/vendor/bin/phpmd src text build/config/phpmd.xml"
         ],
         "apigen": [
