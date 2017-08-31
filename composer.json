@@ -30,10 +30,10 @@
         "symfony/http-kernel": "Allows Symfony integration"
     },
     "autoload": {
-        "psr-4": { "Satooshi\\": "src/Satooshi/" }
+        "psr-4": { "PhpCoveralls\\": "src/PhpCoveralls/"}
     },
     "autoload-dev": {
-        "psr-4": { "Satooshi\\": "tests/Satooshi/" }
+        "psr-4": { "PhpCoveralls\\": "tests/PhpCoveralls/"}
     },
     "bin": ["bin/coveralls"],
     "scripts": {
