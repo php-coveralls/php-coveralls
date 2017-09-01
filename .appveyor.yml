@@ -38,3 +38,4 @@ before_test:
 test_script:
     - cd C:\projects\php-coveralls
     - phpdbg -qrr vendor\phpunit\phpunit\phpunit --verbose
+    - php bin\coveralls -v --exclude-no-stmt
