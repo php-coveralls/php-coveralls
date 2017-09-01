@@ -122,7 +122,7 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
-     * @return \GuzzleHttp\Psr7\Response|null
+     * @return null|\GuzzleHttp\Psr7\Response
      */
     public function send()
     {
@@ -133,6 +133,32 @@ class Jobs extends CoverallsApi
         $jsonPath = $this->config->getJsonPath();
 
         return $this->upload(static::URL, $jsonPath, static::FILENAME);
+    }
+
+    // accessor
+
+    /**
+     * Set JsonFile.
+     *
+     * @param JsonFile $jsonFile json_file content
+     *
+     * @return $this
+     */
+    public function setJsonFile(JsonFile $jsonFile)
+    {
+        $this->jsonFile = $jsonFile;
+
+        return $this;
+    }
+
+    /**
+     * Return JsonFile.
+     *
+     * @return null|JsonFile
+     */
+    public function getJsonFile()
+    {
+        return $this->jsonFile;
     }
 
     // internal method
@@ -159,31 +185,5 @@ class Jobs extends CoverallsApi
         ];
 
         return $this->client->post($url, $options);
-    }
-
-    // accessor
-
-    /**
-     * Set JsonFile.
-     *
-     * @param JsonFile $jsonFile json_file content
-     *
-     * @return $this
-     */
-    public function setJsonFile(JsonFile $jsonFile)
-    {
-        $this->jsonFile = $jsonFile;
-
-        return $this;
-    }
-
-    /**
-     * Return JsonFile.
-     *
-     * @return JsonFile|null
-     */
-    public function getJsonFile()
-    {
-        return $this->jsonFile;
     }
 }

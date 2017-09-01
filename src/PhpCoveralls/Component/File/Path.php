@@ -35,7 +35,7 @@ class Path
      * @param string $path    file path
      * @param string $rootDir absolute path to project root directory
      *
-     * @return string|false absolute path
+     * @return false|string absolute path
      */
     public function toAbsolutePath($path, $rootDir)
     {
@@ -56,7 +56,7 @@ class Path
      * @param string $path    file path
      * @param string $rootDir absolute path to project root directory
      *
-     * @return string|false real path string if the path string is passed and real path exists, false otherwise
+     * @return false|string real path string if the path string is passed and real path exists, false otherwise
      */
     public function getRealPath($path, $rootDir)
     {
@@ -77,7 +77,7 @@ class Path
      * @param string $path    path
      * @param string $rootDir absolute path to project root directory
      *
-     * @return string|false real directory path string if the path string is passed and real directory exists, false otherwise
+     * @return false|string real directory path string if the path string is passed and real directory exists, false otherwise
      */
     public function getRealDir($path, $rootDir)
     {
@@ -98,7 +98,7 @@ class Path
      * @param string $path    file path
      * @param string $rootDir absolute path to project root directory
      *
-     * @return string|false real file path string if the parent directory exists, false otherwise
+     * @return false|string real file path string if the parent directory exists, false otherwise
      */
     public function getRealWritingFilePath($path, $rootDir)
     {
@@ -114,7 +114,7 @@ class Path
     /**
      * Return whether the real path exists.
      *
-     * @param string|bool $realpath real path
+     * @param bool|string $realpath real path
      *
      * @return bool true if the real path exists, false otherwise
      */
@@ -126,7 +126,7 @@ class Path
     /**
      * Return whether the real file path exists.
      *
-     * @param string|bool $realpath real file path
+     * @param bool|string $realpath real file path
      *
      * @return bool true if the real file path exists, false otherwise
      */
@@ -138,7 +138,7 @@ class Path
     /**
      * Return whether the real file path is readable.
      *
-     * @param string|bool $realpath real file path
+     * @param bool|string $realpath real file path
      *
      * @return bool true if the real file path is readable, false otherwise
      */
@@ -150,7 +150,7 @@ class Path
     /**
      * Return whether the real file path is writable.
      *
-     * @param string|bool $realpath real file path
+     * @param bool|string $realpath real file path
      *
      * @return bool true if the real file path is writable, false otherwise
      */
@@ -162,7 +162,7 @@ class Path
     /**
      * Return whether the real directory exists.
      *
-     * @param string|bool $realpath real directory path
+     * @param bool|string $realpath real directory path
      *
      * @return bool true if the real directory exists, false otherwise
      */
@@ -174,7 +174,7 @@ class Path
     /**
      * Return whether the real directory is writable.
      *
-     * @param string|bool $realpath real directory path
+     * @param bool|string $realpath real directory path
      *
      * @return bool true if the real directory is writable, false otherwise
      */

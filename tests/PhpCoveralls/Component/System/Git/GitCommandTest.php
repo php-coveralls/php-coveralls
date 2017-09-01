@@ -10,39 +10,6 @@ namespace PhpCoveralls\Component\System\Git;
  */
 class GitCommandTest extends \PHPUnit_Framework_TestCase
 {
-    protected function createGitBranchesCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getBranches()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
-    }
-
-    protected function createGitHeadCommitCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getHeadCommit()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
-    }
-
-    protected function createGitRemotesCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getRemotes()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
-    }
-
     // getCommandPath()
 
     /**
@@ -155,5 +122,38 @@ class GitCommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
+    }
+
+    protected function createGitBranchesCommandMock($params)
+    {
+        $adapter = $this->prophesize(GitCommand::class);
+        $adapter
+            ->getBranches()
+            ->willReturn($params)
+            ->shouldBeCalled();
+
+        return $adapter->reveal();
+    }
+
+    protected function createGitHeadCommitCommandMock($params)
+    {
+        $adapter = $this->prophesize(GitCommand::class);
+        $adapter
+            ->getHeadCommit()
+            ->willReturn($params)
+            ->shouldBeCalled();
+
+        return $adapter->reveal();
+    }
+
+    protected function createGitRemotesCommandMock($params)
+    {
+        $adapter = $this->prophesize(GitCommand::class);
+        $adapter
+            ->getRemotes()
+            ->willReturn($params)
+            ->shouldBeCalled();
+
+        return $adapter->reveal();
     }
 }

@@ -47,6 +47,18 @@ class GitInfoCollector
         return new Git($branch, $commit, $remotes);
     }
 
+    // accessor
+
+    /**
+     * Return git command.
+     *
+     * @return \PhpCoveralls\Component\System\Git\GitCommand
+     */
+    public function getCommand()
+    {
+        return $this->command;
+    }
+
     // internal method
 
     /**
@@ -139,17 +151,5 @@ class GitInfoCollector
         }
 
         return $remotes;
-    }
-
-    // accessor
-
-    /**
-     * Return git command.
-     *
-     * @return \PhpCoveralls\Component\System\Git\GitCommand
-     */
-    public function getCommand()
-    {
-        return $this->command;
     }
 }

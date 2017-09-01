@@ -19,28 +19,6 @@ class GitTest extends \PHPUnit_Framework_TestCase
         $this->object = new Git($this->branchName, $this->commit, [$this->remote]);
     }
 
-    protected function createRemote($name = 'name', $url = 'url')
-    {
-        $remote = new Remote();
-
-        return $remote
-            ->setName($name)
-            ->setUrl($url);
-    }
-
-    protected function createCommit($id = 'id', $authorName = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
-    {
-        $commit = new Commit();
-
-        return $commit
-            ->setId($id)
-            ->setAuthorName($authorName)
-            ->setAuthorEmail($authorEmail)
-            ->setCommitterName($committerName)
-            ->setCommitterEmail($committerEmail)
-            ->setMessage($message);
-    }
-
     // getBranch()
 
     /**
@@ -86,5 +64,27 @@ class GitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
+    }
+
+    protected function createRemote($name = 'name', $url = 'url')
+    {
+        $remote = new Remote();
+
+        return $remote
+            ->setName($name)
+            ->setUrl($url);
+    }
+
+    protected function createCommit($id = 'id', $authorName = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
+    {
+        $commit = new Commit();
+
+        return $commit
+            ->setId($id)
+            ->setAuthorName($authorName)
+            ->setAuthorEmail($authorEmail)
+            ->setCommitterName($committerName)
+            ->setCommitterEmail($committerEmail)
+            ->setMessage($message);
     }
 }

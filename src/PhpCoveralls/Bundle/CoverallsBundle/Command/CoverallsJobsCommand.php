@@ -37,6 +37,18 @@ class CoverallsJobsCommand extends Command
      */
     protected $logger;
 
+    // accessor
+
+    /**
+     * Set root directory.
+     *
+     * @param string $rootDir path to project root directory
+     */
+    public function setRootDir($rootDir)
+    {
+        $this->rootDir = $rootDir;
+    }
+
     // internal method
 
     /**
@@ -159,17 +171,5 @@ class CoverallsJobsCommand extends Command
 
         $repository->setLogger($this->logger);
         $repository->persist();
-    }
-
-    // accessor
-
-    /**
-     * Set root directory.
-     *
-     * @param string $rootDir path to project root directory
-     */
-    public function setRootDir($rootDir)
-    {
-        $this->rootDir = $rootDir;
     }
 }

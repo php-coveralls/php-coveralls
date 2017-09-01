@@ -37,15 +37,6 @@ class ConfiguratorTest extends ProjectTestCase
         $this->rmDir($this->buildDir);
     }
 
-    // custom assertion
-
-    protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
-    {
-        $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
-        $this->assertSamePath($jsonPath, $config->getJsonPath());
-        $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
-    }
-
     // load()
 
     /**
@@ -325,6 +316,15 @@ class ConfiguratorTest extends ProjectTestCase
         $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
+    }
+
+    // custom assertion
+
+    protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
+    {
+        $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
+        $this->assertSamePath($jsonPath, $config->getJsonPath());
+        $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
     private function isWindowsOS()

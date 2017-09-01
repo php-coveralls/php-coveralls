@@ -11,16 +11,6 @@ use Symfony\Component\Console\Output\StreamOutput;
  */
 class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
 {
-    protected function createAdapterMockWith($message)
-    {
-        $mock = $this->prophesize(StreamOutput::class);
-        $mock
-            ->writeln($message)
-            ->shouldBeCalled();
-
-        return $mock->reveal();
-    }
-
     /**
      * @test
      */
@@ -32,5 +22,15 @@ class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
         $object = new ConsoleLogger($output);
 
         $object->log('info', $message);
+    }
+
+    protected function createAdapterMockWith($message)
+    {
+        $mock = $this->prophesize(StreamOutput::class);
+        $mock
+            ->writeln($message)
+            ->shouldBeCalled();
+
+        return $mock->reveal();
     }
 }

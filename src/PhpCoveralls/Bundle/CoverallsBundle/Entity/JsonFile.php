@@ -16,14 +16,14 @@ class JsonFile extends Coveralls
     /**
      * Service name.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $serviceName;
 
     /**
      * Service job id.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $serviceJobId;
 
@@ -65,7 +65,7 @@ class JsonFile extends Coveralls
     /**
      * Repository token.
      *
-     * @var string|null
+     * @var null|string
      */
     protected $repoToken;
 
@@ -79,7 +79,7 @@ class JsonFile extends Coveralls
     /**
      * Git data.
      *
-     * @var Git|null
+     * @var null|Git
      */
     protected $git;
 
@@ -88,7 +88,7 @@ class JsonFile extends Coveralls
      *
      * "2013-02-18 00:52:48 -0800"
      *
-     * @var string|null
+     * @var null|string
      */
     protected $runAt;
 
@@ -190,6 +190,248 @@ class JsonFile extends Coveralls
         }
 
         return $metrics->getLineCoverage();
+    }
+
+    // accessor
+
+    /**
+     * Return whether the json file has source file.
+     *
+     * @param string $path absolute path to source file
+     *
+     * @return bool
+     */
+    public function hasSourceFile($path)
+    {
+        return isset($this->sourceFiles[$path]);
+    }
+
+    /**
+     * Return source file.
+     *
+     * @param string $path absolute path to source file
+     *
+     * @return null|\PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
+     */
+    public function getSourceFile($path)
+    {
+        if ($this->hasSourceFile($path)) {
+            return $this->sourceFiles[$path];
+        }
+    }
+
+    /**
+     * Add source file.
+     *
+     * @param SourceFile $sourceFile
+     */
+    public function addSourceFile(SourceFile $sourceFile)
+    {
+        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
+    }
+
+    /**
+     * Return whether the json file has a source file.
+     *
+     * @return bool
+     */
+    public function hasSourceFiles()
+    {
+        return count($this->sourceFiles) > 0;
+    }
+
+    /**
+     * Return source files.
+     *
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
+     */
+    public function getSourceFiles()
+    {
+        return $this->sourceFiles;
+    }
+
+    /**
+     * Set service name.
+     *
+     * @param string $serviceName service name
+     *
+     * @return $this
+     */
+    public function setServiceName($serviceName)
+    {
+        $this->serviceName = $serviceName;
+
+        return $this;
+    }
+
+    /**
+     * Return service name.
+     *
+     * @return null|string
+     */
+    public function getServiceName()
+    {
+        return $this->serviceName;
+    }
+
+    /**
+     * Set repository token.
+     *
+     * @param string $repoToken repository token
+     *
+     * @return $this
+     */
+    public function setRepoToken($repoToken)
+    {
+        $this->repoToken = $repoToken;
+
+        return $this;
+    }
+
+    /**
+     * Return repository token.
+     *
+     * @return null|string
+     */
+    public function getRepoToken()
+    {
+        return $this->repoToken;
+    }
+
+    /**
+     * Set service job id.
+     *
+     * @param string $serviceJobId service job id
+     *
+     * @return $this
+     */
+    public function setServiceJobId($serviceJobId)
+    {
+        $this->serviceJobId = $serviceJobId;
+
+        return $this;
+    }
+
+    /**
+     * Return service job id.
+     *
+     * @return null|string
+     */
+    public function getServiceJobId()
+    {
+        return $this->serviceJobId;
+    }
+
+    /**
+     * Return service number.
+     *
+     * @return string
+     */
+    public function getServiceNumber()
+    {
+        return $this->serviceNumber;
+    }
+
+    /**
+     * Return service event type.
+     *
+     * @return string
+     */
+    public function getServiceEventType()
+    {
+        return $this->serviceEventType;
+    }
+
+    /**
+     * Return build URL of the project.
+     *
+     * @return string
+     */
+    public function getServiceBuildUrl()
+    {
+        return $this->serviceBuildUrl;
+    }
+
+    /**
+     * Return branch name.
+     *
+     * @return string
+     */
+    public function getServiceBranch()
+    {
+        return $this->serviceBranch;
+    }
+
+    /**
+     * Return pull request info.
+     *
+     * @return string
+     */
+    public function getServicePullRequest()
+    {
+        return $this->servicePullRequest;
+    }
+
+    /**
+     * Set git data.
+     *
+     * @param Git $git git data
+     *
+     * @return $this
+     */
+    public function setGit(Git $git)
+    {
+        $this->git = $git;
+
+        return $this;
+    }
+
+    /**
+     * Return git data.
+     *
+     * @return null|Git
+     */
+    public function getGit()
+    {
+        return $this->git;
+    }
+
+    /**
+     * Set timestamp when the job ran.
+     *
+     * @param string $runAt timestamp
+     *
+     * @return $this
+     */
+    public function setRunAt($runAt)
+    {
+        $this->runAt = $runAt;
+
+        return $this;
+    }
+
+    /**
+     * Return timestamp when the job ran.
+     *
+     * @return null|string
+     */
+    public function getRunAt()
+    {
+        return $this->runAt;
+    }
+
+    /**
+     * Return metrics.
+     *
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
+     */
+    public function getMetrics()
+    {
+        if ($this->metrics === null) {
+            $this->metrics = new Metrics();
+        }
+
+        return $this->metrics;
     }
 
     // internal method
@@ -360,247 +602,5 @@ class JsonFile extends Coveralls
     protected function isUnsupportedServiceJob()
     {
         return $this->serviceJobId === null && $this->serviceNumber === null && $this->serviceEventType === null && $this->repoToken !== null;
-    }
-
-    // accessor
-
-    /**
-     * Return whether the json file has source file.
-     *
-     * @param string $path absolute path to source file
-     *
-     * @return bool
-     */
-    public function hasSourceFile($path)
-    {
-        return isset($this->sourceFiles[$path]);
-    }
-
-    /**
-     * Return source file.
-     *
-     * @param string $path absolute path to source file
-     *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile|null
-     */
-    public function getSourceFile($path)
-    {
-        if ($this->hasSourceFile($path)) {
-            return $this->sourceFiles[$path];
-        }
-    }
-
-    /**
-     * Add source file.
-     *
-     * @param SourceFile $sourceFile
-     */
-    public function addSourceFile(SourceFile $sourceFile)
-    {
-        $this->sourceFiles[$sourceFile->getPath()] = $sourceFile;
-    }
-
-    /**
-     * Return whether the json file has a source file.
-     *
-     * @return bool
-     */
-    public function hasSourceFiles()
-    {
-        return count($this->sourceFiles) > 0;
-    }
-
-    /**
-     * Return source files.
-     *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
-     */
-    public function getSourceFiles()
-    {
-        return $this->sourceFiles;
-    }
-
-    /**
-     * Set service name.
-     *
-     * @param string $serviceName service name
-     *
-     * @return $this
-     */
-    public function setServiceName($serviceName)
-    {
-        $this->serviceName = $serviceName;
-
-        return $this;
-    }
-
-    /**
-     * Return service name.
-     *
-     * @return string|null
-     */
-    public function getServiceName()
-    {
-        return $this->serviceName;
-    }
-
-    /**
-     * Set repository token.
-     *
-     * @param string $repoToken repository token
-     *
-     * @return $this
-     */
-    public function setRepoToken($repoToken)
-    {
-        $this->repoToken = $repoToken;
-
-        return $this;
-    }
-
-    /**
-     * Return repository token.
-     *
-     * @return string|null
-     */
-    public function getRepoToken()
-    {
-        return $this->repoToken;
-    }
-
-    /**
-     * Set service job id.
-     *
-     * @param string $serviceJobId service job id
-     *
-     * @return $this
-     */
-    public function setServiceJobId($serviceJobId)
-    {
-        $this->serviceJobId = $serviceJobId;
-
-        return $this;
-    }
-
-    /**
-     * Return service job id.
-     *
-     * @return string|null
-     */
-    public function getServiceJobId()
-    {
-        return $this->serviceJobId;
-    }
-
-    /**
-     * Return service number.
-     *
-     * @return string
-     */
-    public function getServiceNumber()
-    {
-        return $this->serviceNumber;
-    }
-
-    /**
-     * Return service event type.
-     *
-     * @return string
-     */
-    public function getServiceEventType()
-    {
-        return $this->serviceEventType;
-    }
-
-    /**
-     * Return build URL of the project.
-     *
-     * @return string
-     */
-    public function getServiceBuildUrl()
-    {
-        return $this->serviceBuildUrl;
-    }
-
-    /**
-     * Return branch name.
-     *
-     * @return string
-     */
-    public function getServiceBranch()
-    {
-        return $this->serviceBranch;
-    }
-
-    /**
-     * Return pull request info.
-     *
-     * @return string
-     */
-    public function getServicePullRequest()
-    {
-        return $this->servicePullRequest;
-    }
-
-    /**
-     * Set git data.
-     *
-     * @param Git $git git data
-     *
-     * @return $this
-     */
-    public function setGit(Git $git)
-    {
-        $this->git = $git;
-
-        return $this;
-    }
-
-    /**
-     * Return git data.
-     *
-     * @return Git|null
-     */
-    public function getGit()
-    {
-        return $this->git;
-    }
-
-    /**
-     * Set timestamp when the job ran.
-     *
-     * @param string $runAt timestamp
-     *
-     * @return $this
-     */
-    public function setRunAt($runAt)
-    {
-        $this->runAt = $runAt;
-
-        return $this;
-    }
-
-    /**
-     * Return timestamp when the job ran.
-     *
-     * @return string|null
-     */
-    public function getRunAt()
-    {
-        return $this->runAt;
-    }
-
-    /**
-     * Return metrics.
-     *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
-     */
-    public function getMetrics()
-    {
-        if ($this->metrics === null) {
-            $this->metrics = new Metrics();
-        }
-
-        return $this->metrics;
     }
 }
