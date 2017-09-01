@@ -2,7 +2,9 @@
 
 namespace PhpCoveralls;
 
-class ProjectTestCase extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ProjectTestCase extends TestCase
 {
     protected function setUpDir($projectDir)
     {

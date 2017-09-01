@@ -6,13 +6,14 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
 use PhpCoveralls\Component\System\Git\GitCommand;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
+class GitInfoCollectorTest extends TestCase
 {
     public function setUp()
     {

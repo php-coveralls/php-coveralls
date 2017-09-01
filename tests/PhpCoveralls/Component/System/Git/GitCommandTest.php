@@ -2,13 +2,15 @@
 
 namespace PhpCoveralls\Component\System\Git;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \PhpCoveralls\Component\System\Git\GitCommand
  * @covers \PhpCoveralls\Component\System\SystemCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitCommandTest extends \PHPUnit_Framework_TestCase
+class GitCommandTest extends TestCase
 {
     // getCommandPath()
 
