@@ -2,13 +2,15 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Entity\Git;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitTest extends \PHPUnit_Framework_TestCase
+class GitTest extends TestCase
 {
     protected function setUp()
     {

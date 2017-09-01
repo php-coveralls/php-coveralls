@@ -2,12 +2,14 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Config;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
     protected function setUp()
     {

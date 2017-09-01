@@ -2,12 +2,14 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Entity;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class MetricsTest extends \PHPUnit_Framework_TestCase
+class MetricsTest extends TestCase
 {
     protected function setUp()
     {

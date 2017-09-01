@@ -2,6 +2,7 @@
 
 namespace PhpCoveralls\Component\Log;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\StreamOutput;
 
 /**
@@ -9,7 +10,7 @@ use Symfony\Component\Console\Output\StreamOutput;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
+class ConsoleLoggerTest extends TestCase
 {
     /**
      * @test

@@ -2,12 +2,14 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
+class RequirementsNotSatisfiedExceptionTest extends TestCase
 {
     // getReadEnv()
 
