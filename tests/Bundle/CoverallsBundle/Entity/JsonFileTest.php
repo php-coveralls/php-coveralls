@@ -1,13 +1,15 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Entity;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Version;
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile

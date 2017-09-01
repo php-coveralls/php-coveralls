@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Command;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Command;
 
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Bundle\CoverallsBundle\Command\CoverallsJobsCommand;
+use PhpCoveralls\Tests\ProjectTestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 

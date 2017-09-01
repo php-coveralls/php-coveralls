@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Console;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Console;
 
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Bundle\CoverallsBundle\Console\Application;
+use PhpCoveralls\Tests\ProjectTestCase;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**

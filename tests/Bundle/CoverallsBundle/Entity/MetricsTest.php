@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Entity;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
 use PHPUnit\Framework\TestCase;
 
 /**

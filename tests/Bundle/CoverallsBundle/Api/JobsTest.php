@@ -1,14 +1,15 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Api;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
+use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs

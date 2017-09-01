@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Entity;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity;
 
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile

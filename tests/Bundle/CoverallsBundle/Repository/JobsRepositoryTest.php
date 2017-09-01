@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Repository;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Repository;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
@@ -8,7 +8,8 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfie
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository;
+use PhpCoveralls\Tests\ProjectTestCase;
 use Psr\Log\NullLogger;
 
 /**

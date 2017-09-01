@@ -50,7 +50,7 @@
         "psr-4": { "PhpCoveralls\\": "src/"}
     },
     "autoload-dev": {
-        "psr-4": { "PhpCoveralls\\": "tests/"}
+        "psr-4": { "PhpCoveralls\\Tests\\": "tests/"}
     },
     "bin": ["bin/coveralls"],
     "scripts": {

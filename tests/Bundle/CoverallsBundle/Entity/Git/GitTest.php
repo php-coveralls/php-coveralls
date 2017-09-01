@@ -1,7 +1,10 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Entity\Git;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity\Git;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
 use PHPUnit\Framework\TestCase;
 
 /**

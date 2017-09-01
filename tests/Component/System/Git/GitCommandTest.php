@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Component\System\Git;
+namespace PhpCoveralls\Tests\Component\System\Git;
 
+use PhpCoveralls\Component\System\Git\GitCommand;
 use PHPUnit\Framework\TestCase;
 
 /**

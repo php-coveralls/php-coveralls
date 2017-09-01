@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpCoveralls\Component\File;
+namespace PhpCoveralls\Tests\Component\File;
 
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Component\File\Path;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Component\File\Path

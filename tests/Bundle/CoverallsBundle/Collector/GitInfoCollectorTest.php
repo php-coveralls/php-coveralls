@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Collector;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Collector;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;

@@ -1,10 +1,11 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Collector;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Collector;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector

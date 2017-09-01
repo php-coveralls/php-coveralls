@@ -1,8 +1,10 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Config;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Config;
 
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
+use PhpCoveralls\Bundle\CoverallsBundle\Config\Configurator;
+use PhpCoveralls\Tests\ProjectTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;

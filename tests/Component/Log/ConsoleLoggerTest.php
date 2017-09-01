@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Component\Log;
+namespace PhpCoveralls\Tests\Component\Log;
 
+use PhpCoveralls\Component\Log\ConsoleLogger;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Output\StreamOutput;
 

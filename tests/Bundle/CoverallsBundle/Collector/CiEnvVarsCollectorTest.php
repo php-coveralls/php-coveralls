@@ -1,9 +1,10 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Collector;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Collector;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
-use PhpCoveralls\ProjectTestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector

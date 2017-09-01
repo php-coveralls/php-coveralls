@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Config;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Config;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PHPUnit\Framework\TestCase;
 
 /**

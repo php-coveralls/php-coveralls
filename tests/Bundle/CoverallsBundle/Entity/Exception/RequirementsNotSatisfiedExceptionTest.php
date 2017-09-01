@@ -1,7 +1,8 @@
 <?php
 
-namespace PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception;
+namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity\Exception;
 
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PHPUnit\Framework\TestCase;
 
 /**
