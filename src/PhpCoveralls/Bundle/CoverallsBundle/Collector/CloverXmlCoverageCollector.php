@@ -59,6 +59,18 @@ class CloverXmlCoverageCollector
         return $this->jsonFile;
     }
 
+    // accessor
+
+    /**
+     * Return json file.
+     *
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
+     */
+    public function getJsonFile()
+    {
+        return $this->jsonFile;
+    }
+
     // Internal method
 
     /**
@@ -130,17 +142,5 @@ class CloverXmlCoverageCollector
         }
 
         return $srcFile;
-    }
-
-    // accessor
-
-    /**
-     * Return json file.
-     *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
-     */
-    public function getJsonFile()
-    {
-        return $this->jsonFile;
     }
 }

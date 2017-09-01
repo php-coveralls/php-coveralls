@@ -19,23 +19,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->setUpDir($this->projectDir);
     }
 
-    protected function createConfiguration()
-    {
-        $config = new Configuration();
-
-        return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
-    }
-
-    protected function createCiEnvVarsCollector($config = null)
-    {
-        if ($config === null) {
-            $config = $this->createConfiguration();
-        }
-
-        return new CiEnvVarsCollector($config);
-    }
-
     // collect()
 
     /**
@@ -330,5 +313,22 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertCount(1, $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+    }
+
+    protected function createConfiguration()
+    {
+        $config = new Configuration();
+
+        return $config
+        ->addCloverXmlPath($this->cloverXmlPath);
+    }
+
+    protected function createCiEnvVarsCollector($config = null)
+    {
+        if ($config === null) {
+            $config = $this->createConfiguration();
+        }
+
+        return new CiEnvVarsCollector($config);
     }
 }

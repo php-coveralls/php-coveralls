@@ -192,176 +192,6 @@ class JsonFile extends Coveralls
         return $metrics->getLineCoverage();
     }
 
-    // internal method
-
-    /**
-     * Convert to json property.
-     *
-     * @param mixed $prop
-     *
-     * @return mixed
-     */
-    protected function toJsonProperty($prop)
-    {
-        if ($prop instanceof Coveralls) {
-            return $prop->toArray();
-        }
-
-        if (is_array($prop)) {
-            return $this->toJsonPropertyArray($prop);
-        }
-
-        return $prop;
-    }
-
-    /**
-     * Convert to array as json property.
-     *
-     * @param array $propArray
-     *
-     * @return array
-     */
-    protected function toJsonPropertyArray(array $propArray)
-    {
-        $array = [];
-
-        foreach ($propArray as $prop) {
-            $array[] = $this->toJsonProperty($prop);
-        }
-
-        return $array;
-    }
-
-    /**
-     * Fill standardized environment variables.
-     *
-     * "CI_NAME", "CI_BUILD_NUMBER" must be set.
-     *
-     * Env vars are:
-     *
-     * * CI_NAME
-     * * CI_BUILD_NUMBER
-     * * CI_BUILD_URL
-     * * CI_BRANCH
-     * * CI_PULL_REQUEST
-     *
-     * These vars are supported by Codeship.
-     *
-     * @param array $env $_SERVER environment
-     *
-     * @return $this
-     */
-    protected function fillStandardizedEnvVars(array $env)
-    {
-        $map = [
-            // defined in Ruby lib
-            'serviceName' => 'CI_NAME',
-            'serviceNumber' => 'CI_BUILD_NUMBER',
-            'serviceBuildUrl' => 'CI_BUILD_URL',
-            'serviceBranch' => 'CI_BRANCH',
-            'servicePullRequest' => 'CI_PULL_REQUEST',
-
-            // extends by php-coveralls
-            'serviceJobId' => 'CI_JOB_ID',
-            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
-            'repoToken' => 'COVERALLS_REPO_TOKEN',
-        ];
-
-        foreach ($map as $propName => $envName) {
-            if (isset($env[$envName])) {
-                $this->$propName = $env[$envName];
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Ensure data consistency for jobs API.
-     *
-     * @throws \RuntimeException
-     *
-     * @return $this
-     */
-    protected function ensureJobs()
-    {
-        if (!$this->hasSourceFiles()) {
-            throw new \RuntimeException('source_files must be set');
-        }
-
-        if ($this->requireServiceJobId()) {
-            return $this;
-        }
-
-        if ($this->requireServiceNumber()) {
-            return $this;
-        }
-
-        if ($this->requireServiceEventType()) {
-            return $this;
-        }
-
-        if ($this->requireRepoToken()) {
-            return $this;
-        }
-
-        if ($this->isUnsupportedServiceJob()) {
-            return $this;
-        }
-
-        throw new RequirementsNotSatisfiedException();
-    }
-
-    /**
-     * Return whether the job requires "service_job_id" (for Travis CI).
-     *
-     * @return bool
-     */
-    protected function requireServiceJobId()
-    {
-        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken === null;
-    }
-
-    /**
-     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship or other CIs).
-     *
-     * @return bool
-     */
-    protected function requireServiceNumber()
-    {
-        return $this->serviceName !== null && $this->serviceNumber !== null && $this->repoToken !== null;
-    }
-
-    /**
-     * Return whether the job requires "service_event_type" (for local environment).
-     *
-     * @return bool
-     */
-    protected function requireServiceEventType()
-    {
-        return $this->serviceName !== null && $this->serviceEventType !== null && $this->repoToken !== null;
-    }
-
-    /**
-     * Return whether the job requires "repo_token" (for Travis PRO).
-     *
-     * @return bool
-     */
-    protected function requireRepoToken()
-    {
-        return $this->serviceName === 'travis-pro' && $this->repoToken !== null;
-    }
-
-    /**
-     * Return whether the job is running on unsupported service.
-     *
-     * @return bool
-     */
-    protected function isUnsupportedServiceJob()
-    {
-        return $this->serviceJobId === null && $this->serviceNumber === null && $this->serviceEventType === null && $this->repoToken !== null;
-    }
-
     // accessor
 
     /**
@@ -602,5 +432,175 @@ class JsonFile extends Coveralls
         }
 
         return $this->metrics;
+    }
+
+    // internal method
+
+    /**
+     * Convert to json property.
+     *
+     * @param mixed $prop
+     *
+     * @return mixed
+     */
+    protected function toJsonProperty($prop)
+    {
+        if ($prop instanceof Coveralls) {
+            return $prop->toArray();
+        }
+
+        if (is_array($prop)) {
+            return $this->toJsonPropertyArray($prop);
+        }
+
+        return $prop;
+    }
+
+    /**
+     * Convert to array as json property.
+     *
+     * @param array $propArray
+     *
+     * @return array
+     */
+    protected function toJsonPropertyArray(array $propArray)
+    {
+        $array = [];
+
+        foreach ($propArray as $prop) {
+            $array[] = $this->toJsonProperty($prop);
+        }
+
+        return $array;
+    }
+
+    /**
+     * Fill standardized environment variables.
+     *
+     * "CI_NAME", "CI_BUILD_NUMBER" must be set.
+     *
+     * Env vars are:
+     *
+     * * CI_NAME
+     * * CI_BUILD_NUMBER
+     * * CI_BUILD_URL
+     * * CI_BRANCH
+     * * CI_PULL_REQUEST
+     *
+     * These vars are supported by Codeship.
+     *
+     * @param array $env $_SERVER environment
+     *
+     * @return $this
+     */
+    protected function fillStandardizedEnvVars(array $env)
+    {
+        $map = [
+            // defined in Ruby lib
+            'serviceName' => 'CI_NAME',
+            'serviceNumber' => 'CI_BUILD_NUMBER',
+            'serviceBuildUrl' => 'CI_BUILD_URL',
+            'serviceBranch' => 'CI_BRANCH',
+            'servicePullRequest' => 'CI_PULL_REQUEST',
+
+            // extends by php-coveralls
+            'serviceJobId' => 'CI_JOB_ID',
+            'serviceEventType' => 'COVERALLS_EVENT_TYPE',
+            'repoToken' => 'COVERALLS_REPO_TOKEN',
+        ];
+
+        foreach ($map as $propName => $envName) {
+            if (isset($env[$envName])) {
+                $this->$propName = $env[$envName];
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Ensure data consistency for jobs API.
+     *
+     * @throws \RuntimeException
+     *
+     * @return $this
+     */
+    protected function ensureJobs()
+    {
+        if (!$this->hasSourceFiles()) {
+            throw new \RuntimeException('source_files must be set');
+        }
+
+        if ($this->requireServiceJobId()) {
+            return $this;
+        }
+
+        if ($this->requireServiceNumber()) {
+            return $this;
+        }
+
+        if ($this->requireServiceEventType()) {
+            return $this;
+        }
+
+        if ($this->requireRepoToken()) {
+            return $this;
+        }
+
+        if ($this->isUnsupportedServiceJob()) {
+            return $this;
+        }
+
+        throw new RequirementsNotSatisfiedException();
+    }
+
+    /**
+     * Return whether the job requires "service_job_id" (for Travis CI).
+     *
+     * @return bool
+     */
+    protected function requireServiceJobId()
+    {
+        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken === null;
+    }
+
+    /**
+     * Return whether the job requires "service_number" (for CircleCI, Jenkins, Codeship or other CIs).
+     *
+     * @return bool
+     */
+    protected function requireServiceNumber()
+    {
+        return $this->serviceName !== null && $this->serviceNumber !== null && $this->repoToken !== null;
+    }
+
+    /**
+     * Return whether the job requires "service_event_type" (for local environment).
+     *
+     * @return bool
+     */
+    protected function requireServiceEventType()
+    {
+        return $this->serviceName !== null && $this->serviceEventType !== null && $this->repoToken !== null;
+    }
+
+    /**
+     * Return whether the job requires "repo_token" (for Travis PRO).
+     *
+     * @return bool
+     */
+    protected function requireRepoToken()
+    {
+        return $this->serviceName === 'travis-pro' && $this->repoToken !== null;
+    }
+
+    /**
+     * Return whether the job is running on unsupported service.
+     *
+     * @return bool
+     */
+    protected function isUnsupportedServiceJob()
+    {
+        return $this->serviceJobId === null && $this->serviceNumber === null && $this->serviceEventType === null && $this->repoToken !== null;
     }
 }

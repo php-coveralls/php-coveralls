@@ -69,6 +69,18 @@ class CiEnvVarsCollector
         return $this->env;
     }
 
+    // accessor
+
+    /**
+     * Return read environment variables.
+     *
+     * @return array
+     */
+    public function getReadEnv()
+    {
+        return $this->readEnv;
+    }
+
     // internal method
 
     /**
@@ -213,17 +225,5 @@ class CiEnvVarsCollector
         }
 
         return $this;
-    }
-
-    // accessor
-
-    /**
-     * Return read environment variables.
-     *
-     * @return array
-     */
-    public function getReadEnv()
-    {
-        return $this->readEnv;
     }
 }

@@ -72,25 +72,6 @@ class Metrics
         $this->lineCoverage = null; // clear previous data
     }
 
-    // internal method
-
-    /**
-     * Calculate line coverage.
-     *
-     * @param int $statements        number of statements
-     * @param int $coveredStatements number of covered statements
-     *
-     * @return float
-     */
-    protected function calculateLineCoverage($statements, $coveredStatements)
-    {
-        if ($statements === 0) {
-            return 0;
-        }
-
-        return ($coveredStatements / $statements) * 100;
-    }
-
     // accessor
 
     /**
@@ -135,5 +116,24 @@ class Metrics
         }
 
         return $this->lineCoverage;
+    }
+
+    // internal method
+
+    /**
+     * Calculate line coverage.
+     *
+     * @param int $statements        number of statements
+     * @param int $coveredStatements number of covered statements
+     *
+     * @return float
+     */
+    protected function calculateLineCoverage($statements, $coveredStatements)
+    {
+        if ($statements === 0) {
+            return 0;
+        }
+
+        return ($coveredStatements / $statements) * 100;
     }
 }

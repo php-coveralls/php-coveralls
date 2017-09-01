@@ -34,6 +34,22 @@ class Application extends BaseApplication
         parent::__construct($name, $version);
     }
 
+    // accessor
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \Symfony\Component\Console\Application::getDefinition()
+     */
+    public function getDefinition()
+    {
+        $inputDefinition = parent::getDefinition();
+        // clear out the normal first argument, which is the command name
+        $inputDefinition->setArguments();
+
+        return $inputDefinition;
+    }
+
     // internal method
 
     /**
@@ -73,21 +89,5 @@ class Application extends BaseApplication
         $command->setRootDir($this->rootDir);
 
         return $command;
-    }
-
-    // accessor
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \Symfony\Component\Console\Application::getDefinition()
-     */
-    public function getDefinition()
-    {
-        $inputDefinition = parent::getDefinition();
-        // clear out the normal first argument, which is the command name
-        $inputDefinition->setArguments();
-
-        return $inputDefinition;
     }
 }

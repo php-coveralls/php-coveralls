@@ -72,6 +72,19 @@ class JobsRepository implements LoggerAwareInterface
         }
     }
 
+    // LoggerAwareInterface
+
+    /**
+     * {@inheritdoc}
+     *
+     *
+     * @see \Psr\Log\LoggerAwareInterface::setLogger()
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     // internal method
 
     /**
@@ -263,18 +276,5 @@ class JobsRepository implements LoggerAwareInterface
                 $this->logger->info(sprintf('You can see the build on %s', $body['url']));
             }
         }
-    }
-
-    // LoggerAwareInterface
-
-    /**
-     * {@inheritdoc}
-     *
-     *
-     * @see \Psr\Log\LoggerAwareInterface::setLogger()
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
 }

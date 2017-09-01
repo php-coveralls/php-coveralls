@@ -27,6 +27,32 @@ class ApplicationTest extends ProjectTestCase
         $this->rmDir($this->buildDir);
     }
 
+    /**
+     * @test
+     */
+    public function shouldExecuteCoverallsJobsCommand()
+    {
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
+
+        $app = new Application($this->rootDir, 'Coveralls API client for PHP', '1.0.0');
+        $app->setAutoExit(false); // avoid to call exit() in Application
+
+        // run
+        $_SERVER['TRAVIS'] = true;
+        $_SERVER['TRAVIS_JOB_ID'] = 'application_test';
+
+        $tester = new ApplicationTester($app);
+        $actual = $tester->run(
+            [
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+            ]
+        );
+
+        $this->assertSame(0, $actual);
+    }
+
     protected function getCloverXml()
     {
         $xml = <<<'XML'
@@ -59,31 +85,5 @@ XML;
     protected function dumpCloverXml()
     {
         file_put_contents($this->cloverXmlPath, $this->getCloverXml());
-    }
-
-    /**
-     * @test
-     */
-    public function shouldExecuteCoverallsJobsCommand()
-    {
-        $this->makeProjectDir(null, $this->logsDir);
-        $this->dumpCloverXml();
-
-        $app = new Application($this->rootDir, 'Coveralls API client for PHP', '1.0.0');
-        $app->setAutoExit(false); // avoid to call exit() in Application
-
-        // run
-        $_SERVER['TRAVIS'] = true;
-        $_SERVER['TRAVIS_JOB_ID'] = 'application_test';
-
-        $tester = new ApplicationTester($app);
-        $actual = $tester->run(
-            [
-                '--dry-run' => true,
-                '--config' => 'coveralls.yml',
-            ]
-        );
-
-        $this->assertSame(0, $actual);
     }
 }

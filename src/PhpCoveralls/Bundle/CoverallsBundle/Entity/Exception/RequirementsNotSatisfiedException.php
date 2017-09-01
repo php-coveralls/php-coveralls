@@ -33,25 +33,6 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     ];
 
     /**
-     * Format a pair of the envVarName and the value.
-     *
-     * @param string $key   the env var name
-     * @param string $value the value of the env var
-     *
-     * @return string
-     */
-    protected function format($key, $value)
-    {
-        if (in_array($key, self::$secretEnvVars, true)
-            && is_string($value)
-            && strlen($value) > 0) {
-            $value = '********(HIDDEN)';
-        }
-
-        return sprintf("  - %s=%s\n", $key, var_export($value, true));
-    }
-
-    /**
      * Return help message.
      *
      * @return string
@@ -119,5 +100,24 @@ EOL;
     public function getReadEnv()
     {
         return $this->readEnv;
+    }
+
+    /**
+     * Format a pair of the envVarName and the value.
+     *
+     * @param string $key   the env var name
+     * @param string $value the value of the env var
+     *
+     * @return string
+     */
+    protected function format($key, $value)
+    {
+        if (in_array($key, self::$secretEnvVars, true)
+            && is_string($value)
+            && strlen($value) > 0) {
+            $value = '********(HIDDEN)';
+        }
+
+        return sprintf("  - %s=%s\n", $key, var_export($value, true));
     }
 }

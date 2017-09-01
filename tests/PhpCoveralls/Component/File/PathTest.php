@@ -30,30 +30,6 @@ class PathTest extends ProjectTestCase
         $this->rmDir($this->unwritableDir);
     }
 
-    protected function touchUnreadableFile()
-    {
-        $this->rmFile($this->unreadablePath);
-
-        touch($this->unreadablePath);
-        chmod($this->unreadablePath, 0377);
-    }
-
-    protected function touchUnwritableFile()
-    {
-        $this->rmFile($this->unwritablePath);
-
-        touch($this->unwritablePath);
-        chmod($this->unwritablePath, 0577);
-    }
-
-    protected function mkdirUnwritableDir()
-    {
-        $this->rmDir($this->unwritableDir);
-
-        mkdir($this->unwritableDir);
-        chmod($this->unwritableDir, 0577);
-    }
-
     // provider
 
     public function provideRelativePaths()
@@ -451,6 +427,30 @@ class PathTest extends ProjectTestCase
         $path = __DIR__;
 
         $this->assertTrue($this->object->isRealDirWritable($path));
+    }
+
+    protected function touchUnreadableFile()
+    {
+        $this->rmFile($this->unreadablePath);
+
+        touch($this->unreadablePath);
+        chmod($this->unreadablePath, 0377);
+    }
+
+    protected function touchUnwritableFile()
+    {
+        $this->rmFile($this->unwritablePath);
+
+        touch($this->unwritablePath);
+        chmod($this->unwritablePath, 0577);
+    }
+
+    protected function mkdirUnwritableDir()
+    {
+        $this->rmDir($this->unwritableDir);
+
+        mkdir($this->unwritableDir);
+        chmod($this->unwritableDir, 0577);
     }
 
     private function isWindowsOS()
