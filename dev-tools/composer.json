@@ -10,5 +10,9 @@
         "sebastian/finder-facade": "^1.1",
         "sebastian/phpcpd": "^1.4",
         "theseer/fdomdocument": "^1.6"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
     }
 }
