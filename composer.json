@@ -9,7 +9,24 @@
         {
             "name": "Kitamura Satoshi",
             "email": "with.no.parachute@gmail.com",
-            "homepage": "https://www.facebook.com/satooshi.jp"
+            "homepage": "https://www.facebook.com/satooshi.jp",
+            "role": "Original creator"
+        },
+        {
+            "name": "Takashi Matsuo",
+            "email": "tmatsuo@google.com"
+        },
+        {
+            "name": "Google Inc"
+        },
+        {
+            "name": "Dariusz Ruminski",
+            "email": "dariusz.ruminski@gmail.com",
+            "homepage": "https://github.com/keradus"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/php-coveralls/php-coveralls/graphs/contributors"
         }
     ],
     "require": {
