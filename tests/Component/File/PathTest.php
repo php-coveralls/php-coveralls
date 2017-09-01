@@ -104,7 +104,7 @@ class PathTest extends ProjectTestCase
     {
         $rootDir = '/path/to/dir';
 
-        $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
+        $expected = $rootDir . '/' . $path;
 
         $this->assertSame($expected, $this->object->toAbsolutePath($path, $rootDir));
     }
@@ -145,7 +145,7 @@ class PathTest extends ProjectTestCase
     {
         $rootDir = __DIR__;
 
-        $expected = realpath($rootDir . DIRECTORY_SEPARATOR . $path);
+        $expected = realpath($rootDir . '/' . $path);
 
         $this->assertSame($expected, $this->object->getRealPath($path, $rootDir));
     }
@@ -184,7 +184,7 @@ class PathTest extends ProjectTestCase
         $path = '';
         $rootDir = __DIR__;
 
-        $expected = realpath($rootDir . DIRECTORY_SEPARATOR . $path);
+        $expected = realpath($rootDir . '/' . $path);
 
         $this->assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
@@ -223,7 +223,7 @@ class PathTest extends ProjectTestCase
         $path = 'test.txt';
         $rootDir = __DIR__;
 
-        $expected = $rootDir . DIRECTORY_SEPARATOR . $path;
+        $expected = $rootDir . '/' . $path;
 
         $this->assertSame($expected, $this->object->getRealWritingFilePath($path, $rootDir));
     }

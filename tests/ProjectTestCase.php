@@ -75,7 +75,7 @@ class ProjectTestCase extends TestCase
 
     protected function normalizePath($path)
     {
-        return strtr(DIRECTORY_SEPARATOR, '/', $path);
+        return strtr('/', '/', $path);
     }
 
     protected function assertSamePath($expected, $input, $msg = null)

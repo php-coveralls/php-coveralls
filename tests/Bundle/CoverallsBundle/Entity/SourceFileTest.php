@@ -20,7 +20,7 @@ class SourceFileTest extends ProjectTestCase
         $this->setUpDir($this->projectDir);
 
         $this->filename = 'test.php';
-        $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
+        $this->path = $this->srcDir . '/' . $this->filename;
 
         $this->object = new SourceFile($this->path, $this->filename);
     }

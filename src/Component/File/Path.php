@@ -26,7 +26,7 @@ class Path
             return !preg_match('/^[a-z]+\:\\\\/i', $path);
         }
 
-        return strpos($path, DIRECTORY_SEPARATOR) !== 0;
+        return strpos($path, '/') !== 0;
     }
 
     /**
@@ -44,7 +44,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return $rootDir . DIRECTORY_SEPARATOR . $path;
+            return $rootDir . '/' . $path;
         }
 
         return $path;
@@ -65,7 +65,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir . DIRECTORY_SEPARATOR . $path);
+            return realpath($rootDir . '/' . $path);
         }
 
         return realpath($path);
@@ -86,7 +86,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir . DIRECTORY_SEPARATOR . dirname($path));
+            return realpath($rootDir . '/' . dirname($path));
         }
 
         return realpath(dirname($path));
@@ -108,7 +108,7 @@ class Path
             return false;
         }
 
-        return $realDir . DIRECTORY_SEPARATOR . basename($path);
+        return $realDir . '/' . basename($path);
     }
 
     /**
