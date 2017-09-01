@@ -47,10 +47,10 @@
         "symfony/http-kernel": "Allows Symfony integration"
     },
     "autoload": {
-        "psr-4": { "PhpCoveralls\\": "src/PhpCoveralls/"}
+        "psr-4": { "PhpCoveralls\\": "src/"}
     },
     "autoload-dev": {
-        "psr-4": { "PhpCoveralls\\": "tests/PhpCoveralls/"}
+        "psr-4": { "PhpCoveralls\\": "tests/"}
     },
     "bin": ["bin/coveralls"],
     "scripts": {

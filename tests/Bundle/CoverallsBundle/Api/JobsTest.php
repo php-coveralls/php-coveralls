@@ -20,7 +20,7 @@ class JobsTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../../..');
+        $this->projectDir = realpath(__DIR__ . '/../../..');
 
         $this->setUpDir($this->projectDir);
     }

@@ -8,7 +8,7 @@ class ProjectTestCase extends TestCase
 {
     protected function setUpDir($projectDir)
     {
-        $this->rootDir = realpath($projectDir . '/prj');
+        $this->rootDir = realpath($projectDir . '/Asset');
         $this->srcDir = realpath($this->rootDir . '/files');
 
         $this->url = 'https://coveralls.io/api/v1/jobs';
