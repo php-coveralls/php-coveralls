@@ -36,6 +36,6 @@ return PhpCsFixer\Config::create()
         PhpCsFixer\Finder::create()
             ->in(__DIR__ . '/tests')
             ->in(__DIR__ . '/src')
-            ->exclude('Asset')
+            ->exclude('tests/Fixture')
     )
 ;
