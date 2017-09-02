@@ -4,7 +4,7 @@ namespace PhpCoveralls\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class ProjectTestCase extends TestCase
+abstract class ProjectTestCase extends TestCase
 {
     /**
      * @var string
