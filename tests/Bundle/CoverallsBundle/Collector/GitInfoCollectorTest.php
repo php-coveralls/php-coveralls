@@ -16,6 +16,21 @@ use PHPUnit\Framework\TestCase;
  */
 class GitInfoCollectorTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    private $getBranchesValue;
+
+    /**
+     * @var array
+     */
+    private $getHeadCommitValue;
+
+    /**
+     * @var array
+     */
+    private $getRemotesValue;
+
     protected function setUp()
     {
         $this->getBranchesValue = [

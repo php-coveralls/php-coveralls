@@ -19,6 +19,21 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JobsTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
+    /**
+     * @var Configuration
+     */
+    private $config;
+
+    /**
+     * @var Client
+     */
+    private $client;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');
