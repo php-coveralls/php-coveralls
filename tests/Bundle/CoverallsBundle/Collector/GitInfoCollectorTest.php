@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class GitInfoCollectorTest extends TestCase
 {
-    public function setUp()
+    protected function setUp()
     {
         $this->getBranchesValue = [
             '  master',
