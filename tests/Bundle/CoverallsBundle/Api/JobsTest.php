@@ -19,16 +19,6 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JobsTest extends ProjectTestCase
 {
-    /**
-     * @var Configuration
-     */
-    private $config;
-
-    /**
-     * @var Client
-     */
-    private $client;
-
     protected function setUp()
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
@@ -484,39 +474,39 @@ class JobsTest extends ProjectTestCase
 
     protected function createJobsWith()
     {
-        $this->config = new Configuration();
+        $config = new Configuration();
 
-        $this->config
+        $config
             ->setJsonPath($this->jsonPath)
             ->setDryRun(false);
 
-        $this->client = $this->createAdapterMockWith($this->url, $this->filename);
+        $client = $this->createAdapterMockWith($this->url, $this->filename);
 
-        return new Jobs($this->config, $this->client);
+        return new Jobs($config, $client);
     }
 
     protected function createJobsNeverSend()
     {
-        $this->config = new Configuration();
-        $this->config
+        $config = new Configuration();
+        $config
             ->setJsonPath($this->jsonPath)
             ->setDryRun(false);
 
-        $this->client = $this->createAdapterMockNeverCalled();
+        $client = $this->createAdapterMockNeverCalled();
 
-        return new Jobs($this->config, $this->client);
+        return new Jobs($config, $client);
     }
 
     protected function createJobsNeverSendOnDryRun()
     {
-        $this->config = new Configuration();
-        $this->config
+        $config = new Configuration();
+        $config
             ->setJsonPath($this->jsonPath)
             ->setDryRun(true);
 
-        $this->client = $this->createAdapterMockNeverCalled();
+        $client = $this->createAdapterMockNeverCalled();
 
-        return new Jobs($this->config, $this->client);
+        return new Jobs($config, $client);
     }
 
     protected function createAdapterMockNeverCalled()
