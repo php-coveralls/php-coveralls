@@ -19,6 +19,11 @@ use Psr\Log\NullLogger;
  */
 class JobsRepositoryTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');

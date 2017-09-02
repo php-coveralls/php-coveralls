@@ -12,6 +12,11 @@ use PHPUnit\Framework\TestCase;
  */
 class ConfigurationTest extends TestCase
 {
+    /**
+     * @var Configuration
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->object = new Configuration();

@@ -13,6 +13,11 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class CiEnvVarsCollectorTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');

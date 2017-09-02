@@ -14,6 +14,16 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class CloverXmlCoverageCollectorTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
+    /**
+     * @var CloverXmlCoverageCollector
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');

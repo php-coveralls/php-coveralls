@@ -13,6 +13,11 @@ use PHPUnit\Framework\TestCase;
  */
 class CommitTest extends TestCase
 {
+    /**
+     * @var Commit
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->object = new Commit();

@@ -13,6 +13,21 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class SourceFileTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var SourceFile
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');
