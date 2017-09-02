@@ -13,16 +13,9 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  */
 class ApplicationTest extends ProjectTestCase
 {
-    /**
-     * @var string
-     */
-    private $projectDir;
-
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     protected function tearDown()

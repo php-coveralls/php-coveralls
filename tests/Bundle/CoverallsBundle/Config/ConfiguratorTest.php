@@ -18,20 +18,13 @@ use Symfony\Component\Console\Input\InputOption;
 class ConfiguratorTest extends ProjectTestCase
 {
     /**
-     * @var string
-     */
-    private $projectDir;
-
-    /**
      * @var Configurator
      */
     private $object;
 
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->srcDir = $this->rootDir . '/src';
 

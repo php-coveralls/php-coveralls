@@ -16,11 +16,6 @@ class SourceFileTest extends ProjectTestCase
     /**
      * @var string
      */
-    private $projectDir;
-
-    /**
-     * @var string
-     */
     private $path;
 
     /**
@@ -30,9 +25,7 @@ class SourceFileTest extends ProjectTestCase
 
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->filename = 'test.php';
         $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;

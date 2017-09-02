@@ -20,11 +20,6 @@ use PhpCoveralls\Tests\ProjectTestCase;
 class JobsTest extends ProjectTestCase
 {
     /**
-     * @var string
-     */
-    private $projectDir;
-
-    /**
      * @var Configuration
      */
     private $config;
@@ -36,9 +31,7 @@ class JobsTest extends ProjectTestCase
 
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     protected function tearDown()

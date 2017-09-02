@@ -20,20 +20,13 @@ use PhpCoveralls\Tests\ProjectTestCase;
 class JsonFileTest extends ProjectTestCase
 {
     /**
-     * @var string
-     */
-    private $projectDir;
-
-    /**
      * @var JsonFile
      */
     private $object;
 
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->object = new JsonFile();
     }
