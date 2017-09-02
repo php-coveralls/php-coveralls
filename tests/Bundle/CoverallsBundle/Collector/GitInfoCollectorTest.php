@@ -101,7 +101,7 @@ class GitInfoCollectorTest extends TestCase
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
         $getHeadCommitValue = [];
-        $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue, $this->getRemotesValue);
+        $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue);
 
         $object = new GitInfoCollector($gitCommand);
 
@@ -146,7 +146,7 @@ class GitInfoCollectorTest extends TestCase
         return $stub->reveal();
     }
 
-    protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
+    protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue)
     {
         $stub = $this->prophesize(GitCommand::class);
 
