@@ -12,6 +12,31 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class PathTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $existingFile;
+
+    /**
+     * @var string
+     */
+    private $unreadablePath;
+
+    /**
+     * @var string
+     */
+    private $unwritablePath;
+
+    /**
+     * @var string
+     */
+    private $unwritableDir;
+
+    /**
+     * @var Path
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->existingFile = __DIR__ . '/existing.txt';
@@ -33,6 +58,9 @@ class PathTest extends ProjectTestCase
 
     // provider
 
+    /**
+     * @return array
+     */
     public function provideRelativePaths()
     {
         return [
@@ -42,6 +70,9 @@ class PathTest extends ProjectTestCase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function provideAbsolutePaths()
     {
         if ($this->isWindowsOS()) {
@@ -454,6 +485,9 @@ class PathTest extends ProjectTestCase
         chmod($this->unwritableDir, 0577);
     }
 
+    /**
+     * @return bool
+     */
     private function isWindowsOS()
     {
         static $isWindows;

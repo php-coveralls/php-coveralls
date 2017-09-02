@@ -10,6 +10,9 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 /**
@@ -21,9 +24,7 @@ class JobsRepositoryTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     // persist()
@@ -168,6 +169,9 @@ class JobsRepositoryTest extends ProjectTestCase
         $object->persist();
     }
 
+    /**
+     * @return Jobs
+     */
     protected function createApiMockWithRequirementsNotSatisfiedException()
     {
         $api = $this->prophesize(Jobs::class);
@@ -181,6 +185,9 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api->reveal();
     }
 
+    /**
+     * @return Jobs
+     */
     protected function createApiMockWithException()
     {
         $api = $this->prophesize(Jobs::class);
@@ -194,6 +201,13 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api->reveal();
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param string            $statusCode
+     * @param string            $uri
+     *
+     * @return Jobs
+     */
     protected function createApiMock($response, $statusCode = '', $uri = '/')
     {
         $api = $this->prophesize(Jobs::class);
@@ -207,6 +221,9 @@ class JobsRepositoryTest extends ProjectTestCase
         return $api->reveal();
     }
 
+    /**
+     * @return LoggerInterface
+     */
     protected function createLoggerMock()
     {
         $logger = $this->prophesize(NullLogger::class);
@@ -218,6 +235,11 @@ class JobsRepositoryTest extends ProjectTestCase
 
     // dependent object
 
+    /**
+     * @param int $percent
+     *
+     * @return array
+     */
     protected function createCoverage($percent)
     {
         // percent = (covered / stmt) * 100;
@@ -265,6 +287,9 @@ class JobsRepositoryTest extends ProjectTestCase
 
     // mock
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithCollectCloverXmlCalled($api)
     {
         $api
@@ -275,6 +300,10 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs       $api
+     * @param \Exception $exception
+     */
     private function setUpJobsApiWithCollectCloverXmlThrow($api, $exception)
     {
         $api
@@ -283,6 +312,10 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs     $api
+     * @param JsonFile $jsonFile
+     */
     private function setUpJobsApiWithGetJsonFileCalled($api, $jsonFile)
     {
         $api
@@ -291,6 +324,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithGetJsonFileNotCalled($api)
     {
         $api
@@ -298,6 +334,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldNotBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithCollectGitInfoCalled($api)
     {
         $api
@@ -308,6 +347,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithCollectGitInfoNotCalled($api)
     {
         $api
@@ -315,6 +357,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldNotBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithCollectEnvVarsCalled($api)
     {
         $api
@@ -325,6 +370,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithCollectEnvVarsNotCalled($api)
     {
         $api
@@ -332,6 +380,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldNotBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithDumpJsonFileCalled($api)
     {
         $api
@@ -342,6 +393,9 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithDumpJsonFileNotCalled($api)
     {
         $api
@@ -349,6 +403,12 @@ class JobsRepositoryTest extends ProjectTestCase
             ->shouldNotBeCalled();
     }
 
+    /**
+     * @param Jobs              $api
+     * @param int               $statusCode
+     * @param RequestInterface  $request
+     * @param ResponseInterface $response
+     */
     private function setUpJobsApiWithSendCalled($api, $statusCode, $request, $response)
     {
         if ($statusCode === 200) {
@@ -372,6 +432,9 @@ class JobsRepositoryTest extends ProjectTestCase
         }
     }
 
+    /**
+     * @param Jobs $api
+     */
     private function setUpJobsApiWithSendNotCalled($api)
     {
         $api

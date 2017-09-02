@@ -16,9 +16,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     protected function tearDown()
@@ -173,6 +171,9 @@ class CoverallsJobsCommandTest extends ProjectTestCase
         );
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'

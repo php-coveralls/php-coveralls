@@ -17,11 +17,14 @@ use Symfony\Component\Console\Input\InputOption;
  */
 class ConfiguratorTest extends ProjectTestCase
 {
+    /**
+     * @var Configurator
+     */
+    private $object;
+
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->srcDir = $this->rootDir . '/src';
 
@@ -322,6 +325,12 @@ class ConfiguratorTest extends ProjectTestCase
 
     // custom assertion
 
+    /**
+     * @param Configuration $config
+     * @param array         $cloverXml
+     * @param string        $jsonPath
+     * @param bool          $excludeNoStatements
+     */
     protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
         $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
@@ -329,6 +338,9 @@ class ConfiguratorTest extends ProjectTestCase
         $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
+    /**
+     * @return bool
+     */
     private function isWindowsOS()
     {
         static $isWindows;

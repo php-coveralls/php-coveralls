@@ -127,6 +127,11 @@ class GitCommandTest extends TestCase
         $this->assertNotEmpty($actual);
     }
 
+    /**
+     * @param array $params
+     *
+     * @return GitCommand
+     */
     protected function createGitBranchesCommandMock($params)
     {
         $adapter = $this->prophesize(GitCommand::class);
@@ -138,6 +143,11 @@ class GitCommandTest extends TestCase
         return $adapter->reveal();
     }
 
+    /**
+     * @param array $params
+     *
+     * @return GitCommand
+     */
     protected function createGitHeadCommitCommandMock($params)
     {
         $adapter = $this->prophesize(GitCommand::class);
@@ -149,6 +159,11 @@ class GitCommandTest extends TestCase
         return $adapter->reveal();
     }
 
+    /**
+     * @param array $params
+     *
+     * @return GitCommand
+     */
     protected function createGitRemotesCommandMock($params)
     {
         $adapter = $this->prophesize(GitCommand::class);

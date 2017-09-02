@@ -15,6 +15,26 @@ use PHPUnit\Framework\TestCase;
  */
 class GitTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    private $branchName;
+
+    /**
+     * @var Commit
+     */
+    private $commit;
+
+    /**
+     * @var Remote
+     */
+    private $remote;
+
+    /**
+     * @var Git
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->branchName = 'branch_name';
@@ -71,6 +91,12 @@ class GitTest extends TestCase
         $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
+    /**
+     * @param string $name
+     * @param string $url
+     *
+     * @return Remote
+     */
     protected function createRemote($name = 'name', $url = 'url')
     {
         $remote = new Remote();
@@ -80,6 +106,16 @@ class GitTest extends TestCase
             ->setUrl($url);
     }
 
+    /**
+     * @param string $id
+     * @param string $authorName
+     * @param string $authorEmail
+     * @param string $committerName
+     * @param string $committerEmail
+     * @param string $message
+     *
+     * @return Commit
+     */
     protected function createCommit($id = 'id', $authorName = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
     {
         $commit = new Commit();

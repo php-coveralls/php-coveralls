@@ -19,11 +19,14 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JsonFileTest extends ProjectTestCase
 {
+    /**
+     * @var JsonFile
+     */
+    private $object;
+
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->object = new JsonFile();
     }
@@ -640,6 +643,9 @@ class JsonFileTest extends ProjectTestCase
         $this->assertNotContains('AbstractClass.php', $filenames);
     }
 
+    /**
+     * @return SourceFile
+     */
     protected function createSourceFile()
     {
         $filename = 'test.php';
@@ -648,6 +654,9 @@ class JsonFileTest extends ProjectTestCase
         return new SourceFile($path, $filename);
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'
@@ -696,6 +705,9 @@ XML;
         return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     protected function createCloverXml()
     {
         $xml = $this->getCloverXml();
@@ -703,6 +715,9 @@ XML;
         return simplexml_load_string($xml);
     }
 
+    /**
+     * @return JsonFile
+     */
     protected function collectJsonFile()
     {
         $xml = $this->createCloverXml();
@@ -711,6 +726,9 @@ XML;
         return $collector->collect($xml, $this->srcDir);
     }
 
+    /**
+     * @return string
+     */
     protected function getNoSourceCloverXml()
     {
         return <<<'XML'
@@ -729,6 +747,9 @@ XML;
 XML;
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     protected function createNoSourceCloverXml()
     {
         $xml = $this->getNoSourceCloverXml();
@@ -736,6 +757,9 @@ XML;
         return simplexml_load_string($xml);
     }
 
+    /**
+     * @return JsonFile
+     */
     protected function collectJsonFileWithoutSourceFiles()
     {
         $xml = $this->createNoSourceCloverXml();

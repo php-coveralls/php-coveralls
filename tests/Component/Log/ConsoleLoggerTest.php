@@ -26,6 +26,11 @@ class ConsoleLoggerTest extends TestCase
         $object->log('info', $message);
     }
 
+    /**
+     * @param string $message
+     *
+     * @return StreamOutput
+     */
     protected function createAdapterMockWith($message)
     {
         $mock = $this->prophesize(StreamOutput::class);

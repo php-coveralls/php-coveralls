@@ -15,9 +15,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     // collect()
@@ -221,6 +219,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectTravisCiEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -235,6 +235,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectTravisProEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisProEnvVars(CiEnvVarsCollector $object)
     {
@@ -250,6 +252,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectCircleCiEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectCircleCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -265,6 +269,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectJenkinsEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectJenkinsEnvVars(CiEnvVarsCollector $object)
     {
@@ -280,6 +286,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectLocalEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectLocalEnvVars(CiEnvVarsCollector $object)
     {
@@ -295,6 +303,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectUnsupportedConfig
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedConfig(CiEnvVarsCollector $object)
     {
@@ -307,6 +317,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectUnsupportedEnvVars
+     *
+     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedEnvVars(CiEnvVarsCollector $object)
     {
@@ -316,6 +328,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
+    /**
+     * @return Configuration
+     */
     protected function createConfiguration()
     {
         $config = new Configuration();
@@ -324,6 +339,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         ->addCloverXmlPath($this->cloverXmlPath);
     }
 
+    /**
+     * @param null|Configuration $config
+     *
+     * @return CiEnvVarsCollector
+     */
     protected function createCiEnvVarsCollector($config = null)
     {
         if ($config === null) {

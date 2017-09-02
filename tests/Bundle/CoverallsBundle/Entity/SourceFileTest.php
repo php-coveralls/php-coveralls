@@ -13,11 +13,19 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class SourceFileTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var SourceFile
+     */
+    private $object;
+
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
 
         $this->filename = 'test.php';
         $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;

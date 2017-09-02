@@ -15,9 +15,7 @@ class ApplicationTest extends ProjectTestCase
 {
     protected function setUp()
     {
-        $this->projectDir = realpath(__DIR__ . '/../../..');
-
-        $this->setUpDir($this->projectDir);
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     protected function tearDown()
@@ -54,6 +52,9 @@ class ApplicationTest extends ProjectTestCase
         $this->assertSame(0, $actual);
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'
