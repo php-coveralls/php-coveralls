@@ -91,6 +91,12 @@ class GitTest extends TestCase
         $this->assertSame(json_encode($expected), (string) $this->object);
     }
 
+    /**
+     * @param string $name
+     * @param string $url
+     *
+     * @return Remote
+     */
     protected function createRemote($name = 'name', $url = 'url')
     {
         $remote = new Remote();
@@ -100,6 +106,16 @@ class GitTest extends TestCase
             ->setUrl($url);
     }
 
+    /**
+     * @param string $id
+     * @param string $authorName
+     * @param string $authorEmail
+     * @param string $committerName
+     * @param string $committerEmail
+     * @param string $message
+     *
+     * @return Commit
+     */
     protected function createCommit($id = 'id', $authorName = 'author_name', $authorEmail = 'author_email', $committerName = 'committer_name', $committerEmail = 'committer_email', $message = 'message')
     {
         $commit = new Commit();

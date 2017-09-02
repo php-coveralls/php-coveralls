@@ -171,6 +171,9 @@ class CoverallsJobsCommandTest extends ProjectTestCase
         );
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'

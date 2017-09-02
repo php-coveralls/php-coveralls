@@ -58,6 +58,9 @@ class PathTest extends ProjectTestCase
 
     // provider
 
+    /**
+     * @return array
+     */
     public function provideRelativePaths()
     {
         return [
@@ -67,6 +70,9 @@ class PathTest extends ProjectTestCase
         ];
     }
 
+    /**
+     * @return array
+     */
     public function provideAbsolutePaths()
     {
         if ($this->isWindowsOS()) {
@@ -479,6 +485,9 @@ class PathTest extends ProjectTestCase
         chmod($this->unwritableDir, 0577);
     }
 
+    /**
+     * @return bool
+     */
     private function isWindowsOS()
     {
         static $isWindows;

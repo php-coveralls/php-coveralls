@@ -56,6 +56,9 @@ abstract class ProjectTestCase extends TestCase
      */
     protected $jsonPath;
 
+    /**
+     * @param string $projectDir
+     */
     protected function setUpDir($projectDir)
     {
         $this->rootDir = realpath($projectDir . '/Fixture');
@@ -75,6 +78,13 @@ abstract class ProjectTestCase extends TestCase
         $this->jsonPath = $this->logsDir . '/coveralls-upload.json';
     }
 
+    /**
+     * @param string          $srcDir
+     * @param string          $logsDir
+     * @param string|string[] $cloverXmlPaths
+     * @param bool            $logsDirUnwritable
+     * @param bool            $jsonPathUnwritable
+     */
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)
     {
         if ($srcDir !== null && !is_dir($srcDir)) {
@@ -105,6 +115,9 @@ abstract class ProjectTestCase extends TestCase
         }
     }
 
+    /**
+     * @param string $file
+     */
     protected function rmFile($file)
     {
         if (is_file($file)) {
@@ -115,6 +128,9 @@ abstract class ProjectTestCase extends TestCase
         }
     }
 
+    /**
+     * @param string $dir
+     */
     protected function rmDir($dir)
     {
         if (is_dir($dir)) {
@@ -123,11 +139,21 @@ abstract class ProjectTestCase extends TestCase
         }
     }
 
+    /**
+     * @param string $path
+     *
+     * @return string
+     */
     protected function normalizePath($path)
     {
         return strtr(DIRECTORY_SEPARATOR, '/', $path);
     }
 
+    /**
+     * @param string $expected
+     * @param string $input
+     * @param string $msg
+     */
     protected function assertSamePath($expected, $input, $msg = null)
     {
         $this->assertSame(
@@ -137,6 +163,11 @@ abstract class ProjectTestCase extends TestCase
         );
     }
 
+    /**
+     * @param string[] $expected
+     * @param string[] $input
+     * @param string   $msg
+     */
     protected function assertSamePaths(array $expected, array $input, $msg = null)
     {
         $expected = array_map(function ($path) { return $this->normalizePath($path); }, $expected);

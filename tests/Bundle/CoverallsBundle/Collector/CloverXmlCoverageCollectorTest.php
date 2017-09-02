@@ -3,6 +3,7 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Collector;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Tests\ProjectTestCase;
@@ -55,6 +56,10 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollect
+     *
+     * @param JsonFile $jsonFile
+     *
+     * @return JsonFile
      */
     public function shouldCollectSourceFiles(JsonFile $jsonFile)
     {
@@ -68,6 +73,8 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectSourceFiles
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest1(JsonFile $jsonFile)
     {
@@ -83,6 +90,8 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectSourceFiles
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest2(JsonFile $jsonFile)
     {
@@ -114,6 +123,10 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectUnderRootDir
+     *
+     * @param JsonFile $jsonFile
+     *
+     * @return JsonFile
      */
     public function shouldCollectSourceFilesUnderRootDir(JsonFile $jsonFile)
     {
@@ -127,6 +140,8 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectSourceFilesUnderRootDir
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest1UnderRootDir(JsonFile $jsonFile)
     {
@@ -142,6 +157,8 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectSourceFilesUnderRootDir
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest2UnderRootDir(JsonFile $jsonFile)
     {
@@ -154,6 +171,9 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $this->assertSourceFileTest2UnderRootDir($sourceFiles[$path2]);
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     protected function createCloverXml()
     {
         $xml = <<<'XML'
@@ -206,6 +226,14 @@ XML;
 
     // custom assert
 
+    /**
+     * @param JsonFile $jsonFile
+     * @param string   $serviceName
+     * @param string   $serviceJobId
+     * @param string   $repoToken
+     * @param Git      $git
+     * @param string   $runAt
+     */
     protected function assertJsonFile($jsonFile, $serviceName, $serviceJobId, $repoToken, $git, $runAt)
     {
         $this->assertSame($serviceName, $jsonFile->getServiceName());
@@ -215,6 +243,14 @@ XML;
         $this->assertSame($runAt, $jsonFile->getRunAt());
     }
 
+    /**
+     * @param SourceFile $sourceFile
+     * @param string     $name
+     * @param string     $path
+     * @param int        $fileLines
+     * @param array      $coverage
+     * @param string     $source
+     */
     protected function assertSourceFile(SourceFile $sourceFile, $name, $path, $fileLines, array $coverage, $source)
     {
         $this->assertSame($name, $sourceFile->getName());

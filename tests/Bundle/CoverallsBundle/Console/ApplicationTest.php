@@ -52,6 +52,9 @@ class ApplicationTest extends ProjectTestCase
         $this->assertSame(0, $actual);
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'

@@ -142,6 +142,10 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectCloverXml
+     *
+     * @param Jobs $object
+     *
+     * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectCloverXml(Jobs $object)
     {
@@ -157,6 +161,8 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldHaveJsonFileAfterCollectCloverXml
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldNotHaveGitAfterCollectCloverXml(JsonFile $jsonFile)
     {
@@ -190,6 +196,10 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
+     *
+     * @param Jobs $object
+     *
+     * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectCloverXmlExcludingNoStatementsFiles(Jobs $object)
     {
@@ -207,6 +217,10 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectCloverXml
+     *
+     * @param Jobs $object
+     *
+     * @return Jobs
      */
     public function shouldCollectGitInfo(Jobs $object)
     {
@@ -221,6 +235,10 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldCollectGitInfo
+     *
+     * @param Jobs $object
+     *
+     * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectGitInfo(Jobs $object)
     {
@@ -234,6 +252,8 @@ class JobsTest extends ProjectTestCase
     /**
      * @test
      * @depends shouldHaveJsonFileAfterCollectGitInfo
+     *
+     * @param JsonFile $jsonFile
      */
     public function shouldHaveGitAfterCollectGitInfo(JsonFile $jsonFile)
     {
@@ -472,6 +492,9 @@ class JobsTest extends ProjectTestCase
             ->send();
     }
 
+    /**
+     * @return Jobs
+     */
     protected function createJobsWith()
     {
         $config = new Configuration();
@@ -485,6 +508,9 @@ class JobsTest extends ProjectTestCase
         return new Jobs($config, $client);
     }
 
+    /**
+     * @return Jobs
+     */
     protected function createJobsNeverSend()
     {
         $config = new Configuration();
@@ -497,6 +523,9 @@ class JobsTest extends ProjectTestCase
         return new Jobs($config, $client);
     }
 
+    /**
+     * @return Jobs
+     */
     protected function createJobsNeverSendOnDryRun()
     {
         $config = new Configuration();
@@ -509,6 +538,9 @@ class JobsTest extends ProjectTestCase
         return new Jobs($config, $client);
     }
 
+    /**
+     * @return Client
+     */
     protected function createAdapterMockNeverCalled()
     {
         $client = $this->prophesize(Client::class);
@@ -519,6 +551,12 @@ class JobsTest extends ProjectTestCase
         return $client->reveal();
     }
 
+    /**
+     * @param string $url
+     * @param string $filename
+     *
+     * @return Client
+     */
     protected function createAdapterMockWith($url, $filename)
     {
         $response = $this->prophesize(Psr7\Response::class);
@@ -538,6 +576,9 @@ class JobsTest extends ProjectTestCase
         return $client->reveal();
     }
 
+    /**
+     * @return Configuration
+     */
     protected function createConfiguration()
     {
         $config = new Configuration();
@@ -545,6 +586,9 @@ class JobsTest extends ProjectTestCase
         return $config->addCloverXmlPath($this->cloverXmlPath);
     }
 
+    /**
+     * @return string
+     */
     protected function getCloverXml()
     {
         $xml = <<<'XML'
@@ -593,6 +637,9 @@ XML;
         return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     protected function createCloverXml()
     {
         $xml = $this->getCloverXml();
@@ -600,6 +647,9 @@ XML;
         return simplexml_load_string($xml);
     }
 
+    /**
+     * @return string
+     */
     protected function getNoSourceCloverXml()
     {
         return <<<'XML'
@@ -618,6 +668,9 @@ XML;
 XML;
     }
 
+    /**
+     * @return \SimpleXMLElement
+     */
     protected function createNoSourceCloverXml()
     {
         $xml = $this->getNoSourceCloverXml();
@@ -625,6 +678,9 @@ XML;
         return simplexml_load_string($xml);
     }
 
+    /**
+     * @return JsonFile
+     */
     protected function collectJsonFile()
     {
         $xml = $this->createCloverXml();
@@ -633,6 +689,9 @@ XML;
         return $collector->collect($xml, $this->srcDir);
     }
 
+    /**
+     * @return JsonFile
+     */
     protected function collectJsonFileWithoutSourceFiles()
     {
         $xml = $this->createNoSourceCloverXml();
@@ -641,6 +700,11 @@ XML;
         return $collector->collect($xml, $this->srcDir);
     }
 
+    /**
+     * @param Configuration $config
+     *
+     * @return CiEnvVarsCollector
+     */
     protected function createCiEnvVarsCollector($config = null)
     {
         if ($config === null) {

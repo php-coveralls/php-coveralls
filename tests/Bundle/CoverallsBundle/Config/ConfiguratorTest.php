@@ -325,6 +325,12 @@ class ConfiguratorTest extends ProjectTestCase
 
     // custom assertion
 
+    /**
+     * @param Configuration $config
+     * @param array         $cloverXml
+     * @param string        $jsonPath
+     * @param bool          $excludeNoStatements
+     */
     protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {
         $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
@@ -332,6 +338,9 @@ class ConfiguratorTest extends ProjectTestCase
         $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
+    /**
+     * @return bool
+     */
     private function isWindowsOS()
     {
         static $isWindows;

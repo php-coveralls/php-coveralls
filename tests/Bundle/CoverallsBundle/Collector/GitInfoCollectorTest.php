@@ -124,6 +124,13 @@ class GitInfoCollectorTest extends TestCase
         $object->collect();
     }
 
+    /**
+     * @param $getBranchesValue
+     * @param $getHeadCommitValue
+     * @param $getRemotesValue
+     *
+     * @return object
+     */
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
         $stub = $this->prophesize(GitCommand::class);
@@ -135,6 +142,11 @@ class GitInfoCollectorTest extends TestCase
         return $stub->reveal();
     }
 
+    /**
+     * @param array $getBranchesValue
+     *
+     * @return GitCommand
+     */
     protected function createGitCommandStubCalledBranches($getBranchesValue)
     {
         $stub = $this->prophesize(GitCommand::class);
@@ -146,6 +158,12 @@ class GitInfoCollectorTest extends TestCase
         return $stub->reveal();
     }
 
+    /**
+     * @param array $getBranchesValue
+     * @param array $getHeadCommitValue
+     *
+     * @return GitCommand
+     */
     protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue)
     {
         $stub = $this->prophesize(GitCommand::class);
@@ -157,6 +175,10 @@ class GitInfoCollectorTest extends TestCase
         return $stub->reveal();
     }
 
+    /**
+     * @param GitCommand $stub
+     * @param $getBranchesValue
+     */
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {
         $stub
@@ -165,6 +187,10 @@ class GitInfoCollectorTest extends TestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param GitCommand $stub
+     * @param array      $getHeadCommitValue
+     */
     protected function setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue)
     {
         $stub
@@ -173,6 +199,9 @@ class GitInfoCollectorTest extends TestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param GitCommand $stub
+     */
     protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub)
     {
         $stub
@@ -180,6 +209,10 @@ class GitInfoCollectorTest extends TestCase
             ->shouldNotBeCalled();
     }
 
+    /**
+     * @param GitCommand $stub
+     * @param array      $getRemotesValue
+     */
     protected function setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue)
     {
         $stub
@@ -188,6 +221,9 @@ class GitInfoCollectorTest extends TestCase
             ->shouldBeCalled();
     }
 
+    /**
+     * @param GitCommand $stub
+     */
     protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub)
     {
         $stub
