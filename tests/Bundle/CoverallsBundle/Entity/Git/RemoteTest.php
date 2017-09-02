@@ -13,6 +13,11 @@ use PHPUnit\Framework\TestCase;
  */
 class RemoteTest extends TestCase
 {
+    /**
+     * @var Remote
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->object = new Remote();

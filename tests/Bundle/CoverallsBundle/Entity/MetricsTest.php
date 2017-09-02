@@ -12,6 +12,11 @@ use PHPUnit\Framework\TestCase;
  */
 class MetricsTest extends TestCase
 {
+    /**
+     * @var array
+     */
+    private $coverage;
+
     protected function setUp()
     {
         $this->coverage = array_fill(0, 5, null);

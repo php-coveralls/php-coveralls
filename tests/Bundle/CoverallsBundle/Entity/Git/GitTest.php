@@ -15,6 +15,26 @@ use PHPUnit\Framework\TestCase;
  */
 class GitTest extends TestCase
 {
+    /**
+     * @var string
+     */
+    private $branchName;
+
+    /**
+     * @var Commit
+     */
+    private $commit;
+
+    /**
+     * @var Remote
+     */
+    private $remote;
+
+    /**
+     * @var Git
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->branchName = 'branch_name';

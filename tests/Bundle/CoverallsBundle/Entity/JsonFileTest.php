@@ -19,6 +19,16 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JsonFileTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
+    /**
+     * @var JsonFile
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');

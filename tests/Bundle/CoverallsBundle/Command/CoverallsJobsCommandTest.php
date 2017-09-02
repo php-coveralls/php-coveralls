@@ -14,6 +14,11 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 class CoverallsJobsCommandTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $projectDir;
+
     protected function setUp()
     {
         $this->projectDir = realpath(__DIR__ . '/../../..');

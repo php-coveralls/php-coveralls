@@ -6,6 +6,56 @@ use PHPUnit\Framework\TestCase;
 
 class ProjectTestCase extends TestCase
 {
+    /**
+     * @var string
+     */
+    protected $rootDir;
+
+    /**
+     * @var string
+     */
+    protected $srcDir;
+
+    /**
+     * @var string
+     */
+    protected $url;
+
+    /**
+     * @var string
+     */
+    protected $filename;
+
+    /**
+     * @var string
+     */
+    protected $buildDir;
+
+    /**
+     * @var string
+     */
+    protected $logsDir;
+
+    /**
+     * @var string
+     */
+    protected $cloverXmlPath;
+
+    /**
+     * @var string
+     */
+    protected $cloverXmlPath1;
+
+    /**
+     * @var string
+     */
+    protected $cloverXmlPath2;
+
+    /**
+     * @var string
+     */
+    protected $jsonPath;
+
     protected function setUpDir($projectDir)
     {
         $this->rootDir = realpath($projectDir . '/Fixture');

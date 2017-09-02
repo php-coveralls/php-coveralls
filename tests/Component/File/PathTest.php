@@ -12,6 +12,31 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class PathTest extends ProjectTestCase
 {
+    /**
+     * @var string
+     */
+    private $existingFile;
+
+    /**
+     * @var string
+     */
+    private $unreadablePath;
+
+    /**
+     * @var string
+     */
+    private $unwritablePath;
+
+    /**
+     * @var string
+     */
+    private $unwritableDir;
+
+    /**
+     * @var Path
+     */
+    private $object;
+
     protected function setUp()
     {
         $this->existingFile = __DIR__ . '/existing.txt';
