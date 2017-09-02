@@ -19,38 +19,31 @@ class GitInfoCollectorTest extends TestCase
     /**
      * @var array
      */
-    private $getBranchesValue;
+    private $getBranchesValue = [
+        '  master',
+        '* branch1',
+        '  branch2',
+    ];
 
     /**
      * @var array
      */
-    private $getHeadCommitValue;
+    private $getHeadCommitValue = [
+        'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        'Author Name',
+        'author@satooshi.jp',
+        'Committer Name',
+        'committer@satooshi.jp',
+        'commit message',
+    ];
 
     /**
      * @var array
      */
-    private $getRemotesValue;
-
-    protected function setUp()
-    {
-        $this->getBranchesValue = [
-            '  master',
-            '* branch1',
-            '  branch2',
-        ];
-        $this->getHeadCommitValue = [
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            'Author Name',
-            'author@satooshi.jp',
-            'Committer Name',
-            'committer@satooshi.jp',
-            'commit message',
-        ];
-        $this->getRemotesValue = [
-            "origin\tgit@github.com:php-coveralls/php-coveralls.git (fetch)",
-            "origin\tgit@github.com:php-coveralls/php-coveralls.git (push)",
-        ];
-    }
+    private $getRemotesValue = [
+        "origin\tgit@github.com:php-coveralls/php-coveralls.git (fetch)",
+        "origin\tgit@github.com:php-coveralls/php-coveralls.git (push)",
+    ];
 
     // getCommand()
 
