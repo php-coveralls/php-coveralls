@@ -1,6 +1,11 @@
 CHANGELOG
 =============
 
+## 1.0.2
+
+### Misc
+- Migrate away from abandoned `guzzle/guzzle` to `guzzlehttp/guzzle`
+
 ## 1.0.1
 
 ### Misc
