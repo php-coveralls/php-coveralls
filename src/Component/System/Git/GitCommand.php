@@ -2,23 +2,25 @@
 
 namespace PhpCoveralls\Component\System\Git;
 
-use PhpCoveralls\Component\System\SystemCommand;
+use PhpCoveralls\Component\System\SystemCommandExecutor;
+use PhpCoveralls\Component\System\SystemCommandExecutorInterface;
 
 /**
  * Git command.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitCommand extends SystemCommand
+class GitCommand
 {
     /**
-     * Command name or path.
-     *
-     * @var string
+     * @var SystemCommandExecutorInterface
      */
-    protected $commandPath = 'git';
+    private $executor;
 
-    // API
+    public function __construct(SystemCommandExecutorInterface $executor = null)
+    {
+        $this->executor = $executor ? $executor : new SystemCommandExecutor();
+    }
 
     /**
      * Return branch names.
@@ -27,9 +29,7 @@ class GitCommand extends SystemCommand
      */
     public function getBranches()
     {
-        $command = $this->createCommand('branch');
-
-        return $this->executeCommand($command);
+        return $this->executor->execute('git branch');
     }
 
     /**
@@ -39,9 +39,7 @@ class GitCommand extends SystemCommand
      */
     public function getHeadCommit()
     {
-        $command = $this->createCommand("log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
-
-        return $this->executeCommand($command);
+        return $this->executor->execute("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
     }
 
     /**
@@ -51,8 +49,6 @@ class GitCommand extends SystemCommand
      */
     public function getRemotes()
     {
-        $command = $this->createCommand('remote -v');
-
-        return $this->executeCommand($command);
+        return $this->executor->execute('git remote -v');
     }
 }

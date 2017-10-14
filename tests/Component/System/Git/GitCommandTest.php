@@ -13,32 +13,6 @@ use PHPUnit\Framework\TestCase;
  */
 class GitCommandTest extends TestCase
 {
-    // getCommandPath()
-
-    /**
-     * @test
-     */
-    public function shouldBeGitCommand()
-    {
-        $object = new GitCommand();
-
-        $expected = 'git';
-
-        $this->assertSame($expected, $object->getCommandPath());
-    }
-
-    // getBranches()
-    //
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitBranchCommand()
-    {
-        $object = $this->createGitBranchesCommandMock('git branch');
-        $object->getBranches();
-    }
-
     /**
      * @test
      */
@@ -49,17 +23,6 @@ class GitCommandTest extends TestCase
 
         $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
-    }
-
-    // getHeadCommit()
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitLogCommand()
-    {
-        $object = $this->createGitHeadCommitCommandMock("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
-        $object->getHeadCommit();
     }
 
     /**
@@ -75,17 +38,6 @@ class GitCommandTest extends TestCase
         $this->assertCount(6, $actual);
     }
 
-    // getRemotes()
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitRemoteCommand()
-    {
-        $object = $this->createGitRemotesCommandMock('git remote -v');
-        $object->getRemotes();
-    }
-
     /**
      * @test
      */
@@ -96,82 +48,5 @@ class GitCommandTest extends TestCase
 
         $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
-    }
-
-    // execute()
-
-    /**
-     * @test
-     * @expectedException \RuntimeException
-     */
-    public function throwRuntimeExceptionIfExecutedWithoutArgs()
-    {
-        // `git` return 1 and cause RuntimeException
-        $object = new GitCommand();
-        $object->execute();
-    }
-
-    // createCommand()
-
-    /**
-     * @test
-     */
-    public function shouldCreateCommand()
-    {
-        $object = new GitCommand();
-        $object->setCommandPath('ls');
-
-        $actual = $object->execute();
-
-        $this->assertInternalType('array', $actual);
-        $this->assertNotEmpty($actual);
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return GitCommand
-     */
-    protected function createGitBranchesCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getBranches()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return GitCommand
-     */
-    protected function createGitHeadCommitCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getHeadCommit()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return GitCommand
-     */
-    protected function createGitRemotesCommandMock($params)
-    {
-        $adapter = $this->prophesize(GitCommand::class);
-        $adapter
-            ->getRemotes()
-            ->willReturn($params)
-            ->shouldBeCalled();
-
-        return $adapter->reveal();
     }
 }
