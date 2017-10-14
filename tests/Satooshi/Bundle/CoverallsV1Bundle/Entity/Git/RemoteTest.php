@@ -8,7 +8,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RemoteTest extends \PHPUnit_Framework_TestCase
+class RemoteTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

@@ -8,19 +8,28 @@ namespace Satooshi\Component\System\Git;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitCommandTest extends \PHPUnit_Framework_TestCase
+class GitCommandTest extends \PHPUnit\Framework\TestCase
 {
     protected function createGitCommandMock($params)
     {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-        $adapter = $this->getMock($class, array('executeCommand'));
+        $adapter = $this->prophesize('Satooshi\Component\System\Git\GitCommand');
 
         $adapter
-            ->expects($this->once())
-            ->method('executeCommand')
-            ->with($this->equalTo($params));
+            ->executeCommand(\Prophecy\Argument::type('string'));
 
-        return $adapter;
+        $adapter
+            ->getBranches()
+            ->willReturn(array());
+
+        $adapter
+            ->getRemotes()
+            ->willReturn(array());
+
+        $adapter
+            ->getHeadCommit()
+            ->willReturn('asd');
+
+        return $adapter->reveal();
     }
 
     // getCommandPath()

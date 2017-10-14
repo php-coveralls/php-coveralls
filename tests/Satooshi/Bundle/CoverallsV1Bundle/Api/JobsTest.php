@@ -70,41 +70,32 @@ class JobsTest extends ProjectTestCase
 
     protected function createAdapterMockNeverCalled()
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('send'));
-
+        $client = $this->prophesize('Guzzle\Http\Client');
         $client
-        ->expects($this->never())
-        ->method('send');
+            ->send()
+            ->shouldNotBeCalled();
 
-        return $client;
+        return $client->reveal();
     }
 
     protected function createAdapterMockWith($url, $filename, $jsonPath)
     {
-        $client = $this->getMock('Guzzle\Http\Client', array('post', 'addPostFiles'));
-        $request = $this->getMockBuilder('Guzzle\Http\Message\EntityEnclosingRequest')
-        ->disableOriginalConstructor()
-        ->getMock();
+        $client = $this->prophesize('Guzzle\Http\Client');
+        $request = $this->prophesize('Guzzle\Http\Message\EntityEnclosingRequest');
 
         $client
-        ->expects($this->once())
-        ->method('post')
-        ->with($this->equalTo($url))
-        ->will($this->returnSelf());
-
-        $client
-        ->expects($this->once())
-        ->method('addPostFiles')
-        ->with($this->equalTo(array($filename => $jsonPath)))
-        ->will($this->returnValue($request));
+            ->post($url)
+            ->willReturn($request->reveal());
 
         $request
-        ->expects($this->once())
-        ->method('send')
-        ->with()
-        ;
+            ->addPostFiles(array($filename => $jsonPath))
+            ->willReturn($request->reveal());
 
-        return $client;
+        $request
+            ->send(\Prophecy\Argument::cetera())
+            ->shouldBeCalled();
+
+        return $client->reveal();
     }
 
     protected function createConfiguration()

@@ -7,7 +7,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
+class RequirementsNotSatisfiedExceptionTest extends \PHPUnit\Framework\TestCase
 {
     // getReadEnv()
 
