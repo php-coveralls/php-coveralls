@@ -1,6 +1,19 @@
 CHANGELOG
 =============
 
+## 1.0.2
+
+### Misc
+- Update github repo link
+- [#250](https://github.com/php-coveralls/php-coveralls/pull/250) GitCommand - drop useless tests
+- [#248](https://github.com/php-coveralls/php-coveralls/pull/248) Allow Symfony 4
+- [#249](https://github.com/php-coveralls/php-coveralls/pull/249) Allow PHPUnit 6
+- [#224](https://github.com/php-coveralls/php-coveralls/pull/224) Travis - update used ubuntu dist
+- [#212](https://github.com/php-coveralls/php-coveralls/pull/212) update PHP CS Fixer
+- Use stable and semantic version constrains
+- Start v1.0.2 development
+- Phpdoc
+
 ## 1.0.1
 
 ### Misc

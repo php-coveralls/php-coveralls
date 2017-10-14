@@ -7,7 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \PhpCoveralls\Component\System\Git\GitCommand
- * @covers \PhpCoveralls\Component\System\SystemCommand
+ * @covers \PhpCoveralls\Component\System\SystemCommandExecutor
+ * @covers \PhpCoveralls\Component\System\SystemCommandExecutorInterface
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
