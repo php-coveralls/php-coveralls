@@ -7,7 +7,7 @@ namespace Satooshi\Component\File;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class PathTest extends \PHPUnit_Framework_TestCase
+class PathTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

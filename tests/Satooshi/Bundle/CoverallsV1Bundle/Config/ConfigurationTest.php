@@ -7,7 +7,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Config;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

@@ -8,7 +8,7 @@ namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CommitTest extends \PHPUnit_Framework_TestCase
+class CommitTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

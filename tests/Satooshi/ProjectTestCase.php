@@ -2,7 +2,7 @@
 
 namespace Satooshi;
 
-class ProjectTestCase extends \PHPUnit_Framework_TestCase
+class ProjectTestCase extends \PHPUnit\Framework\TestCase
 {
     protected function setUpDir($projectDir)
     {
