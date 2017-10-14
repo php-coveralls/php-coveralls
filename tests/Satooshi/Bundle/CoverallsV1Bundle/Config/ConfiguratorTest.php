@@ -62,18 +62,20 @@ class ConfiguratorTest extends ProjectTestCase
         $this->assertConfiguration($config, array($this->cloverXmlPath), $this->jsonPath);
     }
 
-    // default src_dir not found, it doesn't throw anything now.
+    // default src_dir not found, it doesn't throw anything now, as src_dir is not required for configuration
 
     /**
      * @test
      */
-    public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfSrcDirNotFound()
+    public function loadConfigurationOnLoadEmptyYmlWhenSrcDirNotFound()
     {
         $this->makeProjectDir(null, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/dummy.yml');
 
-        $this->object->load($path, $this->rootDir);
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertInstanceOf('Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration', $config);
     }
 
     // default coverage_clover not found

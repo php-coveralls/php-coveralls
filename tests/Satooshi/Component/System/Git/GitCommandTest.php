@@ -10,56 +10,6 @@ namespace Satooshi\Component\System\Git;
  */
 class GitCommandTest extends \PHPUnit\Framework\TestCase
 {
-    protected function createGitCommandMock($params)
-    {
-        $adapter = $this->prophesize('Satooshi\Component\System\Git\GitCommand');
-
-        $adapter
-            ->executeCommand(\Prophecy\Argument::type('string'));
-
-        $adapter
-            ->getBranches()
-            ->willReturn(array());
-
-        $adapter
-            ->getRemotes()
-            ->willReturn(array());
-
-        $adapter
-            ->getHeadCommit()
-            ->willReturn('asd');
-
-        return $adapter->reveal();
-    }
-
-    // getCommandPath()
-
-    /**
-     * @test
-     */
-    public function shouldBeGitCommand()
-    {
-        $object = new GitCommand();
-
-        $expected = 'git';
-
-        $this->assertSame($expected, $object->getCommandPath());
-    }
-
-    // getBranches()
-    //
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitBranchCommand()
-    {
-        $expected = 'git branch';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getBranches();
-    }
-
     /**
      * @test
      */
@@ -70,19 +20,6 @@ class GitCommandTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInternalType('array', $actual);
         $this->assertNotEmpty($actual);
-    }
-
-    // getHeadCommit()
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitLogCommand()
-    {
-        $expected = "git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'";
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getHeadCommit();
     }
 
     /**
@@ -98,19 +35,6 @@ class GitCommandTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(6, $actual);
     }
 
-    // getRemotes()
-
-    /**
-     * @test
-     */
-    public function shouldExecuteGitRemoteCommand()
-    {
-        $expected = 'git remote -v';
-
-        $object = $this->createGitCommandMock($expected);
-        $object->getRemotes();
-    }
-
     /**
      * @test
      */
@@ -123,32 +47,13 @@ class GitCommandTest extends \PHPUnit\Framework\TestCase
         $this->assertNotEmpty($actual);
     }
 
-    // execute()
-
     /**
      * @test
      * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfExecutedWithoutArgs()
     {
-        // `git` return 1 and cause RuntimeException
         $object = new GitCommand();
         $object->execute();
-    }
-
-    // createCommand()
-
-    /**
-     * @test
-     */
-    public function shouldCreateCommand()
-    {
-        $object = new GitCommand();
-        $object->setCommandPath('ls');
-
-        $actual = $object->execute();
-
-        $this->assertInternalType('array', $actual);
-        $this->assertNotEmpty($actual);
     }
 }

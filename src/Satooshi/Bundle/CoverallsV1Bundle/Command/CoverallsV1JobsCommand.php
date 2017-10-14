@@ -79,7 +79,7 @@ class CoverallsV1JobsCommand extends Command
             'coverage_clover',
             '-x',
             InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
-            'Coverage clover xml files(allowing multiple values).',
+            'Coverage clover xml files (allowing multiple values).',
             array()
         )
         ->addOption(
