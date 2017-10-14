@@ -57,7 +57,7 @@ class RemoteTest extends \PHPUnit\Framework\TestCase
      */
     public function shouldSetRemoteUrl()
     {
-        $expected = 'git@github.com:satooshi/php-coveralls.git';
+        $expected = 'git@github.com:php-coveralls/php-coveralls.git';
 
         $obj = $this->object->setUrl($expected);
 
