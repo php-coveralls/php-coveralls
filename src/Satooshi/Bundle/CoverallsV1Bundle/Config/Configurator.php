@@ -93,12 +93,12 @@ class Configurator
 
         $repoToken = $options['repo_token'];
         $repoSecretToken = $options['repo_secret_token'];
-        if ($input !== null
-            && $input->hasOption('coverage_clover')
-            && count($input->getOption('coverage_clover')) > 0) {
-            $coverage_clover = $input->getOption('coverage_clover');
-        } else {
-            $coverage_clover = $options['coverage_clover'];
+        $coverage_clover = $options['coverage_clover'];
+        if ($input !== null && $input->hasOption('coverage_clover')) {
+            $option = $input->getOption('coverage_clover');
+            if (!empty($option)) {
+                $coverage_clover = $option;
+            }
         }
 
         return $configuration
