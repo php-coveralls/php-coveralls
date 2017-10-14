@@ -50,7 +50,7 @@ before_deploy:
 deploy:
     provider: releases
     api_key:
-        secure: EH3xkaLCQIK4YToB4pFHz4L9Uhjh1eG5tG2i94OP6R3KVfmC3fugSTQSchKwlkJYdTl/Uj7Px0YUr0H0FeCvmi4lVai/NEM2PGthv6s6bO69MmivKhjkceqgcuDSDHsu/eNb0+4VC6jC7g6vGfTeKNUj17QQgLyFyG1kFN5xqbM=
+        secure: dNw8/urkXHRHzcI0F8NwYP63FjhcrpUqOO92uclAYESBjyVyhBzMuczBlGfwqdoxknwK+4wsDkr6TW7AtfeTa3d48acHdUD3ahWFFk9paC8jIVsh/H01UMsY3Xz4Z3KVWQDRFS5LIaDKk3jqPyvN+FiJpEQ8drIA+GDpm4VSQHc=
     file: build/artifacts/coveralls.phar
     skip_cleanup: true
     on:
