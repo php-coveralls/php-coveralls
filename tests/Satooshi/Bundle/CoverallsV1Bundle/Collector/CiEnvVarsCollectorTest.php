@@ -6,7 +6,7 @@ use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
 use Satooshi\ProjectTestCase;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Collector\CiEnvVarsCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -43,11 +43,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectTravisCiEnvVars()
     {
-        $serviceName  = 'travis-ci';
+        $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
 
         $env = array();
-        $env['TRAVIS']        = true;
+        $env['TRAVIS'] = true;
         $env['TRAVIS_JOB_ID'] = $serviceJobId;
 
         $object = $this->createCiEnvVarsCollector();
@@ -68,13 +68,13 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectTravisProEnvVars()
     {
-        $serviceName  = 'travis-pro';
+        $serviceName = 'travis-pro';
         $serviceJobId = '1.2';
-        $repoToken    = 'your_token';
+        $repoToken = 'your_token';
 
         $env = array();
-        $env['TRAVIS']               = true;
-        $env['TRAVIS_JOB_ID']        = $serviceJobId;
+        $env['TRAVIS'] = true;
+        $env['TRAVIS_JOB_ID'] = $serviceJobId;
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $config = $this->createConfiguration();
@@ -101,13 +101,13 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectCircleCiEnvVars()
     {
-        $serviceName   = 'circleci';
+        $serviceName = 'circleci';
         $serviceNumber = '123';
 
         $env = array();
         $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['CIRCLECI']             = 'true';
-        $env['CIRCLE_BUILD_NUM']     = $serviceNumber;
+        $env['CIRCLECI'] = 'true';
+        $env['CIRCLE_BUILD_NUM'] = $serviceNumber;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -127,14 +127,14 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectJenkinsEnvVars()
     {
-        $serviceName   = 'jenkins';
+        $serviceName = 'jenkins';
         $serviceNumber = '123';
-        $buildUrl      = 'http://localhost:8080';
+        $buildUrl = 'http://localhost:8080';
 
         $env = array();
         $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['JENKINS_URL']          = $buildUrl;
-        $env['BUILD_NUMBER']         = $serviceNumber;
+        $env['JENKINS_URL'] = $buildUrl;
+        $env['BUILD_NUMBER'] = $serviceNumber;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -157,11 +157,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectLocalEnvVars()
     {
-        $serviceName      = 'php-coveralls';
+        $serviceName = 'php-coveralls';
         $serviceEventType = 'manual';
 
         $env = array();
-        $env['COVERALLS_REPO_TOKEN']  = 'token';
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
         $env['COVERALLS_RUN_LOCALLY'] = '1';
 
         $object = $this->createCiEnvVarsCollector();

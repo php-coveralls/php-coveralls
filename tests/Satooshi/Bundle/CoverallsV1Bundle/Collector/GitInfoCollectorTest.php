@@ -2,17 +2,17 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Collector;
 
-use Satooshi\Component\System\Git\GitCommand;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote;
+use Satooshi\Component\System\Git\GitCommand;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
+class GitInfoCollectorTest extends \PHPUnit\Framework\TestCase
 {
     public function setUp()
     {
@@ -30,84 +30,80 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
             'commit message',
         );
         $this->getRemotesValue = array(
-            "origin\tgit@github.com:satooshi/php-coveralls.git (fetch)",
-            "origin\tgit@github.com:satooshi/php-coveralls.git (push)",
+            "origin\tgit@github.com:php-coveralls/php-coveralls.git (fetch)",
+            "origin\tgit@github.com:php-coveralls/php-coveralls.git (push)",
         );
-    }
-
-    protected function createGitCommandStub()
-    {
-        $class = 'Satooshi\Component\System\Git\GitCommand';
-
-        return $this->getMock($class);
     }
 
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
         $this->setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue);
 
-        return $stub;
+        return $stub->reveal();
     }
 
-    protected function createGitCommandStubCalledBranches($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
+    protected function createGitCommandStubCalledBranches($getBranchesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
-        $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
+        $this->setUpGitCommandStubWithGetHeadCommitNeverCalled($stub);
+        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub);
 
-        return $stub;
+        return $stub->reveal();
     }
 
     protected function createGitCommandStubCalledHeadCommit($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
     {
-        $stub = $this->createGitCommandStub();
+        $stub = $this->prophesize('Satooshi\Component\System\Git\GitCommand');
 
         $this->setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue);
         $this->setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue);
-        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue);
+        $this->setUpGitCommandStubWithGetRemotesNeverCalled($stub);
 
-        return $stub;
+        return $stub->reveal();
     }
 
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {
-        $stub->expects($this->once())
-        ->method('getBranches')
-        ->will($this->returnValue($getBranchesValue));
+        $stub
+            ->getBranches()
+            ->willReturn($getBranchesValue)
+            ->shouldBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetHeadCommitOnce($stub, $getHeadCommitValue)
     {
-        $stub->expects($this->once())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+        $stub
+            ->getHeadCommit()
+            ->willReturn($getHeadCommitValue)
+            ->shouldBeCalled();
     }
 
-    protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub, $getHeadCommitValue)
+    protected function setUpGitCommandStubWithGetHeadCommitNeverCalled($stub)
     {
-        $stub->expects($this->never())
-        ->method('getHeadCommit')
-        ->will($this->returnValue($getHeadCommitValue));
+        $stub
+            ->getHeadCommit()
+            ->shouldNotBeCalled();
     }
 
     protected function setUpGitCommandStubWithGetRemotesOnce($stub, $getRemotesValue)
     {
-        $stub->expects($this->once())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+        $stub
+            ->getRemotes()
+            ->willReturn($getRemotesValue)
+            ->shouldBeCalled();
     }
 
-    protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub, $getRemotesValue)
+    protected function setUpGitCommandStubWithGetRemotesNeverCalled($stub)
     {
-        $stub->expects($this->never())
-        ->method('getRemotes')
-        ->will($this->returnValue($getRemotesValue));
+        $stub
+            ->getRemotes()
+            ->shouldNotBeCalled();
     }
 
     // getCommand()
@@ -135,8 +131,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $git = $object->collect();
 
-        $gitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git';
-        $this->assertTrue($git instanceof $gitClass);
+        $this->assertInstanceOf('Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Git', $git);
         $this->assertGit($git);
     }
 
@@ -146,15 +141,13 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
         $commit = $git->getHead();
 
-        $commitClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit';
-        $this->assertTrue($commit instanceof $commitClass);
+        $this->assertInstanceOf('Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit', $commit);
         $this->assertCommit($commit);
 
         $remotes = $git->getRemotes();
         $this->assertCount(1, $remotes);
 
-        $remoteClass = 'Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote';
-        $this->assertTrue($remotes[0] instanceof $remoteClass);
+        $this->assertInstanceOf('Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote', $remotes[0]);
         $this->assertRemote($remotes[0]);
     }
 
@@ -171,21 +164,21 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
     protected function assertRemote(Remote $remote)
     {
         $this->assertSame('origin', $remote->getName());
-        $this->assertSame('git@github.com:satooshi/php-coveralls.git', $remote->getUrl());
+        $this->assertSame('git@github.com:php-coveralls/php-coveralls.git', $remote->getUrl());
     }
 
     // collectBranch() exception
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
         $getBranchesValue = array(
             '  master',
         );
-        $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue, $this->getHeadCommitValue, $this->getRemotesValue);
+        $gitCommand = $this->createGitCommandStubCalledBranches($getBranchesValue);
 
         $object = new GitInfoCollector($gitCommand);
 
@@ -196,7 +189,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
@@ -212,7 +205,7 @@ class GitInfoCollectorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {

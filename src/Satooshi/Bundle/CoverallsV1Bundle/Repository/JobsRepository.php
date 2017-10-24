@@ -43,12 +43,12 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Constructor.
      *
-     * @param Jobs          $api    API.
-     * @param Configuration $config Configuration.
+     * @param Jobs          $api    aPI
+     * @param Configuration $config configuration
      */
     public function __construct(Jobs $api, Configuration $config)
     {
-        $this->api    = $api;
+        $this->api = $api;
         $this->config = $config;
     }
 
@@ -166,16 +166,16 @@ class JobsRepository implements LoggerAwareInterface
             return;
         } catch (\Guzzle\Http\Exception\CurlException $e) {
             // connection error
-            $message  = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
+            $message = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
         } catch (\Guzzle\Http\Exception\ClientErrorResponseException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
-            $message  = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+            $message = sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
         } catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
             // 500 Internal Server Error
             // 503 Service Unavailable
             $response = $e->getResponse();
-            $message  = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
+            $message = sprintf('Server error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
         }
 
         $this->logger->error($message);
@@ -194,8 +194,8 @@ class JobsRepository implements LoggerAwareInterface
      * * yellow 80% -  90% <comment>
      * * red     0% -  80% <fg=red>
      *
-     * @param float  $coverage Coverage.
-     * @param string $format   Format string to colorize.
+     * @param float  $coverage coverage
+     * @param string $format   format string to colorize
      *
      * @return string
      */
@@ -205,20 +205,20 @@ class JobsRepository implements LoggerAwareInterface
             return sprintf('<info>%s</info>', $format);
         } elseif ($coverage >= 80) {
             return sprintf('<comment>%s</comment>', $format);
-        } else {
-            return sprintf('<fg=red>%s</fg=red>', $format);
         }
+
+        return sprintf('<fg=red>%s</fg=red>', $format);
     }
 
     /**
      * Log collected source files.
      *
-     * @param JsonFile $jsonFile Json file.
+     * @param JsonFile $jsonFile json file
      */
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
-        $numFiles    = count($sourceFiles);
+        $numFiles = count($sourceFiles);
 
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
@@ -232,7 +232,7 @@ class JobsRepository implements LoggerAwareInterface
 
         $coverage = $jsonFile->reportLineCoverage();
         $template = 'Coverage: ' . $this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
-        $metrics  = $jsonFile->getMetrics();
+        $metrics = $jsonFile->getMetrics();
 
         $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));
     }
@@ -240,7 +240,7 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Log response.
      *
-     * @param Response $response API response.
+     * @param Response $response aPI response
      */
     protected function logResponse(Response $response)
     {

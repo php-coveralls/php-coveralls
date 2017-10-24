@@ -3,12 +3,12 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Commit
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CommitTest extends \PHPUnit_Framework_TestCase
+class CommitTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {
@@ -173,12 +173,12 @@ class CommitTest extends \PHPUnit_Framework_TestCase
     public function shouldConvertToArray()
     {
         $expected = array(
-            'id'              => null,
-            'author_name'     => null,
-            'author_email'    => null,
-            'committer_name'  => null,
+            'id' => null,
+            'author_name' => null,
+            'author_email' => null,
+            'committer_name' => null,
             'committer_email' => null,
-            'message'         => null,
+            'message' => null,
         );
 
         $this->assertSame($expected, $this->object->toArray());
@@ -190,12 +190,12 @@ class CommitTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldConvertToFilledArray()
     {
-        $id             = 'id';
-        $authorName     = 'author_name';
-        $authorEmail    = 'author_email';
-        $committerName  = 'committer_name';
+        $id = 'id';
+        $authorName = 'author_name';
+        $authorEmail = 'author_email';
+        $committerName = 'committer_name';
         $committerEmail = 'committer_email';
-        $message        = 'message';
+        $message = 'message';
 
         $this->object
         ->setId($id)
@@ -206,12 +206,12 @@ class CommitTest extends \PHPUnit_Framework_TestCase
         ->setMessage($message);
 
         $expected = array(
-            'id'              => $id,
-            'author_name'     => $authorName,
-            'author_email'    => $authorEmail,
-            'committer_name'  => $committerName,
+            'id' => $id,
+            'author_name' => $authorName,
+            'author_email' => $authorEmail,
+            'committer_name' => $committerName,
             'committer_email' => $committerEmail,
-            'message'         => $message,
+            'message' => $message,
         );
 
         $this->assertSame($expected, $this->object->toArray());

@@ -2,25 +2,25 @@
 
 namespace Satooshi;
 
-class ProjectTestCase extends \PHPUnit_Framework_TestCase
+class ProjectTestCase extends \PHPUnit\Framework\TestCase
 {
     protected function setUpDir($projectDir)
     {
-        $this->rootDir       = realpath($projectDir . '/prj');
-        $this->srcDir        = realpath($this->rootDir . '/files');
+        $this->rootDir = realpath($projectDir . '/prj');
+        $this->srcDir = realpath($this->rootDir . '/files');
 
-        $this->url           = 'https://coveralls.io/api/v1/jobs';
-        $this->filename      = 'json_file';
+        $this->url = 'https://coveralls.io/api/v1/jobs';
+        $this->filename = 'json_file';
 
         // build
-        $this->buildDir       = $this->rootDir . '/build';
-        $this->logsDir        = $this->rootDir . '/build/logs';
+        $this->buildDir = $this->rootDir . '/build';
+        $this->logsDir = $this->rootDir . '/build/logs';
 
         // log
-        $this->cloverXmlPath  = $this->logsDir . '/clover.xml';
+        $this->cloverXmlPath = $this->logsDir . '/clover.xml';
         $this->cloverXmlPath1 = $this->logsDir . '/clover-part1.xml';
         $this->cloverXmlPath2 = $this->logsDir . '/clover-part2.xml';
-        $this->jsonPath       = $this->logsDir . '/coveralls-upload.json';
+        $this->jsonPath = $this->logsDir . '/coveralls-upload.json';
     }
 
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)

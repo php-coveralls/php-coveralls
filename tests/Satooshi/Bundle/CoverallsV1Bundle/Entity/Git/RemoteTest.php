@@ -3,12 +3,12 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Git;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Git\Remote
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Coveralls
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RemoteTest extends \PHPUnit_Framework_TestCase
+class RemoteTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {
@@ -57,7 +57,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldSetRemoteUrl()
     {
-        $expected = 'git@github.com:satooshi/php-coveralls.git';
+        $expected = 'git@github.com:php-coveralls/php-coveralls.git';
 
         $obj = $this->object->setUrl($expected);
 
@@ -74,7 +74,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     {
         $expected = array(
             'name' => null,
-            'url'  => null,
+            'url' => null,
         );
 
         $this->assertSame($expected, $this->object->toArray());
@@ -87,7 +87,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
     public function shouldConvertToFilledArray()
     {
         $name = 'name';
-        $url  = 'url';
+        $url = 'url';
 
         $this->object
         ->setName($name)
@@ -95,7 +95,7 @@ class RemoteTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             'name' => $name,
-            'url'  => $url,
+            'url' => $url,
         );
 
         $this->assertSame($expected, $this->object->toArray());

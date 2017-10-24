@@ -3,11 +3,11 @@
 namespace Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RequirementsNotSatisfiedExceptionTest extends \PHPUnit_Framework_TestCase
+class RequirementsNotSatisfiedExceptionTest extends \PHPUnit\Framework\TestCase
 {
     // getReadEnv()
 

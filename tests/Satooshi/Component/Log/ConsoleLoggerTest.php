@@ -3,11 +3,11 @@
 namespace Satooshi\Component\Log;
 
 /**
- * @covers Satooshi\Component\Log\ConsoleLogger
+ * @covers \Satooshi\Component\Log\ConsoleLogger
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConsoleLoggerTest extends \PHPUnit_Framework_TestCase
+class ConsoleLoggerTest extends \PHPUnit\Framework\TestCase
 {
     protected function createAdapterMockWith($message)
     {

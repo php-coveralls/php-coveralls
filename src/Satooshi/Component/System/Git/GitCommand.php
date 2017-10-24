@@ -3,6 +3,8 @@
 namespace Satooshi\Component\System\Git;
 
 use Satooshi\Component\System\SystemCommand;
+use Satooshi\Component\System\SystemCommandExecutor;
+use Satooshi\Component\System\SystemCommandExecutorInterface;
 
 /**
  * Git command.
@@ -12,13 +14,21 @@ use Satooshi\Component\System\SystemCommand;
 class GitCommand extends SystemCommand
 {
     /**
+     * @var SystemCommandExecutorInterface
+     */
+    private $executor;
+
+    /**
      * Command name or path.
      *
      * @var string
      */
     protected $commandPath = 'git';
 
-    // API
+    public function __construct(SystemCommandExecutorInterface $executor = null)
+    {
+        $this->executor = $executor ? $executor : new SystemCommandExecutor();
+    }
 
     /**
      * Return branch names.
@@ -27,9 +37,7 @@ class GitCommand extends SystemCommand
      */
     public function getBranches()
     {
-        $command = $this->createCommand('branch');
-
-        return $this->executeCommand($command);
+        return $this->executor->execute('git branch');
     }
 
     /**
@@ -39,9 +47,7 @@ class GitCommand extends SystemCommand
      */
     public function getHeadCommit()
     {
-        $command = $this->createCommand("log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
-
-        return $this->executeCommand($command);
+        return $this->executor->execute("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
     }
 
     /**
@@ -51,8 +57,6 @@ class GitCommand extends SystemCommand
      */
     public function getRemotes()
     {
-        $command = $this->createCommand('remote -v');
-
-        return $this->executeCommand($command);
+        return $this->executor->execute('git remote -v');
     }
 }

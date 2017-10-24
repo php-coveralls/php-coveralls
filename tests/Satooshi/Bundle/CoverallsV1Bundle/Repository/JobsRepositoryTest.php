@@ -2,15 +2,16 @@
 
 namespace Satooshi\Bundle\CoverallsV1Bundle\Repository;
 
+use Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs;
 use Satooshi\Bundle\CoverallsV1Bundle\Config\Configuration;
+use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\JsonFile;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\Metrics;
 use Satooshi\Bundle\CoverallsV1Bundle\Entity\SourceFile;
 use Satooshi\ProjectTestCase;
-use Satooshi\Bundle\CoverallsV1Bundle\Entity\Exception\RequirementsNotSatisfiedException;
 
 /**
- * @covers Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
+ * @covers \Satooshi\Bundle\CoverallsV1Bundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
@@ -25,152 +26,97 @@ class JobsRepositoryTest extends ProjectTestCase
 
     // mock
 
-    protected function createApiMockWithRequirementsNotSatisfiedException()
+    private function setUpJobsApiWithCollectCloverXmlCalled($api)
     {
-        $jobsMethods = array(
-            'collectCloverXml',
-            'getJsonFile',
-            'collectGitInfo',
-            'collectEnvVars',
-            'dumpJsonFile',
-            'send',
-        );
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
-
-        $exception = new RequirementsNotSatisfiedException();
-
         $api
-        ->expects($this->once())
-        ->method('collectCloverXml')
-        ->with()
-        ->will($this->throwException($exception));
-
-        $api
-        ->expects($this->never())
-        ->method('getJsonFile');
-
-        $api
-        ->expects($this->never())
-        ->method('collectGitInfo');
-
-        $api
-        ->expects($this->never())
-        ->method('collectEnvVars');
-
-        $api
-        ->expects($this->never())
-        ->method('dumpJsonFile');
-
-        $api
-        ->expects($this->never())
-        ->method('send');
-
-        return $api;
+            ->collectCloverXml()
+            ->will(function () use ($api) {
+                return $api;
+            })
+            ->shouldBeCalled();
     }
 
-    protected function createApiMockWithException()
+    private function setUpJobsApiWithCollectCloverXmlThrow($api, $exception)
     {
-        $jobsMethods = array(
-            'collectCloverXml',
-            'getJsonFile',
-            'collectGitInfo',
-            'collectEnvVars',
-            'dumpJsonFile',
-            'send',
-        );
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
-
-        $message = 'unexpected exception';
-        $exception = new \Exception($message);
-
         $api
-        ->expects($this->once())
-        ->method('collectCloverXml')
-        ->with()
-        ->will($this->throwException($exception));
-
-        $api
-        ->expects($this->never())
-        ->method('getJsonFile');
-
-        $api
-        ->expects($this->never())
-        ->method('collectGitInfo');
-
-        $api
-        ->expects($this->never())
-        ->method('collectEnvVars');
-
-        $api
-        ->expects($this->never())
-        ->method('dumpJsonFile');
-
-        $api
-        ->expects($this->never())
-        ->method('send');
-
-        return $api;
+            ->collectCloverXml()
+            ->willThrow($exception)
+            ->shouldBeCalled();
     }
 
-    protected function createApiMock($response, $statusCode = 200)
+    private function setUpJobsApiWithGetJsonFileCalled($api, $jsonFile)
     {
-        $jsonFile = $this->createJsonFile();
-
-        $jobsMethods = array(
-            'collectCloverXml',
-            'getJsonFile',
-            'collectGitInfo',
-            'collectEnvVars',
-            'dumpJsonFile',
-            'send',
-        );
-        $api = $this->getMockBuilder('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs')
-        ->disableOriginalConstructor()
-        ->setMethods($jobsMethods)
-        ->getMock();
-
         $api
-        ->expects($this->once())
-        ->method('collectCloverXml')
-        ->with()
-        ->will($this->returnSelf());
+            ->getJsonFile()
+            ->willReturn($jsonFile)
+            ->shouldBeCalled();
+    }
 
+    private function setUpJobsApiWithGetJsonFileNotCalled($api)
+    {
         $api
-        ->expects($this->once())
-        ->method('getJsonFile')
-        ->with()
-        ->will($this->returnValue($jsonFile));
+            ->getJsonFile()
+            ->shouldNotBeCalled();
+    }
 
+    private function setUpJobsApiWithCollectGitInfoCalled($api)
+    {
         $api
-        ->expects($this->once())
-        ->method('collectGitInfo')
-        ->with()
-        ->will($this->returnSelf());
+            ->collectGitInfo()
+            ->will(function () use ($api) {
+                return $api;
+            })
+            ->shouldBeCalled();
+    }
 
+    private function setUpJobsApiWithCollectGitInfoNotCalled($api)
+    {
         $api
-        ->expects($this->once())
-        ->method('collectEnvVars')
-        ->with($this->equalTo($_SERVER))
-        ->will($this->returnSelf());
+            ->collectGitInfo()
+            ->shouldNotBeCalled();
+    }
 
+    private function setUpJobsApiWithCollectEnvVarsCalled($api)
+    {
         $api
-        ->expects($this->once())
-        ->method('dumpJsonFile')
-        ->with()
-        ->will($this->returnSelf());
+            ->collectEnvVars($_SERVER)
+            ->will(function () use ($api) {
+                return $api;
+            })
+            ->shouldBeCalled();
+    }
 
+    private function setUpJobsApiWithCollectEnvVarsNotCalled($api)
+    {
+        $api
+            ->collectEnvVars()
+            ->shouldNotBeCalled();
+    }
+
+    private function setUpJobsApiWithDumpJsonFileCalled($api)
+    {
+        $api
+            ->dumpJsonFile()
+            ->will(function () use ($api) {
+                return $api;
+            })
+            ->shouldBeCalled();
+    }
+
+    private function setUpJobsApiWithDumpJsonFileNotCalled($api)
+    {
+        $api
+            ->dumpJsonFile()
+            ->shouldNotBeCalled();
+    }
+
+    private function setUpJobsApiWithSendCalled($api, $statusCode, $request, $response)
+    {
         if ($statusCode === 200) {
             $api
-            ->expects($this->once())
-            ->method('send')
-            ->with()
-            ->will($this->returnValue($response));
+                ->send()
+                ->willReturn($response)
+                ->shouldBeCalled();
         } else {
             if ($statusCode === null) {
                 $exception = new \Guzzle\Http\Exception\CurlException();
@@ -183,58 +129,65 @@ class JobsRepositoryTest extends ProjectTestCase
             }
 
             $api
-            ->expects($this->once())
-            ->method('send')
-            ->with()
-            ->will($this->throwException($exception));
+                ->send()
+                ->willThrow($exception)
+                ->shouldBeCalled();
         }
-
-        return $api;
     }
 
-    protected function createResponseMock($statusCode, $reasonPhrase, $body)
+    private function setUpJobsApiWithSendNotCalled($api)
     {
-        $json     = is_array($body) ? json_encode($body) : $body;
-        $args     = array($statusCode, null, $json);
-        $methods  = array('getStatusCode', 'getReasonPhrase', 'getBody');
-        $response = $this->getMock('\Guzzle\Http\Message\Response', $methods, $args);
+        $api
+            ->send()
+            ->shouldNotBeCalled();
+    }
 
-        $response
-            ->expects($this->once())
-            ->method('getStatusCode')
-            ->with()
-            ->will($this->returnValue($statusCode));
+    protected function createApiMockWithRequirementsNotSatisfiedException()
+    {
+        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $this->setUpJobsApiWithCollectCloverXmlThrow($api, new RequirementsNotSatisfiedException());
+        $this->setUpJobsApiWithGetJsonFileNotCalled($api);
+        $this->setUpJobsApiWithCollectGitInfoNotCalled($api);
+        $this->setUpJobsApiWithCollectEnvVarsNotCalled($api);
+        $this->setUpJobsApiWithDumpJsonFileNotCalled($api);
+        $this->setUpJobsApiWithSendNotCalled($api);
 
-        $response
-            ->expects($this->once())
-            ->method('getReasonPhrase')
-            ->with()
-            ->will($this->returnValue($reasonPhrase));
+        return $api->reveal();
+    }
 
-        $response
-            ->expects($this->once())
-            ->method('getBody')
-            ->with(true)
-            ->will($this->returnValue($json));
+    protected function createApiMockWithException()
+    {
+        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $this->setUpJobsApiWithCollectCloverXmlThrow($api, new \Exception('unexpected exception'));
+        $this->setUpJobsApiWithGetJsonFileNotCalled($api);
+        $this->setUpJobsApiWithCollectGitInfoNotCalled($api);
+        $this->setUpJobsApiWithCollectEnvVarsNotCalled($api);
+        $this->setUpJobsApiWithDumpJsonFileNotCalled($api);
+        $this->setUpJobsApiWithSendNotCalled($api);
 
-        return $response;
+        return $api->reveal();
+    }
+
+    protected function createApiMock($response, $statusCode = '', $uri = '/')
+    {
+        $api = $this->prophesize('Satooshi\Bundle\CoverallsV1Bundle\Api\Jobs');
+        $this->setUpJobsApiWithCollectCloverXmlCalled($api);
+        $this->setUpJobsApiWithGetJsonFileCalled($api, $this->createJsonFile());
+        $this->setUpJobsApiWithCollectGitInfoCalled($api);
+        $this->setUpJobsApiWithCollectEnvVarsCalled($api);
+        $this->setUpJobsApiWithDumpJsonFileCalled($api);
+        $this->setUpJobsApiWithSendCalled($api, $statusCode, new \Guzzle\Http\Message\Request('POST', $uri), $response);
+
+        return $api->reveal();
     }
 
     protected function createLoggerMock()
     {
-        $logger = $this->getMock('Psr\Log\NullLogger', array('info', 'error'));
+        $logger = $this->prophesize('Psr\Log\NullLogger');
+        $logger->info();
+        $logger->error();
 
-        $logger
-        ->expects($this->any())
-        ->method('info')
-        ->with();
-
-        $logger
-        ->expects($this->any())
-        ->method('error')
-        ->with();
-
-        return $logger;
+        return $logger->reveal();
     }
 
     // dependent object
@@ -243,8 +196,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         // percent = (covered / stmt) * 100;
         // (percent * stmt) / 100 = covered
-        $stmt     = 100;
-        $covered  = ($percent * $stmt) / 100;
+        $stmt = 100;
+        $covered = ($percent * $stmt) / 100;
         $coverage = array_fill(0, 100, 0);
 
         for ($i = 0; $i < $covered; ++$i) {
@@ -258,14 +211,14 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir  . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir . '/RepositoryTest';
 
         $sourceFiles = array(
-            0   => new SourceFile($repositoryTestDir . '/Coverage0.php',   'Coverage0.php'),
-            10  => new SourceFile($repositoryTestDir . '/Coverage10.php',  'Coverage10.php'),
-            70  => new SourceFile($repositoryTestDir . '/Coverage70.php',  'Coverage70.php'),
-            80  => new SourceFile($repositoryTestDir . '/Coverage80.php',  'Coverage80.php'),
-            90  => new SourceFile($repositoryTestDir . '/Coverage90.php',  'Coverage90.php'),
+            0 => new SourceFile($repositoryTestDir . '/Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir . '/Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir . '/Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir . '/Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir . '/Coverage90.php', 'Coverage90.php'),
             100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
         );
 
@@ -281,8 +234,7 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $config = new Configuration();
 
-        return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+        return $config->addCloverXmlPath($this->cloverXmlPath);
     }
 
     // persist()
@@ -293,11 +245,15 @@ class JobsRepositoryTest extends ProjectTestCase
     public function shouldPersist()
     {
         $statusCode = 200;
-        $json       = array('message' => 'Job #115.3', 'url' => 'https://coveralls.io/jobs/67528');
-        $response   = $this->createResponseMock($statusCode, 'OK', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $url = 'https://coveralls.io/jobs/67528';
+        $response = new \Guzzle\Http\Message\Response(
+            $statusCode, array(), json_encode(array(
+            'message' => 'Job #115.3',
+            'url' => $url,
+        )), '1.1', 'OK');
+        $api = $this->createApiMock($response, $statusCode, $url);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
@@ -310,7 +266,12 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function shouldPersistDryRun()
     {
-        $api    = $this->createApiMock(null);
+        $response = new \Guzzle\Http\Message\Response(
+            200, array(), json_encode(array(
+            'message' => 'Job #115.3',
+            'url' => 'localhost:4040',
+        )), '1.1', 'OK');
+        $api = $this->createApiMock($response);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -328,7 +289,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function unexpectedException()
     {
-        $api    = $this->createApiMockWithException();
+        $api = $this->createApiMockWithException();
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -343,7 +304,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function requirementsNotSatisfiedException()
     {
-        $api    = $this->createApiMockWithRequirementsNotSatisfiedException();
+        $api = $this->createApiMockWithRequirementsNotSatisfiedException();
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -360,7 +321,7 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function networkDisconnected()
     {
-        $api    = $this->createApiMock(null, null);
+        $api = $this->createApiMock(null, null);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
@@ -378,11 +339,16 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response422()
     {
         $statusCode = 422;
-        $json       = array('message' => 'Build processing error.', 'url' => '', 'error' => true);
-        $response   = $this->createResponseMock($statusCode, 'Unprocessable Entity', $json);
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $response = new \Guzzle\Http\Message\Response(
+            $statusCode, array(), json_encode(array(
+            'message' => 'Build processing error.',
+            'url' => '',
+            'error' => true,
+        )), '1.1', 'Unprocessable Entity'
+        );
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
@@ -398,10 +364,10 @@ class JobsRepositoryTest extends ProjectTestCase
     public function response500()
     {
         $statusCode = 500;
-        $response   = $this->createResponseMock($statusCode, 'Internal Server Error', 'response');
-        $api        = $this->createApiMock($response, $statusCode);
-        $config     = $this->createConfiguration();
-        $logger     = $this->createLoggerMock();
+        $response = new \Guzzle\Http\Message\Response($statusCode, array(), null, '1.1', 'Internal Server Error');
+        $api = $this->createApiMock($response, $statusCode);
+        $config = $this->createConfiguration();
+        $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
