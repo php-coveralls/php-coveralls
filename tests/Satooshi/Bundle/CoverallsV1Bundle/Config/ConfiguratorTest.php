@@ -252,16 +252,14 @@ class ConfiguratorTest extends ProjectTestCase
             array(
                 new InputOption(
                     'json_path',
-                    'j',
-                    InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY
+                    'o',
+                    InputOption::VALUE_REQUIRED
                 ),
             )
         );
 
         $inputArray = array(
-            '--json_path' => array(
-                'build/logs/coveralls-upload-custom.json',
-            ),
+            '--json_path' => 'build/logs/coveralls-upload-custom.json',
         );
         $expectedJsonPath = substr($this->jsonPath, 0, strlen($this->jsonPath) - 5) . '-custom.json';
 

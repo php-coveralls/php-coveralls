@@ -105,11 +105,11 @@ class Configurator
 
         // handle output json path
         $json_path = $options['json_path'];
-        if ($input !== null
-            && $input->hasOption('json_path')
-            && count($input->getOption('json_path')) > 0) {
-            $json_path = $input->getOption('json_path');
-            $json_path = $json_path[0];
+        if ($input !== null && $input->hasOption('json_path')) {
+            $option = $input->getOption('json_path');
+            if (!empty($option)) {
+                $json_path = $option;
+            }
         }
 
         return $configuration

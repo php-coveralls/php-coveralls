@@ -85,7 +85,7 @@ class CoverallsV1JobsCommand extends Command
         ->addOption(
             'json_path',
             '-o',
-            InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+            InputOption::VALUE_REQUIRED,
             'Coveralls output json file',
             array()
         )
