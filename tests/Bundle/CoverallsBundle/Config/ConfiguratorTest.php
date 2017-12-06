@@ -250,23 +250,23 @@ class ConfiguratorTest extends ProjectTestCase
 
         // Mocking command line options.
         $defs = new InputDefinition(
-            array(
+            [
                 new InputOption(
                     'json_path',
                     'o',
                     InputOption::VALUE_REQUIRED
                 ),
-            )
+            ]
         );
 
-        $inputArray = array(
+        $inputArray = [
             '--json_path' => 'build/logs/coveralls-upload-custom.json',
-        );
+        ];
         $expectedJsonPath = substr($this->jsonPath, 0, strlen($this->jsonPath) - 5) . '-custom.json';
 
         $input = new ArrayInput($inputArray, $defs);
         $config = $this->object->load($path, $this->rootDir, $input);
-        $this->assertConfiguration($config, array($this->cloverXmlPath), $expectedJsonPath);
+        $this->assertConfiguration($config, [$this->cloverXmlPath], $expectedJsonPath);
     }
 
     /**
