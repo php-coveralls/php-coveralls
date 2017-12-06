@@ -1,14 +1,32 @@
 CHANGELOG
-=============
+=========
+
+## 2.0.0
+
+### Bug fix
+
+- [#232](https://github.com/php-coveralls/php-coveralls/pull/232) phar building - set up platform.php for composer before building phar file
+
+### Enhancement
+
+- [#223](https://github.com/php-coveralls/php-coveralls/pull/223) Make project works on Windows
+
+### Miscellaneous
+
+- [#228](https://github.com/php-coveralls/php-coveralls/pull/228) Rename vendor
+- [#227](https://github.com/php-coveralls/php-coveralls/pull/227) Drop V1 from namespaces and class names
+* Upgrade to Guzzle 6
 
 ## 1.1.0
 
 ### Enhancement
+
 - [#192](https://github.com/php-coveralls/php-coveralls/pull/192) let output json path be configurable
 
 ## 1.0.2
 
-### Misc
+### Miscellaneous
+
 - Update github repo link
 - [#250](https://github.com/php-coveralls/php-coveralls/pull/250) GitCommand - drop useless tests
 - [#248](https://github.com/php-coveralls/php-coveralls/pull/248) Allow Symfony 4
@@ -21,12 +39,14 @@ CHANGELOG
 
 ## 1.0.1
 
-### Misc
+### Miscellaneous
+
 - [#183](https://github.com/php-coveralls/php-coveralls/pull/183) Lower required version of symfony/*
 
 ## 1.0.0
 
-### miscellaneous
+### Miscellaneous
+
 - [#136](https://github.com/php-coveralls/php-coveralls/pull/136) Removed src_dir from CoverallsConfiguration
 - [#154](https://github.com/php-coveralls/php-coveralls/issues/154) Show a deprecation notice when src_dir is set in the config
 
@@ -50,7 +70,7 @@ CHANGELOG
 - [#149](https://github.com/php-coveralls/php-coveralls/pull/149) Build phar file on travis
 - [#127](https://github.com/php-coveralls/php-coveralls/issues/126) Remove src_dir entirely
 
-### miscellaneous
+### Miscellaneous
 
 - [#17](https://github.com/php-coveralls/php-coveralls/issues/17) Refactor test cases
 - [#32](https://github.com/php-coveralls/php-coveralls/issues/32) Refactor CoverallsV1JobsCommand
@@ -105,7 +125,7 @@ CHANGELOG
     - CI_BRANCH
     - CI_PULL_REQUEST
 
-### miscellaneous
+### Miscellaneous
 
 - Refactor console logging (PSR-3 compliant)
 - Change composer's minimal stability from dev to stable
