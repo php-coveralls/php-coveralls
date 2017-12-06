@@ -101,7 +101,7 @@ class CloverXmlCoverageCollector
     {
         $absolutePath = realpath((string) ($file['path'] ?: $file['name']));
 
-        if (false === strpos($absolutePath, $root)) {
+        if (strpos($absolutePath, $root) === false) {
             return;
         }
 

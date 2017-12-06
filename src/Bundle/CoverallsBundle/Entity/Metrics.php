@@ -65,7 +65,7 @@ class Metrics
      *
      * @param Metrics $that
      */
-    public function merge(Metrics $that)
+    public function merge(self $that)
     {
         $this->statements += $that->statements;
         $this->coveredStatements += $that->coveredStatements;

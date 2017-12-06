@@ -567,7 +567,7 @@ class JobsTest extends ProjectTestCase
             ->post($url, \Prophecy\Argument::that(function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
-                    && $options['multipart'][0]['name'] === $filename
+                    && $filename === $options['multipart'][0]['name']
                     && is_string($options['multipart'][0]['contents']);
             }))
             ->willReturn($response)

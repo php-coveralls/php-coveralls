@@ -99,7 +99,7 @@ class CoverallsJobsCommand extends Command
                 '-o',
                 InputOption::VALUE_REQUIRED,
                 'Coveralls output json file',
-                array()
+                []
             )
             ->addOption(
                 'root_dir',
