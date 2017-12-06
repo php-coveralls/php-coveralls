@@ -272,6 +272,8 @@ php vendor/bin/coveralls --help
 - `--exclude-no-stmt`: Used to exclude source files that have no executable statements.
 - `--env (-e)`: Runtime environment name: test, dev, prod (default: "prod")
 - `--coverage_clover (-x)`: Coverage clover xml files(allowing multiple values)
+- `--json_path` (-o): Used to specify where to output json_file that will be
+  uploaded to Coveralls API. (default: `build/logs/coveralls-upload.json`)
 - `--root_dir (-r)`: Root directory of the project. (default: ".")
 
 ## .coveralls.yml
