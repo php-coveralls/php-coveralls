@@ -28,6 +28,8 @@ cache:
 install:
     - mkdir -p build/logs
     - mv ${HOME}/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ${HOME}/xdebug.ini || return 0
+    - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config disable-tls true; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.3.3" ]; then composer config secure-http false; fi
     - 'if [ "$MIN_STABILITY" != "" ]; then composer config minimum-stability $MIN_STABILITY; fi'
     - 'if [ "$SYMFONY_VERSION" != "" ]; then sed -i "s/\"symfony\/\([^\"]*\)\": \"^2[^\"]*\"/\"symfony\/\1\": \"$SYMFONY_VERSION\"/g" composer.json; fi'
     - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction
