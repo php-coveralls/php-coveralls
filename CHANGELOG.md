@@ -1,6 +1,11 @@
 CHANGELOG
 =============
 
+## 1.1.0
+
+### Enhancement
+- [#192](https://github.com/php-coveralls/php-coveralls/pull/192) let output json path be configurable
+
 ## 1.0.2
 
 ### Misc
@@ -149,4 +154,3 @@ First release.
 - Implement CircleCI, Jenkins, local environment (but not tested on these CI environments)
 - Collect coverage information from clover.xml
 - Collect git repository information
-
