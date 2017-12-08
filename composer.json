@@ -52,7 +52,7 @@
     "autoload-dev": {
         "psr-4": { "PhpCoveralls\\Tests\\": "tests/"}
     },
-    "bin": ["bin/coveralls"],
+    "bin": ["bin/php-coveralls"],
     "scripts": {
         "install-dev-tools": [
             "cd dev-tools && composer update --no-interaction"
