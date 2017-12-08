@@ -182,9 +182,9 @@ script:
   - php vendor/bin/phpunit -c phpunit.xml.dist
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/php-coveralls
   # or enable logging
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/php-coveralls -v
 ```
 
 ## CircleCI
@@ -227,7 +227,7 @@ In the "Modify your Test Commands" section:
 
 ```sh
 php vendor/bin/phpunit -c phpunit.xml.dist
-php vendor/bin/coveralls
+php vendor/bin/php-coveralls
 ```
 
 Next, open Project settings > Environment tab, you can set `COVERALLS_REPO_TOKEN` environment variable.
@@ -263,7 +263,7 @@ php-coveralls set the following properties to `json_file` which is sent to Cover
 You can get help information for `coveralls` with the `--help (-h)` option.
 
 ```sh
-php vendor/bin/coveralls --help
+php vendor/bin/php-coveralls --help
 ```
 
 - `--config (-c)`: Used to specify the path to `.coveralls.yml`. Default is `.coveralls.yml`
