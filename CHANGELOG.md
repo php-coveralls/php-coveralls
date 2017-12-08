@@ -13,9 +13,10 @@ CHANGELOG
 
 ### Miscellaneous
 
+- Binary and phar renamed to match tool name: php-coveralls and php-coveralls.phar
 - [#228](https://github.com/php-coveralls/php-coveralls/pull/228) Rename vendor
 - [#227](https://github.com/php-coveralls/php-coveralls/pull/227) Drop V1 from namespaces and class names
-* Upgrade to Guzzle 6
+- Upgrade to Guzzle 6
 
 ## 1.1.0
 
