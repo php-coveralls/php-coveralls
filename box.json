@@ -1,5 +1,5 @@
 {
-  "alias": "coveralls.phar",
+  "alias": "php-coveralls.phar",
   "chmod": "0755",
   "directories": ["src"],
   "compactors": [
@@ -17,7 +17,7 @@
     }
   ],
   "git-version": "package_version",
-  "main": "bin/coveralls",
-  "output": "build/artifacts/coveralls.phar",
+  "main": "bin/php-coveralls",
+  "output": "build/artifacts/php-coveralls.phar",
   "stub": true
 }

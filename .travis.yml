@@ -37,7 +37,7 @@ script:
     - if [ "$CHECKS" = "yes" ]; then composer sca; fi;
 
 after_success:
-    - bin/coveralls -v --exclude-no-stmt
+    - bin/php-coveralls -v --exclude-no-stmt
 
 before_deploy:
     - if [ "${BOX}" = "yes" ]; then curl -LSs http://box-project.github.io/box2/installer.php | php; fi;
@@ -49,7 +49,7 @@ deploy:
     provider: releases
     api_key:
         secure: dNw8/urkXHRHzcI0F8NwYP63FjhcrpUqOO92uclAYESBjyVyhBzMuczBlGfwqdoxknwK+4wsDkr6TW7AtfeTa3d48acHdUD3ahWFFk9paC8jIVsh/H01UMsY3Xz4Z3KVWQDRFS5LIaDKk3jqPyvN+FiJpEQ8drIA+GDpm4VSQHc=
-    file: build/artifacts/coveralls.phar
+    file: build/artifacts/php-coveralls.phar
     skip_cleanup: true
     on:
         repo: php-coveralls/php-coveralls
