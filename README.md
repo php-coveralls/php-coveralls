@@ -25,14 +25,14 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.0/coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.0.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.0/coveralls.phar
-$ chmod +x coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.0.0/php-coveralls.phar
+$ chmod +x php-coveralls.phar
 ```
 
 ## Install by composer
@@ -46,7 +46,7 @@ $ composer require php-coveralls/php-coveralls
 If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
 
 ```sh
-$ composer require php-coveralls/php-coveralls '~1.0'
+$ composer require php-coveralls/php-coveralls '^2.0'
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
@@ -105,7 +105,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "dev-master",
+        "php-coveralls/php-coveralls": "^2.0",
         "phpunit/phpcov": "^2.0"
     },
 ```
@@ -160,7 +160,7 @@ php-coveralls collects `count` attribute in a `line` tag from `clover.xml` if it
 
 ## Travis CI
 
-Add `php coveralls.phar` or `php vendor/bin/coveralls` to your `.travis.yml` at `after_success`.
+Add `php php-coveralls.phar` or `php vendor/bin/php-coveralls` to your `.travis.yml` at `after_success`.
 
 ```yml
 # .travis.yml
