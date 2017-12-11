@@ -13,4 +13,4 @@ test:
   override:
     - phpunit
   post:
-    - bin/coveralls -v --exclude-no-stmt
+    - bin/php-coveralls -v --exclude-no-stmt
