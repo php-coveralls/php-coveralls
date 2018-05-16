@@ -16,6 +16,15 @@ abstract class Coveralls implements ArrayConvertable
      */
     public function __toString()
     {
-        return json_encode($this->toArray());
+        $result = json_encode($this->toArray());
+
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new \UnexpectedValueException(sprintf(
+                'Can not encode to JSON, error: "%s". If you have non-UTF8 chars, consider migration to UTF8.',
+                json_last_error_msg()
+            ));
+        }
+
+        return $result;
     }
 }
