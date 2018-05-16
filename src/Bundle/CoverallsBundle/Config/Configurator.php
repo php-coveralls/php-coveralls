@@ -162,7 +162,7 @@ class Configurator
 
         // validate
         if (count($paths) === 0) {
-            throw new InvalidConfigurationException('coverage_clover XML file is not readable');
+            throw new InvalidConfigurationException("coverage_clover XML file is not readable: ${path}");
         }
 
         return $paths;
@@ -182,7 +182,7 @@ class Configurator
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
         if (!is_string($option)) {
-            throw new InvalidConfigurationException('coverage_clover XML file is not readable');
+            throw new InvalidConfigurationException('coverage_clover XML file option must be a string');
         }
 
         // normalize
