@@ -60,9 +60,6 @@
         "sca": [
             "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",
             "php dev-tools/vendor/bin/phpmd src text build/config/phpmd.xml"
-        ],
-        "apigen": [
-            "php dev-tools/vendor/bin/apigen -c build/config/apigen.neon -d build/api -s src -s vendor/symfony/config -s vendor/symfony/console -s vendor/symfony/yaml -s vendor/guzzle/guzzle/src -s vendor/psr/log --report build/logs/checkstyle-apigen.xml --exclude *Test.php --exclude */Tests/* --google-analytics UA-40398434-1"
         ]
     },
     "config": {
