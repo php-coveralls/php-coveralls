@@ -53,7 +53,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertTrue($object->persist());
     }
 
     /**
@@ -61,14 +61,14 @@ class JobsRepositoryTest extends ProjectTestCase
      */
     public function shouldPersistDryRun()
     {
-        $api = $this->createApiMock(null);
+        $api = $this->createApiMock(null, 200); // params means API won't crash, but it will return null, as it does for dry-run
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
 
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertTrue($object->persist());
     }
 
     // unexpected Exception
@@ -86,7 +86,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertFalse($object->persist());
     }
 
     /**
@@ -101,7 +101,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertFalse($object->persist());
     }
 
     // curl error
@@ -118,7 +118,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertFalse($object->persist());
     }
 
     // response 422
@@ -147,7 +147,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertFalse($object->persist());
     }
 
     // response 500
@@ -166,7 +166,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        $object->persist();
+        self::assertFalse($object->persist());
     }
 
     /**
@@ -202,13 +202,13 @@ class JobsRepositoryTest extends ProjectTestCase
     }
 
     /**
-     * @param ResponseInterface $response
-     * @param string            $statusCode
-     * @param string            $uri
+     * @param null|ResponseInterface $response
+     * @param null|int               $statusCode
+     * @param string                 $uri
      *
      * @return Jobs
      */
-    protected function createApiMock($response, $statusCode = '', $uri = '/')
+    protected function createApiMock($response, $statusCode = null, $uri = '/')
     {
         $api = $this->prophesize(Jobs::class);
         $this->setUpJobsApiWithCollectCloverXmlCalled($api);
@@ -404,10 +404,10 @@ class JobsRepositoryTest extends ProjectTestCase
     }
 
     /**
-     * @param Jobs              $api
-     * @param int               $statusCode
-     * @param RequestInterface  $request
-     * @param ResponseInterface $response
+     * @param Jobs                   $api
+     * @param null|int               $statusCode
+     * @param RequestInterface       $request
+     * @param null|ResponseInterface $response
      */
     private function setUpJobsApiWithSendCalled($api, $statusCode, $request, $response)
     {

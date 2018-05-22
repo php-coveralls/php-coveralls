@@ -130,14 +130,14 @@ class CoverallsJobsCommand extends Command
         $config = $this->loadConfiguration($input, $this->rootDir);
         $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
 
-        $this->executeApi($config);
+        $executionStatus = $this->executeApi($config);
 
         $event = $stopwatch->stop(__CLASS__);
         $time = number_format($event->getDuration() / 1000, 3);        // sec
         $mem = number_format($event->getMemory() / (1024 * 1024), 2); // MB
         $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
-        return 0;
+        return $executionStatus ? 0 : 1;
     }
 
     // for Jobs API
@@ -169,6 +169,8 @@ class CoverallsJobsCommand extends Command
      * Execute Jobs API.
      *
      * @param Configuration $config configuration
+     *
+     * @return bool
      */
     protected function executeApi(Configuration $config)
     {
@@ -177,6 +179,7 @@ class CoverallsJobsCommand extends Command
         $repository = new JobsRepository($api, $config);
 
         $repository->setLogger($this->logger);
-        $repository->persist();
+
+        return $repository->persist();
     }
 }

@@ -55,11 +55,13 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Persist coverage data to Coveralls.
+     *
+     * @return bool
      */
     public function persist()
     {
         try {
-            $this
+            return $this
                 ->collectCloverXml()
                 ->collectGitInfo()
                 ->collectEnvVars()
@@ -67,8 +69,12 @@ class JobsRepository implements LoggerAwareInterface
                 ->send();
         } catch (\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
+
+            return false;
         } catch (\Exception $e) {
             $this->logger->error(sprintf("%s\n\n%s", $e->getMessage(), $e->getTraceAsString()));
+
+            return false;
         }
     }
 
@@ -157,6 +163,8 @@ class JobsRepository implements LoggerAwareInterface
 
     /**
      * Send json_file to Jobs API.
+     *
+     * @return bool
      */
     protected function send()
     {
@@ -164,7 +172,6 @@ class JobsRepository implements LoggerAwareInterface
 
         try {
             $response = $this->api->send();
-
             $message = $response
                 ? sprintf('Finish submitting. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase())
                 : 'Finish dry run';
@@ -175,7 +182,7 @@ class JobsRepository implements LoggerAwareInterface
                 $this->logResponse($response);
             }
 
-            return;
+            return true;
         } catch (\GuzzleHttp\Exception\ConnectException $e) {
             // connection error
             $message = sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
@@ -195,6 +202,8 @@ class JobsRepository implements LoggerAwareInterface
         if (isset($response)) {
             $this->logResponse($response);
         }
+
+        return false;
     }
 
     // logging
