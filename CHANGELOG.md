@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+## 2.1.0
+
+### Enhancement
+
+- [#263](https://github.com/php-coveralls/php-coveralls/pull/263) JsonFile - detect json_encode failure
+- [#262](https://github.com/php-coveralls/php-coveralls/pull/262) DX: Improve error messages
+- [#261](https://github.com/php-coveralls/php-coveralls/pull/261) Return non-0 status on command errors
+
+### Miscellaneous
+
+- [#265](https://github.com/php-coveralls/php-coveralls/pull/265) Remove obsolete apigen and versioneye
+- [#264](https://github.com/php-coveralls/php-coveralls/pull/264) Drop HHVM support
+- [#256](https://github.com/php-coveralls/php-coveralls/pull/256) Update references to renamed binary
+
 ## 2.0.0
 
 ### Bug fix
