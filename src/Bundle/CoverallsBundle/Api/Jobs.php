@@ -20,7 +20,7 @@ class Jobs extends CoverallsApi
      *
      * @var string
      */
-    const URL = 'https://coveralls.io/api/v1/jobs';
+    const URL = '/api/v1/jobs';
 
     /**
      * Filename as a POST parameter.
@@ -130,9 +130,10 @@ class Jobs extends CoverallsApi
             return;
         }
 
+        $url = $this->config->getEntrypoint() . static::URL;
         $jsonPath = $this->config->getJsonPath();
 
-        return $this->upload(static::URL, $jsonPath, static::FILENAME);
+        return $this->upload($url, $jsonPath, static::FILENAME);
     }
 
     // accessor

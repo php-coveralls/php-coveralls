@@ -257,6 +257,14 @@ php-coveralls set the following properties to `json_file` which is sent to Cover
 - service_name: php-coveralls
 - service_event_type: manual
 
+## Change coveralls entrypoint
+
+By default all reports is send to `https://coveralls.io` but if you use [opencov](https://github.com/danhper/opencov) you may change this behaviour by setting environment variable `COVERALLS_ENTRYPOINT`. For example:
+
+```sh
+COVERALLS_RUN_LOCALLY=1 COVERALLS_REPO_TOKEN=your_token COVERALLS_ENTRYPOINT="http://http://demo.opencov.com" php vendor/bin/php-coveralls
+```
+
 ## CLI options
 
 You can get help information for `coveralls` with the `--help (-h)` option.

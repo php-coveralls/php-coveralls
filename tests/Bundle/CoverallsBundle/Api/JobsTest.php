@@ -500,6 +500,7 @@ class JobsTest extends ProjectTestCase
         $config = new Configuration();
 
         $config
+            ->setEntrypoint("https://coveralls.io")
             ->setJsonPath($this->jsonPath)
             ->setDryRun(false);
 
@@ -515,6 +516,7 @@ class JobsTest extends ProjectTestCase
     {
         $config = new Configuration();
         $config
+            ->setEntrypoint("https://coveralls.io")
             ->setJsonPath($this->jsonPath)
             ->setDryRun(false);
 
@@ -530,6 +532,7 @@ class JobsTest extends ProjectTestCase
     {
         $config = new Configuration();
         $config
+            ->setEntrypoint("https://coveralls.io")
             ->setJsonPath($this->jsonPath)
             ->setDryRun(true);
 

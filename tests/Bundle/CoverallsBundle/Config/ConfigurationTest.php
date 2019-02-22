@@ -167,6 +167,21 @@ class ConfigurationTest extends TestCase
         $this->assertTrue($this->object->isProdEnv());
     }
 
+    // setEntrypoint
+
+    /**
+     * @test
+     */
+    public function shouldSetEntrypoint()
+    {
+        $expected = 'http://entrypoint';
+
+        $same = $this->object->setEntrypoint($expected);
+
+        $this->assertSame($same, $this->object);
+        $this->assertSame($expected, $this->object->getEntrypoint());
+    }
+
     // setRootDir()
 
     /**

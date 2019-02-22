@@ -9,6 +9,14 @@ namespace PhpCoveralls\Bundle\CoverallsBundle\Config;
  */
 class Configuration
 {
+
+    /**
+     * Entry point which is used for api calls.
+     *
+     * @var string
+     */
+    protected $entrypoint;
+
     // same as ruby lib
 
     /**
@@ -79,6 +87,30 @@ class Configuration
     protected $env = 'prod';
 
     // accessor
+
+    /**
+     * Set api entrypoint.
+     *
+     * @param string $entrypoint
+     *
+     * @return $this
+     */
+    public function setEntrypoint($entrypoint)
+    {
+        $this->entrypoint = \rtrim($entrypoint, '/');
+
+        return $this;
+    }
+
+    /**
+     * Return api entrypoint.
+     *
+     * @return string
+     */
+    public function getEntrypoint()
+    {
+        return $this->entrypoint;
+    }
 
     /**
      * Set repository token.

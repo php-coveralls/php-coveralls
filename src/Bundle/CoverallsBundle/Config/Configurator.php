@@ -112,7 +112,13 @@ class Configurator
             }
         }
 
+        $entrypoint = $options['entrypoint'];
+        if (isset($_SERVER['COVERALLS_ENTRYPOINT'])) {
+            $entrypoint = $_SERVER['COVERALLS_ENTRYPOINT'];
+        }
+
         return $configuration
+            ->setEntrypoint($entrypoint)
             ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
             ->setServiceName($options['service_name'])
             ->setRootDir($rootDir)
