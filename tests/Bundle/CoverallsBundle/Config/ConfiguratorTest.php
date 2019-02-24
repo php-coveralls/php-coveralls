@@ -314,17 +314,15 @@ class ConfiguratorTest extends ProjectTestCase
     /**
      * @test
      */
-    public function shouldLoadEntrypointFromEnvIfSet()
+    public function shouldLoadUseDefaultEntrypointIfNotSet()
     {
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
-        $path = realpath(__DIR__ . '/yaml/entrypoint.yml');
+        $path = realpath(__DIR__ . '/yaml/empty.yml');
 
-        $_SERVER['COVERALLS_ENTRYPOINT'] = 'http://changed.entrypoint';
         $config = $this->object->load($path, $this->rootDir);
-        unset($_SERVER['COVERALLS_ENTRYPOINT']);
 
-        $this->assertSame('http://changed.entrypoint', $config->getEntrypoint());
+        $this->assertSame('https://coveralls.io', $config->getEntrypoint());
     }
 
     // configured coverage_clover not found
