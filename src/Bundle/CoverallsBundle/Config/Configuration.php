@@ -9,7 +9,6 @@ namespace PhpCoveralls\Bundle\CoverallsBundle\Config;
  */
 class Configuration
 {
-
     /**
      * Entry point which is used for api calls.
      *

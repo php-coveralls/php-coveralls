@@ -38,7 +38,7 @@ class CoverallsConfiguration implements ConfigurationInterface
             ->children()
                 // same as ruby lib
                 ->scalarNode('entrypoint')
-                    ->defaultValue("https://coveralls.io")
+                    ->defaultValue('https://coveralls.io')
                 ->end()
                 ->scalarNode('repo_token')
                     ->defaultNull()

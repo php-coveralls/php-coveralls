@@ -308,7 +308,7 @@ class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertEquals('http://foo.bar', $config->getEntrypoint());
+        $this->assertSame('http://foo.bar', $config->getEntrypoint());
     }
 
     /**
@@ -324,7 +324,7 @@ class ConfiguratorTest extends ProjectTestCase
         $config = $this->object->load($path, $this->rootDir);
         unset($_SERVER['COVERALLS_ENTRYPOINT']);
 
-        $this->assertEquals('http://changed.entrypoint', $config->getEntrypoint());
+        $this->assertSame('http://changed.entrypoint', $config->getEntrypoint());
     }
 
     // configured coverage_clover not found
