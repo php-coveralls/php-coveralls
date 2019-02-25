@@ -2,7 +2,7 @@ php-coveralls
 =============
 
 [![Build Status](https://travis-ci.org/php-coveralls/php-coveralls.svg?branch=master)](https://travis-ci.org/php-coveralls/php-coveralls)
-[![Coverage Status](https://coveralls.io/repos/php-coveralls/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/php-coveralls/php-coveralls)
+[![Coverage Status](https://coveralls.io/repos/php-coveralls/php-coveralls/badge.svg?branch=master)](https://coveralls.io/r/php-coveralls/php-coveralls)
 
 [![Latest Stable Version](https://poser.pugx.org/php-coveralls/php-coveralls/v/stable.png)](https://packagist.org/packages/php-coveralls/php-coveralls)
 [![Total Downloads](https://poser.pugx.org/php-coveralls/php-coveralls/downloads.png)](https://packagist.org/packages/php-coveralls/php-coveralls)

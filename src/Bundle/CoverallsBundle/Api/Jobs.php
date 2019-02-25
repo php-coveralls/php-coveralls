@@ -132,7 +132,15 @@ class Jobs extends CoverallsApi
 
         $jsonPath = $this->config->getJsonPath();
 
-        return $this->upload(static::URL, $jsonPath, static::FILENAME);
+        $url = static::URL;
+
+        $endpoint = getenv('COVERALLS_ENDPOINT');
+
+        if ($endpoint) {
+          $url = $endpoint . '/api/v1/jobs';
+        }
+
+        return $this->upload($url, $jsonPath, static::FILENAME);
     }
 
     // accessor
