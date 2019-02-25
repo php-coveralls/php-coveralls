@@ -137,7 +137,7 @@ class Jobs extends CoverallsApi
         $endpoint = getenv('COVERALLS_ENDPOINT');
 
         if ($endpoint) {
-          $url = $endpoint . '/api/v1/jobs';
+            $url = $endpoint . '/api/v1/jobs';
         }
 
         return $this->upload($url, $jsonPath, static::FILENAME);
