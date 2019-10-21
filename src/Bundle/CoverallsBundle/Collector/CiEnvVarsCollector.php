@@ -64,6 +64,7 @@ class CiEnvVarsCollector
             ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
+            ->fillGithubActiions()
             ->fillRepoToken();
 
         return $this->env;
@@ -108,6 +109,32 @@ class CiEnvVarsCollector
         }
 
         return $this;
+    }
+
+    /**
+     * Fill Github Actions environment variables.
+     *
+     * @return $this
+     */
+    protected function fillGithubActiions() {
+        if (isset($this->env['GITHUB_ACTIONS'])) {
+            $this->env['CI_NAME'] = 'github-actions';
+
+            $this->env['CI_JOB_ID'] = $this->env['GITHUB_ACTIONS'];
+            $githubRef = $this->env['GITHUB_REF'];
+
+            if (strpos($githubRef, 'refs/heads/') !== false) {
+                $githubRef = str_replace('refs/heads/', '', $githubRef);
+            } elseif (strpos($githubRef, 'refs/tags/') !== false) {
+                $githubRef = str_replace('refs/tags/', '', $githubRef);
+            }
+            $this->env['CI_BRANCH'] = $githubRef;
+
+            $this->readEnv['GITHUB_ACTIONS'] = $this->env['GITHUB_ACTIONS'];
+            $this->readEnv['GITHUB_REF'] = $this->env['GITHUB_REF'];
+            $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+
+        }
     }
 
     /**

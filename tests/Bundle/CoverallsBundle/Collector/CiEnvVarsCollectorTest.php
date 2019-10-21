@@ -137,6 +137,37 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldCollectGithubActionsEnvVars()
+    {
+        $serviceName = 'github-actions';
+        $jobId = '123';
+        $refName = 'refs/heads/master';
+        $branchName = 'master';
+
+        $env = [];
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['GITHUB_ACTIONS'] = $jobId;
+        $env['GITHUB_REF'] = 'refs/heads/master';
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('CI_NAME', $actual);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
+
+        $this->assertArrayHasKey('CI_JOB_ID', $actual);
+        $this->assertSame($jobId, $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BRANCH', $actual);
+        $this->assertSame($branchName, $actual['CI_BRANCH']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
     public function shouldCollectLocalEnvVars()
     {
         $serviceName = 'php-coveralls';
@@ -230,6 +261,22 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('TRAVIS', $readEnv);
         $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectGithubActionsEnvVars
+     *
+     * @param CiEnvVarsCollector $object
+     */
+    public function shouldHaveReadEnvAfterCollectGithubActionsEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(3, $readEnv);
+        $this->assertArrayHasKey('GITHUB_REF', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+        $this->assertArrayHasKey('GITHUB_ACTIONS', $readEnv);
     }
 
     /**
