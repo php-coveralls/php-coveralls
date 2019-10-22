@@ -116,7 +116,8 @@ class CiEnvVarsCollector
      *
      * @return $this
      */
-    protected function fillGithubActions() {
+    protected function fillGithubActions()
+    {
         if (isset($this->env['GITHUB_ACTIONS'])) {
             $this->env['CI_NAME'] = 'github-actions';
 
