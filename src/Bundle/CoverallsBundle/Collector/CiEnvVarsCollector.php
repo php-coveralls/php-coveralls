@@ -64,7 +64,7 @@ class CiEnvVarsCollector
             ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
-            ->fillGithubActiions()
+            ->fillGithubActions()
             ->fillRepoToken();
 
         return $this->env;
@@ -116,7 +116,7 @@ class CiEnvVarsCollector
      *
      * @return $this
      */
-    protected function fillGithubActiions() {
+    protected function fillGithubActions() {
         if (isset($this->env['GITHUB_ACTIONS'])) {
             $this->env['CI_NAME'] = 'github-actions';
 
