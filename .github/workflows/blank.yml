@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+    tags:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [5.6, 7.0, 7.1, 7.2, 7.3]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Show php version
+      run: php${{ matrix.php }} -v && composer -V
+    - name: Debug if needed
+      run: |
+        export DEBUG=${DEBUG:-false}
+        if [[ "$DEBUG" == "true" ]]; then
+          env
+        fi
+      env:
+        DEBUG: ${{secrets.DEBUG}}
+        uses: shivammathur/setup-php@1.5.2
+      with:
+        php-version: ${{ matrix.php  }}
+        extension-csv: dom, mbstring
+        coverage: xdebug
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+        restore-keys: ${{ runner.os }}-composer-
+    - name: Install dependencies
+      run: composer install
