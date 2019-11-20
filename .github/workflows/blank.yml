@@ -24,7 +24,8 @@ jobs:
         fi
       env:
         DEBUG: ${{secrets.DEBUG}}
-        uses: shivammathur/setup-php@1.5.2
+    - name: Setup php
+      uses: shivammathur/setup-php@1.5.2
       with:
         php-version: ${{ matrix.php  }}
         extension-csv: dom, mbstring
