@@ -284,7 +284,7 @@ php-coveralls can use optional `.coveralls.yml` file to configure options. This 
 
 Following options can be used for php-coveralls.
 
-- `entrypoint`: Used to specify API endpoint for sending reports. Useful when using self-hosted coveralls or other other, similar service (eg opencov). Default is `https://coveralls.io`.
+- `entry_point`: Used to specify API endpoint for sending reports. Useful when using self-hosted coveralls or other other, similar service (eg opencov). Default is `https://coveralls.io`.
 - `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
 - `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
 

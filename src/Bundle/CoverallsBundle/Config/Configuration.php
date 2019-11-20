@@ -14,7 +14,7 @@ class Configuration
      *
      * @var string
      */
-    protected $entrypoint;
+    protected $entryPoint;
 
     // same as ruby lib
 
@@ -88,27 +88,27 @@ class Configuration
     // accessor
 
     /**
-     * Set api entrypoint.
+     * Set api entry point.
      *
-     * @param string $entrypoint
+     * @param string $entryPoint
      *
      * @return $this
      */
-    public function setEntrypoint($entrypoint)
+    public function setEntryPoint($entryPoint)
     {
-        $this->entrypoint = \rtrim($entrypoint, '/');
+        $this->entryPoint = \rtrim($entryPoint, '/');
 
         return $this;
     }
 
     /**
-     * Return api entrypoint.
+     * Return api entry point.
      *
      * @return string
      */
-    public function getEntrypoint()
+    public function getEntryPoint()
     {
-        return $this->entrypoint;
+        return $this->entryPoint;
     }
 
     /**
