@@ -48,8 +48,8 @@ before_deploy:
 
 deploy:
     provider: releases
-    api_key:
-        secure: dNw8/urkXHRHzcI0F8NwYP63FjhcrpUqOO92uclAYESBjyVyhBzMuczBlGfwqdoxknwK+4wsDkr6TW7AtfeTa3d48acHdUD3ahWFFk9paC8jIVsh/H01UMsY3Xz4Z3KVWQDRFS5LIaDKk3jqPyvN+FiJpEQ8drIA+GDpm4VSQHc=
+    token:
+        secure: RvyoncgjY7qxxQj6gDl+socPypw4pGVSi3cPIjl7me6D0qm9/peibmWaTmW3bbnugYTEHF1mEpR8jUKeyHnEyxWG+gWD71KD42ofT22QUxBoKpVxyRMr44gJNCuTlbzvcQwsURRvP9Fkic4oVukpvjnOCifBdlmay+NE31Wjof0=
     file: build/artifacts/php-coveralls.phar
     skip_cleanup: true
     on:
