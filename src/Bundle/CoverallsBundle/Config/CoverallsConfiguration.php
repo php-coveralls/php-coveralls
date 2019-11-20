@@ -31,12 +31,20 @@ class CoverallsConfiguration implements ConfigurationInterface
     {
         // define configuration
 
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('coveralls');
+        if (method_exists(TreeBuilder::class, 'getRootNode')) {
+            $treeBuilder = new TreeBuilder('coveralls');
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('coveralls');
+        }
 
         $rootNode
             ->children()
                 // same as ruby lib
+                ->scalarNode('entry_point')
+                    ->defaultValue('https://coveralls.io')
+                ->end()
                 ->scalarNode('repo_token')
                     ->defaultNull()
                 ->end()

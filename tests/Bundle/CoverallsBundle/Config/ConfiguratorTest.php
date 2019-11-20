@@ -297,6 +297,34 @@ class ConfiguratorTest extends ProjectTestCase
         $this->assertConfiguration($config, [$this->cloverXmlPath], $this->jsonPath, false);
     }
 
+    /**
+     * @test
+     */
+    public function shouldLoadEntryPoint()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/entry_point.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertSame('http://foo.bar', $config->getEntryPoint());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldLoadUseDefaultEntryPointIfNotSet()
+    {
+        $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
+
+        $path = realpath(__DIR__ . '/yaml/empty.yml');
+
+        $config = $this->object->load($path, $this->rootDir);
+
+        $this->assertSame('https://coveralls.io', $config->getEntryPoint());
+    }
+
     // configured coverage_clover not found
 
     /**

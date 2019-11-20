@@ -83,7 +83,6 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * {@inheritdoc}
      *
-     *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */
     public function setLogger(LoggerInterface $logger)
@@ -168,7 +167,7 @@ class JobsRepository implements LoggerAwareInterface
      */
     protected function send()
     {
-        $this->logger->info(sprintf('Submitting to %s', Jobs::URL));
+        $this->logger->info(sprintf('Submitting to %s', $this->config->getEntryPoint() . Jobs::URL));
 
         try {
             $response = $this->api->send();

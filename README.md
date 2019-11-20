@@ -24,13 +24,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 
@@ -45,7 +45,7 @@ $ composer require --dev php-coveralls/php-coveralls
 If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
 
 ```sh
-$ composer require --dev php-coveralls/php-coveralls '^2.1'
+$ composer require --dev php-coveralls/php-coveralls '^2.2'
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
@@ -104,7 +104,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "^2.1",
+        "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpcov": "^2.0"
     },
 ```
@@ -284,6 +284,7 @@ php-coveralls can use optional `.coveralls.yml` file to configure options. This 
 
 Following options can be used for php-coveralls.
 
+- `entry_point`: Used to specify API endpoint for sending reports. Useful when using self-hosted coveralls or other other, similar service (eg opencov). Default is `https://coveralls.io`.
 - `coverage_clover`: Used to specify the path to `clover.xml`. Default is `build/logs/clover.xml`
 - `json_path`: Used to specify where to output `json_file` that will be uploaded to Coveralls API. Default is `build/logs/coveralls-upload.json`.
 

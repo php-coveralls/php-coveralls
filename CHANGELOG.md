@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+## 2.2.0
+
+### Enhancement
+
+- [#269](https://github.com/php-coveralls/php-coveralls/pull/269) Add possibility to change entry point
+
+### Miscellaneous
+
+- [#277](https://github.com/php-coveralls/php-coveralls/pull/277) DX: Update PHP CS Fixer
+- [#276](https://github.com/php-coveralls/php-coveralls/pull/276) DX: Fix PHPMd config, allowing build to pass
+- [#274](https://github.com/php-coveralls/php-coveralls/pull/274) Allow Symfony 5
+- [#268](https://github.com/php-coveralls/php-coveralls/pull/268) Update minimum version of symfony/yaml to 2.0.5
+- [#267](https://github.com/php-coveralls/php-coveralls/pull/267) Add --dev to install step
+
 ## 2.1.0
 
 ### Enhancement
