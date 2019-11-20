@@ -32,7 +32,6 @@ class ConsoleLogger extends AbstractLogger
     /**
      * {@inheritdoc}
      *
-     *
      * @see \Psr\Log\LoggerInterface::log()
      */
     public function log($level, $message, array $context = [])

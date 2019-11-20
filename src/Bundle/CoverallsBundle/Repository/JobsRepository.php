@@ -83,7 +83,6 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * {@inheritdoc}
      *
-     *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */
     public function setLogger(LoggerInterface $logger)
