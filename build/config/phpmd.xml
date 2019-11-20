@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="My first PHPMD rule set"
+<ruleset name="php-coveralls' PHPMD rule set"
     xmlns="http://pmd.sf.net/ruleset/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
@@ -13,7 +13,7 @@
     <rule ref="rulesets/unusedcode.xml" />
     <rule ref="rulesets/design.xml/CouplingBetweenObjects">
         <properties>
-            <property name="minimum" value="14" />
+            <property name="maximum" value="14" />
         </properties>
     </rule>
     <rule ref="rulesets/naming.xml">
