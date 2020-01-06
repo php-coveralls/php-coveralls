@@ -150,7 +150,6 @@ class CiEnvVarsCollector
         $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
         $this->readEnv['CI_JOB_ID'] = $this->env['CI_JOB_ID'];
 
-
         return $this;
     }
 
