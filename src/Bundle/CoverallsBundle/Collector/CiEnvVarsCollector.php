@@ -123,17 +123,24 @@ class CiEnvVarsCollector
         }
         $this->env['CI_NAME'] = 'github-actions';
 
+        $githubEventName = $this->env['GITHUB_EVENT_NAME'];
         $githubSha = $this->env['GITHUB_SHA'];
         $githubRef = $this->env['GITHUB_REF'];
 
         if (strpos($githubRef, 'refs/heads/') !== false) {
             $githubRef = str_replace('refs/heads/', '', $githubRef);
             $jobId = $githubSha;
+        } elseif ($githubEventName === 'pull_request') {
+            $refParts = explode('/', $githubRef);
+            $prNumber = $refParts[2];
+            $this->env['CI_PULL_REQUEST'] = $prNumber;
+            $this->readEnv['CI_PULL_REQUEST'] = $this->env['CI_PULL_REQUEST'];
+            $jobId = sprintf('%s-PR-%s', $githubSha, $prNumber);
         } elseif (strpos($githubRef, 'refs/tags/') !== false) {
             $githubRef = str_replace('refs/tags/', '', $githubRef);
             $jobId = $githubRef;
         }
-        
+
         $this->env['CI_JOB_ID'] = $jobId;
         $this->env['CI_BRANCH'] = $githubRef;
         $this->env['CI_JOB_ID'] = $jobId;
