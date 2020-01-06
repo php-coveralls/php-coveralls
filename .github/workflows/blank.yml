@@ -42,4 +42,6 @@ jobs:
     - name: Install dependencies
       run: composer install
     - name: Run composer script
-      run: composer sca
+      run: |
+        composer install-dev-tools;
+        composer sca
