@@ -64,8 +64,8 @@ class CiEnvVarsCollector
             ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
-            ->fillGithubActions()
-            ->fillRepoToken();
+            ->fillRepoToken()
+            ->fillGithubActions();
 
         return $this->env;
     }
@@ -121,14 +121,14 @@ class CiEnvVarsCollector
         if (!isset($this->env['GITHUB_ACTIONS'])) {
             return $this;
         }
-
-        $this->env['CI_NAME'] = 'github';
+        $this->env['CI_NAME'] = 'github-actions';
 
         $githubEventName = $this->env['GITHUB_EVENT_NAME'];
         $githubSha = $this->env['GITHUB_SHA'];
         $githubRef = $this->env['GITHUB_REF'];
 
         if (strpos($githubRef, 'refs/heads/') !== false) {
+            $githubRef = str_replace('refs/heads/', '', $githubRef);
             $jobId = $githubSha;
         } elseif ($githubEventName === 'pull_request') {
             $refParts = explode('/', $githubRef);
@@ -137,15 +137,18 @@ class CiEnvVarsCollector
             $this->readEnv['CI_PULL_REQUEST'] = $this->env['CI_PULL_REQUEST'];
             $jobId = sprintf('%s-PR-%s', $githubSha, $prNumber);
         } elseif (strpos($githubRef, 'refs/tags/') !== false) {
-            $jobId = str_replace('refs/tags/', '', $githubRef);
+            $githubRef = str_replace('refs/tags/', '', $githubRef);
+            $jobId = $githubRef;
         }
 
+        $this->env['CI_JOB_ID'] = $jobId;
+        $this->env['CI_BRANCH'] = $githubRef;
         $this->env['CI_JOB_ID'] = $jobId;
 
         $this->readEnv['GITHUB_ACTIONS'] = $this->env['GITHUB_ACTIONS'];
         $this->readEnv['GITHUB_REF'] = $this->env['GITHUB_REF'];
-        $this->readEnv['CI_JOB_ID'] = $this->env['CI_JOB_ID'];
         $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+        $this->readEnv['CI_JOB_ID'] = $this->env['CI_JOB_ID'];
 
         return $this;
     }
