@@ -139,15 +139,15 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectGithubActionsEnvVars()
     {
-        $serviceName = 'github-actions';
-        $jobId = '123';
-        $refName = 'refs/heads/master';
-        $branchName = 'master';
+        $serviceName = 'github';
+        $jobId = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
 
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = 'token';
-        $env['GITHUB_ACTIONS'] = $jobId;
+        $env['GITHUB_ACTIONS'] = true;
+        $env['GITHUB_EVENT_NAME'] = 'push';
         $env['GITHUB_REF'] = 'refs/heads/master';
+        $env['GITHUB_SHA'] = $jobId;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -159,8 +159,32 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($jobId, $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BRANCH', $actual);
-        $this->assertSame($branchName, $actual['CI_BRANCH']);
+        return $object;
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCollectGithubActionsEnvVarsForPullRequest()
+    {
+        $serviceName = 'github';
+
+        $env = [];
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['GITHUB_ACTIONS'] = true;
+        $env['GITHUB_EVENT_NAME'] = 'pull_request';
+        $env['GITHUB_REF'] = 'refs/pull/1/merge';
+        $env['GITHUB_SHA'] = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('CI_NAME', $actual);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
+
+        $this->assertArrayHasKey('CI_JOB_ID', $actual);
+        $this->assertSame('3fd27e3b7c1ae6a0931d3b637b742440f5eb5011-PR-1', $actual['CI_JOB_ID']);
 
         return $object;
     }
@@ -273,9 +297,10 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
+        $this->assertCount(5, $readEnv);
         $this->assertArrayHasKey('GITHUB_REF', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
+        $this->assertArrayHasKey('CI_JOB_ID', $readEnv);
         $this->assertArrayHasKey('GITHUB_ACTIONS', $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
