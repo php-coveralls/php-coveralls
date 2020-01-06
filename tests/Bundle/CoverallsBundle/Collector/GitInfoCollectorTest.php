@@ -74,6 +74,23 @@ class GitInfoCollectorTest extends TestCase
         $this->assertGit($git);
     }
 
+    /**
+     * @test
+     */
+    public function shouldCollectDetachedRef()
+    {
+        $gitCommand = $this->createGitCommandStubWith(
+            ['* (HEAD detached at pull/1/merge)'],
+            $this->getHeadCommitValue,
+            $this->getRemotesValue
+        );
+        $object = new GitInfoCollector($gitCommand);
+
+        $git = $object->collect();
+
+        $this->assertSame('pull/1/merge', $git->getBranch());
+    }
+
     // collectBranch() exception
 
     /**

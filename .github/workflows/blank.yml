@@ -28,8 +28,6 @@ jobs:
         php-version: ${{ matrix.php  }}
         extension-csv: dom, mbstring
         coverage: xdebug
-    - name: Show php version
-      run: php${{ matrix.php }} -v && composer -V
     - name: Get Composer Cache Directory
       id: composer-cache
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"

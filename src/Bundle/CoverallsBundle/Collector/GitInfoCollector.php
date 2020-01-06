@@ -74,9 +74,9 @@ class GitInfoCollector
 
         foreach ($branchesResult as $result) {
             if (strpos($result, '* ') === 0) {
-                $exploded = explode('* ', $result, 2);
+                preg_match('~^\* (?:\(HEAD detached at )?([\w/]+)\)?~', $result, $matches);
 
-                return $exploded[1];
+                return $matches[1];
             }
         }
 
