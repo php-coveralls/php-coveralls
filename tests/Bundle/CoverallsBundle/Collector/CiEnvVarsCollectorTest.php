@@ -27,10 +27,12 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
+        $serviceBuildNumber = '123456';
 
         $env = [];
         $env['TRAVIS'] = true;
         $env['TRAVIS_JOB_ID'] = $serviceJobId;
+        $env['TRAVIS_BUILD_NUMBER'] = $serviceBuildNumber;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -42,6 +44,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
 
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
+
         return $object;
     }
 
@@ -52,11 +57,13 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $serviceName = 'travis-pro';
         $serviceJobId = '1.2';
+        $serviceBuildNumber = '12345';
         $repoToken = 'your_token';
 
         $env = [];
         $env['TRAVIS'] = true;
         $env['TRAVIS_JOB_ID'] = $serviceJobId;
+        $env['TRAVIS_BUILD_NUMBER'] = $serviceBuildNumber;
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
 
         $config = $this->createConfiguration();
@@ -71,6 +78,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
 
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
         $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
@@ -246,10 +256,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(3, $readEnv);
+        $this->assertCount(4, $readEnv);
         $this->assertArrayHasKey('TRAVIS', $readEnv);
         $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
     }
 
     /**
@@ -262,10 +273,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
+        $this->assertCount(5, $readEnv);
         $this->assertArrayHasKey('TRAVIS', $readEnv);
         $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 

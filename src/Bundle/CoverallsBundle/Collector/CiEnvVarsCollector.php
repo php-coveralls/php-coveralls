@@ -95,6 +95,7 @@ class CiEnvVarsCollector
     {
         if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID'])) {
             $this->env['CI_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
+            $this->env['CI_BUILD_NUMBER'] = $this->env['TRAVIS_BUILD_NUMBER'];
 
             if ($this->config->hasServiceName()) {
                 $this->env['CI_NAME'] = $this->config->getServiceName();
@@ -106,6 +107,7 @@ class CiEnvVarsCollector
             $this->readEnv['TRAVIS'] = $this->env['TRAVIS'];
             $this->readEnv['TRAVIS_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+            $this->readEnv['CI_BUILD_NUMBER'] = $this->env['CI_BUILD_NUMBER'];
         }
 
         return $this;
