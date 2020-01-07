@@ -120,6 +120,7 @@ class JsonFile extends Coveralls
             'service_pull_request' => 'servicePullRequest',
             'service_event_type' => 'serviceEventType',
             'repo_token' => 'repoToken',
+            'parallel' => 'parallel',
             'git' => 'git',
             'run_at' => 'runAt',
             'source_files' => 'sourceFiles',
@@ -296,6 +297,30 @@ class JsonFile extends Coveralls
     public function getRepoToken()
     {
         return $this->repoToken;
+    }
+
+    /**
+     * Set parallel.
+     *
+     * @param string $parallel parallel
+     *
+     * @return $this
+     */
+    public function setParallel($parallel)
+    {
+        $this->parallel = $parallel;
+
+        return $this;
+    }
+
+    /**
+     * Return parallel.
+     *
+     * @return null|boolean
+     */
+    public function getParallel()
+    {
+        return $this->parallel;
     }
 
     /**
@@ -507,6 +532,7 @@ class JsonFile extends Coveralls
             'serviceJobId' => 'CI_JOB_ID',
             'serviceEventType' => 'COVERALLS_EVENT_TYPE',
             'repoToken' => 'COVERALLS_REPO_TOKEN',
+            'parallel' => 'COVERALLS_PARALLEL',
         ];
 
         foreach ($map as $propName => $envName) {

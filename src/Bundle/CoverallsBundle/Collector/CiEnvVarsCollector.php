@@ -64,7 +64,8 @@ class CiEnvVarsCollector
             ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
-            ->fillRepoToken();
+            ->fillRepoToken()
+            ->fillParallel();
 
         return $this->env;
     }
@@ -222,6 +223,20 @@ class CiEnvVarsCollector
         // backup
         if (isset($this->env['COVERALLS_REPO_TOKEN'])) {
             $this->readEnv['COVERALLS_REPO_TOKEN'] = $this->env['COVERALLS_REPO_TOKEN'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill parallel for parallel jobs
+     *
+     * @return $this
+     */
+    protected function fillParallel()
+    {
+        if (isset($this->env['COVERALLS_PARALLEL'])) {
+            $this->readEnv['COVERALLS_PARALLEL'] = $this->env['COVERALLS_PARALLEL'];
         }
 
         return $this;

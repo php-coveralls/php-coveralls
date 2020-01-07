@@ -205,6 +205,23 @@ class JsonFileTest extends ProjectTestCase
         return $this->object;
     }
 
+    // setParallel()
+
+    /**
+     * @test
+     */
+    public function shouldSetParallel()
+    {
+        $expected = true;
+
+        $obj = $this->object->setParallel($expected);
+
+        $this->assertSame($expected, $this->object->getParallel());
+        $this->assertSame($obj, $this->object);
+
+        return $this->object;
+    }
+
     // setServiceJobId()
 
     /**
@@ -379,6 +396,28 @@ class JsonFileTest extends ProjectTestCase
         $this->assertSame(json_encode($expected), (string) $object);
     }
 
+    // parallel
+
+    /**
+     * @test
+     * @depends shouldSetParallel
+     *
+     * @param mixed $object
+     */
+    public function shouldConvertToArrayWithParallel($object)
+    {
+        $item = true;
+
+        $expected = [
+            'parallel' => $item,
+            'source_files' => [],
+            'environment' => ['packagist_version' => Version::VERSION],
+        ];
+
+        $this->assertSame($expected, $object->toArray());
+        $this->assertSame(json_encode($expected), (string) $object);
+    }
+
     // git
 
     /**
@@ -486,6 +525,7 @@ class JsonFileTest extends ProjectTestCase
          */
 
         $repoToken = 'token';
+        $parallel = true;
         $serviceName = 'codeship';
         $serviceNumber = '108821';
         $serviceBuildUrl = 'https://www.codeship.io/projects/2777/builds/108821';
@@ -494,6 +534,7 @@ class JsonFileTest extends ProjectTestCase
 
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+        $env['COVERALLS_PARALLEL'] = $parallel;
         $env['CI_NAME'] = $serviceName;
         $env['CI_BUILD_NUMBER'] = $serviceNumber;
         $env['CI_BUILD_URL'] = $serviceBuildUrl;
@@ -506,6 +547,7 @@ class JsonFileTest extends ProjectTestCase
 
         $this->assertSame($same, $object);
         $this->assertSame($repoToken, $object->getRepoToken());
+        $this->assertSame($parallel, $object->getParallel());
         $this->assertSame($serviceName, $object->getServiceName());
         $this->assertSame($serviceNumber, $object->getServiceNumber());
         $this->assertSame($serviceBuildUrl, $object->getServiceBuildUrl());

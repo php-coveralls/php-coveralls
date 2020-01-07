@@ -204,6 +204,26 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         return $object;
     }
 
+    /**
+     * @test
+     */
+    public function shouldCollectParallel()
+    {
+        $parallel = true;
+
+        $env = [];
+        $env['COVERALLS_PARALLEL'] = $parallel;
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('COVERALLS_PARALLEL', $actual);
+        $this->assertSame($parallel, $actual['COVERALLS_PARALLEL']);
+
+        return $object;
+    }
+
     // getReadEnv()
 
     /**
