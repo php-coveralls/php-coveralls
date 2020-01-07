@@ -63,9 +63,9 @@ class CiEnvVarsCollector
             ->fillCircleCi()
             ->fillAppVeyor()
             ->fillJenkins()
+            ->fillGithubActions()
             ->fillLocal()
-            ->fillRepoToken()
-            ->fillGithubActions();
+            ->fillRepoToken();
 
         return $this->env;
     }
@@ -121,7 +121,7 @@ class CiEnvVarsCollector
         if (!isset($this->env['GITHUB_ACTIONS'])) {
             return $this;
         }
-        $this->env['CI_NAME'] = 'github-actions';
+        $this->env['CI_NAME'] = 'github';
 
         $githubEventName = $this->env['GITHUB_EVENT_NAME'];
         $githubSha = $this->env['GITHUB_SHA'];
@@ -143,7 +143,6 @@ class CiEnvVarsCollector
 
         $this->env['CI_JOB_ID'] = $jobId;
         $this->env['CI_BRANCH'] = $githubRef;
-        $this->env['CI_JOB_ID'] = $jobId;
 
         $this->readEnv['GITHUB_ACTIONS'] = $this->env['GITHUB_ACTIONS'];
         $this->readEnv['GITHUB_REF'] = $this->env['GITHUB_REF'];

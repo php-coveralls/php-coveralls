@@ -139,7 +139,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectGithubActionsEnvVars()
     {
-        $serviceName = 'github-actions';
+        $serviceName = 'github';
         $jobId = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
 
         $env = [];
@@ -167,7 +167,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     public function shouldCollectGithubActionsEnvVarsForPullRequest()
     {
-        $serviceName = 'github-actions';
+        $serviceName = 'github';
 
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = 'token';
