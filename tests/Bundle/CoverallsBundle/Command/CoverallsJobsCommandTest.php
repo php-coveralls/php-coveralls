@@ -45,6 +45,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
         $commandTester = new CommandTester($command);
 
         $_SERVER['TRAVIS'] = true;
+        $_SERVER['TRAVIS_BUILD_NUMBER'] = '12345';
         $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
 
         $actual = $commandTester->execute(

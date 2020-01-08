@@ -275,6 +275,7 @@ class JobsTest extends ProjectTestCase
 
         $server = [];
         $server['TRAVIS'] = true;
+        $server['TRAVIS_BUILD_NUMBER'] = '654321';
         $server['TRAVIS_JOB_ID'] = $serviceJobId;
 
         $object = $this->createJobsWith();
@@ -300,6 +301,7 @@ class JobsTest extends ProjectTestCase
 
         $server = [];
         $server['TRAVIS'] = true;
+        $server['TRAVIS_BUILD_NUMBER'] = '8888';
         $server['TRAVIS_JOB_ID'] = $serviceJobId;
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
 
@@ -439,6 +441,7 @@ class JobsTest extends ProjectTestCase
 
         $server = [];
         $server['TRAVIS'] = true;
+        $server['TRAVIS_BUILD_NUMBER'] = '198765';
         $server['TRAVIS_JOB_ID'] = '1.1';
 
         $object = $this->createJobsNeverSendOnDryRun();
@@ -478,6 +481,7 @@ class JobsTest extends ProjectTestCase
     {
         $server = [];
         $server['TRAVIS'] = true;
+        $server['TRAVIS_BUILD_NUMBER'] = '12345';
         $server['TRAVIS_JOB_ID'] = '1.1';
         $server['COVERALLS_REPO_TOKEN'] = 'token';
         $server['GIT_COMMIT'] = 'abc123';
