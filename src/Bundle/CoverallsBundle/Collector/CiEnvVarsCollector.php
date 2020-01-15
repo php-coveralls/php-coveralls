@@ -60,6 +60,7 @@ class CiEnvVarsCollector
 
         $this
             ->fillTravisCi()
+            ->fillBuildkite()
             ->fillCircleCi()
             ->fillAppVeyor()
             ->fillJenkins()
@@ -105,6 +106,36 @@ class CiEnvVarsCollector
             $this->readEnv['TRAVIS'] = $this->env['TRAVIS'];
             $this->readEnv['TRAVIS_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill Buildkite CI.
+     *
+     * "BUILDKITE", "BUILDKITE_BUILD_NUMBER" must be set.
+     *
+     * @return $this
+     */
+    protected function fillBuildkite()
+    {
+        if (isset($this->env['BUILDKITE']) && $this->env['BUILDKITE'] && isset($this->env['BUILDKITE_BUILD_NUMBER'])) {
+            $this->env['CI_NAME'] = 'Buildkite';
+            $this->env['CI_BUILD_NUMBER'] = $this->getEnvSafe('BUILDKITE_BUILD_NUMBER');
+            $this->env['CI_JOB_ID'] = $this->getEnvSafe('BUILDKITE_JOB_ID');
+            $this->env['CI_BRANCH'] = $this->getEnvSafe('BUILDKITE_BRANCH');
+            $this->env['CI_BUILD_URL'] = $this->getEnvSafe('BUILDKITE_BUILD_URL');
+            $this->env['CI_PULL_REQUEST'] = $this->getEnvSafe('BUILDKITE_PULL_REQUEST');
+            $this->env['COVERALLS_REPO_TOKEN'] = $this->getEnvSafe('COVERALLS_REPO_TOKEN');
+
+            // backup
+            $this->readEnv['BUILDKITE'] = $this->getEnvSafe('BUILDKITE');
+            $this->readEnv['BUILDKITE_BUILD_NUMBER'] = $this->getEnvSafe('BUILDKITE_BUILD_NUMBER');
+            $this->readEnv['BUILDKITE_JOB_ID'] = $this->getEnvSafe('BUILDKITE_JOB_ID');
+            $this->readEnv['BUILDKITE_BRANCH'] = $this->getEnvSafe('BUILDKITE_BRANCH');
+            $this->readEnv['BUILDKITE_BUILD_URL'] = $this->getEnvSafe('BUILDKITE_BUILD_URL');
+            $this->readEnv['BUILDKITE_PULL_REQUEST'] = $this->getEnvSafe('BUILDKITE_PULL_REQUEST');
         }
 
         return $this;
@@ -225,5 +256,20 @@ class CiEnvVarsCollector
         }
 
         return $this;
+    }
+
+    /**
+     * Retrieve a value from $env or return null.
+     *
+     * @param $key
+     * @return string|null
+     */
+    private function getEnvSafe($key)
+    {
+        if (array_key_exists($key, $this->env)) {
+            return $this->env[$key];
+        }
+
+        return null;
     }
 }

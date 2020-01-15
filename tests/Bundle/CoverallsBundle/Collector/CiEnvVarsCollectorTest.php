@@ -81,6 +81,59 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldCollectAllBuildkiteCiEnvVars()
+    {
+        $env = [];
+        $env['BUILDKITE'] = true;
+        $env['BUILDKITE_BUILD_NUMBER'] = '54321';
+        $env['BUILDKITE_JOB_ID'] = '12345';
+        $env['BUILDKITE_BRANCH'] = 'release-1';
+        $env['BUILDKITE_PULL_REQUEST'] = '5505';
+        $env['BUILDKITE_BUILD_URL'] = 'https://fake.url/test';
+        $env['COVERALLS_REPO_TOKEN'] = 'abcdefghijk';
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertSame('Buildkite', $actual['CI_NAME']);
+        $this->assertSame('54321', $actual['CI_BUILD_NUMBER']);
+        $this->assertSame('12345', $actual['CI_JOB_ID']);
+        $this->assertSame('release-1', $actual['CI_BRANCH']);
+        $this->assertSame('5505', $actual['CI_PULL_REQUEST']);
+        $this->assertSame('https://fake.url/test', $actual['CI_BUILD_URL']);
+        $this->assertSame('abcdefghijk', $actual['COVERALLS_REPO_TOKEN']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCollectMinimumBuildkiteCiEnvVars()
+    {
+        $env = [];
+        $env['BUILDKITE'] = true;
+        $env['BUILDKITE_BUILD_NUMBER'] = '54321';
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertSame('Buildkite', $actual['CI_NAME']);
+        $this->assertSame('54321', $actual['CI_BUILD_NUMBER']);
+        $this->assertNull($actual['CI_JOB_ID']);
+        $this->assertNull($actual['CI_BRANCH']);
+        $this->assertNull($actual['CI_PULL_REQUEST']);
+        $this->assertNull($actual['CI_BUILD_URL']);
+        $this->assertNull($actual['COVERALLS_REPO_TOKEN']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
     public function shouldCollectCircleCiEnvVars()
     {
         $serviceName = 'circleci';
