@@ -126,7 +126,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertNull($actual['CI_BRANCH']);
         $this->assertNull($actual['CI_PULL_REQUEST']);
         $this->assertNull($actual['CI_BUILD_URL']);
-        $this->assertNull($actual['COVERALLS_REPO_TOKEN']);
+        $this->assertArrayNotHasKey('COVERALLS_REPO_TOKEN', $actual);
 
         return $object;
     }
