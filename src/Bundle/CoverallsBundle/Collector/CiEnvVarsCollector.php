@@ -127,7 +127,6 @@ class CiEnvVarsCollector
             $this->env['CI_BRANCH'] = $this->getEnvSafe('BUILDKITE_BRANCH');
             $this->env['CI_BUILD_URL'] = $this->getEnvSafe('BUILDKITE_BUILD_URL');
             $this->env['CI_PULL_REQUEST'] = $this->getEnvSafe('BUILDKITE_PULL_REQUEST');
-            $this->env['COVERALLS_REPO_TOKEN'] = $this->getEnvSafe('COVERALLS_REPO_TOKEN');
 
             // backup
             $this->readEnv['BUILDKITE'] = $this->getEnvSafe('BUILDKITE');
