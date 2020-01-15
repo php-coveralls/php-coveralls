@@ -261,7 +261,8 @@ class CiEnvVarsCollector
      * Retrieve a value from $env or return null.
      *
      * @param $key
-     * @return string|null
+     *
+     * @return null|string
      */
     private function getEnvSafe($key)
     {
