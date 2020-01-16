@@ -302,11 +302,12 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(5, $readEnv);
+        $this->assertCount(6, $readEnv);
         $this->assertArrayHasKey('GITHUB_REF', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
         $this->assertArrayHasKey('CI_JOB_ID', $readEnv);
         $this->assertArrayHasKey('GITHUB_ACTIONS', $readEnv);
+        $this->assertArrayHasKey('CI_BRANCH', $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
