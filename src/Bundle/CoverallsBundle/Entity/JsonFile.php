@@ -605,7 +605,7 @@ class JsonFile extends Coveralls
      */
     protected function requireGithubActions()
     {
-        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken !== null;
+        return $this->serviceName === 'github' && $this->serviceJobId !== null && $this->repoToken !== null;
     }
 
     /**
