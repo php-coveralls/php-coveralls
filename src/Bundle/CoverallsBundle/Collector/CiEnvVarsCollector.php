@@ -148,6 +148,7 @@ class CiEnvVarsCollector
         $this->readEnv['GITHUB_REF'] = $this->env['GITHUB_REF'];
         $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
         $this->readEnv['CI_JOB_ID'] = $this->env['CI_JOB_ID'];
+        $this->readEnv['CI_BRANCH'] = $this->env['CI_BRANCH'];
 
         return $this;
     }

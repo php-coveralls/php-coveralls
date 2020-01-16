@@ -74,6 +74,7 @@ For AppVeyor users:
 
 For Githib Actions users:
   - GITHUB_REF
+  - GITHUB_SHA
   - GITHUB_ACTIONS
 
 From local environment:

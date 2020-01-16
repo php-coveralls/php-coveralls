@@ -547,6 +547,10 @@ class JsonFile extends Coveralls
             return $this;
         }
 
+        if ($this->requireGithubActions()) {
+            return $this;
+        }
+
         if ($this->isUnsupportedServiceJob()) {
             return $this;
         }
@@ -592,6 +596,16 @@ class JsonFile extends Coveralls
     protected function requireRepoToken()
     {
         return $this->serviceName === 'travis-pro' && $this->repoToken !== null;
+    }
+
+    /**
+     * Return whether the job requires "service_number", "service_job_id" and "repo_token" (for GithubActions).
+     *
+     * @return bool
+     */
+    protected function requireGithubActions()
+    {
+        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken !== null;
     }
 
     /**

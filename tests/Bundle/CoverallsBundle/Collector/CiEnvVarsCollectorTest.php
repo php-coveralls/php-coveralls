@@ -141,6 +141,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $serviceName = 'github';
         $jobId = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
+        $gitTag = 'v0.1.1';
 
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = 'token';
@@ -158,6 +159,10 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($jobId, $actual['CI_JOB_ID']);
+
+        $env['GITHUB_REF'] = 'refs/tags/' . $gitTag;
+        $actual = $object->collect($env);
+        $this->assertSame($gitTag, $actual['CI_JOB_ID']);
 
         return $object;
     }
