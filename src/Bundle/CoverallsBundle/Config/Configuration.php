@@ -26,6 +26,13 @@ class Configuration
     protected $repoToken;
 
     /**
+     * parallel.
+     *
+     * @var string
+     */
+    protected $parallel;
+
+    /**
      * service_name.
      *
      * @var string
@@ -143,6 +150,30 @@ class Configuration
     public function getRepoToken()
     {
         return $this->repoToken;
+    }
+
+    /**
+     * Set parallel.
+     *
+     * @param bool $parallel
+     *
+     * @return $this
+     */
+    public function setParallel($parallel)
+    {
+        $this->parallel = $parallel;
+
+        return $this;
+    }
+
+    /**
+     * Return service number.
+     *
+     * @return bool
+     */
+    public function getParallel()
+    {
+        return $this->parallel;
     }
 
     /**
