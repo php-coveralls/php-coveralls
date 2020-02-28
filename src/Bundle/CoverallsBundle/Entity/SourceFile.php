@@ -78,7 +78,7 @@ class SourceFile extends Coveralls
     {
         return [
             'name' => $this->name,
-            'source' => $this->source,
+            // 'source' => $this->source,
             'coverage' => $this->coverage,
         ];
     }
