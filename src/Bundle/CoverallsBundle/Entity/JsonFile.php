@@ -35,6 +35,13 @@ class JsonFile extends Coveralls
     protected $serviceNumber;
 
     /**
+     * Parallel.
+     *
+     * @var bool
+     */
+    protected $parallel;
+
+    /**
      * Service event type (not documented).
      *
      * @var string
@@ -119,6 +126,7 @@ class JsonFile extends Coveralls
             'service_branch' => 'serviceBranch',
             'service_pull_request' => 'servicePullRequest',
             'service_event_type' => 'serviceEventType',
+            'parallel' => 'parallel',
             'repo_token' => 'repoToken',
             'git' => 'git',
             'run_at' => 'runAt',
@@ -330,6 +338,30 @@ class JsonFile extends Coveralls
     public function getServiceNumber()
     {
         return $this->serviceNumber;
+    }
+
+    /**
+     * Set parallel.
+     *
+     * @param bool $parallel
+     *
+     * @return $this
+     */
+    public function setParallel($parallel)
+    {
+        $this->parallel = $parallel;
+
+        return $this;
+    }
+
+    /**
+     * Return service number.
+     *
+     * @return bool
+     */
+    public function getParallel()
+    {
+        return $this->parallel;
     }
 
     /**
