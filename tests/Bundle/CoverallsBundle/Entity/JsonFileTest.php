@@ -74,7 +74,7 @@ class JsonFileTest extends ProjectTestCase
      */
     public function shouldHaveFalseParallelOnConstruction()
     {
-        $this->assertNull($this->object->isParallel());
+        $this->assertFalse($this->object->isParallel());
     }
 
     // getRepoToken()
