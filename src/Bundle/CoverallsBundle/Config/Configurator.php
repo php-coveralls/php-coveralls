@@ -116,6 +116,7 @@ class Configurator
             ->setEntrypoint($options['entry_point'])
             ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
             ->setServiceName($options['service_name'])
+            ->setParallel($options['parallel'])
             ->setRootDir($rootDir)
             ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
             ->setJsonPath($this->ensureJsonPath($json_path, $rootDir, $file))
