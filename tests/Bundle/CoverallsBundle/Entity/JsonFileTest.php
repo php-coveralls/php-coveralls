@@ -67,6 +67,16 @@ class JsonFileTest extends ProjectTestCase
         $this->assertNull($this->object->getServiceName());
     }
 
+    // isParallel()
+
+    /**
+     * @test
+     */
+    public function shouldHaveFalseParallelOnConstruction()
+    {
+        $this->assertNull($this->object->isParallel());
+    }
+
     // getRepoToken()
 
     /**
@@ -186,6 +196,19 @@ class JsonFileTest extends ProjectTestCase
         $this->assertSame($obj, $this->object);
 
         return $this->object;
+    }
+
+    // setParallel()
+
+    /**
+     * @test
+     */
+    public function shouldSetParallel()
+    {
+        $same = $this->object->setParallel(true);
+
+        $this->assertSame($same, $this->object);
+        $this->assertTrue($this->object->isParallel());
     }
 
     // setRepoToken()
