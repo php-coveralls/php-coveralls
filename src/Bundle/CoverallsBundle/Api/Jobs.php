@@ -61,7 +61,7 @@ class Jobs extends CoverallsApi
             $this->jsonFile->excludeNoStatementsFiles();
         }
 
-        $this->jsonFile->setParallel($this->config->getParallel());
+        $this->jsonFile->setParallel($this->config->isParallel());
         $this->jsonFile->sortSourceFiles();
 
         return $this;

@@ -86,7 +86,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env = [];
         $env['BUILDKITE'] = true;
         $env['BUILDKITE_BUILD_NUMBER'] = '54321';
-        $env['BUILDKITE_JOB_ID'] = '12345';
+        $env['BUILDKITE_BUILD_ID'] = '12345';
         $env['BUILDKITE_BRANCH'] = 'release-1';
         $env['BUILDKITE_PULL_REQUEST'] = '5505';
         $env['BUILDKITE_BUILD_URL'] = 'https://fake.url/test';

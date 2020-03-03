@@ -167,13 +167,13 @@ class Configuration
     }
 
     /**
-     * Return service number.
+     * Return whether the build is being submitted as parallel or not.
      *
      * @return bool
      */
-    public function getParallel()
+    public function isParallel()
     {
-        return $this->parallel;
+        return $this->parallel === true;
     }
 
     /**
