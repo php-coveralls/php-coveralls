@@ -123,7 +123,7 @@ class CiEnvVarsCollector
         if (isset($this->env['BUILDKITE']) && $this->env['BUILDKITE'] && isset($this->env['BUILDKITE_BUILD_NUMBER'])) {
             $this->env['CI_NAME'] = 'Buildkite';
             $this->env['CI_BUILD_NUMBER'] = $this->getEnvSafe('BUILDKITE_BUILD_NUMBER');
-            $this->env['CI_JOB_ID'] = $this->getEnvSafe('BUILDKITE_JOB_ID');
+            $this->env['CI_JOB_ID'] = $this->getEnvSafe('BUILDKITE_BUILD_ID');
             $this->env['CI_BRANCH'] = $this->getEnvSafe('BUILDKITE_BRANCH');
             $this->env['CI_BUILD_URL'] = $this->getEnvSafe('BUILDKITE_BUILD_URL');
             $this->env['CI_PULL_REQUEST'] = $this->getEnvSafe('BUILDKITE_PULL_REQUEST');
@@ -131,7 +131,7 @@ class CiEnvVarsCollector
             // backup
             $this->readEnv['BUILDKITE'] = $this->getEnvSafe('BUILDKITE');
             $this->readEnv['BUILDKITE_BUILD_NUMBER'] = $this->getEnvSafe('BUILDKITE_BUILD_NUMBER');
-            $this->readEnv['BUILDKITE_JOB_ID'] = $this->getEnvSafe('BUILDKITE_JOB_ID');
+            $this->readEnv['BUILDKITE_BUILD_ID'] = $this->getEnvSafe('BUILDKITE_BUILD_ID');
             $this->readEnv['BUILDKITE_BRANCH'] = $this->getEnvSafe('BUILDKITE_BRANCH');
             $this->readEnv['BUILDKITE_BUILD_URL'] = $this->getEnvSafe('BUILDKITE_BUILD_URL');
             $this->readEnv['BUILDKITE_PULL_REQUEST'] = $this->getEnvSafe('BUILDKITE_PULL_REQUEST');
