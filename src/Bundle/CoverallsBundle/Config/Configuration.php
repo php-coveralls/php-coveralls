@@ -173,7 +173,7 @@ class Configuration
      */
     public function isParallel()
     {
-        return $this->parallel;
+        return $this->parallel === true;
     }
 
     /**

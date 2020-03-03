@@ -361,7 +361,7 @@ class JsonFile extends Coveralls
      */
     public function isParallel()
     {
-        return $this->parallel;
+        return $this->parallel === true;
     }
 
     /**
