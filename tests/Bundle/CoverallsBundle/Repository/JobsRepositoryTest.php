@@ -418,7 +418,7 @@ class JobsRepositoryTest extends ProjectTestCase
                 ->shouldBeCalled();
         } else {
             if ($statusCode === null) {
-                $exception = \GuzzleHttp\Exception\ConnectException::create($request);
+                $exception = new \GuzzleHttp\Exception\ConnectException('Connection refused', $request);
             } elseif ($statusCode === 422) {
                 $exception = \GuzzleHttp\Exception\ClientException::create($request, $response);
             } else {
