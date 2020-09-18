@@ -161,6 +161,39 @@ class CoverallsJobsCommandTest extends ProjectTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function shouldExecuteCoverallsJobsCommandWithInsecureOption()
+    {
+        $this->makeProjectDir(null, $this->logsDir);
+        $this->dumpCloverXml();
+
+        $command = new CoverallsJobsCommand();
+        $command->setRootDir($this->rootDir);
+
+        $app = new Application();
+        $app->add($command);
+
+        $command = $app->find('coveralls:v1:jobs');
+        $commandTester = new CommandTester($command);
+
+        $_SERVER['TRAVIS'] = true;
+        $_SERVER['TRAVIS_JOB_ID'] = 'command_test';
+
+        $actual = $commandTester->execute(
+            [
+                'command' => $command->getName(),
+                '--dry-run' => true,
+                '--config' => 'coveralls.yml',
+                '--env' => 'test',
+                '--insecure' => true,
+            ]
+        );
+
+        $this->assertSame(0, $actual);
+    }
+
     protected function legacySetUp()
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
