@@ -316,7 +316,7 @@ class JsonFile extends Coveralls
     /**
      * Return parallel.
      *
-     * @return null|boolean
+     * @return null|bool
      */
     public function getParallel()
     {

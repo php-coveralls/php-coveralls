@@ -231,7 +231,7 @@ class CiEnvVarsCollector
     }
 
     /**
-     * Fill parallel for parallel jobs
+     * Fill parallel for parallel jobs.
      *
      * @return $this
      */
