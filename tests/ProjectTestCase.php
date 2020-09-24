@@ -150,29 +150,40 @@ abstract class ProjectTestCase extends TestCase
     }
 
     /**
-     * @param string $expected
-     * @param string $input
-     * @param string $msg
+     * @param string      $expected
+     * @param string      $input
+     * @param null|string $msg
      */
     protected function assertSamePath($expected, $input, $msg = null)
     {
-        $this->assertSame(
-            $this->normalizePath($expected),
-            $this->normalizePath($input),
-            $msg
-        );
+        if ($msg !== null) {
+            $this->assertSame(
+                $this->normalizePath($expected),
+                $this->normalizePath($input),
+                $msg
+            );
+        } else {
+            $this->assertSame(
+                $this->normalizePath($expected),
+                $this->normalizePath($input)
+            );
+        }
     }
 
     /**
-     * @param string[] $expected
-     * @param string[] $input
-     * @param string   $msg
+     * @param string[]    $expected
+     * @param string[]    $input
+     * @param null|string $msg
      */
     protected function assertSamePaths(array $expected, array $input, $msg = null)
     {
         $expected = array_map(function ($path) { return $this->normalizePath($path); }, $expected);
         $input = array_map(function ($path) { return $this->normalizePath($path); }, $input);
 
-        $this->assertSame($expected, $input, $msg);
+        if ($msg !== null) {
+            $this->assertSame($expected, $input, $msg);
+        } else {
+            $this->assertSame($expected, $input);
+        }
     }
 }
