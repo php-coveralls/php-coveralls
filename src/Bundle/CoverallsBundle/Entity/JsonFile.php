@@ -99,6 +99,14 @@ class JsonFile extends Coveralls
      */
     protected $metrics;
 
+    /**
+     * If this is set, the build will not be considered done until a webhook has
+     * been sent to https://coveralls.io/webhook?repo_token=….
+     *
+     * @var bool
+     */
+    protected $parallel;
+
     // API
 
     /**
