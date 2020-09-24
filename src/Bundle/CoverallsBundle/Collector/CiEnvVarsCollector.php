@@ -64,7 +64,8 @@ class CiEnvVarsCollector
             ->fillAppVeyor()
             ->fillJenkins()
             ->fillLocal()
-            ->fillRepoToken();
+            ->fillRepoToken()
+            ->fillParallel();
 
         return $this->env;
     }
@@ -86,14 +87,15 @@ class CiEnvVarsCollector
     /**
      * Fill Travis CI environment variables.
      *
-     * "TRAVIS", "TRAVIS_JOB_ID" must be set.
+     * "TRAVIS", "TRAVIS_BUILD_NUMBER", TRAVIS_JOB_ID" must be set.
      *
      * @return $this
      */
     protected function fillTravisCi()
     {
-        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID'])) {
+        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID']) && isset($this->env['TRAVIS_BUILD_NUMBER'])) {
             $this->env['CI_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
+            $this->env['CI_BUILD_NUMBER'] = $this->env['TRAVIS_BUILD_NUMBER'];
 
             if ($this->config->hasServiceName()) {
                 $this->env['CI_NAME'] = $this->config->getServiceName();
@@ -105,6 +107,7 @@ class CiEnvVarsCollector
             $this->readEnv['TRAVIS'] = $this->env['TRAVIS'];
             $this->readEnv['TRAVIS_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+            $this->readEnv['CI_BUILD_NUMBER'] = $this->env['CI_BUILD_NUMBER'];
         }
 
         return $this;
@@ -222,6 +225,20 @@ class CiEnvVarsCollector
         // backup
         if (isset($this->env['COVERALLS_REPO_TOKEN'])) {
             $this->readEnv['COVERALLS_REPO_TOKEN'] = $this->env['COVERALLS_REPO_TOKEN'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill parallel for parallel jobs.
+     *
+     * @return $this
+     */
+    protected function fillParallel()
+    {
+        if (isset($this->env['COVERALLS_PARALLEL'])) {
+            $this->readEnv['COVERALLS_PARALLEL'] = $this->env['COVERALLS_PARALLEL'];
         }
 
         return $this;

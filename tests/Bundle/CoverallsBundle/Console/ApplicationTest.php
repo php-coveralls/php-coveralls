@@ -39,6 +39,7 @@ class ApplicationTest extends ProjectTestCase
 
         // run
         $_SERVER['TRAVIS'] = true;
+        $_SERVER['TRAVIS_BUILD_NUMBER'] = 'application_build';
         $_SERVER['TRAVIS_JOB_ID'] = 'application_test';
 
         $tester = new ApplicationTester($app);

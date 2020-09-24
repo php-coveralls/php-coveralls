@@ -257,6 +257,19 @@ php-coveralls set the following properties to `json_file` which is sent to Cover
 - service_name: php-coveralls
 - service_event_type: manual
 
+## Parallel Builds
+
+Coveralls provides the ability to combine coverage result from multiple parallel builds into one. To enable the feature you can set the following in your environment variable.
+
+```sh
+COVERALLS_PARALLEL=true
+```
+
+Bear in mind that you will need to configure your build to send a webhook after all the parallel builds are done in order for Coveralls to merge the results.
+
+Refer to [Parallel Builds Webhook](https://docs.coveralls.io/parallel-build-webhook) for more information for setup on your environment.
+
+
 ## CLI options
 
 You can get help information for `coveralls` with the `--help (-h)` option.
