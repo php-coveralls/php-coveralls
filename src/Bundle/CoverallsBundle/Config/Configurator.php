@@ -96,14 +96,7 @@ class Configurator
 
         $coverage_clover = $this->getPotentiallyOverriddenOptionValue('coverage_clover', $options, $input);
         $json_path = $this->getPotentiallyOverriddenOptionValue('json_path', $options, $input);
-
-        $entry_point = $options['entry_point'];
-        if ($input !== null && $input->hasOption('entry_point')) {
-            $option = $input->getOption('entry_point');
-            if (!empty($option)) {
-                $entry_point = $option;
-            }
-        }
+        $entry_point = $this->getPotentiallyOverriddenOptionValue('entry_point', $options, $input);
 
         return $configuration
             ->setEntrypoint($entry_point)
