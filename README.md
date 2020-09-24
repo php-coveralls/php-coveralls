@@ -45,7 +45,7 @@ $ composer require --dev php-coveralls/php-coveralls
 If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
 
 ```sh
-$ composer require --dev php-coveralls/php-coveralls '^2.2'
+$ composer require --dev 'php-coveralls/php-coveralls:^1.1'
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
