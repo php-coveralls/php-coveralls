@@ -13,11 +13,6 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class CiEnvVarsCollectorTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
     // collect()
 
     /**
@@ -358,6 +353,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertCount(1, $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     /**

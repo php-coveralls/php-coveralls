@@ -7,14 +7,14 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
 use PhpCoveralls\Component\System\Git\GitCommand;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitInfoCollectorTest extends TestCase
+class GitInfoCollectorTest extends ProjectTestCase
 {
     /**
      * @var array
@@ -78,10 +78,11 @@ class GitInfoCollectorTest extends TestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
+        $this->expectException(\RuntimeException::class);
+
         $getBranchesValue = [
             '  master',
         ];
@@ -96,10 +97,11 @@ class GitInfoCollectorTest extends TestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
+        $this->expectException(\RuntimeException::class);
+
         $getHeadCommitValue = [];
         $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue);
 
@@ -112,10 +114,11 @@ class GitInfoCollectorTest extends TestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {
+        $this->expectException(\RuntimeException::class);
+
         $getRemotesValue = [];
         $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $getRemotesValue);
 

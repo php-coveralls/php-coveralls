@@ -13,19 +13,6 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  */
 class ApplicationTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
-    protected function tearDown()
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
-    }
-
     /**
      * @test
      */
@@ -51,6 +38,19 @@ class ApplicationTest extends ProjectTestCase
         );
 
         $this->assertSame(0, $actual);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
+
+    protected function legacyTearDown()
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
     }
 
     /**

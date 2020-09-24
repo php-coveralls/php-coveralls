@@ -2,7 +2,7 @@
 
 namespace PhpCoveralls\Tests;
 
-use PHPUnit\Framework\TestCase;
+use LegacyPHPUnit\TestCase;
 
 abstract class ProjectTestCase extends TestCase
 {

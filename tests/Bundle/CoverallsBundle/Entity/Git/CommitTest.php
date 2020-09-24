@@ -3,7 +3,7 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity\Git;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
@@ -11,17 +11,12 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class CommitTest extends TestCase
+class CommitTest extends ProjectTestCase
 {
     /**
      * @var Commit
      */
     private $object;
-
-    protected function setUp()
-    {
-        $this->object = new Commit();
-    }
 
     // getId()
 
@@ -224,5 +219,10 @@ class CommitTest extends TestCase
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->object = new Commit();
     }
 }

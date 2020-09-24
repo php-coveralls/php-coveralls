@@ -5,7 +5,7 @@ namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitTest extends TestCase
+class GitTest extends ProjectTestCase
 {
     /**
      * @var string
@@ -34,15 +34,6 @@ class GitTest extends TestCase
      * @var Git
      */
     private $object;
-
-    protected function setUp()
-    {
-        $this->branchName = 'branch_name';
-        $this->commit = $this->createCommit();
-        $this->remote = $this->createRemote();
-
-        $this->object = new Git($this->branchName, $this->commit, [$this->remote]);
-    }
 
     // getBranch()
 
@@ -89,6 +80,15 @@ class GitTest extends TestCase
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->branchName = 'branch_name';
+        $this->commit = $this->createCommit();
+        $this->remote = $this->createRemote();
+
+        $this->object = new Git($this->branchName, $this->commit, [$this->remote]);
     }
 
     /**
