@@ -483,11 +483,10 @@ class JobsTest extends ProjectTestCase
         $server['TRAVIS'] = true;
         $server['TRAVIS_BUILD_NUMBER'] = '12345';
         $server['TRAVIS_JOB_ID'] = '1.1';
-        $server['COVERALLS_REPO_TOKEN'] = 'token';
         $server['GIT_COMMIT'] = 'abc123';
 
         $object = $this->createJobsNeverSend();
-        $jsonFile = $this->collectJsonFile();
+        $jsonFile = $this->collectJsonFileWithoutSourceFiles();
 
         $object
             ->setJsonFile($jsonFile)

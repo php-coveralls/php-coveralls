@@ -87,13 +87,13 @@ class CiEnvVarsCollector
     /**
      * Fill Travis CI environment variables.
      *
-     * "TRAVIS", "TRAVIS_JOB_ID" must be set.
+     * "TRAVIS", "TRAVIS_BUILD_NUMBER", TRAVIS_JOB_ID" must be set.
      *
      * @return $this
      */
     protected function fillTravisCi()
     {
-        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID'])) {
+        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID']) && isset($this->env['TRAVIS_BUILD_NUMBER'])) {
             $this->env['CI_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
             $this->env['CI_BUILD_NUMBER'] = $this->env['TRAVIS_BUILD_NUMBER'];
 

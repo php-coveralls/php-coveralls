@@ -587,7 +587,10 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceJobId()
     {
-        return $this->serviceName !== null && $this->serviceJobId !== null && $this->repoToken === null;
+        return $this->serviceName !== null
+            && $this->serviceNumber !== null
+            && $this->serviceJobId !== null
+            && $this->repoToken === null;
     }
 
     /**
@@ -597,7 +600,9 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceNumber()
     {
-        return $this->serviceName !== null && $this->serviceNumber !== null && $this->repoToken !== null;
+        return $this->serviceName !== null
+            && $this->serviceNumber !== null
+            && $this->repoToken !== null;
     }
 
     /**
@@ -607,7 +612,9 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceEventType()
     {
-        return $this->serviceName !== null && $this->serviceEventType !== null && $this->repoToken !== null;
+        return $this->serviceName !== null
+            && $this->serviceEventType !== null
+            && $this->repoToken !== null;
     }
 
     /**
@@ -617,7 +624,8 @@ class JsonFile extends Coveralls
      */
     protected function requireRepoToken()
     {
-        return $this->serviceName === 'travis-pro' && $this->repoToken !== null;
+        return $this->serviceName === 'travis-pro'
+            && $this->repoToken !== null;
     }
 
     /**
@@ -627,6 +635,9 @@ class JsonFile extends Coveralls
      */
     protected function isUnsupportedServiceJob()
     {
-        return $this->serviceJobId === null && $this->serviceNumber === null && $this->serviceEventType === null && $this->repoToken !== null;
+        return $this->serviceJobId === null
+            && $this->serviceNumber === null
+            && $this->serviceEventType === null
+            && $this->repoToken !== null;
     }
 }

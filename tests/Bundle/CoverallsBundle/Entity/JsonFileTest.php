@@ -473,10 +473,12 @@ class JsonFileTest extends ProjectTestCase
     {
         $serviceName = 'travis-ci';
         $serviceJobId = '1.1';
+        $serviceBuild = 123;
 
         $env = [];
         $env['CI_NAME'] = $serviceName;
         $env['CI_JOB_ID'] = $serviceJobId;
+        $env['CI_BUILD_NUMBER'] = $serviceBuild;
 
         $object = $this->collectJsonFile();
 
@@ -485,6 +487,7 @@ class JsonFileTest extends ProjectTestCase
         $this->assertSame($same, $object);
         $this->assertSame($serviceName, $object->getServiceName());
         $this->assertSame($serviceJobId, $object->getServiceJobId());
+        $this->assertSame($serviceBuild, $object->getServiceNumber());
     }
 
     /**
@@ -620,6 +623,7 @@ class JsonFileTest extends ProjectTestCase
     {
         $env = [];
         $env['TRAVIS'] = true;
+        $env['TRAVIS_BUILD_NUMBER'] = '123';
         $env['TRAVIS_JOB_ID'] = '1.1';
 
         $object = $this->collectJsonFileWithoutSourceFiles();
