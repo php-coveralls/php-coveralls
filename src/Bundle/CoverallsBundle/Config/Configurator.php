@@ -96,9 +96,10 @@ class Configurator
 
         $coverage_clover = $this->getPotentiallyOverriddenOptionValue('coverage_clover', $options, $input);
         $json_path = $this->getPotentiallyOverriddenOptionValue('json_path', $options, $input);
+        $entry_point = $this->getPotentiallyOverriddenOptionValue('entry_point', $options, $input);
 
         return $configuration
-            ->setEntrypoint($options['entry_point'])
+            ->setEntrypoint($entry_point)
             ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
             ->setServiceName($options['service_name'])
             ->setRootDir($rootDir)
