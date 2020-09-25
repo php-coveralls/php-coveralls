@@ -18,6 +18,7 @@ jobs:
         - php: 7.4
           env: CHECKS=yes
         - php: nightly
+          env: 'COMPOSER_FLAGS="--ignore-platform-reqs"'
 
 cache:
     directories:
