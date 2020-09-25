@@ -362,6 +362,10 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {
+        if (PHP_VERSION_ID >= 80000 && !function_exists('get_debug_type')) {
+            $this->markTestIncomplete('get_debug_type() is not available yet');
+        }
+
         $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
