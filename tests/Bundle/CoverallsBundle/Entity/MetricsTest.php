@@ -3,27 +3,19 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class MetricsTest extends TestCase
+class MetricsTest extends ProjectTestCase
 {
     /**
      * @var array
      */
     private $coverage;
-
-    protected function setUp()
-    {
-        $this->coverage = array_fill(0, 5, null);
-        $this->coverage[1] = 1;
-        $this->coverage[3] = 1;
-        $this->coverage[4] = 0;
-    }
 
     // hasStatements()
     // getStatements()
@@ -122,5 +114,13 @@ class MetricsTest extends TestCase
         $this->assertSame(6, $object->getStatements());
         $this->assertSame(4, $object->getCoveredStatements());
         $this->assertSame(400 / 6, $object->getLineCoverage());
+    }
+
+    protected function legacySetUp()
+    {
+        $this->coverage = array_fill(0, 5, null);
+        $this->coverage[1] = 1;
+        $this->coverage[3] = 1;
+        $this->coverage[4] = 0;
     }
 }

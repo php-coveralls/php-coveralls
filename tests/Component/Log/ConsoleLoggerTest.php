@@ -3,7 +3,7 @@
 namespace PhpCoveralls\Tests\Component\Log;
 
 use PhpCoveralls\Component\Log\ConsoleLogger;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 use Symfony\Component\Console\Output\StreamOutput;
 
 /**
@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\StreamOutput;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConsoleLoggerTest extends TestCase
+class ConsoleLoggerTest extends ProjectTestCase
 {
     /**
      * @test

@@ -2,7 +2,7 @@
 
 namespace PhpCoveralls\Tests;
 
-use PHPUnit\Framework\TestCase;
+use LegacyPHPUnit\TestCase;
 
 abstract class ProjectTestCase extends TestCase
 {
@@ -55,6 +55,26 @@ abstract class ProjectTestCase extends TestCase
      * @var string
      */
     protected $jsonPath;
+
+    public function __call($method, $args)
+    {
+        switch ($method) {
+            case 'assertStringContainsString':
+                call_user_func_array([$this, 'assertContains'], $args);
+
+                break;
+            case 'assertIsArray':
+                call_user_func_array([$this, 'assertInternalType'], array_merge(['array'], $args));
+
+                break;
+            case 'expectException':
+                call_user_func_array([$this, 'setExpectedException'], $args);
+
+                break;
+            default:
+                trigger_error("Call to undefined method ::$method", E_USER_ERROR);
+        }
+    }
 
     /**
      * @param string $projectDir

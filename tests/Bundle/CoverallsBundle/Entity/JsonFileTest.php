@@ -24,13 +24,6 @@ class JsonFileTest extends ProjectTestCase
      */
     private $object;
 
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-
-        $this->object = new JsonFile();
-    }
-
     // hasSourceFile()
     // getSourceFile()
 
@@ -604,10 +597,11 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function throwRuntimeExceptionOnFillingJobsIfInvalidEnv()
     {
+        $this->expectException(\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException::class);
+
         $env = [];
 
         $object = $this->collectJsonFile();
@@ -617,10 +611,11 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionOnFillingJobsWithoutSourceFiles()
     {
+        $this->expectException(\RuntimeException::class);
+
         $env = [];
         $env['TRAVIS'] = true;
         $env['TRAVIS_BUILD_NUMBER'] = '123';
@@ -687,6 +682,13 @@ class JsonFileTest extends ProjectTestCase
         $this->assertContains('test2.php', $filenames);
         $this->assertNotContains('TestInterface.php', $filenames);
         $this->assertNotContains('AbstractClass.php', $filenames);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+
+        $this->object = new JsonFile();
     }
 
     /**

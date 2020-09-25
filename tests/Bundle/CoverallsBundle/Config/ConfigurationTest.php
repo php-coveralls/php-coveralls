@@ -3,24 +3,19 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Config;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class ConfigurationTest extends TestCase
+class ConfigurationTest extends ProjectTestCase
 {
     /**
      * @var Configuration
      */
     private $object;
-
-    protected function setUp()
-    {
-        $this->object = new Configuration();
-    }
 
     // hasRepoToken()
     // getRepoToken()
@@ -425,5 +420,10 @@ class ConfigurationTest extends TestCase
 
         $this->assertSame($same, $this->object);
         $this->assertSame($expected, $this->object->getEnv());
+    }
+
+    protected function legacySetUp()
+    {
+        $this->object = new Configuration();
     }
 }

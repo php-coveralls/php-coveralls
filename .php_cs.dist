@@ -31,6 +31,8 @@ return PhpCsFixer\Config::create()
         'phpdoc_add_missing_param_annotation' => true,
         'phpdoc_order' => true,
         'phpdoc_types_order' => true,
+        'php_unit_expectation' => ['target' => '5.2'],
+        'php_unit_no_expectation_annotation' => true,
         'semicolon_after_instruction' => true,
         'single_line_throw' => false,
         'strict_comparison' => true,

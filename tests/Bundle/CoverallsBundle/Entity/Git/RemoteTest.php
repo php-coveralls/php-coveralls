@@ -3,7 +3,7 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity\Git;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote
@@ -11,17 +11,12 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class RemoteTest extends TestCase
+class RemoteTest extends ProjectTestCase
 {
     /**
      * @var Remote
      */
     private $object;
-
-    protected function setUp()
-    {
-        $this->object = new Remote();
-    }
 
     // getName()
 
@@ -108,5 +103,10 @@ class RemoteTest extends TestCase
 
         $this->assertSame($expected, $this->object->toArray());
         $this->assertSame(json_encode($expected), (string) $this->object);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->object = new Remote();
     }
 }

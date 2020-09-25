@@ -14,19 +14,6 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 class CoverallsJobsCommandTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
-    protected function tearDown()
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
-    }
-
     /**
      * @test
      */
@@ -75,10 +62,11 @@ class CoverallsJobsCommandTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function shouldExecuteCoverallsJobsCommandWithWrongRootDir()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
 
@@ -142,10 +130,11 @@ class CoverallsJobsCommandTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function shouldExecuteCoverallsJobsCommandThrowInvalidConfigurationException()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
 
@@ -170,6 +159,19 @@ class CoverallsJobsCommandTest extends ProjectTestCase
                 '--coverage_clover' => 'nonexistent.xml',
             ]
         );
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
+
+    protected function legacyTearDown()
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
     }
 
     /**

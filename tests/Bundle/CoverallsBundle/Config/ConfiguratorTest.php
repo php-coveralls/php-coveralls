@@ -22,26 +22,6 @@ class ConfiguratorTest extends ProjectTestCase
      */
     private $object;
 
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-
-        $this->srcDir = $this->rootDir . '/src';
-
-        $this->object = new Configurator();
-    }
-
-    protected function tearDown()
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->cloverXmlPath1);
-        $this->rmFile($this->cloverXmlPath2);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->srcDir);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
-    }
-
     // load()
 
     /**
@@ -78,10 +58,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfCoverageCloverNotFound()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, null);
 
         $path = realpath(__DIR__ . '/yaml/dummy.yml');
@@ -93,10 +74,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathDirNotWritable()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         if ($this->isWindowsOS()) {
             // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
             $this->markTestSkipped('Unable to run on Windows');
@@ -111,10 +93,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathNotWritable()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, false, true);
 
         $path = realpath(__DIR__ . '/yaml/dummy.yml');
@@ -142,10 +125,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function shouldThrowInvalidConfigurationExceptionUponLoadingSrcDirYml()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/src_dir.yml');
@@ -329,10 +313,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverNotFound()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover_not_found.yml');
@@ -342,10 +327,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverIsNotString()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/coverage_clover_invalid.yml');
@@ -357,10 +343,11 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadJsonPathYmlIfJsonPathNotFound()
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/json_path_not_found.yml');
@@ -372,15 +359,40 @@ class ConfiguratorTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {
+        if (PHP_VERSION_ID >= 80000 && !function_exists('get_debug_type')) {
+            $this->markTestIncomplete('get_debug_type() is not available yet');
+        }
+
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
         $path = realpath(__DIR__ . '/yaml/exclude_no_stmt_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+
+        $this->srcDir = $this->rootDir . '/src';
+
+        $this->object = new Configurator();
+    }
+
+    protected function legacyTearDown()
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->cloverXmlPath1);
+        $this->rmFile($this->cloverXmlPath2);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->srcDir);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
     }
 
     // custom assertion

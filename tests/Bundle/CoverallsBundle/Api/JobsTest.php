@@ -19,19 +19,6 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JobsTest extends ProjectTestCase
 {
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
-    protected function tearDown()
-    {
-        $this->rmFile($this->jsonPath);
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
-    }
-
     // getJsonFile()
 
     /**
@@ -457,10 +444,11 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfInvalidEnv()
     {
+        $this->expectException(\RuntimeException::class);
+
         $server = [];
 
         $object = $this->createJobsNeverSend();
@@ -475,10 +463,11 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function throwRuntimeExceptionIfNoSourceFiles()
     {
+        $this->expectException(\RuntimeException::class);
+
         $server = [];
         $server['TRAVIS'] = true;
         $server['TRAVIS_BUILD_NUMBER'] = '12345';
@@ -493,6 +482,19 @@ class JobsTest extends ProjectTestCase
             ->collectEnvVars($server)
             ->dumpJsonFile()
             ->send();
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
+
+    protected function legacyTearDown()
+    {
+        $this->rmFile($this->jsonPath);
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
     }
 
     /**
