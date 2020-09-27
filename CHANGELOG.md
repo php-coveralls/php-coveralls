@@ -1,6 +1,22 @@
 CHANGELOG
 =========
 
+## 2.3.0
+
+### Enhancement
+
+- [#290](https://github.com/php-coveralls/php-coveralls/pull/290) Allow to specify endpoint in arguments
+- [#288](https://github.com/php-coveralls/php-coveralls/pull/288) Add Guzzle 7 support
+- [#279](https://github.com/php-coveralls/php-coveralls/pull/279) Added COVERALLS_PARALLEL support and Configured CI_BUILD_NUMBER for Travis CI
+
+### Miscellaneous
+
+- [#294](https://github.com/php-coveralls/php-coveralls/pull/294) DX: Allow PHPUnit 7
+- [#292](https://github.com/php-coveralls/php-coveralls/pull/292) CI: reduce amount of jobs
+- [#291](https://github.com/php-coveralls/php-coveralls/pull/291) DX: Configurator - reduce cyclomatic complexity
+- [#286](https://github.com/php-coveralls/php-coveralls/pull/286) Fix incorrect version in README
+- [#283](https://github.com/php-coveralls/php-coveralls/pull/283) Update .travis.yml to include PHP 7.4
+
 ## 2.2.0
 
 ### Enhancement

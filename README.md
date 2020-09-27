@@ -24,13 +24,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.3.0/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 
@@ -45,7 +45,7 @@ $ composer require --dev php-coveralls/php-coveralls
 If you need support for PHP versions older than 5.5, you will need to use a 1.x version:
 
 ```sh
-$ composer require --dev php-coveralls/php-coveralls '^2.2'
+$ composer require --dev 'php-coveralls/php-coveralls:^1.1'
 ```
 
 You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
@@ -104,7 +104,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "^2.2",
+        "php-coveralls/php-coveralls": "^2.3",
         "phpunit/phpcov": "^2.0"
     },
 ```
@@ -256,6 +256,19 @@ php-coveralls set the following properties to `json_file` which is sent to Cover
 
 - service_name: php-coveralls
 - service_event_type: manual
+
+## Parallel Builds
+
+Coveralls provides the ability to combine coverage result from multiple parallel builds into one. To enable the feature you can set the following in your environment variable.
+
+```sh
+COVERALLS_PARALLEL=true
+```
+
+Bear in mind that you will need to configure your build to send a webhook after all the parallel builds are done in order for Coveralls to merge the results.
+
+Refer to [Parallel Builds Webhook](https://docs.coveralls.io/parallel-build-webhook) for more information for setup on your environment.
+
 
 ## CLI options
 

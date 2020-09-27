@@ -102,6 +102,13 @@ class CoverallsJobsCommand extends Command
                 []
             )
             ->addOption(
+                'entry_point',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Coveralls entrypoint',
+                'https://coveralls.io'
+            )
+            ->addOption(
                 'root_dir',
                 '-r',
                 InputOption::VALUE_OPTIONAL,

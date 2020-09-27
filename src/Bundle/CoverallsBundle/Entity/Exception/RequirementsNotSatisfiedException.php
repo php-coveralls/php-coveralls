@@ -53,6 +53,7 @@ Set environment variables properly like the following.
 For Travis users:
 
   - TRAVIS
+  - TRAVIS_BUILD_NUMBER
   - TRAVIS_JOB_ID
 
 For CircleCI users:

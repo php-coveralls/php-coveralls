@@ -1,8 +1,7 @@
-sudo: false
 dist: trusty
 language: php
 
-matrix:
+jobs:
     include:
         - php: 5.5
           env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
@@ -11,13 +10,15 @@ matrix:
         - php: 7.0
           env: 'BOX=yes'
         - php: 7.1
-          env: CHECKS=yes
-        - php: 7.1
           env: SYMFONY_VERSION="^3.0"
         - php: 7.2
           env: SYMFONY_VERSION="^4.0"
         - php: 7.3
           env: SYMFONY_VERSION="^5.0" MIN_STABILITY=dev
+        - php: 7.4
+          env: CHECKS=yes
+        - php: nightly
+          env: 'COMPOSER_FLAGS="--ignore-platform-reqs"'
 
 cache:
     directories:

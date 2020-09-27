@@ -82,7 +82,7 @@ class Configurator
      *
      * @param array          $options    processed configuration
      * @param string         $rootDir    path to project root directory
-     * @param InputInterface $input|null Input arguments
+     * @param InputInterface $input|null input arguments
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
@@ -94,26 +94,12 @@ class Configurator
         $repoToken = $options['repo_token'];
         $repoSecretToken = $options['repo_secret_token'];
 
-        // handle coverage clover
-        $coverage_clover = $options['coverage_clover'];
-        if ($input !== null && $input->hasOption('coverage_clover')) {
-            $option = $input->getOption('coverage_clover');
-            if (!empty($option)) {
-                $coverage_clover = $option;
-            }
-        }
-
-        // handle output json path
-        $json_path = $options['json_path'];
-        if ($input !== null && $input->hasOption('json_path')) {
-            $option = $input->getOption('json_path');
-            if (!empty($option)) {
-                $json_path = $option;
-            }
-        }
+        $coverage_clover = $this->getPotentiallyOverriddenOptionValue('coverage_clover', $options, $input);
+        $json_path = $this->getPotentiallyOverriddenOptionValue('json_path', $options, $input);
+        $entry_point = $this->getPotentiallyOverriddenOptionValue('entry_point', $options, $input);
 
         return $configuration
-            ->setEntrypoint($options['entry_point'])
+            ->setEntrypoint($entry_point)
             ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
             ->setServiceName($options['service_name'])
             ->setRootDir($rootDir)
@@ -245,5 +231,27 @@ class Configurator
         }
 
         return $realpath;
+    }
+
+    /**
+     * Get option from YAML config, potentially overridden via input params.
+     *
+     * @param string         $optionName option name
+     * @param array          $options    processed configuration
+     * @param InputInterface $input|null input arguments
+     *
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
+     */
+    private function getPotentiallyOverriddenOptionValue($optionName, array $options, InputInterface $input = null)
+    {
+        $value = $options[$optionName];
+        if ($input !== null && $input->hasOption($optionName)) {
+            $inputOverride = $input->getOption($optionName);
+            if (!empty($inputOverride)) {
+                $value = $inputOverride;
+            }
+        }
+
+        return $value;
     }
 }

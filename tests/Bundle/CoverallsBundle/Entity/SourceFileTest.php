@@ -23,16 +23,6 @@ class SourceFileTest extends ProjectTestCase
      */
     private $object;
 
-    protected function setUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-
-        $this->filename = 'test.php';
-        $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
-
-        $this->object = new SourceFile($this->path, $this->filename);
-    }
-
     // getName()
 
     /**
@@ -148,5 +138,15 @@ class SourceFileTest extends ProjectTestCase
         $this->assertSame(1, $metrics->getCoveredStatements());
         $this->assertSame(100, $metrics->getLineCoverage());
         $this->assertSame(100, $this->object->reportLineCoverage());
+    }
+
+    protected function legacySetUp()
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+
+        $this->filename = 'test.php';
+        $this->path = $this->srcDir . DIRECTORY_SEPARATOR . $this->filename;
+
+        $this->object = new SourceFile($this->path, $this->filename);
     }
 }

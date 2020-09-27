@@ -3,16 +3,15 @@
 namespace PhpCoveralls\Tests\Component\System\Git;
 
 use PhpCoveralls\Component\System\Git\GitCommand;
-use PHPUnit\Framework\TestCase;
+use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
  * @covers \PhpCoveralls\Component\System\Git\GitCommand
  * @covers \PhpCoveralls\Component\System\SystemCommandExecutor
- * @covers \PhpCoveralls\Component\System\SystemCommandExecutorInterface
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
-class GitCommandTest extends TestCase
+class GitCommandTest extends ProjectTestCase
 {
     /**
      * @test
@@ -22,7 +21,7 @@ class GitCommandTest extends TestCase
         $object = new GitCommand();
         $actual = $object->getBranches();
 
-        $this->assertInternalType('array', $actual);
+        $this->assertIsArray($actual);
         $this->assertNotEmpty($actual);
     }
 
@@ -34,7 +33,7 @@ class GitCommandTest extends TestCase
         $object = new GitCommand();
         $actual = $object->getHeadCommit();
 
-        $this->assertInternalType('array', $actual);
+        $this->assertIsArray($actual);
         $this->assertNotEmpty($actual);
         $this->assertCount(6, $actual);
     }
@@ -47,7 +46,7 @@ class GitCommandTest extends TestCase
         $object = new GitCommand();
         $actual = $object->getRemotes();
 
-        $this->assertInternalType('array', $actual);
+        $this->assertIsArray($actual);
         $this->assertNotEmpty($actual);
     }
 }
