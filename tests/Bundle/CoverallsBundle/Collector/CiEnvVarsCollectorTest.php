@@ -145,7 +145,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     public function shouldCollectGithubActionsEnvVars()
     {
         $serviceName = 'github';
-        $jobId = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
+        $jobId = '275038505';
         $gitTag = 'v0.1.1';
 
         $env = [];
@@ -154,6 +154,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_EVENT_NAME'] = 'push';
         $env['GITHUB_REF'] = 'refs/heads/master';
         $env['GITHUB_SHA'] = $jobId;
+        $env['GITHUB_RUN_ID'] = '275038505';
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -164,10 +165,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($jobId, $actual['CI_JOB_ID']);
-
-        $env['GITHUB_REF'] = 'refs/tags/' . $gitTag;
-        $actual = $object->collect($env);
-        $this->assertSame($gitTag, $actual['CI_JOB_ID']);
 
         return $object;
     }
@@ -185,6 +182,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_EVENT_NAME'] = 'pull_request';
         $env['GITHUB_REF'] = 'refs/pull/1/merge';
         $env['GITHUB_SHA'] = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
+        $env['GITHUB_RUN_ID'] = '275038505';
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -194,7 +192,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertSame($serviceName, $actual['CI_NAME']);
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame('3fd27e3b7c1ae6a0931d3b637b742440f5eb5011-PR-1', $actual['CI_JOB_ID']);
+        $this->assertSame('275038505', $actual['CI_JOB_ID']);
 
         return $object;
     }
