@@ -164,6 +164,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($jobId, $actual['CI_JOB_ID']);
 
+        $this->assertArrayHasKey('CI_BRANCH', $actual);
+        $this->assertSame('master', $actual['CI_BRANCH']);
+
         return $object;
     }
 
@@ -190,6 +193,39 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame('275038505', $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BRANCH', $actual);
+        $this->assertSame('refs/pull/1/merge', $actual['CI_BRANCH']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCollectGithubActionsEnvVarsForTag()
+    {
+        $serviceName = 'github';
+
+        $env = [];
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['GITHUB_ACTIONS'] = true;
+        $env['GITHUB_EVENT_NAME'] = 'push';
+        $env['GITHUB_REF'] = 'refs/tags/v2.3.0';
+        $env['GITHUB_RUN_ID'] = '275038505';
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('CI_NAME', $actual);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
+
+        $this->assertArrayHasKey('CI_JOB_ID', $actual);
+        $this->assertSame('275038505', $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BRANCH', $actual);
+        $this->assertSame('v2.3.0', $actual['CI_BRANCH']);
 
         return $object;
     }
