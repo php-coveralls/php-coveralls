@@ -146,14 +146,12 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $serviceName = 'github';
         $jobId = '275038505';
-        $gitTag = 'v0.1.1';
 
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = 'token';
         $env['GITHUB_ACTIONS'] = true;
         $env['GITHUB_EVENT_NAME'] = 'push';
         $env['GITHUB_REF'] = 'refs/heads/master';
-        $env['GITHUB_SHA'] = $jobId;
         $env['GITHUB_RUN_ID'] = '275038505';
 
         $object = $this->createCiEnvVarsCollector();
@@ -181,7 +179,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_ACTIONS'] = true;
         $env['GITHUB_EVENT_NAME'] = 'pull_request';
         $env['GITHUB_REF'] = 'refs/pull/1/merge';
-        $env['GITHUB_SHA'] = '3fd27e3b7c1ae6a0931d3b637b742440f5eb5011';
         $env['GITHUB_RUN_ID'] = '275038505';
 
         $object = $this->createCiEnvVarsCollector();
