@@ -215,6 +215,23 @@ class JsonFileTest extends ProjectTestCase
         return $this->object;
     }
 
+    // setFlagName()
+
+    /**
+     * @test
+     */
+    public function shouldSetFlagName()
+    {
+        $expected = 'php-7.4';
+
+        $obj = $this->object->setFlagName($expected);
+
+        $this->assertSame($expected, $this->object->getFlagName());
+        $this->assertSame($obj, $this->object);
+
+        return $this->object;
+    }
+
     // setServiceJobId()
 
     /**
