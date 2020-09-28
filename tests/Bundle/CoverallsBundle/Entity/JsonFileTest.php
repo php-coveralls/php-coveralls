@@ -597,6 +597,29 @@ class JsonFileTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldFillJobsForGithubActions()
+    {
+        $repoToken = 'token';
+        $serviceName = 'github';
+        $serviceJobId = '1.1';
+
+        $env = [];
+        $env['CI_NAME'] = $serviceName;
+        $env['CI_JOB_ID'] = $serviceJobId;
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+
+        $object = $this->collectJsonFile();
+
+        $same = $object->fillJobs($env);
+
+        $this->assertSame($same, $object);
+        $this->assertSame($serviceName, $object->getServiceName());
+        $this->assertSame($serviceJobId, $object->getServiceJobId());
+    }
+
+    /**
+     * @test
+     */
     public function shouldFillJobsForUnsupportedJob()
     {
         $repoToken = 'token';
