@@ -282,6 +282,10 @@ class CiEnvVarsCollector
             $this->readEnv['COVERALLS_PARALLEL'] = $this->env['COVERALLS_PARALLEL'];
         }
 
+        if (isset($this->env['COVERALLS_FLAG_NAME'])) {
+            $this->readEnv['COVERALLS_FLAG_NAME'] = $this->env['COVERALLS_FLAG_NAME'];
+        }
+
         return $this;
     }
 }

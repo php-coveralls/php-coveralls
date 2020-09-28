@@ -265,6 +265,12 @@ Coveralls provides the ability to combine coverage result from multiple parallel
 COVERALLS_PARALLEL=true
 ```
 
+To distinguish your job name, please set the `COVERALLS_FLAG_NAME` environment variable.
+
+```sh
+COVERALLS_FLAG_NAME=$YOUR_PHP_VERSION
+```
+
 Bear in mind that you will need to configure your build to send a webhook after all the parallel builds are done in order for Coveralls to merge the results.
 
 Refer to [Parallel Builds Webhook](https://docs.coveralls.io/parallel-build-webhook) for more information for setup on your environment.

@@ -273,9 +273,11 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     public function shouldCollectParallel()
     {
         $parallel = true;
+        $flagName = 'php-7.4';
 
         $env = [];
         $env['COVERALLS_PARALLEL'] = $parallel;
+        $env['COVERALLS_FLAG_NAME'] = $flagName;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -283,6 +285,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('COVERALLS_PARALLEL', $actual);
         $this->assertSame($parallel, $actual['COVERALLS_PARALLEL']);
+
+        $this->assertArrayHasKey('COVERALLS_FLAG_NAME', $actual);
+        $this->assertSame($flagName, $actual['COVERALLS_FLAG_NAME']);
 
         return $object;
     }
