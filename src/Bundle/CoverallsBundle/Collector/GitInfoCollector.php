@@ -81,7 +81,7 @@ class GitInfoCollector
             }
 
             if (strpos($result, '* ') === 0) {
-                preg_match('~^\* (?:\(HEAD detached at )?([\w/]+)\)?~', $result, $matches);
+                preg_match('/^\* (?:\(HEAD detached at )?([\w\/\-]+)\)?/', $result, $matches);
 
                 return $matches[1];
             }

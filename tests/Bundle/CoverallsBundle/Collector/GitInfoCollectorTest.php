@@ -21,8 +21,8 @@ class GitInfoCollectorTest extends ProjectTestCase
      */
     private $getBranchesValue = [
         '  master',
-        '* branch1',
-        '  branch2',
+        '* branch-1',
+        '  branch-2',
     ];
 
     /**
@@ -72,6 +72,7 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $this->assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
+        $this->assertSame('branch-1', $git->getBranch());
     }
 
     /**
@@ -88,6 +89,8 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
+        $this->assertInstanceOf(Git::class, $git);
+        $this->assertGit($git);
         $this->assertSame('pull/1/merge', $git->getBranch());
     }
 
@@ -105,6 +108,8 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
+        $this->assertInstanceOf(Git::class, $git);
+        $this->assertGit($git);
         $this->assertSame('(no branch)', $git->getBranch());
     }
 
