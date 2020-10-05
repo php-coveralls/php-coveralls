@@ -24,6 +24,13 @@ use Symfony\Component\Stopwatch\Stopwatch;
 class CoverallsJobsCommand extends Command
 {
     /**
+     * Skip SSL verification while sending a report if true.
+     *
+     * @var bool
+     */
+    protected $allowInsecure;
+
+    /**
      * Path to project root directory.
      *
      * @var string
@@ -114,6 +121,12 @@ class CoverallsJobsCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Root directory of the project.',
                 '.'
+            )
+            ->addOption(
+                'insecure',
+                '-k',
+                InputOption::VALUE_NONE,
+                'Skip SSL certificate check.'
             );
     }
 
@@ -136,6 +149,7 @@ class CoverallsJobsCommand extends Command
 
         $config = $this->loadConfiguration($input, $this->rootDir);
         $this->logger = $config->isVerbose() && !$config->isTestEnv() ? new ConsoleLogger($output) : new NullLogger();
+        $this->allowInsecure = (bool) $input->getOption('insecure');
 
         $executionStatus = $this->executeApi($config);
 
@@ -175,13 +189,19 @@ class CoverallsJobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param Configuration $config configuration
+     * @param InputInterface $input  input arguments
+     * @param Configuration  $config configuration
      *
      * @return bool
      */
     protected function executeApi(Configuration $config)
     {
-        $client = new Client();
+        $params = [];
+        if ($this->allowInsecure) {
+            $params['verify'] = false;
+        }
+
+        $client = new Client($params);
         $api = new Jobs($config, $client);
         $repository = new JobsRepository($api, $config);
 
