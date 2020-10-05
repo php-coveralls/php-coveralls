@@ -211,7 +211,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['COVERALLS_REPO_TOKEN'] = 'token';
         $env['GITHUB_ACTIONS'] = true;
         $env['GITHUB_EVENT_NAME'] = 'push';
-        $env['GITHUB_REF'] = 'refs/tags/v2.3.0';
+        $env['GITHUB_REF'] = 'refs/tags/v123.456.789';
         $env['GITHUB_RUN_ID'] = '275038505';
 
         $object = $this->createCiEnvVarsCollector();
@@ -225,7 +225,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertSame('275038505', $actual['CI_JOB_ID']);
 
         $this->assertArrayHasKey('CI_BRANCH', $actual);
-        $this->assertSame('v2.3.0', $actual['CI_BRANCH']);
+        $this->assertSame('v123.456.789', $actual['CI_BRANCH']);
 
         return $object;
     }

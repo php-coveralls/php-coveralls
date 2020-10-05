@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+## 2.4.0
+
+### Enhancement
+
+- [#296](https://github.com/php-coveralls/php-coveralls/pull/296) Add Github Actions and COVERALLS_FLAG_NAME support
+- [#295](https://github.com/php-coveralls/php-coveralls/pull/295) Add support for PHP 8 + PHPUnit 9
+- [#289](https://github.com/php-coveralls/php-coveralls/pull/289) Add insecure option
+
+### Miscellaneous
+
+- [#297](https://github.com/php-coveralls/php-coveralls/pull/297) DX: .gitignore cache PHPUnit
+
 ## 2.3.0
 
 ### Enhancement
