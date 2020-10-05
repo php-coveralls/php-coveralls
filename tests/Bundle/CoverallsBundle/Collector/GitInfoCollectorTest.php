@@ -21,8 +21,8 @@ class GitInfoCollectorTest extends ProjectTestCase
      */
     private $getBranchesValue = [
         '  master',
-        '* branch1',
-        '  branch2',
+        '* branch-1',
+        '  branch-2',
     ];
 
     /**
@@ -72,6 +72,7 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $this->assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
+        $this->assertSame('branch-1', $git->getBranch());
     }
 
     /**
@@ -88,7 +89,28 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
+        $this->assertInstanceOf(Git::class, $git);
+        $this->assertGit($git);
         $this->assertSame('pull/1/merge', $git->getBranch());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldCollectNoBranch()
+    {
+        $gitCommand = $this->createGitCommandStubWith(
+            ['* (no branch)'],
+            $this->getHeadCommitValue,
+            $this->getRemotesValue
+        );
+        $object = new GitInfoCollector($gitCommand);
+
+        $git = $object->collect();
+
+        $this->assertInstanceOf(Git::class, $git);
+        $this->assertGit($git);
+        $this->assertSame('(no branch)', $git->getBranch());
     }
 
     // collectBranch() exception
@@ -98,8 +120,6 @@ class GitInfoCollectorTest extends ProjectTestCase
      */
     public function throwRuntimeExceptionIfCurrentBranchNotFound()
     {
-        $this->expectException(\RuntimeException::class);
-
         $getBranchesValue = [
             '  master',
         ];
@@ -107,6 +127,7 @@ class GitInfoCollectorTest extends ProjectTestCase
 
         $object = new GitInfoCollector($gitCommand);
 
+        $this->expectException(\RuntimeException::class);
         $object->collect();
     }
 
@@ -117,13 +138,12 @@ class GitInfoCollectorTest extends ProjectTestCase
      */
     public function throwRuntimeExceptionIfHeadCommitIsInvalid()
     {
-        $this->expectException(\RuntimeException::class);
-
         $getHeadCommitValue = [];
         $gitCommand = $this->createGitCommandStubCalledHeadCommit($this->getBranchesValue, $getHeadCommitValue);
 
         $object = new GitInfoCollector($gitCommand);
 
+        $this->expectException(\RuntimeException::class);
         $object->collect();
     }
 
@@ -134,13 +154,12 @@ class GitInfoCollectorTest extends ProjectTestCase
      */
     public function throwRuntimeExceptionIfRemoteIsInvalid()
     {
-        $this->expectException(\RuntimeException::class);
-
         $getRemotesValue = [];
         $gitCommand = $this->createGitCommandStubWith($this->getBranchesValue, $this->getHeadCommitValue, $getRemotesValue);
 
         $object = new GitInfoCollector($gitCommand);
 
+        $this->expectException(\RuntimeException::class);
         $object->collect();
     }
 
@@ -253,8 +272,6 @@ class GitInfoCollectorTest extends ProjectTestCase
 
     protected function assertGit(Git $git)
     {
-        $this->assertSame('branch1', $git->getBranch());
-
         $commit = $git->getHead();
 
         $this->assertInstanceOf(Commit::class, $commit);
