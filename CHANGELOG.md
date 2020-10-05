@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 2.4.1
+
+### Bug fix
+
+- [#298](https://github.com/php-coveralls/php-coveralls/pull/298) Fix support of branch name with hyphen and "(no branch)"
+
 ## 2.4.0
 
 ### Enhancement
