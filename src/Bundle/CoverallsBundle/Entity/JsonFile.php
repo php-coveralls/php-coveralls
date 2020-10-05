@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Version;
  * Data represents "json_file" of Coveralls API.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class JsonFile extends Coveralls
 {
@@ -107,6 +108,14 @@ class JsonFile extends Coveralls
      */
     protected $parallel;
 
+    /**
+     * If this is set, the job being reported will be named in the view and have
+     * it’s own independent status reported to your VCS provider.
+     *
+     * @var string
+     */
+    protected $flagName;
+
     // API
 
     /**
@@ -129,6 +138,7 @@ class JsonFile extends Coveralls
             'service_event_type' => 'serviceEventType',
             'repo_token' => 'repoToken',
             'parallel' => 'parallel',
+            'flag_name' => 'flagName',
             'git' => 'git',
             'run_at' => 'runAt',
             'source_files' => 'sourceFiles',
@@ -329,6 +339,30 @@ class JsonFile extends Coveralls
     public function getParallel()
     {
         return $this->parallel;
+    }
+
+    /**
+     * Set flag name.
+     *
+     * @param string $flagName flag name
+     *
+     * @return $this
+     */
+    public function setFlagName($flagName)
+    {
+        $this->flagName = $flagName;
+
+        return $this;
+    }
+
+    /**
+     * Return flag name.
+     *
+     * @return null|string
+     */
+    public function getFlagName()
+    {
+        return $this->flagName;
     }
 
     /**
@@ -541,6 +575,7 @@ class JsonFile extends Coveralls
             'serviceEventType' => 'COVERALLS_EVENT_TYPE',
             'repoToken' => 'COVERALLS_REPO_TOKEN',
             'parallel' => 'COVERALLS_PARALLEL',
+            'flagName' => 'COVERALLS_FLAG_NAME',
         ];
 
         foreach ($map as $propName => $envName) {
@@ -578,6 +613,10 @@ class JsonFile extends Coveralls
         }
 
         if ($this->requireRepoToken()) {
+            return $this;
+        }
+
+        if ($this->requireGithubActions()) {
             return $this;
         }
 
@@ -634,6 +673,16 @@ class JsonFile extends Coveralls
     {
         return $this->serviceName === 'travis-pro'
             && $this->repoToken !== null;
+    }
+
+    /**
+     * Return whether the job requires "service_number", "service_job_id" and "repo_token" (for GithubActions).
+     *
+     * @return bool
+     */
+    protected function requireGithubActions()
+    {
+        return $this->serviceName === 'github' && $this->serviceJobId !== null && $this->repoToken !== null;
     }
 
     /**

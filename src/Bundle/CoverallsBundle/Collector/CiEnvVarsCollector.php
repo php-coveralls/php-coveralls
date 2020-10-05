@@ -63,6 +63,7 @@ class CiEnvVarsCollector
             ->fillCircleCi()
             ->fillAppVeyor()
             ->fillJenkins()
+            ->fillGithubActions()
             ->fillLocal()
             ->fillRepoToken()
             ->fillParallel();
@@ -109,6 +110,46 @@ class CiEnvVarsCollector
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
             $this->readEnv['CI_BUILD_NUMBER'] = $this->env['CI_BUILD_NUMBER'];
         }
+
+        return $this;
+    }
+
+    /**
+     * Fill Github Actions environment variables.
+     *
+     * @return $this
+     */
+    protected function fillGithubActions()
+    {
+        if (!isset($this->env['GITHUB_ACTIONS'])) {
+            return $this;
+        }
+        $this->env['CI_NAME'] = 'github';
+
+        $githubEventName = $this->env['GITHUB_EVENT_NAME'];
+        $githubRef = $this->env['GITHUB_REF'];
+
+        if (strpos($githubRef, 'refs/heads/') !== false) {
+            $githubRef = str_replace('refs/heads/', '', $githubRef);
+        } elseif ($githubEventName === 'pull_request') {
+            $refParts = explode('/', $githubRef);
+            $prNumber = $refParts[2];
+            $this->env['CI_PULL_REQUEST'] = $prNumber;
+            $this->readEnv['CI_PULL_REQUEST'] = $this->env['CI_PULL_REQUEST'];
+        } elseif (strpos($githubRef, 'refs/tags/') !== false) {
+            $githubRef = str_replace('refs/tags/', '', $githubRef);
+        }
+
+        // Same as coverallsapp/github-action
+        // @link https://github.com/coverallsapp/github-action/blob/5984097c6e76d873ef1d8e8e1836b0914d307c3c/src/run.ts#L47
+        $this->env['CI_JOB_ID'] = $this->env['GITHUB_RUN_ID'];
+        $this->env['CI_BRANCH'] = $githubRef;
+
+        $this->readEnv['GITHUB_ACTIONS'] = $this->env['GITHUB_ACTIONS'];
+        $this->readEnv['GITHUB_REF'] = $this->env['GITHUB_REF'];
+        $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+        $this->readEnv['CI_JOB_ID'] = $this->env['CI_JOB_ID'];
+        $this->readEnv['CI_BRANCH'] = $this->env['CI_BRANCH'];
 
         return $this;
     }
@@ -239,6 +280,10 @@ class CiEnvVarsCollector
     {
         if (isset($this->env['COVERALLS_PARALLEL'])) {
             $this->readEnv['COVERALLS_PARALLEL'] = $this->env['COVERALLS_PARALLEL'];
+        }
+
+        if (isset($this->env['COVERALLS_FLAG_NAME'])) {
+            $this->readEnv['COVERALLS_FLAG_NAME'] = $this->env['COVERALLS_FLAG_NAME'];
         }
 
         return $this;

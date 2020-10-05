@@ -237,6 +237,19 @@ In the "Configure your environment variables" section:
 COVERALLS_REPO_TOKEN=your_token
 ```
 
+## GitHub Actions
+
+Add a new step after phpunit generate coverage report.
+
+```yaml
+- name: Upload coverage results to Coveralls
+  env:
+    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: |
+    composer global require php-coveralls/php-coveralls
+    php-coveralls --coverage_clover=build/logs/clover.xml -v
+```
+
 ## From local environment
 
 If you would like to call Coveralls API from your local environment, you can set `COVERALLS_RUN_LOCALLY` environment variable. This configuration requires `repo_token` to specify which project on Coveralls your project maps to. This can be done by configuring `.coveralls.yml` or `COVERALLS_REPO_TOKEN` environment variable.
@@ -263,6 +276,12 @@ Coveralls provides the ability to combine coverage result from multiple parallel
 
 ```sh
 COVERALLS_PARALLEL=true
+```
+
+To distinguish your job name, please set the `COVERALLS_FLAG_NAME` environment variable.
+
+```sh
+COVERALLS_FLAG_NAME=$YOUR_PHP_VERSION
 ```
 
 Bear in mind that you will need to configure your build to send a webhook after all the parallel builds are done in order for Coveralls to merge the results.

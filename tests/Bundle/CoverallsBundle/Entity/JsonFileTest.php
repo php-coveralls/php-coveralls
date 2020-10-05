@@ -215,6 +215,23 @@ class JsonFileTest extends ProjectTestCase
         return $this->object;
     }
 
+    // setFlagName()
+
+    /**
+     * @test
+     */
+    public function shouldSetFlagName()
+    {
+        $expected = 'php-7.4';
+
+        $obj = $this->object->setFlagName($expected);
+
+        $this->assertSame($expected, $this->object->getFlagName());
+        $this->assertSame($obj, $this->object);
+
+        return $this->object;
+    }
+
     // setServiceJobId()
 
     /**
@@ -575,6 +592,29 @@ class JsonFileTest extends ProjectTestCase
         $this->assertSame($serviceName, $object->getServiceName());
         $this->assertNull($object->getServiceJobId());
         $this->assertSame($serviceEventType, $object->getServiceEventType());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldFillJobsForGithubActions()
+    {
+        $repoToken = 'token';
+        $serviceName = 'github';
+        $serviceJobId = '1.1';
+
+        $env = [];
+        $env['CI_NAME'] = $serviceName;
+        $env['CI_JOB_ID'] = $serviceJobId;
+        $env['COVERALLS_REPO_TOKEN'] = $repoToken;
+
+        $object = $this->collectJsonFile();
+
+        $same = $object->fillJobs($env);
+
+        $this->assertSame($same, $object);
+        $this->assertSame($serviceName, $object->getServiceName());
+        $this->assertSame($serviceJobId, $object->getServiceJobId());
     }
 
     /**
