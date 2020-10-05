@@ -91,6 +91,23 @@ class GitInfoCollectorTest extends ProjectTestCase
         $this->assertSame('pull/1/merge', $git->getBranch());
     }
 
+    /**
+     * @test
+     */
+    public function shouldCollectNoBranch()
+    {
+        $gitCommand = $this->createGitCommandStubWith(
+            ['* (no branch)'],
+            $this->getHeadCommitValue,
+            $this->getRemotesValue
+        );
+        $object = new GitInfoCollector($gitCommand);
+
+        $git = $object->collect();
+
+        $this->assertSame('(no branch)', $git->getBranch());
+    }
+
     // collectBranch() exception
 
     /**
