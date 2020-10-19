@@ -73,7 +73,7 @@ For AppVeyor users:
   - APPVEYOR
   - APPVEYOR_BUILD_NUMBER
 
-For Githib Actions users:
+For Github Actions users:
   - GITHUB_REF
   - GITHUB_ACTIONS
   - GITHUB_RUN_ID
