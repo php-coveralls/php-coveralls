@@ -78,6 +78,7 @@ For Github Actions users:
   - GITHUB_ACTIONS
   - GITHUB_RUN_ID
   - GITHUB_EVENT_NAME
+  - COVERALLS_REPO_TOKEN
 
 From local environment:
 
