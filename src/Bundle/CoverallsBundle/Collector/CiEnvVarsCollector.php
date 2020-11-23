@@ -144,7 +144,6 @@ class CiEnvVarsCollector
         // @link https://github.com/coverallsapp/github-action/blob/5984097c6e76d873ef1d8e8e1836b0914d307c3c/src/run.ts#L47
         $this->env['CI_JOB_ID'] = $this->env['GITHUB_RUN_ID'];
         $this->env['CI_BUILD_NUMBER'] = $this->env['GITHUB_RUN_NUMBER'];
-
         $this->env['CI_BRANCH'] = $githubRef;
 
         $this->readEnv['GITHUB_ACTIONS'] = $this->env['GITHUB_ACTIONS'];
