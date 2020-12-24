@@ -11,7 +11,7 @@
   ],
   "finder": [
     {
-      "name": ["*.php", "*.pem"],
+      "name": ["*.php", "*.php8", "*.pem"],
       "exclude": ["tests"],
       "in": ["vendor"]
     }
