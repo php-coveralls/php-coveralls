@@ -1,6 +1,23 @@
 CHANGELOG
 =========
 
+## 2.4.3
+
+### Bug fix
+
+- [#308](https://github.com/php-coveralls/php-coveralls/pull/308) Add file missing for PHP 8
+
+### Miscellaneous
+
+- [#303](https://github.com/php-coveralls/php-coveralls/pull/303) Update README.md
+
+## 2.4.2
+
+### Bug fix
+
+- [#302](https://github.com/php-coveralls/php-coveralls/pull/302) Add COVERALLS_REPO_TOKEN to error message when run on Github Action
+- [#299](https://github.com/php-coveralls/php-coveralls/pull/299) Correct spelling error in Github
+
 ## 2.4.1
 
 ### Bug fix
