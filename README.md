@@ -169,6 +169,10 @@ php:
   - 5.4
   - 5.3
 
+env:
+  global:
+    - XDEBUG_MODE=coverage
+
 matrix:
   allow_failures:
     - php: 5.5
