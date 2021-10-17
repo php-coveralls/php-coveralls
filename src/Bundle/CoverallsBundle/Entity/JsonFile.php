@@ -697,4 +697,36 @@ class JsonFile extends Coveralls
             && $this->serviceEventType === null
             && $this->repoToken !== null;
     }
+
+    protected function onJsonError()
+    {
+        $array = $this->toArray();
+
+        if (!empty($array['git'])) {
+            $this->throwWhenInvalidJson($array['git'], '[git]');
+        }
+
+        $sourceFiles = empty($array['source_files']) ? [] : $array['source_files'];
+
+        foreach ($sourceFiles as $item) {
+            $this->throwWhenInvalidJson($item, '[source_files]: ' . $item['name']);
+        }
+    }
+
+    /**
+     * @param array $item
+     * @param string $source
+     */
+    private function throwWhenInvalidJson($item, $source)
+    {
+        \json_encode($item);
+
+        if (\json_last_error() !== JSON_ERROR_NONE) {
+            throw new \UnexpectedValueException(sprintf(
+                'Can not encode to JSON, error: "%s" in "%s".',
+                \json_last_error_msg(),
+                $source
+            ));
+        }
+    }
 }
