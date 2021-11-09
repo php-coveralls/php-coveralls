@@ -714,7 +714,7 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * @param array $item
+     * @param array  $item
      * @param string $source
      */
     private function throwWhenInvalidJson(array $item, $source)
