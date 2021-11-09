@@ -169,6 +169,10 @@ php:
   - 5.4
   - 5.3
 
+env:
+  global:
+    - XDEBUG_MODE=coverage
+
 matrix:
   allow_failures:
     - php: 5.5
@@ -176,6 +180,7 @@ matrix:
 install:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
+
 script:
   - mkdir -p build/logs
   - php vendor/bin/phpunit -c phpunit.xml.dist
