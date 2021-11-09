@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+## 2.5.0
+
+### Miscellaneous
+- [#322](https://github.com/php-coveralls/php-coveralls/pull/322) Allow for Symfony:^6
+- [#321](https://github.com/php-coveralls/php-coveralls/pull/321) Disallow `psr/log` v3
+- [#319](https://github.com/php-coveralls/php-coveralls/pull/319) Added fallback to show where is problem with non-UTF8 char
+- [#317](https://github.com/php-coveralls/php-coveralls/pull/317) Allow `psr/log` v2 and v3
+- [#316](https://github.com/php-coveralls/php-coveralls/pull/316) Update README with Travis CI configuration detail
+- [#311](https://github.com/php-coveralls/php-coveralls/pull/311) Update version in master to latest release
+
 ## 2.4.3
 
 ### Bug fix

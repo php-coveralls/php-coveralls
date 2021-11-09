@@ -24,13 +24,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.4.3/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.4.3/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.0/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 
@@ -104,7 +104,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "^2.4",
+        "php-coveralls/php-coveralls": "^2.5",
         "phpunit/phpcov": "^2.0"
     },
 ```
