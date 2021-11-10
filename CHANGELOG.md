@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 2.5.1
+
+### Bug fix
+
+- [#324](https://github.com/php-coveralls/php-coveralls/pull/324) Fix PHP 5.5 compatibility
+
 ## 2.5.0
 
 ### Miscellaneous
