@@ -85,7 +85,7 @@ class JobsRepository implements LoggerAwareInterface
      *
      * @see \Psr\Log\LoggerAwareInterface::setLogger()
      */
-    public function setLogger(LoggerInterface $logger): void
+    public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
