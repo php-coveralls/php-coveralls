@@ -1,11 +1,11 @@
-name: PHP-CS-Fixer
+name: Codestyle
 
 on:
-    pull_request:
-    push:
+    - pull_request
+    - push
 
 jobs:
-    php-cs-fixer:
+    codestyle:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
@@ -14,14 +14,13 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 7.4
+                    php-version: 5.6
                     coverage: none
 
             -   name: Validate composer.json
                 run: composer validate
 
-            -   name: Update composer dependencies
-                uses: ramsey/composer-install@v1
-
-            -   name: Run PHP-CS-Fixer
-                run: vendor/bin/php-cs-fixer fix --dry-run --diff
+            -   name: Run all checks
+                run: |
+                    composer install-dev-tools
+                    composer sca

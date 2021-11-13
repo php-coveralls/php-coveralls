@@ -1,12 +1,12 @@
 name: UnitTests
 
 on:
-    pull_request:
-    push:
+    - pull_request
+    - push
 
 jobs:
     tests:
-        name: "PHP ${{ matrix.php }} + Composer ${{ matrix.dependency }}"
+        name: "PHP ${{ matrix.php }} + Composer ${{ matrix.dependency }} + Symfony ${{ matrix.symfony }}"
         runs-on: ubuntu-latest
 
         strategy:
@@ -16,22 +16,22 @@ jobs:
                     -   php: '5.5'
                         dependency: lowest
                         coverage: xdebug
-                        symfony: 'any'
+                        symfony: '*'
                     -   php: '5.5'
                         dependency: highest
                         coverage: xdebug
-                        symfony: 'any'
+                        symfony: '*'
                     -   php: '5.6'
                         dependency: highest
                         coverage: xdebug
-                        symfony: 'any'
+                        symfony: '*'
                     -   php: '7.0'
                         dependency: highest
                         coverage: xdebug
-                        symfony: 'any'
+                        symfony: '*'
                     -   php: '7.1'
                         dependency: highest
-                        coverage: pcov
+                        coverage: xdebug
                         symfony: '^3.0'
                     -   php: '7.2'
                         dependency: highest
@@ -57,18 +57,17 @@ jobs:
                     coverage: ${{ matrix.coverage }}
 
             -   name: Require Symfony version
-                if: matrix.symfony != 'any'
+                if: matrix.symfony != '*'
                 run: |
                     composer global require --no-interaction --no-progress symfony/flex:^1.11
                     composer config extra.symfony.require ${{ matrix.symfony }}
 
             -   name: Update composer dependencies
-                uses: ramsey/composer-install@v1
-                with:
-                    dependency-versions: ${{ matrix.dependency }}
+                run: composer update --optimize-autoloader --no-interaction --no-progress ${{ matrix.composer-flags }}
 
             -   name: Run test suite
                 run: ./vendor/bin/phpunit -v
 
-            -   name: Check bin/php-coveralls successfully run
-                run: bin/php-coveralls -v --exclude-no-stmt
+# TODO: need to setup from maintainer
+#            -   name: Check bin/php-coveralls successfully run
+#                run: bin/php-coveralls -v --exclude-no-stmt
