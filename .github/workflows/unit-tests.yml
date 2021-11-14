@@ -10,51 +10,50 @@ jobs:
         runs-on: ubuntu-latest
 
         strategy:
-            fail-fast: true
             matrix:
                 include:
                     -   php: '5.5'
                         dependency: lowest
-                        coverage: xdebug
                         symfony: '*'
                     -   php: '5.5'
                         dependency: highest
-                        coverage: xdebug
                         symfony: '*'
                     -   php: '5.6'
                         dependency: highest
-                        coverage: xdebug
                         symfony: '*'
                     -   php: '7.0'
                         dependency: highest
-                        coverage: xdebug
                         symfony: '*'
                     -   php: '7.1'
                         dependency: highest
-                        coverage: xdebug
                         symfony: '^3.0'
                     -   php: '7.2'
                         dependency: highest
-                        coverage: pcov
                         symfony: '^4.0'
                     -   php: '7.3'
                         dependency: highest
-                        coverage: pcov
                         symfony: '^5.0'
                     -   php: '7.4'
                         dependency: highest
-                        coverage: pcov
+                        calculate-code-coverage: yes
                         symfony: '^5.0'
 
         steps:
             -   name: Checkout source
                 uses: actions/checkout@v2
 
+            -   name: Get code coverage driver
+                uses: actions/github-script@v3.1
+                id: code-coverage-driver
+                with:
+                    script: 'return "${{ matrix.calculate-code-coverage }}" == "yes" ? "pcov" : "none"'
+                    result-encoding: string
+
             -   name: PHP setup
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    coverage: ${{ matrix.coverage }}
+                    coverage: ${{ steps.code-coverage-driver.outputs.result }}
 
             -   name: Require Symfony version
                 if: matrix.symfony != '*'
@@ -68,6 +67,8 @@ jobs:
             -   name: Run test suite
                 run: ./vendor/bin/phpunit -v
 
-# TODO: need to setup from maintainer
-#            -   name: Check bin/php-coveralls successfully run
-#                run: bin/php-coveralls -v --exclude-no-stmt
+            -   name: Upload coverage results to Coveralls
+                if: matrix.calculate-code-coverage == 'yes'
+                env:
+                    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                run: bin/php-coveralls -v --exclude-no-stmt
