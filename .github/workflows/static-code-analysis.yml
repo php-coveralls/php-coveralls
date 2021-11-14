@@ -1,11 +1,11 @@
-name: Codestyle
+name: Static Code Analysis
 
 on:
     - pull_request
     - push
 
 jobs:
-    codestyle:
+    static-code-analysis:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
