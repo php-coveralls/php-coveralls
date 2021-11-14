@@ -6,37 +6,28 @@ on:
 
 jobs:
     tests:
-        name: "PHP ${{ matrix.php }} + Composer ${{ matrix.dependency }} + Symfony ${{ matrix.symfony }}"
+        name: "PHP ${{ matrix.php }} + Composer ${{ matrix.composer-flags }} + Symfony@${{ matrix.symfony || '*' }}"
         runs-on: ubuntu-latest
 
         strategy:
+            fail-fast: false
             matrix:
                 include:
                     -   php: '5.5'
-                        dependency: lowest
-                        symfony: '*'
+                        composer-flags: '--prefer-lowest'
                     -   php: '5.5'
-                        dependency: highest
-                        symfony: '*'
-                    -   php: '5.6'
-                        dependency: highest
-                        symfony: '*'
-                    -   php: '7.0'
-                        dependency: highest
-                        symfony: '*'
-                    -   php: '7.1'
-                        dependency: highest
                         symfony: '^3.0'
-                    -   php: '7.2'
-                        dependency: highest
+                    -   php: '5.6'
+                    -   php: '7.0'
+                    -   php: '7.1'
                         symfony: '^4.0'
+                    -   php: '7.2'
+                        symfony: '^5.0'
                     -   php: '7.3'
-                        dependency: highest
-                        symfony: '^5.0'
                     -   php: '7.4'
-                        dependency: highest
-                        calculate-code-coverage: yes
-                        symfony: '^5.0'
+                    -   php: '8.0'
+                        #symfony: '^6.0' #TODO: allow it in separate PR
+                        calculate-code-coverage: 'yes'
 
         steps:
             -   name: Checkout source
@@ -49,20 +40,37 @@ jobs:
                     script: 'return "${{ matrix.calculate-code-coverage }}" == "yes" ? "pcov" : "none"'
                     result-encoding: string
 
+            -   name: Get symfony flex version
+                uses: actions/github-script@v3.1
+                id: flex-version
+                with:
+                    script: 'return "${{ matrix.php }}" == "7.0" ? "~1.6.0" : "^1.11"'
+                    result-encoding: string
+
             -   name: PHP setup
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
                     coverage: ${{ steps.code-coverage-driver.outputs.result }}
 
+            -   name: Downgrade composer for olf Symfony Flex
+                if: steps.flex-version.outputs.result == '~1.6.0'
+                run: composer self-update --1
+
+            -   name: Install Symfony Flex
+                if: startsWith(matrix.php, '5') == false
+                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }}
+
             -   name: Require Symfony version
-                if: matrix.symfony != '*'
-                run: |
-                    composer global require --no-interaction --no-progress symfony/flex:^1.11
-                    composer config extra.symfony.require ${{ matrix.symfony }}
+                if: matrix.symfony
+                run: composer config extra.symfony.require ${{ matrix.symfony }}
+
+            -   name: Lower minimum stability to test with Symfony 6
+                if: matrix.symfony == '^6.0'
+                run: composer config minimum-stability beta
 
             -   name: Update composer dependencies
-                run: composer update --optimize-autoloader --no-interaction --no-progress ${{ matrix.composer-flags }}
+                run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
 
             -   name: Run test suite
                 run: ./vendor/bin/phpunit -v
