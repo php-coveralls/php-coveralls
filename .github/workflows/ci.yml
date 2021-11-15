@@ -99,3 +99,4 @@ jobs:
                     composer config platform.php 2> /dev/null || composer config platform.php 5.5.0
                     composer update --no-dev --no-interaction --optimize-autoloader --no-interaction --no-progress
                     php -d phar.readonly=false box.phar build
+                    ./build/artifacts/php-coveralls.phar --version
