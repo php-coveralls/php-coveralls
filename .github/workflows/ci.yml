@@ -78,7 +78,7 @@ jobs:
             -   name: Upload coverage results to Coveralls
                 if: matrix.calculate-code-coverage == 'yes'
                 env:
-                    COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+                    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 run: bin/php-coveralls -v --exclude-no-stmt
     build-phar:
         needs: tests
