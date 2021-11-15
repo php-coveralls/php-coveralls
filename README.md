@@ -249,7 +249,7 @@ Add a new step after phpunit generate coverage report.
 ```yaml
 - name: Upload coverage results to Coveralls
   env:
-    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
   run: |
     composer global require php-coveralls/php-coveralls
     php-coveralls --coverage_clover=build/logs/clover.xml -v
