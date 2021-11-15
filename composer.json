@@ -48,12 +48,18 @@
         "symfony/http-kernel": "Allows Symfony integration"
     },
     "autoload": {
-        "psr-4": { "PhpCoveralls\\": "src/"}
+        "psr-4": {
+            "PhpCoveralls\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "PhpCoveralls\\Tests\\": "tests/"}
+        "psr-4": {
+            "PhpCoveralls\\Tests\\": "tests/"
+        }
     },
-    "bin": ["bin/php-coveralls"],
+    "bin": [
+        "bin/php-coveralls"
+    ],
     "scripts": {
         "install-dev-tools": [
             "cd dev-tools && composer update --no-interaction"
