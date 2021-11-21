@@ -15,6 +15,7 @@ jobs:
                 include:
                     -   php: '5.5'
                         composer-flags: '--prefer-lowest'
+                        calculate-code-coverage: 'yes'
                     -   php: '5.5'
                         symfony: '^3.0'
                     -   php: '5.6'
@@ -26,7 +27,7 @@ jobs:
                     -   php: '7.3'
                     -   php: '7.4'
                     -   php: '8.0'
-                        #symfony: '^6.0' #TODO: allow it in separate PR
+                        symfony: '^6.0'
                         calculate-code-coverage: 'yes'
 
         steps:
@@ -79,7 +80,20 @@ jobs:
                 if: matrix.calculate-code-coverage == 'yes'
                 env:
                     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    COVERALLS_PARALLEL: true
+                    COVERALLS_FLAG_NAME: "PHP ${{ matrix.php }} + Symfony@${{ matrix.symfony || '*' }}"
                 run: bin/php-coveralls -v --exclude-no-stmt
+
+    coveralls-finish:
+        needs: tests
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Notify Coveralls when build is finished
+                uses: coverallsapp/github-action@master
+                with:
+                    github-token: ${{ secrets.GITHUB_TOKEN }}
+                    parallel-finished: true
+
     build-phar:
         needs: tests
         runs-on: ubuntu-latest

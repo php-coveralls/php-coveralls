@@ -16,7 +16,14 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 use PhpCoveralls\Bundle\CoverallsBundle\Console\Application;
+use PhpCoveralls\Bundle\CoverallsBundle\Console\ApplicationSf6;
 
 $rootDir = getcwd();
-$app = new Application($rootDir, 'PHP client library for Coveralls API', '@package_version@');
+
+if (PHP_VERSION_ID >= 71000) {
+    $app = new ApplicationSf6($rootDir, 'PHP client library for Coveralls API', '@package_version@');
+} else {
+    $app = new Application($rootDir, 'PHP client library for Coveralls API', '@package_version@');
+}
+
 $app->run();
