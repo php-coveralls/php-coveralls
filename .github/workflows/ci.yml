@@ -89,10 +89,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: Notify Coveralls when build is finished
-                uses: coverallsapp/github-action@master
-                with:
-                    github-token: ${{ secrets.GITHUB_TOKEN }}
-                    parallel-finished: true
+                run: |
+                    curl -k https://coveralls.io/webhook?repo_token=${{ secrets.GITHUB_TOKEN }} \
+                        -d "repo_name=$GITHUB_REPOSITORY&payload[build_num]=$GITHUB_RUN_ID&payload[status]=done"
 
     build-phar:
         needs: tests
