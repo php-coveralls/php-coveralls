@@ -5,11 +5,7 @@ use PhpCsFixer\Finder;
 
 return Config::create()
     ->setRiskyAllowed(true)
-    ->setFinder(Finder::create()
-        ->in(__DIR__)
-        ->exclude('tests/Fixture')
-        ->notPath('src/Bundle/CoverallsBundle/Console/ApplicationSf6.php')
-    )
+    ->setFinder(Finder::create()->in(__DIR__)->exclude('tests/Fixture'))
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
