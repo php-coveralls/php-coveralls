@@ -1,0 +1,74 @@
+version: 2.1
+
+filters: &allow_to_run_filter
+    branches:
+        only:
+            - master
+            - ISSUE-329
+
+aliases:
+    - &prepare_stage
+        - checkout
+        - run:
+            name: Prepare PHP
+            command: echo -e "[Date]\ndate.timezone = UTC" | sudo tee /usr/local/etc/php/php.ini
+        - run:
+            name: Prepare composer
+            command: |
+                sudo composer self-update
+                composer update -o --no-interaction --no-progress $COMPOSER_FLAGS
+        - run:
+            name: Run test suite
+            command: ./vendor/bin/phpunit -v
+        - run:
+            name: Upload coverage results to Coveralls
+            command: bin/php-coveralls -v --exclude-no-stmt
+
+jobs:
+    "UnitTests PHP5_6 Symfony2_8":
+        docker:
+            -
+                image: circleci/php:5.6-fpm
+                environment:
+                    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    COVERALLS_PARALLEL: 1
+                    COVERALLS_FLAG_NAME: $CIRCLE_JOB
+                    COMPOSER_FLAGS: '--prefer-lowest'
+        steps: *prepare_stage
+
+    "UnitTests PHP8_0 Symfony5_4":
+        docker:
+            -
+                image: circleci/php:8.0-fpm
+                environment:
+                    COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    COVERALLS_PARALLEL: 1
+                    COVERALLS_FLAG_NAME: $CIRCLE_JOB
+                    COMPOSER_FLAGS: ''
+        steps: *prepare_stage
+    "Send coverage":
+        docker:
+            -
+                image: circleci/ubuntu-server:trusty-latest
+        steps:
+            - run:
+                name: Finish coverage
+                command: |
+                    curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN \
+                    -d "repo_name=$CIRCLE_PROJECT_REPONAME&payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
+
+workflows:
+    tests:
+        jobs:
+            - "UnitTests PHP5_6 Symfony2_8":
+                filters:
+                    <<: *allow_to_run_filter
+            - "UnitTests PHP8_0 Symfony5_4":
+                filters:
+                    <<: *allow_to_run_filter
+            - "Send coverage":
+                filters:
+                    <<: *allow_to_run_filter
+                requires:
+                    - "UnitTests PHP5_6 Symfony2_8"
+                    - "UnitTests PHP8_0 Symfony5_4"
