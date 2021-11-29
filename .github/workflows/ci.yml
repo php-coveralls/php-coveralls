@@ -66,10 +66,6 @@ jobs:
                 if: matrix.symfony
                 run: composer config extra.symfony.require ${{ matrix.symfony }}
 
-            -   name: Lower minimum stability to test with Symfony 6
-                if: matrix.symfony == '^6.0'
-                run: composer config minimum-stability beta
-
             -   name: Update composer dependencies
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
 
