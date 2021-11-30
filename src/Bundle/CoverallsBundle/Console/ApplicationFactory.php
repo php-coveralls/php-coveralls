@@ -10,7 +10,7 @@ use Symfony\Component\Console\SingleCommandApplication;
 /**
  * In symfony/console 3.1 and lower provides only one way to realize single command application.
  * It is possible by extending the {@see Application}
- * Since symfony/console 6 applied strict typization which makes impossible to extending.
+ * Since symfony/console 6 applied strict typing which makes impossible to extending.
  * Since symfony/console 3.1 added public method setDefaultCommand()
  * Since symfony/console 3.2 method setDefaultCommand() accepts a boolean as second parameter, so we can build
  * single command application without extending.
