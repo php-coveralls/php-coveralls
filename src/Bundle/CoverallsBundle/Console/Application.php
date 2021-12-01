@@ -4,6 +4,7 @@ namespace PhpCoveralls\Bundle\CoverallsBundle\Console;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Command\CoverallsJobsCommand;
 use Symfony\Component\Console\Application as BaseApplication;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 
 /**
@@ -27,7 +28,7 @@ class Application extends BaseApplication
      * @param string $name    The name of the application
      * @param string $version The version of the application
      */
-    public function __construct($rootDir, $name = 'UNKNOWN', $version = 'UNKNOWN')
+    public function __construct(string $rootDir, string $name = 'UNKNOWN', string $version = 'UNKNOWN')
     {
         $this->rootDir = $rootDir;
 
@@ -41,7 +42,7 @@ class Application extends BaseApplication
      *
      * @see \Symfony\Component\Console\Application::getDefinition()
      */
-    public function getDefinition()
+    public function getDefinition(): InputDefinition
     {
         $inputDefinition = parent::getDefinition();
         // clear out the normal first argument, which is the command name
@@ -57,7 +58,7 @@ class Application extends BaseApplication
      *
      * @see \Symfony\Component\Console\Application::getCommandName()
      */
-    protected function getCommandName(InputInterface $input)
+    protected function getCommandName(InputInterface $input): string
     {
         return 'coveralls:v1:jobs';
     }
@@ -67,7 +68,7 @@ class Application extends BaseApplication
      *
      * @see \Symfony\Component\Console\Application::getDefaultCommands()
      */
-    protected function getDefaultCommands()
+    protected function getDefaultCommands(): array
     {
         // Keep the core default commands to have the HelpCommand
         // which is used when using the --help option
@@ -80,10 +81,8 @@ class Application extends BaseApplication
 
     /**
      * Create CoverallsJobsCommand.
-     *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Console\CoverallsJobsCommand
      */
-    protected function createCoverallsJobsCommand()
+    protected function createCoverallsJobsCommand(): CoverallsJobsCommand
     {
         $command = new CoverallsJobsCommand();
         $command->setRootDir($this->rootDir);
