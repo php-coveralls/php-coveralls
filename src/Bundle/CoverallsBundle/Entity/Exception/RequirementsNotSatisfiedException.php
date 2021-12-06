@@ -59,7 +59,7 @@ For Travis users:
 For CircleCI users:
 
   - CIRCLECI
-  - CIRCLE_BUILD_NUM
+  - CIRCLE_WORKFLOW_ID
   - COVERALLS_REPO_TOKEN
 
 For Jenkins users:
