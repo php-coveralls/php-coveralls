@@ -16,13 +16,13 @@ jobs:
                     -   php: '5.5'
                         os: ubuntu-latest
                         composer-flags: '--prefer-lowest'
-                        calculate-code-coverage: 'yes'
+                        coverage: 'xdebug'
                     -   php: '5.5'
                         os: ubuntu-latest
                         symfony: '^3.0'
                     -   php: '5.5'
                         os: windows-latest
-                        calculate-code-coverage: 'yes'
+                        coverage: 'xdebug'
                     -   php: '5.6'
                         os: ubuntu-latest
                     -   php: '7.0'
@@ -39,23 +39,15 @@ jobs:
                         os: ubuntu-latest
                     -   php: '7.4'
                         os: windows-latest
-                    -   php: '8.0'
-                        os: windows-latest
+                        coverage: 'pcov'
                     -   php: '8.0'
                         os: ubuntu-latest
                         symfony: '^6.0'
-                        calculate-code-coverage: 'yes'
+                        coverage: 'pcov'
 
         steps:
             -   name: Checkout source
                 uses: actions/checkout@v2
-
-            -   name: Get code coverage driver
-                uses: actions/github-script@v3.1
-                id: code-coverage-driver
-                with:
-                    script: 'return "${{ matrix.calculate-code-coverage }}" == "yes" ? "pcov" : "none"'
-                    result-encoding: string
 
             -   name: Get symfony flex version
                 uses: actions/github-script@v3.1
@@ -68,9 +60,9 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    coverage: ${{ steps.code-coverage-driver.outputs.result }}
+                    coverage: ${{ matrix.coverage || 'none' }}
 
-            -   name: Downgrade composer for olf Symfony Flex
+            -   name: Downgrade composer for old Symfony Flex
                 if: steps.flex-version.outputs.result == '~1.6.0'
                 run: composer self-update --1
 
@@ -86,15 +78,15 @@ jobs:
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
 
             -   name: Run test suite
-                run: ./vendor/bin/phpunit -v
+                run: php vendor/bin/phpunit -v
 
             -   name: Upload coverage results to Coveralls
-                if: matrix.calculate-code-coverage == 'yes'
+                if: matrix.coverage
                 env:
                     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     COVERALLS_PARALLEL: true
                     COVERALLS_FLAG_NAME: "${{matrix.os}} | PHP${{matrix.php}} Symfony@${{matrix.symfony || '*'}}"
-                run: bin/php-coveralls -v --exclude-no-stmt
+                run: php bin/php-coveralls -v --exclude-no-stmt
 
     coveralls-finish:
         needs: tests
