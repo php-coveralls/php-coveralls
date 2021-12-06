@@ -94,7 +94,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env = [];
         $env['COVERALLS_REPO_TOKEN'] = 'token';
         $env['CIRCLECI'] = 'true';
-        $env['CIRCLE_BUILD_NUM'] = $serviceNumber;
+        $env['CIRCLE_WORKFLOW_ID'] = $serviceNumber;
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -404,7 +404,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertCount(4, $readEnv);
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
         $this->assertArrayHasKey('CIRCLECI', $readEnv);
-        $this->assertArrayHasKey('CIRCLE_BUILD_NUM', $readEnv);
+        $this->assertArrayHasKey('CIRCLE_WORKFLOW_ID', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
     }
 

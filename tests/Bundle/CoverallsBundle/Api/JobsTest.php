@@ -320,7 +320,7 @@ class JobsTest extends ProjectTestCase
         $server = [];
         $server['COVERALLS_REPO_TOKEN'] = $repoToken;
         $server['CIRCLECI'] = 'true';
-        $server['CIRCLE_BUILD_NUM'] = $serviceNumber;
+        $server['CIRCLE_WORKFLOW_ID'] = $serviceNumber;
 
         $object = $this->createJobsWith();
         $jsonFile = $this->collectJsonFile();

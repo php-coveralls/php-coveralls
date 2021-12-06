@@ -157,19 +157,19 @@ class CiEnvVarsCollector
     /**
      * Fill CircleCI environment variables.
      *
-     * "CIRCLECI", "CIRCLE_BUILD_NUM" must be set.
+     * "CIRCLECI", "CIRCLE_WORKFLOW_ID" must be set.
      *
      * @return $this
      */
     protected function fillCircleCi()
     {
-        if (isset($this->env['CIRCLECI']) && $this->env['CIRCLECI'] && isset($this->env['CIRCLE_BUILD_NUM'])) {
-            $this->env['CI_BUILD_NUMBER'] = $this->env['CIRCLE_BUILD_NUM'];
+        if (isset($this->env['CIRCLECI']) && $this->env['CIRCLECI'] && isset($this->env['CIRCLE_WORKFLOW_ID'])) {
+            $this->env['CI_BUILD_NUMBER'] = $this->env['CIRCLE_WORKFLOW_ID'];
             $this->env['CI_NAME'] = 'circleci';
 
             // backup
             $this->readEnv['CIRCLECI'] = $this->env['CIRCLECI'];
-            $this->readEnv['CIRCLE_BUILD_NUM'] = $this->env['CIRCLE_BUILD_NUM'];
+            $this->readEnv['CIRCLE_WORKFLOW_ID'] = $this->env['CIRCLE_WORKFLOW_ID'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
         }
 
