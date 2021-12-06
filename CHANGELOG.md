@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+## 2.5.2
+
+### Bug fix
+
+- [#330](https://github.com/php-coveralls/php-coveralls/pull/330) Changed `CIRCLE_BUILD_NUM` to `CIRCLE_WORKFLOW_ID`
+- [#328](https://github.com/php-coveralls/php-coveralls/pull/328)
+Added compatibility with Symfony 6
+
+### Miscellaneous
+
+- [#325](https://github.com/php-coveralls/php-coveralls/pull/325) CI: Migrate to GitHub Actions
+
 ## 2.5.1
 
 ### Bug fix
@@ -10,6 +22,7 @@ CHANGELOG
 ## 2.5.0
 
 ### Miscellaneous
+
 - [#322](https://github.com/php-coveralls/php-coveralls/pull/322) Allow for Symfony:^6
 - [#321](https://github.com/php-coveralls/php-coveralls/pull/321) Disallow `psr/log` v3
 - [#319](https://github.com/php-coveralls/php-coveralls/pull/319) Added fallback to show where is problem with non-UTF8 char
