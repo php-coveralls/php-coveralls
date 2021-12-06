@@ -2,13 +2,11 @@
 
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Console;
 
-use PhpCoveralls\Bundle\CoverallsBundle\Console\Application;
+use PhpCoveralls\Bundle\CoverallsBundle\Console\ApplicationFactory;
 use PhpCoveralls\Tests\ProjectTestCase;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
- * @covers \PhpCoveralls\Bundle\CoverallsBundle\Console\Application
- *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
 class ApplicationTest extends ProjectTestCase
@@ -21,7 +19,7 @@ class ApplicationTest extends ProjectTestCase
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
 
-        $app = new Application($this->rootDir, 'Coveralls API client for PHP', '1.0.0');
+        $app = ApplicationFactory::create($this->rootDir);
         $app->setAutoExit(false); // avoid to call exit() in Application
 
         // run
