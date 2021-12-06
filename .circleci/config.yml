@@ -36,7 +36,7 @@ jobs:
                     COMPOSER_FLAGS: '--prefer-lowest'
         steps: *prepare_stage
 
-    "UnitTests PHP8_0 Symfony5_4":
+    "UnitTests PHP8_0 Symfony6_0":
         docker:
             -
                 image: circleci/php:8.0-fpm
@@ -63,7 +63,7 @@ workflows:
             - "UnitTests PHP5_6 Symfony2_8":
                 filters:
                     <<: *allow_to_run_filter
-            - "UnitTests PHP8_0 Symfony5_4":
+            - "UnitTests PHP8_0 Symfony6_0":
                 filters:
                     <<: *allow_to_run_filter
             - "Send coverage":
@@ -71,4 +71,4 @@ workflows:
                     <<: *allow_to_run_filter
                 requires:
                     - "UnitTests PHP5_6 Symfony2_8"
-                    - "UnitTests PHP8_0 Symfony5_4"
+                    - "UnitTests PHP8_0 Symfony6_0"
