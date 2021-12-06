@@ -34,6 +34,7 @@ jobs:
                     COVERALLS_PARALLEL: 1
                     COVERALLS_FLAG_NAME: $CIRCLE_JOB
                     COMPOSER_FLAGS: '--prefer-lowest'
+                    XDEBUG_MODE: coverage
         steps: *prepare_stage
 
     "UnitTests PHP8_0 Symfony6_0":
@@ -45,6 +46,7 @@ jobs:
                     COVERALLS_PARALLEL: 1
                     COVERALLS_FLAG_NAME: $CIRCLE_JOB
                     COMPOSER_FLAGS: ''
+                    XDEBUG_MODE: coverage
         steps: *prepare_stage
     "Send coverage":
         docker:
