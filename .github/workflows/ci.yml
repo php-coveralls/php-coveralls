@@ -8,7 +8,6 @@ jobs:
     tests:
         name: "${{matrix.os}} | PHP${{matrix.php}} Symfony@${{matrix.symfony || '*'}} ${{ matrix.composer-flags}}"
         runs-on: ${{matrix.os}}
-
         strategy:
             fail-fast: false
             matrix:
