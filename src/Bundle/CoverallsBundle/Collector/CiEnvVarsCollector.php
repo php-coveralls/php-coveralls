@@ -63,6 +63,7 @@ class CiEnvVarsCollector
             ->fillCircleCi()
             ->fillAppVeyor()
             ->fillJenkins()
+            ->fillGitlab()
             ->fillGithubActions()
             ->fillLocal()
             ->fillRepoToken()
@@ -221,6 +222,31 @@ class CiEnvVarsCollector
             // backup
             $this->readEnv['BUILD_NUMBER'] = $this->env['BUILD_NUMBER'];
             $this->readEnv['JENKINS_URL'] = $this->env['JENKINS_URL'];
+            $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill Jenkins environment variables.
+     *
+     * "JENKINS_URL", "BUILD_NUMBER" must be set.
+     *
+     * @return $this
+     */
+    protected function fillGitlab()
+    {
+        if (isset($this->env['CI_SERVER_NAME']) && $this->env['CI_SERVER_NAME'] === 'GitLab') {
+            $this->env['CI_BRANCH'] = $this->env['CI_COMMIT_BRANCH'];
+            $this->env['CI_BUILD_NUMBER'] = $this->env['CI_PIPELINE_IID'];
+            $this->env['CI_BUILD_URL'] = $this->env['CI_SERVER_URL'];
+            $this->env['CI_NAME'] = 'gitlab';
+
+            // backup
+            $this->readEnv['CI_COMMIT_BRANCH'] = $this->env['CI_COMMIT_BRANCH'];
+            $this->readEnv['CI_PIPELINE_IID'] = $this->env['CI_PIPELINE_IID'];
+            $this->readEnv['CI_SERVER_URL'] = $this->env['CI_SERVER_URL'];
             $this->readEnv['CI_NAME'] = $this->env['CI_NAME'];
         }
 

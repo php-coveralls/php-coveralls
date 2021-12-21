@@ -74,13 +74,21 @@ For AppVeyor users:
   - APPVEYOR_BUILD_NUMBER
 
 For Github Actions users:
+
   - GITHUB_REF
   - GITHUB_ACTIONS
   - GITHUB_RUN_ID
   - GITHUB_EVENT_NAME
   - COVERALLS_REPO_TOKEN
 
-From local environment:
+For GitLab users:
+
+  - CI_COMMIT_BRANCH
+  - CI_SERVER_URL
+  - CI_PIPELINE_IID
+  - COVERALLS_REPO_TOKEN
+  
+For local environment:
 
   - COVERALLS_RUN_LOCALLY
   - COVERALLS_REPO_TOKEN
