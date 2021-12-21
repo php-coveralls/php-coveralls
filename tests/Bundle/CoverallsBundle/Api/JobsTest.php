@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs
@@ -19,6 +20,8 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 class JobsTest extends ProjectTestCase
 {
+    use ProphecyTrait;
+
     // getJsonFile()
 
     /**
