@@ -149,7 +149,7 @@ class Configurator
 
         // validate
         if (count($paths) === 0) {
-            throw new InvalidConfigurationException("coverage_clover XML file is not readable: ${path}");
+            throw new InvalidConfigurationException("coverage_clover XML file is not readable: {$path}");
         }
 
         return $paths;
@@ -220,14 +220,14 @@ class Configurator
         $realFilePath = $file->getRealPath($realpath, $rootDir);
 
         if ($realFilePath !== false && !$file->isRealFileWritable($realFilePath)) {
-            throw new InvalidConfigurationException("json_path is not writable: ${realFilePath}");
+            throw new InvalidConfigurationException("json_path is not writable: {$realFilePath}");
         }
 
         // validate parent dir
         $realDir = $file->getRealDir($realpath, $rootDir);
 
         if (!$file->isRealDirWritable($realDir)) {
-            throw new InvalidConfigurationException("json_path is not writable: ${realFilePath}");
+            throw new InvalidConfigurationException("json_path is not writable: {$realFilePath}");
         }
 
         return $realpath;
