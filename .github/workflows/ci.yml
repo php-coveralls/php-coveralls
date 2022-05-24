@@ -29,6 +29,10 @@ jobs:
                     -   php: '8.0'
                         symfony: '^6.0'
                         calculate-code-coverage: 'yes'
+                    -   php: '8.1'
+                        symfony: '^6.0'
+                    -   php: '8.2'
+                        symfony: '^6.0'
 
         steps:
             -   name: Checkout source
@@ -68,7 +72,12 @@ jobs:
                 run: composer config extra.symfony.require ${{ matrix.symfony }}
 
             -   name: Update composer dependencies
+                if: matrix.php != '8.2'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
+
+            -   name: "Update composer dependencies (PHP 8.2, ignore platform)"
+                if: matrix.php == '8.2'
+                run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
             -   name: Run test suite
                 run: ./vendor/bin/phpunit -v
