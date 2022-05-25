@@ -83,7 +83,7 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertSame(200 / 3, $object->getLineCoverage());
+        $this->assertWithDelta(200 / 3, $object->getLineCoverage(), 0.0000000000001);
     }
 
     // merge()
@@ -99,7 +99,7 @@ class MetricsTest extends ProjectTestCase
 
         $this->assertSame(3, $object->getStatements());
         $this->assertSame(2, $object->getCoveredStatements());
-        $this->assertSame(200 / 3, $object->getLineCoverage());
+        $this->assertWithDelta(200 / 3, $object->getLineCoverage(), 0.0000000000001);
     }
 
     /**
@@ -113,7 +113,7 @@ class MetricsTest extends ProjectTestCase
 
         $this->assertSame(6, $object->getStatements());
         $this->assertSame(4, $object->getCoveredStatements());
-        $this->assertSame(400 / 6, $object->getLineCoverage());
+        $this->assertWithDelta(400 / 6, $object->getLineCoverage(), 0.0000000000001);
     }
 
     protected function legacySetUp()
@@ -122,5 +122,16 @@ class MetricsTest extends ProjectTestCase
         $this->coverage[1] = 1;
         $this->coverage[3] = 1;
         $this->coverage[4] = 0;
+    }
+
+    private function assertWithDelta($expected, $actual, $delta, $message = '')
+    {
+        if (method_exists(ProjectTestCase::class, 'assertEqualsWithDelta')) {
+            parent::assertEqualsWithDelta($expected, $actual, $delta, $message);
+
+            return;
+        }
+
+        static::assertEquals($expected, $actual, $message, $delta);
     }
 }
