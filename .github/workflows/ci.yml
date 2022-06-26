@@ -54,7 +54,7 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: ${{ steps.code-coverage-driver.outputs.result }}
 
-            -   name: Downgrade composer for olf Symfony Flex
+            -   name: Downgrade composer for old Symfony Flex
                 if: steps.flex-version.outputs.result == '~1.6.0'
                 run: composer self-update --1
 
