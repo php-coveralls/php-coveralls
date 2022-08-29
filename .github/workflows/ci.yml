@@ -63,9 +63,13 @@ jobs:
                 if: steps.flex-version.outputs.result == '~1.6.0'
                 run: composer self-update --1
 
-            -   name: Install Symfony Flex
+            -   name: "Disallow Symfony Flex to run as a Composer plugin (global)"
+                if: startsWith(matrix.php, '5') == false && steps.flex-version.outputs.result != '~1.6.0'
+                run: composer -g config allow-plugins.symfony/flex false
+
+            -   name: "Install Symfony Flex"
                 if: startsWith(matrix.php, '5') == false
-                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }}
+                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }} --no-plugins
 
             -   name: Require Symfony version
                 if: matrix.symfony
