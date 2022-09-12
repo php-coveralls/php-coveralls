@@ -24,13 +24,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.2/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.2/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 

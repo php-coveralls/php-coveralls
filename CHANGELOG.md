@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+## 2.5.3
+
+### Miscellaneous
+
+- GH Actions: various updates (#346)
+- MetricsTest: fix tests failing on imprecise floats (#344)
+- PHP 8.1 | Fix "passing null to non-nullable" deprecations (tests only) (#345)
+- PHP 8.2 | Fix deprecated embedded variables in text strings (#343)
+- Fix minor typo in GitHub Action step's name (#349)
+
 ## 2.5.2
 
 ### Bug fix
