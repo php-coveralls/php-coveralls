@@ -29,10 +29,6 @@ jobs:
                     -   php: '8.0'
                         symfony: '^6.0'
                         calculate-code-coverage: 'yes'
-                    -   php: '8.1'
-                        symfony: '^6.0'
-                    -   php: '8.2'
-                        symfony: '^6.0'
 
         steps:
             -   name: Checkout source
