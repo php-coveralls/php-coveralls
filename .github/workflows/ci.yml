@@ -46,7 +46,7 @@ jobs:
 
         steps:
             -   name: Checkout source
-                uses: actions/checkout@v2
+                uses: actions/checkout@v3
 
             -   name: Get symfony flex version
                 uses: actions/github-script@v3.1
@@ -59,22 +59,32 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
+                    ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
                     coverage: ${{ matrix.coverage || 'none' }}
 
             -   name: Downgrade composer for old Symfony Flex
                 if: steps.flex-version.outputs.result == '~1.6.0'
                 run: composer self-update --1
 
-            -   name: Install Symfony Flex
+            -   name: "Disallow Symfony Flex to run as a Composer plugin (global)"
+                if: startsWith(matrix.php, '5') == false && steps.flex-version.outputs.result != '~1.6.0'
+                run: composer -g config allow-plugins.symfony/flex false
+
+            -   name: "Install Symfony Flex"
                 if: startsWith(matrix.php, '5') == false
-                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }}
+                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }} --no-plugins
 
             -   name: Require Symfony version
                 if: matrix.symfony
                 run: composer config extra.symfony.require ${{ matrix.symfony }}
 
             -   name: Update composer dependencies
+                if: matrix.php != '8.2'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
+
+            -   name: "Update composer dependencies (PHP 8.2, ignore platform)"
+                if: matrix.php == '8.2'
+                run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
             -   name: Run test suite
                 run: php vendor/bin/phpunit -v
@@ -101,7 +111,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
-                uses: actions/checkout@v2
+                uses: actions/checkout@v3
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2

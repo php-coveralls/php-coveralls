@@ -590,6 +590,7 @@ class JobsTest extends ProjectTestCase
     protected function createConfiguration()
     {
         $config = new Configuration();
+        $config->setRootDir('');
 
         return $config->addCloverXmlPath($this->cloverXmlPath);
     }
