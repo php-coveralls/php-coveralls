@@ -6,40 +6,47 @@ on:
 
 jobs:
     tests:
-        name: "PHP ${{ matrix.php }} + Composer ${{ matrix.composer-flags }} + Symfony@${{ matrix.symfony || '*' }}"
-        runs-on: ubuntu-latest
-
+        name: "${{matrix.os}} | PHP${{matrix.php}} Symfony@${{matrix.symfony || '*'}} ${{ matrix.composer-flags}}"
+        runs-on: ${{matrix.os}}
         strategy:
             fail-fast: false
             matrix:
                 include:
                     -   php: '5.5'
+                        os: ubuntu-latest
                         composer-flags: '--prefer-lowest'
-                        calculate-code-coverage: 'yes'
+                        coverage: 'xdebug'
                     -   php: '5.5'
+                        os: ubuntu-latest
                         symfony: '^3.0'
+                    -   php: '5.5'
+                        os: windows-latest
+                        coverage: 'xdebug'
                     -   php: '5.6'
+                        os: ubuntu-latest
                     -   php: '7.0'
+                        os: ubuntu-latest
                     -   php: '7.1'
+                        os: ubuntu-latest
                         symfony: '^4.0'
                     -   php: '7.2'
+                        os: ubuntu-latest
                         symfony: '^5.0'
                     -   php: '7.3'
+                        os: ubuntu-latest
                     -   php: '7.4'
+                        os: ubuntu-latest
+                    -   php: '7.4'
+                        os: windows-latest
+                        coverage: 'pcov'
                     -   php: '8.0'
+                        os: ubuntu-latest
                         symfony: '^6.0'
-                        calculate-code-coverage: 'yes'
+                        coverage: 'pcov'
 
         steps:
             -   name: Checkout source
                 uses: actions/checkout@v3
-
-            -   name: Get code coverage driver
-                uses: actions/github-script@v3.1
-                id: code-coverage-driver
-                with:
-                    script: 'return "${{ matrix.calculate-code-coverage }}" == "yes" ? "pcov" : "none"'
-                    result-encoding: string
 
             -   name: Get symfony flex version
                 uses: actions/github-script@v3.1
@@ -53,7 +60,7 @@ jobs:
                 with:
                     php-version: ${{ matrix.php }}
                     ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
-                    coverage: ${{ steps.code-coverage-driver.outputs.result }}
+                    coverage: ${{ matrix.coverage || 'none' }}
 
             -   name: Downgrade composer for old Symfony Flex
                 if: steps.flex-version.outputs.result == '~1.6.0'
@@ -80,15 +87,15 @@ jobs:
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
             -   name: Run test suite
-                run: ./vendor/bin/phpunit -v
+                run: php vendor/bin/phpunit -v
 
             -   name: Upload coverage results to Coveralls
-                if: matrix.calculate-code-coverage == 'yes'
+                if: matrix.coverage
                 env:
                     COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     COVERALLS_PARALLEL: true
-                    COVERALLS_FLAG_NAME: "PHP ${{ matrix.php }} + Symfony@${{ matrix.symfony || '*' }}"
-                run: bin/php-coveralls -v --exclude-no-stmt
+                    COVERALLS_FLAG_NAME: "${{matrix.os}} | PHP${{matrix.php}} Symfony@${{matrix.symfony || '*'}}"
+                run: php bin/php-coveralls -v --exclude-no-stmt
 
     coveralls-finish:
         needs: tests
