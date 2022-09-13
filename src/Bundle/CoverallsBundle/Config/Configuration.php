@@ -94,8 +94,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setEntryPoint($entryPoint)
-    {
+    public function setEntryPoint($entryPoint): Configuration {
         $this->entryPoint = \rtrim($entryPoint, '/');
 
         return $this;
@@ -106,8 +105,7 @@ class Configuration
      *
      * @return string
      */
-    public function getEntryPoint()
-    {
+    public function getEntryPoint(): string {
         return $this->entryPoint;
     }
 
@@ -118,8 +116,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setRepoToken($repoToken)
-    {
+    public function setRepoToken($repoToken): Configuration {
         $this->repoToken = $repoToken;
 
         return $this;
@@ -130,8 +127,7 @@ class Configuration
      *
      * @return bool
      */
-    public function hasRepoToken()
-    {
+    public function hasRepoToken(): bool {
         return $this->repoToken !== null;
     }
 
@@ -140,8 +136,7 @@ class Configuration
      *
      * @return null|string
      */
-    public function getRepoToken()
-    {
+    public function getRepoToken(): ?string {
         return $this->repoToken;
     }
 
@@ -152,8 +147,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setServiceName($serviceName)
-    {
+    public function setServiceName(string $serviceName): Configuration {
         $this->serviceName = $serviceName;
 
         return $this;
@@ -164,8 +158,7 @@ class Configuration
      *
      * @return bool
      */
-    public function hasServiceName()
-    {
+    public function hasServiceName(): bool {
         return $this->serviceName !== null;
     }
 
@@ -174,20 +167,17 @@ class Configuration
      *
      * @return null|string
      */
-    public function getServiceName()
-    {
+    public function getServiceName(): ?string {
         return $this->serviceName;
     }
 
-    public function setRootDir($rootDir)
-    {
+    public function setRootDir($rootDir): Configuration {
         $this->rootDir = $rootDir;
 
         return $this;
     }
 
-    public function getRootDir()
-    {
+    public function getRootDir(): string {
         return $this->rootDir;
     }
 
@@ -198,8 +188,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setCloverXmlPaths(array $cloverXmlPaths)
-    {
+    public function setCloverXmlPaths(array $cloverXmlPaths): Configuration {
         $this->cloverXmlPaths = $cloverXmlPaths;
 
         return $this;
@@ -212,8 +201,7 @@ class Configuration
      *
      * @return $this
      */
-    public function addCloverXmlPath($cloverXmlPath)
-    {
+    public function addCloverXmlPath($cloverXmlPath): Configuration {
         $this->cloverXmlPaths[] = $cloverXmlPath;
 
         return $this;
@@ -224,8 +212,7 @@ class Configuration
      *
      * @return string[]
      */
-    public function getCloverXmlPaths()
-    {
+    public function getCloverXmlPaths(): array {
         return $this->cloverXmlPaths;
     }
 
@@ -236,8 +223,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setJsonPath($jsonPath)
-    {
+    public function setJsonPath($jsonPath): Configuration {
         $this->jsonPath = $jsonPath;
 
         return $this;
@@ -248,7 +234,7 @@ class Configuration
      *
      * @return string
      */
-    public function getJsonPath()
+    public function getJsonPath(): string
     {
         return $this->jsonPath;
     }
@@ -260,8 +246,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setDryRun($dryRun)
-    {
+    public function setDryRun($dryRun): Configuration {
         $this->dryRun = $dryRun;
 
         return $this;
@@ -272,8 +257,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isDryRun()
-    {
+    public function isDryRun(): bool {
         return $this->dryRun;
     }
 
@@ -284,8 +268,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setExcludeNoStatements($excludeNoStatements)
-    {
+    public function setExcludeNoStatements($excludeNoStatements): Configuration {
         $this->excludeNoStatements = $excludeNoStatements;
 
         return $this;
@@ -298,8 +281,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setExcludeNoStatementsUnlessFalse($excludeNoStatements)
-    {
+    public function setExcludeNoStatementsUnlessFalse($excludeNoStatements): Configuration {
         if ($excludeNoStatements) {
             $this->excludeNoStatements = true;
         }
@@ -312,8 +294,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isExcludeNoStatements()
-    {
+    public function isExcludeNoStatements(): bool {
         return $this->excludeNoStatements;
     }
 
@@ -324,8 +305,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setVerbose($verbose)
-    {
+    public function setVerbose($verbose): Configuration {
         $this->verbose = $verbose;
 
         return $this;
@@ -336,8 +316,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isVerbose()
-    {
+    public function isVerbose(): bool {
         return $this->verbose;
     }
 
@@ -348,8 +327,7 @@ class Configuration
      *
      * @return $this
      */
-    public function setEnv($env)
-    {
+    public function setEnv($env): Configuration {
         $this->env = $env;
 
         return $this;
@@ -360,8 +338,7 @@ class Configuration
      *
      * @return string
      */
-    public function getEnv()
-    {
+    public function getEnv(): string {
         return $this->env;
     }
 
@@ -370,8 +347,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isTestEnv()
-    {
+    public function isTestEnv(): bool {
         return $this->env === 'test';
     }
 
@@ -380,8 +356,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isDevEnv()
-    {
+    public function isDevEnv(): bool {
         return $this->env === 'dev';
     }
 
@@ -390,8 +365,7 @@ class Configuration
      *
      * @return bool
      */
-    public function isProdEnv()
-    {
+    public function isProdEnv(): bool {
         return $this->env === 'prod';
     }
 }

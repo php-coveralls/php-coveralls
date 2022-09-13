@@ -50,7 +50,7 @@ class Jobs extends CoverallsApi
         $xmlCollector = new CloverXmlCoverageCollector();
 
         foreach ($cloverXmlPaths as $cloverXmlPath) {
-            $xml = simplexml_load_file($cloverXmlPath);
+            $xml = simplexml_load_string(file_get_contents($cloverXmlPath));
 
             $xmlCollector->collect($xml, $rootDir);
         }

@@ -29,7 +29,7 @@ class CloverXmlCoverageCollector
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
      */
-    public function collect(\SimpleXMLElement $xml, $rootDir)
+    public function collect(\SimpleXMLElement $xml, string $rootDir)
     {
         $root = rtrim($rootDir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
