@@ -116,13 +116,70 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 7.0
+                    php-version: 8.1
+                    extensions: phar, openssl, sodium
+                    coverage: none
+                    ini-values: phar.readonly=Off, error_reporting=-1, display_errors=On, zend.assertions=1
+                    # Autoload files generated with Composer 2.3+ are not compatible with PHP < 7.0.
+                    tools: composer:2.2
+
+            -   name: Set Composer platform
+                run: composer config platform.php 5.5.0
+
+            -   name: Install Composer dependencies
+                uses: ramsey/composer-install@v2
+                with:
+                    composer-options: "--no-dev --optimize-autoloader"
+
+            # Note: do NOT turn on the requirement checker in the box config as it is no longer
+            # compatible with PHP < 7.2.
+            -   name: Install Box
+                run: wget https://github.com/humbug/box/releases/latest/download/box.phar -O box.phar && chmod 0755 box.phar
+
+            -   name: Validate configuration
+                run: php box.phar validate -i box.json
+
+            -   name: Building binary...
+                run: php box.phar compile -v --config=box.json
+
+            -   name: Show info about the build phar
+                run: php box.phar info -l ./build/artifacts/php-coveralls.phar
+
+            -   name: Upload the Phar artifact
+                uses: actions/upload-artifact@v3
+                with:
+                    name: php-coveralls-phar
+                    path: ./build/artifacts/php-coveralls.phar
+                    retention-days: 30
+
+    test-phar:
+        needs: build-phar
+        name: "Test Phar PHP ${{ matrix.php }}"
+        runs-on: ubuntu-latest
+
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    -   php: '5.5'
+                    -   php: '7.2'
+                    -   php: '8.0'
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+
+            -   name: Download the Phar artifact
+                uses: actions/download-artifact@v3
+                with:
+                    name: php-coveralls-phar
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    ini-values: error_reporting=-1, display_errors=On, zend.assertions=1
                     coverage: none
 
-            -   name: Build PHAR
-                run: |
-                    curl -LSs https://box-project.github.io/box2/installer.php | php
-                    composer config platform.php 2> /dev/null || composer config platform.php 5.5.0
-                    composer update --no-dev --no-interaction --optimize-autoloader --no-interaction --no-progress
-                    php -d phar.readonly=false box.phar build
-                    ./build/artifacts/php-coveralls.phar --version
+            -   name: Test the Phar is functional
+                run: php php-coveralls.phar --version
