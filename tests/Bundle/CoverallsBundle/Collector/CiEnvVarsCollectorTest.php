@@ -153,6 +153,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_EVENT_NAME'] = 'push';
         $env['GITHUB_REF'] = 'refs/heads/master';
         $env['GITHUB_RUN_ID'] = '275038505';
+        $env['GITHUB_RUN_NUMBER'] = '42';
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -163,6 +164,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame($jobId, $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame('42', $actual['CI_BUILD_NUMBER']);
 
         $this->assertArrayHasKey('CI_BRANCH', $actual);
         $this->assertSame('master', $actual['CI_BRANCH']);
@@ -183,6 +187,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_EVENT_NAME'] = 'pull_request';
         $env['GITHUB_REF'] = 'refs/pull/1/merge';
         $env['GITHUB_RUN_ID'] = '275038505';
+        $env['GITHUB_RUN_NUMBER'] = '42';
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -193,6 +198,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame('275038505', $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame('42', $actual['CI_BUILD_NUMBER']);
 
         $this->assertArrayHasKey('CI_BRANCH', $actual);
         $this->assertSame('refs/pull/1/merge', $actual['CI_BRANCH']);
@@ -213,6 +221,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $env['GITHUB_EVENT_NAME'] = 'push';
         $env['GITHUB_REF'] = 'refs/tags/v123.456.789';
         $env['GITHUB_RUN_ID'] = '275038505';
+        $env['GITHUB_RUN_NUMBER'] = '42';
 
         $object = $this->createCiEnvVarsCollector();
 
@@ -223,6 +232,9 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $this->assertArrayHasKey('CI_JOB_ID', $actual);
         $this->assertSame('275038505', $actual['CI_JOB_ID']);
+
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame('42', $actual['CI_BUILD_NUMBER']);
 
         $this->assertArrayHasKey('CI_BRANCH', $actual);
         $this->assertSame('v123.456.789', $actual['CI_BRANCH']);
