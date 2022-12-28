@@ -142,6 +142,42 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
     /**
      * @test
      */
+    public function shouldCollectGitLabEnvVars()
+    {
+        $serviceName = 'gitlab';
+        $serviceNumber = '123';
+        $buildUrl = 'http://localhost:8080';
+        $branch = 'test';
+
+        $env = [];
+        $env['CI_SERVER_NAME'] = 'GitLab';
+        $env['COVERALLS_REPO_TOKEN'] = 'token';
+        $env['CI_SERVER_URL'] = $buildUrl;
+        $env['CI_PIPELINE_IID'] = $serviceNumber;
+        $env['CI_COMMIT_BRANCH'] = $branch;
+
+        $object = $this->createCiEnvVarsCollector();
+
+        $actual = $object->collect($env);
+
+        $this->assertArrayHasKey('CI_NAME', $actual);
+        $this->assertSame($serviceName, $actual['CI_NAME']);
+
+        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        $this->assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
+
+        $this->assertArrayHasKey('CI_BUILD_URL', $actual);
+        $this->assertSame($buildUrl, $actual['CI_BUILD_URL']);
+
+        $this->assertArrayHasKey('CI_BRANCH', $actual);
+        $this->assertSame($branch, $actual['CI_BRANCH']);
+
+        return $object;
+    }
+
+    /**
+     * @test
+     */
     public function shouldCollectGithubActionsEnvVars()
     {
         $serviceName = 'github';
@@ -422,6 +458,24 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
         $this->assertArrayHasKey('JENKINS_URL', $readEnv);
         $this->assertArrayHasKey('BUILD_NUMBER', $readEnv);
+        $this->assertArrayHasKey('CI_NAME', $readEnv);
+    }
+
+    /**
+     * @test
+     * @depends shouldCollectGitLabEnvVars
+     *
+     * @param CiEnvVarsCollector $object
+     */
+    public function shouldHaveReadEnvAfterCollectGitLabEnvVars(CiEnvVarsCollector $object)
+    {
+        $readEnv = $object->getReadEnv();
+
+        $this->assertCount(5, $readEnv);
+        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        $this->assertArrayHasKey('CI_COMMIT_BRANCH', $readEnv);
+        $this->assertArrayHasKey('CI_PIPELINE_IID', $readEnv);
+        $this->assertArrayHasKey('CI_SERVER_URL', $readEnv);
         $this->assertArrayHasKey('CI_NAME', $readEnv);
     }
 
