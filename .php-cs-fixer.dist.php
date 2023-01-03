@@ -18,6 +18,7 @@ $config
             'identical' => false,
             'less_and_greater' => false,
         ],
+        'ternary_to_elvis_operator' => false,
 
         'native_constant_invocation' => false,
         'native_function_invocation' => false,
@@ -30,7 +31,6 @@ $config
         'explicit_string_variable' => false,
         'string_length_to_empty' => false,
         'php_unit_test_case_static_method_calls' => false,
-        'ternary_to_elvis_operator' => false,
         'ternary_operator_spaces' => false,
         'no_superfluous_phpdoc_tags' => false,
         'explicit_indirect_variable' => false,
