@@ -121,7 +121,7 @@ class Configurator
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
     {
-        if (is_array($option)) {
+        if (\is_array($option)) {
             return $this->getGlobPathsFromArrayOption($option, $rootDir, $file);
         }
 
@@ -148,7 +148,7 @@ class Configurator
         }
 
         // validate
-        if (count($paths) === 0) {
+        if (\count($paths) === 0) {
             throw new InvalidConfigurationException("coverage_clover XML file is not readable: {$path}");
         }
 
@@ -168,7 +168,7 @@ class Configurator
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
-        if (!is_string($option)) {
+        if (!\is_string($option)) {
             throw new InvalidConfigurationException('coverage_clover XML file option must be a string');
         }
 

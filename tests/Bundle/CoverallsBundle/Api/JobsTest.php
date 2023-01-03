@@ -582,7 +582,7 @@ class JobsTest extends ProjectTestCase
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
                     && $filename === $options['multipart'][0]['name']
-                    && is_string($options['multipart'][0]['contents']);
+                    && \is_string($options['multipart'][0]['contents']);
             }))
             ->willReturn($response)
             ->shouldBeCalled();

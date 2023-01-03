@@ -257,7 +257,7 @@ class JsonFile extends Coveralls
      */
     public function hasSourceFiles()
     {
-        return count($this->sourceFiles) > 0;
+        return \count($this->sourceFiles) > 0;
     }
 
     /**
@@ -517,7 +517,7 @@ class JsonFile extends Coveralls
             return $prop->toArray();
         }
 
-        if (is_array($prop)) {
+        if (\is_array($prop)) {
             return $this->toJsonPropertyArray($prop);
         }
 
@@ -720,12 +720,12 @@ class JsonFile extends Coveralls
      */
     private function throwWhenInvalidJson(array $item, $source)
     {
-        \json_encode($item);
+        json_encode($item);
 
-        if (\json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \UnexpectedValueException(sprintf(
                 'Can not encode to JSON, error: "%s" in "%s".',
-                \json_last_error_msg(),
+                json_last_error_msg(),
                 $source
             ));
         }

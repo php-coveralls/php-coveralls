@@ -240,7 +240,7 @@ class JobsRepository implements LoggerAwareInterface
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
-        $numFiles = count($sourceFiles);
+        $numFiles = \count($sourceFiles);
 
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 

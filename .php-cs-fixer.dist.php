@@ -20,8 +20,6 @@ $config
         ],
         'ternary_to_elvis_operator' => false,
 
-        'native_constant_invocation' => false,
-        'native_function_invocation' => false,
         'visibility_required' => false,
         'concat_space' => false,
         'php_unit_internal_class' => false,

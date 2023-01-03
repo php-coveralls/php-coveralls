@@ -246,7 +246,7 @@ class ConfiguratorTest extends ProjectTestCase
         $inputArray = [
             '--json_path' => 'build/logs/coveralls-upload-custom.json',
         ];
-        $expectedJsonPath = substr($this->jsonPath, 0, strlen($this->jsonPath) - 5) . '-custom.json';
+        $expectedJsonPath = substr($this->jsonPath, 0, \strlen($this->jsonPath) - 5) . '-custom.json';
 
         $input = new ArrayInput($inputArray, $defs);
         $config = $this->object->load($path, $this->rootDir, $input);
@@ -362,7 +362,7 @@ class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {
-        if (PHP_VERSION_ID >= 80000 && !function_exists('get_debug_type')) {
+        if (\PHP_VERSION_ID >= 80000 && !\function_exists('get_debug_type')) {
             $this->markTestIncomplete('get_debug_type() is not available yet');
         }
 

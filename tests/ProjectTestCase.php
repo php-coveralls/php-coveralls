@@ -60,17 +60,17 @@ abstract class ProjectTestCase extends TestCase
     {
         switch ($method) {
             case 'assertStringContainsString':
-                call_user_func_array([$this, 'assertContains'], $args);
+                \call_user_func_array([$this, 'assertContains'], $args);
 
                 break;
 
             case 'assertIsArray':
-                call_user_func_array([$this, 'assertInternalType'], array_merge(['array'], $args));
+                \call_user_func_array([$this, 'assertInternalType'], array_merge(['array'], $args));
 
                 break;
 
             case 'expectException':
-                call_user_func_array([$this, 'setExpectedException'], $args);
+                \call_user_func_array([$this, 'setExpectedException'], $args);
 
                 break;
 
@@ -119,7 +119,7 @@ abstract class ProjectTestCase extends TestCase
         }
 
         if ($cloverXmlPaths !== null) {
-            if (is_array($cloverXmlPaths)) {
+            if (\is_array($cloverXmlPaths)) {
                 foreach ($cloverXmlPaths as $cloverXmlPath) {
                     touch($cloverXmlPath);
                 }
@@ -145,7 +145,7 @@ abstract class ProjectTestCase extends TestCase
     {
         if (is_file($file)) {
             // we try to unlock file, for that, we might need different permissions:
-            chmod(dirname($file), 0777); // on unix
+            chmod(\dirname($file), 0777); // on unix
             chmod($file, 0777); // on Windows
             unlink($file);
         }
@@ -169,7 +169,7 @@ abstract class ProjectTestCase extends TestCase
      */
     protected function normalizePath($path)
     {
-        return strtr(DIRECTORY_SEPARATOR, '/', $path);
+        return strtr(\DIRECTORY_SEPARATOR, '/', $path);
     }
 
     /**

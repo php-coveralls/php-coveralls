@@ -101,7 +101,7 @@ class GitInfoCollector
     {
         $commitResult = $this->command->getHeadCommit();
 
-        if (count($commitResult) !== 6 || array_keys($commitResult) !== range(0, 5)) {
+        if (\count($commitResult) !== 6 || array_keys($commitResult) !== range(0, 5)) {
             throw new \RuntimeException();
         }
 
@@ -127,7 +127,7 @@ class GitInfoCollector
     {
         $remotesResult = $this->command->getRemotes();
 
-        if (count($remotesResult) === 0) {
+        if (\count($remotesResult) === 0) {
             throw new \RuntimeException();
         }
 
