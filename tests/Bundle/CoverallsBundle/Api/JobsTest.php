@@ -16,8 +16,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class JobsTest extends ProjectTestCase
+final class JobsTest extends ProjectTestCase
 {
     // getJsonFile()
 

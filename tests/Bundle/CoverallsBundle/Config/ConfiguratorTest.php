@@ -14,8 +14,10 @@ use Symfony\Component\Console\Input\InputOption;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Config\CoverallsConfiguration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class ConfiguratorTest extends ProjectTestCase
+final class ConfiguratorTest extends ProjectTestCase
 {
     /**
      * @var Configurator

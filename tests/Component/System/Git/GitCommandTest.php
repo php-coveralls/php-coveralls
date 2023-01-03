@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Component\System\SystemCommandExecutor
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class GitCommandTest extends ProjectTestCase
+final class GitCommandTest extends ProjectTestCase
 {
     /**
      * @test

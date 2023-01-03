@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class ConfigurationTest extends ProjectTestCase
+final class ConfigurationTest extends ProjectTestCase
 {
     /**
      * @var Configuration

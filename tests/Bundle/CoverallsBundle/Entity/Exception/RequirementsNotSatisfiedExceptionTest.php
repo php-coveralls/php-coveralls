@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
+final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 {
     // getReadEnv()
 

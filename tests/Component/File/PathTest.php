@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Component\File\Path
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class PathTest extends ProjectTestCase
+final class PathTest extends ProjectTestCase
 {
     /**
      * @var string

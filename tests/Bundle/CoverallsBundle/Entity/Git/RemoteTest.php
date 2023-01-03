@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class RemoteTest extends ProjectTestCase
+final class RemoteTest extends ProjectTestCase
 {
     /**
      * @var Remote

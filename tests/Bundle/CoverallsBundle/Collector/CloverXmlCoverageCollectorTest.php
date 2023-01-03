@@ -12,8 +12,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class CloverXmlCoverageCollectorTest extends ProjectTestCase
+final class CloverXmlCoverageCollectorTest extends ProjectTestCase
 {
     /**
      * @var CloverXmlCoverageCollector

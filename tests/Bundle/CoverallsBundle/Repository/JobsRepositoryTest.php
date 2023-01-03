@@ -19,8 +19,10 @@ use Psr\Log\NullLogger;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class JobsRepositoryTest extends ProjectTestCase
+final class JobsRepositoryTest extends ProjectTestCase
 {
     // persist()
 

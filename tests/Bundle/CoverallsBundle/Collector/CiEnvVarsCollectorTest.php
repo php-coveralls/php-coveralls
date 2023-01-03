@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class CiEnvVarsCollectorTest extends ProjectTestCase
+final class CiEnvVarsCollectorTest extends ProjectTestCase
 {
     // collect()
 

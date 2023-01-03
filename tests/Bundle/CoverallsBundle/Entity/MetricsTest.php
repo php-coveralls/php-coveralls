@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class MetricsTest extends ProjectTestCase
+final class MetricsTest extends ProjectTestCase
 {
     /**
      * @var array

@@ -12,8 +12,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class GitTest extends ProjectTestCase
+final class GitTest extends ProjectTestCase
 {
     /**
      * @var string

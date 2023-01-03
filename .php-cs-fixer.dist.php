@@ -25,7 +25,6 @@ $config
         'visibility_required' => false,
         'concat_space' => false,
 
-        'php_unit_internal_class' => false,
         'explicit_string_variable' => false,
         'php_unit_test_case_static_method_calls' => false,
         'explicit_indirect_variable' => false,

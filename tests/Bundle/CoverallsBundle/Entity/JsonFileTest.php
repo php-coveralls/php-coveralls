@@ -16,8 +16,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class JsonFileTest extends ProjectTestCase
+final class JsonFileTest extends ProjectTestCase
 {
     /**
      * @var JsonFile

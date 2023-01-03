@@ -8,8 +8,10 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class ApplicationTest extends ProjectTestCase
+final class ApplicationTest extends ProjectTestCase
 {
     /**
      * @test

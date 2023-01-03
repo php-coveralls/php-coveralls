@@ -13,8 +13,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class GitInfoCollectorTest extends ProjectTestCase
+final class GitInfoCollectorTest extends ProjectTestCase
 {
     /**
      * @var array

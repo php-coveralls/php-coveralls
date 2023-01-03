@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class SourceFileTest extends ProjectTestCase
+final class SourceFileTest extends ProjectTestCase
 {
     /**
      * @var string

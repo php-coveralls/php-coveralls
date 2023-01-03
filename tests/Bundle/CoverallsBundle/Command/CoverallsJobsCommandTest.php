@@ -11,8 +11,10 @@ use Symfony\Component\Console\Tester\CommandTester;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Command\CoverallsJobsCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class CoverallsJobsCommandTest extends ProjectTestCase
+final class CoverallsJobsCommandTest extends ProjectTestCase
 {
     /**
      * @test

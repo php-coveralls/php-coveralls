@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class CommitTest extends ProjectTestCase
+final class CommitTest extends ProjectTestCase
 {
     /**
      * @var Commit
