@@ -39,15 +39,14 @@ class ApplicationFactory
     {
         $command = new CoverallsJobsCommand();
         $command->setRootDir($rootDir);
-var_dump("FRS", 'class_exists(SingleCommandApplication::class)', class_exists(SingleCommandApplication::class), SingleCommandApplication::class);
+
         if (\class_exists(SingleCommandApplication::class) === false) {
-          var_dump("FRS", "use CoverallsApplication");
             $application = new CoverallsApplication(self::APP_NAME, self::APP_VERSION);
             $application->add($command);
 
             return $application;
         }
-var_dump("FRS", "use SF Application");
+
         $application = new Application(self::APP_NAME, self::APP_VERSION);
         $application->add($command);
         $application->setDefaultCommand($command->getName(), true);
