@@ -18,15 +18,14 @@ $config
             'identical' => false,
             'less_and_greater' => false,
         ],
-        'ternary_to_elvis_operator' => false,
+        'concat_space' => false,
+        'explicit_indirect_variable' => false,
+        'explicit_string_variable' => false,
+        'method_chaining_indentation' => false,
         'php_unit_test_annotation' => false,
         'single_line_comment_style' => false,
-        'method_chaining_indentation' => false,
+        'ternary_to_elvis_operator' => false,
         'visibility_required' => false,
-        'concat_space' => false,
-
-        'explicit_string_variable' => false,
-        'explicit_indirect_variable' => false,
     ])
     ->setFinder($finder)
 ;
