@@ -128,6 +128,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectCloverXml
      *
      * @param Jobs $object
@@ -147,6 +148,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldHaveJsonFileAfterCollectCloverXml
      *
      * @param JsonFile $jsonFile
@@ -182,6 +184,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      *
      * @param Jobs $object
@@ -203,6 +206,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectCloverXml
      *
      * @param Jobs $object
@@ -221,6 +225,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectGitInfo
      *
      * @param Jobs $object
@@ -238,6 +243,7 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldHaveJsonFileAfterCollectGitInfo
      *
      * @param JsonFile $jsonFile

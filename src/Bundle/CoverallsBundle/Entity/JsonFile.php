@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Version;
  * Data represents "json_file" of Coveralls API.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class JsonFile extends Coveralls

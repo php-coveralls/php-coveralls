@@ -339,6 +339,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectTravisCiEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -356,6 +357,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectGithubActionsEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -375,6 +377,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectTravisProEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -393,6 +396,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectCircleCiEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -410,6 +414,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectJenkinsEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -427,6 +432,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectLocalEnvVars
      *
      * @param CiEnvVarsCollector $object
@@ -444,6 +450,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectUnsupportedConfig
      *
      * @param CiEnvVarsCollector $object
@@ -458,6 +465,7 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectUnsupportedEnvVars
      *
      * @param CiEnvVarsCollector $object

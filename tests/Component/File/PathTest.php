@@ -73,6 +73,7 @@ class PathTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @dataProvider provideRelativePaths
      *
      * @param mixed $path
@@ -84,6 +85,7 @@ class PathTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @dataProvider provideAbsolutePaths
      *
      * @param mixed $path
@@ -108,6 +110,7 @@ class PathTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @dataProvider provideRelativePaths
      *
      * @param mixed $path
@@ -149,6 +152,7 @@ class PathTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @dataProvider provideRelativePaths
      *
      * @param mixed $path

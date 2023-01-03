@@ -48,6 +48,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollect
      *
      * @param JsonFile $jsonFile
@@ -65,6 +66,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectSourceFiles
      *
      * @param JsonFile $jsonFile
@@ -82,6 +84,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectSourceFiles
      *
      * @param JsonFile $jsonFile
@@ -115,6 +118,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectUnderRootDir
      *
      * @param JsonFile $jsonFile
@@ -132,6 +136,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectSourceFilesUnderRootDir
      *
      * @param JsonFile $jsonFile
@@ -149,6 +154,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldCollectSourceFilesUnderRootDir
      *
      * @param JsonFile $jsonFile

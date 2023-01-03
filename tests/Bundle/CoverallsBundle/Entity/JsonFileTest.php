@@ -344,6 +344,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetServiceName
      *
      * @param mixed $object
@@ -366,6 +367,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetServiceJobId
      *
      * @param mixed $object
@@ -388,6 +390,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetRepoToken
      *
      * @param mixed $object
@@ -410,6 +413,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetParallel
      *
      * @param mixed $object
@@ -432,6 +436,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetGit
      *
      * @param mixed $object
@@ -456,6 +461,7 @@ class JsonFileTest extends ProjectTestCase
 
     /**
      * @test
+     *
      * @depends shouldSetRunAt
      *
      * @param mixed $object

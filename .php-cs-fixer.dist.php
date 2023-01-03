@@ -37,8 +37,6 @@ $config
         'explicit_indirect_variable' => false,
         'multiline_whitespace_before_semicolons' => false,
         'phpdoc_order' => false,
-        'phpdoc_separation' => false,
-        'phpdoc_trim' => false,
         'single_line_comment_style' => false,
         'phpdoc_trim_consecutive_blank_line_separation' => false,
         'blank_line_after_opening_tag' => false,
