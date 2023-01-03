@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
+final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 {
     // getReadEnv()
 
@@ -21,7 +23,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
     {
         $object = new RequirementsNotSatisfiedException();
 
-        $this->assertNull($object->getReadEnv());
+        static::assertNull($object->getReadEnv());
     }
 
     // setReadEnv()
@@ -38,7 +40,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);
 
-        $this->assertSame($expected, $object->getReadEnv());
+        static::assertSame($expected, $object->getReadEnv());
     }
 
     // getHelpMessage()
@@ -57,7 +59,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertStringContainsString("  - ENV_NAME='value'", $message);
+        static::assertStringContainsString("  - ENV_NAME='value'", $message);
     }
 
     // getHelpMessage()
@@ -78,7 +80,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertStringContainsString($expected, $message);
+        static::assertStringContainsString($expected, $message);
     }
 
     /**
@@ -97,7 +99,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertStringContainsString($expected, $message);
+        static::assertStringContainsString($expected, $message);
     }
 
     /**
@@ -114,7 +116,7 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertStringContainsString('  - ENV_NAME=123', $message);
+        static::assertStringContainsString('  - ENV_NAME=123', $message);
     }
 
     /**
@@ -131,6 +133,6 @@ class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        $this->assertStringContainsString('  - ENV_NAME=true', $message);
+        static::assertStringContainsString('  - ENV_NAME=true', $message);
     }
 }

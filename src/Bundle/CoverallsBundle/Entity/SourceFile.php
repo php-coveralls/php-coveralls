@@ -65,7 +65,7 @@ class SourceFile extends Coveralls
         $this->source = trim(file_get_contents($path));
 
         $lines = explode($eol, $this->source);
-        $this->fileLines = count($lines);
+        $this->fileLines = \count($lines);
         $this->coverage = array_fill(0, $this->fileLines, null);
     }
 
@@ -93,7 +93,7 @@ class SourceFile extends Coveralls
      */
     public function addCoverage($lineNum, $count)
     {
-        if (array_key_exists($lineNum, $this->coverage)) {
+        if (\array_key_exists($lineNum, $this->coverage)) {
             $this->coverage[$lineNum] += $count;
         }
     }

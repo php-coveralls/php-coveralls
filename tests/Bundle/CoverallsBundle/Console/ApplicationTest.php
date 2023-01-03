@@ -8,8 +8,14 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
+ *
+ * @info   This test is also covering \PhpCoveralls\Bundle\CoverallsBundle\Console\Application, but we cannot declare it as if so, PCOV will autoload it and it will fail on non-compat Sf/PHP combination, as we cannot declare partial loading anymore
+ *
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Console\ApplicationFactory
  */
-class ApplicationTest extends ProjectTestCase
+final class ApplicationTest extends ProjectTestCase
 {
     /**
      * @test
@@ -35,7 +41,7 @@ class ApplicationTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     protected function legacySetUp()

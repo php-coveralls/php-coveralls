@@ -66,7 +66,8 @@ class JobsRepository implements LoggerAwareInterface
                 ->collectGitInfo()
                 ->collectEnvVars()
                 ->dumpJsonFile()
-                ->send();
+                ->send()
+            ;
         } catch (\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
 
@@ -240,12 +241,12 @@ class JobsRepository implements LoggerAwareInterface
     protected function logCollectedSourceFiles(JsonFile $jsonFile)
     {
         $sourceFiles = $jsonFile->getSourceFiles();
-        $numFiles = count($sourceFiles);
+        $numFiles = \count($sourceFiles);
 
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
         foreach ($sourceFiles as $sourceFile) {
-            /* @var $sourceFile \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile */
+            /** @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile $sourceFile */
             $coverage = $sourceFile->reportLineCoverage();
             $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
 

@@ -24,9 +24,9 @@ class Configurator
      * @param string         $rootDir          path to project root directory
      * @param InputInterface $input|null       Input arguments
      *
-     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
-     *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
+     *
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     public function load($coverallsYmlPath, $rootDir, InputInterface $input = null)
     {
@@ -43,9 +43,9 @@ class Configurator
      *
      * @param string $coverallsYmlPath Path to .coveralls.yml.
      *
-     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
-     *
      * @return array
+     *
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     protected function parse($coverallsYmlPath)
     {
@@ -105,7 +105,8 @@ class Configurator
             ->setRootDir($rootDir)
             ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
             ->setJsonPath($this->ensureJsonPath($json_path, $rootDir, $file))
-            ->setExcludeNoStatements($options['exclude_no_stmt']);
+            ->setExcludeNoStatements($options['exclude_no_stmt'])
+        ;
     }
 
     /**
@@ -115,13 +116,13 @@ class Configurator
      * @param string $rootDir path to project root directory
      * @param Path   $file    path object
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     *
      * @return string[] valid Absolute paths of coverage_clover
+     *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
     {
-        if (is_array($option)) {
+        if (\is_array($option)) {
             return $this->getGlobPathsFromArrayOption($option, $rootDir, $file);
         }
 
@@ -133,9 +134,9 @@ class Configurator
      *
      * @param string $path absolute path
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     *
      * @return string[] absolute paths
+     *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPaths($path)
     {
@@ -148,7 +149,7 @@ class Configurator
         }
 
         // validate
-        if (count($paths) === 0) {
+        if (\count($paths) === 0) {
             throw new InvalidConfigurationException("coverage_clover XML file is not readable: {$path}");
         }
 
@@ -162,13 +163,13 @@ class Configurator
      * @param string $rootDir path to project root directory
      * @param Path   $file    path object
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     *
      * @return string[] absolute paths
+     *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
-        if (!is_string($option)) {
+        if (!\is_string($option)) {
             throw new InvalidConfigurationException('coverage_clover XML file option must be a string');
         }
 
@@ -185,9 +186,9 @@ class Configurator
      * @param string $rootDir path to project root directory
      * @param Path   $file    path object
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     *
      * @return string[] absolute paths
+     *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromArrayOption(array $options, $rootDir, Path $file)
     {
@@ -207,9 +208,9 @@ class Configurator
      * @param string $rootDir path to project root directory
      * @param Path   $file    path object
      *
-     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     *
      * @return string valid json_path
+     *
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureJsonPath($option, $rootDir, Path $file)
     {

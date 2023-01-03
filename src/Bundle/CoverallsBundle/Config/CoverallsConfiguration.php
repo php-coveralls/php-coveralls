@@ -63,7 +63,8 @@ class CoverallsConfiguration implements ConfigurationInterface
                 ->booleanNode('exclude_no_stmt')
                     ->defaultFalse()
                 ->end()
-            ->end();
+            ->end()
+        ;
 
         return $treeBuilder;
     }

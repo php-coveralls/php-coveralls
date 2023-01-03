@@ -19,8 +19,10 @@ use Psr\Log\NullLogger;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class JobsRepositoryTest extends ProjectTestCase
+final class JobsRepositoryTest extends ProjectTestCase
 {
     // persist()
 
@@ -48,7 +50,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertTrue($object->persist());
+        static::assertTrue($object->persist());
     }
 
     /**
@@ -63,7 +65,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertTrue($object->persist());
+        static::assertTrue($object->persist());
     }
 
     // unexpected Exception
@@ -81,7 +83,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertFalse($object->persist());
+        static::assertFalse($object->persist());
     }
 
     /**
@@ -96,7 +98,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertFalse($object->persist());
+        static::assertFalse($object->persist());
     }
 
     // curl error
@@ -113,7 +115,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertFalse($object->persist());
+        static::assertFalse($object->persist());
     }
 
     // response 422
@@ -142,7 +144,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertFalse($object->persist());
+        static::assertFalse($object->persist());
     }
 
     // response 500
@@ -161,7 +163,7 @@ class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        self::assertFalse($object->persist());
+        static::assertFalse($object->persist());
     }
 
     protected function legacySetUp()
@@ -297,7 +299,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -309,7 +312,8 @@ class JobsRepositoryTest extends ProjectTestCase
         $api
             ->collectCloverXml()
             ->willThrow($exception)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -321,7 +325,8 @@ class JobsRepositoryTest extends ProjectTestCase
         $api
             ->getJsonFile()
             ->willReturn($jsonFile)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -331,7 +336,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->getJsonFile()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -344,7 +350,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -354,7 +361,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->collectGitInfo()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -367,7 +375,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -377,7 +386,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->collectEnvVars()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -390,7 +400,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -400,7 +411,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->dumpJsonFile()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -415,7 +427,8 @@ class JobsRepositoryTest extends ProjectTestCase
             $api
                 ->send()
                 ->willReturn($response)
-                ->shouldBeCalled();
+                ->shouldBeCalled()
+            ;
         } else {
             if ($statusCode === null) {
                 $exception = new \GuzzleHttp\Exception\ConnectException('Connection refused', $request);
@@ -428,7 +441,8 @@ class JobsRepositoryTest extends ProjectTestCase
             $api
                 ->send()
                 ->willThrow($exception)
-                ->shouldBeCalled();
+                ->shouldBeCalled()
+            ;
         }
     }
 
@@ -439,6 +453,7 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->send()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 }

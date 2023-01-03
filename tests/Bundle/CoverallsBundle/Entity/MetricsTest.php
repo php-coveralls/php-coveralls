@@ -9,8 +9,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class MetricsTest extends ProjectTestCase
+final class MetricsTest extends ProjectTestCase
 {
     /**
      * @var array
@@ -27,8 +29,8 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics();
 
-        $this->assertFalse($object->hasStatements());
-        $this->assertSame(0, $object->getStatements());
+        static::assertFalse($object->hasStatements());
+        static::assertSame(0, $object->getStatements());
     }
 
     /**
@@ -38,8 +40,8 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertTrue($object->hasStatements());
-        $this->assertSame(3, $object->getStatements());
+        static::assertTrue($object->hasStatements());
+        static::assertSame(3, $object->getStatements());
     }
 
     // getCoveredStatements()
@@ -51,7 +53,7 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics();
 
-        $this->assertSame(0, $object->getCoveredStatements());
+        static::assertSame(0, $object->getCoveredStatements());
     }
 
     /**
@@ -61,7 +63,7 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics($this->coverage);
 
-        $this->assertSame(2, $object->getCoveredStatements());
+        static::assertSame(2, $object->getCoveredStatements());
     }
 
     // getLineCoverage()
@@ -73,7 +75,7 @@ class MetricsTest extends ProjectTestCase
     {
         $object = new Metrics();
 
-        $this->assertSame(0, $object->getLineCoverage());
+        static::assertSame(0, $object->getLineCoverage());
     }
 
     /**
@@ -97,8 +99,8 @@ class MetricsTest extends ProjectTestCase
         $that = new Metrics($this->coverage);
         $object->merge($that);
 
-        $this->assertSame(3, $object->getStatements());
-        $this->assertSame(2, $object->getCoveredStatements());
+        static::assertSame(3, $object->getStatements());
+        static::assertSame(2, $object->getCoveredStatements());
         $this->assertWithDelta(200 / 3, $object->getLineCoverage(), 0.0000000000001);
     }
 
@@ -111,8 +113,8 @@ class MetricsTest extends ProjectTestCase
         $that = new Metrics($this->coverage);
         $object->merge($that);
 
-        $this->assertSame(6, $object->getStatements());
-        $this->assertSame(4, $object->getCoveredStatements());
+        static::assertSame(6, $object->getStatements());
+        static::assertSame(4, $object->getCoveredStatements());
         $this->assertWithDelta(400 / 6, $object->getLineCoverage(), 0.0000000000001);
     }
 

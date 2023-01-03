@@ -127,7 +127,8 @@ class CoverallsJobsCommand extends Command
                 '-k',
                 InputOption::VALUE_NONE,
                 'Skip SSL certificate check.'
-            );
+            )
+        ;
     }
 
     /**
@@ -175,7 +176,7 @@ class CoverallsJobsCommand extends Command
     {
         $coverallsYmlPath = $input->getOption('config');
 
-        $ymlPath = $this->rootDir . DIRECTORY_SEPARATOR . $coverallsYmlPath;
+        $ymlPath = $this->rootDir . \DIRECTORY_SEPARATOR . $coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator
@@ -183,7 +184,8 @@ class CoverallsJobsCommand extends Command
             ->setDryRun($input->getOption('dry-run'))
             ->setExcludeNoStatementsUnlessFalse($input->getOption('exclude-no-stmt'))
             ->setVerbose($input->getOption('verbose'))
-            ->setEnv($input->getOption('env'));
+            ->setEnv($input->getOption('env'))
+        ;
     }
 
     /**

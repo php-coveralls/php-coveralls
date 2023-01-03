@@ -21,8 +21,6 @@ class ConsoleLogger extends AbstractLogger
 
     /**
      * Constructor.
-     *
-     * @param OutputInterface $output
      */
     public function __construct(OutputInterface $output)
     {
