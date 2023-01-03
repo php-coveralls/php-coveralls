@@ -44,7 +44,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return $rootDir.\DIRECTORY_SEPARATOR.$path;
+            return $rootDir . \DIRECTORY_SEPARATOR . $path;
         }
 
         return $path;
@@ -65,7 +65,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir.\DIRECTORY_SEPARATOR.$path);
+            return realpath($rootDir . \DIRECTORY_SEPARATOR . $path);
         }
 
         return realpath($path);
@@ -86,7 +86,7 @@ class Path
         }
 
         if ($this->isRelativePath($path)) {
-            return realpath($rootDir.\DIRECTORY_SEPARATOR.\dirname($path));
+            return realpath($rootDir . \DIRECTORY_SEPARATOR . \dirname($path));
         }
 
         return realpath(\dirname($path));
@@ -108,7 +108,7 @@ class Path
             return false;
         }
 
-        return $realDir.\DIRECTORY_SEPARATOR.basename($path);
+        return $realDir . \DIRECTORY_SEPARATOR . basename($path);
     }
 
     /**
