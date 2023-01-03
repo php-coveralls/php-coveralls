@@ -19,12 +19,12 @@ $config
             'less_and_greater' => false,
         ],
         'ternary_to_elvis_operator' => false,
+        'php_unit_test_annotation' => false,
 
         'visibility_required' => false,
         'concat_space' => false,
         'php_unit_internal_class' => false,
         'final_internal_class' => false,
-        'php_unit_test_annotation' => false,
         'explicit_string_variable' => false,
         'string_length_to_empty' => false,
         'php_unit_test_case_static_method_calls' => false,
