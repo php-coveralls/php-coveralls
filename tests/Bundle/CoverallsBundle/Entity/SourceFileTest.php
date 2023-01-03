@@ -6,8 +6,8 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
- * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Coveralls
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */

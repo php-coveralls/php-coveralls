@@ -38,7 +38,6 @@ $config
         'single_line_comment_style' => false,
         'phpdoc_trim_consecutive_blank_line_separation' => false,
         'single_blank_line_before_namespace' => false,
-        'phpdoc_order_by_value' => false,
         'php_unit_test_class_requires_covers' => false,
         'method_chaining_indentation' => false,
         'comment_to_phpdoc' => false,

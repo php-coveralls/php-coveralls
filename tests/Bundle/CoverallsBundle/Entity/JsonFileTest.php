@@ -12,8 +12,8 @@ use PhpCoveralls\Bundle\CoverallsBundle\Version;
 use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
- * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Coveralls
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */
