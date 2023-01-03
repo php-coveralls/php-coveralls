@@ -242,8 +242,6 @@ class JsonFile extends Coveralls
 
     /**
      * Add source file.
-     *
-     * @param SourceFile $sourceFile
      */
     public function addSourceFile(SourceFile $sourceFile)
     {
@@ -527,7 +525,6 @@ class JsonFile extends Coveralls
     /**
      * Convert to array as json property.
      *
-     * @param array $propArray
      *
      * @return array
      */
@@ -715,7 +712,6 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * @param array  $item
      * @param string $source
      */
     private function throwWhenInvalidJson(array $item, $source)

@@ -62,8 +62,6 @@ class Metrics
 
     /**
      * Merge other metrics.
-     *
-     * @param Metrics $that
      */
     public function merge(self $that)
     {

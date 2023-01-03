@@ -131,8 +131,6 @@ class JobsTest extends ProjectTestCase
      *
      * @depends shouldCollectCloverXml
      *
-     * @param Jobs $object
-     *
      * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectCloverXml(Jobs $object)
@@ -150,8 +148,6 @@ class JobsTest extends ProjectTestCase
      * @test
      *
      * @depends shouldHaveJsonFileAfterCollectCloverXml
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldNotHaveGitAfterCollectCloverXml(JsonFile $jsonFile)
     {
@@ -187,8 +183,6 @@ class JobsTest extends ProjectTestCase
      *
      * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      *
-     * @param Jobs $object
-     *
      * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectCloverXmlExcludingNoStatementsFiles(Jobs $object)
@@ -209,8 +203,6 @@ class JobsTest extends ProjectTestCase
      *
      * @depends shouldCollectCloverXml
      *
-     * @param Jobs $object
-     *
      * @return Jobs
      */
     public function shouldCollectGitInfo(Jobs $object)
@@ -228,8 +220,6 @@ class JobsTest extends ProjectTestCase
      *
      * @depends shouldCollectGitInfo
      *
-     * @param Jobs $object
-     *
      * @return JsonFile
      */
     public function shouldHaveJsonFileAfterCollectGitInfo(Jobs $object)
@@ -245,8 +235,6 @@ class JobsTest extends ProjectTestCase
      * @test
      *
      * @depends shouldHaveJsonFileAfterCollectGitInfo
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldHaveGitAfterCollectGitInfo(JsonFile $jsonFile)
     {

@@ -398,10 +398,8 @@ class ConfiguratorTest extends ProjectTestCase
     // custom assertion
 
     /**
-     * @param Configuration $config
-     * @param array         $cloverXml
-     * @param string        $jsonPath
-     * @param bool          $excludeNoStatements
+     * @param string $jsonPath
+     * @param bool   $excludeNoStatements
      */
     protected function assertConfiguration(Configuration $config, array $cloverXml, $jsonPath, $excludeNoStatements = false)
     {

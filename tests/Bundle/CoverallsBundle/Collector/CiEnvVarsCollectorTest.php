@@ -341,8 +341,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectTravisCiEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -359,8 +357,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectGithubActionsEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectGithubActionsEnvVars(CiEnvVarsCollector $object)
     {
@@ -379,8 +375,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectTravisProEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectTravisProEnvVars(CiEnvVarsCollector $object)
     {
@@ -398,8 +392,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectCircleCiEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectCircleCiEnvVars(CiEnvVarsCollector $object)
     {
@@ -416,8 +408,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectJenkinsEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectJenkinsEnvVars(CiEnvVarsCollector $object)
     {
@@ -434,8 +424,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectLocalEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectLocalEnvVars(CiEnvVarsCollector $object)
     {
@@ -452,8 +440,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectUnsupportedConfig
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedConfig(CiEnvVarsCollector $object)
     {
@@ -467,8 +453,6 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectUnsupportedEnvVars
-     *
-     * @param CiEnvVarsCollector $object
      */
     public function shouldHaveReadEnvAfterCollectUnsupportedEnvVars(CiEnvVarsCollector $object)
     {

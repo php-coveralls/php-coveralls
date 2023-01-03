@@ -29,7 +29,6 @@ $config
         'string_length_to_empty' => false,
         'php_unit_test_case_static_method_calls' => false,
         'ternary_operator_spaces' => false,
-        'no_superfluous_phpdoc_tags' => false,
         'explicit_indirect_variable' => false,
         'multiline_whitespace_before_semicolons' => false,
         'single_line_comment_style' => false,

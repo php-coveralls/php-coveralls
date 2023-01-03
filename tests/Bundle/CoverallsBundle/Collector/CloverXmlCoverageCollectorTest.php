@@ -51,8 +51,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      *
      * @depends shouldCollect
      *
-     * @param JsonFile $jsonFile
-     *
      * @return JsonFile
      */
     public function shouldCollectSourceFiles(JsonFile $jsonFile)
@@ -68,8 +66,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectSourceFiles
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest1(JsonFile $jsonFile)
     {
@@ -86,8 +82,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectSourceFiles
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest2(JsonFile $jsonFile)
     {
@@ -121,8 +115,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      *
      * @depends shouldCollectUnderRootDir
      *
-     * @param JsonFile $jsonFile
-     *
      * @return JsonFile
      */
     public function shouldCollectSourceFilesUnderRootDir(JsonFile $jsonFile)
@@ -138,8 +130,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectSourceFilesUnderRootDir
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest1UnderRootDir(JsonFile $jsonFile)
     {
@@ -156,8 +146,6 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
      * @test
      *
      * @depends shouldCollectSourceFilesUnderRootDir
-     *
-     * @param JsonFile $jsonFile
      */
     public function shouldCollectSourceFileTest2UnderRootDir(JsonFile $jsonFile)
     {
@@ -250,12 +238,10 @@ XML;
     }
 
     /**
-     * @param SourceFile $sourceFile
-     * @param string     $name
-     * @param string     $path
-     * @param int        $fileLines
-     * @param array      $coverage
-     * @param string     $source
+     * @param string $name
+     * @param string $path
+     * @param int    $fileLines
+     * @param string $source
      */
     protected function assertSourceFile(SourceFile $sourceFile, $name, $path, $fileLines, array $coverage, $source)
     {
