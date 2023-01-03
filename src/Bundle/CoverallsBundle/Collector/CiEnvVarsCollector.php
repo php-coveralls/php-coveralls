@@ -66,7 +66,8 @@ class CiEnvVarsCollector
             ->fillGithubActions()
             ->fillLocal()
             ->fillRepoToken()
-            ->fillParallel();
+            ->fillParallel()
+        ;
 
         return $this->env;
     }

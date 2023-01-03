@@ -36,7 +36,8 @@ class ConsoleLoggerTest extends ProjectTestCase
         $mock = $this->prophesize(StreamOutput::class);
         $mock
             ->writeln($message)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
 
         return $mock->reveal();
     }

@@ -66,7 +66,8 @@ class JobsRepository implements LoggerAwareInterface
                 ->collectGitInfo()
                 ->collectEnvVars()
                 ->dumpJsonFile()
-                ->send();
+                ->send()
+            ;
         } catch (\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $this->logger->error(sprintf('%s', $e->getHelpMessage()));
 

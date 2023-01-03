@@ -475,7 +475,8 @@ class CiEnvVarsCollectorTest extends ProjectTestCase
         $config = new Configuration();
 
         return $config
-        ->addCloverXmlPath($this->cloverXmlPath);
+        ->addCloverXmlPath($this->cloverXmlPath)
+        ;
     }
 
     /**

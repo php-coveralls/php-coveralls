@@ -164,6 +164,10 @@ class GitInfoCollectorTest extends ProjectTestCase
     }
 
     /**
+     * @param mixed $getBranchesValue
+     * @param mixed $getHeadCommitValue
+     * @param mixed $getRemotesValue
+     *
      * @return object
      */
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
@@ -212,13 +216,15 @@ class GitInfoCollectorTest extends ProjectTestCase
 
     /**
      * @param GitCommand $stub
+     * @param mixed      $getBranchesValue
      */
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {
         $stub
             ->getBranches()
             ->willReturn($getBranchesValue)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -230,7 +236,8 @@ class GitInfoCollectorTest extends ProjectTestCase
         $stub
             ->getHeadCommit()
             ->willReturn($getHeadCommitValue)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -240,7 +247,8 @@ class GitInfoCollectorTest extends ProjectTestCase
     {
         $stub
             ->getHeadCommit()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -252,7 +260,8 @@ class GitInfoCollectorTest extends ProjectTestCase
         $stub
             ->getRemotes()
             ->willReturn($getRemotesValue)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -262,7 +271,8 @@ class GitInfoCollectorTest extends ProjectTestCase
     {
         $stub
             ->getRemotes()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     protected function assertGit(Git $git)

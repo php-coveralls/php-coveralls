@@ -94,7 +94,8 @@ class RemoteTest extends ProjectTestCase
 
         $this->object
             ->setName($name)
-            ->setUrl($url);
+            ->setUrl($url)
+        ;
 
         $expected = [
             'name' => $name,

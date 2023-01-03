@@ -266,7 +266,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -294,7 +295,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
 
         $this->assertSame($serviceName, $jsonFile->getServiceName());
         $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
@@ -323,7 +325,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -348,7 +351,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -369,7 +373,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -389,7 +394,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -410,7 +416,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -433,7 +440,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -452,7 +460,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -475,7 +484,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     protected function legacySetUp()
@@ -501,7 +511,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(false);
+            ->setDryRun(false)
+        ;
 
         $client = $this->createAdapterMockWith($this->url, $this->filename);
 
@@ -517,7 +528,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(false);
+            ->setDryRun(false)
+        ;
 
         $client = $this->createAdapterMockNeverCalled();
 
@@ -533,7 +545,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(true);
+            ->setDryRun(true)
+        ;
 
         $client = $this->createAdapterMockNeverCalled();
 
@@ -548,7 +561,8 @@ class JobsTest extends ProjectTestCase
         $client = $this->prophesize(Client::class);
         $client
             ->send()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
 
         return $client->reveal();
     }
@@ -573,7 +587,8 @@ class JobsTest extends ProjectTestCase
                     && \is_string($options['multipart'][0]['contents']);
             }))
             ->willReturn($response)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
 
         return $client->reveal();
     }

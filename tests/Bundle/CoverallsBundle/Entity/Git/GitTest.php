@@ -103,7 +103,8 @@ class GitTest extends ProjectTestCase
 
         return $remote
             ->setName($name)
-            ->setUrl($url);
+            ->setUrl($url)
+        ;
     }
 
     /**
@@ -126,6 +127,7 @@ class GitTest extends ProjectTestCase
             ->setAuthorEmail($authorEmail)
             ->setCommitterName($committerName)
             ->setCommitterEmail($committerEmail)
-            ->setMessage($message);
+            ->setMessage($message)
+        ;
     }
 }

@@ -105,7 +105,8 @@ class Configurator
             ->setRootDir($rootDir)
             ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
             ->setJsonPath($this->ensureJsonPath($json_path, $rootDir, $file))
-            ->setExcludeNoStatements($options['exclude_no_stmt']);
+            ->setExcludeNoStatements($options['exclude_no_stmt'])
+        ;
     }
 
     /**

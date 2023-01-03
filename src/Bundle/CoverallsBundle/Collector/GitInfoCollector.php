@@ -113,7 +113,8 @@ class GitInfoCollector
             ->setAuthorEmail($commitResult[2])
             ->setCommitterName($commitResult[3])
             ->setCommitterEmail($commitResult[4])
-            ->setMessage($commitResult[5]);
+            ->setMessage($commitResult[5])
+        ;
     }
 
     /**

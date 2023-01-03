@@ -297,7 +297,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -309,7 +310,8 @@ class JobsRepositoryTest extends ProjectTestCase
         $api
             ->collectCloverXml()
             ->willThrow($exception)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -321,7 +323,8 @@ class JobsRepositoryTest extends ProjectTestCase
         $api
             ->getJsonFile()
             ->willReturn($jsonFile)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -331,7 +334,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->getJsonFile()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -344,7 +348,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -354,7 +359,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->collectGitInfo()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -367,7 +373,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -377,7 +384,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->collectEnvVars()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -390,7 +398,8 @@ class JobsRepositoryTest extends ProjectTestCase
             ->will(function () {
                 return $this;
             })
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
     }
 
     /**
@@ -400,7 +409,8 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->dumpJsonFile()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 
     /**
@@ -415,7 +425,8 @@ class JobsRepositoryTest extends ProjectTestCase
             $api
                 ->send()
                 ->willReturn($response)
-                ->shouldBeCalled();
+                ->shouldBeCalled()
+            ;
         } else {
             if ($statusCode === null) {
                 $exception = new \GuzzleHttp\Exception\ConnectException('Connection refused', $request);
@@ -428,7 +439,8 @@ class JobsRepositoryTest extends ProjectTestCase
             $api
                 ->send()
                 ->willThrow($exception)
-                ->shouldBeCalled();
+                ->shouldBeCalled()
+            ;
         }
     }
 
@@ -439,6 +451,7 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $api
             ->send()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
     }
 }

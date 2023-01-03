@@ -171,7 +171,8 @@ class JsonFile extends Coveralls
     {
         return $this
             ->fillStandardizedEnvVars($env)
-            ->ensureJobs();
+            ->ensureJobs()
+        ;
     }
 
     /**
@@ -524,7 +525,6 @@ class JsonFile extends Coveralls
 
     /**
      * Convert to array as json property.
-     *
      *
      * @return array
      */

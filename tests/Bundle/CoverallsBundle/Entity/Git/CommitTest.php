@@ -206,7 +206,8 @@ class CommitTest extends ProjectTestCase
             ->setAuthorEmail($authorEmail)
             ->setCommitterName($committerName)
             ->setCommitterEmail($committerEmail)
-            ->setMessage($message);
+            ->setMessage($message)
+        ;
 
         $expected = [
             'id' => $id,
