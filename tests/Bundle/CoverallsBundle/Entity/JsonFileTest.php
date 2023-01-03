@@ -697,7 +697,7 @@ class JsonFileTest extends ProjectTestCase
      */
     public function shouldExcludeNoStatementsFiles()
     {
-        $srcDir = $this->srcDir . \DIRECTORY_SEPARATOR;
+        $srcDir = $this->srcDir.\DIRECTORY_SEPARATOR;
 
         $object = $this->collectJsonFile();
 
@@ -732,7 +732,7 @@ class JsonFileTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
 
         $this->object = new JsonFile();
     }
@@ -743,7 +743,7 @@ class JsonFileTest extends ProjectTestCase
     protected function createSourceFile()
     {
         $filename = 'test.php';
-        $path = $this->srcDir . \DIRECTORY_SEPARATOR . $filename;
+        $path = $this->srcDir.\DIRECTORY_SEPARATOR.$filename;
 
         return new SourceFile($path, $filename);
     }

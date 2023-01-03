@@ -168,7 +168,7 @@ class JobsRepository implements LoggerAwareInterface
      */
     protected function send()
     {
-        $this->logger->info(sprintf('Submitting to %s', $this->config->getEntryPoint() . Jobs::URL));
+        $this->logger->info(sprintf('Submitting to %s', $this->config->getEntryPoint().Jobs::URL));
 
         try {
             $response = $this->api->send();
@@ -246,15 +246,15 @@ class JobsRepository implements LoggerAwareInterface
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
         foreach ($sourceFiles as $sourceFile) {
-            /* @var $sourceFile \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile */
+            /** @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile $sourceFile */
             $coverage = $sourceFile->reportLineCoverage();
-            $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
+            $template = '  - '.$this->colorizeCoverage($coverage, '%6.2f%%').' %s';
 
             $this->logger->info(sprintf($template, $coverage, $sourceFile->getName()));
         }
 
         $coverage = $jsonFile->reportLineCoverage();
-        $template = 'Coverage: ' . $this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
+        $template = 'Coverage: '.$this->colorizeCoverage($coverage, '%6.2f%% (%d/%d)');
         $metrics = $jsonFile->getMetrics();
 
         $this->logger->info(sprintf($template, $coverage, $metrics->getCoveredStatements(), $metrics->getStatements()));

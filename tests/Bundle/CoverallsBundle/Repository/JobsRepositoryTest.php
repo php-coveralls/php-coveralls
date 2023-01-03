@@ -166,7 +166,7 @@ class JobsRepositoryTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     /**
@@ -259,15 +259,15 @@ class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir.'/RepositoryTest';
 
         $sourceFiles = [
-            0 => new SourceFile($repositoryTestDir . '/Coverage0.php', 'Coverage0.php'),
-            10 => new SourceFile($repositoryTestDir . '/Coverage10.php', 'Coverage10.php'),
-            70 => new SourceFile($repositoryTestDir . '/Coverage70.php', 'Coverage70.php'),
-            80 => new SourceFile($repositoryTestDir . '/Coverage80.php', 'Coverage80.php'),
-            90 => new SourceFile($repositoryTestDir . '/Coverage90.php', 'Coverage90.php'),
-            100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
+            0 => new SourceFile($repositoryTestDir.'/Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir.'/Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir.'/Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir.'/Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir.'/Coverage90.php', 'Coverage90.php'),
+            100 => new SourceFile($repositoryTestDir.'/Coverage100.php', 'Coverage100.php'),
         ];
 
         foreach ($sourceFiles as $percent => $sourceFile) {

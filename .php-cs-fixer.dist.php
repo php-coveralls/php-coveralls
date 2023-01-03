@@ -23,15 +23,13 @@ $config
         'single_line_comment_style' => false,
         'method_chaining_indentation' => false,
         'visibility_required' => false,
-
         'concat_space' => false,
+
         'php_unit_internal_class' => false,
         'explicit_string_variable' => false,
         'php_unit_test_case_static_method_calls' => false,
         'explicit_indirect_variable' => false,
-        'single_blank_line_before_namespace' => false,
         'php_unit_test_class_requires_covers' => false,
-        'comment_to_phpdoc' => false,
     ])
     ->setFinder($finder)
 ;

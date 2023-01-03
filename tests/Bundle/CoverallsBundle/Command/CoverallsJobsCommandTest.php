@@ -196,7 +196,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     protected function legacyTearDown()

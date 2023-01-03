@@ -72,7 +72,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name1 = 'test.php';
-        $path1 = $this->srcDir . \DIRECTORY_SEPARATOR . $name1;
+        $path1 = $this->srcDir.\DIRECTORY_SEPARATOR.$name1;
 
         $this->assertArrayHasKey($path1, $sourceFiles);
         $this->assertSourceFileTest1($sourceFiles[$path1]);
@@ -88,7 +88,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name2 = 'test2.php';
-        $path2 = $this->srcDir . \DIRECTORY_SEPARATOR . $name2;
+        $path2 = $this->srcDir.\DIRECTORY_SEPARATOR.$name2;
 
         $this->assertArrayHasKey($path2, $sourceFiles);
         $this->assertSourceFileTest2($sourceFiles[$path2]);
@@ -136,7 +136,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name1 = 'test.php';
-        $path1 = $this->srcDir . \DIRECTORY_SEPARATOR . $name1;
+        $path1 = $this->srcDir.\DIRECTORY_SEPARATOR.$name1;
 
         $this->assertArrayHasKey($path1, $sourceFiles);
         $this->assertSourceFileTest1UnderRootDir($sourceFiles[$path1]);
@@ -152,7 +152,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $sourceFiles = $jsonFile->getSourceFiles();
 
         $name2 = 'test2.php';
-        $path2 = $this->srcDir . \DIRECTORY_SEPARATOR . $name2;
+        $path2 = $this->srcDir.\DIRECTORY_SEPARATOR.$name2;
 
         $this->assertArrayHasKey($path2, $sourceFiles);
         $this->assertSourceFileTest2UnderRootDir($sourceFiles[$path2]);
@@ -160,7 +160,7 @@ class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
 
         $this->object = new CloverXmlCoverageCollector();
     }
@@ -255,7 +255,7 @@ XML;
     protected function assertSourceFileTest1(SourceFile $sourceFile)
     {
         $name1 = 'test.php';
-        $path1 = $this->srcDir . \DIRECTORY_SEPARATOR . $name1;
+        $path1 = $this->srcDir.\DIRECTORY_SEPARATOR.$name1;
         $fileLines1 = 9;
         $coverage1 = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
@@ -267,7 +267,7 @@ XML;
     protected function assertSourceFileTest2(SourceFile $sourceFile)
     {
         $name2 = 'test2.php';
-        $path2 = $this->srcDir . \DIRECTORY_SEPARATOR . $name2;
+        $path2 = $this->srcDir.\DIRECTORY_SEPARATOR.$name2;
         $fileLines2 = 10;
         $coverage2 = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;
@@ -279,7 +279,7 @@ XML;
     protected function assertSourceFileTest1UnderRootDir(SourceFile $sourceFile)
     {
         $name1 = 'test.php';
-        $path1 = $this->srcDir . \DIRECTORY_SEPARATOR . $name1;
+        $path1 = $this->srcDir.\DIRECTORY_SEPARATOR.$name1;
         $fileLines1 = 9;
         $coverage1 = array_fill(0, $fileLines1, null);
         $coverage1[6] = 3;
@@ -291,7 +291,7 @@ XML;
     protected function assertSourceFileTest2UnderRootDir(SourceFile $sourceFile)
     {
         $name2 = 'test2.php';
-        $path2 = $this->srcDir . \DIRECTORY_SEPARATOR . $name2;
+        $path2 = $this->srcDir.\DIRECTORY_SEPARATOR.$name2;
         $fileLines2 = 10;
         $coverage2 = array_fill(0, $fileLines2, null);
         $coverage2[7] = 0;

@@ -31,7 +31,7 @@ class CloverXmlCoverageCollector
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
     {
-        $root = rtrim($rootDir, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR;
+        $root = rtrim($rootDir, \DIRECTORY_SEPARATOR).\DIRECTORY_SEPARATOR;
 
         if ($this->jsonFile === null) {
             $this->jsonFile = new JsonFile();
@@ -84,7 +84,7 @@ class CloverXmlCoverageCollector
     protected function collectRunAt(\SimpleXMLElement $xml, $format = 'Y-m-d H:i:s O')
     {
         $timestamp = $xml->project['timestamp'];
-        $runAt = new \DateTime('@' . $timestamp);
+        $runAt = new \DateTime('@'.$timestamp);
 
         return $runAt->format($format);
     }
