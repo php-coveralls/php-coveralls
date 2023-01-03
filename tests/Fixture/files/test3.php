@@ -1,5 +1,4 @@
 <?php
-
 namespace Hoge;
 
 class TestFileBis

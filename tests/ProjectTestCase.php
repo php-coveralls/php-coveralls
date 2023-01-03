@@ -63,17 +63,14 @@ abstract class ProjectTestCase extends TestCase
                 \call_user_func_array([$this, 'assertContains'], $args);
 
                 break;
-
             case 'assertIsArray':
                 \call_user_func_array([$this, 'assertInternalType'], array_merge(['array'], $args));
 
                 break;
-
             case 'expectException':
                 \call_user_func_array([$this, 'setExpectedException'], $args);
 
                 break;
-
             default:
                 trigger_error("Call to undefined method ::$method", E_USER_ERROR);
         }
