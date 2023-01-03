@@ -42,6 +42,7 @@ jobs:
                     -   php: '8.0'
                         os: ubuntu-latest
                         symfony: '^6.0'
+                        coverage: 'pcov'
 
         steps:
             -   name: Checkout source
