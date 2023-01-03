@@ -1,4 +1,5 @@
 <?php
+
 namespace CoverallsTest;
 
 class Coverage100
