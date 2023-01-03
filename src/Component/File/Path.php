@@ -18,7 +18,7 @@ class Path
      */
     public function isRelativePath($path)
     {
-        if (\strlen($path) === 0) {
+        if ($path === '') {
             return true;
         }
 

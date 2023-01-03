@@ -122,7 +122,7 @@ EOL;
     {
         if (\in_array($key, self::$secretEnvVars, true)
             && \is_string($value)
-            && \strlen($value) > 0) {
+            && $value !== '') {
             $value = '********(HIDDEN)';
         }
 
