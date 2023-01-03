@@ -12,6 +12,7 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  * @internal
  *
  * @info   This test is also covering \PhpCoveralls\Bundle\CoverallsBundle\Console\Application, but we cannot declare it as if so, PCOV will autoload it and it will fail on non-compat Sf/PHP combination, as we cannot declare partial loading anymore
+ *
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Console\ApplicationFactory
  */
 final class ApplicationTest extends ProjectTestCase
