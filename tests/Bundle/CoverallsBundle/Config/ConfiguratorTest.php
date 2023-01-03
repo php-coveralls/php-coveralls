@@ -53,7 +53,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertInstanceOf('PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration', $config);
+        static::assertInstanceOf('PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration', $config);
     }
 
     // default coverage_clover not found
@@ -83,7 +83,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         if ($this->isWindowsOS()) {
             // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
-            $this->markTestSkipped('Unable to run on Windows');
+            static::markTestSkipped('Unable to run on Windows');
         }
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, true);
@@ -294,7 +294,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertSame('http://foo.bar', $config->getEntryPoint());
+        static::assertSame('http://foo.bar', $config->getEntryPoint());
     }
 
     /**
@@ -308,7 +308,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        $this->assertSame('https://coveralls.io', $config->getEntryPoint());
+        static::assertSame('https://coveralls.io', $config->getEntryPoint());
     }
 
     // configured coverage_clover not found
@@ -365,7 +365,7 @@ final class ConfiguratorTest extends ProjectTestCase
     public function throwInvalidConfigurationExceptionOnLoadExcludeNoStmtYmlIfInvalid()
     {
         if (\PHP_VERSION_ID >= 80000 && !\function_exists('get_debug_type')) {
-            $this->markTestIncomplete('get_debug_type() is not available yet');
+            static::markTestIncomplete('get_debug_type() is not available yet');
         }
 
         $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
@@ -407,7 +407,7 @@ final class ConfiguratorTest extends ProjectTestCase
     {
         $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
         $this->assertSamePath($jsonPath, $config->getJsonPath());
-        $this->assertSame($excludeNoStatements, $config->isExcludeNoStatements());
+        static::assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
     /**

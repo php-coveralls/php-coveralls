@@ -37,7 +37,7 @@ final class ApplicationTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     protected function legacySetUp()

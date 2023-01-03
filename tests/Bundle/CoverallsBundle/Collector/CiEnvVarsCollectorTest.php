@@ -35,14 +35,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertSame($serviceJobId, $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        static::assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
 
         return $object;
     }
@@ -70,17 +70,17 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame($serviceJobId, $actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertSame($serviceJobId, $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        static::assertSame($serviceBuildNumber, $actual['CI_BUILD_NUMBER']);
 
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
+        static::assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -102,11 +102,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        static::assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
 
         return $object;
     }
@@ -129,14 +129,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $actual);
-        $this->assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $actual);
+        static::assertSame($serviceNumber, $actual['CI_BUILD_NUMBER']);
 
-        $this->assertArrayHasKey('CI_BUILD_URL', $actual);
-        $this->assertSame($buildUrl, $actual['CI_BUILD_URL']);
+        static::assertArrayHasKey('CI_BUILD_URL', $actual);
+        static::assertSame($buildUrl, $actual['CI_BUILD_URL']);
 
         return $object;
     }
@@ -160,14 +160,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame($jobId, $actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertSame($jobId, $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BRANCH', $actual);
-        $this->assertSame('master', $actual['CI_BRANCH']);
+        static::assertArrayHasKey('CI_BRANCH', $actual);
+        static::assertSame('master', $actual['CI_BRANCH']);
 
         return $object;
     }
@@ -190,14 +190,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame('275038505', $actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertSame('275038505', $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BRANCH', $actual);
-        $this->assertSame('refs/pull/1/merge', $actual['CI_BRANCH']);
+        static::assertArrayHasKey('CI_BRANCH', $actual);
+        static::assertSame('refs/pull/1/merge', $actual['CI_BRANCH']);
 
         return $object;
     }
@@ -220,14 +220,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertSame('275038505', $actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertSame('275038505', $actual['CI_JOB_ID']);
 
-        $this->assertArrayHasKey('CI_BRANCH', $actual);
-        $this->assertSame('v123.456.789', $actual['CI_BRANCH']);
+        static::assertArrayHasKey('CI_BRANCH', $actual);
+        static::assertSame('v123.456.789', $actual['CI_BRANCH']);
 
         return $object;
     }
@@ -248,14 +248,14 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('CI_NAME', $actual);
-        $this->assertSame($serviceName, $actual['CI_NAME']);
+        static::assertArrayHasKey('CI_NAME', $actual);
+        static::assertSame($serviceName, $actual['CI_NAME']);
 
-        $this->assertArrayHasKey('COVERALLS_EVENT_TYPE', $actual);
-        $this->assertSame($serviceEventType, $actual['COVERALLS_EVENT_TYPE']);
+        static::assertArrayHasKey('COVERALLS_EVENT_TYPE', $actual);
+        static::assertSame($serviceEventType, $actual['COVERALLS_EVENT_TYPE']);
 
-        $this->assertArrayHasKey('CI_JOB_ID', $actual);
-        $this->assertNull($actual['CI_JOB_ID']);
+        static::assertArrayHasKey('CI_JOB_ID', $actual);
+        static::assertNull($actual['CI_JOB_ID']);
 
         return $object;
     }
@@ -276,8 +276,8 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
+        static::assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -296,8 +296,8 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
-        $this->assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $actual);
+        static::assertSame($repoToken, $actual['COVERALLS_REPO_TOKEN']);
 
         return $object;
     }
@@ -318,11 +318,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
         $actual = $object->collect($env);
 
-        $this->assertArrayHasKey('COVERALLS_PARALLEL', $actual);
-        $this->assertSame($parallel, $actual['COVERALLS_PARALLEL']);
+        static::assertArrayHasKey('COVERALLS_PARALLEL', $actual);
+        static::assertSame($parallel, $actual['COVERALLS_PARALLEL']);
 
-        $this->assertArrayHasKey('COVERALLS_FLAG_NAME', $actual);
-        $this->assertSame($flagName, $actual['COVERALLS_FLAG_NAME']);
+        static::assertArrayHasKey('COVERALLS_FLAG_NAME', $actual);
+        static::assertSame($flagName, $actual['COVERALLS_FLAG_NAME']);
 
         return $object;
     }
@@ -336,7 +336,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $object = $this->createCiEnvVarsCollector();
 
-        $this->assertNull($object->getReadEnv());
+        static::assertNull($object->getReadEnv());
     }
 
     /**
@@ -348,11 +348,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
-        $this->assertArrayHasKey('TRAVIS', $readEnv);
-        $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
+        static::assertCount(4, $readEnv);
+        static::assertArrayHasKey('TRAVIS', $readEnv);
+        static::assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
     }
 
     /**
@@ -364,13 +364,13 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(6, $readEnv);
-        $this->assertArrayHasKey('GITHUB_REF', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
-        $this->assertArrayHasKey('CI_JOB_ID', $readEnv);
-        $this->assertArrayHasKey('GITHUB_ACTIONS', $readEnv);
-        $this->assertArrayHasKey('CI_BRANCH', $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertCount(6, $readEnv);
+        static::assertArrayHasKey('GITHUB_REF', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertArrayHasKey('CI_JOB_ID', $readEnv);
+        static::assertArrayHasKey('GITHUB_ACTIONS', $readEnv);
+        static::assertArrayHasKey('CI_BRANCH', $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
     /**
@@ -382,12 +382,12 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(5, $readEnv);
-        $this->assertArrayHasKey('TRAVIS', $readEnv);
-        $this->assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
-        $this->assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertCount(5, $readEnv);
+        static::assertArrayHasKey('TRAVIS', $readEnv);
+        static::assertArrayHasKey('TRAVIS_JOB_ID', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertArrayHasKey('CI_BUILD_NUMBER', $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
     /**
@@ -399,11 +399,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
-        $this->assertArrayHasKey('CIRCLECI', $readEnv);
-        $this->assertArrayHasKey('CIRCLE_WORKFLOW_ID', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertCount(4, $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertArrayHasKey('CIRCLECI', $readEnv);
+        static::assertArrayHasKey('CIRCLE_WORKFLOW_ID', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
     }
 
     /**
@@ -415,11 +415,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
-        $this->assertArrayHasKey('JENKINS_URL', $readEnv);
-        $this->assertArrayHasKey('BUILD_NUMBER', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertCount(4, $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertArrayHasKey('JENKINS_URL', $readEnv);
+        static::assertArrayHasKey('BUILD_NUMBER', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
     }
 
     /**
@@ -431,11 +431,11 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(4, $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
-        $this->assertArrayHasKey('COVERALLS_RUN_LOCALLY', $readEnv);
-        $this->assertArrayHasKey('COVERALLS_EVENT_TYPE', $readEnv);
-        $this->assertArrayHasKey('CI_NAME', $readEnv);
+        static::assertCount(4, $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertArrayHasKey('COVERALLS_RUN_LOCALLY', $readEnv);
+        static::assertArrayHasKey('COVERALLS_EVENT_TYPE', $readEnv);
+        static::assertArrayHasKey('CI_NAME', $readEnv);
     }
 
     /**
@@ -447,8 +447,8 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(1, $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertCount(1, $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
     /**
@@ -460,8 +460,8 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
     {
         $readEnv = $object->getReadEnv();
 
-        $this->assertCount(1, $readEnv);
-        $this->assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
+        static::assertCount(1, $readEnv);
+        static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
     protected function legacySetUp()

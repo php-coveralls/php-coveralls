@@ -32,7 +32,7 @@ final class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveNameOnConstruction()
     {
-        $this->assertSame($this->filename, $this->object->getName());
+        static::assertSame($this->filename, $this->object->getName());
     }
 
     // getSource()
@@ -44,7 +44,7 @@ final class SourceFileTest extends ProjectTestCase
     {
         $expected = trim(file_get_contents($this->path));
 
-        $this->assertSame($expected, $this->object->getSource());
+        static::assertSame($expected, $this->object->getSource());
     }
 
     // getCoverage()
@@ -56,7 +56,7 @@ final class SourceFileTest extends ProjectTestCase
     {
         $expected = array_fill(0, 9, null);
 
-        $this->assertSame($expected, $this->object->getCoverage());
+        static::assertSame($expected, $this->object->getCoverage());
     }
 
     // getPath()
@@ -76,7 +76,7 @@ final class SourceFileTest extends ProjectTestCase
      */
     public function shouldHaveFileLinesOnConstruction()
     {
-        $this->assertSame(9, $this->object->getFileLines());
+        static::assertSame(9, $this->object->getFileLines());
     }
 
     // toArray()
@@ -92,8 +92,8 @@ final class SourceFileTest extends ProjectTestCase
             'coverage' => array_fill(0, 9, null),
         ];
 
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+        static::assertSame($expected, $this->object->toArray());
+        static::assertSame(json_encode($expected), (string) $this->object);
     }
 
     // addCoverage()
@@ -108,7 +108,7 @@ final class SourceFileTest extends ProjectTestCase
         $expected = array_fill(0, 9, null);
         $expected[5] = 1;
 
-        $this->assertSame($expected, $this->object->getCoverage());
+        static::assertSame($expected, $this->object->getCoverage());
     }
 
     // getMetrics()
@@ -121,10 +121,10 @@ final class SourceFileTest extends ProjectTestCase
     {
         $metrics = $this->object->getMetrics();
 
-        $this->assertSame(0, $metrics->getStatements());
-        $this->assertSame(0, $metrics->getCoveredStatements());
-        $this->assertSame(0, $metrics->getLineCoverage());
-        $this->assertSame(0, $this->object->reportLineCoverage());
+        static::assertSame(0, $metrics->getStatements());
+        static::assertSame(0, $metrics->getCoveredStatements());
+        static::assertSame(0, $metrics->getLineCoverage());
+        static::assertSame(0, $this->object->reportLineCoverage());
     }
 
     /**
@@ -136,10 +136,10 @@ final class SourceFileTest extends ProjectTestCase
 
         $metrics = $this->object->getMetrics();
 
-        $this->assertSame(1, $metrics->getStatements());
-        $this->assertSame(1, $metrics->getCoveredStatements());
-        $this->assertSame(100, $metrics->getLineCoverage());
-        $this->assertSame(100, $this->object->reportLineCoverage());
+        static::assertSame(1, $metrics->getStatements());
+        static::assertSame(1, $metrics->getCoveredStatements());
+        static::assertSame(100, $metrics->getLineCoverage());
+        static::assertSame(100, $this->object->reportLineCoverage());
     }
 
     protected function legacySetUp()

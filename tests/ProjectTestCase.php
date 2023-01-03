@@ -180,13 +180,13 @@ abstract class ProjectTestCase extends TestCase
     protected function assertSamePath($expected, $input, $msg = null)
     {
         if ($msg !== null) {
-            $this->assertSame(
+            static::assertSame(
                 $this->normalizePath($expected),
                 $this->normalizePath($input),
                 $msg
             );
         } else {
-            $this->assertSame(
+            static::assertSame(
                 $this->normalizePath($expected),
                 $this->normalizePath($input)
             );
@@ -204,9 +204,9 @@ abstract class ProjectTestCase extends TestCase
         $input = array_map(function ($path) { return $this->normalizePath($path); }, $input);
 
         if ($msg !== null) {
-            $this->assertSame($expected, $input, $msg);
+            static::assertSame($expected, $input, $msg);
         } else {
-            $this->assertSame($expected, $input);
+            static::assertSame($expected, $input);
         }
     }
 }
