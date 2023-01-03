@@ -246,7 +246,7 @@ class JobsRepository implements LoggerAwareInterface
         $this->logger->info(sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
         foreach ($sourceFiles as $sourceFile) {
-            /* @var $sourceFile \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile */
+            /** @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile $sourceFile */
             $coverage = $sourceFile->reportLineCoverage();
             $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
 
