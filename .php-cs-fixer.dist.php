@@ -34,7 +34,6 @@ $config
         'no_superfluous_phpdoc_tags' => false,
         'explicit_indirect_variable' => false,
         'multiline_whitespace_before_semicolons' => false,
-        'phpdoc_order' => false,
         'single_line_comment_style' => false,
         'phpdoc_trim_consecutive_blank_line_separation' => false,
         'single_blank_line_before_namespace' => false,

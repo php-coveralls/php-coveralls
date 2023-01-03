@@ -163,9 +163,9 @@ class JsonFile extends Coveralls
      *
      * @param array $env $_SERVER environment
      *
-     * @throws \RuntimeException
-     *
      * @return $this
+     *
+     * @throws \RuntimeException
      */
     public function fillJobs(array $env)
     {
@@ -591,9 +591,9 @@ class JsonFile extends Coveralls
     /**
      * Ensure data consistency for jobs API.
      *
-     * @throws \RuntimeException
-     *
      * @return $this
+     *
+     * @throws \RuntimeException
      */
     protected function ensureJobs()
     {

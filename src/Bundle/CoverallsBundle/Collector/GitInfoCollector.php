@@ -64,9 +64,9 @@ class GitInfoCollector
     /**
      * Collect branch name.
      *
-     * @throws \RuntimeException
-     *
      * @return string
+     *
+     * @throws \RuntimeException
      */
     protected function collectBranch()
     {
@@ -93,9 +93,9 @@ class GitInfoCollector
     /**
      * Collect commit info.
      *
-     * @throws \RuntimeException
-     *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
+     *
+     * @throws \RuntimeException
      */
     protected function collectCommit()
     {
@@ -119,9 +119,9 @@ class GitInfoCollector
     /**
      * Collect remotes info.
      *
-     * @throws \RuntimeException
-     *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote[]
+     *
+     * @throws \RuntimeException
      */
     protected function collectRemotes()
     {
