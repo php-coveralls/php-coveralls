@@ -20,6 +20,7 @@ $config
         ],
         'ternary_to_elvis_operator' => false,
         'php_unit_test_annotation' => false,
+        'single_line_comment_style' => false,
 
         'visibility_required' => false,
         'concat_space' => false,
@@ -30,7 +31,6 @@ $config
         'php_unit_test_case_static_method_calls' => false,
         'ternary_operator_spaces' => false,
         'explicit_indirect_variable' => false,
-        'single_line_comment_style' => false,
         'single_blank_line_before_namespace' => false,
         'php_unit_test_class_requires_covers' => false,
         'method_chaining_indentation' => false,
