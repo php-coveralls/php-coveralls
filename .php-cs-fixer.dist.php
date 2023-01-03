@@ -27,7 +27,6 @@ $config
 
         'explicit_string_variable' => false,
         'explicit_indirect_variable' => false,
-        'php_unit_test_class_requires_covers' => false,
     ])
     ->setFinder($finder)
 ;

@@ -10,6 +10,9 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  *
  * @internal
+ *
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Console\Application
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Console\ApplicationFactory
  */
 final class ApplicationTest extends ProjectTestCase
 {
