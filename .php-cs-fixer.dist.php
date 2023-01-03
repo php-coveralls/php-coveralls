@@ -3,7 +3,7 @@
 $finder = PhpCsFixer\Finder::create()
     ->ignoreDotFiles(false)
     ->ignoreVCSIgnored(true)
-    ->exclude('tests/Fixtures')
+    ->exclude('tests/Fixture')
     ->in(__DIR__)
 ;
 
@@ -26,10 +26,6 @@ $config
         'single_line_comment_style' => false,
         'ternary_to_elvis_operator' => false,
         'visibility_required' => false,
-
-        'blank_line_after_opening_tag' => false,
-        'no_extra_blank_lines' => false,
-        'single_blank_line_before_namespace' => false,
     ])
     ->setFinder($finder)
 ;
