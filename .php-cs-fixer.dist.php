@@ -26,7 +26,6 @@ $config
         'php_unit_internal_class' => false,
         'final_internal_class' => false,
         'php_unit_test_annotation' => false,
-        'no_empty_phpdoc' => false,
         'no_blank_lines_after_class_opening' => false,
         'explicit_string_variable' => false,
         'string_length_to_empty' => false,
