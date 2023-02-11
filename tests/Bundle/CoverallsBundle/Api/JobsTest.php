@@ -490,12 +490,12 @@ final class JobsTest extends ProjectTestCase
         ;
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
-    protected function legacyTearDown()
+    protected function tearDown() : void
     {
         $this->rmFile($this->jsonPath);
         $this->rmFile($this->cloverXmlPath);

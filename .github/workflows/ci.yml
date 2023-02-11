@@ -12,34 +12,11 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '5.5'
+                    -   php: '8.1'
                         os: ubuntu-latest
-                        composer-flags: '--prefer-lowest'
-                        coverage: 'xdebug'
-                    -   php: '5.5'
-                        os: ubuntu-latest
-                        symfony: '^3.0'
-                    -   php: '5.5'
-                        os: windows-latest
-                        coverage: 'xdebug'
-                    -   php: '5.6'
-                        os: ubuntu-latest
-                    -   php: '7.0'
-                        os: ubuntu-latest
-                    -   php: '7.1'
-                        os: ubuntu-latest
-                        symfony: '^4.0'
-                    -   php: '7.2'
-                        os: ubuntu-latest
-                        symfony: '^5.0'
-                    -   php: '7.3'
-                        os: ubuntu-latest
-                    -   php: '7.4'
-                        os: ubuntu-latest
-                    -   php: '7.4'
-                        os: windows-latest
+                        symfony: '^6.0'
                         coverage: 'pcov'
-                    -   php: '8.0'
+                    -   php: '8.2'
                         os: ubuntu-latest
                         symfony: '^6.0'
                         coverage: 'pcov'
@@ -120,11 +97,7 @@ jobs:
                     extensions: phar, openssl, sodium
                     coverage: none
                     ini-values: phar.readonly=Off, error_reporting=-1, display_errors=On, zend.assertions=1
-                    # Autoload files generated with Composer 2.3+ are not compatible with PHP < 7.0.
-                    tools: composer:2.2
-
-            -   name: Set Composer platform
-                run: composer config platform.php 5.5.0
+                    tools: composer:v2
 
             -   name: Install Composer dependencies
                 uses: ramsey/composer-install@v2
@@ -161,9 +134,8 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '5.5'
-                    -   php: '7.2'
-                    -   php: '8.0'
+                    -   php: '8.1'
+                    -   php: '8.2'
 
         steps:
             -   name: Checkout

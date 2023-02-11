@@ -7,7 +7,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareTrait;
 
 /**
  * Jobs API client.
@@ -18,6 +18,7 @@ use Psr\Log\LoggerInterface;
  */
 class JobsRepository implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
     /**
      * Jobs API.
      *
@@ -31,13 +32,6 @@ class JobsRepository implements LoggerAwareInterface
      * @var \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     protected $config;
-
-    /**
-     * Logger.
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $logger;
 
     /**
      * Constructor.
@@ -77,18 +71,6 @@ class JobsRepository implements LoggerAwareInterface
 
             return false;
         }
-    }
-
-    // LoggerAwareInterface
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \Psr\Log\LoggerAwareInterface::setLogger()
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
 
     // internal method
@@ -155,7 +137,7 @@ class JobsRepository implements LoggerAwareInterface
 
         $this->api->dumpJsonFile();
 
-        $filesize = number_format(filesize($jsonPath) / 1024, 2); // kB
+        $filesize = is_null($jsonPath) ? 0 : number_format(filesize($jsonPath) / 1024, 2); // kB
         $this->logger->info(sprintf('File size: <info>%s</info> kB', $filesize));
 
         return $this;

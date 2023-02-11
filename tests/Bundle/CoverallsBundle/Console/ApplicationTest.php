@@ -44,12 +44,12 @@ final class ApplicationTest extends ProjectTestCase
         static::assertSame(0, $actual);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
-    protected function legacyTearDown()
+    protected function tearDown() : void
     {
         $this->rmFile($this->cloverXmlPath);
         $this->rmFile($this->jsonPath);

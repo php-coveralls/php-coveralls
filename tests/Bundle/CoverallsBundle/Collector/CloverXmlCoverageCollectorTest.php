@@ -160,7 +160,7 @@ final class CloverXmlCoverageCollectorTest extends ProjectTestCase
         $this->assertSourceFileTest2UnderRootDir($sourceFiles[$path2]);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
 

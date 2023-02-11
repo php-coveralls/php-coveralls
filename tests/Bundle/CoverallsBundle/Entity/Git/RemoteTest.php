@@ -108,7 +108,7 @@ final class RemoteTest extends ProjectTestCase
         static::assertSame(json_encode($expected), (string) $this->object);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->object = new Remote();
     }

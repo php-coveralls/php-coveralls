@@ -424,7 +424,7 @@ final class ConfigurationTest extends ProjectTestCase
         static::assertSame($expected, $this->object->getEnv());
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->object = new Configuration();
     }

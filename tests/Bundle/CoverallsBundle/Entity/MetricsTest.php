@@ -118,7 +118,7 @@ final class MetricsTest extends ProjectTestCase
         $this->assertWithDelta(400 / 6, $object->getLineCoverage(), 0.0000000000001);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->coverage = array_fill(0, 5, null);
         $this->coverage[1] = 1;

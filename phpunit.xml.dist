@@ -2,7 +2,7 @@
 
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.2/phpunit.xsd"
     backupGlobals="false"
     backupStaticAttributes="false"
     beStrictAboutChangesToGlobalState="true"
@@ -31,20 +31,24 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>./src</directory>
-            <exclude>
-                <directory>./build</directory>
-                <directory>./composer</directory>
-                <directory>./tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+    <coverage>
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+
+        <exclude>
+            <directory>./build</directory>
+            <directory>./composer</directory>
+            <directory>./tests</directory>
+            <directory>./vendor</directory>
+        </exclude>
+
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
 
     <logging>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+        <junit outputFile="build/logs/junit.xml"/>
     </logging>
 </phpunit>

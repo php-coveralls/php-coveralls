@@ -84,7 +84,7 @@ final class GitTest extends ProjectTestCase
         static::assertSame(json_encode($expected), (string) $this->object);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->branchName = 'branch_name';
         $this->commit = $this->createCommit();

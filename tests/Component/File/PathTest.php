@@ -448,7 +448,7 @@ final class PathTest extends ProjectTestCase
         static::assertTrue($this->object->isRealDirWritable($path));
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->existingFile = __DIR__ . '/existing.txt';
         $this->unreadablePath = __DIR__ . '/unreadable.txt';
@@ -458,7 +458,7 @@ final class PathTest extends ProjectTestCase
         $this->object = new Path();
     }
 
-    protected function legacyTearDown()
+    protected function tearDown() : void
     {
         $this->rmFile($this->existingFile);
         $this->rmFile($this->unreadablePath);

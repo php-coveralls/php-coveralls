@@ -464,7 +464,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
         static::assertArrayHasKey('COVERALLS_REPO_TOKEN', $readEnv);
     }
 
-    protected function legacySetUp()
+    protected function setUp() : void
     {
         $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
