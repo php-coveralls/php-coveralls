@@ -32,7 +32,7 @@ class ConsoleLogger extends AbstractLogger
      *
      * @see \Psr\Log\LoggerInterface::log()
      */
-    public function log($level, string|\Stringable $message, array $context = []) : void
+    public function log($level, string|\Stringable $message, array $context = []): void
     {
         $this->output->writeln($message);
     }

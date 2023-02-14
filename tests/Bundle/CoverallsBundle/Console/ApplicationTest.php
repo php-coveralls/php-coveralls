@@ -17,6 +17,19 @@ use Symfony\Component\Console\Tester\ApplicationTester;
  */
 final class ApplicationTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
+    }
+
     /**
      * @test
      */
@@ -42,19 +55,6 @@ final class ApplicationTest extends ProjectTestCase
         );
 
         static::assertSame(0, $actual);
-    }
-
-    protected function setUp() : void
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
-    protected function tearDown() : void
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
     }
 
     /**

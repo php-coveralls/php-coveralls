@@ -19,6 +19,7 @@ use Psr\Log\LoggerAwareTrait;
 class JobsRepository implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
+
     /**
      * Jobs API.
      *
@@ -137,7 +138,7 @@ class JobsRepository implements LoggerAwareInterface
 
         $this->api->dumpJsonFile();
 
-        $filesize = is_null($jsonPath) ? 0 : number_format(filesize($jsonPath) / 1024, 2); // kB
+        $filesize = $jsonPath === null ? 0 : number_format(filesize($jsonPath) / 1024, 2); // kB
         $this->logger->info(sprintf('File size: <info>%s</info> kB', $filesize));
 
         return $this;

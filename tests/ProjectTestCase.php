@@ -8,6 +8,7 @@ use Prophecy\PhpUnit\ProphecyTrait;
 abstract class ProjectTestCase extends TestCase
 {
     use ProphecyTrait;
+
     /**
      * @var string
      */

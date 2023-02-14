@@ -22,6 +22,13 @@ final class CloverXmlCoverageCollectorTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+
+        $this->object = new CloverXmlCoverageCollector();
+    }
+
     // getJsonFile()
 
     /**
@@ -158,13 +165,6 @@ final class CloverXmlCoverageCollectorTest extends ProjectTestCase
 
         static::assertArrayHasKey($path2, $sourceFiles);
         $this->assertSourceFileTest2UnderRootDir($sourceFiles[$path2]);
-    }
-
-    protected function setUp() : void
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-
-        $this->object = new CloverXmlCoverageCollector();
     }
 
     /**

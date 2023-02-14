@@ -37,6 +37,15 @@ final class GitTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->branchName = 'branch_name';
+        $this->commit = $this->createCommit();
+        $this->remote = $this->createRemote();
+
+        $this->object = new Git($this->branchName, $this->commit, [$this->remote]);
+    }
+
     // getBranch()
 
     /**
@@ -82,15 +91,6 @@ final class GitTest extends ProjectTestCase
 
         static::assertSame($expected, $this->object->toArray());
         static::assertSame(json_encode($expected), (string) $this->object);
-    }
-
-    protected function setUp() : void
-    {
-        $this->branchName = 'branch_name';
-        $this->commit = $this->createCommit();
-        $this->remote = $this->createRemote();
-
-        $this->object = new Git($this->branchName, $this->commit, [$this->remote]);
     }
 
     /**

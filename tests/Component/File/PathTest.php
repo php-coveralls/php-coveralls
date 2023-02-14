@@ -39,6 +39,25 @@ final class PathTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->existingFile = __DIR__ . '/existing.txt';
+        $this->unreadablePath = __DIR__ . '/unreadable.txt';
+        $this->unwritablePath = __DIR__ . '/unwritable.txt';
+        $this->unwritableDir = __DIR__ . '/unwritable.dir';
+
+        $this->object = new Path();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rmFile($this->existingFile);
+        $this->rmFile($this->unreadablePath);
+        $this->rmFile($this->unwritablePath);
+
+        $this->rmDir($this->unwritableDir);
+    }
+
     // provider
 
     /**
@@ -446,25 +465,6 @@ final class PathTest extends ProjectTestCase
         $path = __DIR__;
 
         static::assertTrue($this->object->isRealDirWritable($path));
-    }
-
-    protected function setUp() : void
-    {
-        $this->existingFile = __DIR__ . '/existing.txt';
-        $this->unreadablePath = __DIR__ . '/unreadable.txt';
-        $this->unwritablePath = __DIR__ . '/unwritable.txt';
-        $this->unwritableDir = __DIR__ . '/unwritable.dir';
-
-        $this->object = new Path();
-    }
-
-    protected function tearDown() : void
-    {
-        $this->rmFile($this->existingFile);
-        $this->rmFile($this->unreadablePath);
-        $this->rmFile($this->unwritablePath);
-
-        $this->rmDir($this->unwritableDir);
     }
 
     protected function touchUnreadableFile()

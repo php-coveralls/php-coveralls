@@ -25,6 +25,10 @@ use Psr\Log\NullLogger;
  */
 final class JobsRepositoryTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
     // persist()
 
     /**
@@ -165,11 +169,6 @@ final class JobsRepositoryTest extends ProjectTestCase
 
         $object->setLogger($logger);
         static::assertFalse($object->persist());
-    }
-
-    protected function setUp() : void
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
     }
 
     /**

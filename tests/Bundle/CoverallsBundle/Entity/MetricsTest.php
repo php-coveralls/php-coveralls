@@ -19,6 +19,14 @@ final class MetricsTest extends ProjectTestCase
      */
     private $coverage;
 
+    protected function setUp(): void
+    {
+        $this->coverage = array_fill(0, 5, null);
+        $this->coverage[1] = 1;
+        $this->coverage[3] = 1;
+        $this->coverage[4] = 0;
+    }
+
     // hasStatements()
     // getStatements()
 
@@ -116,14 +124,6 @@ final class MetricsTest extends ProjectTestCase
         static::assertSame(6, $object->getStatements());
         static::assertSame(4, $object->getCoveredStatements());
         $this->assertWithDelta(400 / 6, $object->getLineCoverage(), 0.0000000000001);
-    }
-
-    protected function setUp() : void
-    {
-        $this->coverage = array_fill(0, 5, null);
-        $this->coverage[1] = 1;
-        $this->coverage[3] = 1;
-        $this->coverage[4] = 0;
     }
 
     private function assertWithDelta($expected, $actual, $delta, $message = '')
