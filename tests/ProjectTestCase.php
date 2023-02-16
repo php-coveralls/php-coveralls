@@ -2,10 +2,13 @@
 
 namespace PhpCoveralls\Tests;
 
-use LegacyPHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 abstract class ProjectTestCase extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var string
      */

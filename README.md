@@ -11,7 +11,7 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
-- PHP 5.5+ for 2.x or 5.3+ for 1.x
+- PHP 8.1+ for 3.x or 5.5+ for 2.x or 5.3+ for 1.x
 - On [GitHub](https://github.com/)
 - Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/) or [Codeship](https://www.codeship.io/)
 - Testing by [PHPUnit](https://github.com/sebastianbergmann/phpunit/) or other testing framework that can generate clover style coverage report
@@ -24,13 +24,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v3.0.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v3.0.0/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 
@@ -47,6 +47,13 @@ If you need support for PHP versions older than 5.5, you will need to use a 1.x 
 ```sh
 $ composer require --dev 'php-coveralls/php-coveralls:^1.1'
 ```
+
+If you need support for PHP versions older than 8.1, you will need to use a 2.x version:
+
+```sh
+$ composer require --dev 'php-coveralls/php-coveralls:^2.5'
+```
+
 
 You can see this library on [Packagist](https://packagist.org/packages/php-coveralls/php-coveralls).
 
@@ -81,12 +88,17 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit ...>
-    <logging>
-        ...
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-        ...
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+    <coverage>
+        <!-- ... -->
+        <report>
+            <!-- ... -->
+            <clover outputFile="build/logs/clover.xml"/>
+            <!-- ... -->
+        </report>
+        <!-- ... -->
+    </coverage>
 </phpunit>
 ```
 
@@ -104,7 +116,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "^2.5",
+        "php-coveralls/php-coveralls": "^3.0",
         "phpunit/phpcov": "^2.0"
     },
 ```
@@ -115,12 +127,17 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-php" type 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit ...>
-    <logging>
-        ...
-        <log type="coverage-php" target="build/cov/coverage.cov"/>
-        ...
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <!-- ... -->
+    <report>
+      <!-- ... -->
+      <php outputFile="build/cov/coverage.cov"/>
+      <!-- ... -->
+    </report>
+    <!-- ... -->
+  </coverage>
 </phpunit>
 ```
 
@@ -165,9 +182,8 @@ Add `php php-coveralls.phar` or `php vendor/bin/php-coveralls` to your `.travis.
 # .travis.yml
 language: php
 php:
-  - 5.5
-  - 5.4
-  - 5.3
+  - 8.2
+  - 8.1
 
 env:
   global:
@@ -175,7 +191,7 @@ env:
 
 matrix:
   allow_failures:
-    - php: 5.5
+    - php: 8.2
 
 install:
   - curl -s http://getcomposer.org/installer | php
@@ -198,7 +214,7 @@ Enable Xdebug in your `circle.yml` at `dependencies` section since currently Xde
 ```yml
 machine:
   php:
-    version: 5.4.10
+    version: 8.1.15
 
 ## Customize dependencies
 dependencies:

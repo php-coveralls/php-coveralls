@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\Argument;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -24,6 +25,10 @@ use Psr\Log\NullLogger;
  */
 final class JobsRepositoryTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+    }
     // persist()
 
     /**
@@ -166,11 +171,6 @@ final class JobsRepositoryTest extends ProjectTestCase
         static::assertFalse($object->persist());
     }
 
-    protected function legacySetUp()
-    {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
-    }
-
     /**
      * @return Jobs
      */
@@ -229,8 +229,8 @@ final class JobsRepositoryTest extends ProjectTestCase
     protected function createLoggerMock()
     {
         $logger = $this->prophesize(NullLogger::class);
-        $logger->info();
-        $logger->error();
+        $logger->info(Argument::any());
+        $logger->error(Argument::any());
 
         return $logger->reveal();
     }
