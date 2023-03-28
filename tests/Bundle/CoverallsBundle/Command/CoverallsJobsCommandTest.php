@@ -11,8 +11,10 @@ use Symfony\Component\Console\Tester\CommandTester;
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Command\CoverallsJobsCommand
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class CoverallsJobsCommandTest extends ProjectTestCase
+final class CoverallsJobsCommandTest extends ProjectTestCase
 {
     /**
      * @test
@@ -44,7 +46,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
 
         // It should succeed too with a correct coverage_clover option.
         $actual = $commandTester->execute(
@@ -57,7 +59,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     /**
@@ -91,7 +93,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     /**
@@ -125,7 +127,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     /**
@@ -191,7 +193,7 @@ class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        $this->assertSame(0, $actual);
+        static::assertSame(0, $actual);
     }
 
     protected function legacySetUp()

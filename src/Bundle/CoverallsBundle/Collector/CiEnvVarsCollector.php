@@ -66,7 +66,8 @@ class CiEnvVarsCollector
             ->fillGithubActions()
             ->fillLocal()
             ->fillRepoToken()
-            ->fillParallel();
+            ->fillParallel()
+        ;
 
         return $this->env;
     }
@@ -94,7 +95,7 @@ class CiEnvVarsCollector
      */
     protected function fillTravisCi()
     {
-        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID']) && isset($this->env['TRAVIS_BUILD_NUMBER'])) {
+        if (isset($this->env['TRAVIS']) && $this->env['TRAVIS'] && isset($this->env['TRAVIS_JOB_ID'], $this->env['TRAVIS_BUILD_NUMBER'])) {
             $this->env['CI_JOB_ID'] = $this->env['TRAVIS_JOB_ID'];
             $this->env['CI_BUILD_NUMBER'] = $this->env['TRAVIS_BUILD_NUMBER'];
 
@@ -213,7 +214,7 @@ class CiEnvVarsCollector
      */
     protected function fillJenkins()
     {
-        if (isset($this->env['JENKINS_URL']) && isset($this->env['BUILD_NUMBER'])) {
+        if (isset($this->env['JENKINS_URL'], $this->env['BUILD_NUMBER'])) {
             $this->env['CI_BUILD_NUMBER'] = $this->env['BUILD_NUMBER'];
             $this->env['CI_BUILD_URL'] = $this->env['JENKINS_URL'];
             $this->env['CI_NAME'] = 'jenkins';

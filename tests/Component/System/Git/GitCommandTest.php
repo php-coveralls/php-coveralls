@@ -10,8 +10,10 @@ use PhpCoveralls\Tests\ProjectTestCase;
  * @covers \PhpCoveralls\Component\System\SystemCommandExecutor
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class GitCommandTest extends ProjectTestCase
+final class GitCommandTest extends ProjectTestCase
 {
     /**
      * @test
@@ -21,8 +23,8 @@ class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getBranches();
 
-        $this->assertIsArray($actual);
-        $this->assertNotEmpty($actual);
+        static::assertIsArray($actual);
+        static::assertNotEmpty($actual);
     }
 
     /**
@@ -33,9 +35,9 @@ class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getHeadCommit();
 
-        $this->assertIsArray($actual);
-        $this->assertNotEmpty($actual);
-        $this->assertCount(6, $actual);
+        static::assertIsArray($actual);
+        static::assertNotEmpty($actual);
+        static::assertCount(6, $actual);
     }
 
     /**
@@ -46,7 +48,7 @@ class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getRemotes();
 
-        $this->assertIsArray($actual);
-        $this->assertNotEmpty($actual);
+        static::assertIsArray($actual);
+        static::assertNotEmpty($actual);
     }
 }

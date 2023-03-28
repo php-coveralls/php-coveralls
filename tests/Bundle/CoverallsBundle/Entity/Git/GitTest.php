@@ -8,12 +8,14 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
 use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
- * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Coveralls
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class GitTest extends ProjectTestCase
+final class GitTest extends ProjectTestCase
 {
     /**
      * @var string
@@ -42,7 +44,7 @@ class GitTest extends ProjectTestCase
      */
     public function shouldHaveBranchNameOnConstruction()
     {
-        $this->assertSame($this->branchName, $this->object->getBranch());
+        static::assertSame($this->branchName, $this->object->getBranch());
     }
 
     // getHead()
@@ -52,7 +54,7 @@ class GitTest extends ProjectTestCase
      */
     public function shouldHaveHeadCommitOnConstruction()
     {
-        $this->assertSame($this->commit, $this->object->getHead());
+        static::assertSame($this->commit, $this->object->getHead());
     }
 
     // getRemotes()
@@ -62,7 +64,7 @@ class GitTest extends ProjectTestCase
      */
     public function shouldHaveRemotesOnConstruction()
     {
-        $this->assertSame([$this->remote], $this->object->getRemotes());
+        static::assertSame([$this->remote], $this->object->getRemotes());
     }
 
     // toArray()
@@ -78,8 +80,8 @@ class GitTest extends ProjectTestCase
             'remotes' => [$this->remote->toArray()],
         ];
 
-        $this->assertSame($expected, $this->object->toArray());
-        $this->assertSame(json_encode($expected), (string) $this->object);
+        static::assertSame($expected, $this->object->toArray());
+        static::assertSame(json_encode($expected), (string) $this->object);
     }
 
     protected function legacySetUp()
@@ -103,7 +105,8 @@ class GitTest extends ProjectTestCase
 
         return $remote
             ->setName($name)
-            ->setUrl($url);
+            ->setUrl($url)
+        ;
     }
 
     /**
@@ -126,6 +129,7 @@ class GitTest extends ProjectTestCase
             ->setAuthorEmail($authorEmail)
             ->setCommitterName($committerName)
             ->setCommitterEmail($committerEmail)
-            ->setMessage($message);
+            ->setMessage($message)
+        ;
     }
 }

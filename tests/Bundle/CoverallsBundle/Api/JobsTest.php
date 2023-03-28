@@ -12,12 +12,14 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Tests\ProjectTestCase;
 
 /**
- * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\CoverallsApi
+ * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
+ * @internal
  */
-class JobsTest extends ProjectTestCase
+final class JobsTest extends ProjectTestCase
 {
     // getJsonFile()
 
@@ -28,7 +30,7 @@ class JobsTest extends ProjectTestCase
     {
         $object = $this->createJobsNeverSendOnDryRun();
 
-        $this->assertNull($object->getJsonFile());
+        static::assertNull($object->getJsonFile());
     }
 
     // setJsonFile()
@@ -42,7 +44,7 @@ class JobsTest extends ProjectTestCase
 
         $object = $this->createJobsNeverSendOnDryRun()->setJsonFile($jsonFile);
 
-        $this->assertSame($jsonFile, $object->getJsonFile());
+        static::assertSame($jsonFile, $object->getJsonFile());
     }
 
     // getConfiguration()
@@ -56,7 +58,7 @@ class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config);
 
-        $this->assertSame($config, $object->getConfiguration());
+        static::assertSame($config, $object->getConfiguration());
     }
 
     // getHttpClient()
@@ -70,7 +72,7 @@ class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config);
 
-        $this->assertNull($object->getHttpClient());
+        static::assertNull($object->getHttpClient());
     }
 
     /**
@@ -83,7 +85,7 @@ class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config, $client);
 
-        $this->assertSame($client, $object->getHttpClient());
+        static::assertSame($client, $object->getHttpClient());
     }
 
     // setHttpClient()
@@ -99,7 +101,7 @@ class JobsTest extends ProjectTestCase
         $object = new Jobs($config);
         $object->setHttpClient($client);
 
-        $this->assertSame($client, $object->getHttpClient());
+        static::assertSame($client, $object->getHttpClient());
     }
 
     // collectCloverXml()
@@ -121,16 +123,15 @@ class JobsTest extends ProjectTestCase
         $same = $object->collectCloverXml();
 
         // return $this
-        $this->assertSame($same, $object);
+        static::assertSame($same, $object);
 
         return $object;
     }
 
     /**
      * @test
-     * @depends shouldCollectCloverXml
      *
-     * @param Jobs $object
+     * @depends shouldCollectCloverXml
      *
      * @return JsonFile
      */
@@ -138,24 +139,23 @@ class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        $this->assertNotNull($jsonFile);
+        static::assertNotNull($jsonFile);
         $sourceFiles = $jsonFile->getSourceFiles();
-        $this->assertCount(4, $sourceFiles);
+        static::assertCount(4, $sourceFiles);
 
         return $jsonFile;
     }
 
     /**
      * @test
-     * @depends shouldHaveJsonFileAfterCollectCloverXml
      *
-     * @param JsonFile $jsonFile
+     * @depends shouldHaveJsonFileAfterCollectCloverXml
      */
     public function shouldNotHaveGitAfterCollectCloverXml(JsonFile $jsonFile)
     {
         $git = $jsonFile->getGit();
 
-        $this->assertNull($git);
+        static::assertNull($git);
     }
 
     /**
@@ -175,16 +175,15 @@ class JobsTest extends ProjectTestCase
         $same = $object->collectCloverXml();
 
         // return $this
-        $this->assertSame($same, $object);
+        static::assertSame($same, $object);
 
         return $object;
     }
 
     /**
      * @test
-     * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      *
-     * @param Jobs $object
+     * @depends shouldCollectCloverXmlExcludingNoStatementsFiles
      *
      * @return JsonFile
      */
@@ -192,9 +191,9 @@ class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        $this->assertNotNull($jsonFile);
+        static::assertNotNull($jsonFile);
         $sourceFiles = $jsonFile->getSourceFiles();
-        $this->assertCount(2, $sourceFiles);
+        static::assertCount(2, $sourceFiles);
 
         return $jsonFile;
     }
@@ -203,9 +202,8 @@ class JobsTest extends ProjectTestCase
 
     /**
      * @test
-     * @depends shouldCollectCloverXml
      *
-     * @param Jobs $object
+     * @depends shouldCollectCloverXml
      *
      * @return Jobs
      */
@@ -214,16 +212,15 @@ class JobsTest extends ProjectTestCase
         $same = $object->collectGitInfo();
 
         // return $this
-        $this->assertSame($same, $object);
+        static::assertSame($same, $object);
 
         return $object;
     }
 
     /**
      * @test
-     * @depends shouldCollectGitInfo
      *
-     * @param Jobs $object
+     * @depends shouldCollectGitInfo
      *
      * @return JsonFile
      */
@@ -231,22 +228,21 @@ class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        $this->assertNotNull($jsonFile);
+        static::assertNotNull($jsonFile);
 
         return $jsonFile;
     }
 
     /**
      * @test
-     * @depends shouldHaveJsonFileAfterCollectGitInfo
      *
-     * @param JsonFile $jsonFile
+     * @depends shouldHaveJsonFileAfterCollectGitInfo
      */
     public function shouldHaveGitAfterCollectGitInfo(JsonFile $jsonFile)
     {
         $git = $jsonFile->getGit();
 
-        $this->assertNotNull($git);
+        static::assertNotNull($git);
     }
 
     // send()
@@ -272,7 +268,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -300,11 +297,12 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
 
-        $this->assertSame($serviceName, $jsonFile->getServiceName());
-        $this->assertSame($serviceJobId, $jsonFile->getServiceJobId());
-        $this->assertSame($repoToken, $jsonFile->getRepoToken());
+        static::assertSame($serviceName, $jsonFile->getServiceName());
+        static::assertSame($serviceJobId, $jsonFile->getServiceJobId());
+        static::assertSame($repoToken, $jsonFile->getRepoToken());
     }
 
     /**
@@ -329,7 +327,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -354,7 +353,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -375,7 +375,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -395,7 +396,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -416,7 +418,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -439,7 +442,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -458,7 +462,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     /**
@@ -481,7 +486,8 @@ class JobsTest extends ProjectTestCase
             ->setJsonFile($jsonFile)
             ->collectEnvVars($server)
             ->dumpJsonFile()
-            ->send();
+            ->send()
+        ;
     }
 
     protected function legacySetUp()
@@ -507,7 +513,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(false);
+            ->setDryRun(false)
+        ;
 
         $client = $this->createAdapterMockWith($this->url, $this->filename);
 
@@ -523,7 +530,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(false);
+            ->setDryRun(false)
+        ;
 
         $client = $this->createAdapterMockNeverCalled();
 
@@ -539,7 +547,8 @@ class JobsTest extends ProjectTestCase
         $config
             ->setEntryPoint('https://coveralls.io')
             ->setJsonPath($this->jsonPath)
-            ->setDryRun(true);
+            ->setDryRun(true)
+        ;
 
         $client = $this->createAdapterMockNeverCalled();
 
@@ -554,7 +563,8 @@ class JobsTest extends ProjectTestCase
         $client = $this->prophesize(Client::class);
         $client
             ->send()
-            ->shouldNotBeCalled();
+            ->shouldNotBeCalled()
+        ;
 
         return $client->reveal();
     }
@@ -576,10 +586,11 @@ class JobsTest extends ProjectTestCase
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
                     && $filename === $options['multipart'][0]['name']
-                    && is_string($options['multipart'][0]['contents']);
+                    && \is_string($options['multipart'][0]['contents']);
             }))
             ->willReturn($response)
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+        ;
 
         return $client->reveal();
     }

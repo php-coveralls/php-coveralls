@@ -41,7 +41,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
     {
         $message = $this->message . "\n";
 
-        if (is_array($this->readEnv)) {
+        if (\is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {
                 $message .= $this->format($envVarName, $value);
             }
@@ -120,9 +120,9 @@ EOL;
      */
     protected function format($key, $value)
     {
-        if (in_array($key, self::$secretEnvVars, true)
-            && is_string($value)
-            && strlen($value) > 0) {
+        if (\in_array($key, self::$secretEnvVars, true)
+            && \is_string($value)
+            && $value !== '') {
             $value = '********(HIDDEN)';
         }
 

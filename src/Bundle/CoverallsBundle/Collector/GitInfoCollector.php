@@ -64,9 +64,9 @@ class GitInfoCollector
     /**
      * Collect branch name.
      *
-     * @throws \RuntimeException
-     *
      * @return string
+     *
+     * @throws \RuntimeException
      */
     protected function collectBranch()
     {
@@ -93,15 +93,15 @@ class GitInfoCollector
     /**
      * Collect commit info.
      *
-     * @throws \RuntimeException
-     *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
+     *
+     * @throws \RuntimeException
      */
     protected function collectCommit()
     {
         $commitResult = $this->command->getHeadCommit();
 
-        if (count($commitResult) !== 6 || array_keys($commitResult) !== range(0, 5)) {
+        if (\count($commitResult) !== 6 || array_keys($commitResult) !== range(0, 5)) {
             throw new \RuntimeException();
         }
 
@@ -113,21 +113,22 @@ class GitInfoCollector
             ->setAuthorEmail($commitResult[2])
             ->setCommitterName($commitResult[3])
             ->setCommitterEmail($commitResult[4])
-            ->setMessage($commitResult[5]);
+            ->setMessage($commitResult[5])
+        ;
     }
 
     /**
      * Collect remotes info.
      *
-     * @throws \RuntimeException
-     *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote[]
+     *
+     * @throws \RuntimeException
      */
     protected function collectRemotes()
     {
         $remotesResult = $this->command->getRemotes();
 
-        if (count($remotesResult) === 0) {
+        if (\count($remotesResult) === 0) {
             throw new \RuntimeException();
         }
 

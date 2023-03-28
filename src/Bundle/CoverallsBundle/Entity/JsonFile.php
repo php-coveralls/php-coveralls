@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Version;
  * Data represents "json_file" of Coveralls API.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
+ *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class JsonFile extends Coveralls
@@ -162,15 +163,16 @@ class JsonFile extends Coveralls
      *
      * @param array $env $_SERVER environment
      *
-     * @throws \RuntimeException
-     *
      * @return $this
+     *
+     * @throws \RuntimeException
      */
     public function fillJobs(array $env)
     {
         return $this
             ->fillStandardizedEnvVars($env)
-            ->ensureJobs();
+            ->ensureJobs()
+        ;
     }
 
     /**
@@ -241,8 +243,6 @@ class JsonFile extends Coveralls
 
     /**
      * Add source file.
-     *
-     * @param SourceFile $sourceFile
      */
     public function addSourceFile(SourceFile $sourceFile)
     {
@@ -256,7 +256,7 @@ class JsonFile extends Coveralls
      */
     public function hasSourceFiles()
     {
-        return count($this->sourceFiles) > 0;
+        return \count($this->sourceFiles) > 0;
     }
 
     /**
@@ -516,7 +516,7 @@ class JsonFile extends Coveralls
             return $prop->toArray();
         }
 
-        if (is_array($prop)) {
+        if (\is_array($prop)) {
             return $this->toJsonPropertyArray($prop);
         }
 
@@ -525,8 +525,6 @@ class JsonFile extends Coveralls
 
     /**
      * Convert to array as json property.
-     *
-     * @param array $propArray
      *
      * @return array
      */
@@ -590,9 +588,9 @@ class JsonFile extends Coveralls
     /**
      * Ensure data consistency for jobs API.
      *
-     * @throws \RuntimeException
-     *
      * @return $this
+     *
+     * @throws \RuntimeException
      */
     protected function ensureJobs()
     {
@@ -714,17 +712,16 @@ class JsonFile extends Coveralls
     }
 
     /**
-     * @param array  $item
      * @param string $source
      */
     private function throwWhenInvalidJson(array $item, $source)
     {
-        \json_encode($item);
+        json_encode($item);
 
-        if (\json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \UnexpectedValueException(sprintf(
                 'Can not encode to JSON, error: "%s" in "%s".',
-                \json_last_error_msg(),
+                json_last_error_msg(),
                 $source
             ));
         }
