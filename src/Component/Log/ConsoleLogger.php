@@ -12,6 +12,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ConsoleLogger extends AbstractLogger
 {
+    use ConsoleLoggerLog;
+
     /**
      * Output.
      *
@@ -25,15 +27,5 @@ class ConsoleLogger extends AbstractLogger
     public function __construct(OutputInterface $output)
     {
         $this->output = $output;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @see \Psr\Log\LoggerInterface::log()
-     */
-    public function log($level, $message, array $context = [])
-    {
-        $this->output->writeln($message);
     }
 }

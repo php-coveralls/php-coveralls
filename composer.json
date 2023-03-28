@@ -48,6 +48,7 @@
         "symfony/http-kernel": "Allows Symfony integration"
     },
     "autoload": {
+        "files": ["src/autoload.php"],
         "psr-4": {
             "PhpCoveralls\\": "src/"
         }
