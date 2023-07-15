@@ -56,7 +56,7 @@ final class PathTest extends ProjectTestCase
     /**
      * @return array
      */
-    public function provideAbsolutePaths()
+    public function provideShouldNotBeRelativePathCases()
     {
         if ($this->isWindowsOS()) {
             return [
@@ -87,7 +87,7 @@ final class PathTest extends ProjectTestCase
     /**
      * @test
      *
-     * @dataProvider provideAbsolutePaths
+     * @dataProvider provideShouldNotBeRelativePathCases
      * @param mixed $path
      */
     public function shouldNotBeRelativePath($path)
