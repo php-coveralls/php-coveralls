@@ -29,6 +29,8 @@ class ConsoleLogger extends AbstractLogger
 
     /**
      * @see \Psr\Log\LoggerInterface::log()
+     * @param mixed $level
+     * @param mixed $message
      */
     public function log($level, $message, array $context = [])
     {
