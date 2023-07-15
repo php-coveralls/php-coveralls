@@ -1,6 +1,7 @@
 php-coveralls
 =============
 
+[![Static Code Analysis](https://github.com/php-coveralls/php-coveralls/actions/workflows/static-code-analysis.yml/badge.svg)](https://github.com/php-coveralls/php-coveralls/actions/workflows/static-code-analysis.yml)
 [![CI](https://github.com/php-coveralls/php-coveralls/actions/workflows/ci.yml/badge.svg)](https://github.com/php-coveralls/php-coveralls/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/php-coveralls/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/php-coveralls/php-coveralls)
 
@@ -13,7 +14,7 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 - PHP 5.5+ for 2.x or 5.3+ for 1.x
 - On [GitHub](https://github.com/)
-- Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/) or [Codeship](https://www.codeship.io/)
+- Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/), [Codeship](https://www.codeship.io/) or [GitHub Actions](https://github.com/features/actions)
 - Testing by [PHPUnit](https://github.com/sebastianbergmann/phpunit/) or other testing framework that can generate clover style coverage report
 
 # Installation
