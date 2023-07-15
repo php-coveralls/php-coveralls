@@ -35,6 +35,8 @@ class ConsoleLogger extends AbstractLogger
      */
     public function log($level, $message, array $context = [])
     {
+        unset($level, $context);
+
         $this->output->writeln($message);
     }
 }

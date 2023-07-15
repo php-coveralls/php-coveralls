@@ -55,6 +55,8 @@ class Application extends BaseApplication
      */
     protected function getCommandName(InputInterface $input)
     {
+        unset($input);
+
         return 'coveralls:v1:jobs';
     }
 
