@@ -46,7 +46,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        static::assertSame(0, $actual);
+        self::assertSame(0, $actual);
 
         // It should succeed too with a correct coverage_clover option.
         $actual = $commandTester->execute(
@@ -59,7 +59,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        static::assertSame(0, $actual);
+        self::assertSame(0, $actual);
     }
 
     /**
@@ -93,7 +93,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        static::assertSame(0, $actual);
+        self::assertSame(0, $actual);
     }
 
     /**
@@ -127,7 +127,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        static::assertSame(0, $actual);
+        self::assertSame(0, $actual);
     }
 
     /**
@@ -193,7 +193,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
             ]
         );
 
-        static::assertSame(0, $actual);
+        self::assertSame(0, $actual);
     }
 
     protected function legacySetUp()

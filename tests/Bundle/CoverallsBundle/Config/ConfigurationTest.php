@@ -27,8 +27,8 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotHaveRepoTokenOnConstruction()
     {
-        static::assertFalse($this->object->hasRepoToken());
-        static::assertNull($this->object->getRepoToken());
+        self::assertFalse($this->object->hasRepoToken());
+        self::assertNull($this->object->getRepoToken());
     }
 
     // hasServiceName()
@@ -39,8 +39,8 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceNameOnConstruction()
     {
-        static::assertFalse($this->object->hasServiceName());
-        static::assertNull($this->object->getServiceName());
+        self::assertFalse($this->object->hasServiceName());
+        self::assertNull($this->object->getServiceName());
     }
 
     // getCloverXmlPaths()
@@ -50,7 +50,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldHaveEmptyCloverXmlPathsOnConstruction()
     {
-        static::assertEmpty($this->object->getCloverXmlPaths());
+        self::assertEmpty($this->object->getCloverXmlPaths());
     }
 
     // getRootDir()
@@ -60,7 +60,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotRootDirOnConstruction()
     {
-        static::assertNull($this->object->getRootDir());
+        self::assertNull($this->object->getRootDir());
     }
 
     // getJsonPath()
@@ -70,7 +70,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotHaveJsonPathOnConstruction()
     {
-        static::assertNull($this->object->getJsonPath());
+        self::assertNull($this->object->getJsonPath());
     }
 
     // isDryRun()
@@ -80,7 +80,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldBeDryRunOnConstruction()
     {
-        static::assertTrue($this->object->isDryRun());
+        self::assertTrue($this->object->isDryRun());
     }
 
     // isExcludeNoStatements()
@@ -90,7 +90,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotBeExcludeNotStatementsOnConstruction()
     {
-        static::assertFalse($this->object->isExcludeNoStatements());
+        self::assertFalse($this->object->isExcludeNoStatements());
     }
 
     // isVerbose
@@ -100,7 +100,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldNotBeVerboseOnConstruction()
     {
-        static::assertFalse($this->object->isVerbose());
+        self::assertFalse($this->object->isVerbose());
     }
 
     // getEnv()
@@ -110,7 +110,7 @@ final class ConfigurationTest extends ProjectTestCase
      */
     public function shouldBeProdEnvOnConstruction()
     {
-        static::assertSame('prod', $this->object->getEnv());
+        self::assertSame('prod', $this->object->getEnv());
     }
 
     // isTestEnv()
@@ -124,10 +124,10 @@ final class ConfigurationTest extends ProjectTestCase
 
         $this->object->setEnv($expected);
 
-        static::assertSame($expected, $this->object->getEnv());
-        static::assertTrue($this->object->isTestEnv());
-        static::assertFalse($this->object->isDevEnv());
-        static::assertFalse($this->object->isProdEnv());
+        self::assertSame($expected, $this->object->getEnv());
+        self::assertTrue($this->object->isTestEnv());
+        self::assertFalse($this->object->isDevEnv());
+        self::assertFalse($this->object->isProdEnv());
     }
 
     // isDevEnv()
@@ -141,10 +141,10 @@ final class ConfigurationTest extends ProjectTestCase
 
         $this->object->setEnv($expected);
 
-        static::assertSame($expected, $this->object->getEnv());
-        static::assertFalse($this->object->isTestEnv());
-        static::assertTrue($this->object->isDevEnv());
-        static::assertFalse($this->object->isProdEnv());
+        self::assertSame($expected, $this->object->getEnv());
+        self::assertFalse($this->object->isTestEnv());
+        self::assertTrue($this->object->isDevEnv());
+        self::assertFalse($this->object->isProdEnv());
     }
 
     // isProdEnv()
@@ -158,10 +158,10 @@ final class ConfigurationTest extends ProjectTestCase
 
         $this->object->setEnv($expected);
 
-        static::assertSame($expected, $this->object->getEnv());
-        static::assertFalse($this->object->isTestEnv());
-        static::assertFalse($this->object->isDevEnv());
-        static::assertTrue($this->object->isProdEnv());
+        self::assertSame($expected, $this->object->getEnv());
+        self::assertFalse($this->object->isTestEnv());
+        self::assertFalse($this->object->isDevEnv());
+        self::assertTrue($this->object->isProdEnv());
     }
 
     // setEntryPoint
@@ -175,8 +175,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setEntryPoint($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getEntryPoint());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getEntryPoint());
     }
 
     // setRootDir()
@@ -190,8 +190,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setRootDir($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getRootDir());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getRootDir());
     }
 
     // setRepoToken()
@@ -205,8 +205,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setRepoToken($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getRepoToken());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getRepoToken());
     }
 
     // setServiceName()
@@ -220,8 +220,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setServiceName($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getServiceName());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getServiceName());
     }
 
     // setCloverXmlPaths()
@@ -235,8 +235,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setCloverXmlPaths($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getCloverXmlPaths());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getCloverXmlPaths());
     }
 
     // addCloverXmlPath()
@@ -250,8 +250,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->addCloverXmlPath($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame([$expected], $this->object->getCloverXmlPaths());
+        self::assertSame($same, $this->object);
+        self::assertSame([$expected], $this->object->getCloverXmlPaths());
     }
 
     // setJsonPath()
@@ -265,8 +265,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setJsonPath($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getJsonPath());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getJsonPath());
     }
 
     // setDryRun()
@@ -280,8 +280,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setDryRun($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertFalse($this->object->isDryRun());
+        self::assertSame($same, $this->object);
+        self::assertFalse($this->object->isDryRun());
     }
 
     /**
@@ -293,8 +293,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setDryRun($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isDryRun());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isDryRun());
     }
 
     // setExcludeNoStatements()
@@ -308,8 +308,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setExcludeNoStatements($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertFalse($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertFalse($this->object->isExcludeNoStatements());
     }
 
     /**
@@ -321,8 +321,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setExcludeNoStatements($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isExcludeNoStatements());
     }
 
     // setExcludeNoStatementsUnlessFalse()
@@ -336,8 +336,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertFalse($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertFalse($this->object->isExcludeNoStatements());
     }
 
     /**
@@ -349,8 +349,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isExcludeNoStatements());
     }
 
     /**
@@ -363,8 +363,8 @@ final class ConfigurationTest extends ProjectTestCase
         $same = $this->object->setExcludeNoStatements(true);
         $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isExcludeNoStatements());
     }
 
     /**
@@ -377,8 +377,8 @@ final class ConfigurationTest extends ProjectTestCase
         $same = $this->object->setExcludeNoStatements(true);
         $same = $this->object->setExcludeNoStatementsUnlessFalse($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isExcludeNoStatements());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isExcludeNoStatements());
     }
 
     // setVerbose()
@@ -392,8 +392,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setVerbose($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertFalse($this->object->isVerbose());
+        self::assertSame($same, $this->object);
+        self::assertFalse($this->object->isVerbose());
     }
 
     /**
@@ -405,8 +405,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setVerbose($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertTrue($this->object->isVerbose());
+        self::assertSame($same, $this->object);
+        self::assertTrue($this->object->isVerbose());
     }
 
     // setEnv()
@@ -420,8 +420,8 @@ final class ConfigurationTest extends ProjectTestCase
 
         $same = $this->object->setEnv($expected);
 
-        static::assertSame($same, $this->object);
-        static::assertSame($expected, $this->object->getEnv());
+        self::assertSame($same, $this->object);
+        self::assertSame($expected, $this->object->getEnv());
     }
 
     protected function legacySetUp()

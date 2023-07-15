@@ -44,7 +44,7 @@ final class GitTest extends ProjectTestCase
      */
     public function shouldHaveBranchNameOnConstruction()
     {
-        static::assertSame($this->branchName, $this->object->getBranch());
+        self::assertSame($this->branchName, $this->object->getBranch());
     }
 
     // getHead()
@@ -54,7 +54,7 @@ final class GitTest extends ProjectTestCase
      */
     public function shouldHaveHeadCommitOnConstruction()
     {
-        static::assertSame($this->commit, $this->object->getHead());
+        self::assertSame($this->commit, $this->object->getHead());
     }
 
     // getRemotes()
@@ -64,7 +64,7 @@ final class GitTest extends ProjectTestCase
      */
     public function shouldHaveRemotesOnConstruction()
     {
-        static::assertSame([$this->remote], $this->object->getRemotes());
+        self::assertSame([$this->remote], $this->object->getRemotes());
     }
 
     // toArray()
@@ -80,8 +80,8 @@ final class GitTest extends ProjectTestCase
             'remotes' => [$this->remote->toArray()],
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     protected function legacySetUp()

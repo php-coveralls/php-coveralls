@@ -120,8 +120,6 @@ class JsonFile extends Coveralls
     // API
 
     /**
-     * {@inheritdoc}
-     *
      * @see \PhpCoveralls\Bundle\CoverallsBundle\Entity\ArrayConvertable::toArray()
      */
     public function toArray()
@@ -507,8 +505,6 @@ class JsonFile extends Coveralls
      * Convert to json property.
      *
      * @param mixed $prop
-     *
-     * @return mixed
      */
     protected function toJsonProperty($prop)
     {

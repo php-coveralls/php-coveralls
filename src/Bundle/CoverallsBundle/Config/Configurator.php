@@ -20,9 +20,8 @@ class Configurator
     /**
      * Load configuration.
      *
-     * @param string         $coverallsYmlPath Path to .coveralls.yml.
-     * @param string         $rootDir          path to project root directory
-     * @param InputInterface $input|null       Input arguments
+     * @param string $coverallsYmlPath Path to .coveralls.yml.
+     * @param string $rootDir          path to project root directory
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      *
@@ -80,9 +79,8 @@ class Configurator
     /**
      * Create coveralls configuration.
      *
-     * @param array          $options    processed configuration
-     * @param string         $rootDir    path to project root directory
-     * @param InputInterface $input|null input arguments
+     * @param array  $options processed configuration
+     * @param string $rootDir path to project root directory
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
@@ -237,9 +235,8 @@ class Configurator
     /**
      * Get option from YAML config, potentially overridden via input params.
      *
-     * @param string         $optionName option name
-     * @param array          $options    processed configuration
-     * @param InputInterface $input|null input arguments
+     * @param string $optionName option name
+     * @param array  $options    processed configuration
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */

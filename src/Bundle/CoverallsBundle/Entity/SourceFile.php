@@ -70,8 +70,6 @@ class SourceFile extends Coveralls
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @see \PhpCoveralls\Bundle\CoverallsBundle\Entity\ArrayConvertable::toArray()
      */
     public function toArray()

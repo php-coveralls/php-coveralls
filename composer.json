@@ -62,7 +62,7 @@
     ],
     "scripts": {
         "install-dev-tools": [
-            "cd dev-tools && composer update --no-interaction"
+            "cd dev-tools && composer install --no-interaction"
         ],
         "sca": [
             "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",

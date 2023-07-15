@@ -50,7 +50,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertTrue($object->persist());
+        self::assertTrue($object->persist());
     }
 
     /**
@@ -65,7 +65,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertTrue($object->persist());
+        self::assertTrue($object->persist());
     }
 
     // unexpected Exception
@@ -83,7 +83,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertFalse($object->persist());
+        self::assertFalse($object->persist());
     }
 
     /**
@@ -98,7 +98,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertFalse($object->persist());
+        self::assertFalse($object->persist());
     }
 
     // curl error
@@ -115,7 +115,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertFalse($object->persist());
+        self::assertFalse($object->persist());
     }
 
     // response 422
@@ -144,7 +144,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertFalse($object->persist());
+        self::assertFalse($object->persist());
     }
 
     // response 500
@@ -163,7 +163,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $object = new JobsRepository($api, $config);
 
         $object->setLogger($logger);
-        static::assertFalse($object->persist());
+        self::assertFalse($object->persist());
     }
 
     protected function legacySetUp()

@@ -23,7 +23,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
     {
         $object = new RequirementsNotSatisfiedException();
 
-        static::assertNull($object->getReadEnv());
+        self::assertNull($object->getReadEnv());
     }
 
     // setReadEnv()
@@ -40,7 +40,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
         $object = new RequirementsNotSatisfiedException();
         $object->setReadEnv($expected);
 
-        static::assertSame($expected, $object->getReadEnv());
+        self::assertSame($expected, $object->getReadEnv());
     }
 
     // getHelpMessage()
@@ -59,7 +59,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        static::assertStringContainsString("  - ENV_NAME='value'", $message);
+        self::assertStringContainsString("  - ENV_NAME='value'", $message);
     }
 
     // getHelpMessage()
@@ -80,7 +80,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        static::assertStringContainsString($expected, $message);
+        self::assertStringContainsString($expected, $message);
     }
 
     /**
@@ -99,7 +99,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        static::assertStringContainsString($expected, $message);
+        self::assertStringContainsString($expected, $message);
     }
 
     /**
@@ -116,7 +116,7 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        static::assertStringContainsString('  - ENV_NAME=123', $message);
+        self::assertStringContainsString('  - ENV_NAME=123', $message);
     }
 
     /**
@@ -133,6 +133,6 @@ final class RequirementsNotSatisfiedExceptionTest extends ProjectTestCase
 
         $message = $object->getHelpMessage();
 
-        static::assertStringContainsString('  - ENV_NAME=true', $message);
+        self::assertStringContainsString('  - ENV_NAME=true', $message);
     }
 }
