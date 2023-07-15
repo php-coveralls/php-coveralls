@@ -27,7 +27,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHaveIdOnConstruction()
     {
-        static::assertNull($this->object->getId());
+        self::assertNull($this->object->getId());
     }
 
     // getAuthorName()
@@ -37,7 +37,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHoveAuthorNameOnConstruction()
     {
-        static::assertNull($this->object->getAuthorName());
+        self::assertNull($this->object->getAuthorName());
     }
 
     // getAuthorEmail()
@@ -47,7 +47,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHoveAuthorEmailOnConstruction()
     {
-        static::assertNull($this->object->getAuthorEmail());
+        self::assertNull($this->object->getAuthorEmail());
     }
 
     // getCommitterName()
@@ -57,7 +57,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHoveCommitterNameOnConstruction()
     {
-        static::assertNull($this->object->getCommitterName());
+        self::assertNull($this->object->getCommitterName());
     }
 
     // getCommitterEmail()
@@ -67,7 +67,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHoveCommitterEmailOnConstruction()
     {
-        static::assertNull($this->object->getCommitterEmail());
+        self::assertNull($this->object->getCommitterEmail());
     }
 
     // getMessage()
@@ -77,7 +77,7 @@ final class CommitTest extends ProjectTestCase
      */
     public function shouldNotHoveMessageOnConstruction()
     {
-        static::assertNull($this->object->getMessage());
+        self::assertNull($this->object->getMessage());
     }
 
     // setId()
@@ -91,8 +91,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setId($expected);
 
-        static::assertSame($expected, $this->object->getId());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getId());
+        self::assertSame($obj, $this->object);
     }
 
     // setAuthorName()
@@ -106,8 +106,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setAuthorName($expected);
 
-        static::assertSame($expected, $this->object->getAuthorName());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getAuthorName());
+        self::assertSame($obj, $this->object);
     }
 
     // setAuthorEmail()
@@ -121,8 +121,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setAuthorEmail($expected);
 
-        static::assertSame($expected, $this->object->getAuthorEmail());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getAuthorEmail());
+        self::assertSame($obj, $this->object);
     }
 
     // setCommitterName()
@@ -136,8 +136,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setCommitterName($expected);
 
-        static::assertSame($expected, $this->object->getCommitterName());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getCommitterName());
+        self::assertSame($obj, $this->object);
     }
 
     // setCommitterEmail()
@@ -151,8 +151,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setCommitterEmail($expected);
 
-        static::assertSame($expected, $this->object->getCommitterEmail());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getCommitterEmail());
+        self::assertSame($obj, $this->object);
     }
 
     // setMessage()
@@ -166,8 +166,8 @@ final class CommitTest extends ProjectTestCase
 
         $obj = $this->object->setMessage($expected);
 
-        static::assertSame($expected, $this->object->getMessage());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getMessage());
+        self::assertSame($obj, $this->object);
     }
 
     // toArray()
@@ -186,8 +186,8 @@ final class CommitTest extends ProjectTestCase
             'message' => null,
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -220,8 +220,8 @@ final class CommitTest extends ProjectTestCase
             'message' => $message,
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     protected function legacySetUp()

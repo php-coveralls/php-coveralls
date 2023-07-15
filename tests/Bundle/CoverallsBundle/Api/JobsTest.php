@@ -30,7 +30,7 @@ final class JobsTest extends ProjectTestCase
     {
         $object = $this->createJobsNeverSendOnDryRun();
 
-        static::assertNull($object->getJsonFile());
+        self::assertNull($object->getJsonFile());
     }
 
     // setJsonFile()
@@ -44,7 +44,7 @@ final class JobsTest extends ProjectTestCase
 
         $object = $this->createJobsNeverSendOnDryRun()->setJsonFile($jsonFile);
 
-        static::assertSame($jsonFile, $object->getJsonFile());
+        self::assertSame($jsonFile, $object->getJsonFile());
     }
 
     // getConfiguration()
@@ -58,7 +58,7 @@ final class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config);
 
-        static::assertSame($config, $object->getConfiguration());
+        self::assertSame($config, $object->getConfiguration());
     }
 
     // getHttpClient()
@@ -72,7 +72,7 @@ final class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config);
 
-        static::assertNull($object->getHttpClient());
+        self::assertNull($object->getHttpClient());
     }
 
     /**
@@ -85,7 +85,7 @@ final class JobsTest extends ProjectTestCase
 
         $object = new Jobs($config, $client);
 
-        static::assertSame($client, $object->getHttpClient());
+        self::assertSame($client, $object->getHttpClient());
     }
 
     // setHttpClient()
@@ -101,7 +101,7 @@ final class JobsTest extends ProjectTestCase
         $object = new Jobs($config);
         $object->setHttpClient($client);
 
-        static::assertSame($client, $object->getHttpClient());
+        self::assertSame($client, $object->getHttpClient());
     }
 
     // collectCloverXml()
@@ -123,7 +123,7 @@ final class JobsTest extends ProjectTestCase
         $same = $object->collectCloverXml();
 
         // return $this
-        static::assertSame($same, $object);
+        self::assertSame($same, $object);
 
         return $object;
     }
@@ -139,9 +139,9 @@ final class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        static::assertNotNull($jsonFile);
+        self::assertNotNull($jsonFile);
         $sourceFiles = $jsonFile->getSourceFiles();
-        static::assertCount(4, $sourceFiles);
+        self::assertCount(4, $sourceFiles);
 
         return $jsonFile;
     }
@@ -155,7 +155,7 @@ final class JobsTest extends ProjectTestCase
     {
         $git = $jsonFile->getGit();
 
-        static::assertNull($git);
+        self::assertNull($git);
     }
 
     /**
@@ -175,7 +175,7 @@ final class JobsTest extends ProjectTestCase
         $same = $object->collectCloverXml();
 
         // return $this
-        static::assertSame($same, $object);
+        self::assertSame($same, $object);
 
         return $object;
     }
@@ -191,9 +191,9 @@ final class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        static::assertNotNull($jsonFile);
+        self::assertNotNull($jsonFile);
         $sourceFiles = $jsonFile->getSourceFiles();
-        static::assertCount(2, $sourceFiles);
+        self::assertCount(2, $sourceFiles);
 
         return $jsonFile;
     }
@@ -212,7 +212,7 @@ final class JobsTest extends ProjectTestCase
         $same = $object->collectGitInfo();
 
         // return $this
-        static::assertSame($same, $object);
+        self::assertSame($same, $object);
 
         return $object;
     }
@@ -228,7 +228,7 @@ final class JobsTest extends ProjectTestCase
     {
         $jsonFile = $object->getJsonFile();
 
-        static::assertNotNull($jsonFile);
+        self::assertNotNull($jsonFile);
 
         return $jsonFile;
     }
@@ -242,7 +242,7 @@ final class JobsTest extends ProjectTestCase
     {
         $git = $jsonFile->getGit();
 
-        static::assertNotNull($git);
+        self::assertNotNull($git);
     }
 
     // send()
@@ -300,9 +300,9 @@ final class JobsTest extends ProjectTestCase
             ->send()
         ;
 
-        static::assertSame($serviceName, $jsonFile->getServiceName());
-        static::assertSame($serviceJobId, $jsonFile->getServiceJobId());
-        static::assertSame($repoToken, $jsonFile->getRepoToken());
+        self::assertSame($serviceName, $jsonFile->getServiceName());
+        self::assertSame($serviceJobId, $jsonFile->getServiceJobId());
+        self::assertSame($repoToken, $jsonFile->getRepoToken());
     }
 
     /**

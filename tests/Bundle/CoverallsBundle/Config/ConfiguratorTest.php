@@ -53,7 +53,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        static::assertInstanceOf('PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration', $config);
+        self::assertInstanceOf('PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration', $config);
     }
 
     // default coverage_clover not found
@@ -294,7 +294,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        static::assertSame('http://foo.bar', $config->getEntryPoint());
+        self::assertSame('http://foo.bar', $config->getEntryPoint());
     }
 
     /**
@@ -308,7 +308,7 @@ final class ConfiguratorTest extends ProjectTestCase
 
         $config = $this->object->load($path, $this->rootDir);
 
-        static::assertSame('https://coveralls.io', $config->getEntryPoint());
+        self::assertSame('https://coveralls.io', $config->getEntryPoint());
     }
 
     // configured coverage_clover not found
@@ -407,7 +407,7 @@ final class ConfiguratorTest extends ProjectTestCase
     {
         $this->assertSamePaths($cloverXml, $config->getCloverXmlPaths());
         $this->assertSamePath($jsonPath, $config->getJsonPath());
-        static::assertSame($excludeNoStatements, $config->isExcludeNoStatements());
+        self::assertSame($excludeNoStatements, $config->isExcludeNoStatements());
     }
 
     /**

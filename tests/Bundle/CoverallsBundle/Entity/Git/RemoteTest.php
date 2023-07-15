@@ -27,7 +27,7 @@ final class RemoteTest extends ProjectTestCase
      */
     public function shouldNotHaveRemoteNameOnConstruction()
     {
-        static::assertNull($this->object->getName());
+        self::assertNull($this->object->getName());
     }
 
     // getUrl()
@@ -37,7 +37,7 @@ final class RemoteTest extends ProjectTestCase
      */
     public function shouldNotHaveUrlOnConstruction()
     {
-        static::assertNull($this->object->getUrl());
+        self::assertNull($this->object->getUrl());
     }
 
     // setName()
@@ -51,8 +51,8 @@ final class RemoteTest extends ProjectTestCase
 
         $obj = $this->object->setName($expected);
 
-        static::assertSame($expected, $this->object->getName());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getName());
+        self::assertSame($obj, $this->object);
     }
 
     // setUrl()
@@ -66,8 +66,8 @@ final class RemoteTest extends ProjectTestCase
 
         $obj = $this->object->setUrl($expected);
 
-        static::assertSame($expected, $this->object->getUrl());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getUrl());
+        self::assertSame($obj, $this->object);
     }
 
     // toArray()
@@ -82,8 +82,8 @@ final class RemoteTest extends ProjectTestCase
             'url' => null,
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -104,8 +104,8 @@ final class RemoteTest extends ProjectTestCase
             'url' => $url,
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     protected function legacySetUp()

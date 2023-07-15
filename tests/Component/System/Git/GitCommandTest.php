@@ -23,8 +23,8 @@ final class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getBranches();
 
-        static::assertIsArray($actual);
-        static::assertNotEmpty($actual);
+        self::assertIsArray($actual);
+        self::assertNotEmpty($actual);
     }
 
     /**
@@ -35,9 +35,9 @@ final class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getHeadCommit();
 
-        static::assertIsArray($actual);
-        static::assertNotEmpty($actual);
-        static::assertCount(6, $actual);
+        self::assertIsArray($actual);
+        self::assertNotEmpty($actual);
+        self::assertCount(6, $actual);
     }
 
     /**
@@ -48,7 +48,7 @@ final class GitCommandTest extends ProjectTestCase
         $object = new GitCommand();
         $actual = $object->getRemotes();
 
-        static::assertIsArray($actual);
-        static::assertNotEmpty($actual);
+        self::assertIsArray($actual);
+        self::assertNotEmpty($actual);
     }
 }

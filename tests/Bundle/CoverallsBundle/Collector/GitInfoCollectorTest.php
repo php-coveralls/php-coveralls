@@ -57,7 +57,7 @@ final class GitInfoCollectorTest extends ProjectTestCase
         $command = new GitCommand();
         $object = new GitInfoCollector($command);
 
-        static::assertSame($command, $object->getCommand());
+        self::assertSame($command, $object->getCommand());
     }
 
     // collect()
@@ -72,9 +72,9 @@ final class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
-        static::assertInstanceOf(Git::class, $git);
+        self::assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
-        static::assertSame('branch-1', $git->getBranch());
+        self::assertSame('branch-1', $git->getBranch());
     }
 
     /**
@@ -91,9 +91,9 @@ final class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
-        static::assertInstanceOf(Git::class, $git);
+        self::assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
-        static::assertSame('pull/1/merge', $git->getBranch());
+        self::assertSame('pull/1/merge', $git->getBranch());
     }
 
     /**
@@ -110,9 +110,9 @@ final class GitInfoCollectorTest extends ProjectTestCase
 
         $git = $object->collect();
 
-        static::assertInstanceOf(Git::class, $git);
+        self::assertInstanceOf(Git::class, $git);
         $this->assertGit($git);
-        static::assertSame('(no branch)', $git->getBranch());
+        self::assertSame('(no branch)', $git->getBranch());
     }
 
     // collectBranch() exception
@@ -280,29 +280,29 @@ final class GitInfoCollectorTest extends ProjectTestCase
     {
         $commit = $git->getHead();
 
-        static::assertInstanceOf(Commit::class, $commit);
+        self::assertInstanceOf(Commit::class, $commit);
         $this->assertCommit($commit);
 
         $remotes = $git->getRemotes();
-        static::assertCount(1, $remotes);
+        self::assertCount(1, $remotes);
 
-        static::assertInstanceOf(Remote::class, $remotes[0]);
+        self::assertInstanceOf(Remote::class, $remotes[0]);
         $this->assertRemote($remotes[0]);
     }
 
     protected function assertCommit(Commit $commit)
     {
-        static::assertSame('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $commit->getId());
-        static::assertSame('Author Name', $commit->getAuthorName());
-        static::assertSame('author@satooshi.jp', $commit->getAuthorEmail());
-        static::assertSame('Committer Name', $commit->getCommitterName());
-        static::assertSame('committer@satooshi.jp', $commit->getCommitterEmail());
-        static::assertSame('commit message', $commit->getMessage());
+        self::assertSame('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', $commit->getId());
+        self::assertSame('Author Name', $commit->getAuthorName());
+        self::assertSame('author@satooshi.jp', $commit->getAuthorEmail());
+        self::assertSame('Committer Name', $commit->getCommitterName());
+        self::assertSame('committer@satooshi.jp', $commit->getCommitterEmail());
+        self::assertSame('commit message', $commit->getMessage());
     }
 
     protected function assertRemote(Remote $remote)
     {
-        static::assertSame('origin', $remote->getName());
-        static::assertSame('git@github.com:php-coveralls/php-coveralls.git', $remote->getUrl());
+        self::assertSame('origin', $remote->getName());
+        self::assertSame('git@github.com:php-coveralls/php-coveralls.git', $remote->getUrl());
     }
 }
