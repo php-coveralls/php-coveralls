@@ -59,8 +59,6 @@ class CoverallsJobsCommand extends Command
     // internal method
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Command\Command::configure()
      */
     protected function configure()
@@ -132,8 +130,6 @@ class CoverallsJobsCommand extends Command
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Command\Command::execute()
      */
     protected function execute(InputInterface $input, OutputInterface $output)

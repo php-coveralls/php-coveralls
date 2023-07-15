@@ -37,8 +37,6 @@ class Application extends BaseApplication
     // accessor
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Application::getDefinition()
      */
     public function getDefinition()
@@ -53,8 +51,6 @@ class Application extends BaseApplication
     // internal method
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Application::getCommandName()
      */
     protected function getCommandName(InputInterface $input)
@@ -63,8 +59,6 @@ class Application extends BaseApplication
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Application::getDefaultCommands()
      */
     protected function getDefaultCommands()
