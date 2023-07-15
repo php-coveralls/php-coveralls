@@ -166,10 +166,6 @@ final class GitInfoCollectorTest extends ProjectTestCase
     }
 
     /**
-     * @param mixed $getBranchesValue
-     * @param mixed $getHeadCommitValue
-     * @param mixed $getRemotesValue
-     *
      * @return object
      */
     protected function createGitCommandStubWith($getBranchesValue, $getHeadCommitValue, $getRemotesValue)
@@ -218,7 +214,6 @@ final class GitInfoCollectorTest extends ProjectTestCase
 
     /**
      * @param GitCommand $stub
-     * @param mixed      $getBranchesValue
      */
     protected function setUpGitCommandStubWithGetBranchesOnce($stub, $getBranchesValue)
     {

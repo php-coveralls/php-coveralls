@@ -22,7 +22,6 @@ class Configurator
      *
      * @param string         $coverallsYmlPath Path to .coveralls.yml.
      * @param string         $rootDir          path to project root directory
-     * @param InputInterface $input|null       Input arguments
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      *
@@ -82,7 +81,6 @@ class Configurator
      *
      * @param array          $options    processed configuration
      * @param string         $rootDir    path to project root directory
-     * @param InputInterface $input|null input arguments
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
@@ -239,7 +237,6 @@ class Configurator
      *
      * @param string         $optionName option name
      * @param array          $options    processed configuration
-     * @param InputInterface $input|null input arguments
      *
      * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */

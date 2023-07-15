@@ -348,8 +348,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetServiceName
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithServiceName($object)
     {
@@ -371,8 +369,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetServiceJobId
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithServiceJobId($object)
     {
@@ -394,8 +390,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetRepoToken
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithRepoToken($object)
     {
@@ -417,8 +411,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetParallel
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithParallel($object)
     {
@@ -440,8 +432,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetGit
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithGit($object)
     {
@@ -465,8 +455,6 @@ final class JsonFileTest extends ProjectTestCase
      * @test
      *
      * @depends shouldSetRunAt
-     *
-     * @param mixed $object
      */
     public function shouldConvertToArrayWithRunAt($object)
     {

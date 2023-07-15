@@ -191,7 +191,6 @@ class CoverallsJobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param InputInterface $input  input arguments
      * @param Configuration  $config configuration
      *
      * @return bool

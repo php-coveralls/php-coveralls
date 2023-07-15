@@ -505,10 +505,6 @@ class JsonFile extends Coveralls
 
     /**
      * Convert to json property.
-     *
-     * @param mixed $prop
-     *
-     * @return mixed
      */
     protected function toJsonProperty($prop)
     {
