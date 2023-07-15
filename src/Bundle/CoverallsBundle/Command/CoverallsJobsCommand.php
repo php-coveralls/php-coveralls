@@ -187,7 +187,7 @@ class CoverallsJobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param Configuration  $config configuration
+     * @param Configuration $config configuration
      *
      * @return bool
      */

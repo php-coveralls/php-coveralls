@@ -29,6 +29,7 @@ class ConsoleLogger extends AbstractLogger
 
     /**
      * @see \Psr\Log\LoggerInterface::log()
+     *
      * @param mixed $level
      * @param mixed $message
      */

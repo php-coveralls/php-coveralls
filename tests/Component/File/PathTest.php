@@ -77,6 +77,7 @@ final class PathTest extends ProjectTestCase
      * @test
      *
      * @dataProvider provideRelativePaths
+     *
      * @param mixed $path
      */
     public function shouldBeRelativePath($path)
@@ -88,6 +89,7 @@ final class PathTest extends ProjectTestCase
      * @test
      *
      * @dataProvider provideShouldNotBeRelativePathCases
+     *
      * @param mixed $path
      */
     public function shouldNotBeRelativePath($path)
@@ -112,6 +114,7 @@ final class PathTest extends ProjectTestCase
      * @test
      *
      * @dataProvider provideRelativePaths
+     *
      * @param mixed $path
      */
     public function shouldConvertAbsolutePathIfRelativePathGiven($path)
@@ -153,6 +156,7 @@ final class PathTest extends ProjectTestCase
      * @test
      *
      * @dataProvider provideRelativePaths
+     *
      * @param mixed $path
      */
     public function shouldGetRealPathIfRelativePathGiven($path)
@@ -325,7 +329,7 @@ final class PathTest extends ProjectTestCase
     {
         if ($this->isWindowsOS()) {
             // On Windows there is no write-only attribute.
-            static::markTestSkipped('Unable to run on Windows');
+            self::markTestSkipped('Unable to run on Windows');
         }
 
         $this->touchUnreadableFile();
@@ -426,7 +430,7 @@ final class PathTest extends ProjectTestCase
     {
         if ($this->isWindowsOS()) {
             // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
-            static::markTestSkipped('Unable to run on Windows');
+            self::markTestSkipped('Unable to run on Windows');
         }
 
         $this->mkdirUnwritableDir();
