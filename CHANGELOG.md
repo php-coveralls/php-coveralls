@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+## 2.6.0
+
+### Miscellaneous
+
+* Add windows-os to github action (#335)
+* DX: Update PHP CS Fixer to ^3.13.2 (#355)
+* DX: update dev-tools, especially PHP CS Fixer (#366)
+* Fix PHP 8.1 compatibility (#361)
+* GH Actions/CI: run the test suite against PHP 8.1, 8.2 and 8.3 (#363)
+* README: fix broken badge and mention GH Actions (#362)
+* Replace Travis CI with the GitHub action badge (#364)
+* Upgrade PHAR generation to Box 4.x (#351)
+
 ## 2.5.3
 
 ### Miscellaneous
