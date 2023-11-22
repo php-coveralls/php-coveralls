@@ -12,7 +12,9 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
-- PHP 5.5+ for 2.x or 5.3+ for 1.x
+- PHP 7+ for 2.7+
+- PHP 5.5+ for 2.x
+- PHP 5.3+ for 1.x
 - On [GitHub](https://github.com/)
 - Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/), [Codeship](https://www.codeship.io/) or [GitHub Actions](https://github.com/features/actions)
 - Testing by [PHPUnit](https://github.com/sebastianbergmann/phpunit/) or other testing framework that can generate clover style coverage report
