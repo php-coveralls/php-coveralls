@@ -36,8 +36,8 @@ final class JsonFileTest extends ProjectTestCase
     {
         $path = 'test.php';
 
-        static::assertFalse($this->object->hasSourceFile($path));
-        static::assertNull($this->object->getSourceFile($path));
+        self::assertFalse($this->object->hasSourceFile($path));
+        self::assertNull($this->object->getSourceFile($path));
     }
 
     // hasSourceFiles()
@@ -48,8 +48,8 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldCountZeroSourceFilesOnConstruction()
     {
-        static::assertFalse($this->object->hasSourceFiles());
-        static::assertEmpty($this->object->getSourceFiles());
+        self::assertFalse($this->object->hasSourceFiles());
+        self::assertEmpty($this->object->getSourceFiles());
     }
 
     // getServiceName()
@@ -59,7 +59,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceNameOnConstruction()
     {
-        static::assertNull($this->object->getServiceName());
+        self::assertNull($this->object->getServiceName());
     }
 
     // getRepoToken()
@@ -69,7 +69,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveRepoTokenOnConstruction()
     {
-        static::assertNull($this->object->getRepoToken());
+        self::assertNull($this->object->getRepoToken());
     }
 
     // getServiceJobId()
@@ -79,7 +79,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceJobIdOnConstruction()
     {
-        static::assertNull($this->object->getServiceJobId());
+        self::assertNull($this->object->getServiceJobId());
     }
 
     // getServiceNumber()
@@ -89,7 +89,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceNumberOnConstruction()
     {
-        static::assertNull($this->object->getServiceNumber());
+        self::assertNull($this->object->getServiceNumber());
     }
 
     // getServiceEventType()
@@ -99,7 +99,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceEventTypeOnConstruction()
     {
-        static::assertNull($this->object->getServiceEventType());
+        self::assertNull($this->object->getServiceEventType());
     }
 
     // getServiceBuildUrl()
@@ -109,7 +109,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceBuildUrlOnConstruction()
     {
-        static::assertNull($this->object->getServiceBuildUrl());
+        self::assertNull($this->object->getServiceBuildUrl());
     }
 
     // getServiceBranch()
@@ -119,7 +119,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServiceBranchOnConstruction()
     {
-        static::assertNull($this->object->getServiceBranch());
+        self::assertNull($this->object->getServiceBranch());
     }
 
     // getServicePullRequest()
@@ -129,7 +129,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveServicePullRequestOnConstruction()
     {
-        static::assertNull($this->object->getServicePullRequest());
+        self::assertNull($this->object->getServicePullRequest());
     }
 
     // getGit()
@@ -139,7 +139,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveGitOnConstruction()
     {
-        static::assertNull($this->object->getGit());
+        self::assertNull($this->object->getGit());
     }
 
     // getRunAt()
@@ -149,7 +149,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function shouldNotHaveRunAtOnConstruction()
     {
-        static::assertNull($this->object->getRunAt());
+        self::assertNull($this->object->getRunAt());
     }
 
     // getMetrics()
@@ -161,9 +161,9 @@ final class JsonFileTest extends ProjectTestCase
     {
         $metrics = $this->object->getMetrics();
 
-        static::assertSame(0, $metrics->getStatements());
-        static::assertSame(0, $metrics->getCoveredStatements());
-        static::assertSame(0, $metrics->getLineCoverage());
+        self::assertSame(0, $metrics->getStatements());
+        self::assertSame(0, $metrics->getCoveredStatements());
+        self::assertSame(0, $metrics->getLineCoverage());
     }
 
     // setServiceName()
@@ -177,8 +177,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setServiceName($expected);
 
-        static::assertSame($expected, $this->object->getServiceName());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getServiceName());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -194,8 +194,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setRepoToken($expected);
 
-        static::assertSame($expected, $this->object->getRepoToken());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getRepoToken());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -211,8 +211,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setParallel($expected);
 
-        static::assertSame($expected, $this->object->getParallel());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getParallel());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -228,8 +228,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setFlagName($expected);
 
-        static::assertSame($expected, $this->object->getFlagName());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getFlagName());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -245,8 +245,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setServiceJobId($expected);
 
-        static::assertSame($expected, $this->object->getServiceJobId());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getServiceJobId());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -264,8 +264,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setGit($git);
 
-        static::assertSame($git, $this->object->getGit());
-        static::assertSame($obj, $this->object);
+        self::assertSame($git, $this->object->getGit());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -281,8 +281,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $obj = $this->object->setRunAt($expected);
 
-        static::assertSame($expected, $this->object->getRunAt());
-        static::assertSame($obj, $this->object);
+        self::assertSame($expected, $this->object->getRunAt());
+        self::assertSame($obj, $this->object);
 
         return $this->object;
     }
@@ -302,10 +302,10 @@ final class JsonFileTest extends ProjectTestCase
 
         $path = $sourceFile->getPath();
 
-        static::assertTrue($this->object->hasSourceFiles());
-        static::assertSame([$path => $sourceFile], $this->object->getSourceFiles());
-        static::assertTrue($this->object->hasSourceFile($path));
-        static::assertSame($sourceFile, $this->object->getSourceFile($path));
+        self::assertTrue($this->object->hasSourceFiles());
+        self::assertSame([$path => $sourceFile], $this->object->getSourceFiles());
+        self::assertTrue($this->object->hasSourceFile($path));
+        self::assertSame($sourceFile, $this->object->getSourceFile($path));
     }
 
     // toArray()
@@ -320,8 +320,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     /**
@@ -338,8 +338,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $this->object->toArray());
-        static::assertSame(json_encode($expected), (string) $this->object);
+        self::assertSame($expected, $this->object->toArray());
+        self::assertSame(json_encode($expected), (string) $this->object);
     }
 
     // service_name
@@ -361,8 +361,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // service_job_id
@@ -384,8 +384,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // repo_token
@@ -407,8 +407,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // parallel
@@ -430,8 +430,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // git
@@ -455,8 +455,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // run_at
@@ -478,8 +478,8 @@ final class JsonFileTest extends ProjectTestCase
             'environment' => ['packagist_version' => Version::VERSION],
         ];
 
-        static::assertSame($expected, $object->toArray());
-        static::assertSame(json_encode($expected), (string) $object);
+        self::assertSame($expected, $object->toArray());
+        self::assertSame(json_encode($expected), (string) $object);
     }
 
     // fillJobs()
@@ -502,10 +502,10 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($serviceName, $object->getServiceName());
-        static::assertSame($serviceJobId, $object->getServiceJobId());
-        static::assertSame($serviceBuild, $object->getServiceNumber());
+        self::assertSame($same, $object);
+        self::assertSame($serviceName, $object->getServiceName());
+        self::assertSame($serviceJobId, $object->getServiceJobId());
+        self::assertSame($serviceBuild, $object->getServiceNumber());
     }
 
     /**
@@ -526,10 +526,10 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($repoToken, $object->getRepoToken());
-        static::assertSame($serviceName, $object->getServiceName());
-        static::assertSame($serviceNumber, $object->getServiceNumber());
+        self::assertSame($same, $object);
+        self::assertSame($repoToken, $object->getRepoToken());
+        self::assertSame($serviceName, $object->getServiceName());
+        self::assertSame($serviceNumber, $object->getServiceNumber());
     }
 
     /**
@@ -566,14 +566,14 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($repoToken, $object->getRepoToken());
-        static::assertSame($parallel, $object->getParallel());
-        static::assertSame($serviceName, $object->getServiceName());
-        static::assertSame($serviceNumber, $object->getServiceNumber());
-        static::assertSame($serviceBuildUrl, $object->getServiceBuildUrl());
-        static::assertSame($serviceBranch, $object->getServiceBranch());
-        static::assertSame($servicePullRequest, $object->getServicePullRequest());
+        self::assertSame($same, $object);
+        self::assertSame($repoToken, $object->getRepoToken());
+        self::assertSame($parallel, $object->getParallel());
+        self::assertSame($serviceName, $object->getServiceName());
+        self::assertSame($serviceNumber, $object->getServiceNumber());
+        self::assertSame($serviceBuildUrl, $object->getServiceBuildUrl());
+        self::assertSame($serviceBranch, $object->getServiceBranch());
+        self::assertSame($servicePullRequest, $object->getServicePullRequest());
     }
 
     /**
@@ -595,11 +595,11 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($repoToken, $object->getRepoToken());
-        static::assertSame($serviceName, $object->getServiceName());
-        static::assertNull($object->getServiceJobId());
-        static::assertSame($serviceEventType, $object->getServiceEventType());
+        self::assertSame($same, $object);
+        self::assertSame($repoToken, $object->getRepoToken());
+        self::assertSame($serviceName, $object->getServiceName());
+        self::assertNull($object->getServiceJobId());
+        self::assertSame($serviceEventType, $object->getServiceEventType());
     }
 
     /**
@@ -620,9 +620,9 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($serviceName, $object->getServiceName());
-        static::assertSame($serviceJobId, $object->getServiceJobId());
+        self::assertSame($same, $object);
+        self::assertSame($serviceName, $object->getServiceName());
+        self::assertSame($serviceJobId, $object->getServiceJobId());
     }
 
     /**
@@ -639,8 +639,8 @@ final class JsonFileTest extends ProjectTestCase
 
         $same = $object->fillJobs($env);
 
-        static::assertSame($same, $object);
-        static::assertSame($repoToken, $object->getRepoToken());
+        self::assertSame($same, $object);
+        self::assertSame($repoToken, $object->getRepoToken());
     }
 
     /**
@@ -683,13 +683,13 @@ final class JsonFileTest extends ProjectTestCase
     {
         $object = $this->collectJsonFile();
 
-        static::assertSame(50.0, $object->reportLineCoverage());
+        self::assertSame(50.0, $object->reportLineCoverage());
 
         $metrics = $object->getMetrics();
 
-        static::assertSame(2, $metrics->getStatements());
-        static::assertSame(1, $metrics->getCoveredStatements());
-        static::assertSame(50.0, $metrics->getLineCoverage());
+        self::assertSame(2, $metrics->getStatements());
+        self::assertSame(1, $metrics->getCoveredStatements());
+        self::assertSame(50.0, $metrics->getLineCoverage());
     }
 
     // excludeNoStatementsFiles()
@@ -705,31 +705,31 @@ final class JsonFileTest extends ProjectTestCase
 
         // before excluding
         $sourceFiles = $object->getSourceFiles();
-        static::assertCount(4, $sourceFiles);
+        self::assertCount(4, $sourceFiles);
 
         // filenames
         $paths = array_keys($sourceFiles);
         $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
-        static::assertContains('test.php', $filenames);
-        static::assertContains('test2.php', $filenames);
-        static::assertContains('TestInterface.php', $filenames);
-        static::assertContains('AbstractClass.php', $filenames);
+        self::assertContains('test.php', $filenames);
+        self::assertContains('test2.php', $filenames);
+        self::assertContains('TestInterface.php', $filenames);
+        self::assertContains('AbstractClass.php', $filenames);
 
         // after excluding
         $object->excludeNoStatementsFiles();
 
         $sourceFiles = $object->getSourceFiles();
-        static::assertCount(2, $sourceFiles);
+        self::assertCount(2, $sourceFiles);
 
         // filenames
         $paths = array_keys($sourceFiles);
         $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
-        static::assertContains('test.php', $filenames);
-        static::assertContains('test2.php', $filenames);
-        static::assertNotContains('TestInterface.php', $filenames);
-        static::assertNotContains('AbstractClass.php', $filenames);
+        self::assertContains('test.php', $filenames);
+        self::assertContains('test2.php', $filenames);
+        self::assertNotContains('TestInterface.php', $filenames);
+        self::assertNotContains('AbstractClass.php', $filenames);
     }
 
     protected function legacySetUp()

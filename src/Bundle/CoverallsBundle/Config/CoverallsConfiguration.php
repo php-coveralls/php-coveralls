@@ -23,11 +23,9 @@ class CoverallsConfiguration implements ConfigurationInterface
     // ConfigurationInterface
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Config\Definition\ConfigurationInterface::getConfigTreeBuilder()
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         // define configuration
 

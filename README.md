@@ -1,7 +1,8 @@
 php-coveralls
 =============
 
-[![Build Status](https://travis-ci.org/php-coveralls/php-coveralls.svg?branch=master)](https://travis-ci.org/php-coveralls/php-coveralls)
+[![Static Code Analysis](https://github.com/php-coveralls/php-coveralls/actions/workflows/static-code-analysis.yml/badge.svg)](https://github.com/php-coveralls/php-coveralls/actions/workflows/static-code-analysis.yml)
+[![CI](https://github.com/php-coveralls/php-coveralls/actions/workflows/ci.yml/badge.svg)](https://github.com/php-coveralls/php-coveralls/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/php-coveralls/php-coveralls/badge.png?branch=master)](https://coveralls.io/r/php-coveralls/php-coveralls)
 
 [![Latest Stable Version](https://poser.pugx.org/php-coveralls/php-coveralls/v/stable.png)](https://packagist.org/packages/php-coveralls/php-coveralls)
@@ -11,9 +12,11 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
-- PHP 5.5+ for 2.x or 5.3+ for 1.x
+- PHP 7+ for 2.7+
+- PHP 5.5+ for 2.x
+- PHP 5.3+ for 1.x
 - On [GitHub](https://github.com/)
-- Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/) or [Codeship](https://www.codeship.io/)
+- Building on [Travis CI](http://travis-ci.org/), [CircleCI](https://circleci.com/), [Jenkins](http://jenkins-ci.org/), [Codeship](https://www.codeship.io/) or [GitHub Actions](https://github.com/features/actions)
 - Testing by [PHPUnit](https://github.com/sebastianbergmann/phpunit/) or other testing framework that can generate clover style coverage report
 
 # Installation
@@ -24,13 +27,13 @@ We started to create a phar file, starting from the version 0.7.0
 release. It is available at the URLs like:
 
 ```
-https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
+https://github.com/php-coveralls/php-coveralls/releases/download/v2.7.0/php-coveralls.phar
 ```
 
 Download the file and add exec permissions:
 
 ```sh
-$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.5.3/php-coveralls.phar
+$ wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.7.0/php-coveralls.phar
 $ chmod +x php-coveralls.phar
 ```
 
@@ -104,7 +107,7 @@ Above settings are good for most projects if your test suite is executed once a 
 
 ```json
     "require-dev": {
-        "php-coveralls/php-coveralls": "^2.5",
+        "php-coveralls/php-coveralls": "^2.7",
         "phpunit/phpcov": "^2.0"
     },
 ```

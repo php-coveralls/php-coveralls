@@ -30,15 +30,15 @@
         }
     ],
     "require": {
-        "php": "^5.5 || ^7.0 || ^8.0",
+        "php": "^7.0 || ^8.0",
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "psr/log": "^1.0 || ^2.0 || ^3.0",
-        "symfony/config": "^2.1 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
-        "symfony/console": "^2.1 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
-        "symfony/stopwatch": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
-        "symfony/yaml": "^2.0.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0"
+        "symfony/config": "^2.1 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/console": "^2.1 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/stopwatch": "^2.0 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+        "symfony/yaml": "^2.0.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0 || ^7.0 || >=8.0 <8.5.29 || >=9.0 <9.5.23",
@@ -63,7 +63,7 @@
     ],
     "scripts": {
         "install-dev-tools": [
-            "cd dev-tools && composer update --no-interaction"
+            "cd dev-tools && composer install --no-interaction"
         ],
         "sca": [
             "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",

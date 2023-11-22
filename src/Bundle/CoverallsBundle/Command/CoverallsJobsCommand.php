@@ -59,8 +59,6 @@ class CoverallsJobsCommand extends Command
     // internal method
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Command\Command::configure()
      */
     protected function configure()
@@ -132,11 +130,9 @@ class CoverallsJobsCommand extends Command
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @see \Symfony\Component\Console\Command\Command::execute()
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $stopwatch = new Stopwatch();
         $stopwatch->start(__CLASS__);
@@ -191,8 +187,7 @@ class CoverallsJobsCommand extends Command
     /**
      * Execute Jobs API.
      *
-     * @param InputInterface $input  input arguments
-     * @param Configuration  $config configuration
+     * @param Configuration $config configuration
      *
      * @return bool
      */

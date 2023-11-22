@@ -138,7 +138,10 @@ class JobsRepository implements LoggerAwareInterface
 
         $this->api->dumpJsonFile();
 
-        $filesize = number_format(filesize($jsonPath) / 1024, 2); // kB
+        $filesize = 0;
+        if (\is_string($jsonPath) && file_exists($jsonPath)) {
+            $filesize = number_format(filesize($jsonPath) / 1024, 2); // kB
+        }
         $this->logger->info(sprintf('File size: <info>%s</info> kB', $filesize));
 
         return $this;
