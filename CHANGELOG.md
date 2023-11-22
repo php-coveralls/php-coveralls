@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+## 2.7.0
+
+### Miscellaneous
+
+* DX: allow Symfony ^7 (#369)
+* chore: drop PHP 5.x support (#371)
+
 ## 2.6.0
 
 ### Miscellaneous
