@@ -7,7 +7,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareTrait;
 
 /**
  * Jobs API client.
@@ -18,6 +18,8 @@ use Psr\Log\LoggerInterface;
  */
 class JobsRepository implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * Jobs API.
      *
@@ -31,13 +33,6 @@ class JobsRepository implements LoggerAwareInterface
      * @var \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     protected $config;
-
-    /**
-     * Logger.
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $logger;
 
     /**
      * Constructor.
@@ -77,16 +72,6 @@ class JobsRepository implements LoggerAwareInterface
 
             return false;
         }
-    }
-
-    // LoggerAwareInterface
-
-    /**
-     * @see \Psr\Log\LoggerAwareInterface::setLogger()
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
 
     // internal method
