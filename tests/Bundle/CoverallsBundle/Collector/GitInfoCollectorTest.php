@@ -8,6 +8,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
 use PhpCoveralls\Component\System\Git\GitCommand;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector
@@ -18,6 +19,8 @@ use PhpCoveralls\Tests\ProjectTestCase;
  */
 final class GitInfoCollectorTest extends ProjectTestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var array
      */
