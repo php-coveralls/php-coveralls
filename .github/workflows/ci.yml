@@ -149,7 +149,7 @@ jobs:
                 run: php box.phar info -l ./build/artifacts/php-coveralls.phar
 
             -   name: Upload the Phar artifact
-                uses: actions/upload-artifact@v3
+                uses: actions/upload-artifact@v4
                 with:
                     name: php-coveralls-phar
                     path: ./build/artifacts/php-coveralls.phar
