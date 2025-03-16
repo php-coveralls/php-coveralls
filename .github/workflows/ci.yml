@@ -121,7 +121,7 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 8.1
+                    php-version: 8.4
                     extensions: phar, openssl, sodium
                     coverage: none
                     ini-values: phar.readonly=Off, error_reporting=-1, display_errors=On, zend.assertions=1
@@ -149,7 +149,7 @@ jobs:
                 run: php box.phar info -l ./build/artifacts/php-coveralls.phar
 
             -   name: Upload the Phar artifact
-                uses: actions/upload-artifact@v3
+                uses: actions/upload-artifact@v4
                 with:
                     name: php-coveralls-phar
                     path: ./build/artifacts/php-coveralls.phar
@@ -175,7 +175,7 @@ jobs:
                 uses: actions/checkout@v3
 
             -   name: Download the Phar artifact
-                uses: actions/download-artifact@v3
+                uses: actions/download-artifact@v4
                 with:
                     name: php-coveralls-phar
 
