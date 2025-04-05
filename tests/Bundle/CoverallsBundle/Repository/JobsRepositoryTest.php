@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -24,6 +25,8 @@ use Psr\Log\NullLogger;
  */
 final class JobsRepositoryTest extends ProjectTestCase
 {
+    use ProphecyTrait;
+
     // persist()
 
     /**

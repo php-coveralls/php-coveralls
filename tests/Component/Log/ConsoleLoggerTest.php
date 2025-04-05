@@ -4,6 +4,7 @@ namespace PhpCoveralls\Tests\Component\Log;
 
 use PhpCoveralls\Component\Log\ConsoleLogger;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\Console\Output\StreamOutput;
 
 /**
@@ -15,6 +16,8 @@ use Symfony\Component\Console\Output\StreamOutput;
  */
 final class ConsoleLoggerTest extends ProjectTestCase
 {
+    use ProphecyTrait;
+    
     /**
      * @test
      */
