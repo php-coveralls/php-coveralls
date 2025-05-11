@@ -709,7 +709,7 @@ final class JsonFileTest extends ProjectTestCase
 
         // filenames
         $paths = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
+        $filenames = array_map(static function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         self::assertContains('test.php', $filenames);
         self::assertContains('test2.php', $filenames);
@@ -724,7 +724,7 @@ final class JsonFileTest extends ProjectTestCase
 
         // filenames
         $paths = array_keys($sourceFiles);
-        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
+        $filenames = array_map(static function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         self::assertContains('test.php', $filenames);
         self::assertContains('test2.php', $filenames);

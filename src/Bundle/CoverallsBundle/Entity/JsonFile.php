@@ -180,7 +180,7 @@ class JsonFile extends Coveralls
     {
         $this->sourceFiles = array_filter(
             $this->sourceFiles,
-            function (SourceFile $sourceFile) {
+            static function (SourceFile $sourceFile) {
                 return $sourceFile->getMetrics()->hasStatements();
             }
         );

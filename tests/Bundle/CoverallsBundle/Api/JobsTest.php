@@ -582,7 +582,7 @@ final class JobsTest extends ProjectTestCase
 
         $client = $this->prophesize(Client::class);
         $client
-            ->post($url, \Prophecy\Argument::that(function ($options) use ($filename) {
+            ->post($url, \Prophecy\Argument::that(static function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
                     && $filename === $options['multipart'][0]['name']
