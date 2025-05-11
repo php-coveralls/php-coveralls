@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+## 2.7.0
+
+### Miscellaneous
+
+* DX: allow Symfony ^7 (#369)
+* chore: drop PHP 5.x support (#371)
+
 ## 2.6.0
 
 ### Miscellaneous
@@ -276,7 +283,7 @@ Added compatibility with Symfony 6
 
 ### Bug fix
 
-- Fix bug: API reqest from local environment should be with repo_token
+- Fix bug: API request from local environment should be with repo_token
 - Fix bug: service_name in .coveralls.yml will not reflect to json_file
 
 ## 0.3.1 (2013-04-19)

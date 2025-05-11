@@ -5,7 +5,7 @@ namespace PhpCoveralls\Bundle\CoverallsBundle\Collector;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 
 /**
- * Environment variables collector for CI envrionment.
+ * Environment variables collector for CI environment.
  *
  * @author Kitamura Satoshi <with.no.parachute@gmail.com>
  */

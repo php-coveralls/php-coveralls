@@ -12,20 +12,9 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '5.5'
-                        os: ubuntu-latest
-                        composer-flags: '--prefer-lowest'
-                        coverage: 'xdebug'
-                    -   php: '5.5'
-                        os: ubuntu-latest
-                        symfony: '^3.0'
-                    -   php: '5.5'
-                        os: windows-latest
-                        coverage: 'xdebug'
-                    -   php: '5.6'
-                        os: ubuntu-latest
                     -   php: '7.0'
                         os: ubuntu-latest
+                        composer-flags: '--prefer-lowest'
                     -   php: '7.1'
                         os: ubuntu-latest
                         symfony: '^4.0'
@@ -56,7 +45,7 @@ jobs:
                         coverage: 'pcov'
                     -   php: '8.3'
                         os: ubuntu-latest
-                        symfony: '^6.0'
+                        symfony: '^7.0'
 
         continue-on-error: ${{ matrix.php == '8.3' }}
 
@@ -132,15 +121,13 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 8.1
+                    php-version: 8.4
                     extensions: phar, openssl, sodium
                     coverage: none
                     ini-values: phar.readonly=Off, error_reporting=-1, display_errors=On, zend.assertions=1
-                    # Autoload files generated with Composer 2.3+ are not compatible with PHP < 7.0.
-                    tools: composer:2.2
 
             -   name: Set Composer platform
-                run: composer config platform.php 5.5.0
+                run: composer config platform.php 7.0.0
 
             -   name: Install Composer dependencies
                 uses: ramsey/composer-install@v2
@@ -162,7 +149,7 @@ jobs:
                 run: php box.phar info -l ./build/artifacts/php-coveralls.phar
 
             -   name: Upload the Phar artifact
-                uses: actions/upload-artifact@v3
+                uses: actions/upload-artifact@v4
                 with:
                     name: php-coveralls-phar
                     path: ./build/artifacts/php-coveralls.phar
@@ -177,7 +164,6 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '5.5'
                     -   php: '7.2'
                     -   php: '8.0'
                     -   php: '8.3'
@@ -189,7 +175,7 @@ jobs:
                 uses: actions/checkout@v3
 
             -   name: Download the Phar artifact
-                uses: actions/download-artifact@v3
+                uses: actions/download-artifact@v4
                 with:
                     name: php-coveralls-phar
 
