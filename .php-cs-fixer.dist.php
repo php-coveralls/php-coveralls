@@ -1,16 +1,13 @@
 <?php
 
-use PhpCsFixer\Config;
-use PhpCsFixer\Finder;
-
-$finder = Finder::create()
+$finder = PhpCsFixer\Finder::create()
     ->ignoreDotFiles(false)
     ->ignoreVCSIgnored(true)
     ->exclude('tests/Fixture')
     ->in(__DIR__)
 ;
 
-$config = new Config();
+$config = new PhpCsFixer\Config();
 $config
     ->setRiskyAllowed(true)
     ->setRules([

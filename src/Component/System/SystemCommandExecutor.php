@@ -27,6 +27,6 @@ final class SystemCommandExecutor implements SystemCommandExecutorInterface
             return $result;
         }
 
-        throw new \RuntimeException(\sprintf('Failed to execute command: %s', $command), $returnValue);
+        throw new \RuntimeException(sprintf('Failed to execute command: %s', $command), $returnValue);
     }
 }

@@ -15,7 +15,7 @@ class CloverXmlCoverageCollector
     /**
      * JsonFile.
      *
-     * @var JsonFile
+     * @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
      */
     protected $jsonFile;
 
@@ -27,7 +27,7 @@ class CloverXmlCoverageCollector
      * @param \SimpleXMLElement $xml     clover XML object
      * @param string            $rootDir path to repository root directory
      *
-     * @return JsonFile
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
      */
     public function collect(\SimpleXMLElement $xml, $rootDir)
     {
@@ -64,7 +64,7 @@ class CloverXmlCoverageCollector
     /**
      * Return json file.
      *
-     * @return JsonFile
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile
      */
     public function getJsonFile()
     {
@@ -95,7 +95,7 @@ class CloverXmlCoverageCollector
      * @param \SimpleXMLElement $file clover XML object of a file
      * @param string            $root path to src directory
      *
-     * @return null|SourceFile
+     * @return null|\PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
      */
     protected function collectFileCoverage(\SimpleXMLElement $file, $root)
     {
@@ -121,7 +121,7 @@ class CloverXmlCoverageCollector
      * @param string            $path     path to source file
      * @param string            $filename filename
      *
-     * @return SourceFile
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
      */
     protected function collectCoverage(\SimpleXMLElement $file, $path, $filename)
     {

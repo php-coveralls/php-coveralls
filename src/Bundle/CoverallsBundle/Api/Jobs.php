@@ -2,11 +2,9 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Api;
 
-use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector;
-use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Component\System\Git\GitCommand;
 
@@ -90,7 +88,7 @@ class Jobs extends CoverallsApi
      *
      * @return $this
      *
-     * @throws RequirementsNotSatisfiedException
+     * @throws \PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException
      */
     public function collectEnvVars(array $env)
     {
@@ -98,7 +96,7 @@ class Jobs extends CoverallsApi
 
         try {
             $this->jsonFile->fillJobs($envCollector->collect($env));
-        } catch (RequirementsNotSatisfiedException $e) {
+        } catch (\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
             $e->setReadEnv($envCollector->getReadEnv());
 
             throw $e;
@@ -124,7 +122,7 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
-     * @return null|Response
+     * @return null|\GuzzleHttp\Psr7\Response
      */
     public function send()
     {
@@ -173,7 +171,7 @@ class Jobs extends CoverallsApi
      * @param string $path     file path
      * @param string $filename filename
      *
-     * @return Response
+     * @return \GuzzleHttp\Psr7\Response
      */
     protected function upload($url, $path, $filename)
     {

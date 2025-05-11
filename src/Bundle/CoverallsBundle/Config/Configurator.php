@@ -6,7 +6,6 @@ use PhpCoveralls\Component\File\Path;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -24,9 +23,9 @@ class Configurator
      * @param string $coverallsYmlPath Path to .coveralls.yml.
      * @param string $rootDir          path to project root directory
      *
-     * @return Configuration
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      *
-     * @throws ParseException If the YAML is not valid
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     public function load($coverallsYmlPath, $rootDir, InputInterface $input = null)
     {
@@ -45,7 +44,7 @@ class Configurator
      *
      * @return array
      *
-     * @throws ParseException If the YAML is not valid
+     * @throws \Symfony\Component\Yaml\Exception\ParseException If the YAML is not valid
      */
     protected function parse($coverallsYmlPath)
     {
@@ -83,7 +82,7 @@ class Configurator
      * @param array  $options processed configuration
      * @param string $rootDir path to project root directory
      *
-     * @return Configuration
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     protected function createConfiguration(array $options, $rootDir, InputInterface $input = null)
     {
@@ -117,7 +116,7 @@ class Configurator
      *
      * @return string[] valid Absolute paths of coverage_clover
      *
-     * @throws InvalidConfigurationException
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureCloverXmlPaths($option, $rootDir, Path $file)
     {
@@ -135,7 +134,7 @@ class Configurator
      *
      * @return string[] absolute paths
      *
-     * @throws InvalidConfigurationException
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPaths($path)
     {
@@ -164,7 +163,7 @@ class Configurator
      *
      * @return string[] absolute paths
      *
-     * @throws InvalidConfigurationException
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromStringOption($option, $rootDir, Path $file)
     {
@@ -187,7 +186,7 @@ class Configurator
      *
      * @return string[] absolute paths
      *
-     * @throws InvalidConfigurationException
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function getGlobPathsFromArrayOption(array $options, $rootDir, Path $file)
     {
@@ -209,7 +208,7 @@ class Configurator
      *
      * @return string valid json_path
      *
-     * @throws InvalidConfigurationException
+     * @throws \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      */
     protected function ensureJsonPath($option, $rootDir, Path $file)
     {
@@ -239,7 +238,7 @@ class Configurator
      * @param string $optionName option name
      * @param array  $options    processed configuration
      *
-     * @return Configuration
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     private function getPotentiallyOverriddenOptionValue($optionName, array $options, InputInterface $input = null)
     {

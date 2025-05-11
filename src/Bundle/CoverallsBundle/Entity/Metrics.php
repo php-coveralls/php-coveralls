@@ -41,7 +41,7 @@ class Metrics
         // not null
         $statementsArray = array_filter(
             $coverage,
-            static function ($line) {
+            function ($line) {
                 return $line !== null;
             }
         );
@@ -51,7 +51,7 @@ class Metrics
         // gt 0
         $coveredArray = array_filter(
             $statementsArray,
-            static function ($line) {
+            function ($line) {
                 return $line > 0;
             }
         );

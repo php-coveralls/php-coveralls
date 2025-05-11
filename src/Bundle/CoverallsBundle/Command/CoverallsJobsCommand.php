@@ -9,7 +9,6 @@ use PhpCoveralls\Bundle\CoverallsBundle\Config\Configurator;
 use PhpCoveralls\Bundle\CoverallsBundle\Repository\JobsRepository;
 use PhpCoveralls\Component\File\Path;
 use PhpCoveralls\Component\Log\ConsoleLogger;
-use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,7 +40,7 @@ class CoverallsJobsCommand extends Command
     /**
      * Logger.
      *
-     * @var LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
 
@@ -154,7 +153,7 @@ class CoverallsJobsCommand extends Command
         $event = $stopwatch->stop(__CLASS__);
         $time = number_format($event->getDuration() / 1000, 3);        // sec
         $mem = number_format($event->getMemory() / (1024 * 1024), 2); // MB
-        $this->logger->info(\sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
+        $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return $executionStatus ? 0 : 1;
     }
@@ -167,7 +166,7 @@ class CoverallsJobsCommand extends Command
      * @param InputInterface $input   input arguments
      * @param string         $rootDir path to project root directory
      *
-     * @return Configuration
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     protected function loadConfiguration(InputInterface $input, $rootDir)
     {

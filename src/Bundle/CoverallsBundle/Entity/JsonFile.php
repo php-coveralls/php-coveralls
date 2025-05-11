@@ -74,7 +74,7 @@ class JsonFile extends Coveralls
     /**
      * Source files.
      *
-     * @var SourceFile[]
+     * @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
      */
     protected $sourceFiles = [];
 
@@ -180,7 +180,7 @@ class JsonFile extends Coveralls
     {
         $this->sourceFiles = array_filter(
             $this->sourceFiles,
-            static function (SourceFile $sourceFile) {
+            function (SourceFile $sourceFile) {
                 return $sourceFile->getMetrics()->hasStatements();
             }
         );
@@ -230,7 +230,7 @@ class JsonFile extends Coveralls
      *
      * @param string $path absolute path to source file
      *
-     * @return null|SourceFile
+     * @return null|\PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
      */
     public function getSourceFile($path)
     {
@@ -260,7 +260,7 @@ class JsonFile extends Coveralls
     /**
      * Return source files.
      *
-     * @return SourceFile[]
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
      */
     public function getSourceFiles()
     {
@@ -488,7 +488,7 @@ class JsonFile extends Coveralls
     /**
      * Return metrics.
      *
-     * @return Metrics
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
      */
     public function getMetrics()
     {
@@ -715,7 +715,7 @@ class JsonFile extends Coveralls
         json_encode($item);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \UnexpectedValueException(\sprintf(
+            throw new \UnexpectedValueException(sprintf(
                 'Can not encode to JSON, error: "%s" in "%s".',
                 json_last_error_msg(),
                 $source

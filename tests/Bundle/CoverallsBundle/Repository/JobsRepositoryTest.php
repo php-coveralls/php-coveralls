@@ -2,11 +2,6 @@
 
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Repository;
 
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
@@ -38,7 +33,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     {
         $statusCode = 200;
         $url = 'https://coveralls.io/jobs/67528';
-        $response = new Response(
+        $response = new \GuzzleHttp\Psr7\Response(
             $statusCode,
             [],
             json_encode([
@@ -131,7 +126,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     public function response422()
     {
         $statusCode = 422;
-        $response = new Response(
+        $response = new \GuzzleHttp\Psr7\Response(
             $statusCode,
             [],
             json_encode([
@@ -160,7 +155,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     public function response500()
     {
         $statusCode = 500;
-        $response = new Response($statusCode, [], null, '1.1', 'Internal Server Error');
+        $response = new \GuzzleHttp\Psr7\Response($statusCode, [], null, '1.1', 'Internal Server Error');
         $api = $this->createApiMock($response, $statusCode);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
@@ -223,7 +218,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $this->setUpJobsApiWithCollectGitInfoCalled($api);
         $this->setUpJobsApiWithCollectEnvVarsCalled($api);
         $this->setUpJobsApiWithDumpJsonFileCalled($api);
-        $this->setUpJobsApiWithSendCalled($api, $statusCode, new Request('POST', $uri), $response);
+        $this->setUpJobsApiWithSendCalled($api, $statusCode, new \GuzzleHttp\Psr7\Request('POST', $uri), $response);
 
         return $api->reveal();
     }
@@ -436,11 +431,11 @@ final class JobsRepositoryTest extends ProjectTestCase
             ;
         } else {
             if ($statusCode === null) {
-                $exception = new ConnectException('Connection refused', $request);
+                $exception = new \GuzzleHttp\Exception\ConnectException('Connection refused', $request);
             } elseif ($statusCode === 422) {
-                $exception = ClientException::create($request, $response);
+                $exception = \GuzzleHttp\Exception\ClientException::create($request, $response);
             } else {
-                $exception = ServerException::create($request, $response);
+                $exception = \GuzzleHttp\Exception\ServerException::create($request, $response);
             }
 
             $api

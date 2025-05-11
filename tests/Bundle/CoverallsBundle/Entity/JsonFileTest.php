@@ -3,7 +3,6 @@
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Entity;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
-use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote;
@@ -649,7 +648,7 @@ final class JsonFileTest extends ProjectTestCase
      */
     public function throwRuntimeExceptionOnFillingJobsIfInvalidEnv()
     {
-        $this->expectException(RequirementsNotSatisfiedException::class);
+        $this->expectException(\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException::class);
 
         $env = [];
 
@@ -710,7 +709,7 @@ final class JsonFileTest extends ProjectTestCase
 
         // filenames
         $paths = array_keys($sourceFiles);
-        $filenames = array_map(static function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         self::assertContains('test.php', $filenames);
         self::assertContains('test2.php', $filenames);
@@ -725,7 +724,7 @@ final class JsonFileTest extends ProjectTestCase
 
         // filenames
         $paths = array_keys($sourceFiles);
-        $filenames = array_map(static function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
+        $filenames = array_map(function ($path) use ($srcDir) {return str_replace($srcDir, '', $path); }, $paths);
 
         self::assertContains('test.php', $filenames);
         self::assertContains('test2.php', $filenames);
@@ -799,7 +798,7 @@ final class JsonFileTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return \sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
+        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
     /**

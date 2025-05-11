@@ -99,7 +99,7 @@ class Git extends Coveralls
     /**
      * Return HEAD commit.
      *
-     * @return Commit
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
      */
     public function getHead()
     {
@@ -109,7 +109,7 @@ class Git extends Coveralls
     /**
      * Return remote repositories.
      *
-     * @return Remote[]
+     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote[]
      */
     public function getRemotes()
     {

@@ -217,7 +217,7 @@ final class CloverXmlCoverageCollectorTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return simplexml_load_string(\sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir));
+        return simplexml_load_string(sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir));
     }
 
     // custom assert
