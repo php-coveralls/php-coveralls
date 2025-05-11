@@ -126,6 +126,6 @@ EOL;
             $value = '********(HIDDEN)';
         }
 
-        return sprintf("  - %s=%s\n", $key, var_export($value, true));
+        return \sprintf("  - %s=%s\n", $key, var_export($value, true));
     }
 }

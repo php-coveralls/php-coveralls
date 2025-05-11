@@ -4,6 +4,7 @@ namespace PhpCoveralls\Tests;
 
 use LegacyPHPUnit\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophet;
 
 if (class_exists(ProphecyTrait::class)) {
@@ -17,7 +18,7 @@ if (class_exists(ProphecyTrait::class)) {
     {
         private $prophet;
 
-        protected function prophesize($classOrInterface = null): \Prophecy\Prophecy\ObjectProphecy
+        protected function prophesize($classOrInterface = null): ObjectProphecy
         {
             return $this->getProphet()->prophesize($classOrInterface);
         }
