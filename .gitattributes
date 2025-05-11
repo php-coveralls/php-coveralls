@@ -1,0 +1,7 @@
+/.* export-ignore
+/box.json export-ignore
+/build/ export-ignore
+/circle.yml export-ignore
+/dev-tools/ export-ignore
+/phpunit.xml.dist export-ignore
+/tests/ export-ignore
