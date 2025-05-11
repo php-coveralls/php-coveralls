@@ -24,6 +24,7 @@ $config
         'explicit_string_variable' => false,
         'method_chaining_indentation' => false,
         'php_unit_test_annotation' => false,
+        'php_unit_data_provider_return_type' => false, // for low-level PHP support
         'single_line_comment_style' => false,
         'ternary_to_elvis_operator' => false,
         'visibility_required' => ['elements' => ['method', 'property']],
