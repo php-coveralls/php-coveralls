@@ -44,7 +44,7 @@ final class PathTest extends ProjectTestCase
     /**
      * @return array
      */
-    public function provideRelativePaths()
+    public static function provideRelativePaths()
     {
         return [
             [''],
@@ -56,7 +56,7 @@ final class PathTest extends ProjectTestCase
     /**
      * @return array
      */
-    public function provideShouldNotBeRelativePathCases()
+    public static function provideShouldNotBeRelativePathCases()
     {
         if (self::isWindowsOS()) {
             return [
