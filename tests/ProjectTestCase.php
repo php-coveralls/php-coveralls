@@ -12,6 +12,7 @@ if (class_exists(ProphecyTrait::class)) {
         use ProphecyTrait;
     }
 } else {
+    // hand-written code to provide PHP 7.x compatibility
     abstract class ProphesizedTestCase extends TestCase
     {
         private $prophet;
