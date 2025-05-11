@@ -1,5 +1,7 @@
 # Security Policy
 
-To report a security issue, please use the GitHub Security Advisory ["Report a Vulnerability"](https://github.com/php-coveralls/php-coveralls/security/advisories/new) tab.
+DO NOT PUBLISH SECURITY REPORTS PUBLICLY.
 
-Report security bugs in third-party libraries to the person or team maintaining that library.
+If you found any issues that might have security implications, please send a report to dariusz.ruminski+php-coveralls[at]gmail.com .
+
+Report security bugs in third-party libraries directly to the group maintaining that library.
