@@ -58,7 +58,7 @@ final class PathTest extends ProjectTestCase
      */
     public function provideShouldNotBeRelativePathCases()
     {
-        if ($this->isWindowsOS()) {
+        if (self::isWindowsOS()) {
             return [
                 ['c:\\'],
                 ['z:\\path\\to\\somewhere'],
@@ -327,7 +327,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealFileReadableIfFileUnreadable()
     {
-        if ($this->isWindowsOS()) {
+        if (self::isWindowsOS()) {
             // On Windows there is no write-only attribute.
             self::markTestSkipped('Unable to run on Windows');
         }
@@ -428,7 +428,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealDirWritableIfDirUnwritable()
     {
-        if ($this->isWindowsOS()) {
+        if (self::isWindowsOS()) {
             // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
             self::markTestSkipped('Unable to run on Windows');
         }
@@ -494,7 +494,7 @@ final class PathTest extends ProjectTestCase
     /**
      * @return bool
      */
-    private function isWindowsOS()
+    private static function isWindowsOS()
     {
         static $isWindows;
 

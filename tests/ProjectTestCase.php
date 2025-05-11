@@ -3,8 +3,37 @@
 namespace PhpCoveralls\Tests;
 
 use LegacyPHPUnit\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophet;
 
-abstract class ProjectTestCase extends TestCase
+if (class_exists(ProphecyTrait::class)) {
+    abstract class ProphesizedTestCase extends TestCase
+    {
+        use ProphecyTrait;
+    }
+} else {
+    // hand-written code to provide PHP 7.x compatibility
+    abstract class ProphesizedTestCase extends TestCase
+    {
+        private $prophet;
+
+        protected function prophesize($classOrInterface = null): \Prophecy\Prophecy\ObjectProphecy
+        {
+            return $this->getProphet()->prophesize($classOrInterface);
+        }
+
+        private function getProphet()
+        {
+            if ($this->prophet === null) {
+                $this->prophet = new Prophet();
+            }
+
+            return $this->prophet;
+        }
+    }
+}
+
+abstract class ProjectTestCase extends ProphesizedTestCase
 {
     /**
      * @var string
