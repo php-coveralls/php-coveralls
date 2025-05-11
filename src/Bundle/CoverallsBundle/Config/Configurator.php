@@ -28,7 +28,7 @@ class Configurator
      *
      * @throws ParseException If the YAML is not valid
      */
-    public function load($coverallsYmlPath, $rootDir, ?InputInterface $input = null)
+    public function load($coverallsYmlPath, $rootDir, InputInterface $input = null)
     {
         $yml = $this->parse($coverallsYmlPath);
         $options = $this->process($yml);
@@ -85,7 +85,7 @@ class Configurator
      *
      * @return Configuration
      */
-    protected function createConfiguration(array $options, $rootDir, ?InputInterface $input = null)
+    protected function createConfiguration(array $options, $rootDir, InputInterface $input = null)
     {
         $configuration = new Configuration();
         $file = new Path();
@@ -241,7 +241,7 @@ class Configurator
      *
      * @return Configuration
      */
-    private function getPotentiallyOverriddenOptionValue($optionName, array $options, ?InputInterface $input = null)
+    private function getPotentiallyOverriddenOptionValue($optionName, array $options, InputInterface $input = null)
     {
         $value = $options[$optionName];
         if ($input !== null && $input->hasOption($optionName)) {

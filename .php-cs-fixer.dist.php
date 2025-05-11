@@ -30,6 +30,7 @@ $config
         'single_line_comment_style' => false,
         'ternary_to_elvis_operator' => false,
         'visibility_required' => ['elements' => ['method', 'property']],
+        'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => false], // to support low-end PHP versions
     ])
     ->setFinder($finder)
 ;

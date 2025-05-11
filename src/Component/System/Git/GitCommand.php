@@ -17,7 +17,7 @@ class GitCommand
      */
     private $executor;
 
-    public function __construct(?SystemCommandExecutorInterface $executor = null)
+    public function __construct(SystemCommandExecutorInterface $executor = null)
     {
         $this->executor = $executor ? $executor : new SystemCommandExecutor();
     }
