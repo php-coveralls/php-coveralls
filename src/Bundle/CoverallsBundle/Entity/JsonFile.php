@@ -74,7 +74,7 @@ class JsonFile extends Coveralls
     /**
      * Source files.
      *
-     * @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
+     * @var SourceFile[]
      */
     protected $sourceFiles = [];
 
@@ -230,7 +230,7 @@ class JsonFile extends Coveralls
      *
      * @param string $path absolute path to source file
      *
-     * @return null|\PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile
+     * @return null|SourceFile
      */
     public function getSourceFile($path)
     {
@@ -260,7 +260,7 @@ class JsonFile extends Coveralls
     /**
      * Return source files.
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile[]
+     * @return SourceFile[]
      */
     public function getSourceFiles()
     {
@@ -488,7 +488,7 @@ class JsonFile extends Coveralls
     /**
      * Return metrics.
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Metrics
+     * @return Metrics
      */
     public function getMetrics()
     {

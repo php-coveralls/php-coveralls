@@ -15,7 +15,7 @@ class ConsoleLogger extends AbstractLogger
     /**
      * Output.
      *
-     * @var \Symfony\Component\Console\Output\OutputInterface
+     * @var OutputInterface
      */
     protected $output;
 

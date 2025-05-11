@@ -36,7 +36,7 @@ class GitInfoCollector
     /**
      * Collect git repository info.
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Git
+     * @return Git
      */
     public function collect()
     {
@@ -52,7 +52,7 @@ class GitInfoCollector
     /**
      * Return git command.
      *
-     * @return \PhpCoveralls\Component\System\Git\GitCommand
+     * @return GitCommand
      */
     public function getCommand()
     {
@@ -93,7 +93,7 @@ class GitInfoCollector
     /**
      * Collect commit info.
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Commit
+     * @return Commit
      *
      * @throws \RuntimeException
      */
@@ -120,7 +120,7 @@ class GitInfoCollector
     /**
      * Collect remotes info.
      *
-     * @return \PhpCoveralls\Bundle\CoverallsBundle\Entity\Git\Remote[]
+     * @return Remote[]
      *
      * @throws \RuntimeException
      */

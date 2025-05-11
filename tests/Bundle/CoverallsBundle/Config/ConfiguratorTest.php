@@ -5,6 +5,7 @@ namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Config;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configurator;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputOption;
@@ -63,7 +64,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfCoverageCloverNotFound()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, null);
 
@@ -79,7 +80,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathDirNotWritable()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         if ($this->isWindowsOS()) {
             // On Windows read-only attribute on dir applies to files in dir, but not the dir itself.
@@ -98,7 +99,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadEmptyYmlIfJsonPathNotWritable()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath, false, true);
 
@@ -130,7 +131,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function shouldThrowInvalidConfigurationExceptionUponLoadingSrcDirYml()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
@@ -318,7 +319,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverNotFound()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
@@ -332,7 +333,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadCoverageCloverYmlIfCoverageCloverIsNotString()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
@@ -348,7 +349,7 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     public function throwInvalidConfigurationExceptionOnLoadJsonPathYmlIfJsonPathNotFound()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 
@@ -368,7 +369,7 @@ final class ConfiguratorTest extends ProjectTestCase
             self::markTestIncomplete('get_debug_type() is not available yet');
         }
 
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir($this->srcDir, $this->logsDir, $this->cloverXmlPath);
 

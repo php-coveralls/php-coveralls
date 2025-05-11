@@ -23,7 +23,7 @@ class Path
         }
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            return !preg_match('/^[a-z]+\:\\\\/i', $path);
+            return !preg_match('/^[a-z]+\:\\\/i', $path);
         }
 
         return strpos($path, \DIRECTORY_SEPARATOR) !== 0;

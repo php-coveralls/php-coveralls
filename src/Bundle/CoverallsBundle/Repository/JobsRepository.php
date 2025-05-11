@@ -2,10 +2,15 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Repository;
 
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
+use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 
@@ -21,21 +26,21 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Jobs API.
      *
-     * @var \PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs
+     * @var Jobs
      */
     protected $api;
 
     /**
      * Configuration.
      *
-     * @var \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
+     * @var Configuration
      */
     protected $config;
 
     /**
      * Logger.
      *
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
@@ -68,7 +73,7 @@ class JobsRepository implements LoggerAwareInterface
                 ->dumpJsonFile()
                 ->send()
             ;
-        } catch (\PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException $e) {
+        } catch (RequirementsNotSatisfiedException $e) {
             $this->logger->error(\sprintf('%s', $e->getHelpMessage()));
 
             return false;
@@ -184,14 +189,14 @@ class JobsRepository implements LoggerAwareInterface
             }
 
             return true;
-        } catch (\GuzzleHttp\Exception\ConnectException $e) {
+        } catch (ConnectException $e) {
             // connection error
             $message = \sprintf("Connection error occurred. %s\n\n%s", $e->getMessage(), $e->getTraceAsString());
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
+        } catch (ClientException $e) {
             // 422 Unprocessable Entity
             $response = $e->getResponse();
             $message = \sprintf('Client error occurred. status: %s %s', $response->getStatusCode(), $response->getReasonPhrase());
-        } catch (\GuzzleHttp\Exception\ServerException $e) {
+        } catch (ServerException $e) {
             // 500 Internal Server Error
             // 503 Service Unavailable
             $response = $e->getResponse();
@@ -247,7 +252,7 @@ class JobsRepository implements LoggerAwareInterface
         $this->logger->info(\sprintf('Found <info>%s</info> source file%s:', number_format($numFiles), $numFiles > 1 ? 's' : ''));
 
         foreach ($sourceFiles as $sourceFile) {
-            /** @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile $sourceFile */
+            /** @var SourceFile $sourceFile */
             $coverage = $sourceFile->reportLineCoverage();
             $template = '  - ' . $this->colorizeCoverage($coverage, '%6.2f%%') . ' %s';
 

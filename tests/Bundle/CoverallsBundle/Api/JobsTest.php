@@ -10,6 +10,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Prophecy\Argument;
 
 /**
  * @covers \PhpCoveralls\Bundle\CoverallsBundle\Api\CoverallsApi
@@ -582,7 +583,7 @@ final class JobsTest extends ProjectTestCase
 
         $client = $this->prophesize(Client::class);
         $client
-            ->post($url, \Prophecy\Argument::that(static function ($options) use ($filename) {
+            ->post($url, Argument::that(static function ($options) use ($filename) {
                 return !empty($options['multipart'][0]['name'])
                     && !empty($options['multipart'][0]['contents'])
                     && $filename === $options['multipart'][0]['name']

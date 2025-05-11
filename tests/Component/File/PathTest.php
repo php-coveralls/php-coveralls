@@ -39,38 +39,6 @@ final class PathTest extends ProjectTestCase
      */
     private $object;
 
-    // provider
-
-    /**
-     * @return array
-     */
-    public static function provideRelativePaths(): array
-    {
-        return [
-            [''],
-            ['.'],
-            ['..'],
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    public static function provideShouldNotBeRelativePathCases(): array
-    {
-        if (self::isWindowsOS()) {
-            return [
-                ['c:\\'],
-                ['z:\\path\\to\\somewhere'],
-            ];
-        }
-
-        return [
-            ['/'],
-            ['/path/to/somewhere'],
-        ];
-    }
-
     // isRelativePath()
 
     /**
@@ -95,6 +63,21 @@ final class PathTest extends ProjectTestCase
     public function shouldNotBeRelativePath($path)
     {
         self::assertFalse($this->object->isRelativePath($path));
+    }
+
+    public static function provideShouldNotBeRelativePathCases(): array
+    {
+        if (self::isWindowsOS()) {
+            return [
+                ['c:\\'],
+                ['z:\path\to\somewhere'],
+            ];
+        }
+
+        return [
+            ['/'],
+            ['/path/to/somewhere'],
+        ];
     }
 
     // toAbsolutePath()
@@ -166,6 +149,17 @@ final class PathTest extends ProjectTestCase
         $expected = realpath($rootDir . \DIRECTORY_SEPARATOR . $path);
 
         self::assertSame($expected, $this->object->getRealPath($path, $rootDir));
+    }
+
+    // provider
+
+    public static function provideRelativePaths(): array
+    {
+        return [
+            [''],
+            ['.'],
+            ['..'],
+        ];
     }
 
     /**
