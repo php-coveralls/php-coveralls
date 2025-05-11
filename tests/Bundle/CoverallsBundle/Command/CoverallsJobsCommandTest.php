@@ -238,7 +238,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir);
+        return \sprintf($xml, $this->srcDir, $this->srcDir);
     }
 
     protected function dumpCloverXml()

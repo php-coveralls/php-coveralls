@@ -715,7 +715,7 @@ class JsonFile extends Coveralls
         json_encode($item);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \UnexpectedValueException(sprintf(
+            throw new \UnexpectedValueException(\sprintf(
                 'Can not encode to JSON, error: "%s" in "%s".',
                 json_last_error_msg(),
                 $source

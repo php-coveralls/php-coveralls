@@ -654,7 +654,7 @@ final class JobsTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
+        return \sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
 
     /**

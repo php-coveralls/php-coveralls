@@ -153,7 +153,7 @@ class CoverallsJobsCommand extends Command
         $event = $stopwatch->stop(__CLASS__);
         $time = number_format($event->getDuration() / 1000, 3);        // sec
         $mem = number_format($event->getMemory() / (1024 * 1024), 2); // MB
-        $this->logger->info(sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
+        $this->logger->info(\sprintf('elapsed time: <info>%s</info> sec memory: <info>%s</info> MB', $time, $mem));
 
         return $executionStatus ? 0 : 1;
     }
