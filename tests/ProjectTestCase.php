@@ -105,7 +105,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
                 break;
 
             default:
-                trigger_error("Call to undefined method ::$method", E_USER_ERROR);
+                trigger_error("Call to undefined method ::{$method}", E_USER_ERROR);
         }
     }
 
