@@ -138,7 +138,7 @@ class CoverallsJobsCommand extends Command
         $stopwatch = new Stopwatch();
         $stopwatch->start(__CLASS__);
         $file = new Path();
-        if ($input->getOption('root_dir') !== '.') {
+        if ('.' !== $input->getOption('root_dir')) {
             $this->rootDir = $file->toAbsolutePath(
                 $input->getOption('root_dir'),
                 $this->rootDir

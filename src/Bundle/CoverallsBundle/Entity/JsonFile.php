@@ -492,7 +492,7 @@ class JsonFile extends Coveralls
      */
     public function getMetrics()
     {
-        if ($this->metrics === null) {
+        if (null === $this->metrics) {
             $this->metrics = new Metrics();
         }
 
@@ -628,10 +628,10 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceJobId()
     {
-        return $this->serviceName !== null
-            && $this->serviceNumber !== null
-            && $this->serviceJobId !== null
-            && $this->repoToken === null;
+        return null !== $this->serviceName
+            && null !== $this->serviceNumber
+            && null !== $this->serviceJobId
+            && null === $this->repoToken;
     }
 
     /**
@@ -641,9 +641,9 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceNumber()
     {
-        return $this->serviceName !== null
-            && $this->serviceNumber !== null
-            && $this->repoToken !== null;
+        return null !== $this->serviceName
+            && null !== $this->serviceNumber
+            && null !== $this->repoToken;
     }
 
     /**
@@ -653,9 +653,9 @@ class JsonFile extends Coveralls
      */
     protected function requireServiceEventType()
     {
-        return $this->serviceName !== null
-            && $this->serviceEventType !== null
-            && $this->repoToken !== null;
+        return null !== $this->serviceName
+            && null !== $this->serviceEventType
+            && null !== $this->repoToken;
     }
 
     /**
@@ -665,8 +665,8 @@ class JsonFile extends Coveralls
      */
     protected function requireRepoToken()
     {
-        return $this->serviceName === 'travis-pro'
-            && $this->repoToken !== null;
+        return 'travis-pro' === $this->serviceName
+            && null !== $this->repoToken;
     }
 
     /**
@@ -676,7 +676,7 @@ class JsonFile extends Coveralls
      */
     protected function requireGithubActions()
     {
-        return $this->serviceName === 'github' && $this->serviceJobId !== null && $this->repoToken !== null;
+        return 'github' === $this->serviceName && null !== $this->serviceJobId && null !== $this->repoToken;
     }
 
     /**
@@ -686,10 +686,10 @@ class JsonFile extends Coveralls
      */
     protected function isUnsupportedServiceJob()
     {
-        return $this->serviceJobId === null
-            && $this->serviceNumber === null
-            && $this->serviceEventType === null
-            && $this->repoToken !== null;
+        return null === $this->serviceJobId
+            && null === $this->serviceNumber
+            && null === $this->serviceEventType
+            && null !== $this->repoToken;
     }
 
     protected function onJsonError()
@@ -714,7 +714,7 @@ class JsonFile extends Coveralls
     {
         json_encode($item);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (JSON_ERROR_NONE !== json_last_error()) {
             throw new \UnexpectedValueException(\sprintf(
                 'Can not encode to JSON, error: "%s" in "%s".',
                 json_last_error_msg(),

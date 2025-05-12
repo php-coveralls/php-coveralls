@@ -25,7 +25,7 @@ if (class_exists(ProphecyTrait::class)) {
 
         private function getProphet()
         {
-            if ($this->prophet === null) {
+            if (null === $this->prophet) {
                 $this->prophet = new Prophet();
             }
 
@@ -140,15 +140,15 @@ abstract class ProjectTestCase extends ProphesizedTestCase
      */
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)
     {
-        if ($srcDir !== null && !is_dir($srcDir)) {
+        if (null !== $srcDir && !is_dir($srcDir)) {
             mkdir($srcDir, 0777, true);
         }
 
-        if ($logsDir !== null && !is_dir($logsDir)) {
+        if (null !== $logsDir && !is_dir($logsDir)) {
             mkdir($logsDir, 0777, true);
         }
 
-        if ($cloverXmlPaths !== null) {
+        if (null !== $cloverXmlPaths) {
             if (\is_array($cloverXmlPaths)) {
                 foreach ($cloverXmlPaths as $cloverXmlPath) {
                     touch($cloverXmlPath);
@@ -209,7 +209,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
      */
     protected function assertSamePath($expected, $input, $msg = null)
     {
-        if ($msg !== null) {
+        if (null !== $msg) {
             self::assertSame(
                 $this->normalizePath($expected),
                 $this->normalizePath($input),
@@ -233,7 +233,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
         $expected = array_map(function ($path) { return $this->normalizePath($path); }, $expected);
         $input = array_map(function ($path) { return $this->normalizePath($path); }, $input);
 
-        if ($msg !== null) {
+        if (null !== $msg) {
             self::assertSame($expected, $input, $msg);
         } else {
             self::assertSame($expected, $input);

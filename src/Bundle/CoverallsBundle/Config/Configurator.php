@@ -99,7 +99,7 @@ class Configurator
 
         return $configuration
             ->setEntrypoint($entry_point)
-            ->setRepoToken($repoToken !== null ? $repoToken : $repoSecretToken)
+            ->setRepoToken(null !== $repoToken ? $repoToken : $repoSecretToken)
             ->setServiceName($options['service_name'])
             ->setRootDir($rootDir)
             ->setCloverXmlPaths($this->ensureCloverXmlPaths($coverage_clover, $rootDir, $file))
@@ -148,7 +148,7 @@ class Configurator
         }
 
         // validate
-        if (\count($paths) === 0) {
+        if (0 === \count($paths)) {
             throw new InvalidConfigurationException("coverage_clover XML file is not readable: {$path}");
         }
 
@@ -219,7 +219,7 @@ class Configurator
         // validate file
         $realFilePath = $file->getRealPath($realpath, $rootDir);
 
-        if ($realFilePath !== false && !$file->isRealFileWritable($realFilePath)) {
+        if (false !== $realFilePath && !$file->isRealFileWritable($realFilePath)) {
             throw new InvalidConfigurationException("json_path is not writable: {$realFilePath}");
         }
 
@@ -244,7 +244,7 @@ class Configurator
     private function getPotentiallyOverriddenOptionValue($optionName, array $options, InputInterface $input = null)
     {
         $value = $options[$optionName];
-        if ($input !== null && $input->hasOption($optionName)) {
+        if (null !== $input && $input->hasOption($optionName)) {
             $inputOverride = $input->getOption($optionName);
             if (!empty($inputOverride)) {
                 $value = $inputOverride;

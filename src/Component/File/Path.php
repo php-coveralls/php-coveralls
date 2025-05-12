@@ -18,15 +18,15 @@ class Path
      */
     public function isRelativePath($path)
     {
-        if ($path === '') {
+        if ('' === $path) {
             return true;
         }
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        if ('WIN' === strtoupper(substr(PHP_OS, 0, 3))) {
             return !preg_match('/^[a-z]+\:\\\/i', $path);
         }
 
-        return strpos($path, \DIRECTORY_SEPARATOR) !== 0;
+        return 0 !== strpos($path, \DIRECTORY_SEPARATOR);
     }
 
     /**
@@ -120,7 +120,7 @@ class Path
      */
     public function isRealPathExist($realpath)
     {
-        return $realpath !== false && file_exists($realpath);
+        return false !== $realpath && file_exists($realpath);
     }
 
     /**

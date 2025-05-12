@@ -275,7 +275,7 @@ class JobsRepository implements LoggerAwareInterface
     {
         $raw_body = (string) $response->getBody();
         $body = json_decode($raw_body, true);
-        if ($body === null) {
+        if (null === $body) {
             // the response body is not in JSON format
             $this->logger->error($raw_body);
         } elseif (isset($body['error'])) {

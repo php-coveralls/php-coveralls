@@ -428,16 +428,16 @@ final class JobsRepositoryTest extends ProjectTestCase
      */
     private function setUpJobsApiWithSendCalled($api, $statusCode, $request, $response)
     {
-        if ($statusCode === 200) {
+        if (200 === $statusCode) {
             $api
                 ->send()
                 ->willReturn($response)
                 ->shouldBeCalled()
             ;
         } else {
-            if ($statusCode === null) {
+            if (null === $statusCode) {
                 $exception = new ConnectException('Connection refused', $request);
-            } elseif ($statusCode === 422) {
+            } elseif (422 === $statusCode) {
                 $exception = ClientException::create($request, $response);
             } else {
                 $exception = ServerException::create($request, $response);

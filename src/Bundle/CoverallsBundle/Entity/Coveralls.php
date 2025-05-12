@@ -18,7 +18,7 @@ abstract class Coveralls implements ArrayConvertable
     {
         $result = json_encode($this->toArray());
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (JSON_ERROR_NONE !== json_last_error()) {
             $this->onJsonError();
         }
 

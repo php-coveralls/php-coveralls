@@ -42,7 +42,7 @@ class Metrics
         $statementsArray = array_filter(
             $coverage,
             static function ($line) {
-                return $line !== null;
+                return null !== $line;
             }
         );
         $this->statements = \count($statementsArray);
@@ -79,7 +79,7 @@ class Metrics
      */
     public function hasStatements()
     {
-        return $this->statements !== 0;
+        return 0 !== $this->statements;
     }
 
     /**
@@ -109,7 +109,7 @@ class Metrics
      */
     public function getLineCoverage()
     {
-        if ($this->lineCoverage === null) {
+        if (null === $this->lineCoverage) {
             $this->lineCoverage = $this->calculateLineCoverage($this->statements, $this->coveredStatements);
         }
 
@@ -128,7 +128,7 @@ class Metrics
      */
     protected function calculateLineCoverage($statements, $coveredStatements)
     {
-        if ($statements === 0) {
+        if (0 === $statements) {
             return 0;
         }
 

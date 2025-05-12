@@ -488,7 +488,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     protected function createCiEnvVarsCollector($config = null)
     {
-        if ($config === null) {
+        if (null === $config) {
             $config = $this->createConfiguration();
         }
 

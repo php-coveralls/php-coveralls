@@ -728,7 +728,7 @@ XML;
      */
     protected function createCiEnvVarsCollector($config = null)
     {
-        if ($config === null) {
+        if (null === $config) {
             $config = $this->createConfiguration();
         }
 

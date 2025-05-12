@@ -17,11 +17,6 @@ $config
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         '@PHP70Migration' => true,
-        'yoda_style' => [
-            'equal' => false,
-            'identical' => false,
-            'less_and_greater' => false,
-        ],
         'concat_space' => ['spacing' => 'one'],
         'explicit_indirect_variable' => false,
         'explicit_string_variable' => false,

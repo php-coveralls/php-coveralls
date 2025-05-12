@@ -23,7 +23,7 @@ final class SystemCommandExecutor implements SystemCommandExecutorInterface
     {
         exec($command, $result, $returnValue);
 
-        if ($returnValue === 0) {
+        if (0 === $returnValue) {
             return $result;
         }
 

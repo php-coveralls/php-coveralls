@@ -418,8 +418,8 @@ final class ConfiguratorTest extends ProjectTestCase
     {
         static $isWindows;
 
-        if ($isWindows === null) {
-            $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        if (null === $isWindows) {
+            $isWindows = 'WIN' === strtoupper(substr(PHP_OS, 0, 3));
         }
 
         return $isWindows;

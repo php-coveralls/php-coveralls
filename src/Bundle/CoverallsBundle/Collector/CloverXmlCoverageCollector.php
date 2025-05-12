@@ -33,7 +33,7 @@ class CloverXmlCoverageCollector
     {
         $root = rtrim($rootDir, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR;
 
-        if ($this->jsonFile === null) {
+        if (null === $this->jsonFile) {
             $this->jsonFile = new JsonFile();
         }
 
@@ -50,7 +50,7 @@ class CloverXmlCoverageCollector
             foreach ($xml->xpath($xpath) as $file) {
                 $srcFile = $this->collectFileCoverage($file, $root);
 
-                if ($srcFile !== null) {
+                if (null !== $srcFile) {
                     $this->jsonFile->addSourceFile($srcFile);
                 }
             }
@@ -101,13 +101,13 @@ class CloverXmlCoverageCollector
     {
         $absolutePath = realpath((string) ($file['path'] ?: $file['name']));
 
-        if (strpos($absolutePath, $root) === false) {
+        if (false === strpos($absolutePath, $root)) {
             return;
         }
 
         $filename = $absolutePath;
 
-        if ($root !== \DIRECTORY_SEPARATOR) {
+        if (\DIRECTORY_SEPARATOR !== $root) {
             $filename = str_replace($root, '', $absolutePath);
         }
 
@@ -132,7 +132,7 @@ class CloverXmlCoverageCollector
         }
 
         foreach ($file->line as $line) {
-            if ((string) $line['type'] === 'stmt') {
+            if ('stmt' === (string) $line['type']) {
                 $lineNum = (int) $line['num'];
 
                 if ($lineNum > 0) {
