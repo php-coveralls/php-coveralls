@@ -703,7 +703,7 @@ class JsonFile extends Coveralls
         $sourceFiles = empty($array['source_files']) ? [] : $array['source_files'];
 
         foreach ($sourceFiles as $item) {
-            $this->throwWhenInvalidJson($item, '[source_files]: ' . $item['name']);
+            $this->throwWhenInvalidJson($item, '[source_files]: '.$item['name']);
         }
     }
 

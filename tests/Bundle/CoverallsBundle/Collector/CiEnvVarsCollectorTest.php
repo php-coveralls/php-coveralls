@@ -466,7 +466,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     /**

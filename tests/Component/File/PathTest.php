@@ -104,7 +104,7 @@ final class PathTest extends ProjectTestCase
     {
         $rootDir = '/path/to/dir';
 
-        $expected = $rootDir . \DIRECTORY_SEPARATOR . $path;
+        $expected = $rootDir.\DIRECTORY_SEPARATOR.$path;
 
         self::assertSame($expected, $this->object->toAbsolutePath($path, $rootDir));
     }
@@ -146,7 +146,7 @@ final class PathTest extends ProjectTestCase
     {
         $rootDir = __DIR__;
 
-        $expected = realpath($rootDir . \DIRECTORY_SEPARATOR . $path);
+        $expected = realpath($rootDir.\DIRECTORY_SEPARATOR.$path);
 
         self::assertSame($expected, $this->object->getRealPath($path, $rootDir));
     }
@@ -196,7 +196,7 @@ final class PathTest extends ProjectTestCase
         $path = '';
         $rootDir = __DIR__;
 
-        $expected = realpath($rootDir . \DIRECTORY_SEPARATOR . $path);
+        $expected = realpath($rootDir.\DIRECTORY_SEPARATOR.$path);
 
         self::assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
@@ -209,7 +209,7 @@ final class PathTest extends ProjectTestCase
         $path = __DIR__;
         $rootDir = '';
 
-        $expected = realpath($path . '/..');
+        $expected = realpath($path.'/..');
 
         self::assertSame($expected, $this->object->getRealDir($path, $rootDir));
     }
@@ -235,7 +235,7 @@ final class PathTest extends ProjectTestCase
         $path = 'test.txt';
         $rootDir = __DIR__;
 
-        $expected = $rootDir . \DIRECTORY_SEPARATOR . $path;
+        $expected = $rootDir.\DIRECTORY_SEPARATOR.$path;
 
         self::assertSame($expected, $this->object->getRealWritingFilePath($path, $rootDir));
     }
@@ -257,7 +257,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealPath()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = __DIR__.'/dummy.dir';
 
         self::assertFalse($this->object->isRealPathExist($path));
     }
@@ -279,7 +279,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealFile()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = __DIR__.'/dummy.file';
 
         self::assertFalse($this->object->isRealFileExist($path));
     }
@@ -311,7 +311,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealFileReadableIfFileNotFound()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = __DIR__.'/dummy.file';
 
         self::assertFalse($this->object->isRealFileReadable($path));
     }
@@ -348,7 +348,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealFileWritableIfFileNotFound()
     {
-        $path = __DIR__ . '/dummy.file';
+        $path = __DIR__.'/dummy.file';
 
         self::assertFalse($this->object->isRealFileWritable($path));
     }
@@ -380,7 +380,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotExistRealDir()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = __DIR__.'/dummy.dir';
 
         self::assertFalse($this->object->isRealDirExist($path));
     }
@@ -412,7 +412,7 @@ final class PathTest extends ProjectTestCase
      */
     public function shouldNotBeRealDirWritableIfDirNotFound()
     {
-        $path = __DIR__ . '/dummy.dir';
+        $path = __DIR__.'/dummy.dir';
 
         self::assertFalse($this->object->isRealDirWritable($path));
     }
@@ -444,10 +444,10 @@ final class PathTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->existingFile = __DIR__ . '/existing.txt';
-        $this->unreadablePath = __DIR__ . '/unreadable.txt';
-        $this->unwritablePath = __DIR__ . '/unwritable.txt';
-        $this->unwritableDir = __DIR__ . '/unwritable.dir';
+        $this->existingFile = __DIR__.'/existing.txt';
+        $this->unreadablePath = __DIR__.'/unreadable.txt';
+        $this->unwritablePath = __DIR__.'/unwritable.txt';
+        $this->unwritableDir = __DIR__.'/unwritable.dir';
 
         $this->object = new Path();
     }

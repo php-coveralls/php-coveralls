@@ -39,7 +39,7 @@ class RequirementsNotSatisfiedException extends \RuntimeException
      */
     public function getHelpMessage()
     {
-        $message = $this->message . "\n";
+        $message = $this->message."\n";
 
         if (\is_array($this->readEnv)) {
             foreach ($this->readEnv as $envVarName => $value) {

@@ -173,7 +173,7 @@ class CoverallsJobsCommand extends Command
     {
         $coverallsYmlPath = $input->getOption('config');
 
-        $ymlPath = $this->rootDir . \DIRECTORY_SEPARATOR . $coverallsYmlPath;
+        $ymlPath = $this->rootDir.\DIRECTORY_SEPARATOR.$coverallsYmlPath;
         $configurator = new Configurator();
 
         return $configurator

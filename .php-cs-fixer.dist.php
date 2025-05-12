@@ -17,7 +17,6 @@ $config
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         '@PHP70Migration' => true,
-        'concat_space' => ['spacing' => 'one'],
         'explicit_indirect_variable' => false,
         'explicit_string_variable' => false,
         'method_chaining_indentation' => false,
