@@ -20,7 +20,7 @@ $config
         'explicit_indirect_variable' => false,
         'explicit_string_variable' => false,
         'method_chaining_indentation' => false, // does not fit style of codebase
-        'php_unit_test_annotation' => false,
+        'php_unit_test_annotation' => false, // does not fit style of codebase
         'php_unit_data_provider_return_type' => false, // for low-level PHP support
         'ternary_to_elvis_operator' => false, // for low-level PHP support
         'visibility_required' => ['elements' => ['method', 'property']], // for low-level PHP support
