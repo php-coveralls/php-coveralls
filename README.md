@@ -294,7 +294,7 @@ COVERALLS_FLAG_NAME=$YOUR_PHP_VERSION
 
 Bear in mind that you will need to configure your build to send a webhook after all the parallel builds are done in order for Coveralls to merge the results.
 
-Refer to [Parallel Builds Webhook](https://docs.coveralls.io/parallel-build-webhook) for more information for setup on your environment.
+Refer to [Parallel Builds Webhook](https://docs.coveralls.io/api-parallel-build-webhook) for more information for setup on your environment.
 
 
 ## CLI options
