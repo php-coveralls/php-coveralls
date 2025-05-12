@@ -203,7 +203,7 @@ class JsonFile extends Coveralls
     {
         $metrics = $this->getMetrics();
 
-        /** @var \PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile $sourceFile */
+        /** @var SourceFile $sourceFile */
         foreach ($this->sourceFiles as $sourceFile) {
             $metrics->merge($sourceFile->getMetrics());
         }
