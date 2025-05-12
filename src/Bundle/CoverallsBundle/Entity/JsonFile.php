@@ -144,8 +144,8 @@ class JsonFile extends Coveralls
         ];
 
         foreach ($arrayMap as $jsonKey => $propName) {
-            if (isset($this->$propName)) {
-                $array[$jsonKey] = $this->toJsonProperty($this->$propName);
+            if (isset($this->{$propName})) {
+                $array[$jsonKey] = $this->toJsonProperty($this->{$propName});
             }
         }
 
@@ -574,7 +574,7 @@ class JsonFile extends Coveralls
 
         foreach ($map as $propName => $envName) {
             if (isset($env[$envName])) {
-                $this->$propName = $env[$envName];
+                $this->{$propName} = $env[$envName];
             }
         }
 

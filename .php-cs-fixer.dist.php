@@ -17,7 +17,6 @@ $config
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         '@PHP70Migration' => true,
-        'explicit_indirect_variable' => false,
         'explicit_string_variable' => false,
         'method_chaining_indentation' => false, // does not fit style of codebase
         'php_unit_test_annotation' => false, // does not fit style of codebase
