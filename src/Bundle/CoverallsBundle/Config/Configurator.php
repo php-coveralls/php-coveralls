@@ -142,8 +142,8 @@ class Configurator
         $paths = [];
         $iterator = new \GlobIterator($path);
 
+        /** @var \SplFileInfo $fileInfo */
         foreach ($iterator as $fileInfo) {
-            /* @var $fileInfo \SplFileInfo */
             $paths[] = $fileInfo->getPathname();
         }
 
