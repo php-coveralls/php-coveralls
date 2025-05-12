@@ -466,7 +466,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     /**
@@ -477,7 +477,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
         $config = new Configuration();
 
         return $config
-        ->addCloverXmlPath($this->cloverXmlPath)
+            ->addCloverXmlPath($this->cloverXmlPath)
         ;
     }
 
@@ -488,7 +488,7 @@ final class CiEnvVarsCollectorTest extends ProjectTestCase
      */
     protected function createCiEnvVarsCollector($config = null)
     {
-        if ($config === null) {
+        if (null === $config) {
             $config = $this->createConfiguration();
         }
 

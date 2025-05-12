@@ -46,7 +46,7 @@ final class ApplicationTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     protected function legacyTearDown()
@@ -86,7 +86,7 @@ final class ApplicationTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir);
+        return \sprintf($xml, $this->srcDir, $this->srcDir);
     }
 
     protected function dumpCloverXml()

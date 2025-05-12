@@ -2,6 +2,11 @@
 
 namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Repository;
 
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
@@ -33,7 +38,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     {
         $statusCode = 200;
         $url = 'https://coveralls.io/jobs/67528';
-        $response = new \GuzzleHttp\Psr7\Response(
+        $response = new Response(
             $statusCode,
             [],
             json_encode([
@@ -126,7 +131,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     public function response422()
     {
         $statusCode = 422;
-        $response = new \GuzzleHttp\Psr7\Response(
+        $response = new Response(
             $statusCode,
             [],
             json_encode([
@@ -155,7 +160,7 @@ final class JobsRepositoryTest extends ProjectTestCase
     public function response500()
     {
         $statusCode = 500;
-        $response = new \GuzzleHttp\Psr7\Response($statusCode, [], null, '1.1', 'Internal Server Error');
+        $response = new Response($statusCode, [], null, '1.1', 'Internal Server Error');
         $api = $this->createApiMock($response, $statusCode);
         $config = $this->createConfiguration();
         $logger = $this->createLoggerMock();
@@ -168,7 +173,7 @@ final class JobsRepositoryTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     /**
@@ -218,7 +223,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         $this->setUpJobsApiWithCollectGitInfoCalled($api);
         $this->setUpJobsApiWithCollectEnvVarsCalled($api);
         $this->setUpJobsApiWithDumpJsonFileCalled($api);
-        $this->setUpJobsApiWithSendCalled($api, $statusCode, new \GuzzleHttp\Psr7\Request('POST', $uri), $response);
+        $this->setUpJobsApiWithSendCalled($api, $statusCode, new Request('POST', $uri), $response);
 
         return $api->reveal();
     }
@@ -261,15 +266,15 @@ final class JobsRepositoryTest extends ProjectTestCase
     {
         $jsonFile = new JsonFile();
 
-        $repositoryTestDir = $this->srcDir . '/RepositoryTest';
+        $repositoryTestDir = $this->srcDir.'/RepositoryTest';
 
         $sourceFiles = [
-            0 => new SourceFile($repositoryTestDir . '/Coverage0.php', 'Coverage0.php'),
-            10 => new SourceFile($repositoryTestDir . '/Coverage10.php', 'Coverage10.php'),
-            70 => new SourceFile($repositoryTestDir . '/Coverage70.php', 'Coverage70.php'),
-            80 => new SourceFile($repositoryTestDir . '/Coverage80.php', 'Coverage80.php'),
-            90 => new SourceFile($repositoryTestDir . '/Coverage90.php', 'Coverage90.php'),
-            100 => new SourceFile($repositoryTestDir . '/Coverage100.php', 'Coverage100.php'),
+            0 => new SourceFile($repositoryTestDir.'/Coverage0.php', 'Coverage0.php'),
+            10 => new SourceFile($repositoryTestDir.'/Coverage10.php', 'Coverage10.php'),
+            70 => new SourceFile($repositoryTestDir.'/Coverage70.php', 'Coverage70.php'),
+            80 => new SourceFile($repositoryTestDir.'/Coverage80.php', 'Coverage80.php'),
+            90 => new SourceFile($repositoryTestDir.'/Coverage90.php', 'Coverage90.php'),
+            100 => new SourceFile($repositoryTestDir.'/Coverage100.php', 'Coverage100.php'),
         ];
 
         foreach ($sourceFiles as $percent => $sourceFile) {
@@ -423,19 +428,19 @@ final class JobsRepositoryTest extends ProjectTestCase
      */
     private function setUpJobsApiWithSendCalled($api, $statusCode, $request, $response)
     {
-        if ($statusCode === 200) {
+        if (200 === $statusCode) {
             $api
                 ->send()
                 ->willReturn($response)
                 ->shouldBeCalled()
             ;
         } else {
-            if ($statusCode === null) {
-                $exception = new \GuzzleHttp\Exception\ConnectException('Connection refused', $request);
-            } elseif ($statusCode === 422) {
-                $exception = \GuzzleHttp\Exception\ClientException::create($request, $response);
+            if (null === $statusCode) {
+                $exception = new ConnectException('Connection refused', $request);
+            } elseif (422 === $statusCode) {
+                $exception = ClientException::create($request, $response);
             } else {
-                $exception = \GuzzleHttp\Exception\ServerException::create($request, $response);
+                $exception = ServerException::create($request, $response);
             }
 
             $api

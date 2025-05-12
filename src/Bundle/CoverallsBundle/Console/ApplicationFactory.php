@@ -40,7 +40,7 @@ class ApplicationFactory
         $command = new CoverallsJobsCommand();
         $command->setRootDir($rootDir);
 
-        if (class_exists(SingleCommandApplication::class) === false) {
+        if (false === class_exists(SingleCommandApplication::class)) {
             $application = new CoverallsApplication(self::APP_NAME, self::APP_VERSION);
             $application->add($command);
 

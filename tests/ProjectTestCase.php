@@ -4,6 +4,7 @@ namespace PhpCoveralls\Tests;
 
 use LegacyPHPUnit\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophet;
 
 if (class_exists(ProphecyTrait::class)) {
@@ -17,14 +18,14 @@ if (class_exists(ProphecyTrait::class)) {
     {
         private $prophet;
 
-        protected function prophesize($classOrInterface = null): \Prophecy\Prophecy\ObjectProphecy
+        protected function prophesize($classOrInterface = null): ObjectProphecy
         {
             return $this->getProphet()->prophesize($classOrInterface);
         }
 
         private function getProphet()
         {
-            if ($this->prophet === null) {
+            if (null === $this->prophet) {
                 $this->prophet = new Prophet();
             }
 
@@ -104,7 +105,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
                 break;
 
             default:
-                trigger_error("Call to undefined method ::$method", E_USER_ERROR);
+                trigger_error("Call to undefined method ::{$method}", E_USER_ERROR);
         }
     }
 
@@ -113,21 +114,21 @@ abstract class ProjectTestCase extends ProphesizedTestCase
      */
     protected function setUpDir($projectDir)
     {
-        $this->rootDir = realpath($projectDir . '/Fixture');
-        $this->srcDir = realpath($this->rootDir . '/files');
+        $this->rootDir = realpath($projectDir.'/Fixture');
+        $this->srcDir = realpath($this->rootDir.'/files');
 
         $this->url = 'https://coveralls.io/api/v1/jobs';
         $this->filename = 'json_file';
 
         // build
-        $this->buildDir = $this->rootDir . '/build';
-        $this->logsDir = $this->rootDir . '/build/logs';
+        $this->buildDir = $this->rootDir.'/build';
+        $this->logsDir = $this->rootDir.'/build/logs';
 
         // log
-        $this->cloverXmlPath = $this->logsDir . '/clover.xml';
-        $this->cloverXmlPath1 = $this->logsDir . '/clover-part1.xml';
-        $this->cloverXmlPath2 = $this->logsDir . '/clover-part2.xml';
-        $this->jsonPath = $this->logsDir . '/coveralls-upload.json';
+        $this->cloverXmlPath = $this->logsDir.'/clover.xml';
+        $this->cloverXmlPath1 = $this->logsDir.'/clover-part1.xml';
+        $this->cloverXmlPath2 = $this->logsDir.'/clover-part2.xml';
+        $this->jsonPath = $this->logsDir.'/coveralls-upload.json';
     }
 
     /**
@@ -139,15 +140,15 @@ abstract class ProjectTestCase extends ProphesizedTestCase
      */
     protected function makeProjectDir($srcDir = null, $logsDir = null, $cloverXmlPaths = null, $logsDirUnwritable = false, $jsonPathUnwritable = false)
     {
-        if ($srcDir !== null && !is_dir($srcDir)) {
+        if (null !== $srcDir && !is_dir($srcDir)) {
             mkdir($srcDir, 0777, true);
         }
 
-        if ($logsDir !== null && !is_dir($logsDir)) {
+        if (null !== $logsDir && !is_dir($logsDir)) {
             mkdir($logsDir, 0777, true);
         }
 
-        if ($cloverXmlPaths !== null) {
+        if (null !== $cloverXmlPaths) {
             if (\is_array($cloverXmlPaths)) {
                 foreach ($cloverXmlPaths as $cloverXmlPath) {
                     touch($cloverXmlPath);
@@ -208,7 +209,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
      */
     protected function assertSamePath($expected, $input, $msg = null)
     {
-        if ($msg !== null) {
+        if (null !== $msg) {
             self::assertSame(
                 $this->normalizePath($expected),
                 $this->normalizePath($input),
@@ -232,7 +233,7 @@ abstract class ProjectTestCase extends ProphesizedTestCase
         $expected = array_map(function ($path) { return $this->normalizePath($path); }, $expected);
         $input = array_map(function ($path) { return $this->normalizePath($path); }, $input);
 
-        if ($msg !== null) {
+        if (null !== $msg) {
             self::assertSame($expected, $input, $msg);
         } else {
             self::assertSame($expected, $input);
