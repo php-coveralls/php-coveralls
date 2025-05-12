@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+## 2.8.0
+
+### Miscellaneous
+
+* Add `.gitattributes` (#381)
+* Create SECURITY.md
+* Fix CI (#379)
+* Fix typos (#372)
+* Remove duplicated word "other" (#380)
+* Update SECURITY.md (#383)
+* chore: fix typo (#384)
+* chore: overcome prophecy warning (#386)
+* chore: upgrade SCA, run PHP CS Fixer (#385)
+* tests: update data provider to not use 'this' (#387)
+
 ## 2.7.0
 
 ### Miscellaneous
