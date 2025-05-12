@@ -62,6 +62,17 @@
         "bin/php-coveralls"
     ],
     "scripts": {
+        "build-phar": [
+            "composer config platform.php 7.0.0",
+            "composer update --no-dev --optimize-autoloader",
+            "wget https://github.com/humbug/box/releases/latest/download/box.phar -O box.phar && chmod 0755 box.phar",
+            "php box.phar validate -i box.json",
+            "rm -f ./build/artifacts/php-coveralls.phar*",
+            "php box.phar compile -v --config=box.json",
+            "php box.phar info -l ./build/artifacts/php-coveralls.phar",
+            "gpg --detach-sign --output ./build/artifacts/php-coveralls.phar.asc ./build/artifacts/php-coveralls.phar",
+            "php ./build/artifacts/php-coveralls.phar --version"
+        ],
         "install-dev-tools": [
             "cd dev-tools && composer install --no-interaction"
         ],
