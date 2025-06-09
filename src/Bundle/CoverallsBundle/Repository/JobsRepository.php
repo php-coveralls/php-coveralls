@@ -2,12 +2,28 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Repository;
 
+use Composer\InstalledVersions;
 use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Api\Jobs;
 use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
+use PhpCoveralls\Bundle\CoverallsBundle\Repository\Logging\LoggerAwareLegacyTrait;
+use PhpCoveralls\Bundle\CoverallsBundle\Repository\Logging\LoggerAwareTypedTrait;
+use PhpCoveralls\Bundle\CoverallsBundle\Repository\Logging\LoggerAwareTrait;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
+
+
+if (version_compare(InstalledVersions::getPrettyVersion('psr/log'), '3.0.0', '>=')) {
+    class_alias(LoggerAwareTypedTrait::class,
+                'PhpCoveralls\\Bundle\\CoverallsBundle\\Repository\\Logging\\LoggerAwareTrait',
+                false);
+} else {
+    class_alias(LoggerAwareLegacyTrait::class,
+                'PhpCoveralls\\Bundle\\CoverallsBundle\\Repository\\Logging\\LoggerAwareTrait',
+                false);
+}
+
 
 /**
  * Jobs API client.
@@ -18,6 +34,8 @@ use Psr\Log\LoggerInterface;
  */
 class JobsRepository implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * Jobs API.
      *
@@ -31,13 +49,6 @@ class JobsRepository implements LoggerAwareInterface
      * @var \PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration
      */
     protected $config;
-
-    /**
-     * Logger.
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $logger;
 
     /**
      * Constructor.
@@ -77,16 +88,6 @@ class JobsRepository implements LoggerAwareInterface
 
             return false;
         }
-    }
-
-    // LoggerAwareInterface
-
-    /**
-     * @see \Psr\Log\LoggerAwareInterface::setLogger()
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
     }
 
     // internal method
