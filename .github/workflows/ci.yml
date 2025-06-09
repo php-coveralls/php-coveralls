@@ -87,7 +87,7 @@ jobs:
                 if: matrix.php != '8.3'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
 
-            -   name: "Update composer dependencies (PHP 8.2, ignore platform)"
+            -   name: "Update composer dependencies (PHP 8.3, ignore platform)"
                 if: matrix.php == '8.3'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 

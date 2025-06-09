@@ -4,6 +4,7 @@ namespace PhpCoveralls\Tests\Bundle\CoverallsBundle\Command;
 
 use PhpCoveralls\Bundle\CoverallsBundle\Command\CoverallsJobsCommand;
 use PhpCoveralls\Tests\ProjectTestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -67,7 +68,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
      */
     public function shouldExecuteCoverallsJobsCommandWithWrongRootDir()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
@@ -135,7 +136,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
      */
     public function shouldExecuteCoverallsJobsCommandThrowInvalidConfigurationException()
     {
-        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectException(InvalidConfigurationException::class);
 
         $this->makeProjectDir(null, $this->logsDir);
         $this->dumpCloverXml();
@@ -198,7 +199,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
 
     protected function legacySetUp()
     {
-        $this->setUpDir(realpath(__DIR__ . '/../../..'));
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
     }
 
     protected function legacyTearDown()
@@ -238,7 +239,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
 </coverage>
 XML;
 
-        return sprintf($xml, $this->srcDir, $this->srcDir);
+        return \sprintf($xml, $this->srcDir, $this->srcDir);
     }
 
     protected function dumpCloverXml()

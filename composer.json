@@ -41,6 +41,7 @@
         "symfony/yaml": "^2.0.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
     },
     "require-dev": {
+        "phpspec/prophecy-phpunit": "^1.1 || ^2.3",
         "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0 || ^7.0 || >=8.0 <8.5.29 || >=9.0 <9.5.23",
         "sanmai/phpunit-legacy-adapter": "^6.1 || ^8.0"
     },
@@ -61,11 +62,22 @@
         "bin/php-coveralls"
     ],
     "scripts": {
+        "build-phar": [
+            "composer config platform.php 7.0.0",
+            "composer update --no-dev --optimize-autoloader",
+            "wget https://github.com/humbug/box/releases/latest/download/box.phar -O box.phar && chmod 0755 box.phar",
+            "php box.phar validate -i box.json",
+            "rm -f ./build/artifacts/php-coveralls.phar*",
+            "php box.phar compile -v --config=box.json",
+            "php box.phar info -l ./build/artifacts/php-coveralls.phar",
+            "gpg --detach-sign --output ./build/artifacts/php-coveralls.phar.asc ./build/artifacts/php-coveralls.phar",
+            "php ./build/artifacts/php-coveralls.phar --version"
+        ],
         "install-dev-tools": [
             "cd dev-tools && composer install --no-interaction"
         ],
         "sca": [
-            "php dev-tools/vendor/bin/php-cs-fixer fix --dry-run -vv",
+            "php dev-tools/vendor/bin/php-cs-fixer check -vv",
             "php dev-tools/vendor/bin/phpmd src text build/config/phpmd.xml"
         ]
     },
