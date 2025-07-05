@@ -20,6 +20,9 @@ jobs:
             -   name: Validate composer.json
                 run: composer validate
 
+            -   name: Validate autoload
+                run: composer update --quiet && composer dump-autoload --dry-run --strict-psr
+
             -   name: Run all checks
                 run: |
                     composer install-dev-tools
