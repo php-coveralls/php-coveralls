@@ -5,7 +5,7 @@
         "ext-simplexml": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.21.1",
+        "friendsofphp/php-cs-fixer": "^3.89.1",
         "pdepend/pdepend": "^2.2",
         "phpmd/phpmd": "^2.3",
         "sebastian/finder-facade": "^1.1",
