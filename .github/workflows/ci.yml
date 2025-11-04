@@ -50,6 +50,9 @@ jobs:
                     ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
                     coverage: ${{ matrix.coverage || 'none' }}
 
+            -   name: "Disallow Symfony Flex to run as a Composer plugin (global)"
+                run: composer global config allow-plugins.symfony/flex false
+
             -   name: "Install Symfony Flex"
                 run: composer global require -o --no-interaction symfony/flex --no-plugins
 
