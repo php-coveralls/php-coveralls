@@ -6,11 +6,11 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.89.1",
-        "pdepend/pdepend": "^2.2",
-        "phpmd/phpmd": "^2.3",
+        "pdepend/pdepend": "^2.16.2",
+        "phpmd/phpmd": "^2.15",
         "sebastian/finder-facade": "^1.1",
-        "sebastian/phpcpd": "^1.4",
-        "theseer/fdomdocument": "^1.6"
+        "sebastian/phpcpd": "^1.4.3",
+        "theseer/fdomdocument": "^1.6.7"
     },
     "config": {
         "optimize-autoloader": true,
