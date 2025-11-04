@@ -378,7 +378,7 @@ final class ConfiguratorTest extends ProjectTestCase
         $this->object->load($path, $this->rootDir);
     }
 
-    protected function legacySetUp()
+    protected function setUp(): void
     {
         $this->setUpDir(realpath(__DIR__.'/../../..'));
 
@@ -387,7 +387,7 @@ final class ConfiguratorTest extends ProjectTestCase
         $this->object = new Configurator();
     }
 
-    protected function legacyTearDown()
+    protected function tearDown(): void
     {
         $this->rmFile($this->cloverXmlPath);
         $this->rmFile($this->cloverXmlPath1);

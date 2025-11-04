@@ -142,7 +142,7 @@ final class SourceFileTest extends ProjectTestCase
         self::assertSame(100, $this->object->reportLineCoverage());
     }
 
-    protected function legacySetUp()
+    protected function setUp(): void
     {
         $this->setUpDir(realpath(__DIR__.'/../../..'));
 

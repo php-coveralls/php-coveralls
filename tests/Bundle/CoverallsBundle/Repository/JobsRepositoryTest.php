@@ -171,7 +171,7 @@ final class JobsRepositoryTest extends ProjectTestCase
         self::assertFalse($object->persist());
     }
 
-    protected function legacySetUp()
+    protected function setUp(): void
     {
         $this->setUpDir(realpath(__DIR__.'/../../..'));
     }

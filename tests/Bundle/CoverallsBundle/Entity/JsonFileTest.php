@@ -733,7 +733,7 @@ final class JsonFileTest extends ProjectTestCase
         self::assertNotContains('AbstractClass.php', $filenames);
     }
 
-    protected function legacySetUp()
+    protected function setUp(): void
     {
         $this->setUpDir(realpath(__DIR__.'/../../..'));
 
