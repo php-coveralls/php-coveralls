@@ -42,7 +42,7 @@
     },
     "require-dev": {
         "phpspec/prophecy-phpunit": "^1.1 || ^2.3",
-        "phpunit/phpunit": "^9.6.29",
+        "phpunit/phpunit": "^9.6.29 || ^10.5.58",
         "sanmai/phpunit-legacy-adapter": "^6.1 || ^8.0"
     },
     "suggest": {
