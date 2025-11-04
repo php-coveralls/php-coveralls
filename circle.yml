@@ -1,7 +1,7 @@
 machine:
   php:
     version:
-      7.1.0
+      7.4.0
 
 dependencies:
   override:

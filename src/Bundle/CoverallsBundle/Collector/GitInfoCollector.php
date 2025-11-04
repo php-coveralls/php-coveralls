@@ -137,7 +137,7 @@ class GitInfoCollector
 
         foreach ($remotesResult as $result) {
             if (false !== strpos($result, ' ')) {
-                list($remote) = explode(' ', $result, 2);
+                [$remote] = explode(' ', $result, 2);
 
                 $results[] = $remote;
             }
@@ -151,7 +151,7 @@ class GitInfoCollector
 
         foreach ($results as $result) {
             if (false !== strpos($result, "\t")) {
-                list($name, $url) = explode("\t", $result, 2);
+                [$name, $url] = explode("\t", $result, 2);
 
                 $remote = new Remote();
                 $remotes[] = $remote->setName($name)->setUrl($url);

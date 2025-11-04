@@ -613,47 +613,47 @@ final class JobsTest extends ProjectTestCase
     protected function getCloverXml()
     {
         $xml = <<<'XML'
-<?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1365848893">
-  <project timestamp="1365848893">
-    <file name="%s/test.php">
-      <class name="TestFile" namespace="global">
-        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-      </class>
-      <line num="5" type="method" name="__construct" crap="1" count="0"/>
-      <line num="7" type="stmt" count="0"/>
-    </file>
-    <file name="%s/TestInterface.php">
-      <class name="TestInterface" namespace="global">
-        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
-      </class>
-      <line num="5" type="method" name="hello" crap="1" count="0"/>
-    </file>
-    <file name="%s/AbstractClass.php">
-      <class name="AbstractClass" namespace="global">
-        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
-      </class>
-      <line num="5" type="method" name="hello" crap="1" count="0"/>
-    </file>
-    <file name="dummy.php">
-      <class name="TestFile" namespace="global">
-        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-      </class>
-      <line num="5" type="method" name="__construct" crap="1" count="0"/>
-      <line num="7" type="stmt" count="0"/>
-    </file>
-    <package name="Hoge">
-      <file name="%s/test2.php">
-        <class name="TestFile" namespace="Hoge">
-          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-        </class>
-        <line num="6" type="method" name="__construct" crap="1" count="0"/>
-        <line num="8" type="stmt" count="0"/>
-      </file>
-    </package>
-  </project>
-</coverage>
-XML;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <coverage generated="1365848893">
+              <project timestamp="1365848893">
+                <file name="%s/test.php">
+                  <class name="TestFile" namespace="global">
+                    <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+                  </class>
+                  <line num="5" type="method" name="__construct" crap="1" count="0"/>
+                  <line num="7" type="stmt" count="0"/>
+                </file>
+                <file name="%s/TestInterface.php">
+                  <class name="TestInterface" namespace="global">
+                    <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+                  </class>
+                  <line num="5" type="method" name="hello" crap="1" count="0"/>
+                </file>
+                <file name="%s/AbstractClass.php">
+                  <class name="AbstractClass" namespace="global">
+                    <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="1" coveredelements="0"/>
+                  </class>
+                  <line num="5" type="method" name="hello" crap="1" count="0"/>
+                </file>
+                <file name="dummy.php">
+                  <class name="TestFile" namespace="global">
+                    <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+                  </class>
+                  <line num="5" type="method" name="__construct" crap="1" count="0"/>
+                  <line num="7" type="stmt" count="0"/>
+                </file>
+                <package name="Hoge">
+                  <file name="%s/test2.php">
+                    <class name="TestFile" namespace="Hoge">
+                      <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+                    </class>
+                    <line num="6" type="method" name="__construct" crap="1" count="0"/>
+                    <line num="8" type="stmt" count="0"/>
+                  </file>
+                </package>
+              </project>
+            </coverage>
+            XML;
 
         return \sprintf($xml, $this->srcDir, $this->srcDir, $this->srcDir, $this->srcDir);
     }
@@ -674,19 +674,19 @@ XML;
     protected function getNoSourceCloverXml()
     {
         return <<<'XML'
-<?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1365848893">
-  <project timestamp="1365848893">
-    <file name="dummy.php">
-      <class name="TestFile" namespace="global">
-        <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-      </class>
-      <line num="5" type="method" name="__construct" crap="1" count="0"/>
-      <line num="7" type="stmt" count="0"/>
-    </file>
-  </project>
-</coverage>
-XML;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <coverage generated="1365848893">
+              <project timestamp="1365848893">
+                <file name="dummy.php">
+                  <class name="TestFile" namespace="global">
+                    <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+                  </class>
+                  <line num="5" type="method" name="__construct" crap="1" count="0"/>
+                  <line num="7" type="stmt" count="0"/>
+                </file>
+              </project>
+            </coverage>
+            XML;
     }
 
     /**

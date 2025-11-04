@@ -12,7 +12,8 @@ PHP client library for [Coveralls](https://coveralls.io).
 
 # Prerequisites
 
-- PHP 7+ for 2.7+
+- PHP 7.4+ for 2.9+
+- PHP 7.0+ for 2.7+
 - PHP 5.5+ for 2.x
 - PHP 5.3+ for 1.x
 - On [GitHub](https://github.com/)

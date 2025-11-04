@@ -30,7 +30,7 @@
         }
     ],
     "require": {
-        "php": "^7.0 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
@@ -66,7 +66,7 @@
     ],
     "scripts": {
         "build-phar": [
-            "composer config platform.php 7.0.0",
+            "composer config platform.php 7.4.0",
             "composer update --no-dev --optimize-autoloader",
             "wget https://github.com/humbug/box/releases/latest/download/box.phar -O box.phar && chmod 0755 box.phar",
             "php box.phar validate -i box.json",

@@ -12,19 +12,9 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '7.0'
-                        os: ubuntu-latest
-                        composer-flags: '--prefer-lowest'
-                    -   php: '7.1'
-                        os: ubuntu-latest
-                        symfony: '^4.0'
-                    -   php: '7.2'
-                        os: ubuntu-latest
-                        symfony: '^5.0'
-                    -   php: '7.3'
-                        os: ubuntu-latest
                     -   php: '7.4'
                         os: ubuntu-latest
+                        composer-flags: '--prefer-lowest'
                     -   php: '8.0'
                         os: ubuntu-latest
                         symfony: '^6.0'
@@ -53,13 +43,6 @@ jobs:
             -   name: Checkout source
                 uses: actions/checkout@v3
 
-            -   name: Get symfony flex version
-                uses: actions/github-script@v3.1
-                id: flex-version
-                with:
-                    script: 'return "${{ matrix.php }}" == "7.0" ? "~1.6.0" : "^1.11"'
-                    result-encoding: string
-
             -   name: PHP setup
                 uses: shivammathur/setup-php@v2
                 with:
@@ -67,17 +50,11 @@ jobs:
                     ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
                     coverage: ${{ matrix.coverage || 'none' }}
 
-            -   name: Downgrade composer for old Symfony Flex
-                if: steps.flex-version.outputs.result == '~1.6.0'
-                run: composer self-update --1
-
             -   name: "Disallow Symfony Flex to run as a Composer plugin (global)"
-                if: startsWith(matrix.php, '5') == false && steps.flex-version.outputs.result != '~1.6.0'
-                run: composer -g config allow-plugins.symfony/flex false
+                run: composer global config allow-plugins.symfony/flex false
 
             -   name: "Install Symfony Flex"
-                if: startsWith(matrix.php, '5') == false
-                run: composer global require -o --no-interaction symfony/flex:${{ steps.flex-version.outputs.result }} --no-plugins
+                run: composer global require -o --no-interaction symfony/flex --no-plugins
 
             -   name: Require Symfony version
                 if: matrix.symfony
@@ -127,7 +104,7 @@ jobs:
                     ini-values: phar.readonly=Off, error_reporting=-1, display_errors=On, zend.assertions=1
 
             -   name: Set Composer platform
-                run: composer config platform.php 7.0.0
+                run: composer config platform.php 7.4.0
 
             -   name: Install Composer dependencies
                 uses: ramsey/composer-install@v2
@@ -164,7 +141,7 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    -   php: '7.2'
+                    -   php: '7.4'
                     -   php: '8.0'
                     -   php: '8.3'
 
