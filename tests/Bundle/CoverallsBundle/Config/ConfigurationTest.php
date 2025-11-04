@@ -19,6 +19,11 @@ final class ConfigurationTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->object = new Configuration();
+    }
+
     // hasRepoToken()
     // getRepoToken()
 
@@ -422,10 +427,5 @@ final class ConfigurationTest extends ProjectTestCase
 
         self::assertSame($same, $this->object);
         self::assertSame($expected, $this->object->getEnv());
-    }
-
-    protected function legacySetUp()
-    {
-        $this->object = new Configuration();
     }
 }

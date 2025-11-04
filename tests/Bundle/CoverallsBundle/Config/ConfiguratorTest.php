@@ -25,6 +25,26 @@ final class ConfiguratorTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
+
+        $this->srcDir = $this->rootDir.'/src';
+
+        $this->object = new Configurator();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->cloverXmlPath1);
+        $this->rmFile($this->cloverXmlPath2);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->srcDir);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
+    }
+
     // load()
 
     /**
@@ -376,26 +396,6 @@ final class ConfiguratorTest extends ProjectTestCase
         $path = realpath(__DIR__.'/yaml/exclude_no_stmt_invalid.yml');
 
         $this->object->load($path, $this->rootDir);
-    }
-
-    protected function legacySetUp()
-    {
-        $this->setUpDir(realpath(__DIR__.'/../../..'));
-
-        $this->srcDir = $this->rootDir.'/src';
-
-        $this->object = new Configurator();
-    }
-
-    protected function legacyTearDown()
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->cloverXmlPath1);
-        $this->rmFile($this->cloverXmlPath2);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->srcDir);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
     }
 
     // custom assertion

@@ -27,6 +27,13 @@ final class JsonFileTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
+
+        $this->object = new JsonFile();
+    }
+
     // hasSourceFile()
     // getSourceFile()
 
@@ -731,13 +738,6 @@ final class JsonFileTest extends ProjectTestCase
         self::assertContains('test2.php', $filenames);
         self::assertNotContains('TestInterface.php', $filenames);
         self::assertNotContains('AbstractClass.php', $filenames);
-    }
-
-    protected function legacySetUp()
-    {
-        $this->setUpDir(realpath(__DIR__.'/../../..'));
-
-        $this->object = new JsonFile();
     }
 
     /**

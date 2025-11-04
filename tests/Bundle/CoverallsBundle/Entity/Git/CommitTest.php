@@ -20,6 +20,11 @@ final class CommitTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->object = new Commit();
+    }
+
     // getId()
 
     /**
@@ -222,10 +227,5 @@ final class CommitTest extends ProjectTestCase
 
         self::assertSame($expected, $this->object->toArray());
         self::assertSame(json_encode($expected), (string) $this->object);
-    }
-
-    protected function legacySetUp()
-    {
-        $this->object = new Commit();
     }
 }

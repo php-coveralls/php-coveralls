@@ -2,7 +2,7 @@
 
 namespace PhpCoveralls\Tests;
 
-use LegacyPHPUnit\TestCase;
+use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophet;
