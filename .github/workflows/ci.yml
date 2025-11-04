@@ -23,21 +23,21 @@ jobs:
                         symfony: '^6.0'
                     -   php: '8.2'
                         os: ubuntu-latest
-                        symfony: '^6.0'
-                        coverage: 'pcov'
-                    -   php: '8.2'
+                        symfony: '^7.0'
+                    -   php: '8.3'
                         os: ubuntu-latest
-                        symfony: '^6.0'
-                        coverage: 'xdebug'
-                    -   php: '8.2'
-                        os: windows-latest
-                        symfony: '^6.0'
+                    -   php: '8.3'
+                        os: ubuntu-latest
                         coverage: 'pcov'
                     -   php: '8.3'
                         os: ubuntu-latest
+                        coverage: 'xdebug'
+                    -   php: '8.3'
+                        os: windows-latest
+                        coverage: 'pcov'
+                    -   php: '8.4'
+                        os: ubuntu-latest
                         symfony: '^7.0'
-
-        continue-on-error: ${{ matrix.php == '8.3' }}
 
         steps:
             -   name: Checkout source
@@ -61,12 +61,7 @@ jobs:
                 run: composer config extra.symfony.require ${{ matrix.symfony }}
 
             -   name: Update composer dependencies
-                if: matrix.php != '8.3'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }}
-
-            -   name: "Update composer dependencies (PHP 8.3, ignore platform)"
-                if: matrix.php == '8.3'
-                run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
             -   name: Run test suite [without coverage]
                 if: matrix.coverage == ''
@@ -147,10 +142,7 @@ jobs:
             matrix:
                 include:
                     -   php: '7.4'
-                    -   php: '8.0'
-                    -   php: '8.3'
-
-        continue-on-error: ${{ matrix.php == '8.3' }}
+                    -   php: '8.4'
 
         steps:
             -   name: Checkout
