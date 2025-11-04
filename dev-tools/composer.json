@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-json": "*",
         "ext-simplexml": "*"
     },
@@ -15,7 +15,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.3"
+            "php": "8.4"
         },
         "prefer-stable": true,
         "sort-packages": true
