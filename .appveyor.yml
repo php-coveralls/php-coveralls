@@ -5,7 +5,7 @@ clone_folder: C:\projects\php-coveralls
 
 environment:
     matrix:
-        - php_ver: 7.1.2
+        - php_ver: 7.4
 
 cache:
     - '%APPDATA%\Composer'
