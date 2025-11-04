@@ -41,6 +41,10 @@ jobs:
                     -   php: '8.4'
                         os: macos-latest
                         coverage: 'pcov'
+                    -   php: '8.4'
+                        os: ubuntu-latest
+                        symfony: '^8.0'
+                        composer-stability: 'beta'
 
         steps:
             -   name: Checkout source
@@ -52,6 +56,10 @@ jobs:
                     php-version: ${{ matrix.php }}
                     ini-values: zend.assertions=1, error_reporting=-1, display_errors=On, log_errors_max_len=0
                     coverage: ${{ matrix.coverage || 'none' }}
+
+            -   name: Configure composer stability
+                if: matrix.composer-stability
+                run: composer config minimum-stability ${{ matrix.composer-stability }}
 
             -   name: "Disallow Symfony Flex to run as a Composer plugin (global)"
                 run: composer global config allow-plugins.symfony/flex false
