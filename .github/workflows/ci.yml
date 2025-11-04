@@ -68,8 +68,13 @@ jobs:
                 if: matrix.php == '8.3'
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
-            -   name: Run test suite
+            -   name: Run test suite [without coverage]
+                if: matrix.coverage == ''
                 run: php vendor/bin/phpunit
+
+            -   name: Run test suite [with coverage]
+                if: matrix.coverage != ''
+                run: php vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
 
             -   name: Upload coverage results to Coveralls
                 if: matrix.coverage

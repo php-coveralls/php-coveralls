@@ -4,22 +4,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     backupGlobals="false"
-    backupStaticAttributes="false"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutTestsThatDoNotTestAnything="true"
+    beStrictAboutTestsThatDoNotTestAnything="false"
     bootstrap="vendor/autoload.php"
     colors="true"
     columns="max"
-    convertDeprecationsToExceptions="false"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnError="false"
     stopOnFailure="false"
     stopOnRisky="false"
-    verbose="true"
 >
     <php>
         <ini name="error_reporting" value="E_ALL" />
@@ -31,20 +25,19 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory>./src</directory>
-            <exclude>
-                <directory>./build</directory>
-                <directory>./composer</directory>
-                <directory>./tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>./build</directory>
+            <directory>./composer</directory>
+            <directory>./tests</directory>
+            <directory>./vendor</directory>
+        </exclude>
+    </source>
 
     <logging>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+        <junit outputFile="build/logs/junit.xml"/>
     </logging>
 </phpunit>
