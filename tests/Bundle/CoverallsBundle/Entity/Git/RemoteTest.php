@@ -20,6 +20,11 @@ final class RemoteTest extends ProjectTestCase
      */
     private $object;
 
+    protected function setUp(): void
+    {
+        $this->object = new Remote();
+    }
+
     // getName()
 
     /**
@@ -106,10 +111,5 @@ final class RemoteTest extends ProjectTestCase
 
         self::assertSame($expected, $this->object->toArray());
         self::assertSame(json_encode($expected), (string) $this->object);
-    }
-
-    protected function setUp(): void
-    {
-        $this->object = new Remote();
     }
 }

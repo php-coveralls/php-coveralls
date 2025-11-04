@@ -22,6 +22,18 @@ use Prophecy\Argument;
  */
 final class JobsTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rmFile($this->jsonPath);
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
+    }
     // getJsonFile()
 
     /**
@@ -489,19 +501,6 @@ final class JobsTest extends ProjectTestCase
             ->dumpJsonFile()
             ->send()
         ;
-    }
-
-    protected function setUp(): void
-    {
-        $this->setUpDir(realpath(__DIR__.'/../../..'));
-    }
-
-    protected function tearDown(): void
-    {
-        $this->rmFile($this->jsonPath);
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
     }
 
     /**

@@ -17,6 +17,19 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 final class CoverallsJobsCommandTest extends ProjectTestCase
 {
+    protected function setUp(): void
+    {
+        $this->setUpDir(realpath(__DIR__.'/../../..'));
+    }
+
+    protected function tearDown(): void
+    {
+        $this->rmFile($this->cloverXmlPath);
+        $this->rmFile($this->jsonPath);
+        $this->rmDir($this->logsDir);
+        $this->rmDir($this->buildDir);
+    }
+
     /**
      * @test
      */
@@ -195,19 +208,6 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         );
 
         self::assertSame(0, $actual);
-    }
-
-    protected function setUp(): void
-    {
-        $this->setUpDir(realpath(__DIR__.'/../../..'));
-    }
-
-    protected function tearDown(): void
-    {
-        $this->rmFile($this->cloverXmlPath);
-        $this->rmFile($this->jsonPath);
-        $this->rmDir($this->logsDir);
-        $this->rmDir($this->buildDir);
     }
 
     /**
