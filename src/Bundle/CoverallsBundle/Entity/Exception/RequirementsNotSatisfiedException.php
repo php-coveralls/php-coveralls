@@ -49,43 +49,43 @@ class RequirementsNotSatisfiedException extends \RuntimeException
 
         $message .= <<< 'EOL'
 
-Set environment variables properly like the following.
-For Travis users:
+            Set environment variables properly like the following.
+            For Travis users:
 
-  - TRAVIS
-  - TRAVIS_BUILD_NUMBER
-  - TRAVIS_JOB_ID
+              - TRAVIS
+              - TRAVIS_BUILD_NUMBER
+              - TRAVIS_JOB_ID
 
-For CircleCI users:
+            For CircleCI users:
 
-  - CIRCLECI
-  - CIRCLE_WORKFLOW_ID
-  - COVERALLS_REPO_TOKEN
+              - CIRCLECI
+              - CIRCLE_WORKFLOW_ID
+              - COVERALLS_REPO_TOKEN
 
-For Jenkins users:
+            For Jenkins users:
 
-  - JENKINS_URL
-  - BUILD_NUMBER
-  - COVERALLS_REPO_TOKEN
+              - JENKINS_URL
+              - BUILD_NUMBER
+              - COVERALLS_REPO_TOKEN
 
-For AppVeyor users:
+            For AppVeyor users:
 
-  - APPVEYOR
-  - APPVEYOR_BUILD_NUMBER
+              - APPVEYOR
+              - APPVEYOR_BUILD_NUMBER
 
-For Github Actions users:
-  - GITHUB_REF
-  - GITHUB_ACTIONS
-  - GITHUB_RUN_ID
-  - GITHUB_EVENT_NAME
-  - COVERALLS_REPO_TOKEN
+            For Github Actions users:
+              - GITHUB_REF
+              - GITHUB_ACTIONS
+              - GITHUB_RUN_ID
+              - GITHUB_EVENT_NAME
+              - COVERALLS_REPO_TOKEN
 
-From local environment:
+            From local environment:
 
-  - COVERALLS_RUN_LOCALLY
-  - COVERALLS_REPO_TOKEN
+              - COVERALLS_RUN_LOCALLY
+              - COVERALLS_REPO_TOKEN
 
-EOL;
+            EOL;
 
         return $message;
     }
