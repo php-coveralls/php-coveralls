@@ -69,7 +69,7 @@ jobs:
                 run: composer update -o --no-interaction --no-progress ${{ matrix.composer-flags }} --ignore-platform-req=php+
 
             -   name: Run test suite
-                run: php vendor/bin/phpunit -v
+                run: php vendor/bin/phpunit
 
             -   name: Upload coverage results to Coveralls
                 if: matrix.coverage
