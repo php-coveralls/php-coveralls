@@ -24,6 +24,8 @@ jobs:
                     -   php: '8.2'
                         os: ubuntu-latest
                         symfony: '^7.0'
+                    -   php: '8.3'
+                        os: ubuntu-latest
                     -   php: '8.4'
                         os: ubuntu-latest
                         symfony: '^7.0' # update to 8.0 when available
