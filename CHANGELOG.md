@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+## 2.9.0
+
+### Miscellaneous
+
+* DX: Allow Symfony ^8 (#391)
+
 ## 2.8.0
 
 ### Miscellaneous
