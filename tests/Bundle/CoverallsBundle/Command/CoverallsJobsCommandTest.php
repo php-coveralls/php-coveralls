@@ -42,7 +42,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         $command->setRootDir($this->rootDir);
 
         $app = new Application();
-        $app->add($command);
+        method_exists($app, 'addCommand') ? $app->addCommand($command) : $app->add($command);
 
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
@@ -90,7 +90,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         $command->setRootDir($this->logsDir); // Wrong rootDir.
 
         $app = new Application();
-        $app->add($command);
+        method_exists($app, 'addCommand') ? $app->addCommand($command) : $app->add($command);
 
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
@@ -122,7 +122,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         $command->setRootDir($this->logsDir); // Wrong rootDir.
 
         $app = new Application();
-        $app->add($command);
+        method_exists($app, 'addCommand') ? $app->addCommand($command) : $app->add($command);
 
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
@@ -158,7 +158,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         $command->setRootDir($this->rootDir);
 
         $app = new Application();
-        $app->add($command);
+        method_exists($app, 'addCommand') ? $app->addCommand($command) : $app->add($command);
 
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
@@ -189,7 +189,7 @@ final class CoverallsJobsCommandTest extends ProjectTestCase
         $command->setRootDir($this->rootDir);
 
         $app = new Application();
-        $app->add($command);
+        method_exists($app, 'addCommand') ? $app->addCommand($command) : $app->add($command);
 
         $command = $app->find('coveralls:v1:jobs');
         $commandTester = new CommandTester($command);
