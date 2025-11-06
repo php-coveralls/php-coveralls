@@ -1,6 +1,37 @@
 CHANGELOG
 =========
 
+## 2.9.0
+
+Maintenance release
+
+### Add support
+
+* Add support for Symfony 8 (#391)
+* Add support for PHP 8.4 (#392)
+* Add support for psr/log:^3 (#402)
+
+### Drop support
+
+* Drop support for PHP 7.0-7.3 (#393)
+* Drop support for legacy Symfomny 2-3-4 (#397)
+
+### Docs
+
+* docs: update Parallel Build Webhook URL (#374)
+* docs: update phpunit.xml.dist examples for coverage, to match modern PHPUnit versions (#401)
+
+### Miscellaneous
+
+* CD: build command (#388)
+* CI: recover accidentally dropped 8.3 job (#399)
+* Fix autoload warnings (#389)
+* chore: remove phpcpd as abandoned (#400)
+* chore: update PHPUnit dev-deps to support v9-10-11 (#394)
+* chore: update phpspec/prophecy-phpunit to 2.4 (#398)
+* deps: bump dev-tools (#396)
+* deps: upgrade PHP CS Fixer (#395)
+
 ## 2.8.0
 
 ### Miscellaneous
