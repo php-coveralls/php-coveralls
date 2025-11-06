@@ -85,12 +85,12 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-clover" ty
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit ...>
-    <logging>
-        ...
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-        ...
-    </logging>
+<phpunit>
+    <coverage>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
 </phpunit>
 ```
 
@@ -119,12 +119,12 @@ Make sure that `phpunit.xml.dist` is configured to generate "coverage-php" type 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit ...>
-    <logging>
-        ...
-        <log type="coverage-php" target="build/cov/coverage.cov"/>
-        ...
-    </logging>
+<phpunit>
+  <coverage>
+    <report>
+      <php outputFile="build/cov/coverage.cov"/>
+    </report>
+  </coverage>
 </phpunit>
 ```
 
