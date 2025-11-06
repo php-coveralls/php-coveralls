@@ -34,7 +34,7 @@
         "ext-json": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
-        "psr/log": "^1.0 || ^2.0",
+        "psr/log": "^1.0 || ^2.0 || ^3.0",
         "symfony/config": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/console": "^5.4 || ^6.4 || ^7.0 || ^8.0",
         "symfony/stopwatch": "^5.4 || ^6.4 || ^7.0 || ^8.0",
