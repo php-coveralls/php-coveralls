@@ -62,7 +62,7 @@ class CoverallsJobsCommand extends Command
     /**
      * @see \Symfony\Component\Console\Command\Command::configure()
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coveralls:v1:jobs')
