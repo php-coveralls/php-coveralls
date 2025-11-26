@@ -17,9 +17,16 @@ class GitCommand
      */
     private $executor;
 
-    public function __construct(SystemCommandExecutorInterface $executor = null)
+    /**
+     * @var string
+     */
+    private $rootDir;
+
+
+    public function __construct(SystemCommandExecutorInterface $executor = null, $rootDir = '.' )
     {
         $this->executor = $executor ? $executor : new SystemCommandExecutor();
+        $this->rootDir = $rootDir;
     }
 
     /**
@@ -29,7 +36,7 @@ class GitCommand
      */
     public function getBranches()
     {
-        return $this->executor->execute('git branch');
+        return $this->executor->execute('git -C ' . $this->rootDir . ' branch');
     }
 
     /**
@@ -39,7 +46,7 @@ class GitCommand
      */
     public function getHeadCommit()
     {
-        return $this->executor->execute("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
+        return $this->executor->execute("git -C " . $this->rootDir . " log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
     }
 
     /**
@@ -49,6 +56,6 @@ class GitCommand
      */
     public function getRemotes()
     {
-        return $this->executor->execute('git remote -v');
+        return $this->executor->execute('git -C ' . $this->rootDir . ' remote -v');
     }
 }

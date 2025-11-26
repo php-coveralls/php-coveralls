@@ -75,7 +75,7 @@ class Jobs extends CoverallsApi
      */
     public function collectGitInfo()
     {
-        $command = new GitCommand();
+        $command = new GitCommand(null, $this->getConfiguration()->getRootDir() ?: '.');
         $gitCollector = new GitInfoCollector($command);
 
         $this->jsonFile->setGit($gitCollector->collect());
