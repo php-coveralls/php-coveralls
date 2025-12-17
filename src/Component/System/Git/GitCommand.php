@@ -39,7 +39,7 @@ class GitCommand
      */
     public function getHeadCommit()
     {
-        return $this->executor->execute("git log -1 --pretty=format:'%H%n%aN%n%ae%n%cN%n%ce%n%s'");
+        return $this->executor->execute('git log -1 --pretty=format:"%H%n%aN%n%ae%n%cN%n%ce%n%s"');
     }
 
     /**
