@@ -38,6 +38,7 @@ final class GitCommandTest extends ProjectTestCase
         self::assertIsArray($actual);
         self::assertNotEmpty($actual);
         self::assertCount(6, $actual);
+        self::assertMatchesRegularExpression('/\A[0-9a-f]{40}\z/', $actual[0], 'Failed asserting that the first line is a commit hash (SHA-1).');
     }
 
     /**
