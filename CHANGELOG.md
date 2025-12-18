@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## 2.9.1
+
+* Fix Windows compatibility (#403)
+
 ## 2.9.0
 
 Maintenance release
