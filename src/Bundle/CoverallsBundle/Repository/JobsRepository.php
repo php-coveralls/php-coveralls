@@ -11,6 +11,7 @@ use PhpCoveralls\Bundle\CoverallsBundle\Config\Configuration;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\SourceFile;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 
@@ -269,9 +270,9 @@ class JobsRepository implements LoggerAwareInterface
     /**
      * Log response.
      *
-     * @param Response $response aPI response
+     * @param ResponseInterface $response aPI response
      */
-    protected function logResponse(Response $response)
+    protected function logResponse(ResponseInterface $response)
     {
         $raw_body = (string) $response->getBody();
         $body = json_decode($raw_body, true);

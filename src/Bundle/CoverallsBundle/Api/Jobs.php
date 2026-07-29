@@ -2,13 +2,13 @@
 
 namespace PhpCoveralls\Bundle\CoverallsBundle\Api;
 
-use GuzzleHttp\Psr7\Response;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CiEnvVarsCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\CloverXmlCoverageCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Collector\GitInfoCollector;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\Exception\RequirementsNotSatisfiedException;
 use PhpCoveralls\Bundle\CoverallsBundle\Entity\JsonFile;
 use PhpCoveralls\Component\System\Git\GitCommand;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Jobs API.
@@ -124,12 +124,12 @@ class Jobs extends CoverallsApi
     /**
      * Send json_file to jobs API.
      *
-     * @return null|Response
+     * @return null|ResponseInterface
      */
     public function send()
     {
         if ($this->config->isDryRun()) {
-            return;
+            return null;
         }
 
         $url = $this->config->getEntryPoint().static::URL;
@@ -173,7 +173,7 @@ class Jobs extends CoverallsApi
      * @param string $path     file path
      * @param string $filename filename
      *
-     * @return Response
+     * @return ResponseInterface
      */
     protected function upload($url, $path, $filename)
     {
