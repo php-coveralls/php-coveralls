@@ -30,9 +30,9 @@ abstract class CoverallsApi
      * Constructor.
      *
      * @param Configuration $config configuration
-     * @param Client        $client hTTP client
+     * @param Client|null   $client hTTP client
      */
-    public function __construct(Configuration $config, Client $client = null)
+    public function __construct(Configuration $config, ?Client $client = null)
     {
         $this->config = $config;
         $this->client = $client;
